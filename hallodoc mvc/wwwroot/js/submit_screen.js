@@ -1,21 +1,29 @@
-function myFunction() {
 
-    var element = document.body;
-    element.classList.toggle("dark-mode");
+
+var element = document.body;
+if (localStorage.getItem("theme") == null) {
+    localStorage.setItem("theme", "light");
 }
-function myfun1() {
-
-    window.location.href = "./patient_sub_req.html";
+if (localStorage.getItem("theme") == "dark") {
+    
+    element.classList.add("dark-mode");
+    
 }
-function myfun2() {
+function toggle() {
+    if (localStorage.getItem("theme") == "light") {
+        
+        element.classList.add("dark-mode");
+        localStorage.setItem("theme", "dark");
 
-    window.location.href = "./family-sub.html";
+
+    }
+    else {
+
+        
+        element.classList.remove("dark-mode");
+        localStorage.setItem("theme", "light");
+
+    }
+
 }
-function myfun3() {
 
-    window.location.href = "./concierge-info.html";
-}
-function myfun4() {
-
-    window.location.href = "./business-info.html";
-}   

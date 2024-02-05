@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" >
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,7 +23,7 @@
                          height="50%">
                 </a>
                 <div class="">
-                    <button type="button" onclick='myFunction()' class="btn btn-outline-dark shadow border-info"
+                    <button type="button" onclick='toggle()' class="btn btn-outline-dark shadow border-info"
                             id="btnSwitch">
                         <i class="bi bi-moon text-info fs-4"></i>
                     </button>
@@ -48,12 +48,12 @@
     </div>
 
 
-
+    <script src="~/js/submit_screen.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
    @* <script src="@ViewBag.jsLink" asp-append-version="true"></script>*@
-    <script src="~/js/submit_screen.js"></script>
-    <script src="~/js/darkmode.js"></script>
+    
+  @*  <script src="~/js/darkmode.js"></script>*@
     @*@await RenderSectionAsync("Scripts", required: false)*@
 </body>
 </html>
