@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - hallodoc_mvc</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" asp-append-version="true" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="@ViewBag.cssLink2" asp-append-version="true" />
+    <link rel="stylesheet" href="@ViewBag.cssLink1" asp-append-version="true" />
+    
+    @*<link rel="stylesheet" href="~/hallodoc_mvc.styles.css" asp-append-version="true" />*@
+</head>
+<body>
+          
+            @RenderBody()
+    
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/@ViewBag.jsLink1" asp-append-version="true"></script>
+    <script src="~/@ViewBag.jsLink2" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

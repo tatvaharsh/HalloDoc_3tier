@@ -1,0 +1,921 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\hallodoc mvc.bundle.scp.css",
+      "PackagePath": "staticwebassets\\hallodoc mvc.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\11116016_415.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\11116016_415.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\7768657_3763028.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\7768657_3763028.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\7774236_3736765.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\7774236_3736765.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig Contact your Provider.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig Contact your Provider.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig1. Platform login page.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig1. Platform login page.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig10. View case.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig10. View case.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig11. View Notes.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig11. View Notes.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig12. Cancel Case pop-up.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig12. Cancel Case pop-up.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig13. Assign case.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig13. Assign case.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig14. Block case.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig14. Block case.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig15.View Uploads-PatientsConclude.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig15.View Uploads-PatientsConclude.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig16. Orders.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig16. Orders.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig17.Transfer.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig17.Transfer.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig18.Clear Case.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig18.Clear Case.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig19.Send Agreement pop-up.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig19.Send Agreement pop-up.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig2. Forgot Password.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig2. Forgot Password.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig20.Close case.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig20.Close case.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig21. Admin My profile..jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig21. Admin My profile..jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig22 Regions menu.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig22 Regions menu.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig23.Request Support.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig23.Request Support.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig24. Provider Menu.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig24. Provider Menu.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig25. Contact your Provider.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig25. Contact your Provider.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig26. Edit Physician Account.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig26. Edit Physician Account.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig27. Roles.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig27. Roles.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig28. Create Role All.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig28. Create Role All.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig29. Create Role Admin.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig29. Create Role Admin.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig3. Admin Dashboard.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig3. Admin Dashboard.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig30. Create Role Physician.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig30. Create Role Physician.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig31. 1 Create Role Patient.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig31. 1 Create Role Patient.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig31.2 Create Role Patient UserAccess.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig31.2 Create Role Patient UserAccess.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig32. Day wise Scheduling.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig32. Day wise Scheduling.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig33. Month wise Scheduling.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig33. Month wise Scheduling.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig34. Week wise Scheduling.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig34. Week wise Scheduling.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig35. Provider on call (MDs On Call).jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig35. Provider on call (MDs On Call).jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig36. Requested Shift.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig36. Requested Shift.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig37. Create Shift.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig37. Create Shift.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig38. View Shift.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig38. View Shift.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig39. Provider Location.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig39. Provider Location.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig4. Admin dashboard in New state.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig4. Admin dashboard in New state.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig40. Profession menu Vendors.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig40. Profession menu Vendors.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig41.Add business page.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig41.Add business page.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig42.Edit business page.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig42.Edit business page.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig43. Patient history.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig43. Patient history.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig44. Patient Record Explore.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig44. Patient Record Explore.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig45. Search Records.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig45. Search Records.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig45.Email Logs.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig45.Email Logs.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig46. SMS Logs.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig46. SMS Logs.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig47. Block History.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig47. Block History.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig48. Create Requests.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig48. Create Requests.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig49. Provider dashboard.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig49. Provider dashboard.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig5. Admin dashboard in pending state.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig5. Admin dashboard in pending state.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig50.Encounter (Type Of care).png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig50.Encounter (Type Of care).png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig51.Conclude State  Action  Encounter Form.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig51.Conclude State  Action  Encounter Form.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig52. Encounter Finalize popup.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig52. Encounter Finalize popup.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig53. Provider transfer request pop-up.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig53. Provider transfer request pop-up.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig54. Provider My Profile.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig54. Provider My Profile.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig55. Provider My Profile Request to Admin.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig55. Provider My Profile Request to Admin.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig56. Patient site 1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig56. Patient site 1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig56. Patient site.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig56. Patient site.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig56._Patient_site_1-removebg-preview.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig56._Patient_site_1-removebg-preview.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig57.Submit request screen.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig57.Submit request screen.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig58. Create Patient request.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig58. Create Patient request.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig59.1.FamilyFriend Information1.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig59.1.FamilyFriend Information1.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig59.FamilyFriend Information2.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig59.FamilyFriend Information2.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig6. Admin dashboard in Active state.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig6. Admin dashboard in Active state.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig60.Concierge Information.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig60.Concierge Information.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig61.Business Information.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig61.Business Information.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig62.Login Patient Account Registered Patient.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig62.Login Patient Account Registered Patient.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig63.Reset Your Password Patient.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig63.Reset Your Password Patient.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig64. Patient Dashboard ,Patient Medical History.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig64. Patient Dashboard ,Patient Medical History.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig65.Patient Create New Request.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig65.Patient Create New Request.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig66.Submit Information me.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig66.Submit Information me.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig67.Submit Information Some one else.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig67.Submit Information Some one else.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig68. View Documents.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig68. View Documents.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig7. Admin dashboard in Conclude state.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig7. Admin dashboard in Conclude state.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig8. Admin dashboard in To Close state.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig8. Admin dashboard in To Close state.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig9. Admin dashboard in Unpaid state.jpg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig9. Admin dashboard in Unpaid state.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Account Access\\Acocunt Access_mobile_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Account Access\\Acocunt Access_mobile_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Close case\\Close case_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Close case\\Close case_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create Request_Admin_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create Request_Admin_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create request_Provider_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create request_Provider_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Admin_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Admin_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Patient_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Patient_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Physician_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Physician_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create role -all_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create role -all_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pagination.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pagination.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Edit Physician Account\\Edit Provider_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Edit Physician Account\\Edit Provider_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\My profile_Provider_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\My profile_Provider_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\my profile_admin_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\my profile_admin_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Create Business_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Create Business_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Edit Business_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Edit Business_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Partners_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Partners_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Physician_menus_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Physician_menus_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider location\\Provider Location_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider location\\Provider Location_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider on call\\provider on call_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider on call\\provider on call_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Block history_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Block history_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient History_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient History_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient Records_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient Records_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_2.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Search records_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Search records_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Requested Shifts\\Requested shifts_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Requested Shifts\\Requested shifts_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_day view_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_day view_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_month view_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_month view_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_week view_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_week view_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Send Order\\Send Order_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Send Order\\Send Order_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\User Access\\Use access_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\User Access\\Use access_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Case\\View case_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Case\\View case_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Notes\\View Notes_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Notes\\View Notes_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Uploads\\View Uploads_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Uploads\\View Uploads_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Business Request_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Business Request_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Concirge Request_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Concirge Request_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Family-friend Request_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Family-friend Request_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Patient Request_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Patient Request_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Submit Request Screen-mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Submit Request Screen-mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Dashboard\\dashboard_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Dashboard\\dashboard_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_forget password_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_forget password_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_login_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_login_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_mobile.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_mobile.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\View Documents\\View documents_1.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\View Documents\\View documents_1.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\LesfImage.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\LesfImage.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\up.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\up.png"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\business.css",
+      "PackagePath": "staticwebassets\\css\\business.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\concierge.css",
+      "PackagePath": "staticwebassets\\css\\concierge.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\family_form.css",
+      "PackagePath": "staticwebassets\\css\\family_form.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\forgot_password.css",
+      "PackagePath": "staticwebassets\\css\\forgot_password.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\patient_form.css",
+      "PackagePath": "staticwebassets\\css\\patient_form.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\patient_login.css",
+      "PackagePath": "staticwebassets\\css\\patient_login.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\patient_screen.css",
+      "PackagePath": "staticwebassets\\css\\patient_screen.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\submit_screen.css",
+      "PackagePath": "staticwebassets\\css\\submit_screen.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\business.js",
+      "PackagePath": "staticwebassets\\js\\business.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\concierge.js",
+      "PackagePath": "staticwebassets\\js\\concierge.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\darkmode.js",
+      "PackagePath": "staticwebassets\\js\\darkmode.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\family_form.js",
+      "PackagePath": "staticwebassets\\js\\family_form.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\forgot_password.js",
+      "PackagePath": "staticwebassets\\js\\forgot_password.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\patient_form.js",
+      "PackagePath": "staticwebassets\\js\\patient_form.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\patient_login.js",
+      "PackagePath": "staticwebassets\\js\\patient_login.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\submit_screen.js",
+      "PackagePath": "staticwebassets\\js\\submit_screen.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.hallodoc mvc.props",
+      "PackagePath": "build\\hallodoc mvc.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.hallodoc mvc.props",
+      "PackagePath": "buildMultiTargeting\\hallodoc mvc.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.hallodoc mvc.props",
+      "PackagePath": "buildTransitive\\hallodoc mvc.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.hallodoc mvc.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

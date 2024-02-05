@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.cssLink = "~/css/submit_screen.css";
+    Layout = "_Layout1";
+}
+
+<div class="main-container ">
+    <div class="mb-3 mt-3 d-flex justify-content-around  ">
+        <span class="px-3" style="opacity: 0;">Back....</span>
+        <h1>I am a...</h1>
+        <a asp-controller="Home" asp-action="patient_screen">
+        <button type="submit"
+                class="btn h-100 btn-light shadow btn-outline-secondary border-info text-info px-3 py-0 ">
+            <i class="fa-solid fa-angle-left "></i> Back
+            </button>
+        </a>
+
+    </div>
+
+
+    <div class="container login-container d-flex flex-column justify-content-between ms-auto me-auto pt-4 pb-5"
+         style="max-width: 350px;">
+        <div class="mb-5 pb-5">
+
+            <div class="mb-3">
+                <div class="mb-4 d-grid">
+                   <a asp-controller="Home" asp-action="patient_form">
+                        <button onclick="myfun1() ;" id="myButton" class="p-3 violate shadow w-100  btn">PATIENT</button>
+                    </a>
+                </div>
+                <div class="mb-4 d-grid">
+                     <a asp-controller="Home" asp-action="family_form">
+                    <button onclick="myfun2();" class="p-3 shadow lightblue btn w-100">
+                        FAMILY /
+                        FRIEND
+                    </button></a>
+                </div>
+                 <a asp-controller="Home" asp-action="concierge">
+                <div class="mb-4 d-grid">
+                    <button onclick="myfun3();" class="p-3 shadow green w-100 btn">CONCIERGE</button></a>
+                </div>
+                 <a asp-controller="Home" asp-action="business">
+                <div class="mb-4 d-grid">
+                    <button onclick="myfun4();" class="p-3 shadow pink w-100 btn">BUSINESS PARTNERS</button></a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

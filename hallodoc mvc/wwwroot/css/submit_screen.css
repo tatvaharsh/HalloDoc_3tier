@@ -1,0 +1,63 @@
+﻿.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.violate {
+    background-color: rgb(53, 53, 255, 0.25);
+    border-color: rgb(53, 53, 255);
+    color: rgb(53, 53, 255);
+}
+
+.lightblue {
+    background-color: rgb(22, 212, 212, 0.25);
+    border-color: rgb(22, 212, 212);
+    color: rgb(22, 212, 212);
+}
+
+.green {
+    background-color: rgb(10, 177, 10, 0.25);
+    border-color: rgb(10, 177, 10);
+    color: rgb(10, 177, 10);
+}
+
+
+.pink {
+    background-color: rgb(199, 48, 186, 0.25);
+    border-color: rgb(199, 48, 186);
+    color: rgb(199, 48, 186);
+}
+
+html[data-bs-theme="dark"] nav.header {
+    background-color: rgb(42, 50, 56) !important;
+}
+
+.main {
+    background-color: rgb(249, 250, 247);
+}
+
+html[data-bs-theme="dark"] body.main {
+    background-color: #212529;
+}
+
+
+
+@media screen and (max-width : 500px) {
+    .footer {
+        display: flex;
+        justify-content: center !important;
+    }
+}
+
+@media screen and (max-width : 350px) {
+    .footercontent {
+        display: flex;
+        justify-content: center !important;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .line {
+        display: none;
+    }
+}
