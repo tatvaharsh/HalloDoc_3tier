@@ -46,6 +46,10 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
+        public IActionResult create_patient()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

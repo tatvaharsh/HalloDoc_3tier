@@ -18,7 +18,6 @@
     <Content Remove="Views\Home\login.cshtml" />
     <Content Remove="Views\Home\patient_forgot_password.cshtml" />
     <Content Remove="Views\Home\patient_for_pass.cshtml" />
-    <Content Remove="Views\Home\patient_login - Copy.cshtml" />
     <Content Remove="wwwroot\css\patint_screen.cs" />
     <Content Remove="wwwroot\js\patient_screen.js" />
     <Content Remove="wwwroot\js\submit_screen.css" />
@@ -29,10 +28,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.15" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.15">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.11" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
