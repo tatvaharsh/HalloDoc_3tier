@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\hallodoc mvc.csproj": {}
+    "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\hallodoc mvc.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\hallodoc mvc.csproj": {
+    "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\hallodoc mvc.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\hallodoc mvc.csproj",
+        "projectUniqueName": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\hallodoc mvc.csproj",
         "projectName": "hallodoc mvc",
-        "projectPath": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\hallodoc mvc.csproj",
+        "projectPath": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\hallodoc mvc.csproj",
         "packagesPath": "C:\\Users\\pca114\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\obj\\",
+        "outputPath": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pca114\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,24 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.15, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.15, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.11, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

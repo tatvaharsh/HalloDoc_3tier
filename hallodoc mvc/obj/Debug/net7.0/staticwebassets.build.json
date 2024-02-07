@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ErhER0FYykRlIZ/GmW3RJvSM2BJBK6gYIYZHJ92xqgc=",
+  "Hash": "e7+j2OA2Tqe5LEdvTKPvaxHVyrAky08l/8ho02oKhEY=",
   "Source": "hallodoc mvc",
   "BasePath": "_content/hallodoc mvc",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "hallodoc mvc\\wwwroot",
       "Source": "hallodoc mvc",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\bundle\\hallodoc mvc.styles.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\bundle\\hallodoc mvc.styles.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "hallodoc mvc.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\bundle\\hallodoc mvc.styles.css"
+      "OriginalItemSpec": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\bundle\\hallodoc mvc.styles.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\hallodoc mvc.bundle.scp.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\hallodoc mvc.bundle.scp.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "hallodoc mvc.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\hallodoc mvc.bundle.scp.css"
+      "OriginalItemSpec": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\hallodoc mvc.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\business.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\business.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "css/business.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\business.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\concierge.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\concierge.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "css/concierge.css",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\concierge.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\family_form.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\family_form.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "css/family_form.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\family_form.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\forgot_password.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\forgot_password.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "css/forgot_password.css",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\forgot_password.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\patient_form.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\patient_form.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "css/patient_form.css",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\patient_form.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\patient_login.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\patient_login.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "css/patient_login.css",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\patient_login.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\patient_screen.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\patient_screen.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "css/patient_screen.css",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\css\\patient_screen.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\site.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\site.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\css\\submit_screen.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\submit_screen.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "css/submit_screen.css",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\css\\submit_screen.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\favicon.ico",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\favicon.ico",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\business.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\business.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "js/business.js",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\js\\business.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\concierge.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\concierge.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "js/concierge.js",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\js\\concierge.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\darkmode.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\darkmode.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "js/darkmode.js",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\js\\darkmode.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\family_form.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\family_form.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "js/family_form.js",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\js\\family_form.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\forgot_password.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\forgot_password.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "js/forgot_password.js",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\js\\forgot_password.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\patient_form.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\patient_form.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "js/patient_form.js",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\js\\patient_form.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\patient_login.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\patient_login.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "js/patient_login.js",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\js\\patient_login.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\site.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\site.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\js\\submit_screen.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\submit_screen.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "js/submit_screen.js",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\js\\submit_screen.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -884,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -901,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -918,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -935,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -952,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -969,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -1003,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -1020,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -1054,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -1071,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\11116016_415.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\11116016_415.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/11116016_415.jpg",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\11116016_415.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\7768657_3763028.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\7768657_3763028.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/7768657_3763028.jpg",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\7768657_3763028.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\7774236_3736765.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\7774236_3736765.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/7774236_3736765.jpg",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\7774236_3736765.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig Contact your Provider.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig Contact your Provider.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig Contact your Provider.jpg",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig Contact your Provider.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig1. Platform login page.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig1. Platform login page.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig1. Platform login page.jpg",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig1. Platform login page.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig10. View case.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig10. View case.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig10. View case.jpg",
       "AssetKind": "All",
@@ -1445,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig10. View case.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig11. View Notes.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig11. View Notes.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig11. View Notes.jpg",
       "AssetKind": "All",
@@ -1462,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig11. View Notes.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig12. Cancel Case pop-up.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig12. Cancel Case pop-up.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig12. Cancel Case pop-up.jpg",
       "AssetKind": "All",
@@ -1479,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig12. Cancel Case pop-up.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig13. Assign case.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig13. Assign case.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig13. Assign case.jpg",
       "AssetKind": "All",
@@ -1496,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig13. Assign case.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig14. Block case.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig14. Block case.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig14. Block case.jpg",
       "AssetKind": "All",
@@ -1513,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig14. Block case.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig15.View Uploads-PatientsConclude.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig15.View Uploads-PatientsConclude.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig15.View Uploads-PatientsConclude.png",
       "AssetKind": "All",
@@ -1530,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig15.View Uploads-PatientsConclude.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig16. Orders.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig16. Orders.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig16. Orders.jpg",
       "AssetKind": "All",
@@ -1547,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig16. Orders.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig17.Transfer.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig17.Transfer.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig17.Transfer.jpg",
       "AssetKind": "All",
@@ -1564,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig17.Transfer.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig18.Clear Case.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig18.Clear Case.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig18.Clear Case.png",
       "AssetKind": "All",
@@ -1581,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig18.Clear Case.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig19.Send Agreement pop-up.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig19.Send Agreement pop-up.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig19.Send Agreement pop-up.png",
       "AssetKind": "All",
@@ -1598,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig19.Send Agreement pop-up.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig2. Forgot Password.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig2. Forgot Password.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig2. Forgot Password.jpg",
       "AssetKind": "All",
@@ -1615,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig2. Forgot Password.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig20.Close case.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig20.Close case.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig20.Close case.png",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig20.Close case.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig21. Admin My profile..jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig21. Admin My profile..jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig21. Admin My profile..jpg",
       "AssetKind": "All",
@@ -1649,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig21. Admin My profile..jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig22 Regions menu.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig22 Regions menu.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig22 Regions menu.jpg",
       "AssetKind": "All",
@@ -1666,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig22 Regions menu.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig23.Request Support.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig23.Request Support.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig23.Request Support.png",
       "AssetKind": "All",
@@ -1683,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig23.Request Support.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig24. Provider Menu.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig24. Provider Menu.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig24. Provider Menu.jpg",
       "AssetKind": "All",
@@ -1700,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig24. Provider Menu.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig25. Contact your Provider.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig25. Contact your Provider.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig25. Contact your Provider.jpg",
       "AssetKind": "All",
@@ -1717,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig25. Contact your Provider.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig26. Edit Physician Account.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig26. Edit Physician Account.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig26. Edit Physician Account.png",
       "AssetKind": "All",
@@ -1734,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig26. Edit Physician Account.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig27. Roles.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig27. Roles.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig27. Roles.jpg",
       "AssetKind": "All",
@@ -1751,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig27. Roles.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig28. Create Role All.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig28. Create Role All.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig28. Create Role All.jpg",
       "AssetKind": "All",
@@ -1768,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig28. Create Role All.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig29. Create Role Admin.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig29. Create Role Admin.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig29. Create Role Admin.jpg",
       "AssetKind": "All",
@@ -1785,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig29. Create Role Admin.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig3. Admin Dashboard.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig3. Admin Dashboard.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig3. Admin Dashboard.jpg",
       "AssetKind": "All",
@@ -1802,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig3. Admin Dashboard.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig30. Create Role Physician.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig30. Create Role Physician.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig30. Create Role Physician.jpg",
       "AssetKind": "All",
@@ -1819,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig30. Create Role Physician.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig31. 1 Create Role Patient.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig31. 1 Create Role Patient.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig31. 1 Create Role Patient.jpg",
       "AssetKind": "All",
@@ -1836,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig31. 1 Create Role Patient.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig31.2 Create Role Patient UserAccess.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig31.2 Create Role Patient UserAccess.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig31.2 Create Role Patient UserAccess.png",
       "AssetKind": "All",
@@ -1853,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig31.2 Create Role Patient UserAccess.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig32. Day wise Scheduling.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig32. Day wise Scheduling.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig32. Day wise Scheduling.jpg",
       "AssetKind": "All",
@@ -1870,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig32. Day wise Scheduling.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig33. Month wise Scheduling.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig33. Month wise Scheduling.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig33. Month wise Scheduling.jpg",
       "AssetKind": "All",
@@ -1887,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig33. Month wise Scheduling.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig34. Week wise Scheduling.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig34. Week wise Scheduling.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig34. Week wise Scheduling.jpg",
       "AssetKind": "All",
@@ -1904,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig34. Week wise Scheduling.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig35. Provider on call (MDs On Call).jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig35. Provider on call (MDs On Call).jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig35. Provider on call (MDs On Call).jpg",
       "AssetKind": "All",
@@ -1921,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig35. Provider on call (MDs On Call).jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig36. Requested Shift.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig36. Requested Shift.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig36. Requested Shift.png",
       "AssetKind": "All",
@@ -1938,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig36. Requested Shift.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig37. Create Shift.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig37. Create Shift.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig37. Create Shift.jpg",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig37. Create Shift.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig38. View Shift.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig38. View Shift.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig38. View Shift.png",
       "AssetKind": "All",
@@ -1972,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig38. View Shift.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig39. Provider Location.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig39. Provider Location.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig39. Provider Location.jpg",
       "AssetKind": "All",
@@ -1989,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig39. Provider Location.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig4. Admin dashboard in New state.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig4. Admin dashboard in New state.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig4. Admin dashboard in New state.jpg",
       "AssetKind": "All",
@@ -2006,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig4. Admin dashboard in New state.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig40. Profession menu Vendors.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig40. Profession menu Vendors.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig40. Profession menu Vendors.jpg",
       "AssetKind": "All",
@@ -2023,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig40. Profession menu Vendors.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig41.Add business page.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig41.Add business page.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig41.Add business page.png",
       "AssetKind": "All",
@@ -2040,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig41.Add business page.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig42.Edit business page.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig42.Edit business page.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig42.Edit business page.png",
       "AssetKind": "All",
@@ -2057,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig42.Edit business page.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig43. Patient history.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig43. Patient history.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig43. Patient history.jpg",
       "AssetKind": "All",
@@ -2074,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig43. Patient history.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig44. Patient Record Explore.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig44. Patient Record Explore.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig44. Patient Record Explore.jpg",
       "AssetKind": "All",
@@ -2091,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig44. Patient Record Explore.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig45. Search Records.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig45. Search Records.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig45. Search Records.jpg",
       "AssetKind": "All",
@@ -2108,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig45. Search Records.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig45.Email Logs.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig45.Email Logs.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig45.Email Logs.jpg",
       "AssetKind": "All",
@@ -2125,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig45.Email Logs.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig46. SMS Logs.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig46. SMS Logs.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig46. SMS Logs.jpg",
       "AssetKind": "All",
@@ -2142,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig46. SMS Logs.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig47. Block History.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig47. Block History.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig47. Block History.jpg",
       "AssetKind": "All",
@@ -2159,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig47. Block History.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig48. Create Requests.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig48. Create Requests.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig48. Create Requests.jpg",
       "AssetKind": "All",
@@ -2176,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig48. Create Requests.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig49. Provider dashboard.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig49. Provider dashboard.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig49. Provider dashboard.jpg",
       "AssetKind": "All",
@@ -2193,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig49. Provider dashboard.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig5. Admin dashboard in pending state.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig5. Admin dashboard in pending state.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig5. Admin dashboard in pending state.jpg",
       "AssetKind": "All",
@@ -2210,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig5. Admin dashboard in pending state.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig50.Encounter (Type Of care).png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig50.Encounter (Type Of care).png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig50.Encounter (Type Of care).png",
       "AssetKind": "All",
@@ -2227,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig50.Encounter (Type Of care).png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig51.Conclude State  Action  Encounter Form.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig51.Conclude State  Action  Encounter Form.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig51.Conclude State  Action  Encounter Form.png",
       "AssetKind": "All",
@@ -2244,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig51.Conclude State  Action  Encounter Form.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig52. Encounter Finalize popup.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig52. Encounter Finalize popup.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig52. Encounter Finalize popup.png",
       "AssetKind": "All",
@@ -2261,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig52. Encounter Finalize popup.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig53. Provider transfer request pop-up.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig53. Provider transfer request pop-up.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig53. Provider transfer request pop-up.png",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig53. Provider transfer request pop-up.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig54. Provider My Profile.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig54. Provider My Profile.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig54. Provider My Profile.jpg",
       "AssetKind": "All",
@@ -2295,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig54. Provider My Profile.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig55. Provider My Profile Request to Admin.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig55. Provider My Profile Request to Admin.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig55. Provider My Profile Request to Admin.jpg",
       "AssetKind": "All",
@@ -2312,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig55. Provider My Profile Request to Admin.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig56. Patient site 1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig56. Patient site 1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig56. Patient site 1.png",
       "AssetKind": "All",
@@ -2329,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig56. Patient site 1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig56. Patient site.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig56. Patient site.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig56. Patient site.png",
       "AssetKind": "All",
@@ -2346,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig56. Patient site.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig56._Patient_site_1-removebg-preview.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig56._Patient_site_1-removebg-preview.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png",
       "AssetKind": "All",
@@ -2363,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig56._Patient_site_1-removebg-preview.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig57.Submit request screen.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig57.Submit request screen.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig57.Submit request screen.jpg",
       "AssetKind": "All",
@@ -2380,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig57.Submit request screen.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig58. Create Patient request.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig58. Create Patient request.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig58. Create Patient request.jpg",
       "AssetKind": "All",
@@ -2397,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig58. Create Patient request.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig59.1.FamilyFriend Information1.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig59.1.FamilyFriend Information1.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig59.1.FamilyFriend Information1.jpg",
       "AssetKind": "All",
@@ -2414,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig59.1.FamilyFriend Information1.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig59.FamilyFriend Information2.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig59.FamilyFriend Information2.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig59.FamilyFriend Information2.jpg",
       "AssetKind": "All",
@@ -2431,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig59.FamilyFriend Information2.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig6. Admin dashboard in Active state.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig6. Admin dashboard in Active state.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig6. Admin dashboard in Active state.jpg",
       "AssetKind": "All",
@@ -2448,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig6. Admin dashboard in Active state.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig60.Concierge Information.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig60.Concierge Information.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig60.Concierge Information.jpg",
       "AssetKind": "All",
@@ -2465,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig60.Concierge Information.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig61.Business Information.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig61.Business Information.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig61.Business Information.jpg",
       "AssetKind": "All",
@@ -2482,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig61.Business Information.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig62.Login Patient Account Registered Patient.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig62.Login Patient Account Registered Patient.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig62.Login Patient Account Registered Patient.jpg",
       "AssetKind": "All",
@@ -2499,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig62.Login Patient Account Registered Patient.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig63.Reset Your Password Patient.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig63.Reset Your Password Patient.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig63.Reset Your Password Patient.jpg",
       "AssetKind": "All",
@@ -2516,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig63.Reset Your Password Patient.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig64. Patient Dashboard ,Patient Medical History.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig64. Patient Dashboard ,Patient Medical History.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig64. Patient Dashboard ,Patient Medical History.jpg",
       "AssetKind": "All",
@@ -2533,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig64. Patient Dashboard ,Patient Medical History.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig65.Patient Create New Request.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig65.Patient Create New Request.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig65.Patient Create New Request.jpg",
       "AssetKind": "All",
@@ -2550,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig65.Patient Create New Request.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig66.Submit Information me.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig66.Submit Information me.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig66.Submit Information me.jpg",
       "AssetKind": "All",
@@ -2567,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig66.Submit Information me.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig67.Submit Information Some one else.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig67.Submit Information Some one else.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig67.Submit Information Some one else.jpg",
       "AssetKind": "All",
@@ -2584,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig67.Submit Information Some one else.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig68. View Documents.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig68. View Documents.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig68. View Documents.jpg",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig68. View Documents.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig7. Admin dashboard in Conclude state.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig7. Admin dashboard in Conclude state.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig7. Admin dashboard in Conclude state.jpg",
       "AssetKind": "All",
@@ -2618,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig7. Admin dashboard in Conclude state.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig8. Admin dashboard in To Close state.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig8. Admin dashboard in To Close state.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig8. Admin dashboard in To Close state.jpg",
       "AssetKind": "All",
@@ -2635,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig8. Admin dashboard in To Close state.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig9. Admin dashboard in Unpaid state.jpg",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig9. Admin dashboard in Unpaid state.jpg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Fig9. Admin dashboard in Unpaid state.jpg",
       "AssetKind": "All",
@@ -2652,10 +2652,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Fig9. Admin dashboard in Unpaid state.jpg"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Account Access\\Acocunt Access_mobile_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Account Access\\Acocunt Access_mobile_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Account Access/Acocunt Access_mobile_1.png",
       "AssetKind": "All",
@@ -2669,10 +2669,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Account Access\\Acocunt Access_mobile_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Admin_menus_mobile.png",
       "AssetKind": "All",
@@ -2686,10 +2686,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Admin_menus_mobile_2.png",
       "AssetKind": "All",
@@ -2703,10 +2703,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Admin_menus_mobile_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Close case\\Close case_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Close case\\Close case_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Close case/Close case_mobile.png",
       "AssetKind": "All",
@@ -2720,10 +2720,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Close case\\Close case_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create Request_Admin_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create Request_Admin_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Create request - Admin - Provider/Create Request_Admin_mobile.png",
       "AssetKind": "All",
@@ -2737,10 +2737,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create Request_Admin_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create request_Provider_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create request_Provider_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Create request - Admin - Provider/Create request_Provider_mobile.png",
       "AssetKind": "All",
@@ -2754,10 +2754,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create request - Admin - Provider\\Create request_Provider_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create role -all_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create role -all_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Create-Update Role/Create role -all_mobile.png",
       "AssetKind": "All",
@@ -2771,10 +2771,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create role -all_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Admin_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Admin_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Create-Update Role/Create Role-Admin_mobile.png",
       "AssetKind": "All",
@@ -2788,10 +2788,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Admin_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Patient_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Patient_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Create-Update Role/Create Role-Patient_mobile.png",
       "AssetKind": "All",
@@ -2805,10 +2805,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Patient_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Physician_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Physician_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Create-Update Role/Create Role-Physician_mobile.png",
       "AssetKind": "All",
@@ -2822,10 +2822,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Create-Update Role\\Create Role-Physician_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_active_1.png",
       "AssetKind": "All",
@@ -2839,10 +2839,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_active_2.png",
       "AssetKind": "All",
@@ -2856,10 +2856,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_active_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_conclude_1.png",
       "AssetKind": "All",
@@ -2873,10 +2873,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_conclude_2.png",
       "AssetKind": "All",
@@ -2890,10 +2890,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_conclude_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_new_1.png",
       "AssetKind": "All",
@@ -2907,10 +2907,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_new_2.png",
       "AssetKind": "All",
@@ -2924,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_new_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pagination.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pagination.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_pagination.png",
       "AssetKind": "All",
@@ -2941,10 +2941,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pagination.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_pending_1.png",
       "AssetKind": "All",
@@ -2958,10 +2958,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_pending_2.png",
       "AssetKind": "All",
@@ -2975,10 +2975,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_pending_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_to-close_1.png",
       "AssetKind": "All",
@@ -2992,10 +2992,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_to-close_2.png",
       "AssetKind": "All",
@@ -3009,10 +3009,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_to-close_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_unpaid_1.png",
       "AssetKind": "All",
@@ -3026,10 +3026,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Dashboard_mobile_unpaid_2.png",
       "AssetKind": "All",
@@ -3043,10 +3043,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Dashboard_mobile_unpaid_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Physician_Dashboard_Active_1.png",
       "AssetKind": "All",
@@ -3060,10 +3060,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Physician_Dashboard_Active_2.png",
       "AssetKind": "All",
@@ -3077,10 +3077,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Active_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Physician_Dashboard_Conclude_1.png",
       "AssetKind": "All",
@@ -3094,10 +3094,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Physician_Dashboard_Conclude_2.png",
       "AssetKind": "All",
@@ -3111,10 +3111,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Conclude_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Physician_Dashboard_new_1.png",
       "AssetKind": "All",
@@ -3128,10 +3128,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Physician_Dashboard_new_2.png",
       "AssetKind": "All",
@@ -3145,10 +3145,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_new_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Physician_Dashboard_Pending_1.png",
       "AssetKind": "All",
@@ -3162,10 +3162,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Dashboard/Physician_Dashboard_Pending_2.png",
       "AssetKind": "All",
@@ -3179,10 +3179,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Dashboard\\Physician_Dashboard_Pending_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Edit Physician Account\\Edit Provider_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Edit Physician Account\\Edit Provider_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Edit Physician Account/Edit Provider_mobile.png",
       "AssetKind": "All",
@@ -3196,10 +3196,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Edit Physician Account\\Edit Provider_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\my profile_admin_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\my profile_admin_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/My Profile/my profile_admin_mobile.png",
       "AssetKind": "All",
@@ -3213,10 +3213,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\my profile_admin_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\My profile_Provider_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\My profile_Provider_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/My Profile/My profile_Provider_mobile.png",
       "AssetKind": "All",
@@ -3230,10 +3230,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\My Profile\\My profile_Provider_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Create Business_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Create Business_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Partners/Create Business_mobile.png",
       "AssetKind": "All",
@@ -3247,10 +3247,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Create Business_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Edit Business_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Edit Business_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Partners/Edit Business_mobile.png",
       "AssetKind": "All",
@@ -3264,10 +3264,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Edit Business_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Partners_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Partners_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Partners/Partners_mobile.png",
       "AssetKind": "All",
@@ -3281,10 +3281,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Partners\\Partners_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Physician_menus_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Physician_menus_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Physician_menus_mobile.png",
       "AssetKind": "All",
@@ -3298,10 +3298,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Physician_menus_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider location\\Provider Location_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider location\\Provider Location_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Provider location/Provider Location_mobile.png",
       "AssetKind": "All",
@@ -3315,10 +3315,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider location\\Provider Location_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider on call\\provider on call_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider on call\\provider on call_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Provider on call/provider on call_mobile.png",
       "AssetKind": "All",
@@ -3332,10 +3332,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Provider on call\\provider on call_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Providers/Providers_mobile_1.png",
       "AssetKind": "All",
@@ -3349,10 +3349,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Providers/Providers_mobile_2.png",
       "AssetKind": "All",
@@ -3366,10 +3366,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Providers\\Providers_mobile_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Block history_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Block history_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Records/Block history_mobile.png",
       "AssetKind": "All",
@@ -3383,10 +3383,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Block history_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Records/Email logs_mobile_1.png",
       "AssetKind": "All",
@@ -3400,10 +3400,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Records/Email logs_mobile_2.png",
       "AssetKind": "All",
@@ -3417,10 +3417,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Email logs_mobile_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient History_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient History_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Records/Patient History_mobile.png",
       "AssetKind": "All",
@@ -3434,10 +3434,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient History_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient Records_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient Records_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Records/Patient Records_mobile.png",
       "AssetKind": "All",
@@ -3451,10 +3451,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Patient Records_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Search records_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Search records_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Records/Search records_mobile.png",
       "AssetKind": "All",
@@ -3468,10 +3468,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\Search records_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Records/SMS Logs_mobile_1.png",
       "AssetKind": "All",
@@ -3485,10 +3485,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_2.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_2.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Records/SMS Logs_mobile_2.png",
       "AssetKind": "All",
@@ -3502,10 +3502,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Records\\SMS Logs_mobile_2.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Requested Shifts\\Requested shifts_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Requested Shifts\\Requested shifts_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Requested Shifts/Requested shifts_mobile.png",
       "AssetKind": "All",
@@ -3519,10 +3519,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Requested Shifts\\Requested shifts_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_day view_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_day view_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Schedulling/Schedulling_day view_mobile.png",
       "AssetKind": "All",
@@ -3536,10 +3536,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_day view_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_month view_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_month view_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Schedulling/Schedulling_month view_mobile.png",
       "AssetKind": "All",
@@ -3553,10 +3553,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_month view_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_week view_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_week view_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Schedulling/Schedulling_week view_mobile.png",
       "AssetKind": "All",
@@ -3570,10 +3570,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Schedulling\\Schedulling_week view_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Send Order\\Send Order_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Send Order\\Send Order_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/Send Order/Send Order_mobile.png",
       "AssetKind": "All",
@@ -3587,10 +3587,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\Send Order\\Send Order_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\User Access\\Use access_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\User Access\\Use access_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/User Access/Use access_mobile.png",
       "AssetKind": "All",
@@ -3604,10 +3604,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\User Access\\Use access_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Case\\View case_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Case\\View case_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/View Case/View case_mobile.png",
       "AssetKind": "All",
@@ -3621,10 +3621,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Case\\View case_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Notes\\View Notes_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Notes\\View Notes_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/View Notes/View Notes_mobile.png",
       "AssetKind": "All",
@@ -3638,10 +3638,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Notes\\View Notes_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Uploads\\View Uploads_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Uploads\\View Uploads_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Admin-Provider Site/View Uploads/View Uploads_mobile.png",
       "AssetKind": "All",
@@ -3655,10 +3655,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Admin-Provider Site\\View Uploads\\View Uploads_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Business Request_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Business Request_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/Create Request/Create Business Request_mobile.png",
       "AssetKind": "All",
@@ -3672,10 +3672,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Business Request_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Concirge Request_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Concirge Request_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/Create Request/Create Concirge Request_mobile.png",
       "AssetKind": "All",
@@ -3689,10 +3689,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Concirge Request_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Family-friend Request_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Family-friend Request_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/Create Request/Create Family-friend Request_mobile.png",
       "AssetKind": "All",
@@ -3706,10 +3706,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Family-friend Request_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Patient Request_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Patient Request_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/Create Request/Create Patient Request_mobile.png",
       "AssetKind": "All",
@@ -3723,10 +3723,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Create Patient Request_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Submit Request Screen-mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Submit Request Screen-mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/Create Request/Submit Request Screen-mobile.png",
       "AssetKind": "All",
@@ -3740,10 +3740,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Create Request\\Submit Request Screen-mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Dashboard\\dashboard_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Dashboard\\dashboard_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/Dashboard/dashboard_1.png",
       "AssetKind": "All",
@@ -3757,10 +3757,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Dashboard\\dashboard_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_forget password_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_forget password_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/Patient site_forget password_mobile.png",
       "AssetKind": "All",
@@ -3774,10 +3774,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_forget password_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_login_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_login_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/Patient site_login_mobile.png",
       "AssetKind": "All",
@@ -3791,10 +3791,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_login_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_mobile.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_mobile.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/Patient site_mobile.png",
       "AssetKind": "All",
@@ -3808,10 +3808,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\Patient site_mobile.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\View Documents\\View documents_1.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\View Documents\\View documents_1.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/Hallo Doc - Mobile - Screenshots/Patient Site/View Documents/View documents_1.png",
       "AssetKind": "All",
@@ -3825,10 +3825,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\Hallo Doc - Mobile - Screenshots\\Patient Site\\View Documents\\View documents_1.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\LesfImage.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\LesfImage.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/LesfImage.png",
       "AssetKind": "All",
@@ -3842,10 +3842,10 @@
       "OriginalItemSpec": "wwwroot\\SRSScreenShorts\\LesfImage.png"
     },
     {
-      "Identity": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\up.png",
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\up.png",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\hallodoc mvc\\hallodoc mvc\\wwwroot\\",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
       "BasePath": "_content/hallodoc mvc",
       "RelativePath": "SRSScreenShorts/up.png",
       "AssetKind": "All",
