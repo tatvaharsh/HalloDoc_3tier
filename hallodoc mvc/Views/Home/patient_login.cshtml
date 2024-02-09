@@ -8,6 +8,13 @@
     ViewBag.jsLink12 = "js/patient_login.js";
 
 }
+@section Scripts {
+    @{ 
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
 <div class="position-relative">
     <div class="login-bg-img position-absolute">
         <img src="/SRSScreenShorts/11116016_415.jpg" alt=""
@@ -33,11 +40,13 @@
                 </div>
                 <h2 class="mb-3 text-center mt-2 mb-4">Login To Your Account</h2>
 
-                <form asp-controller="Aspnetusers" asp-action="Login" class="mb-3">
+                <form asp-controller="Home" asp-action="patient_login" method="post" class="mb-3">
                     <div class="form-floating mb-4">
                         <input asp-for="Email" type="email" class="form-control bg-transparent border-2 border-info"
                                id="exampleInputemail" placeholder="Email">
                         <label for="exampleInputemail" class="">Email</label>
+
+                        <span asp-validation-for="Email" class="text-danger"></span>
                         <div class="user-icon position-absolute top-0 end-0 mx-3 my-2">
                             <i class="bi bi-person-circle fs-4"></i>
                         </div>
@@ -46,6 +55,7 @@
                         <input asp-for="Passwordhash" type="password" class="form-control bg-transparent border-2 border-info"
                                id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
+                        <span asp-validation-for="Passwordhash" class="text-danger"></span>
                         <div class="eye-icon position-absolute top-0 end-0 mx-3 my-2">
                             <i class="bi bi-eye-slash fs-4 text-muted mt-1 common-cursor-pointer" id="togglePassword"></i>
                         </div>

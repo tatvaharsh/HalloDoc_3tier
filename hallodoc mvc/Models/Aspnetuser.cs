@@ -1,17 +1,21 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace hallodoc_mvc.Models;
 
 public partial class Aspnetuser
 {
     public string Id { get; set; } = null!;
-
+    
     public string Username { get; set; } = null!;
-
-    public string? Passwordhash { get; set; }
-
-    public string? Email { get; set; }
+    [Required]
+    [BindProperty]
+    public string Passwordhash { get; set; } = null!;
+    [Required]
+    [BindProperty]
+    public string Email { get; set; } = null!;
 
     public string? Phonenumber { get; set; }
 

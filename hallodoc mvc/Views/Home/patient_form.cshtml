@@ -1,4 +1,5 @@
-﻿@{
+﻿@model HalloDocMvc.ViewModel.patient_form
+@{
     ViewBag.cssLink1 = "~/css/patient_form.css";
     ViewBag.jsLink1 = "~/js/patient_form.js";
     Layout = "_Layout2";
@@ -54,27 +55,27 @@
                 </button>
                 </a>
             </div>
-            <form class="maincontent shadow p-3">
+            <form asp-action="PatientRequestForm" asp-controller="Home" class="maincontent shadow p-3 ">
                 <div class="">
                     <h3 class="text1">Patient Information</h3>
                     <div class="form-floating mt-3">
                         <textarea class="form-control" placeholder="Enter Brief Details Of Symptoms(Optional)"
-                                  id="floatingTextarea2" style="height: 100px"></textarea>
+                                  id="floatingTextarea2" style="height: 100px" ></textarea>
                         <label for="floatingTextarea2">Enter Brief Details Of Symptoms(Optional)</label>
                     </div>
-                    <div class="row ">
+                    <div class="row">
                         <div class="form-floating col-sm-6 mt-3 ">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Firstname">
+                            <input type="text" class="form-control floatingInput"  placeholder="Firstname" asp-for="FirstName">
                             <label for="floatingInput" class="mx-2">First Name</label>
                         </div>
                         <div class="form-floating col-sm-6 mt-3 ">
-                            <input type="text" class="form-control" id="floatingInput" placeholder="Last Name">
+                            <input type="text" class="form-control floatingInput"  placeholder="Last Name" asp-for="LastName">
                             <label for="floatingInput " class="mx-2">Last Name</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-floating col-sm-6 mt-3">
-                            <input type="date" class="form-control" id="floatingInput" placeholder="Date Of Birth ">
+                            <input type="date" class="form-control floatingInput" placeholder="Date Of Birth " asp-for="BirthDate">
                             <label for="floatingInput " class="mx-2">Date Of Birth</label>
                         </div>
                         <div class="form-floating col-sm-6 mt-3">
@@ -85,39 +86,50 @@
                 <h3 class="head2 mt-5 text1">Patient Contact Information</h3>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="email">
-                        <label for="floatingInput" class="mx-2">Email</label>
+                        <input type="email" class="form-control floatingInput" id="emailInput" placeholder="email" asp-for="Email">
+                        <label for="emailInput" class="mx-2">Email</label>
                     </div>
                     <div class="form-floating col-sm-6 mt-3 phone-code">
-                        <input type="tel" class="form-control phone-input" id="phone">
+                        <input type="tel" class="form-control phone-input" id="phone" >
                         <!-- <label for="phone" class="mx-2">(201)555-0123</label> -->
                     </div>
+                </div>
+                <div class="row hidden-pass">
+                    <div class="form-floating col-sm-6 mt-3 " >
+                        <input type="password" class="form-control floatingInput "  placeholder="Password">
+                        <label for="floatingInput" class="mx-2">Password</label>
+                    </div>
+                    <div class="form-floating col-sm-6 mt-3 " id="emailInput">
+                        <input type="password" class="form-control floatingInput"  placeholder="Confirm Password">
+                        <label for="floatingInput" class="mx-2">Confirm Password</label>
+                    </div>
+                   
                 </div>
 
                 <h3 class="head3 mt-5 text1">Patient Location</h3>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="street">
+                        <input type="text" class="form-control floatingInput" placeholder="street" asp-for="Street">
                         <label for="floatingInput" class="mx-2">Street</label>
                     </div>
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="City">
+                        <input type="text" class="form-control floatingInput"  placeholder="City" asp-for="City">
                         <label for="floatingInput" class="mx-2">City</label>
                     </div>
                 </div>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="State">
+                        <input type="text" class="form-control floatingInput" placeholder="State" asp-for="State">
                         <label for="floatingInput" class="mx-2">State</label>
                     </div>
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="number" class="form-control" id="floatingInput" placeholder="zipcode">
+                        <input type="number" class="form-control floatingInput" placeholder="zipcode" asp-for="ZipCode">
                         <label for="floatingInput" class="mx-2">Zip Code</label>
                     </div>
                 </div>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="room">
+                        <input type="text" class="form-control floatingInput" placeholder="room">
                         <label for="floatingInput" class="mx-2">
                             Room # / Suite (Optional)
                         </label>
@@ -143,7 +155,7 @@
                 </div>
                 <div class="mt-3 d-flex justify-content-end  ">
 
-                    <button class="Submit col-lg-1 ">Submit</button>
+                    <button class="Submit col-lg-1" type="submit">Submit</button>
                     <button class="Cancel col-lg-1">Cancel</button>
 
                 </div>
@@ -155,4 +167,29 @@
 
     </div>
     <script src="~/js/patient_form.js"></script>
+    <script>
+       
+        $(document).ready(function () {
+            $('#emailInput').on('blur', function () {
+                var inputValue = $('#emailInput').val();
+
+                $.get('/Home/PatientCheck', { Email: inputValue }, function (response) {
+                    console.log(response);
+                    if (!response.isValid) {
+                        const pass = document.getElementsByClassName("hidden-pass");
+                        for (let i = 0; i < pass.length; ++i) {
+                            pass[i].style.display = "block";
+                        }
+                    }
+                    else {
+                        const pass = document.getElementsByClassName("hidden-pass");
+                        for (let i = 0; i < pass.length; ++i) {
+                            pass[i].style.display = "none";
+                        }
+                    }
+                });
+            });
+        });
+
+    </script>
 </body>

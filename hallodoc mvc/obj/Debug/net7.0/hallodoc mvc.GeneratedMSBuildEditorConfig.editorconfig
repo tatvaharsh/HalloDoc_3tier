@@ -16,26 +16,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Aspnetusers/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNwbmV0dXNlcnNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Aspnetusers/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNwbmV0dXNlcnNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Aspnetusers/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNwbmV0dXNlcnNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Aspnetusers/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNwbmV0dXNlcnNcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Aspnetusers/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNwbmV0dXNlcnNcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Home/business.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxidXNpbmVzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -74,6 +54,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Home/submit_screen.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxzdWJtaXRfc2NyZWVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Home/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/Error.cshtml]
