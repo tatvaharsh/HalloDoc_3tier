@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Requestbusiness
+public partial class RequestBusiness
 {
-    public int Requestbusinessid { get; set; }
+    public int RequestBusinessId { get; set; }
 
-    public int Requestid { get; set; }
+    public int RequestId { get; set; }
 
-    public int Businessid { get; set; }
+    public int BusinessId { get; set; }
 
     public string? Ip { get; set; }
 

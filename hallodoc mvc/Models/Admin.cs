@@ -5,13 +5,13 @@ namespace hallodoc_mvc.Models;
 
 public partial class Admin
 {
-    public int Adminid { get; set; }
+    public int AdminId { get; set; }
 
-    public string Aspnetuserid { get; set; } = null!;
+    public int AspNetUserId { get; set; }
 
-    public string Firstname { get; set; } = null!;
+    public string FirstName { get; set; } = null!;
 
-    public string? Lastname { get; set; }
+    public string? LastName { get; set; }
 
     public string Email { get; set; } = null!;
 
@@ -23,35 +23,35 @@ public partial class Admin
 
     public string? City { get; set; }
 
-    public int? Regionid { get; set; }
+    public int? RegionId { get; set; }
 
     public string? Zip { get; set; }
 
-    public string? Altphone { get; set; }
+    public string? AltPhone { get; set; }
 
-    public string Createdby { get; set; } = null!;
+    public int CreatedBy { get; set; }
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public string Modifiedby { get; set; } = null!;
+    public int? ModifiedBy { get; set; }
 
-    public DateTime? Modifieddate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
     public short? Status { get; set; }
 
-    public bool? Isdeleted { get; set; }
+    public bool? IsDeleted { get; set; }
 
-    public int? Roleid { get; set; }
+    public int? RoleId { get; set; }
 
-    public virtual ICollection<Adminregion> Adminregions { get; set; } = new List<Adminregion>();
+    public virtual ICollection<AdminRegion> AdminRegions { get; set; } = new List<AdminRegion>();
 
-    public virtual Aspnetuser Aspnetuser { get; set; } = null!;
+    public virtual AspNetUser AspNetUser { get; set; } = null!;
 
-    public virtual Aspnetuser CreatedbyNavigation { get; set; } = null!;
+    public virtual AspNetUser CreatedByNavigation { get; set; } = null!;
 
-    public virtual Aspnetuser ModifiedbyNavigation { get; set; } = null!;
+    public virtual AspNetUser? ModifiedByNavigation { get; set; }
 
-    public virtual ICollection<Requeststatuslog> Requeststatuslogs { get; set; } = new List<Requeststatuslog>();
+    public virtual ICollection<RequestStatusLog> RequestStatusLogs { get; set; } = new List<RequestStatusLog>();
 
-    public virtual ICollection<Requestwisefile> Requestwisefiles { get; set; } = new List<Requestwisefile>();
+    public virtual ICollection<RequestWiseFile> RequestWiseFiles { get; set; } = new List<RequestWiseFile>();
 }

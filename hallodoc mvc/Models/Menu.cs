@@ -5,13 +5,13 @@ namespace hallodoc_mvc.Models;
 
 public partial class Menu
 {
-    public int Menuid { get; set; }
+    public int MenuId { get; set; }
 
     public string Name { get; set; } = null!;
 
-    public short Accounttype { get; set; }
+    public short AccountType { get; set; }
 
-    public int? Sortorder { get; set; }
+    public int? SortOrder { get; set; }
 
-    public virtual ICollection<Rolemenu> Rolemenus { get; set; } = new List<Rolemenu>();
+    public virtual ICollection<RoleMenu> RoleMenus { get; set; } = new List<RoleMenu>();
 }

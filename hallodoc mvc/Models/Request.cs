@@ -6,79 +6,77 @@ namespace hallodoc_mvc.Models;
 
 public partial class Request
 {
-    public int Requestid { get; set; }
+    public int RequestId { get; set; }
 
-    public int Requesttypeid { get; set; }
+    public int RequestTypeId { get; set; }
 
-    public int? Userid { get; set; }
+    public int? UserId { get; set; }
 
-    public string? Firstname { get; set; }
+    public string? FirstName { get; set; }
 
-    public string? Lastname { get; set; }
+    public string? LastName { get; set; }
 
-    public string? Phonenumber { get; set; }
+    public string? PhoneNumber { get; set; }
 
     public string? Email { get; set; }
 
     public short Status { get; set; }
 
-    public int? Physicianid { get; set; }
+    public int? PhysicianId { get; set; }
 
-    public string? Confirmationnumber { get; set; }
+    public string? ConfirmationNumber { get; set; }
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public BitArray? Isdeleted { get; set; }
+    public BitArray? IsDeleted { get; set; }
 
-    public DateTime? Modifieddate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
-    public string? Declinedby { get; set; }
+    public string? DeclinedBy { get; set; }
 
-    public BitArray? Isurgentemailsent { get; set; }
+    public BitArray? IsUrgentEmailSent { get; set; }
 
-    public DateTime? Lastwellnessdate { get; set; }
+    public DateTime? LastWellnessDate { get; set; }
 
-    public BitArray? Ismobile { get; set; }
+    public BitArray? IsMobile { get; set; }
 
-    public short? Calltype { get; set; }
+    public short? CallType { get; set; }
 
-    public BitArray? Completedbyphysician { get; set; }
+    public BitArray? CompletedByPhysician { get; set; }
 
-    public DateTime? Lastreservationdate { get; set; }
+    public DateTime? LastReservationDate { get; set; }
 
-    public DateTime? Accepteddate { get; set; }
+    public DateTime? AcceptedDate { get; set; }
 
-    public string? Relationname { get; set; }
+    public string? RelationName { get; set; }
 
-    public string? Casenumber { get; set; }
+    public string? CaseNumber { get; set; }
 
     public string? Ip { get; set; }
 
-    public string? Casetag { get; set; }
+    public string? CaseTag { get; set; }
 
-    public string? Casetagphysician { get; set; }
+    public string? CaseTagPhysician { get; set; }
 
-    public string? Patientaccountid { get; set; }
+    public string? PatientAccountId { get; set; }
 
-    public int? Createduserid { get; set; }
-
-    public virtual ICollection<Blockrequest> Blockrequests { get; set; } = new List<Blockrequest>();
+    public int? CreatedUserId { get; set; }
 
     public virtual Physician? Physician { get; set; }
 
-    public virtual ICollection<Requestbusiness> Requestbusinesses { get; set; } = new List<Requestbusiness>();
+    public virtual ICollection<RequestBusiness> RequestBusinesses { get; set; } = new List<RequestBusiness>();
 
-    public virtual ICollection<Requestclient> Requestclients { get; set; } = new List<Requestclient>();
+    public virtual ICollection<RequestClient> RequestClients { get; set; } = new List<RequestClient>();
 
-    public virtual ICollection<Requestclosed> Requestcloseds { get; set; } = new List<Requestclosed>();
+    public virtual ICollection<RequestClosed> RequestCloseds { get; set; } = new List<RequestClosed>();
 
-    public virtual ICollection<Requestconcierge> Requestconcierges { get; set; } = new List<Requestconcierge>();
+    public virtual ICollection<RequestConcierge> RequestConcierges { get; set; } = new List<RequestConcierge>();
 
-    public virtual ICollection<Requestnote> Requestnotes { get; set; } = new List<Requestnote>();
+    public virtual ICollection<RequestNote> RequestNotes { get; set; } = new List<RequestNote>();
 
-    public virtual ICollection<Requeststatuslog> Requeststatuslogs { get; set; } = new List<Requeststatuslog>();
+    public virtual ICollection<RequestStatusLog> RequestStatusLogs { get; set; } = new List<RequestStatusLog>();
 
-    public virtual ICollection<Requestwisefile> Requestwisefiles { get; set; } = new List<Requestwisefile>();
+    public virtual ICollection<RequestWiseFile> RequestWiseFiles { get; set; } = new List<RequestWiseFile>();
 
     public virtual User? User { get; set; }
 }

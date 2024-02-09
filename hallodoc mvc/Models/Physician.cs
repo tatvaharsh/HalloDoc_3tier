@@ -6,31 +6,31 @@ namespace hallodoc_mvc.Models;
 
 public partial class Physician
 {
-    public int Physicianid { get; set; }
+    public int PhysicianId { get; set; }
 
-    public string? Aspnetuserid { get; set; }
+    public int? AspNetUserId { get; set; }
 
-    public string Firstname { get; set; } = null!;
+    public string FirstName { get; set; } = null!;
 
-    public string? Lastname { get; set; }
+    public string? LastName { get; set; }
 
     public string Email { get; set; } = null!;
 
     public string? Mobile { get; set; }
 
-    public string? Medicallicense { get; set; }
+    public string? MedicalLicense { get; set; }
 
     public string? Photo { get; set; }
 
-    public string? Adminnotes { get; set; }
+    public string? AdminNotes { get; set; }
 
-    public BitArray? Isagreementdoc { get; set; }
+    public BitArray? IsAgreementDoc { get; set; }
 
-    public BitArray? Isbackgrounddoc { get; set; }
+    public BitArray? IsBackgroundDoc { get; set; }
 
-    public BitArray? Istrainingdoc { get; set; }
+    public BitArray? IsTrainingDoc { get; set; }
 
-    public BitArray? Isnondisclosuredoc { get; set; }
+    public BitArray? IsNonDisclosureDoc { get; set; }
 
     public string? Address1 { get; set; }
 
@@ -38,61 +38,59 @@ public partial class Physician
 
     public string? City { get; set; }
 
-    public int? Regionid { get; set; }
+    public int? RegionId { get; set; }
 
     public string? Zip { get; set; }
 
-    public string? Altphone { get; set; }
+    public string? AltPhone { get; set; }
 
-    public string? Createdby { get; set; }
+    public int? CreatedBy { get; set; }
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public string? Modifiedby { get; set; }
+    public int? ModifiedBy { get; set; }
 
-    public DateTime? Modifieddate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
     public short? Status { get; set; }
 
-    public string Businessname { get; set; } = null!;
+    public string BusinessName { get; set; } = null!;
 
-    public string Businesswebsite { get; set; } = null!;
+    public string BusinessWebsite { get; set; } = null!;
 
-    public BitArray? Isdeleted { get; set; }
+    public BitArray? IsDeleted { get; set; }
 
-    public int? Roleid { get; set; }
+    public int? RoleId { get; set; }
 
     public string? Npinumber { get; set; }
 
-    public BitArray? Islicensedoc { get; set; }
+    public BitArray? IsLicenseDoc { get; set; }
 
     public string? Signature { get; set; }
 
-    public BitArray? Iscredentialdoc { get; set; }
+    public BitArray? IsCredentialDoc { get; set; }
 
-    public BitArray? Istokengenerate { get; set; }
+    public BitArray? IsTokenGenerate { get; set; }
 
-    public string? Syncemailaddress { get; set; }
+    public string? SyncEmailAddress { get; set; }
 
-    public virtual Aspnetuser? Aspnetuser { get; set; }
+    public virtual AspNetUser? AspNetUser { get; set; }
 
-    public virtual Aspnetuser? CreatedbyNavigation { get; set; }
+    public virtual AspNetUser? CreatedByNavigation { get; set; }
 
-    public virtual Aspnetuser? ModifiedbyNavigation { get; set; }
+    public virtual AspNetUser? ModifiedByNavigation { get; set; }
 
-    public virtual ICollection<Physicianlocation> Physicianlocations { get; set; } = new List<Physicianlocation>();
+    public virtual ICollection<PhysicianNotification> PhysicianNotifications { get; set; } = new List<PhysicianNotification>();
 
-    public virtual ICollection<Physiciannotification> Physiciannotifications { get; set; } = new List<Physiciannotification>();
+    public virtual ICollection<PhysicianRegion> PhysicianRegions { get; set; } = new List<PhysicianRegion>();
 
-    public virtual ICollection<Physicianregion> Physicianregions { get; set; } = new List<Physicianregion>();
+    public virtual ICollection<RequestStatusLog> RequestStatusLogPhysicians { get; set; } = new List<RequestStatusLog>();
+
+    public virtual ICollection<RequestStatusLog> RequestStatusLogTransToPhysicians { get; set; } = new List<RequestStatusLog>();
+
+    public virtual ICollection<RequestWiseFile> RequestWiseFiles { get; set; } = new List<RequestWiseFile>();
 
     public virtual ICollection<Request> Requests { get; set; } = new List<Request>();
-
-    public virtual ICollection<Requeststatuslog> RequeststatuslogPhysicians { get; set; } = new List<Requeststatuslog>();
-
-    public virtual ICollection<Requeststatuslog> RequeststatuslogTranstophysicians { get; set; } = new List<Requeststatuslog>();
-
-    public virtual ICollection<Requestwisefile> Requestwisefiles { get; set; } = new List<Requestwisefile>();
 
     public virtual ICollection<Shift> Shifts { get; set; } = new List<Shift>();
 }

@@ -53,10 +53,10 @@ namespace hallodoc_mvc.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = _context.Aspnetusers.FirstOrDefault(u => u.Email == model.Email);
+                var user = _context.AspNetUsers.FirstOrDefault(u => u.Email == model.Email);
                 if (user != null)
                 {
-                    if (model.Passwordhash == user.Passwordhash)
+                    if (model.Passwordhash == user.PasswordHash)
                     {
                         return RedirectToAction("submit_screen");
                     }
@@ -89,7 +89,7 @@ namespace hallodoc_mvc.Controllers
         }
         public IActionResult PatientCheck(string Email)
         {
-            var existingUser = _context.Aspnetusers.SingleOrDefault(u => u.Email == Email);
+            var existingUser = _context.AspNetUsers.SingleOrDefault(u => u.Email == Email);
             bool isValidEmail; 
             if (existingUser == null)
             {
@@ -108,64 +108,100 @@ namespace hallodoc_mvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult PatientRequestForm(patient_form model)
+        public async Task<IActionResult> PatientRequestForm(patient_form model)
         {
 
-            Aspnetuser aspnetuser = _context.Aspnetusers.FirstOrDefault(u => u.Email == model.Email);
+            var aspnetuser1 = await _context.AspNetUsers.FirstOrDefaultAsync(u => u.Email == model.Email);
+            var user1 = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
 
-            Debug.WriteLine(aspnetuser);
+            /* Debug.WriteLine(aspnetuser);*/
 
-            if (aspnetuser == null)
+            if (aspnetuser1 == null)
             {
-                Aspnetuser aspnetuser1 = new Aspnetuser
+                AspNetUser aspnetuser2 = new AspNetUser
                 {
-                    Id = "2",
-                    Username = model.FirstName + "_" + model.LastName,
+
+                    UserName = model.FirstName + "_" + model.LastName,
                     Email = model.Email,
-                    Passwordhash = model.FirstName,
-                    Phonenumber = model.PhoneNumber,
-                    Createddate = DateTime.Now,
+                    PasswordHash = model.Password,
+                    PhoneNumber = model.PhoneNumber,
+                    CreatedDate = DateTime.Now,
                 };
-                _context.Aspnetusers.Add(aspnetuser1);
-                _context.SaveChangesAsync();
-                aspnetuser = aspnetuser1;
+                _context.AspNetUsers.Add(aspnetuser2);
+                await _context.SaveChangesAsync();
+                aspnetuser1 = aspnetuser2;
             }
 
-            User user = new User
+            if (user1 == null)
             {
-                Userid = 1,
-                Firstname = model.FirstName,
-                Lastname = model.LastName,
-                Email = model.Email,
-                Mobile = model.PhoneNumber,
-                Zipcode = model.ZipCode,
-                State = model.State,
-                City = model.City,
-                Street = model.Street,
-                Intdate = model.BirthDate.Day,
-                Intyear = model.BirthDate.Year,
-                Strmonth = (model.BirthDate.Month).ToString(),
-                Createddate = DateTime.Now,
+                User user = new User
+                {
+                    AspNetUserId = aspnetuser1.Id,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Mobile = model.PhoneNumber,
+                    ZipCode = model.ZipCode,
+                    State = model.State,
+                    City = model.City,
+                    Street = model.Street,
+                    IntDate = model.BirthDate.Day,
+                    IntYear = model.BirthDate.Year,
+                    StrMonth = (model.BirthDate.Month).ToString("MMM"),
+                    CreatedDate = DateTime.Now,
+                    CreatedBy = aspnetuser1.Id
+                };
+                
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+                user1 = user;
+            }
 
-                CreatedbyNavigation = aspnetuser,
-                Aspnetuser = aspnetuser,
-            };
-            _context.Users.Add(user);
-            _context.SaveChangesAsync();
+           
+           
+
             Request request = new Request
             {
-                Requesttypeid = 2,
-                Firstname = model.FirstName,
-                Lastname = model.LastName,
-                Phonenumber = model.PhoneNumber,
+                RequestTypeId = 2,
+                UserId=user1.UserId,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
                 Email = model.Email,
-                Createddate = DateTime.Now,
+                CreatedDate = DateTime.Now,
                 Status = 1,
-                User = user,
+                
             };
 
             _context.Requests.Add(request);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
+
+
+            RequestClient requestclient = new RequestClient
+            {
+
+                RequestId = request.RequestId,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                Location = model.City,
+                Address = model.Street,
+               
+                IntDate = model.BirthDate.Day,
+                StrMonth = model.BirthDate.Month.ToString(),
+                IntYear = model.BirthDate.Year,
+                Street = model.Street,
+                City = model.City,
+                State = model.State,
+                ZipCode = model.ZipCode,
+
+            };
+
+            _context.RequestClients.Add(requestclient);
+            await _context.SaveChangesAsync();
+
+
 
             return RedirectToAction(nameof(submit_screen));
 
@@ -176,14 +212,323 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> family_req([FromForm] FamilyReqModel req)
+        {
+            AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
+            User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
+
+            if (aspuser == null)
+            {
+                AspNetUser aspNetUser = new AspNetUser
+                {
+                    UserName = req.FirstName,
+                    PasswordHash = req.Password,
+                    Email = req.Email,
+                    PhoneNumber = req.Mobile,
+                };
+                _context.AspNetUsers.Add(aspNetUser);
+                _context.SaveChanges();
+                aspuser = aspNetUser;
+            }
+
+            if (usertbl == null)
+            {
+                User user = new User
+                {
+                    AspNetUserId = aspuser.Id,
+                    FirstName = req.FirstName,
+                    LastName = req.LastName,
+                    Email = req.Email,
+                    Mobile = req.Mobile,
+                    ZipCode = req.ZipCode,
+                    State = req.State,
+                    City = req.City,
+                    Street = req.Street,
+                    Status = 1,
+                    CreatedBy = aspuser.Id,
+                    IntDate = req.DOB.Day,
+                    IntYear = req.DOB.Year,
+                    StrMonth = req.DOB.ToString("MMM"),
+                };
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                usertbl = user;
+            }
+
+            Request reqobj = new Request
+            {
+                RequestTypeId = 3,
+                UserId = usertbl.UserId,
+                FirstName = req.FamFirstName,
+                LastName = req.FamLastName,
+                Email = req.FamEmail,
+                PhoneNumber = req.FamMobile,
+                Status = 1,
+            };
+            _context.Requests.Add(reqobj);
+            _context.SaveChanges();
+
+            Region region = new Region
+            {
+                Name = req.City,
+            };
+            _context.Regions.Add(region);
+            _context.SaveChanges();
+
+
+            RequestClient rc = new RequestClient
+            {
+                RequestId = reqobj.RequestId,
+                FirstName = req.FirstName,
+                LastName = req.LastName,
+                PhoneNumber = req.Mobile,
+                Location = req.Room,
+                Address = req.Street + ", " + req.City + ", " + req.State,
+                Notes = req.Symptoms,
+                Email = req.Email,
+                RegionId = region.RegionId,
+                IntDate = req.DOB.Day,
+                IntYear = req.DOB.Year,
+                StrMonth = req.DOB.ToString("MMM"),
+                Street = req.Street,
+                City = req.City,
+                State = req.State,
+                ZipCode = req.ZipCode,
+            };
+            _context.RequestClients.Add(rc);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(HomeController.submit_screen), "Home");
+        }
         public IActionResult concierge()
         {
             return View();
         }
+
+        public async Task<IActionResult> concierge_req([FromForm] ConciergeReqModel req)
+        {
+            AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
+            User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
+
+            if (aspuser == null)
+            {
+                AspNetUser aspNetUser = new AspNetUser
+                {
+                    UserName = req.FirstName,
+                    PasswordHash = req.Password,
+                    Email = req.Email,
+                    PhoneNumber = req.Mobile,
+                };
+                _context.AspNetUsers.Add(aspNetUser);
+                _context.SaveChanges();
+                aspuser = aspNetUser;
+            }
+
+            if (usertbl == null)
+            {
+                User user = new User
+                {   
+                    AspNetUserId = aspuser.Id,
+                    FirstName = req.FirstName,
+                    LastName = req.LastName,
+                    Email = req.Email,
+                    Mobile = req.Mobile,
+                    Status = 1,
+                    IntDate = req.DOB.Day,
+                    IntYear = req.DOB.Year,
+                    StrMonth = req.DOB.ToString("MMM"),
+                    CreatedBy=aspuser.Id
+                };
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                usertbl = user;
+            }
+
+
+            Request reqobj = new Request
+            {
+                RequestTypeId = 4,
+                UserId = usertbl.UserId,
+                FirstName = req.ConFirstName,
+                LastName = req.ConLastName,
+                Email = req.ConEmail,
+                PhoneNumber = req.ConMobile,
+                Status = 1,
+            };
+            _context.Requests.Add(reqobj);
+            _context.SaveChanges();
+
+
+            Region region = new Region
+            {
+                Name = req.City,
+            };
+            _context.Regions.Add(region);
+            _context.SaveChanges();
+
+
+            RequestClient rc = new RequestClient
+            {
+                RequestId = reqobj.RequestId,
+                FirstName = req.FirstName,
+                LastName = req.LastName,
+                PhoneNumber = req.Mobile,
+                Location = req.Room,
+                Address = req.Street + ", " + req.City + ", " + req.State,
+                Notes = req.Symptoms,
+                Email = req.Email,
+                RegionId = region.RegionId,
+                IntDate = req.DOB.Day,
+                IntYear = req.DOB.Year,
+                StrMonth = req.DOB.ToString("MMM"),
+                Street = req.Street,
+                City = req.City,
+                State = req.State,
+                ZipCode = req.ZipCode,
+            };
+            _context.RequestClients.Add(rc);
+            _context.SaveChanges();
+
+
+            Concierge con = new Concierge
+            {
+                ConciergeName = req.ConFirstName + " " + req.ConLastName,
+                Address = req.Property,
+                Street = req.Street,
+                City = req.City,
+                ZipCode = req.ZipCode,
+                State = req.State,
+                RegionId = region.RegionId,
+            };
+            _context.Concierges.Add(con);
+            _context.SaveChanges();
+
+
+            RequestConcierge reqCon = new RequestConcierge
+            {
+                RequestId = reqobj.RequestId,
+                ConciergeId = con.ConciergeId,
+            };
+            _context.RequestConcierges.Add(reqCon);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(HomeController.submit_screen), "Home");
+        }
+
         public IActionResult business()
         {
             return View();
         }
+
+        public async Task<IActionResult> business_req([FromForm] BusinessReqModel req)
+        {
+            AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
+            User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
+
+            if (aspuser == null)
+            {
+                AspNetUser aspNetUser = new AspNetUser
+                {
+                    UserName = req.FirstName,
+                    PasswordHash = req.Password,
+                    Email = req.Email,
+                    PhoneNumber = req.Mobile,
+                };
+                _context.AspNetUsers.Add(aspNetUser);
+                _context.SaveChanges();
+                aspuser = aspNetUser;
+            }
+
+            if (usertbl == null)
+            {
+                User user = new User
+                {
+                    AspNetUserId = aspuser.Id,
+                    FirstName = req.FirstName,
+                    LastName = req.LastName,
+                    Email = req.Email,
+                    Mobile = req.Mobile,
+                    ZipCode = req.ZipCode,
+                    State = req.State,
+                    City = req.City,
+                    Street = req.Street,
+                    Status = 1,
+                    CreatedBy = aspuser.Id,
+                    IntDate = req.DOB.Day,
+                    IntYear = req.DOB.Year,
+                    StrMonth = req.DOB.ToString("MMMM"),
+                };
+                _context.Users.Add(user);
+                _context.SaveChanges();
+                usertbl = user;
+            }
+
+            Request reqobj = new Request
+            {
+                RequestTypeId = 1,
+                UserId = usertbl.UserId,
+                FirstName = req.BusFirstName,
+                LastName = req.BusLastName,
+                Email = req.BusEmail,
+                PhoneNumber = req.BusMobile,
+                Status = 1,
+            };
+            _context.Requests.Add(reqobj);
+            _context.SaveChanges();
+
+            Region region = new Region
+            {
+                Name = req.City,
+            };
+            _context.Regions.Add(region);
+            _context.SaveChanges();
+
+
+            RequestClient rc = new RequestClient
+            {
+                RequestId = reqobj.RequestId,
+                FirstName = req.FirstName,
+                LastName = req.LastName,
+                PhoneNumber = req.Mobile,
+                Location = req.Room,
+                Address = req.Street + ", " + req.City + ", " + req.State,
+                Notes = req.Symptoms,
+                Email = req.Email,
+                RegionId = region.RegionId,
+                IntDate = req.DOB.Day,
+                IntYear = req.DOB.Year,
+                StrMonth = req.DOB.ToString("MMMM"),
+                Street = req.Street,
+                City = req.City,
+                State = req.State,
+                ZipCode = req.ZipCode,
+            };
+            _context.RequestClients.Add(rc);
+            _context.SaveChanges();
+
+            Business business = new Business
+            {
+                Name = req.BusFirstName,
+                Address1 = req.Property,
+                PhoneNumber = req.BusMobile,
+                RegionId = region.RegionId,
+            };
+            _context.Businesses.Add(business);
+            _context.SaveChanges();
+
+
+            RequestBusiness reqBus = new RequestBusiness
+            {
+                RequestId = reqobj.RequestId,
+                BusinessId = business.BusinessId,
+            };
+            _context.RequestBusinesses.Add(reqBus);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(HomeController.submit_screen), "Home");
+        }
+
         public IActionResult create_patient()
         {
             return View();

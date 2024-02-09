@@ -4,33 +4,33 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Requestwisefile
+public partial class RequestWiseFile
 {
-    public int Requestwisefileid { get; set; }
+    public int RequestWiseFileId { get; set; }
 
-    public int Requestid { get; set; }
+    public int RequestId { get; set; }
 
-    public string Filename { get; set; } = null!;
+    public string FileName { get; set; } = null!;
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public int? Physicianid { get; set; }
+    public int? PhysicianId { get; set; }
 
-    public int? Adminid { get; set; }
+    public int? AdminId { get; set; }
 
-    public short? Doctype { get; set; }
+    public short? DocType { get; set; }
 
-    public BitArray? Isfrontside { get; set; }
+    public BitArray? IsFrontSide { get; set; }
 
-    public BitArray? Iscompensation { get; set; }
+    public BitArray? IsCompensation { get; set; }
 
     public string? Ip { get; set; }
 
-    public BitArray? Isfinalize { get; set; }
+    public BitArray? IsFinalize { get; set; }
 
-    public BitArray? Isdeleted { get; set; }
+    public BitArray? IsDeleted { get; set; }
 
-    public BitArray? Ispatientrecords { get; set; }
+    public BitArray? IsPatientRecords { get; set; }
 
     public virtual Admin? Admin { get; set; }
 

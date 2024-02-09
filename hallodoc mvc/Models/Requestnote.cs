@@ -3,37 +3,37 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Requestnote
+public partial class RequestNote
 {
-    public int Requestnotesid { get; set; }
+    public int RequestNotesId { get; set; }
 
-    public int Requestid { get; set; }
+    public int RequestId { get; set; }
 
-    public string? Strmonth { get; set; }
+    public string? StrMonth { get; set; }
 
-    public int? Intyear { get; set; }
+    public int? IntYear { get; set; }
 
-    public int? Intdate { get; set; }
+    public int? IntDate { get; set; }
 
-    public string? Physiciannotes { get; set; }
+    public string? PhysicianNotes { get; set; }
 
-    public string? Adminnotes { get; set; }
+    public string? AdminNotes { get; set; }
 
-    public string Createdby { get; set; } = null!;
+    public int CreatedBy { get; set; }
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public string? Modifiedby { get; set; }
+    public int? ModifiedBy { get; set; }
 
-    public DateTime? Modifieddate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
     public string? Ip { get; set; }
 
-    public string? Administrativenotes { get; set; }
+    public string? AdministrativeNotes { get; set; }
 
-    public virtual Aspnetuser CreatedbyNavigation { get; set; } = null!;
+    public virtual AspNetUser CreatedByNavigation { get; set; } = null!;
 
-    public virtual Aspnetuser? ModifiedbyNavigation { get; set; }
+    public virtual AspNetUser? ModifiedByNavigation { get; set; }
 
     public virtual Request Request { get; set; } = null!;
 }

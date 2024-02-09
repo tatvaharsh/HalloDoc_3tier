@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Adminregion
+public partial class AdminRegion
 {
-    public int Adminregionid { get; set; }
+    public int AdminRegionId { get; set; }
 
-    public int Adminid { get; set; }
+    public int AdminId { get; set; }
 
-    public int Regionid { get; set; }
+    public int RegionId { get; set; }
 
     public virtual Admin Admin { get; set; } = null!;
 

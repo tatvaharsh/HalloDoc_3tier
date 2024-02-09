@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Physiciannotification
+public partial class PhysicianNotification
 {
     public int Id { get; set; }
 
-    public int Physicianid { get; set; }
+    public int PhysicianId { get; set; }
 
-    public BitArray Isnotificationstopped { get; set; } = null!;
+    public BitArray IsNotificationStopped { get; set; } = null!;
 
     public virtual Physician Physician { get; set; } = null!;
 }

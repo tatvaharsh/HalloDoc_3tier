@@ -6,19 +6,19 @@ namespace hallodoc_mvc.Models;
 
 public partial class User
 {
-    public int Userid { get; set; }
+    public int UserId { get; set; }
 
-    public string? Aspnetuserid { get; set; }
+    public int? AspNetUserId { get; set; }
 
-    public string Firstname { get; set; } = null!;
+    public string FirstName { get; set; } = null!;
 
-    public string? Lastname { get; set; }
+    public string? LastName { get; set; }
 
     public string Email { get; set; } = null!;
 
     public string? Mobile { get; set; }
 
-    public BitArray? Ismobile { get; set; }
+    public BitArray? IsMobile { get; set; }
 
     public string? Street { get; set; }
 
@@ -26,37 +26,37 @@ public partial class User
 
     public string? State { get; set; }
 
-    public int? Regionid { get; set; }
+    public int? RegionId { get; set; }
 
-    public string? Zipcode { get; set; }
+    public string? ZipCode { get; set; }
 
-    public string? Strmonth { get; set; }
+    public string? StrMonth { get; set; }
 
-    public int? Intyear { get; set; }
+    public int? IntYear { get; set; }
 
-    public int? Intdate { get; set; }
+    public int? IntDate { get; set; }
 
-    public string Createdby { get; set; } = null!;
+    public int CreatedBy { get; set; }
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public string? Modifiedby { get; set; }
+    public int? ModifiedBy { get; set; }
 
-    public DateTime? Modifieddate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
     public short? Status { get; set; }
 
-    public BitArray? Isdeleted { get; set; }
+    public BitArray? IsDeleted { get; set; }
 
     public string? Ip { get; set; }
 
-    public BitArray? Isrequestwithemail { get; set; }
+    public BitArray? IsRequestWithEmail { get; set; }
 
-    public virtual Aspnetuser? Aspnetuser { get; set; }
+    public virtual AspNetUser? AspNetUser { get; set; }
 
-    public virtual Aspnetuser CreatedbyNavigation { get; set; } = null!;
+    public virtual AspNetUser CreatedByNavigation { get; set; } = null!;
 
-    public virtual Aspnetuser? ModifiedbyNavigation { get; set; }
+    public virtual AspNetUser? ModifiedByNavigation { get; set; }
 
     public virtual ICollection<Request> Requests { get; set; } = new List<Request>();
 }

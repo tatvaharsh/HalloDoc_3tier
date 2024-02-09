@@ -4,35 +4,35 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Emaillog
+public partial class EmailLog
 {
-    public decimal Emaillogid { get; set; }
+    public int EmailLogId { get; set; }
 
-    public string? Emailtemplate { get; set; }
+    public string? EmailTemplate { get; set; }
 
-    public string Subjectname { get; set; } = null!;
+    public string SubjectName { get; set; } = null!;
 
-    public string Emailid { get; set; } = null!;
+    public string EmailId { get; set; } = null!;
 
-    public string? Confirmationnumber { get; set; }
+    public string? ConfirmationNumber { get; set; }
 
-    public string? Filepath { get; set; }
+    public string? FilePath { get; set; }
 
-    public int? Roleid { get; set; }
+    public int? RoleId { get; set; }
 
-    public int? Requestid { get; set; }
+    public int? RequestId { get; set; }
 
-    public int? Adminid { get; set; }
+    public int? AdminId { get; set; }
 
-    public int? Physicianid { get; set; }
+    public int? PhysicianId { get; set; }
 
-    public DateTime Createdate { get; set; }
+    public DateTime CreateDate { get; set; }
 
-    public DateTime? Sentdate { get; set; }
+    public DateTime? SentDate { get; set; }
 
-    public BitArray? Isemailsent { get; set; }
+    public BitArray? IsEmailSent { get; set; }
 
-    public int? Senttries { get; set; }
+    public int? SentTries { get; set; }
 
     public int? Action { get; set; }
 }

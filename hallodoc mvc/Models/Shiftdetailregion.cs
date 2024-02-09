@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Shiftdetailregion
+public partial class ShiftDetailRegion
 {
-    public int Shiftdetailregionid { get; set; }
+    public int ShiftDetailRegionId { get; set; }
 
-    public int Shiftdetailid { get; set; }
+    public int ShiftDetailId { get; set; }
 
-    public int Regionid { get; set; }
+    public int RegionId { get; set; }
 
-    public BitArray? Isdeleted { get; set; }
+    public BitArray? IsDeleted { get; set; }
 
     public virtual Region Region { get; set; } = null!;
 
-    public virtual Shiftdetail Shiftdetail { get; set; } = null!;
+    public virtual ShiftDetail ShiftDetail { get; set; } = null!;
 }

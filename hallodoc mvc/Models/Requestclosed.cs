@@ -3,21 +3,21 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Requestclosed
+public partial class RequestClosed
 {
-    public int Requestclosedid { get; set; }
+    public int RequestClosedId { get; set; }
 
-    public int Requestid { get; set; }
+    public int RequestId { get; set; }
 
-    public int Requeststatuslogid { get; set; }
+    public int RequestStatusLogId { get; set; }
 
-    public string? Phynotes { get; set; }
+    public string? PhyNotes { get; set; }
 
-    public string? Clientnotes { get; set; }
+    public string? ClientNotes { get; set; }
 
     public string? Ip { get; set; }
 
     public virtual Request Request { get; set; } = null!;
 
-    public virtual Requeststatuslog Requeststatuslog { get; set; } = null!;
+    public virtual RequestStatusLog RequestStatusLog { get; set; } = null!;
 }

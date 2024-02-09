@@ -4,27 +4,27 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Requeststatuslog
+public partial class RequestStatusLog
 {
-    public int Requeststatuslogid { get; set; }
+    public int RequestStatusLogId { get; set; }
 
-    public int Requestid { get; set; }
+    public int RequestId { get; set; }
 
     public short Status { get; set; }
 
-    public int? Physicianid { get; set; }
+    public int? PhysicianId { get; set; }
 
-    public int? Adminid { get; set; }
+    public int? AdminId { get; set; }
 
-    public int? Transtophysicianid { get; set; }
+    public int? TransToPhysicianId { get; set; }
 
     public string? Notes { get; set; }
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
     public string? Ip { get; set; }
 
-    public BitArray? Transtoadmin { get; set; }
+    public BitArray? TransToAdmin { get; set; }
 
     public virtual Admin? Admin { get; set; }
 
@@ -32,7 +32,7 @@ public partial class Requeststatuslog
 
     public virtual Request Request { get; set; } = null!;
 
-    public virtual ICollection<Requestclosed> Requestcloseds { get; set; } = new List<Requestclosed>();
+    public virtual ICollection<RequestClosed> RequestCloseds { get; set; } = new List<RequestClosed>();
 
-    public virtual Physician? Transtophysician { get; set; }
+    public virtual Physician? TransToPhysician { get; set; }
 }

@@ -5,9 +5,9 @@ namespace hallodoc_mvc.Models;
 
 public partial class Concierge
 {
-    public int Conciergeid { get; set; }
+    public int ConciergeId { get; set; }
 
-    public string Conciergename { get; set; } = null!;
+    public string ConciergeName { get; set; } = null!;
 
     public string? Address { get; set; }
 
@@ -17,15 +17,15 @@ public partial class Concierge
 
     public string State { get; set; } = null!;
 
-    public string Zipcode { get; set; } = null!;
+    public string ZipCode { get; set; } = null!;
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public int? Regionid { get; set; }
+    public int? RegionId { get; set; }
 
-    public string? Roleid { get; set; }
+    public string? Ip { get; set; }
 
     public virtual Region? Region { get; set; }
 
-    public virtual ICollection<Requestconcierge> Requestconcierges { get; set; } = new List<Requestconcierge>();
+    public virtual ICollection<RequestConcierge> RequestConcierges { get; set; } = new List<RequestConcierge>();
 }

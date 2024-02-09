@@ -4,7 +4,8 @@ namespace HalloDocMvc.ViewModel
 {
     public class patient_form
     {
-      
+        [Required(ErrorMessage = "UserName is required")]
+        public required int Id { get; set; }
 
         [Required(ErrorMessage = "UserName is required")]
         public required string Email { get; set; }
@@ -14,6 +15,8 @@ namespace HalloDocMvc.ViewModel
 
         [Required(ErrorMessage = "LastName is required")]
         public required string LastName { get; set; }
+        [Required(ErrorMessage = "Password is required")]
+        public required string Password { get; set; }
 
         [Required(ErrorMessage = "PhoneNumber is required")]
         public required string PhoneNumber { get; set; }
@@ -29,3 +32,19 @@ namespace HalloDocMvc.ViewModel
         public required DateOnly BirthDate { get; set; }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

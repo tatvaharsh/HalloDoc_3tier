@@ -3,25 +3,25 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Orderdetail
+public partial class OrderDetail
 {
     public int Id { get; set; }
 
-    public int? Vendorid { get; set; }
+    public int? VendorId { get; set; }
 
-    public int? Requestid { get; set; }
+    public int? RequestId { get; set; }
 
-    public string? Faxnumber { get; set; }
+    public string? FaxNumber { get; set; }
 
     public string? Email { get; set; }
 
-    public string? Businesscontact { get; set; }
+    public string? BusinessContact { get; set; }
 
     public string? Prescription { get; set; }
 
-    public int? Noofrefill { get; set; }
+    public int? NoOfRefill { get; set; }
 
-    public DateTime? Createddate { get; set; }
+    public DateTime? CreatedDate { get; set; }
 
-    public string? Createdby { get; set; }
+    public string? CreatedBy { get; set; }
 }

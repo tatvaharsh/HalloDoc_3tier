@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Rolemenu
+public partial class RoleMenu
 {
-    public int Rolemenuid { get; set; }
+    public int RoleMenuId { get; set; }
 
-    public int Roleid { get; set; }
+    public int RoleId { get; set; }
 
-    public int Menuid { get; set; }
+    public int MenuId { get; set; }
 
     public virtual Menu Menu { get; set; } = null!;
 

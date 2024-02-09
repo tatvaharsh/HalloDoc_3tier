@@ -6,23 +6,23 @@ namespace hallodoc_mvc.Models;
 
 public partial class Role
 {
-    public int Roleid { get; set; }
+    public int RoleId { get; set; }
 
     public string Name { get; set; } = null!;
 
-    public short Accounttype { get; set; }
+    public short AccountType { get; set; }
 
-    public string Createdby { get; set; } = null!;
+    public string CreatedBy { get; set; } = null!;
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public string? Modifiedby { get; set; }
+    public string? ModifiedBy { get; set; }
 
-    public DateTime? Modifieddate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
-    public BitArray Isdeleted { get; set; } = null!;
+    public BitArray IsDeleted { get; set; } = null!;
 
     public string? Ip { get; set; }
 
-    public virtual ICollection<Rolemenu> Rolemenus { get; set; } = new List<Rolemenu>();
+    public virtual ICollection<RoleMenu> RoleMenus { get; set; } = new List<RoleMenu>();
 }

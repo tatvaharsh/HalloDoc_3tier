@@ -6,27 +6,27 @@ namespace hallodoc_mvc.Models;
 
 public partial class Shift
 {
-    public int Shiftid { get; set; }
+    public int ShiftId { get; set; }
 
-    public int Physicianid { get; set; }
+    public int PhysicianId { get; set; }
 
-    public DateOnly Startdate { get; set; }
+    public DateOnly StartDate { get; set; }
 
-    public BitArray Isrepeat { get; set; } = null!;
+    public BitArray IsRepeat { get; set; } = null!;
 
-    public string? Weekdays { get; set; }
+    public string? WeekDays { get; set; }
 
-    public int? Repeatupto { get; set; }
+    public int? RepeatUpto { get; set; }
 
-    public string Createdby { get; set; } = null!;
+    public int CreatedBy { get; set; }
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
     public string? Ip { get; set; }
 
-    public virtual Aspnetuser CreatedbyNavigation { get; set; } = null!;
+    public virtual AspNetUser CreatedByNavigation { get; set; } = null!;
 
     public virtual Physician Physician { get; set; } = null!;
 
-    public virtual ICollection<Shiftdetail> Shiftdetails { get; set; } = new List<Shiftdetail>();
+    public virtual ICollection<ShiftDetail> ShiftDetails { get; set; } = new List<ShiftDetail>();
 }

@@ -6,7 +6,7 @@ namespace hallodoc_mvc.Models;
 
 public partial class Business
 {
-    public int Businessid { get; set; }
+    public int BusinessId { get; set; }
 
     public string Name { get; set; } = null!;
 
@@ -16,35 +16,35 @@ public partial class Business
 
     public string? City { get; set; }
 
-    public int? Regionid { get; set; }
+    public int? RegionId { get; set; }
 
-    public string? Zipcode { get; set; }
+    public string? ZipCode { get; set; }
 
-    public string? Phonenumber { get; set; }
+    public string? PhoneNumber { get; set; }
 
-    public string? Faxnumber { get; set; }
+    public string? FaxNumber { get; set; }
 
-    public BitArray? Isregistered { get; set; }
+    public BitArray? IsRegistered { get; set; }
 
-    public string? Createdby { get; set; }
+    public int? CreatedBy { get; set; }
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public string? Modifiedby { get; set; }
+    public int? ModifiedBy { get; set; }
 
-    public DateTime? Modifieddate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
     public short? Status { get; set; }
 
-    public BitArray? Isdeleted { get; set; }
+    public BitArray? IsDeleted { get; set; }
 
     public string? Ip { get; set; }
 
-    public virtual Aspnetuser? CreatedbyNavigation { get; set; }
+    public virtual AspNetUser? CreatedByNavigation { get; set; }
 
-    public virtual Aspnetuser? ModifiedbyNavigation { get; set; }
+    public virtual AspNetUser? ModifiedByNavigation { get; set; }
 
     public virtual Region? Region { get; set; }
 
-    public virtual ICollection<Requestbusiness> Requestbusinesses { get; set; } = new List<Requestbusiness>();
+    public virtual ICollection<RequestBusiness> RequestBusinesses { get; set; } = new List<RequestBusiness>();
 }

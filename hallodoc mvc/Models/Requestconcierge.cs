@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Requestconcierge
+public partial class RequestConcierge
 {
     public int Id { get; set; }
 
-    public int Requestid { get; set; }
+    public int RequestId { get; set; }
 
-    public int Conciergeid { get; set; }
+    public int ConciergeId { get; set; }
 
     public string? Ip { get; set; }
 

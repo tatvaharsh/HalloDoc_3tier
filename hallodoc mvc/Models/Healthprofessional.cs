@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Healthprofessional
+public partial class HealthProfessional
 {
-    public int Vendorid { get; set; }
+    public int VendorId { get; set; }
 
-    public string Vendorname { get; set; } = null!;
+    public string VendorName { get; set; } = null!;
 
     public int? Profession { get; set; }
 
-    public string Faxnumber { get; set; } = null!;
+    public string FaxNumber { get; set; } = null!;
 
     public string? Address { get; set; }
 
@@ -22,21 +22,21 @@ public partial class Healthprofessional
 
     public string? Zip { get; set; }
 
-    public int? Regionid { get; set; }
+    public int? RegionId { get; set; }
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public DateTime? Modifieddate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
-    public string? Phonenumber { get; set; }
+    public string? PhoneNumber { get; set; }
 
-    public BitArray? Isdeleted { get; set; }
+    public BitArray? IsDeleted { get; set; }
 
     public string? Ip { get; set; }
 
     public string? Email { get; set; }
 
-    public string? Businesscontact { get; set; }
+    public string? BusinessContact { get; set; }
 
-    public virtual Healthprofessionaltype? ProfessionNavigation { get; set; }
+    public virtual HealthProfessionalType? ProfessionNavigation { get; set; }
 }

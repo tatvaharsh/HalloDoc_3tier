@@ -4,37 +4,37 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Shiftdetail
+public partial class ShiftDetail
 {
-    public int Shiftdetailid { get; set; }
+    public int ShiftDetailId { get; set; }
 
-    public int Shiftid { get; set; }
+    public int ShiftId { get; set; }
 
-    public DateTime Shiftdate { get; set; }
+    public DateTime ShiftDate { get; set; }
 
-    public int? Regionid { get; set; }
+    public int? RegionId { get; set; }
 
-    public TimeOnly Starttime { get; set; }
+    public TimeOnly StartTime { get; set; }
 
-    public TimeOnly Endtime { get; set; }
+    public TimeOnly EndTime { get; set; }
 
     public short Status { get; set; }
 
-    public BitArray Isdeleted { get; set; } = null!;
+    public BitArray IsDeleted { get; set; } = null!;
 
-    public string? Modifiedby { get; set; }
+    public int? ModifiedBy { get; set; }
 
-    public DateTime? Modifieddate { get; set; }
+    public DateTime? ModifiedDate { get; set; }
 
-    public DateTime? Lastrunningdate { get; set; }
+    public DateTime? LastRunningDate { get; set; }
 
-    public string? Eventid { get; set; }
+    public string? EventId { get; set; }
 
-    public BitArray? Issync { get; set; }
+    public BitArray? IsSync { get; set; }
 
-    public virtual Aspnetuser? ModifiedbyNavigation { get; set; }
+    public virtual AspNetUser? ModifiedByNavigation { get; set; }
 
     public virtual Shift Shift { get; set; } = null!;
 
-    public virtual ICollection<Shiftdetailregion> Shiftdetailregions { get; set; } = new List<Shiftdetailregion>();
+    public virtual ICollection<ShiftDetailRegion> ShiftDetailRegions { get; set; } = new List<ShiftDetailRegion>();
 }

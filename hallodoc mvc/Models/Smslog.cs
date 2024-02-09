@@ -6,29 +6,29 @@ namespace hallodoc_mvc.Models;
 
 public partial class Smslog
 {
-    public decimal Smslogid { get; set; }
+    public int SmslogId { get; set; }
 
     public string Smstemplate { get; set; } = null!;
 
-    public string Mobilenumber { get; set; } = null!;
+    public string MobileNumber { get; set; } = null!;
 
-    public string? Confirmationnumber { get; set; }
+    public string? ConfirmationNumber { get; set; }
 
-    public int? Roleid { get; set; }
+    public int? RoleId { get; set; }
 
-    public int? Adminid { get; set; }
+    public int? AdminId { get; set; }
 
-    public int? Requestid { get; set; }
+    public int? RequestId { get; set; }
 
-    public int? Physicianid { get; set; }
+    public int? PhysicianId { get; set; }
 
-    public DateTime Createdate { get; set; }
+    public DateTime CreateDate { get; set; }
 
-    public DateTime? Sentdate { get; set; }
+    public DateTime? SentDate { get; set; }
 
-    public BitArray? Issmssent { get; set; }
+    public BitArray? IsSmssent { get; set; }
 
-    public int Senttries { get; set; }
+    public int SentTries { get; set; }
 
     public int? Action { get; set; }
 }

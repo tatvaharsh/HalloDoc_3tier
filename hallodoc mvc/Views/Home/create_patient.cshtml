@@ -1,4 +1,4 @@
-﻿@model hallodoc_mvc.Models.Aspnetuser
+﻿@model hallodoc_mvc.Models.AspNetUser
 
 @{
     ViewBag.cssLink1 = "~/css/patient_login.css";
@@ -34,7 +34,7 @@
 
                 <form asp-controller="Aspnetusers" asp-action="Create" class="mb-3">
                     <div class="form-floating mb-4">
-                        <input asp-for="Username" type="text" class="form-control bg-transparent border-2 border-info"
+                        <input asp-for="UserName" type="text" class="form-control bg-transparent border-2 border-info"
                                id="exampleInputemail" placeholder="Email">
                         <label for="exampleInputemail" class="">Email</label>
                         <div class="user-icon position-absolute top-0 end-0 mx-3 my-2">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="form-floating mb-4 ">
-                        <input asp-for="Passwordhash" type="password" class="form-control bg-transparent border-2 border-info"
+                        <input asp-for="PasswordHash" type="password" class="form-control bg-transparent border-2 border-info"
                                id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
                         <div class="eye-icon position-absolute top-0 end-0 mx-3 my-2">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="form-floating mb-4 ">
-                        <input asp-for="Passwordhash" type="password" class="form-control bg-transparent border-2 border-info"
+                        <input asp-for="PasswordHash" type="password" class="form-control bg-transparent border-2 border-info"
                                id="floatingPassword" placeholder="Confirm Password">
                         <label for="floatingPassword">Confirm Password</label>
                         <div class="eye-icon position-absolute top-0 end-0 mx-3 my-2">

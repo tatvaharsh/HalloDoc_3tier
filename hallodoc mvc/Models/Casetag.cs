@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Casetag
+public partial class CaseTag
 {
-    public int Casetagid { get; set; }
+    public int CaseTagId { get; set; }
 
     public string Name { get; set; } = null!;
 }

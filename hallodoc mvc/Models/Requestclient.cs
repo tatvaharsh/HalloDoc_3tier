@@ -4,39 +4,39 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Requestclient
+public partial class RequestClient
 {
-    public int Requestclientid { get; set; }
+    public int RequestClientId { get; set; }
 
-    public int Requestid { get; set; }
+    public int RequestId { get; set; }
 
-    public string Firstname { get; set; } = null!;
+    public string FirstName { get; set; } = null!;
 
-    public string? Lastname { get; set; }
+    public string? LastName { get; set; }
 
-    public string? Phonenumber { get; set; }
+    public string? PhoneNumber { get; set; }
 
     public string? Location { get; set; }
 
     public string? Address { get; set; }
 
-    public int? Regionid { get; set; }
+    public int? RegionId { get; set; }
 
-    public string? Notimobile { get; set; }
+    public string? NotiMobile { get; set; }
 
-    public string? Notiemail { get; set; }
+    public string? NotiEmail { get; set; }
 
     public string? Notes { get; set; }
 
     public string? Email { get; set; }
 
-    public string? Strmonth { get; set; }
+    public string? StrMonth { get; set; }
 
-    public int? Intyear { get; set; }
+    public int? IntYear { get; set; }
 
-    public int? Intdate { get; set; }
+    public int? IntDate { get; set; }
 
-    public BitArray? Ismobile { get; set; }
+    public BitArray? IsMobile { get; set; }
 
     public string? Street { get; set; }
 
@@ -44,19 +44,19 @@ public partial class Requestclient
 
     public string? State { get; set; }
 
-    public string? Zipcode { get; set; }
+    public string? ZipCode { get; set; }
 
-    public short? Communicationtype { get; set; }
+    public short? CommunicationType { get; set; }
 
-    public short? Remindreservationcount { get; set; }
+    public short? RemindReservationCount { get; set; }
 
-    public short? Remindhousecallcount { get; set; }
+    public short? RemindHouseCallCount { get; set; }
 
-    public short? Issetfollowupsent { get; set; }
+    public short? IsSetFollowupSent { get; set; }
 
     public string? Ip { get; set; }
 
-    public short? Isreservationremindersent { get; set; }
+    public short? IsReservationReminderSent { get; set; }
 
     public decimal? Latitude { get; set; }
 

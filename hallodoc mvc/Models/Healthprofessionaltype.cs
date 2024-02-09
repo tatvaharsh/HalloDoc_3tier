@@ -4,17 +4,17 @@ using System.Collections.Generic;
 
 namespace hallodoc_mvc.Models;
 
-public partial class Healthprofessionaltype
+public partial class HealthProfessionalType
 {
-    public int Healthprofessionalid { get; set; }
+    public int HealthProfessionalId { get; set; }
 
-    public string Professionname { get; set; } = null!;
+    public string ProfessionName { get; set; } = null!;
 
-    public DateTime Createddate { get; set; }
+    public DateTime CreatedDate { get; set; }
 
-    public BitArray? Isactive { get; set; }
+    public BitArray? IsActive { get; set; }
 
-    public BitArray? Isdeleted { get; set; }
+    public BitArray? IsDeleted { get; set; }
 
-    public virtual ICollection<Healthprofessional> Healthprofessionals { get; set; } = new List<Healthprofessional>();
+    public virtual ICollection<HealthProfessional> HealthProfessionals { get; set; } = new List<HealthProfessional>();
 }
