@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace HalloDocMvc.ViewModel
 {
@@ -7,7 +8,7 @@ namespace HalloDocMvc.ViewModel
         [Required(ErrorMessage = "UserName is required")]
         public required int Id { get; set; }
 
-        [Required(ErrorMessage = "UserName is required")]
+        [Required(ErrorMessage = "Email is required")]
         public required string Email { get; set; }
 
         [Required(ErrorMessage = "FirstName is required")]
@@ -15,8 +16,10 @@ namespace HalloDocMvc.ViewModel
 
         [Required(ErrorMessage = "LastName is required")]
         public required string LastName { get; set; }
-        [Required(ErrorMessage = "Password is required")]
+       
         public required string Password { get; set; }
+        [Compare(nameof(Password), ErrorMessage = "Passwords do not match")]
+        public required string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "PhoneNumber is required")]
         public required string PhoneNumber { get; set; }
@@ -28,7 +31,7 @@ namespace HalloDocMvc.ViewModel
         public required string City { get; set; }
 
         public required string Street { get; set; }
-
+        [Required(ErrorMessage = "DOB is required")]
         public required DateOnly BirthDate { get; set; }
     }
 }

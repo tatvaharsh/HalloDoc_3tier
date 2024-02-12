@@ -35,6 +35,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.11" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
+    <PackageReference Include="xunit.extensibility.execution" Version="2.6.6" />
   </ItemGroup>
 
 </Project>

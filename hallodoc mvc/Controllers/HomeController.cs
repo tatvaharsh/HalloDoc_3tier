@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.ComponentModel.DataAnnotations;
 using HalloDocMvc.ViewModel;
 using System.Security.Cryptography;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -58,7 +59,7 @@ namespace hallodoc_mvc.Controllers
                 {
                     if (model.Passwordhash == user.PasswordHash)
                     {
-                        return RedirectToAction("submit_screen");
+                        return RedirectToAction("patient_dashboard");
                     }
                     else
                     {
@@ -101,15 +102,13 @@ namespace hallodoc_mvc.Controllers
             }
             return Json(new { isValid = isValidEmail });
         }
-
-        public IActionResult PatientRequestForm()
-        {
-            return View();
-        }
-
+       
         [HttpPost]
-        public async Task<IActionResult> PatientRequestForm(patient_form model)
+        public async Task<IActionResult> patient_form(patient_form model)
         {
+            if (!ModelState.IsValid) {
+                return View(model);            
+            }
 
             var aspnetuser1 = await _context.AspNetUsers.FirstOrDefaultAsync(u => u.Email == model.Email);
             var user1 = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
@@ -213,8 +212,13 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> family_req([FromForm] FamilyReqModel req)
+        public async Task<IActionResult> family_form([FromForm] FamilyReqModel req)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(req);
+            }
+            
             AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
             User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
 
@@ -301,13 +305,21 @@ namespace hallodoc_mvc.Controllers
 
             return RedirectToAction(nameof(HomeController.submit_screen), "Home");
         }
-        public IActionResult concierge()
+
+        [HttpGet]
+        public IActionResult concierge_form()
         {
             return View();
         }
 
-        public async Task<IActionResult> concierge_req([FromForm] ConciergeReqModel req)
+        [HttpPost]
+        public async Task<IActionResult> concierge_form([FromForm] ConciergeReqModel req)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(req);
+            }
+
             AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
             User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
 
@@ -420,9 +432,14 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
-
-        public async Task<IActionResult> business_req([FromForm] BusinessReqModel req)
+        [HttpPost]
+        public async Task<IActionResult> business([FromForm] BusinessReqModel req)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(req);
+            }
+
             AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
             User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
 
@@ -457,7 +474,7 @@ namespace hallodoc_mvc.Controllers
                     CreatedBy = aspuser.Id,
                     IntDate = req.DOB.Day,
                     IntYear = req.DOB.Year,
-                    StrMonth = req.DOB.ToString("MMMM"),
+                    StrMonth = req.DOB.ToString("MMM"),
                 };
                 _context.Users.Add(user);
                 _context.SaveChanges();
@@ -498,7 +515,7 @@ namespace hallodoc_mvc.Controllers
                 RegionId = region.RegionId,
                 IntDate = req.DOB.Day,
                 IntYear = req.DOB.Year,
-                StrMonth = req.DOB.ToString("MMMM"),
+                StrMonth = req.DOB.ToString("MMM"),
                 Street = req.Street,
                 City = req.City,
                 State = req.State,
@@ -530,6 +547,10 @@ namespace hallodoc_mvc.Controllers
         }
 
         public IActionResult create_patient()
+        {
+            return View();
+        }
+        public IActionResult patient_dashboard()
         {
             return View();
         }

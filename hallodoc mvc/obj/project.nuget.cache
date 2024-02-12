@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Q0o6mDv0oQvOBGilNIDagp6x0OvmS2flrhqdM59Qobg1u7jYyjtXJqxhPuFxsHgOFPF8AtizL1Pw7QMwOQtOXw==",
+  "dgSpecHash": "HBcTbBy0L7bAMxpNWkg0ueeEpxIJEdUJaeOUFcBFtWNL2gLAaXlnAnw/YA1PU7plq2fL6Ztwj41J0IJzYrjA7Q==",
   "success": true,
   "projectFilePath": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\hallodoc mvc.csproj",
   "expectedPackageFiles": [
@@ -227,7 +227,10 @@
     "C:\\Users\\pca114\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\pca114\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\pca114\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\pca114\\.nuget\\packages\\xunit.abstractions\\2.0.3\\xunit.abstractions.2.0.3.nupkg.sha512",
+    "C:\\Users\\pca114\\.nuget\\packages\\xunit.extensibility.core\\2.6.6\\xunit.extensibility.core.2.6.6.nupkg.sha512",
+    "C:\\Users\\pca114\\.nuget\\packages\\xunit.extensibility.execution\\2.6.6\\xunit.extensibility.execution.2.6.6.nupkg.sha512"
   ],
   "logs": []
 }

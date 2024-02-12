@@ -593,6 +593,26 @@
       "PackagePath": "staticwebassets\\SRSScreenShorts\\LesfImage.png"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\box-arrow-right.svg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\box-arrow-right.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\list.svg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\list.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\moon.svg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\moon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\plus.svg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\plus.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\sun.svg",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\sun.svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\up.png",
       "PackagePath": "staticwebassets\\SRSScreenShorts\\up.png"
     },
@@ -611,6 +631,10 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\forgot_password.css",
       "PackagePath": "staticwebassets\\css\\forgot_password.css"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\patient_dashboard.css",
+      "PackagePath": "staticwebassets\\css\\patient_dashboard.css"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\patient_form.css",
@@ -655,6 +679,10 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\forgot_password.js",
       "PackagePath": "staticwebassets\\js\\forgot_password.js"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\patient_dashboard.js",
+      "PackagePath": "staticwebassets\\js\\patient_dashboard.js"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\patient_form.js",

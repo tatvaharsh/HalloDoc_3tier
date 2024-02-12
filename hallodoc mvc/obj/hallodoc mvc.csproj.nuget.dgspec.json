@@ -64,6 +64,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[7.0.11, )"
+            },
+            "xunit.extensibility.execution": {
+              "target": "Package",
+              "version": "[2.6.6, )"
             }
           },
           "imports": [
