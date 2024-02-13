@@ -17,9 +17,7 @@ namespace HalloDocMvc.ViewModel
         [Required(ErrorMessage = "LastName is required")]
         public required string LastName { get; set; }
        
-        public required string Password { get; set; }
-        [Compare(nameof(Password), ErrorMessage = "Passwords do not match")]
-        public required string ConfirmPassword { get; set; }
+  
 
         [Required(ErrorMessage = "PhoneNumber is required")]
         public required string PhoneNumber { get; set; }
@@ -33,6 +31,8 @@ namespace HalloDocMvc.ViewModel
         public required string Street { get; set; }
         [Required(ErrorMessage = "DOB is required")]
         public required DateOnly BirthDate { get; set; }
+
+        public List<IFormFile>  File { get; set; }
     }
 }
 

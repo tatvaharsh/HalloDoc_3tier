@@ -143,3 +143,12 @@ input[type="file"] {
 .iti {
     width: 100%;
 }
+.location{
+    background-color:transparent;
+    height:50px;
+    padding-inline:10px;
+    display:block;
+    border-color:aqua;
+    color:aqua;
+    border-radius:6px;
+}

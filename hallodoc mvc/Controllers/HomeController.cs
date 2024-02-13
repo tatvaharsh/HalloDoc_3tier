@@ -53,13 +53,15 @@ namespace hallodoc_mvc.Controllers
 
 
             if (ModelState.IsValid)
-            {
+            {   
                 var user = _context.AspNetUsers.FirstOrDefault(u => u.Email == model.Email);
+                var userobj= _context.Users.FirstOrDefault(u =>u.AspNetUserId == user.Id);
                 if (user != null)
                 {
                     if (model.Passwordhash == user.PasswordHash)
                     {
-                        return RedirectToAction("patient_dashboard");
+                        HttpContext.Session.SetInt32("Userid", userobj.UserId);
+                        return RedirectToAction("PatientDashboard");
                     }
                     else
                     {
@@ -106,7 +108,8 @@ namespace hallodoc_mvc.Controllers
         [HttpPost]
         public async Task<IActionResult> patient_form(patient_form model)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return View(model);            
             }
 
@@ -122,7 +125,7 @@ namespace hallodoc_mvc.Controllers
 
                     UserName = model.FirstName + "_" + model.LastName,
                     Email = model.Email,
-                    PasswordHash = model.Password,
+                    //PasswordHash = model.Password,
                     PhoneNumber = model.PhoneNumber,
                     CreatedDate = DateTime.Now,
                 };
@@ -200,6 +203,23 @@ namespace hallodoc_mvc.Controllers
             _context.RequestClients.Add(requestclient);
             await _context.SaveChangesAsync();
 
+
+            foreach (IFormFile files in model.File)
+            {
+                string filename = model.FirstName + model.LastName + Path.GetExtension(files.FileName);
+                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\", filename);
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    files.CopyToAsync(stream).Wait();
+                }
+
+                RequestWiseFile requestWiseFile = new RequestWiseFile();
+                requestWiseFile.FileName = filename;
+                requestWiseFile.RequestId = request.RequestId;
+                requestWiseFile.DocType = 1;
+                _context.RequestWiseFiles.Add(requestWiseFile);
+                _context.SaveChanges();
+            }
 
 
             return RedirectToAction(nameof(submit_screen));
@@ -550,9 +570,30 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
-        public IActionResult patient_dashboard()
+        public async Task<IActionResult> PatientDashboard()
+        {
+            
+            return View(_context.Requests.ToList());
+        }
+
+        public IActionResult SubmitSomeoneElse()
         {
             return View();
+        }
+
+        public IActionResult SubmitForMe()
+        {
+            return View();
+        }
+
+        public IActionResult PatientProfile()
+        {
+            return View();
+        }
+
+        public  async Task<IActionResult> ViewDocument()
+        {
+            return View(_context.RequestWiseFiles.ToList());
         }
         public IActionResult Privacy()
         {
