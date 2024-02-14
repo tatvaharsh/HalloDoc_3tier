@@ -2,15 +2,16 @@
     ViewData["Title"] = "Dashboard";
 }
 @{
+    ViewBag.cssLink2 = "~/css/patient_form.css";
     ViewBag.cssLink1 = "~/css/patient_dashboard.css";
-    ViewBag.jsLink1 = "~/js/patient_dashboard.js";
+    ViewBag.jsLink1 = "~/js/patient_form.js";
 }
 
 
-<div id="body">
-    <script src="~/js/patient_dashboard.js"></script>
     <!-- Navbar -->
-    <div class="navbar-custom">
+    <script src="~/js/patient_form.js"></script>
+<script src="~/js/patient_form.js"></script>
+    <nav class="navbar-custom">
         <img src="/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" alt="" class="logo" />
         <div class="right-side-elements">
             <span class="welcome-text">Welcome <span class="name-text">Tests Testing</span></span>
@@ -20,12 +21,12 @@
             <a class="logout-mob log" asp-controller="Patient" asp-action="PatientLogin">
                 <img id="logout" src="/SRSScreenShorts\box-arrow-right.svg" alt="" class="logout-img" />
             </a>
-            <button class="moon" onclick="changeMode()">
+            <button class="moon" onclick="toggle()">
                 <img id="moon" src="/SRSScreenShorts\moon.svg" alt="" class="moon-img" />
                 <img id="sun" src="/SRSScreenShorts\moon.svg" alt="" class="moon-img hidden" />
             </button>
         </div>
-    </div>
+    </nav>
 
     <!-- Sidebar -->
 
@@ -55,7 +56,7 @@
 
     <!-- Navbar - Below -->
 
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm border-0 navbar-light bg-light">
         <button class="navbar-toggler list-border" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="sidebar_open()">
             <img src="/SRSScreenShorts\list.svg" alt="" class="list-img" />
@@ -75,21 +76,120 @@
             </div>
         </div>
     </nav>
+  
+    <div id="Profile" onload="load()" class="tabcontent">
+        <div class="container ">
+           
+                <a class="backbtn d-flex justify-content-end " asp-controller="Home" asp-action="PatientProfile">
+                <button onclick="myfun1();" class="backbtnn"  >
+                        &lt; Back
+                    </button>
+                </a>
+            
+            <h3 class="">User Profile</h3>
+            <form enctype="multipart/form-data"   class="maincontent shadow p-3 mt-2 ">
+                <div class="">
+                    <h3 class="text1">General Information</h3>
+                   
+                    <div class="row">
+                        <div class="form-floating col-sm-6 mt-3 ">
+                            <input type="text" class="form-control floatingInput" placeholder="Firstname" >
+                            <label for="floatingInput" class="mx-2">First Name</label>
+                           @* <span asp-validation-for="FirstName" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-floating col-sm-6 mt-3 ">
+                            <input type="text" class="form-control floatingInput" placeholder="Last Name" >
+                            <label for="floatingInput " class="mx-2">Last Name</label>
+                           @* <span asp-validation-for="LastName" class="text-danger"></span>*@
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-floating col-sm-6 mt-3">
+                            <input type="date" class="form-control floatingInput" placeholder="Date Of Birth " >
+                            <label for="floatingInput " class="mx-2">Date Of Birth</label>
+                            @*<span asp-validation-for="BirthDate" class="text-danger"></span>*@
+                        </div>
+                        <div class="form-floating col-sm-6 mt-3">
+                        </div>
+                    </div>
+                </div>
 
-    <div id="Profile" class="tabcontent">
-        <span>
-            This is Tab 2. Lorem ipsum dolor sit amet consectetur, adipisicing
-            elit. Maxime asperiores dolores odio ad possimus corporis dolore
-            reiciendis fuga architecto placeat sint sequi at, cumque officia id
-            voluptatum officiis ipsa repudiandae! Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Qui repudiandae architecto soluta repellat
-            veritatis dolorem tempore, pariatur, laborum excepturi rerum dicta
-            voluptatem fugit suscipit corporis delectus atque maxime non a! Lorem
-            ipsum dolor sit amet consectetur adipisicing elit. Quaerat nihil libero
-            itaque eius temporibus explicabo eligendi aliquam modi officia nulla
-            natus maxime rem perspiciatis quam sint, consectetur non eaque
-            iusto?
-        </span>
+                <h3 class="head2 mt-5 text1">Contact Information</h3>
+                <div class="row ">
+                <div class="form-floating col-sm-6  col-md-2 mt-3 ">
+                        <select class="form-select floatingInput"  placeholder="email" >
+                            <option>Mobile</option>
+                            <option>Phone</option>
+                        <option>Telephone</option>
+                        </select>
+                        <label for="emailInput" class="mx-2">Type</label>
+                       @* <span asp-validation-for="Email" class="text-danger"></span>*@
+                    </div>
+                <div class="form-floating col-sm-6 mt-3  col-md-4 phone-code">
+                        <input type="tel" class="form-control phone-input" id="phone" >
+                        @*<span asp-validation-for="PhoneNumber" class="text-danger"></span>*@
+                        <!-- <label for="phone" class="mx-2">(201)555-0123</label> -->
+                    </div>
+                <div class="form-floating col-sm-6  col-md-6 mt-3">
+                        <input type="email" class="form-control floatingInput"  placeholder="email">
+                        <label for="emailInput" class="mx-2">Email</label>
+                    </div>
+                <div class="row hidden-pass">
+                    <div class="form-floating col-sm-6  mt-3 ">
+                        <input type="password" class="form-control floatingInput" placeholder="Password" >
+                        <label for="floatingInput" class="mx-2">Password</label>
+                    </div>
+                    <div class="form-floating col-sm-6 mt-3 " id="emailInput">
+                        <input type="password" class="form-control floatingInput" placeholder="Confirm Password">
+                        <label for="floatingInput" class="mx-2">Confirm Password</label>
+                    </div>
+
+                </div>
+
+                <h3 class="head3 mt-5 text1">Patient Location</h3>
+                <div class="row ">
+                    <div class="form-floating col-sm-6 mt-3 ">
+                        <input type="text" class="form-control floatingInput" placeholder="street" >
+                        <label for="floatingInput" class="mx-2">Street</label>
+
+                    </div>
+                    <div class="form-floating col-sm-6 mt-3 ">
+                        <input type="text" class="form-control floatingInput" placeholder="City" >
+                        <label for="floatingInput" class="mx-2">City</label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="form-floating col-sm-6 mt-3 ">
+                        <input type="text" class="form-control floatingInput" placeholder="State">
+                        <label for="floatingInput" class="mx-2">State</label>
+                    </div>
+                    <div class="form-floating col-sm-6 mt-3 ">
+                        <input type="number" class="form-control floatingInput" placeholder="zipcode" >
+                        <label for="floatingInput" class="mx-2">Zip Code</label>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="form-floating col-sm-6 mt-3 ">
+                        <input type="text" class="form-control floatingInput" placeholder="room">
+                        <label for="floatingInput" class="mx-2">
+                            Room # / Suite (Optional)
+                        </label>
+                    </div>
+                    <div class="form-floating col-sm-6 mt-3 ">
+                        <button class="btn btn-outline-info col-lg-1" >Map</button>
+                    </div>
+                </div>
+
+                
+                <div class="mt-3 d-flex justify-content-end  ">
+
+                    <button class="Submit col-sm-3" type="submit">Edit</button>
+                    
+                </div>
+            </form>
     </div>
-
+        
+   
+   
 </div>
+

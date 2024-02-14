@@ -22,7 +22,7 @@
                         <i class="fa-solid fa-circle-exclamation fa-lg mt-3" style="color: #FFD43B; font-size: 40px; "></i>
                     </div>
                     <div class="modal-body text-center">
-                        <h3>Information</h3>
+                        <h3 >Information</h3>
                         <div class="p-4">
                             <p>When submitting a request, you must provide the correct contact information for the patient or the responsibly party. Failure to provide the correct email and phone number will delay service or be declined.</p>
                         </div>
@@ -57,7 +57,7 @@
             </div>
             <form enctype="multipart/form-data" asp-action="patient_form" asp-controller="Home" class="maincontent shadow p-3 ">
                 <div class="">
-                    <h3 class="text1">Patient Information</h3>
+                    <h3 class="text1 text-dark">Patient Information</h3>
                     <div class="form-floating mt-3">
                         <textarea class="form-control" placeholder="Enter Brief Details Of Symptoms(Optional)"
                                   id="floatingTextarea2" style="height: 100px"  ></textarea>
@@ -86,7 +86,7 @@
                     </div>
                 </div>
 
-                <h3 class="head2 mt-5 text1">Patient Contact Information</h3>
+                <h3 class="head2 mt-5 text1 text-dark">Patient Contact Information</h3>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
                         <input type="email" class="form-control floatingInput" id="emailInput" placeholder="email" asp-for="Email">
@@ -101,7 +101,7 @@
                 </div>
                 <div class="row hidden-pass">
                     <div class="form-floating col-sm-6 mt-3 " >
-                        <input type="password" class="form-control floatingInput"  placeholder="Password">
+                        <input type="password" class="form-control floatingInput"  placeholder="Password" asp-for="Password">
                         <label for="floatingInput" class="mx-2">Password</label>
                     </div>
                     <div class="form-floating col-sm-6 mt-3 " id="emailInput">
@@ -111,7 +111,7 @@
                    
                 </div>
 
-                <h3 class="head3 mt-5 text1">Patient Location</h3>
+                <h3 class="head3 mt-5 text1 text-dark">Patient Location</h3>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
                         <input type="text" class="form-control floatingInput" placeholder="street" asp-for="Street">
@@ -144,7 +144,7 @@
                     </div>
                 </div>
 
-                <h3 class="head4 mt-5 text1">(Optional) Upload Photo or Document</h3>
+                <h3 class="head4 mt-5 text1 text-dark">(Optional) Upload Photo or Document</h3>
                 <div class="row">
 
                     <div class="file-upload symptoms-textarea">
@@ -153,7 +153,7 @@
                             <label for="file-upload" class="upload-label dob-label" id="form-label">Select File</label>
                         </div>
                         <label class="custom-file-upload mt-3">
-                            <input type="file" multiple="multiple" onchange="getFileData(this)" asp-for="File" />
+                            <input type="file" multiple="multiple" onchange="getFileData(this)" asp-for="File" name="File" />
                             <img src="/SRSScreenShorts/up.png" alt="" class="file-upload-img ">
                             Upload
                         </label>

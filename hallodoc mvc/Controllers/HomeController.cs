@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using HalloDocMvc.ViewModel;
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using NuGet.Protocol.Plugins;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -61,6 +62,7 @@ namespace hallodoc_mvc.Controllers
                     if (model.Passwordhash == user.PasswordHash)
                     {
                         HttpContext.Session.SetInt32("Userid", userobj.UserId);
+                        HttpContext.Session.SetString("Username", userobj.FirstName+" "+userobj.LastName);
                         return RedirectToAction("PatientDashboard");
                     }
                     else
@@ -106,7 +108,7 @@ namespace hallodoc_mvc.Controllers
         }
        
         [HttpPost]
-        public async Task<IActionResult> patient_form(patient_form model)
+        public async Task<IActionResult> patient_form([FromForm] patient_form model)
         {
             if (!ModelState.IsValid)
             {
@@ -128,6 +130,7 @@ namespace hallodoc_mvc.Controllers
                     //PasswordHash = model.Password,
                     PhoneNumber = model.PhoneNumber,
                     CreatedDate = DateTime.Now,
+                    PasswordHash=model.Password,
                 };
                 _context.AspNetUsers.Add(aspnetuser2);
                 await _context.SaveChangesAsync();
@@ -206,7 +209,7 @@ namespace hallodoc_mvc.Controllers
 
             foreach (IFormFile files in model.File)
             {
-                string filename = model.FirstName + model.LastName + Path.GetExtension(files.FileName);
+                string filename = model.FirstName + model.LastName + files.FileName;
                 string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\", filename);
                 using (FileStream stream = new FileStream(path, FileMode.Create))
                 {
@@ -570,10 +573,27 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
+        [HttpGet]
         public async Task<IActionResult> PatientDashboard()
         {
-            
-            return View(_context.Requests.ToList());
+          
+            if (HttpContext.Session.GetInt32("Userid") == null)
+            {
+                return RedirectToAction(nameof(patient_login));
+            }
+
+            var req = _context.Requests.Where(u => u.UserId == HttpContext.Session.GetInt32("Userid")).ToList();
+            ViewBag.username = HttpContext.Session.GetString("Username");
+            ViewBag.data = req;
+            //ViewBag.username = HttpContext.Session.GetString("username");
+
+            //return  _context.Requests!=null?
+            //    View(_context.Requests.ToList())
+            //    :
+            //    Problem("EntitySet is emapty")
+            //    ;
+            ViewBag.rwfiles = _context.RequestWiseFiles.ToList();
+            return View();
         }
 
         public IActionResult SubmitSomeoneElse()
@@ -590,10 +610,20 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
-
-        public  async Task<IActionResult> ViewDocument()
+        [HttpGet]
+        public  async Task<IActionResult> ViewDocument(int id)
         {
-            return View(_context.RequestWiseFiles.ToList());
+            ViewBag.username = HttpContext.Session.GetString("Username");
+            ViewBag.reqwfiles = _context.RequestWiseFiles.Where(u => u.RequestId == id).ToList();
+            return View();
+        }
+
+        public IActionResult Download(int id)
+        {
+            var file = _context.RequestWiseFiles.Find(id);
+            var filepath = "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\" + file.FileName;
+            var bytes = System.IO.File.ReadAllBytes(filepath);
+            return File(bytes, "aplication/octet-stream", file.FileName);
         }
         public IActionResult Privacy()
         {

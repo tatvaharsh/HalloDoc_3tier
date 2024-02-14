@@ -16,23 +16,23 @@ namespace HalloDocMvc.ViewModel
 
         [Required(ErrorMessage = "LastName is required")]
         public required string LastName { get; set; }
-       
-  
+
+        public string? Password { get; set; }
 
         [Required(ErrorMessage = "PhoneNumber is required")]
         public required string PhoneNumber { get; set; }
 
-        public required string ZipCode { get; set; }
+        public  string? ZipCode { get; set; }
 
-        public required string State { get; set; }
+        public  string? State { get; set; }
 
-        public required string City { get; set; }
+        public  string? City { get; set; }
 
-        public required string Street { get; set; }
+        public  string? Street { get; set; }
         [Required(ErrorMessage = "DOB is required")]
-        public required DateOnly BirthDate { get; set; }
+        public required DateOnly BirthDate { get; set; } 
 
-        public List<IFormFile>  File { get; set; }
+        public List<IFormFile>?  File { get; set; }
     }
 }
 

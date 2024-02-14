@@ -1,5 +1,11 @@
-
-
+//function myMap() {
+//    var mapProp = {
+//        center: new google.maps.LatLng(51.508742, -0.120850),
+//        zoom: 5,
+//    };
+//    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+//}
+console.log("f");
 var element = document.body;
 if (localStorage.getItem("theme") == null) {
     localStorage.setItem("theme", "light");
@@ -35,6 +41,7 @@ const getFileData = (myFile) => {
     var filename = file.name;
     document.getElementById("form-label").innerHTML = `${filename}`;
 }
+
 const load = () => {
     const phoneInputField = document.querySelector("#phone");
     const phoneInput = window.intlTelInput(phoneInputField, {
@@ -42,6 +49,8 @@ const load = () => {
             "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
 }
+
+
 window.addEventListener('DOMContentLoaded', () => {
     const popup = new bootstrap.Modal('#staticBackdrop')
 
@@ -55,7 +64,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-
 window.addEventListener('DOMContentLoaded', () => {
     popup.show();
     console.log("hello");
@@ -63,9 +71,36 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
+$(document).ready(function () {
+    var logElements = document.querySelectorAll('.log');
+    logElements.forEach(function (element) {
+        element.addEventListener('click', function () {
 
+            $.get('/Home/patient_login', function (response) {
+                console.log(response)
+            });
+        });
+    });
+});
 
+function sidebar_open() {
+    if (document.getElementById("mySidebar").offsetWidth == 0) {
+        document.getElementById("mySidebar").style.width = "200px";
+        document.getElementsByClassName("overlay")[0].style.display = "block";
+        document.getElementsByClassName("navbar")[0].style.boxShadow = "none";
+    }
+    else {
+        document.getElementById("mySidebar").style.width = "0px";
+        document.getElementsByClassName("overlay")[0].style.display = "none";
+        document.getElementsByClassName("navbar")[0].style.boxShadow = "3px -8px 17px 1px black";
+    }
 
+}
 
-
-
+function sidebar_close() {
+    document.getElementById("mySidebar").style.width = "0px";
+    document.getElementsByClassName("overlay")[0].style.display = "none";
+    for (let i = 0; i < document.getElementsByClassName('accordion-button').length; ++i) {
+        document.getElementsByClassName('accordion-button')[i].style.zIndex = "1";
+    }
+}

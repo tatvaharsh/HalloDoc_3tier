@@ -40,7 +40,7 @@ function sidebar_close() {
 
 
 const tickAll = () => {
-    const checkboxes = document.getElementsByClassName("checkbox")
+    const checkboxes = document.getElementsByClassName("checkbox-main")
     if (document.getElementsByClassName("checkbox-main")[0].checked == true) {
         for (let i = 0; i < checkboxes.length; ++i) {
             checkboxes[i].checked = true;

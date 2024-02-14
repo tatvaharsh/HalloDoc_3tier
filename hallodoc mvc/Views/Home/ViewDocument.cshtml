@@ -17,7 +17,7 @@
     <div class="navbar-custom">
         <img src="/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" alt="" class="logo" />
         <div class="right-side-elements">
-            <span class="welcome-text">Welcome <span class="name-text">Tests Testing</span></span>
+            <span class="welcome-text">Welcome <span class="name-text">@ViewBag.username</span></span>
             <a class="logout log" asp-controller="Home" asp-action="patient_login">
                 <span class="logout-text">Logout</span>
             </a>
@@ -129,20 +129,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in ViewBag.reqwfiles)
                                 {
                                     <tr>
-                                    <td>@item.FileName</td>
-                                    <td>@item.CreatedDate.ToString("MMMM dd,yyyy")</td>
+                                    <td><input type="checkbox" class="checkbox-main" name="selectall" onchange="tickAll()" /> @item.FileName</td>
+                                    <td>@ViewBag.username</td>
                                 
                                     <td>
-                                    <a class="" asp-controller="Home" asp-action="ViewDocument">
-                                        <span class="logout-text">(1) Documents</span>
-                                    </a>
+                                        @item.CreatedDate.ToString("MMMM dd,yyyy")
+                                        
                                     </td>
                                      <td>
                                          <div class="outer-div">
-                                         <a class="downld-btn" asp-controller="Home" asp-action="ViewDocument">
+                                         <a  class="downld-btn" asp-controller="Home" asp-action="Download" asp-route-id="@item.RequestWiseFileId">
                                         <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
                                         </a>
                                          </div>

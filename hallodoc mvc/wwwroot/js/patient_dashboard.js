@@ -61,7 +61,7 @@ const changeMode = () => {
             document.getElementsByClassName("main-content")[0].style.backgroundColor = "white"
         }
     } catch (err) {
-        alert("there was some issue in changing mode")
+        alert("there was some issue in changing mode");
     }
 }
 

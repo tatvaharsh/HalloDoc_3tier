@@ -4,4 +4,3 @@ window.addEventListener('DOMContentLoaded', () => {
     popup.show();
     console.log("hello");
 });
-;
