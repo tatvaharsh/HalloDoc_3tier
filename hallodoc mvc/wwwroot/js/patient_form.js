@@ -5,7 +5,19 @@
 //    };
 //    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 //}
-console.log("f");
+$(document).ready(function () {
+    $("#openBtn").click(function () {
+        $("#myModal1").modal("show");
+        var Street = $("#street").val();
+        var City = $("#city").val();
+        var State = $("#state").val();
+        var ZipCode = $("#zipcode").val();
+        var address = "https://maps.google.com/maps?q=" + Street + City + State + ZipCode + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+        $("#gmap_canvas").attr("src", address);
+    });
+});
+
+
 var element = document.body;
 if (localStorage.getItem("theme") == null) {
     localStorage.setItem("theme", "light");

@@ -1,195 +1,236 @@
-﻿﻿@{
+﻿@model List<hallodoc_mvc.Models.PatientProfile>
+﻿@{
     ViewData["Title"] = "Dashboard";
 }
 @{
     ViewBag.cssLink2 = "~/css/patient_form.css";
-    ViewBag.cssLink1 = "~/css/patient_dashboard.css";
+        ViewBag.cssLink1 = "~/css/patient_dashboard.css";
     ViewBag.jsLink1 = "~/js/patient_form.js";
 }
 
 
-    <!-- Navbar -->
-    <script src="~/js/patient_form.js"></script>
+<!-- Navbar -->
 <script src="~/js/patient_form.js"></script>
-    <nav class="navbar-custom">
-        <img src="/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" alt="" class="logo" />
-        <div class="right-side-elements">
-            <span class="welcome-text">Welcome <span class="name-text">Tests Testing</span></span>
-            <a class="logout log" asp-controller="Patient" asp-action="PatientLogin" onclick="logout()">
-                <span class="logout-text">Logout</span>
+<script src="~/js/patient_form.js"></script>
+
+<nav class="navbar-custom">
+    <img src="/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" alt="" class="logo" />
+    <div class="right-side-elements">
+        <span class="welcome-text">Welcome <span class="name-text">@Model.FirstOrDefault().user.FirstName</span></span>
+        <a class="logout log" asp-controller="Patient" asp-action="PatientLogin" onclick="logout()">
+            <span class="logout-text">Logout</span>
+        </a>
+        <a class="logout-mob log" asp-controller="Patient" asp-action="PatientLogin">
+            <img id="logout" src="/SRSScreenShorts\box-arrow-right.svg" alt="" class="logout-img" />
+        </a>
+        <button class="moon" onclick="toggle()">
+            <img id="moon" src="/SRSScreenShorts\moon.svg" alt="" class="moon-img" />
+            <img id="sun" src="/SRSScreenShorts\moon.svg" alt="" class="moon-img hidden" />
+        </button>
+    </div>
+</nav>
+
+<!-- Sidebar -->
+
+<div id="mySidebar" class="sidebar">
+    <div class="tab sidebar-tab">
+        <span class="mob-welcome-text">Welcome <span class="mob-name-text">@Model.FirstOrDefault().user.FirstName</span></span>
+        <button class="tablinks sidebar-tablinks">
+            <a asp-controller="Patient" asp-action="PatientDashboard" class="mobile-sidebar-a">
+                Dashboard
             </a>
-            <a class="logout-mob log" asp-controller="Patient" asp-action="PatientLogin">
-                <img id="logout" src="/SRSScreenShorts\box-arrow-right.svg" alt="" class="logout-img" />
+        </button>
+        <button class="tablinks sidebar-tablinks mobile-sidebar-active">
+            <a asp-controller="Patient" asp-action="PatientDashboard" class="mobile-sidebar-a">
+                Profile
             </a>
-            <button class="moon" onclick="toggle()">
-                <img id="moon" src="/SRSScreenShorts\moon.svg" alt="" class="moon-img" />
-                <img id="sun" src="/SRSScreenShorts\moon.svg" alt="" class="moon-img hidden" />
-            </button>
+        </button>
+    </div>
+</div>
+
+
+<!-----------modal---------------------------->
+<div class="modal" id="myModal1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <section>
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="600" height="500" id="gmap_canvas" src="" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+
+                            <!-- </iframe><a href="https://123movies-to.org">123 movies</a><br> -->
+                            <style>
+                                .mapouter {
+                                    position: relative;
+                                    text-align: right;
+                                    height: 500px;
+                                    width: 600px;
+                                }</style>
+                            <!-- <a href="https://www.embedgooglemap.net">embedgooglemap.net</a> -->
+                            <style>
+                                .gmap_canvas {
+                                    overflow: hidden;
+                                    background: none !important;
+                                    height: 500px;
+                                    width: 600px;
+                                }
+                            </style>
+                    </div>
+                </div>
+            </section>
         </div>
-    </nav>
+    </div>
+</div>
 
-    <!-- Sidebar -->
+<!-- Dark Background when sidebar is open -->
+<div class="overlay" onclick="sidebar_close()">
+</div>
 
-    <div id="mySidebar" class="sidebar">
-        <div class="tab sidebar-tab">
-            <span class="mob-welcome-text">Welcome <span class="mob-name-text">Tests Testing</span></span>
-            <button class="tablinks sidebar-tablinks">
-                <a asp-controller="Patient" asp-action="PatientDashboard" class="mobile-sidebar-a">
+<!-- Navbar Below Container -->
+
+<div class="nav-below-container"></div>
+
+<!-- Navbar - Below -->
+
+<nav class="navbar navbar-expand-sm border-0 navbar-light bg-light">
+    <button class="navbar-toggler list-border" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="sidebar_open()">
+        <img src="/SRSScreenShorts\list.svg" alt="" class="list-img" />
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="tab">
+            <button class="tablinks">
+                <a asp-controller="Home" asp-action="PatientDashboard">
                     Dashboard
                 </a>
             </button>
-            <button class="tablinks sidebar-tablinks mobile-sidebar-active">
-                <a asp-controller="Patient" asp-action="PatientDashboard" class="mobile-sidebar-a">
+            <button class="tablinks sidebar-active">
+                <a asp-controller="Home" asp-action="PatientDashboard">
                     Profile
                 </a>
             </button>
         </div>
     </div>
+</nav>
 
-    <!-- Dark Background when sidebar is open -->
-    <div class="overlay" onclick="sidebar_close()">
-    </div>
+<div id="Profile" onload="load()" class="tabcontent">
+    <div class="container ">
 
-    <!-- Navbar Below Container -->
+        <a class="backbtn d-flex justify-content-end " asp-controller="Home" asp-action="PatientProfile">
+            <button onclick="myfun1();" class="backbtnn">
+                &lt; Back
+            </button>
+        </a>
 
-    <div class="nav-below-container"></div>
-
-    <!-- Navbar - Below -->
-
-    <nav class="navbar navbar-expand-sm border-0 navbar-light bg-light">
-        <button class="navbar-toggler list-border" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="sidebar_open()">
-            <img src="/SRSScreenShorts\list.svg" alt="" class="list-img" />
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="tab">
-                <button class="tablinks">
-                    <a asp-controller="Home" asp-action="PatientDashboard">
-                        Dashboard
-                    </a>
-                </button>
-                <button class="tablinks sidebar-active">
-                    <a asp-controller="Home" asp-action="PatientDashboard">
-                        Profile
-                    </a>
-                </button>
-            </div>
-        </div>
-    </nav>
-  
-    <div id="Profile" onload="load()" class="tabcontent">
-        <div class="container ">
-           
-                <a class="backbtn d-flex justify-content-end " asp-controller="Home" asp-action="PatientProfile">
-                <button onclick="myfun1();" class="backbtnn"  >
-                        &lt; Back
-                    </button>
-                </a>
-            
-            <h3 class="">User Profile</h3>
-            <form enctype="multipart/form-data"   class="maincontent shadow p-3 mt-2 ">
-                <div class="">
-                    <h3 class="text1">General Information</h3>
-                   
+        <h3 class="">User Profile</h3>
+        <form enctype="multipart/form-data" asp-action="editprofile"  class="maincontent shadow p-3 mt-2 ">
+            <fieldset disabled id="fieldset">
+            <div class="">
+                      
+                <h3 class="text1">General Information</h3>
+         
                     <div class="row">
                         <div class="form-floating col-sm-6 mt-3 ">
-                            <input type="text" class="form-control floatingInput" placeholder="Firstname" >
+                            <input type="text" asp-for="@Model.FirstOrDefault().FirstName" class="form-control floatingInput" placeholder="Firstname" value="@Model.FirstOrDefault().user.FirstName">
                             <label for="floatingInput" class="mx-2">First Name</label>
-                           @* <span asp-validation-for="FirstName" class="text-danger"></span>*@
+                            @* <span asp-validation-for="FirstName" class="text-danger"></span>*@
                         </div>
                         <div class="form-floating col-sm-6 mt-3 ">
-                            <input type="text" class="form-control floatingInput" placeholder="Last Name" >
+                            <input type="text" class="form-control floatingInput" asp-for="@Model.FirstOrDefault().LastName" placeholder="Last Name" value="@Model.FirstOrDefault().user.LastName">
                             <label for="floatingInput " class="mx-2">Last Name</label>
-                           @* <span asp-validation-for="LastName" class="text-danger"></span>*@
+                            @* <span asp-validation-for="LastName" class="text-danger"></span>*@
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-floating col-sm-6 mt-3">
-                            <input type="date" class="form-control floatingInput" placeholder="Date Of Birth " >
+                            <input type="date" class="form-control floatingInput" placeholder="Date Of Birth " asp-for="@Model.FirstOrDefault().BirthDate">
                             <label for="floatingInput " class="mx-2">Date Of Birth</label>
                             @*<span asp-validation-for="BirthDate" class="text-danger"></span>*@
                         </div>
                         <div class="form-floating col-sm-6 mt-3">
                         </div>
                     </div>
-                </div>
+            </div>
 
-                <h3 class="head2 mt-5 text1">Contact Information</h3>
-                <div class="row ">
+            <h3 class="head2 mt-5 text1">Contact Information</h3>
+            <div class="row ">
                 <div class="form-floating col-sm-6  col-md-2 mt-3 ">
-                        <select class="form-select floatingInput"  placeholder="email" >
-                            <option>Mobile</option>
-                            <option>Phone</option>
+                    <select class="form-select floatingInput" placeholder="email">
+                        <option>Mobile</option>
+                        <option>Phone</option>
                         <option>Telephone</option>
-                        </select>
-                        <label for="emailInput" class="mx-2">Type</label>
-                       @* <span asp-validation-for="Email" class="text-danger"></span>*@
-                    </div>
-                <div class="form-floating col-sm-6 mt-3  col-md-4 phone-code">
-                        <input type="tel" class="form-control phone-input" id="phone" >
-                        @*<span asp-validation-for="PhoneNumber" class="text-danger"></span>*@
-                        <!-- <label for="phone" class="mx-2">(201)555-0123</label> -->
-                    </div>
-                <div class="form-floating col-sm-6  col-md-6 mt-3">
-                        <input type="email" class="form-control floatingInput"  placeholder="email">
-                        <label for="emailInput" class="mx-2">Email</label>
-                    </div>
-                <div class="row hidden-pass">
-                    <div class="form-floating col-sm-6  mt-3 ">
-                        <input type="password" class="form-control floatingInput" placeholder="Password" >
-                        <label for="floatingInput" class="mx-2">Password</label>
-                    </div>
-                    <div class="form-floating col-sm-6 mt-3 " id="emailInput">
-                        <input type="password" class="form-control floatingInput" placeholder="Confirm Password">
-                        <label for="floatingInput" class="mx-2">Confirm Password</label>
-                    </div>
-
+                    </select>
+                    <label for="emailInput" class="mx-2">Type</label>
+                    @* <span asp-validation-for="Email" class="text-danger"></span>*@
                 </div>
+                <div class="form-floating col-sm-6 mt-3  col-md-4 phone-code">
+                        <input type="tel" class="form-control phone-input" id="phone" asp-for="@Model.FirstOrDefault().PhoneNumber" value="@Model.FirstOrDefault().user.Mobile">
+                    @*<span asp-validation-for="PhoneNumber" class="text-danger"></span>*@
+                    <!-- <label for="phone" class="mx-2">(201)555-0123</label> -->
+                </div>
+                <div class="form-floating col-sm-6  col-md-6 mt-3">
+                        <input type="email" class="form-control floatingInput" asp-for="@Model.FirstOrDefault().Email" placeholder="email" value="@Model.FirstOrDefault().user.Email">
+                    <label for="emailInput" class="mx-2">Email</label>
+                </div>
+            
 
                 <h3 class="head3 mt-5 text1">Patient Location</h3>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control floatingInput" placeholder="street" >
+                            <input type="text" class="form-control floatingInput" asp-for="@Model.FirstOrDefault().Street" id="street" placeholder="street" value="@Model.FirstOrDefault().user.Street">
                         <label for="floatingInput" class="mx-2">Street</label>
 
                     </div>
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control floatingInput" placeholder="City" >
+                            <input type="text" class="form-control floatingInput" id="city" asp-for="@Model.FirstOrDefault().City" placeholder="City" value="@Model.FirstOrDefault().user.City">
                         <label for="floatingInput" class="mx-2">City</label>
                     </div>
                 </div>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control floatingInput" placeholder="State">
-                        <label for="floatingInput" class="mx-2">State</label>
+                            <input type="text" class="form-control floatingInput" id="state" asp-for="@Model.FirstOrDefault().State" placeholder="State" value="@Model.FirstOrDefault().user.State">
+                            <label for="floatingInput" class="mx-2">State</label>
                     </div>
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="number" class="form-control floatingInput" placeholder="zipcode" >
+                            <input type="number" class="form-control floatingInput" id="zipcode" asp-for="@Model.FirstOrDefault().ZipCode" placeholder="zipcode" value="@Model.FirstOrDefault().user.ZipCode">
                         <label for="floatingInput" class="mx-2">Zip Code</label>
                     </div>
                 </div>
+            </div>
+                </fieldset>
                 <div class="row ">
+                   
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control floatingInput" placeholder="room">
-                        <label for="floatingInput" class="mx-2">
-                            Room # / Suite (Optional)
-                        </label>
-                    </div>
-                    <div class="form-floating col-sm-6 mt-3 ">
-                        <button class="btn btn-outline-info col-lg-1" >Map</button>
+                            <a class="btn btn-outline-info col-lg-1" id="openBtn">Map</a>
                     </div>
                 </div>
-
-                
                 <div class="mt-3 d-flex justify-content-end  ">
 
-                    <button class="Submit col-sm-3" type="submit">Edit</button>
-                    
+                <a class="btn btn-info col-sm-3 col-md-2" id="edit" onclick="edit()">Edit</a>
+                <button type="submit"><a class="btn btn-info col-sm-3 col-md-2 d-none me-2" id="save">Save</a></button>
+                <a class="btn btn-info col-sm-3 col-md-2 d-none" id="cancel" onclick="cancel()">Cancel</a>
                 </div>
-            </form>
-    </div>
-        
-   
-   
+  
+        </form>
+
+
+        </div>
 </div>
 
+<script>
+   
+    document.getElementById("edit").addEventListener('click', () => {
+
+
+        document.getElementById("fieldset").removeAttribute("disabled");
+        document.getElementById("save").classList.remove("d-none");
+        document.getElementById("cancel").classList.remove("d-none");
+        document.getElementById("edit").classList.add("d-none");
+    });
+    document.getElementById("cancel").addEventListener('click', () => {
+        document.getElementById("fieldset").setAttribute("disabled", "");
+        document.getElementById("save").classList.add("d-none");
+        document.getElementById("cancel").classList.add("d-none");
+        document.getElementById("edit").classList.remove("d-none");
+    });
+    </script>

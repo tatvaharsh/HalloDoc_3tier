@@ -37,4 +37,6 @@ public partial class RequestWiseFile
     public virtual Physician? Physician { get; set; }
 
     public virtual Request Request { get; set; } = null!;
+
+    
 }

@@ -12,6 +12,7 @@
     <Compile Remove="Views\Home\patient_forgot_password.cshtml.cs" />
     <Compile Remove="Views\Home\patient_for_pass.cshtml.cs" />
     <Compile Remove="Views\Home\patient_login.cshtml.cs" />
+    <Compile Remove="Views\Home\SubmitForMe.cs" />
   </ItemGroup>
 
   <ItemGroup>
