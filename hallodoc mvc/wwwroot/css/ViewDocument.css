@@ -89,10 +89,10 @@ a:hover {
     width: 100%;
 }
 
-input[type="file"] {
+/*input[type="file"] {
     display: none;
 }
-
+*/
 .custom-file-upload {
     display: flex;
     justify-content: center;
@@ -305,6 +305,7 @@ th {
 
 @media screen and (max-width:505px) {
     .custom-file-upload {
+        flex-basis: 20%;
         flex-basis: 20%;
         height: 41px;
     }

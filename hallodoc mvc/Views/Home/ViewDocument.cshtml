@@ -94,103 +94,180 @@
                     <span class="pt-name-text dark-text">Patient Name</span>
                     <div class="pt-name">Harsh Mehta<span class="con_num dark-text">(MD051023TETE0001)</span></div>
                     <span class="upload-desc dark-text">Check here for any files that you or doctors of your subsequents requestors have attatched for you to review.</span>
-                    <div class="file-upload symptoms-textarea">
-                        <div class="form-floating mb-3 inp col-lg-6 col-md-6 col-sm-12 upload-form">
-                            <input type="text" class="form-control" id="file-upload" disabled>
-                            <label for="file-upload" class="upload-label dob-label" id="form-label">Select File</label>
-                        </div>
-                        <label class="custom-file-upload">
-                            <input type="file" onchange="getFileData(this)" id="FileUpload" asp-action="FileUpload" multiple="multiple" asp-for="File" />
-                            <img src="/SRSScreenShorts/cloud-upload-icon.svg" alt="" class="file-upload-img">
-                            <span class="upload-text">
-                                Upload
-                            </span>
-                        </label>
+                
+                   @* <form asp-action="FileUpload" asp-controller="Home" asp-route-id="@Model.RequestId" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="mb-3 inp col-lg-6 col-md-6 col-sm-12 upload-form">
+                                <input type="file" class="form-control visually-hidden w-100 h-100" id="file-upload" asp-for="File" multiple="multiple" name="File">
+                                <label for="file-upload" class="border d-flex align-items-center ps-4 upload-label dob-label w-100 h-100" id="form-label">Select File</label>
+                            </div>
+                            <button type="submit" class="custom-file-upload">
+                               
 
-                    </div>
-                    <div class="middle-part">
-                        <span class="main-heading document-main dark-heading-text" id="main-heading">Documents</span>
-                        <a class="back-btn download-text" asp-controller="Home" asp-action="PatientDashboard">
-                            <span class="back-text">Download All</span>
-                        </a>
-                        <a class="logout-mob download-mob " asp-controller="Home" asp-action="PatientLogin">
-                            <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
-                        </a>
-                    </div>
+                                <img src="/SRSScreenShorts/cloud-upload-icon.svg" alt="" class="file-upload-img">
+                                <span class="upload-text">
+                                    Upload
+                                </span>
+                              
+                            </button>
+                        </div>
+
+                    </form>*@
+                    <form asp-action="FileUpload" asp-controller="Home" asp-route-id="@Model.RequestId" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="mb-3 inp  col-lg-11 upload-form">
+                                <button type="submit" style="position:absolute; right:15%;" class="custom-file-upload">
+
+
+                                    <img src="/SRSScreenShorts/cloud-upload-icon.svg" alt="" class="file-upload-img">
+                                    <span class="upload-text">
+                                        Upload
+                                    </span>
+
+                                </button>
+                                <input type="file" class="form-control visually-hidden w-100 h-100" id="file-upload" onchange="getFileData(this)" asp-for="File" multiple="multiple" name="File">
+                                <label for="file-upload" class="border d-flex align-items-center ps-4 upload-label dob-label w-100 h-100" id="form-label">Select File</label>
+                            </div>
+                            
+                        </div>
+
+                    </form>
 
                 </div>
-                <form class="desktop-table">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th><input type="checkbox" class="checkbox-main" name="selectall" onchange="tickAll()" /></th>
-                                <th>Uploader</th>
-                                <th>Upload Date &uparrow; </th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in ViewBag.reqwfiles)
-                                {
-                                    <tr>
-                                    <td><input type="checkbox" class="checkbox-main" name="selectall" onchange="tickAll()" /> @item.FileName</td>
-                                    <td>@ViewBag.username</td>
-                                
-                                    <td>
-                                        @item.CreatedDate.ToString("MMMM dd,yyyy")
-                                        
-                                    </td>
-                                     <td>
-                                         <div class="outer-div">
-                                         <a  class="downld-btn" asp-controller="Home" asp-action="Download" asp-route-id="@item.RequestWiseFileId">
-                                        <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
-                                        </a>
-                                         </div>
-                                     </td>
-                                </tr>
+                <div class="middle-part">
+                    <span class="main-heading document-main dark-heading-text" id="main-heading">Documents</span>
+                    <a class="back-btn download-text" onclick="downloadFile()">
+                        <span class="back-text">Download All</span>
+                    </a>
+                    <a class="logout-mob download-mob ">
+                        <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
+                    </a>
+                </div>
 
-                            }
-                           
-                        </tbody>
-                    </table>
-                    <div class="mob-documents">
-                        <span class="mob-component">
-                            <div class="first-col">
-                                <input type="checkbox" name="Mark" onchange="allCheck()" /><span class="document-combo mob-doc-name"><img src="~/SRSScreenShorts/file-earmark-pdf-fill.svg" /><span class="document-name mob-text dark-text">file(1).pdf</span></span>
-                            </div>
-                            <span class="document-name mob-text mob-date dark-text">Mark</span>
-                            <span class="document-name mob-text mob-date dark-text">Otto</span>
-                            <a class="downld-btn mob-download" asp-controller="Homw" asp-action="PatientLogin">
-                                <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
-                            </a>
-                        </span>
-                        <span class="mob-component">
-                            <div class="first-col">
-                                <input type="checkbox" name="Mark1" onchange="allCheck()" /><span class="document-combo mob-doc-name"><img src="~/SRSScreenShorts/file-earmark-pdf-fill.svg" /><span class="document-name mob-text dark-text">file(2).docx</span></span>
-                            </div>
-                            <span class="document-name mob-text mob-date dark-text">Mark1</span>
-                            <span class="document-name mob-text mob-date dark-text">Otto1</span>
-                            <a class="downld-btn mob-download" asp-controller="Patient" asp-action="PatientLogin">
-                                <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
-                            </a>
-                        </span>
-                        <span class="mob-component">
-                            <div class="first-col">
-                                <input type="checkbox" name="Mark2" onchange="allCheck()" /><span class="document-combo mob-doc-name dark-text"><img src="~/SRSScreenShorts/file-earmark-pdf-fill.svg" /><span class="document-name mob-text">file(3).xlsx</span></span>
-                            </div>
-                            <span class="document-name mob-text mob-date dark-text">Mark2</span>
-                            <span class="document-name mob-text mob-date dark-text">Otto2</span>
-                            <a class="downld-btn mob-download" asp-controller="Patient" asp-action="PatientLogin">
-                                <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
-                            </a>
-                        </span>
-                    </div>
-                </form>
             </div>
+            <form class="desktop-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="checkboxes" id="checkall" name="selectall" onchange="oncheck()" /></th>
+                            <th>Uploader</th>
+                            <th>Upload Date &uparrow; </th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.reqwfiles)
+                        {
+                            <tr>
+                                <td><input type="checkbox" class="checkboxes Subcheckbox" value="@item.FileName" data-filename="@item.FileName" name="selectall"   /> @item.FileName</td>
+                                <td>@ViewBag.username</td>
+
+                                <td>
+                                    @item.CreatedDate.ToString("MMMM dd,yyyy")
+
+                                </td>
+                                <td>
+                                    <div class="outer-div">
+                                        <a class="downld-btn" asp-controller="Home" asp-action="Download" asp-route-id="@item.RequestWiseFileId">
+                                            <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        }
+
+                    </tbody>
+                </table>
+                <div class="mob-documents">
+                    <span class="mob-component">
+                        <div class="first-col">
+                            <input type="checkbox" name="Mark" onchange="allCheck()" /><span class="document-combo mob-doc-name"><img src="~/SRSScreenShorts/file-earmark-pdf-fill.svg" /><span class="document-name mob-text dark-text">file(1).pdf</span></span>
+                        </div>
+                        <span class="document-name mob-text mob-date dark-text">Mark</span>
+                        <span class="document-name mob-text mob-date dark-text">Otto</span>
+                        <a class="downld-btn mob-download" asp-controller="Homw" asp-action="PatientLogin">
+                            <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
+                        </a>
+                    </span>
+                    <span class="mob-component">
+                        <div class="first-col">
+                            <input type="checkbox" name="Mark1" onchange="allCheck()" /><span class="document-combo mob-doc-name"><img src="~/SRSScreenShorts/file-earmark-pdf-fill.svg" /><span class="document-name mob-text dark-text">file(2).docx</span></span>
+                        </div>
+                        <span class="document-name mob-text mob-date dark-text">Mark1</span>
+                        <span class="document-name mob-text mob-date dark-text">Otto1</span>
+                        <a class="downld-btn mob-download" asp-controller="Patient" asp-action="PatientLogin">
+                            <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
+                        </a>
+                    </span>
+                    <span class="mob-component">
+                        <div class="first-col">
+                            <input type="checkbox" name="Mark2" onchange="allCheck()" /><span class="document-combo mob-doc-name dark-text"><img src="~/SRSScreenShorts/file-earmark-pdf-fill.svg" /><span class="document-name mob-text">file(3).xlsx</span></span>
+                        </div>
+                        <span class="document-name mob-text mob-date dark-text">Mark2</span>
+                        <span class="document-name mob-text mob-date dark-text">Otto2</span>
+                        <a class="downld-btn mob-download" asp-controller="Patient" asp-action="PatientLogin">
+                            <img id="logout" src="~/SRSScreenShorts/cloud-arrow-down.svg" alt="" class="logout-img" />
+                        </a>
+                    </span>
+                </div>
+            </form>
         </div>
     </div>
+</div>
 
 
 
 </div>
+<script>
+    const getFileData = (myFile) => {
+        var file = myFile.files[0];
+        var filename = file.name;
+        document.getElementById("form-label").innerHTML = `${filename}`;
+    }
+    function oncheck() {
+      
 
+        var check = document.getElementById('checkall').checked;
+        if (check) {
+            var len = document.getElementsByClassName('checkboxes');
+            for (var i = 0; i < len.length; i++) {
+                len[i].checked = true;
+            }
+        } else {
+            var len = document.getElementsByClassName('checkboxes');
+            for (var i = 0; i < len.length; i++) {
+                len[i].checked = false;
+            }
+        }
+        console.log(check);
+    }
+    function downloadFile() {
+        var checkboxes = document.querySelectorAll('.Subcheckbox:checked');
+        var filenames = [];
+
+        checkboxes.forEach(function (checkbox) {
+            filenames.push(checkbox.getAttribute('data-filename'));
+        });
+
+        if (filenames.length > 0) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Home/DownloadFiles', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.responseType = 'blob';
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    var blob = new Blob([this.response], { type: 'application/octet-stream' });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'selected_files.zip';
+                    link.click();
+                }
+            };
+            xhr.send(JSON.stringify(filenames));
+        } else {
+            alert('Please select one or more files to download.');
+        }
+    }
+
+</script>

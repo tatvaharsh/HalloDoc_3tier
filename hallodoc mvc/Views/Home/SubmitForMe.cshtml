@@ -9,7 +9,38 @@
 
     <div class="main">
 
-      
+        <!-----------modal---------------------------->
+        <div class="modal" id="myModal1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <section>
+                        <div class="mapouter">
+                            <div class="gmap_canvas">
+                                <iframe width="600" height="500" id="gmap_canvas" src="" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+
+                                    <!-- </iframe><a href="https://123movies-to.org">123 movies</a><br> -->
+                                    <style>
+                                        .mapouter {
+                                            position: relative;
+                                            text-align: right;
+                                            height: 500px;
+                                            width: 600px;
+                                        }</style>
+                                    <!-- <a href="https://www.embedgooglemap.net">embedgooglemap.net</a> -->
+                                    <style>
+                                        .gmap_canvas {
+                                            overflow: hidden;
+                                            background: none !important;
+                                            height: 500px;
+                                            width: 600px;
+                                        }
+                                    </style>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -32,7 +63,7 @@
                     </button>
                 </a>
             </div>
-            <form asp-action="patient_form" asp-controller="Home" class="maincontent shadow p-3 ">
+            <form asp-action="ForMe" asp-controller="Home" method="post"  class="maincontent shadow p-3 ">
                 <div class="">
                     <h3 class="text1">Patient Information</h3>
                     <div class="form-floating mt-3">
@@ -42,21 +73,21 @@
                     </div>
                     <div class="row">
                         <div class="form-floating col-sm-6 mt-3 ">
-                            <input type="text" class="form-control floatingInput" placeholder="Firstname" asp-for="FirstName">
+                            <input type="text" class="form-control floatingInput" placeholder="Firstname" asp-for="FirstName" value="@Model.FirstName">
                             <label for="floatingInput" class="mx-2">First Name</label>
-                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                           @* <span asp-validation-for="FirstName" class="text-danger"></span>*@
                         </div>
                         <div class="form-floating col-sm-6 mt-3 ">
                             <input type="text" class="form-control floatingInput" placeholder="Last Name" asp-for="LastName">
                             <label for="floatingInput " class="mx-2">Last Name</label>
-                            <span asp-validation-for="LastName" class="text-danger"></span>
+                           @* <span asp-validation-for="LastName" class="text-danger"></span>*@
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-floating col-sm-6 mt-3">
                             <input type="date" class="form-control floatingInput" placeholder="Date Of Birth " asp-for="BirthDate">
                             <label for="floatingInput " class="mx-2">Date Of Birth</label>
-                            <span asp-validation-for="BirthDate" class="text-danger"></span>
+                           @* <span asp-validation-for="BirthDate" class="text-danger"></span>*@
                         </div>
                         <div class="form-floating col-sm-6 mt-3">
                         </div>
@@ -68,11 +99,11 @@
                     <div class="form-floating col-sm-6 mt-3 ">
                         <input type="email" class="form-control floatingInput" id="emailInput" placeholder="email" asp-for="Email">
                         <label for="emailInput" class="mx-2">Email</label>
-                        <span asp-validation-for="Email" class="text-danger"></span>
+              @*          <span asp-validation-for="Email" class="text-danger"></span>*@
                     </div>
                     <div class="form-floating col-sm-6 mt-3 phone-code">
                         <input type="tel" class="form-control phone-input" id="phone" asp-for="PhoneNumber">
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                       @* <span asp-validation-for="PhoneNumber" class="text-danger"></span>*@
                         <!-- <label for="phone" class="mx-2">(201)555-0123</label> -->
                     </div>
                 </div>
@@ -91,22 +122,22 @@
                 <h3 class="head3 mt-5 text1">Patient Location</h3>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control floatingInput" placeholder="street" asp-for="Street">
+                        <input type="text" class="form-control floatingInput" id="street" placeholder="street" asp-for="Street">
                         <label for="floatingInput" class="mx-2">Street</label>
 
                     </div>
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control floatingInput" placeholder="City" asp-for="City">
+                        <input type="text" class="form-control floatingInput" id="city" placeholder="City" asp-for="City">
                         <label for="floatingInput" class="mx-2">City</label>
                     </div>
                 </div>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control floatingInput" placeholder="State" asp-for="State">
+                        <input type="text" class="form-control floatingInput" id="state" placeholder="State" asp-for="State">
                         <label for="floatingInput" class="mx-2">State</label>
                     </div>
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="number" class="form-control floatingInput" placeholder="zipcode" asp-for="ZipCode">
+                        <input type="number" class="form-control floatingInput" id="zipcode" placeholder="zipcode" asp-for="ZipCode">
                         <label for="floatingInput" class="mx-2">Zip Code</label>
                     </div>
                 </div>
@@ -118,10 +149,11 @@
                         </label>
                     </div>
                     <div class="form-floating col-3 mt-3 ">
-                        <button class="location  mt-1"  type="button">
+                        <a class="btn btn-outline-info col-lg-5" id="openBtn"> <img class="map-img" src="/SRSScreenShorts/geo-alt.svg" alt="">Map</a>
+                        @*<button class="location  mt-1" id="openBtn " type="button">
                             <img class="map-img"  src="/SRSScreenShorts/geo-alt.svg" alt="">
                             <span class="map-text">Map</span>
-                        </button>
+                        </button>*@
                     </div>
                 </div>
 
@@ -154,5 +186,6 @@
 
     </div>
     <script src="~/js/patient_form.js"></script>
+    
  
 </body>

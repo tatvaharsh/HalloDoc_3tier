@@ -19,6 +19,12 @@
 //    }
 
 //}
+
+
+
+
+
+
 function sidebar_open() {
     if (document.getElementById("mySidebar").offsetWidth == 0) {
         document.getElementById("mySidebar").style.width = "200px";

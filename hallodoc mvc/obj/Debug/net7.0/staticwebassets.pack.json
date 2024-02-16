@@ -969,6 +969,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\20171011060905_Training.pptx",
+      "PackagePath": "staticwebassets\\uplodedfiles\\20171011060905_Training.pptx"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\FDSDFDHalloDoc_Schema (2).ods",
       "PackagePath": "staticwebassets\\uplodedfiles\\FDSDFDHalloDoc_Schema (2).ods"
     },
@@ -991,6 +995,18 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\FDSDFDsdadsdff.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\FDSDFDsdadsdff.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\MVC.pdf",
+      "PackagePath": "staticwebassets\\uplodedfiles\\MVC.pdf"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\cloud-upload-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\cloud-upload-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\cvcxvcvcvcxvcloud-arrow-down.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\cvcxvcvcvcxvcloud-arrow-down.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dfgfdfdsg.msi",
@@ -1021,8 +1037,16 @@
       "PackagePath": "staticwebassets\\uplodedfiles\\dsadasd.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dsadsafile-earmark-pdf-fill.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\dsadsafile-earmark-pdf-fill.svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\fdsdfs.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\fdsdfs.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\geo-alt.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\geo-alt.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\sadsa.svg",

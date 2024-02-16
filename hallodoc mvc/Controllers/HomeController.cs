@@ -1,10 +1,10 @@
-﻿
-using HalloDoc.Models;
+﻿using HalloDoc.Models;
 using hallodoc_mvc.Models;
 using HalloDocMvc.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.IO.Compression;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -59,6 +59,7 @@ namespace hallodoc_mvc.Controllers
                     {
                         HttpContext.Session.SetInt32("Userid", userobj.UserId);
                         HttpContext.Session.SetString("Username", userobj.FirstName + " " + userobj.LastName);
+                        ViewBag.username = userobj.FirstName + " " + userobj.LastName;
                         return RedirectToAction("PatientDashboard");
                     }
                     else
@@ -148,7 +149,7 @@ namespace hallodoc_mvc.Controllers
                     Street = model.Street,
                     IntDate = model.BirthDate.Day,
                     IntYear = model.BirthDate.Year,
-                    StrMonth = (model.BirthDate.Month).ToString("MMM"),
+                    StrMonth = model.BirthDate.ToString("MMM"),
                     CreatedDate = DateTime.Now,
                     CreatedBy = aspnetuser1.Id
                 };
@@ -570,6 +571,8 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
+     
+
         [HttpGet]
         public async Task<IActionResult> PatientDashboard()
         {
@@ -580,7 +583,7 @@ namespace hallodoc_mvc.Controllers
             }
 
             var req = _context.Requests.Where(u => u.UserId == HttpContext.Session.GetInt32("Userid")).ToList();
-            ViewBag.username = HttpContext.Session.GetString("Username");
+            
             ViewBag.data = req;
             //ViewBag.username = HttpContext.Session.GetString("username");
 
@@ -597,16 +600,84 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
 
+      
+
         public IActionResult SubmitSomeoneElse()
         {
             return View();
         }
 
-        public IActionResult SubmitForMe()
-        {
 
-            return View();
+        [HttpGet]
+        public IActionResult SubmitForMe(patient_form pf)
+        {
+            var user1 = HttpContext.Session.GetInt32("Userid");
+            var req = _context.Users.FirstOrDefault(u => u.UserId == user1);
+
+            pf.FirstName = req.FirstName;
+            pf.LastName = req.LastName;
+            pf.Email = req.Email;
+            pf.City = req.City;
+            pf.Street   = req.Street;
+            pf.City = req.City;
+            pf.State = req.State;
+            pf.ZipCode = req.ZipCode;
+            
+
+            
+            return View(pf);
         }
+
+        [HttpPost]
+        public IActionResult ForMe(patient_form req)
+        {
+            var user1 = HttpContext.Session.GetInt32("Userid");
+           
+
+            Request request = new Request
+            {
+                RequestTypeId = 2,
+                UserId = user1,
+                FirstName = req.FirstName,
+                LastName = req.LastName,
+                PhoneNumber = req.PhoneNumber,
+                Email = req.Email,
+                CreatedDate = DateTime.Now,
+                Status = 1,
+
+            };
+
+            _context.Requests.Add(request);
+             _context.SaveChanges();
+
+            RequestClient requestclient = new RequestClient
+            {
+
+                RequestId = request.RequestId,
+                FirstName = req.FirstName,
+                LastName = req.LastName,
+                PhoneNumber = req.PhoneNumber,
+                Email = req.Email,
+                Location = req.City,
+                Address = req.Street,
+
+                IntDate = req.BirthDate.Day,
+                StrMonth = req.BirthDate.Month.ToString(),
+                IntYear = req.BirthDate.Year,
+                Street = req.Street,
+                City = req.City,
+                State = req.State,
+                ZipCode = req.ZipCode,
+
+            };
+
+            _context.RequestClients.Add(requestclient);
+             _context.SaveChanges();
+
+
+            return RedirectToAction("PatientProfile");
+        }
+
         [HttpGet]
         public IActionResult PatientProfile()
         {
@@ -620,6 +691,7 @@ namespace hallodoc_mvc.Controllers
             });
             return View(pp);
         }
+
 
         public IActionResult editProfile(PatientProfile model)
         {
@@ -646,6 +718,7 @@ namespace hallodoc_mvc.Controllers
             asp.PhoneNumber = model.PhoneNumber;
             _context.AspNetUsers.Update(asp);
             _context.SaveChanges();
+            HttpContext.Session.SetString("Username", model.FirstName + " " + model.LastName);
 
             return RedirectToAction("PatientProfile");
         }
@@ -655,9 +728,63 @@ namespace hallodoc_mvc.Controllers
         {
             ViewBag.username = HttpContext.Session.GetString("Username");
             ViewBag.reqwfiles = _context.RequestWiseFiles.Where(u => u.RequestId == id).ToList();
+            ViewDocument viewDocument = new ViewDocument();
+            viewDocument.RequestId = id;
+
+            return View(viewDocument);
+        }
+
+        [HttpPost]
+        public ActionResult DownloadFiles([FromBody] string[] filenames)
+        {
+
+            System.Diagnostics.Debug.WriteLine(filenames);
+            string repositoryPath = @"D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\wwwroot\uplodedfiles";
+            using (MemoryStream zipStream = new MemoryStream())
+            {
+                using (ZipArchive zipArchive = new ZipArchive(zipStream, ZipArchiveMode.Create, true))
+                {
+                    foreach (string filename in filenames)
+                    {
+                       
+                        string filePath = Path.Combine(repositoryPath, filename);
+                        System.Diagnostics.Debug.WriteLine(filePath + "/*/*/*/*/*/*/*/*/*/*/*");
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            zipArchive.CreateEntryFromFile(filePath, filename);
+                        }
+                        else
+                        {
+                        }
+                    }
+                }
+                zipStream.Seek(0, SeekOrigin.Begin);
+                return File(zipStream.ToArray(), "application/zip", "selected_files.zip");
+            }
+        }
 
 
-            return View();
+        [HttpPost]
+        public IActionResult FileUpload(int id, [FromForm]List<IFormFile> File)
+        {
+            foreach (IFormFile files in File)
+            {
+                string filename = files.FileName;
+                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\", filename);
+                using (FileStream stream = new FileStream(path, FileMode.Create))
+                {
+                    files.CopyToAsync(stream).Wait();
+                }
+
+
+                RequestWiseFile requestWiseFile = new RequestWiseFile();
+                requestWiseFile.FileName = filename;
+                requestWiseFile.RequestId = id;
+                requestWiseFile.DocType = 1;
+                _context.RequestWiseFiles.Add(requestWiseFile);
+                _context.SaveChanges();
+            }
+            return RedirectToAction(nameof(ViewDocument), new {id=id});
         }
 
         public IActionResult Download(int id)

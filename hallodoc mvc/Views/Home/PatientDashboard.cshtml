@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<hallodoc_mvc.Models.Request>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
 
 @{
     ViewBag.cssLink1 = "~/css/patient_dashboard.css";
@@ -15,7 +17,7 @@
     <div class="navbar-custom">
             <img src="/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" alt="" class="logo" />
         <div class="right-side-elements">
-            <span class="welcome-text">Welcome <span class="name-text">@ViewBag.username</span></span>
+            <span class="welcome-text">Welcome <span class="name-text">@Accessor.HttpContext.Session.GetString("Username")</span></span>
             <a class="logout log" asp-controller="Home" asp-action="patient_login">
                 <span class="logout-text">Logout</span>
             </a>
@@ -167,100 +169,15 @@
 
             <!-- Table Mobile - Accordian -->
             <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                <img src="/SRSScreenShorts\clock.svg" alt="" class="accordion-img"> <span class="accordion-heading">
-                                Created
-                                Date: <span class="accordion-value">Sept 27, 2023</span>
-                            </span>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body main-flex">
-                            <div class="inner-flex">
-                                    <img src="/SRSScreenShorts\person-circle.svg" alt="" class="accordion-img-inner">
-                                <span class="accordion-heading-inner">
-                                    Provider :
-                                    <span class="accordion-value-inner">-</span>
-                                </span>
-                            </div>
-                            <div class="inner-flex">
-                                    <img src="/SRSScreenShorts\success-icon.svg" alt="" class="accordion-img-inner"> <span class="accordion-heading-inner">
-                                    Current
-                                    Status: <span class="accordion-value-inner">Accepted</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                <img src="/SRSScreenShorts\clock.svg" alt="" class="accordion-img"> <span class="accordion-heading">
-                                Created
-                                Date: <span class="accordion-value">Aug 4, 2023</span>
-                            </span>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body main-flex">
-                            <div class="inner-flex">
-                                    <img src="/SRSScreenShorts\person-circle.svg" alt="" class="accordion-img-inner">
-                                <span class="accordion-heading-inner">
-                                    Provider :
-                                    <span class="accordion-value-inner">-</span>
-                                </span>
-                            </div>
-                            <div class="inner-flex">
-                                    <img src="/SRSScreenShorts\success-icon.svg" alt="" class="accordion-img-inner"> <span class="accordion-heading-inner">
-                                    Current
-                                    Status: <span class="accordion-value-inner">Processing</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                <img src="/SRSScreenShorts\clock.svg" alt="" class="accordion-img"> <span class="accordion-heading">
-                                Created
-                                Date: <span class="accordion-value">Aug 4, 2023</span>
-                            </span>
-                        </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
-                         data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body main-flex">
-                            <div class="inner-flex">
-                                    <img src="/SRSScreenShorts\person-circle.svg" alt="" class="accordion-img-inner">
-                                <span class="accordion-heading-inner">
-                                    Provider :
-                                    <span class="accordion-value-inner">-</span>
-                                </span>
-                            </div>
-                            <div class="inner-flex">
-                                    <img src="/SRSScreenShorts\success-icon.svg" alt="" class="accordion-img-inner"> <span class="accordion-heading-inner">
-                                    Current
-                                    Status: <span class="accordion-value-inner">Processing</span>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
+                    @foreach(var item in ViewBag.data)
+                    {
+                    <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
                                 <img src="/SRSScreenShorts\clock.svg" alt="" class="accordion-img"> <span class="accordion-heading">
                                 Created
-                                Date: <span class="accordion-value">May 10, 2023</span>
+                                        Date: <span class="accordion-value">@item.CreatedDate.ToString("MMMM dd,yyyy")</span>
                             </span>
                         </button>
                     </h2>
@@ -277,15 +194,23 @@
                             <div class="inner-flex">
                                     <img src="/SRSScreenShorts\success-icon.svg" alt="" class="accordion-img-inner"> <span class="accordion-heading-inner">
                                     Current
-                                    Status: <span class="accordion-value-inner">Closed</span>
+                                            Status: <span class="accordion-value-inner">
+                                                @if (item.Status == 1)
+                                                {
+                                                    <p>Unassigned</p>
+                                                }
+                                            </span>
                                 </span>
                             </div>
+
                             <a class="document-mob" asp-controller="Home" asp-action="ViewDocument">
                                 <span class="logout-text">(1) Documents</span>
                             </a>
                         </div>
                     </div>
                 </div>
+                        
+                    }
             </div>
         </div>
     </div>

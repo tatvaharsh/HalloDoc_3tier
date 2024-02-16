@@ -16,7 +16,7 @@ $(document).ready(function () {
         $("#gmap_canvas").attr("src", address);
     });
 });
-
+ 
 
 var element = document.body;
 if (localStorage.getItem("theme") == null) {
