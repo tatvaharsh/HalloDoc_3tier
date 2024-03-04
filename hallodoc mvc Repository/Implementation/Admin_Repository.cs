@@ -197,9 +197,6 @@ namespace hallodoc_mvc_Repository.Implementation
             return reqdoc;
         }
 
-        //public List<Region> GetPhyByRegion(int id, ModalData md)
-        //{
-        //    return _context.Regions.Include(x=>x.phy)
-        //}
+
     }
 }
