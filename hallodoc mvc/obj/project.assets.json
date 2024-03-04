@@ -640,6 +640,23 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Http.Features/5.0.17": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Primitives": "5.0.1",
+          "System.IO.Pipelines": "5.0.2"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Razor.Language/6.0.11": {
         "type": "package",
         "compile": {
@@ -3933,6 +3950,34 @@
             "related": ".xml"
           }
         }
+      },
+      "hallocdoc_mvc_Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.17",
+          "hallodoc mvc Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/hallocdoc_mvc_Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/hallocdoc_mvc_Service.dll": {}
+        }
+      },
+      "hallodoc mvc Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "5.0.17",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11"
+        },
+        "compile": {
+          "bin/placeholder/hallodoc mvc Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/hallodoc mvc Repository.dll": {}
+        }
       }
     }
   },
@@ -4719,6 +4764,25 @@
         "lib/netstandard1.0/zh-Hant/Humanizer.resources.dll",
         "lib/netstandard2.0/zh-Hant/Humanizer.resources.dll",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNetCore.Http.Features/5.0.17": {
+      "sha512": "3jG2xS+dx8DDCGV/F+STdPTg89lX3ao3dF/VEPvJaz3wzBIjuadipTtYNEXDIVuOPZwb6jdmhrX9jkzOIBm5cw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.http.features/5.0.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/net461/Microsoft.AspNetCore.Http.Features.xml",
+        "lib/net5.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Http.Features.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.xml",
+        "microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+        "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Razor.Language/6.0.11": {
@@ -11375,15 +11439,27 @@
         "xunit.extensibility.execution.2.6.6.nupkg.sha512",
         "xunit.extensibility.execution.nuspec"
       ]
+    },
+    "hallocdoc_mvc_Service/1.0.0": {
+      "type": "project",
+      "path": "../hallocdoc mvc Service/hallocdoc_mvc_Service.csproj",
+      "msbuildProject": "../hallocdoc mvc Service/hallocdoc_mvc_Service.csproj"
+    },
+    "hallodoc mvc Repository/1.0.0": {
+      "type": "project",
+      "path": "../hallodoc mvc Repository/hallodoc mvc Repository.csproj",
+      "msbuildProject": "../hallodoc mvc Repository/hallodoc mvc Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Microsoft.AspNetCore.Http.Features >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.15",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.15",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.11",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.11",
+      "hallocdoc_mvc_Service >= 1.0.0",
       "xunit.extensibility.execution >= 2.6.6"
     ]
   },
@@ -11414,7 +11490,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallocdoc mvc Service\\hallocdoc_mvc_Service.csproj": {
+              "projectPath": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallocdoc mvc Service\\hallocdoc_mvc_Service.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -11427,6 +11507,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": {
+            "target": "Package",
+            "version": "[5.0.17, )"
+          },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",

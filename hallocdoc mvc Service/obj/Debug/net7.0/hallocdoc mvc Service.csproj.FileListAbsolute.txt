@@ -1,0 +1,17 @@
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc mvc Service.deps.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc mvc Service.runtimeconfig.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc mvc Service.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc mvc Service.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallodoc mvc Repository.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallodoc mvc Repository.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc mvc Service.csproj.AssemblyReference.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc mvc Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc mvc Service.AssemblyInfoInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc mvc Service.AssemblyInfo.cs
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc mvc Service.csproj.CoreCompileInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc mvc Service.csproj.CopyComplete
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc mvc Service.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\refint\hallocdoc mvc Service.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc mvc Service.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc mvc Service.genruntimeconfig.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\ref\hallocdoc mvc Service.dll

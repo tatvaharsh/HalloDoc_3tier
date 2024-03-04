@@ -1,4 +1,4 @@
-﻿@model hallodoc_mvc.Models.ViewDocument;
+﻿@model ViewDocument;
 
 
 @{
@@ -36,7 +36,7 @@
 
     <div id="mySidebar" class="sidebar">
         <div class="tab sidebar-tab">
-            <span class="mob-welcome-text">Welcome <span class="mob-name-text">Tests Testing</span></span>
+            <span class="mob-welcome-text">Welcome <span class="mob-name-text">@ViewBag.username</span></span>
             <button class="tablinks sidebar-tablinks mobile-sidebar-active">
                 <a asp-controller="Patient" asp-action="PatientDashboard" class="mobile-sidebar-a">
                     Dashboard
@@ -92,7 +92,7 @@
 
                 <div id="Dashboard" class="main-content">
                     <span class="pt-name-text dark-text">Patient Name</span>
-                    <div class="pt-name">Harsh Mehta<span class="con_num dark-text">(MD051023TETE0001)</span></div>
+                    <div class="pt-name">@ViewBag.username<span class="con_num dark-text">@Model.Confirmationnumber</span></div>
                     <span class="upload-desc dark-text">Check here for any files that you or doctors of your subsequents requestors have attatched for you to review.</span>
                 
                    @* <form asp-action="FileUpload" asp-controller="Home" asp-route-id="@Model.RequestId" enctype="multipart/form-data">
@@ -252,7 +252,7 @@
 
         if (filenames.length > 0) {
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/Home/DownloadFiles', true);
+            xhr.open('POST', '/Home/DownloadFiles/@Model.RequestId', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.responseType = 'blob';
             xhr.onload = function () {

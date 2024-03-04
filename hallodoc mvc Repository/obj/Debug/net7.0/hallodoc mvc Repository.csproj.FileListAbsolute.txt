@@ -1,0 +1,14 @@
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\bin\Debug\net7.0\hallodoc mvc Repository.deps.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\bin\Debug\net7.0\hallodoc mvc Repository.runtimeconfig.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\bin\Debug\net7.0\hallodoc mvc Repository.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\bin\Debug\net7.0\hallodoc mvc Repository.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\hallodoc mvc Repository.csproj.AssemblyReference.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\hallodoc mvc Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\hallodoc mvc Repository.AssemblyInfoInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\hallodoc mvc Repository.AssemblyInfo.cs
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\hallodoc mvc Repository.csproj.CoreCompileInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\hallodoc mvc Repository.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\refint\hallodoc mvc Repository.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\hallodoc mvc Repository.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\hallodoc mvc Repository.genruntimeconfig.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc Repository\obj\Debug\net7.0\ref\hallodoc mvc Repository.dll

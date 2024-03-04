@@ -9,12 +9,15 @@ function toggle() {
     if (localStorage.getItem("theme") == "light") {
         document.documentElement.setAttribute('data-bs-theme', 'dark')
         localStorage.setItem("theme", "dark");
-
+       /* document.getElementById('adminnav').classList.toggle('bg-secondary');*/
+        //document.getElementById('adminnav').classList.toggle('bg-white');
 
     }
     else {
         document.documentElement.setAttribute('data-bs-theme', 'light');
         localStorage.setItem("theme", "light");
+       /* document.getElementById('adminnav').classList.toggle('bg-secondary');*/
+        //document.getElementById('adminnav').classList.toggle('bg-white');
 
     }
 

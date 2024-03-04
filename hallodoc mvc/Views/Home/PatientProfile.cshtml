@@ -1,4 +1,4 @@
-﻿@model List<hallodoc_mvc.Models.PatientProfile>
+﻿@model List<PatientProfile>
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor Accessor
 ﻿@{
@@ -145,7 +145,7 @@
                     </div>
                     <div class="row">
                         <div class="form-floating col-sm-6 mt-3">
-                            <input type="date" class="form-control floatingInput" placeholder="Date Of Birth " asp-for="@Model.FirstOrDefault().BirthDate">
+                            <input type="date" class="form-control floatingInput" placeholder="Date Of Birth " asp-for="@Model.FirstOrDefault().BirthDate"  asp-format="{0:yyyy-MM-dd}">
                             <label for="floatingInput " class="mx-2">Date Of Birth</label>
                             @*<span asp-validation-for="BirthDate" class="text-danger"></span>*@
                         </div>

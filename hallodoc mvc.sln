@@ -5,6 +5,10 @@ VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hallodoc mvc", "hallodoc mvc\hallodoc mvc.csproj", "{8032F5E7-402E-40F1-96E8-0F8CCADE29F8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hallodoc mvc Repository", "hallodoc mvc Repository\hallodoc mvc Repository.csproj", "{6F7367C7-5D62-4496-87E4-61C31512D2A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hallocdoc_mvc_Service", "hallocdoc mvc Service\hallocdoc_mvc_Service.csproj", "{E460364B-41A1-4274-BAC3-D7B46A871835}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8032F5E7-402E-40F1-96E8-0F8CCADE29F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8032F5E7-402E-40F1-96E8-0F8CCADE29F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8032F5E7-402E-40F1-96E8-0F8CCADE29F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F7367C7-5D62-4496-87E4-61C31512D2A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F7367C7-5D62-4496-87E4-61C31512D2A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F7367C7-5D62-4496-87E4-61C31512D2A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F7367C7-5D62-4496-87E4-61C31512D2A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E460364B-41A1-4274-BAC3-D7B46A871835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E460364B-41A1-4274-BAC3-D7B46A871835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E460364B-41A1-4274-BAC3-D7B46A871835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E460364B-41A1-4274-BAC3-D7B46A871835}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

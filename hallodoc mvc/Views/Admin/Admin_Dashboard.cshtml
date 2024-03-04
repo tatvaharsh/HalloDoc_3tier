@@ -1,0 +1,365 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard Page";
+    Layout = "_LayAdmin";
+}
+<link rel="stylesheet" href="~/css/Admin_Pages/Admin_Dashboard.css" />
+
+
+
+<link rel="stylesheet" href="~/js/AdminDashboard.js" />
+
+<!-- navbar -->
+<partial name="_Admin_Header_Dashboard" />
+
+
+<!------------------modal----------->
+<div id="mymodal">
+</div>
+
+<!-- main-container -->
+<div class="p-sm-2 p-md-5 mt-4 mt-sm-0">
+    <div class="tab-content" id="myTabContent">
+
+
+        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+             tabindex="0">
+            <div class="container-fluid">
+                <div class="row nav" id="myTab" role="tablist">
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 mb-3 nav-item" role="presentation" onclick="getData()">
+                        <div class="border rounded p-1 p-sm-3 new active" id="new-tab" data-bs-toggle="tab"
+                             data-bs-target="#new-tab-pane" type="button" role="tab" aria-controls="new-tab-pane"
+                             aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-person-plus me-2 d-none d-sm-inline"></i>
+                                <h6 class="px-1 m-0">New</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>1452</h4>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                        <div class="border rounded p-1 p-sm-3 Pending" id="Pending-tab" data-bs-toggle="tab"
+                             data-bs-target="#Pending-tab-pane" type="button" role="tab"
+                             aria-controls="Pending-tab-pane" aria-selected="false" tabindex="-1">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-person me-2 d-none d-sm-inline"></i>
+                                <h6 class="px-1 m-0">Pending</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>266</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                        <div class="border rounded p-1 p-sm-3 Active" id="Active-tab" data-bs-toggle="tab"
+                             data-bs-target="#Active-tab-pane" type="button" role="tab"
+                             aria-controls="Active-tab-pane" aria-selected="false" tabindex="-1">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-check2-circle me-2 d-none d-sm-inline"></i>
+                                <h6 class="px-1 m-0">Active</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>26</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                        <div class="border rounded p-1 p-sm-3 Conclude" id="Conclude-tab" data-bs-toggle="tab"
+                             data-bs-target="#Conclude-tab-pane" type="button" role="tab"
+                             aria-controls="Conclude-tab-pane" aria-selected="false" tabindex="-1">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-clock-history me-2 d-none d-sm-inline"></i>
+                                <h6 class="px-1 m-0">Conclude</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>1078</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                        <div class="border rounded p-1 p-sm-3 ToClose" id="ToClose-tab" data-bs-toggle="tab"
+                             data-bs-target="#ToClose-tab-pane" type="button" role="tab"
+                             aria-controls="ToClose-tab-pane" aria-selected="false" tabindex="-1">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-person-x me-2 d-none d-sm-inline"></i>
+
+                                <h6 class="px-1 m-0">To Close</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>519</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                        <div class="border rounded p-1 p-sm-3 Unpaid" id="Unpaid-tab" data-bs-toggle="tab"
+                             data-bs-target="#Unpaid-tab-pane" type="button" role="tab"
+                             aria-controls="Unpaid-tab-pane" aria-selected="false" tabindex="-1">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-currency-dollar  me-2 d-none d-sm-inline"></i>
+                                <h6 class="px-1 m-0">Unpaid</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>16</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-1 mb-3">
+                    <h5>
+                        @*Patients @if (Model.FirstOrDefault() != null)
+                        {
+                        @okok((Model.FirstOrDefault().Status))
+                        }*@
+
+                    </h5>
+                    <div class="d-flex">
+                        <button type="button" class="btn btn-info d-flex ms-1 ms-sm-2 p-sm-2 p-1 align-items-center text-light">
+                            <i class="bi bi-send"></i><span class="d-md-block d-none  px-2 ">Send Link</span>
+                        </button>
+                        <button type="button" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
+                            <i class="bi bi-pencil-square"></i><span class="d-md-block d-none px-2 ">Create Request</span>
+                        </button>
+                        <button type="button" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
+                            <i class="bi bi-arrow-up-right"></i></i><span class="d-md-block d-none px-2 ">Export</span>
+                        </button>
+                        <button type="button" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
+                            <i class="bi bi-box-arrow-up-right"></i><span class="d-md-block d-none px-2 ">Export All</span>
+                        </button>
+                        <button type="button" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
+                            <i class="bi bi-person-plus"></i><span class="d-md-block d-none px-2 ">Request DTY Support</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-responsive border rounded p-3 shadow ">
+                    <div class="d-md-flex d-none justify-content-between align-items-center gap-2 mb-2">
+
+                        <div class="d-md-flex gap-1">
+                            <form role="search" class=" d-flex align-items-center border border-rounded rounded border-info mb-2">
+                                <i type="search" class="bi bi-search px-2"></i>
+                                <input class="form-control searchfocus border-0" type="search" id="search" placeholder="Search" aria-label="Search" onkeyup="filter()">
+                            </form>
+                            <!-- Example split danger button -->
+
+                            <select class="form-select border-info mb-2" id="region" aria-label="Default select example" onchange="filter()">
+                                <option selected>All Region</option>
+                                <option value="1">Singapore</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+
+                        <input type="hidden" id="requestor" />
+
+                        <div class="d-flex gap-2 align-items-center mb-2">
+                            <button class="btn btn-outline-secondary d-none d-md-block requestBtn 234 345 34 0" value="0" onclick="abc(0)">All</button>
+                            <div class="btn d-md-flex gap-2 mx-auto text-center requestBtn align-items-center Sorts" onclick="abc(2)" value="2">
+                                <i class="bi bi-circle-fill green-icon"></i>
+                                <div class="fs-6"><small>Patient</small> </div>
+                            </div>
+                            <div class="btn d-md-flex gap-2 mx-auto text-center requestBtn align-items-center Sorts" onclick="abc(3)" value="3">
+                                <i class="bi bi-circle-fill orange-icon"></i>
+                                <div><small>Family/Friend</small></div>
+                            </div>
+                            <div class="btn d-md-flex gap-2 mx-auto text-center requestBtn align-items-center Sorts" onclick="abc(1)" value="1">
+                                <i class="bi bi-circle-fill pink-icon"></i>
+                                <div><small>Business</small></div>
+                            </div>
+                            <div class="btn d-md-flex gap-2 mx-auto text-center requestBtn align-items-center Sorts" onclick="abc(4)" value="4">
+                                <i class="bi bi-circle-fill blue-icon"></i>
+                                <div><small>Concierge</small></div>
+                            </div>
+                            <div class="btn d-md-flex gap-2 mx-auto text-center align-items-center Sorts" onclick="ColorSort()">
+                                <i class="bi bi-circle-fill violate-icon"></i>
+                                <div><small>Vip</small></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-md-none d-block">
+                        <form role="search" class=" d-flex align-items-center border border-rounded rounded border-info mb-2" >
+                            <i type="search" class="bi bi-search px-2"></i>
+                            <input class="form-control searchfocus border-0" type="search" id="my-search-input" placeholder="Search" aria-label="Search" style="height:35px;" onkeyup="filter()">
+                        </form>
+                        <!-- Example split danger button -->
+
+                        <select class="form-select border-info mb-2" aria-label="Default select example">
+                            <option selected>All Region</option>
+                            <option value="1">Singapore</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                    </div>
+
+                    <div class="d-flex d-md-none  align-items-center mb-2">
+
+                        <div class="btn d-md-flex mx-0 p-1 text-center requestBtn align-items-center Sorts" onclick="abc(2)" value="2">
+                            <i class="bi bi-circle-fill green-icon"></i>
+                            <div class="fs-6"><p style="font-size:smaller; ">Patient</p> </div>
+                        </div>
+                        <div class="btn d-md-flex mx-0 p-1 text-center requestBtn align-items-center Sorts" onclick="abc(3)" value="3">
+                            <i class="bi bi-circle-fill orange-icon"></i>
+                            <div><p style="font-size:smaller;">Family/Friend</p></div>
+                        </div>
+                        <div class="btn d-md-flex  mx-0 p-1 text-center requestBtn align-items-center Sorts" onclick="abc(1)" value="1">
+                            <i class="bi bi-circle-fill pink-icon"></i>
+                            <div><p style="font-size:smaller;">Business</p></div>
+                        </div>
+                        <div class="btn d-md-flex mx-0 p-1 text-center requestBtn align-items-center Sorts" onclick="abc(4)" value="4">
+                            <i class="bi bi-circle-fill blue-icon"></i>
+                            <div><p style="font-size:smaller;">Concierge</p></div>
+                        </div>
+                        <div class="btn d-md-flex mx-0 p-1 text-center align-items-center Sorts" onclick="ColorSort()">
+                            <i class="bi bi-circle-fill violate-icon"></i>
+                            <div><p style="font-size:smaller;">Vip</p></div>
+                        </div>
+                    </div>
+                <div id="tableContainer">
+                </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+<partial name="_Footer" />
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+
+
+    //const abc = (e) =>{
+    //    const states = document.getElementsByClassName("border");
+    //    for (let i = 0; i < states.length; ++i) {
+    //        if (states[i].classList.contains("active")) {
+    //            $.ajax({
+    //                method: "POST",
+    //                url: `/Admin/${states[i].classList[states[i].classList.length - 2]}?requestType=${e}`,
+
+
+    //                success: function (result) {
+    //                    $('#tableContainer').html(result);
+    //                },
+
+    //                error: function () {
+    //                    alert('Error loading partial view');
+    //                }
+    //            });
+
+    //        }
+    //    }
+    //}
+
+
+    const abc = (e) => {
+
+        document.getElementById("requestor").value = e
+        filter();
+    }
+
+    const filter = () => {
+        const states = document.getElementsByClassName("border");
+        console.log(document.getElementById("requestor").value)
+        for (let i = 0; i < states.length; ++i) {
+            if (states[i].classList.contains("active")) {
+                console.log(`${states[i].classList[states[i].classList.length - 2]}`)
+                $.ajax({
+                    url: `/Admin/${states[i].classList[states[i].classList.length - 2]}`,
+                    type: 'POST',
+                    dataType: 'html',
+                    data: { search: document.getElementById("search").value, region: document.getElementById("region").value, requestor: document.getElementById("requestor").value },
+                    // Pass your data here
+                    success: function (response) {
+                        $("#tableContainer").html(response)
+                    },
+                    error: function () {
+                        alert('An error occurred.');
+                    }
+                });
+            }
+        }
+    }
+
+
+    const getData = () => {
+        const states = document.getElementsByClassName("border");
+        for (let i = 0; i < states.length; ++i) {
+            if (states[i].classList.contains("active")) {
+                console.log(states[i].classList[states[i].classList.length - 2])
+                $.ajax({
+                    method: "POST",
+                    url: `/Admin/${states[i].classList[states[i].classList.length - 2]}`,
+
+
+                    success: function (result) {
+                        $('#tableContainer').html(result);
+                    },
+
+                    error: function () {
+                        alert('Error loading partial view');
+                    }
+                });
+
+
+
+
+            }
+        }
+    }
+
+    window.onload = () => {
+        $.ajax({
+            url: `/Admin/New`,
+            type: 'POST',
+            dataType: 'html',
+            // Pass your data here
+            success: function (response) {
+                $("#tableContainer").html(response)
+            },
+            error: function () {
+                alert('An error occurred.');
+            }
+        });
+    }
+
+    function blockCase(requestId) {
+        $("#mymodal").load('/Admin/Block/' + requestId, () => {
+            const modal = new bootstrap.Modal(document.getElementById('myModalBlock'));
+            modal.show();
+        });
+    }
+    function assignCase(requestId) {
+        $("#mymodal").load('/Admin/AssignCase/' + requestId, () => {
+            const modal = new bootstrap.Modal(document.getElementById('myModalAssign'));
+            modal.show();
+        });
+    }
+    function cancelCase(requestId) {
+        $("#mymodal").load('/Admin/Cancel/' + requestId, () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('myModalCancel'));
+            modal.show();
+        });
+    }
+
+</script>

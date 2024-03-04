@@ -287,3 +287,7 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\r
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\xunit.abstractions.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\xunit.core.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\xunit.execution.dotnet.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc Repository.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc Repository.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallocdoc_mvc_Service.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallocdoc_mvc_Service.pdb

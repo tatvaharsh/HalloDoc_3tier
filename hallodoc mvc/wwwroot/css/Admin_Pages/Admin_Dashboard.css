@@ -1,0 +1,242 @@
+﻿.req1 {
+    background-color: #DF657A !important;
+    
+    color: white !important;
+}
+.table > :not(caption) > * > *{
+    background: none;
+
+}
+/* Dashboard Cards */
+.new {
+    background-color: rgba(2, 2, 255, 0.1);
+    border-color: rgba(2, 2, 146) !important;
+    color: rgba(2, 2, 146);
+}
+
+html[data-bs-theme="dark"] .new {
+    color: white !important;
+}
+
+/*html[data-bs-theme="dark"] .navbar {
+    background-color: grey !important;
+}*/
+
+
+.new:hover, .new.active {
+    background-color: rgba(2, 2, 146);
+    border-color: rgba(2, 2, 146) !important;
+    color: white;
+}
+
+
+.Pending {
+    background-color: rgba(167, 239, 248, 0.10);
+    border-color: rgb(41, 179, 197) !important;
+    color: rgb(41, 179, 197);
+}
+
+html[data-bs-theme="dark"] .Pending {
+    color: white !important;
+}
+
+.Pending:hover, .Pending.active {
+    background-color: rgb(0, 92, 104);
+    border-color: rgb(41, 179, 197) !important;
+    color: white;
+}
+
+.Active {
+    background-color: rgba(138, 253, 215, 0.10);
+    border-color: rgb(19, 99, 55) !important;
+    color: rgb(19, 99, 55);
+}
+
+html[data-bs-theme="dark"] .Active {
+    color: white !important;
+}
+
+.Active:hover, .Active.active {
+    background-color: rgb(2, 54, 37);
+    border-color: rgb(19, 99, 55) !important;
+    color: white;
+}
+
+
+.Conclude {
+    background-color: rgba(252, 87, 238, 0.10);
+    border-color: rgb(129, 22, 124) !important;
+    color: rgb(129, 22, 124);
+}
+
+html[data-bs-theme="dark"] .Conclude {
+    color: white !important;
+}
+
+.Conclude:hover, .Conclude.active {
+    background-color: rgb(99, 3, 91);
+    border-color: rgb(129, 22, 124) !important;
+    color: white;
+}
+
+.ToClose {
+    background-color: rgba(68, 156, 228, 0.10);
+    border-color: rgb(16, 100, 133) !important;
+    color: rgb(16, 100, 133);
+}
+
+html[data-bs-theme="dark"] .ToClose {
+    color: white !important;
+}
+
+
+.ToClose:hover, .ToClose.active {
+    background-color: rgb(3, 47, 83);
+    border-color: rgb(16, 100, 133) !important;
+    color: white;
+}
+
+.Unpaid {
+    background-color: rgba(164, 46, 233, 0.10);
+    border-color: rgb(86, 26, 134) !important;
+    color: rgb(86, 26, 134);
+}
+
+html[data-bs-theme="dark"] .Unpaid {
+    color: white !important;
+}
+
+.Unpaid:hover, .Unpaid.active {
+    background-color: rgb(44, 1, 70);
+    border-color: rgb(86, 26, 134) !important;
+    color: white;
+}
+
+
+
+.green-icon {
+    color: green !important;
+}
+
+.table-green {
+    --bs-table-accent-bg: rgba(0, 155, 0, 0.75) !important;
+    --bs-table-color: white !important;
+}
+
+.orange-icon {
+    color: orange;
+}
+
+.table-orange {
+    --bs-table-accent-bg: rgba(255, 180, 19, 0.75) !important;
+    --bs-table-color: white !important;
+}
+
+
+
+.pink-icon {
+    color: deeppink;
+}
+
+.table-pink {
+    --bs-table-accent-bg: rgba(255, 37, 153, 0.753) !important;
+    --bs-table-color: white !important;
+}
+
+
+.blue-icon {
+    color: blue;
+}
+
+.table-blue {
+    --bs-table-accent-bg: rgba(5, 5, 255, 0.75) !important;
+    --bs-table-color: white !important;
+}
+
+
+.violate-icon {
+    color: darkviolet;
+}
+
+.table-violate {
+    --bs-table-accent-bg: rgba(148, 0, 211, 0.75) !important;
+    --bs-table-color: white !important;
+}
+
+
+.nav-underline .nav-link.active {
+    color: #5bc0de !important
+}
+
+html[data-bs-theme="dark"] .text-testing {
+    color: white !important;
+}
+
+
+@media screen and (max-width : 375px) {
+    .logo {
+        height: 50px !important;
+    }
+}
+
+@media screen and (max-width : 300px) {
+    .logo {
+        display: none !important;
+    }
+}
+
+
+
+
+
+.accordion-button::after {
+    width: 0px !important;
+}
+
+.accordion {
+    --bs-accordion-bg: #EBFAFD !important;
+    --bs-accordion-active-bg: #DAE8EB !important;
+}
+
+.collapse {
+    background-color: var(--bs-accordion-active-bg) !important;
+}
+
+.collapsed {
+    color: black;
+}
+
+.accordion-body {
+    color: black
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+}
+
+
+/*Offcanvas Navbar*/
+
+.offcanvas-btn {
+    text-align: left;
+}
+
+    .offcanvas-btn.active {
+        width: 100%;
+        text-align: left;
+        background-color: rgba(0, 255, 255, 0.25) !important;
+        color: black !important;
+        font-weight: bolder;
+    }
+
+@media screen and (min-width : 992px) {
+    .offcanvas-backdrop {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width : 602px) {
+    .offcanvas {
+        width: 75% !important;
+    }
+}

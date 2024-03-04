@@ -1,28 +1,29 @@
-﻿using HalloDoc.Models;
-using hallodoc_mvc.Models;
-using HalloDocMvc.ViewModel;
+﻿using hallodoc_mvc_Repository.DataModels;
+using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.IO.Compression;
+using hallodoc_mvc_Repository.DataContext;
+using hallocdoc_mvc_Service.Interface;
+using System.Net.Mail;
+using System.Net;
+using System.Globalization;
 
 namespace hallodoc_mvc.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly HallodocContext _context;
-        private readonly ILogger<HomeController> _logger;
+        //private readonly ApplicationDbContext _context;
+        private readonly IPatient_Service _service;
 
-        public HomeController(HallodocContext context)
+
+
+        public HomeController(IPatient_Service service)
         {
-            _context = context;
+            //_context = context;
+            _service = service;
         }
-        /*
-                public HomeController(ILogger<HomeController> logger)
-                {
-                    _logger = logger;
-                }*/
-
         public IActionResult patient_screen()
         {
             return View();
@@ -32,55 +33,63 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
-        /*public async Task<IActionResult> Login([Bind("Email,Passwordhash")] Aspnetuser aspnetuser)
-        {
 
-            var user = await _context.Aspnetusers
-                .FirstOrDefaultAsync(m => m.Email == aspnetuser.Email && m.Passwordhash == aspnetuser.Passwordhash);
-            if (user == null)
-            {
-                return RedirectToAction(nameof(HomeController.patient_login), "Home");
-            }
 
-            return RedirectToAction(nameof(HomeController.submit_screen), "Home");
-        }*/
+        /*
+                public HomeController(ILogger<HomeController> logger)
+                {
+                    _logger = logger;
+                }*/
+
         [HttpPost]
         public IActionResult patient_login(LoginViewModel model)
         {
 
-
             if (ModelState.IsValid)
             {
-                var user = _context.AspNetUsers.FirstOrDefault(u => u.Email == model.Email);
-                var userobj = _context.Users.FirstOrDefault(u => u.AspNetUserId == user.Id);
-                if (user != null)
+                bool isReg = _service.ValidateUser(model);
+
+                if (isReg)
                 {
-                    if (model.Passwordhash == user.PasswordHash)
-                    {
-                        HttpContext.Session.SetInt32("Userid", userobj.UserId);
-                        HttpContext.Session.SetString("Username", userobj.FirstName + " " + userobj.LastName);
-                        ViewBag.username = userobj.FirstName + " " + userobj.LastName;
-                        return RedirectToAction("PatientDashboard");
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("Passwordhash", "Incorrect Password");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("Email", "Incorrect Username");
+                    var user = _service.getUser(model.Email);
+                    HttpContext.Session.SetInt32("Userid", user.UserId);
+                    HttpContext.Session.SetString("Username", user.FirstName + " " + user.LastName);
+                    ViewBag.username = user.FirstName + " " + user.LastName;
+                    return RedirectToAction("PatientDashboard");
                 }
             }
 
-            // If we reach here, something went wrong, return the same view with validation errors
             return View();
+
+           
         }
 
         public IActionResult forgot_password()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult forgot_password(Create model)
+        {
+            _service.Forgot(model);
+            if (ModelState.IsValid)
+            {
+                _service.Forgotmail(model);
+                ViewData["Message"] = "Mail Sent Successfully!!!";
+
+            }
+
+
+            return View(model);
+
+
+        }
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
         public IActionResult submit_screen()
         {
             return View();
@@ -91,7 +100,8 @@ namespace hallodoc_mvc.Controllers
         }
         public IActionResult PatientCheck(string Email)
         {
-            var existingUser = _context.AspNetUsers.SingleOrDefault(u => u.Email == Email);
+            //var existingUser = _context.AspNetUsers.SingleOrDefault(u => u.Email == Email);
+            var existingUser = _service.getUser(Email);
             bool isValidEmail;
             if (existingUser == null)
             {
@@ -104,6 +114,32 @@ namespace hallodoc_mvc.Controllers
             return Json(new { isValid = isValidEmail });
         }
 
+
+        [HttpGet]
+        public IActionResult PatientProfile()
+        {
+
+            var user1 = HttpContext.Session.GetInt32("Userid");
+            var req = _service.getUser(user1);
+            DateOnly Mydate = new(req.IntYear.Value, DateOnly.ParseExact(req.StrMonth, "MMM", CultureInfo.InvariantCulture).Month, req.IntDate.Value);
+
+            List<PatientProfile> pp = new List<PatientProfile>();
+            pp.Add(new PatientProfile
+            {
+                user = req,
+                BirthDate = Mydate,
+            });
+            return View(pp);
+        }
+        public IActionResult editProfile(PatientProfile model)
+        {
+            var user1 = (int)HttpContext.Session.GetInt32("Userid");
+            _service.editprofile(model,user1);
+            HttpContext.Session.SetString("Username", model.FirstName + " " + model.LastName);
+            return RedirectToAction("PatientProfile");
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> patient_form([FromForm] patient_form model)
         {
@@ -111,117 +147,7 @@ namespace hallodoc_mvc.Controllers
             {
                 return View(model);
             }
-
-            var aspnetuser1 = await _context.AspNetUsers.FirstOrDefaultAsync(u => u.Email == model.Email);
-            var user1 = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
-
-            /* Debug.WriteLine(aspnetuser);*/
-
-            if (aspnetuser1 == null)
-            {
-                AspNetUser aspnetuser2 = new AspNetUser
-                {
-
-                    UserName = model.FirstName + "_" + model.LastName,
-                    Email = model.Email,
-                    //PasswordHash = model.Password,
-                    PhoneNumber = model.PhoneNumber,
-                    CreatedDate = DateTime.Now,
-                    PasswordHash = model.Password,
-                };
-                _context.AspNetUsers.Add(aspnetuser2);
-                await _context.SaveChangesAsync();
-                aspnetuser1 = aspnetuser2;
-            }
-
-            if (user1 == null)
-            {
-                User user = new User
-                {
-                    AspNetUserId = aspnetuser1.Id,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Email = model.Email,
-                    Mobile = model.PhoneNumber,
-                    ZipCode = model.ZipCode,
-                    State = model.State,
-                    City = model.City,
-                    Street = model.Street,
-                    IntDate = model.BirthDate.Day,
-                    IntYear = model.BirthDate.Year,
-                    StrMonth = model.BirthDate.ToString("MMM"),
-                    CreatedDate = DateTime.Now,
-                    CreatedBy = aspnetuser1.Id
-                };
-
-                _context.Users.Add(user);
-                await _context.SaveChangesAsync();
-                user1 = user;
-            }
-
-
-
-
-            Request request = new Request
-            {
-                RequestTypeId = 2,
-                UserId = user1.UserId,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                PhoneNumber = model.PhoneNumber,
-                Email = model.Email,
-                CreatedDate = DateTime.Now,
-                Status = 1,
-
-            };
-
-            _context.Requests.Add(request);
-            await _context.SaveChangesAsync();
-
-
-            RequestClient requestclient = new RequestClient
-            {
-
-                RequestId = request.RequestId,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                PhoneNumber = model.PhoneNumber,
-                Email = model.Email,
-                Location = model.City,
-                Address = model.Street,
-
-                IntDate = model.BirthDate.Day,
-                StrMonth = model.BirthDate.Month.ToString(),
-                IntYear = model.BirthDate.Year,
-                Street = model.Street,
-                City = model.City,
-                State = model.State,
-                ZipCode = model.ZipCode,
-
-            };
-
-            _context.RequestClients.Add(requestclient);
-            await _context.SaveChangesAsync();
-
-
-            foreach (IFormFile files in model.File)
-            {
-                string filename = model.FirstName + model.LastName + files.FileName;
-                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\", filename);
-                using (FileStream stream = new FileStream(path, FileMode.Create))
-                {
-                    files.CopyToAsync(stream).Wait();
-                }
-
-
-                RequestWiseFile requestWiseFile = new RequestWiseFile();
-                requestWiseFile.FileName = filename;
-                requestWiseFile.RequestId = request.RequestId;
-                requestWiseFile.DocType = 1;
-                _context.RequestWiseFiles.Add(requestWiseFile);
-                _context.SaveChanges();
-            }
-
+            _service.PatientForm(model);
 
             return RedirectToAction(nameof(submit_screen));
 
@@ -239,90 +165,7 @@ namespace hallodoc_mvc.Controllers
             {
                 return View(req);
             }
-
-            AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
-            User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
-
-            if (aspuser == null)
-            {
-                AspNetUser aspNetUser = new AspNetUser
-                {
-                    UserName = req.FirstName,
-                    PasswordHash = req.Password,
-                    Email = req.Email,
-                    PhoneNumber = req.Mobile,
-                };
-                _context.AspNetUsers.Add(aspNetUser);
-                _context.SaveChanges();
-                aspuser = aspNetUser;
-            }
-
-            if (usertbl == null)
-            {
-                User user = new()
-                {
-                    AspNetUserId = aspuser.Id,
-                    FirstName = req.FirstName,
-                    LastName = req.LastName,
-                    Email = req.Email,
-                    Mobile = req.Mobile,
-                    ZipCode = req.ZipCode,
-                    State = req.State,
-                    City = req.City,
-                    Street = req.Street,
-                    Status = 1,
-                    CreatedBy = aspuser.Id,
-                    IntDate = req.DOB.Day,
-                    IntYear = req.DOB.Year,
-                    StrMonth = req.DOB.ToString("MMM"),
-                };
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                usertbl = user;
-            }
-
-            Request reqobj = new()
-            {
-                RequestTypeId = 3,
-                UserId = usertbl.UserId,
-                FirstName = req.FamFirstName,
-                LastName = req.FamLastName,
-                Email = req.FamEmail,
-                PhoneNumber = req.FamMobile,
-                Status = 1,
-            };
-            _context.Requests.Add(reqobj);
-            _context.SaveChanges();
-
-            Region region = new Region
-            {
-                Name = req.City,
-            };
-            _context.Regions.Add(region);
-            _context.SaveChanges();
-
-
-            RequestClient rc = new RequestClient
-            {
-                RequestId = reqobj.RequestId,
-                FirstName = req.FirstName,
-                LastName = req.LastName,
-                PhoneNumber = req.Mobile,
-                Location = req.Room,
-                Address = req.Street + ", " + req.City + ", " + req.State,
-                Notes = req.Symptoms,
-                Email = req.Email,
-                RegionId = region.RegionId,
-                IntDate = req.DOB.Day,
-                IntYear = req.DOB.Year,
-                StrMonth = req.DOB.ToString("MMM"),
-                Street = req.Street,
-                City = req.City,
-                State = req.State,
-                ZipCode = req.ZipCode,
-            };
-            _context.RequestClients.Add(rc);
-            _context.SaveChanges();
+            _service.FamilyForm(req);
 
             return RedirectToAction(nameof(HomeController.submit_screen), "Home");
         }
@@ -340,112 +183,7 @@ namespace hallodoc_mvc.Controllers
             {
                 return View(req);
             }
-
-            AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
-            User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
-
-            if (aspuser == null)
-            {
-                AspNetUser aspNetUser = new AspNetUser
-                {
-                    UserName = req.FirstName,
-                    PasswordHash = req.Password,
-                    Email = req.Email,
-                    PhoneNumber = req.Mobile,
-                };
-                _context.AspNetUsers.Add(aspNetUser);
-                _context.SaveChanges();
-                aspuser = aspNetUser;
-            }
-
-            if (usertbl == null)
-            {
-                User user = new User
-                {
-                    AspNetUserId = aspuser.Id,
-                    FirstName = req.FirstName,
-                    LastName = req.LastName,
-                    Email = req.Email,
-                    Mobile = req.Mobile,
-                    Status = 1,
-                    IntDate = req.DOB.Day,
-                    IntYear = req.DOB.Year,
-                    StrMonth = req.DOB.ToString("MMM"),
-                    CreatedBy = aspuser.Id
-                };
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                usertbl = user;
-            }
-
-
-            Request reqobj = new Request
-            {
-                RequestTypeId = 4,
-                UserId = usertbl.UserId,
-                FirstName = req.ConFirstName,
-                LastName = req.ConLastName,
-                Email = req.ConEmail,
-                PhoneNumber = req.ConMobile,
-                Status = 1,
-            };
-            _context.Requests.Add(reqobj);
-            _context.SaveChanges();
-
-
-            Region region = new Region
-            {
-                Name = req.City,
-            };
-            _context.Regions.Add(region);
-            _context.SaveChanges();
-
-
-            RequestClient rc = new RequestClient
-            {
-                RequestId = reqobj.RequestId,
-                FirstName = req.FirstName,
-                LastName = req.LastName,
-                PhoneNumber = req.Mobile,
-                Location = req.Room,
-                Address = req.Street + ", " + req.City + ", " + req.State,
-                Notes = req.Symptoms,
-                Email = req.Email,
-                RegionId = region.RegionId,
-                IntDate = req.DOB.Day,
-                IntYear = req.DOB.Year,
-                StrMonth = req.DOB.ToString("MMM"),
-                Street = req.Street,
-                City = req.City,
-                State = req.State,
-                ZipCode = req.ZipCode,
-            };
-            _context.RequestClients.Add(rc);
-            _context.SaveChanges();
-
-
-            Concierge con = new Concierge
-            {
-                ConciergeName = req.ConFirstName + " " + req.ConLastName,
-                Address = req.Property,
-                Street = req.Street,
-                City = req.City,
-                ZipCode = req.ZipCode,
-                State = req.State,
-                RegionId = region.RegionId,
-            };
-            _context.Concierges.Add(con);
-            _context.SaveChanges();
-
-
-            RequestConcierge reqCon = new RequestConcierge
-            {
-                RequestId = reqobj.RequestId,
-                ConciergeId = con.ConciergeId,
-            };
-            _context.RequestConcierges.Add(reqCon);
-            _context.SaveChanges();
-
+            _service.ConciergeForm(req);
             return RedirectToAction(nameof(HomeController.submit_screen), "Home");
         }
 
@@ -453,6 +191,7 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> business([FromForm] BusinessReqModel req)
         {
@@ -460,110 +199,8 @@ namespace hallodoc_mvc.Controllers
             {
                 return View(req);
             }
-
-            AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
-            User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
-
-            if (aspuser == null)
-            {
-                AspNetUser aspNetUser = new AspNetUser
-                {
-                    UserName = req.FirstName,
-                    PasswordHash = req.Password,
-                    Email = req.Email,
-                    PhoneNumber = req.Mobile,
-                };
-                _context.AspNetUsers.Add(aspNetUser);
-                _context.SaveChanges();
-                aspuser = aspNetUser;
-            }
-
-            if (usertbl == null)
-            {
-                User user = new User
-                {
-                    AspNetUserId = aspuser.Id,
-                    FirstName = req.FirstName,
-                    LastName = req.LastName,
-                    Email = req.Email,
-                    Mobile = req.Mobile,
-                    ZipCode = req.ZipCode,
-                    State = req.State,
-                    City = req.City,
-                    Street = req.Street,
-                    Status = 1,
-                    CreatedBy = aspuser.Id,
-                    IntDate = req.DOB.Day,
-                    IntYear = req.DOB.Year,
-                    StrMonth = req.DOB.ToString("MMM"),
-                };
-                _context.Users.Add(user);
-                _context.SaveChanges();
-                usertbl = user;
-            }
-
-            Request reqobj = new Request
-            {
-                RequestTypeId = 1,
-                UserId = usertbl.UserId,
-                FirstName = req.BusFirstName,
-                LastName = req.BusLastName,
-                Email = req.BusEmail,
-                PhoneNumber = req.BusMobile,
-                Status = 1,
-            };
-            _context.Requests.Add(reqobj);
-            _context.SaveChanges();
-
-            Region region = new Region
-            {
-                Name = req.City,
-            };
-            _context.Regions.Add(region);
-            _context.SaveChanges();
-
-
-            RequestClient rc = new RequestClient
-            {
-                RequestId = reqobj.RequestId,
-                FirstName = req.FirstName,
-                LastName = req.LastName,
-                PhoneNumber = req.Mobile,
-                Location = req.Room,
-                Address = req.Street + ", " + req.City + ", " + req.State,
-                Notes = req.Symptoms,
-                Email = req.Email,
-                RegionId = region.RegionId,
-                IntDate = req.DOB.Day,
-                IntYear = req.DOB.Year,
-                StrMonth = req.DOB.ToString("MMM"),
-                Street = req.Street,
-                City = req.City,
-                State = req.State,
-                ZipCode = req.ZipCode,
-            };
-            _context.RequestClients.Add(rc);
-            _context.SaveChanges();
-
-            Business business = new Business
-            {
-                Name = req.BusFirstName,
-                Address1 = req.Property,
-                PhoneNumber = req.BusMobile,
-                RegionId = region.RegionId,
-            };
-            _context.Businesses.Add(business);
-            _context.SaveChanges();
-
-
-            RequestBusiness reqBus = new RequestBusiness
-            {
-                RequestId = reqobj.RequestId,
-                BusinessId = business.BusinessId,
-            };
-            _context.RequestBusinesses.Add(reqBus);
-            _context.SaveChanges();
-
+            _service.Business(req);
+           
             return RedirectToAction(nameof(HomeController.submit_screen), "Home");
         }
 
@@ -571,7 +208,17 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
-     
+
+        [HttpPost]
+        public IActionResult create_patient(Create model)
+        {
+            _service.Update(model);
+
+           
+
+            return View();
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> PatientDashboard()
@@ -582,17 +229,13 @@ namespace hallodoc_mvc.Controllers
                 return RedirectToAction(nameof(patient_login));
             }
 
-            var req = _context.Requests.Where(u => u.UserId == HttpContext.Session.GetInt32("Userid")).ToList();
-            
-            ViewBag.data = req;
-            //ViewBag.username = HttpContext.Session.GetString("username");
+            var req = _service.getRequest(HttpContext.Session.GetInt32("Userid"));
+            //var req = _context.Requests.Where(u => u.UserId == HttpContext.Session.GetInt32("Userid")).ToList();
 
-            //return  _context.Requests!=null?
-            //    View(_context.Requests.ToList())
-            //    :
-            //    Problem("EntitySet is emapty")
-            //    ;
-            ViewBag.rwfiles = _context.RequestWiseFiles.ToList();
+            ViewBag.data = req;
+
+
+            ViewBag.rwfiles = _service.getFiles(); /*_context.RequestWiseFiles.ToList();*/
 
 
 
@@ -600,7 +243,7 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
 
-      
+
 
         public IActionResult SubmitSomeoneElse()
         {
@@ -611,125 +254,42 @@ namespace hallodoc_mvc.Controllers
         [HttpGet]
         public IActionResult SubmitForMe(patient_form pf)
         {
-            var user1 = HttpContext.Session.GetInt32("Userid");
-            var req = _context.Users.FirstOrDefault(u => u.UserId == user1);
+            var user1 =(int) HttpContext.Session.GetInt32("Userid");
+       
 
-            pf.FirstName = req.FirstName;
-            pf.LastName = req.LastName;
-            pf.Email = req.Email;
-            pf.City = req.City;
-            pf.Street   = req.Street;
-            pf.City = req.City;
-            pf.State = req.State;
-            pf.ZipCode = req.ZipCode;
-            
+            _service.SubmitForMe(pf,user1);
 
-            
+        
             return View(pf);
         }
 
         [HttpPost]
         public IActionResult ForMe(patient_form req)
         {
-            var user1 = HttpContext.Session.GetInt32("Userid");
-           
-
-            Request request = new Request
-            {
-                RequestTypeId = 2,
-                UserId = user1,
-                FirstName = req.FirstName,
-                LastName = req.LastName,
-                PhoneNumber = req.PhoneNumber,
-                Email = req.Email,
-                CreatedDate = DateTime.Now,
-                Status = 1,
-
-            };
-
-            _context.Requests.Add(request);
-             _context.SaveChanges();
-
-            RequestClient requestclient = new RequestClient
-            {
-
-                RequestId = request.RequestId,
-                FirstName = req.FirstName,
-                LastName = req.LastName,
-                PhoneNumber = req.PhoneNumber,
-                Email = req.Email,
-                Location = req.City,
-                Address = req.Street,
-
-                IntDate = req.BirthDate.Day,
-                StrMonth = req.BirthDate.Month.ToString(),
-                IntYear = req.BirthDate.Year,
-                Street = req.Street,
-                City = req.City,
-                State = req.State,
-                ZipCode = req.ZipCode,
-
-            };
-
-            _context.RequestClients.Add(requestclient);
-             _context.SaveChanges();
-
-
-            return RedirectToAction("PatientProfile");
-        }
-
-        [HttpGet]
-        public IActionResult PatientProfile()
-        {
-            var user1 = HttpContext.Session.GetInt32("Userid");
-            var req = _context.Users.FirstOrDefault(u => u.UserId == user1);
-
-            List<PatientProfile> pp = new List<PatientProfile>();
-            pp.Add(new PatientProfile
-            {
-                user = req,
-            });
-            return View(pp);
+            var user1 = (int)HttpContext.Session.GetInt32("Userid");
+            _service.ForMe(req,user1);
+            return RedirectToAction("PatientDashboard");
         }
 
 
-        public IActionResult editProfile(PatientProfile model)
-        {
-            var user1 = HttpContext.Session.GetInt32("Userid");
-            var req = _context.Users.FirstOrDefault(u => u.UserId == user1);
-            var asp = _context.AspNetUsers.FirstOrDefault(u => u.Id == req.AspNetUserId);
 
-            req.FirstName = model.FirstName;
-            req.LastName = model.LastName;
-            req.Email = model.Email;
-            req.Mobile = model.PhoneNumber;
-            req.StrMonth = model.BirthDate.Month.ToString();
-            req.IntYear = model.BirthDate.Year;
-            req.IntDate = model.BirthDate.Day;
-            req.Street = model.Street;
-            req.City = model.City;
-            req.State = model.State;
-            req.ZipCode = model.ZipCode;
-            _context.Users.Update(req);
-            _context.SaveChanges();
 
-            asp.UserName = model.FirstName;
-            asp.Email = model.Email;
-            asp.PhoneNumber = model.PhoneNumber;
-            _context.AspNetUsers.Update(asp);
-            _context.SaveChanges();
-            HttpContext.Session.SetString("Username", model.FirstName + " " + model.LastName);
-
-            return RedirectToAction("PatientProfile");
-        }
 
         [HttpGet]
         public async Task<IActionResult> ViewDocument(int id)
         {
+            
             ViewBag.username = HttpContext.Session.GetString("Username");
-            ViewBag.reqwfiles = _context.RequestWiseFiles.Where(u => u.RequestId == id).ToList();
-            ViewDocument viewDocument = new ViewDocument();
-            viewDocument.RequestId = id;
+            //ViewBag.reqwfiles = _context.RequestWiseFiles.Where(u => u.RequestId == id).ToList();
+            ViewBag.reqwfiles = _service.getRequestWiseFile(id);
+            List<Request> req = _service.getRequestcon(id);
+
+            ViewDocument viewDocument1 = new()
+            {
+                RequestId = id,
+                Confirmationnumber=req.FirstOrDefault().ConfirmationNumber,
+            };
+            ViewDocument viewDocument = viewDocument1;
 
             return View(viewDocument);
         }
@@ -746,7 +306,7 @@ namespace hallodoc_mvc.Controllers
                 {
                     foreach (string filename in filenames)
                     {
-                       
+
                         string filePath = Path.Combine(repositoryPath, filename);
                         System.Diagnostics.Debug.WriteLine(filePath + "/*/*/*/*/*/*/*/*/*/*/*");
                         if (System.IO.File.Exists(filePath))
@@ -765,31 +325,16 @@ namespace hallodoc_mvc.Controllers
 
 
         [HttpPost]
-        public IActionResult FileUpload(int id, [FromForm]List<IFormFile> File)
+        public IActionResult FileUpload(int id, [FromForm] List<IFormFile> File)
         {
-            foreach (IFormFile files in File)
-            {
-                string filename = files.FileName;
-                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\", filename);
-                using (FileStream stream = new FileStream(path, FileMode.Create))
-                {
-                    files.CopyToAsync(stream).Wait();
-                }
-
-
-                RequestWiseFile requestWiseFile = new RequestWiseFile();
-                requestWiseFile.FileName = filename;
-                requestWiseFile.RequestId = id;
-                requestWiseFile.DocType = 1;
-                _context.RequestWiseFiles.Add(requestWiseFile);
-                _context.SaveChanges();
-            }
-            return RedirectToAction(nameof(ViewDocument), new {id=id});
+            _service.FileUpload(id, File);
+            return RedirectToAction(nameof(ViewDocument), new { id = id });
         }
 
         public IActionResult Download(int id)
         {
-            var file = _context.RequestWiseFiles.Find(id);
+            //var file = _context.RequestWiseFiles.Find(id);
+            var file = _service.getRequestWiseFileById(id);
             var filepath = "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\" + file.FileName;
             var bytes = System.IO.File.ReadAllBytes(filepath);
             return File(bytes, "aplication/octet-stream", file.FileName);

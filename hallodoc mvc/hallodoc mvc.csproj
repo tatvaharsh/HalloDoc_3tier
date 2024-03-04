@@ -19,6 +19,9 @@
     <Content Remove="Views\Home\login.cshtml" />
     <Content Remove="Views\Home\patient_forgot_password.cshtml" />
     <Content Remove="Views\Home\patient_for_pass.cshtml" />
+    <Content Remove="Views\Shared\_Admin_Nav_Dashboard.cshtml" />
+    <Content Remove="Views\Shared\_Admin_Nav_Records.cshtml" />
+    <Content Remove="wwwroot\css\Admin_Pages\ViewCase.cs" />
     <Content Remove="wwwroot\css\form.css" />
     <Content Remove="wwwroot\css\patint_screen.cs" />
     <Content Remove="wwwroot\js\patient_screen.js" />
@@ -26,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.15">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -42,6 +46,16 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\uplodedfiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Admin\Admin_Dashboard.cshtml" />
+    <None Include="Views\Admin\Admin_Forgot.cshtml" />
+    <None Include="Views\Admin\Admin_Login.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\hallocdoc mvc Service\hallocdoc_mvc_Service.csproj" />
   </ItemGroup>
 
 </Project>

@@ -649,8 +649,24 @@
       "PackagePath": "staticwebassets\\SRSScreenShorts\\up.png"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\Admin_Pages\\Admin_Dashboard.css",
+      "PackagePath": "staticwebassets\\css\\Admin_Pages\\Admin_Dashboard.css"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\Admin_Pages\\Admin_Login.css",
+      "PackagePath": "staticwebassets\\css\\Admin_Pages\\Admin_Login.css"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\Admin_Pages\\ViewCase.css",
+      "PackagePath": "staticwebassets\\css\\Admin_Pages\\ViewCase.css"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\ViewDocument.css",
       "PackagePath": "staticwebassets\\css\\ViewDocument.css"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap.min.css"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\css\\business.css",
@@ -697,8 +713,16 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\AdminDashboard.js",
+      "PackagePath": "staticwebassets\\js\\AdminDashboard.js"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\ViewDocument.js",
       "PackagePath": "staticwebassets\\js\\ViewDocument.js"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\js\\bootstrap.bundle.min.js"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\js\\business.js",
@@ -997,8 +1021,36 @@
       "PackagePath": "staticwebassets\\uplodedfiles\\FDSDFDsdadsdff.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtafile-word-fill.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtafile-word-fill.svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\MVC.pdf",
       "PackagePath": "staticwebassets\\uplodedfiles\\MVC.pdf"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\box-arrow-right.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\box-arrow-right.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\chaityamehtageo-alt.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\chaityamehtageo-alt.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\chaityamehtaperson-circle.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\chaityamehtaperson-circle.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\chaityamehtasuccess-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\chaityamehtasuccess-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\clock.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\clock.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\cloud-arrow-down.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\cloud-arrow-down.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\cloud-upload-icon.svg",
@@ -1033,6 +1085,18 @@
       "PackagePath": "staticwebassets\\uplodedfiles\\dhruvrajsinhzalafile-word-fill.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dhruvrajzalaplus.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\dhruvrajzalaplus.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dhruvzalasuccess-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\dhruvzalasuccess-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dishantsonibox-arrow-right (1).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\dishantsonibox-arrow-right (1).svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dsadasd.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\dsadasd.svg"
     },
@@ -1041,12 +1105,56 @@
       "PackagePath": "staticwebassets\\uplodedfiles\\dsadsafile-earmark-pdf-fill.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dsfdsesfdperson-circle.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\dsfdsesfdperson-circle.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dsfdsfdsfdsfbox-arrow-right (1).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\dsfdsfdsfdsfbox-arrow-right (1).svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dsfdsfdsfdsfplus.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\dsfdsfdsfdsfplus.svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\fdsdfs.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\fdsdfs.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\file-earmark-pdf-fill.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\file-earmark-pdf-fill.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\file-word-fill.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\file-word-fill.svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\geo-alt.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\geo-alt.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\harshmehtabox-arrow-right (1).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\harshmehtabox-arrow-right (1).svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\person-circle.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\person-circle.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\plus.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\plus.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\rameshmehracloud-upload-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\rameshmehracloud-upload-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\rameshmehraperson-circle.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\rameshmehraperson-circle.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\rameshmehrasuccess-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\rameshmehrasuccess-icon.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\sadsa.svg",
@@ -1055,6 +1163,50 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\sdadsdff.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\sdadsdff.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\success-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\success-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\test2test2dhruvzalasuccess-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\test2test2dhruvzalasuccess-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\test3test3dhruvzalasuccess-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\test3test3dhruvzalasuccess-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\testtestbox-arrow-right (1).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\testtestbox-arrow-right (1).svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\testtestclock.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\testtestclock.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\testtestperson-circle.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\testtestperson-circle.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\testtestsuccess-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\testtestsuccess-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\vbcvbccloud-arrow-down.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\vbcvbccloud-arrow-down.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\vbcvbccloud-upload-icon.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\vbcvbccloud-upload-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\vbcvbcfile-word-fill.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\vbcvbcfile-word-fill.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\wqwqecloud-arrow-down.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\wqwqecloud-arrow-down.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\zxccxzc.svg",

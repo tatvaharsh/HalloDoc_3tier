@@ -1,0 +1,7 @@
+﻿a.terms {
+    color: gray;
+}
+
+html[data-bs-theme="dark"] a.terms {
+    color: white;
+}

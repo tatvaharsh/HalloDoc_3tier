@@ -16,6 +16,46 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/Admin_Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/Admin_Forgot.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fRm9yZ290LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/Admin_Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5fTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/AssignCase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQXNzaWduQ2FzZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/Block.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQmxvY2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/Cancel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2FuY2VsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/CancelModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2FuY2VsTW9kYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/ViewCase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld0Nhc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/ViewNotes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld05vdGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/ViewUpload.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmlld1VwbG9hZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Home/business.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxidXNpbmVzcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -60,6 +100,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Home/ResetPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXNldFBhc3N3b3JkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Home/SubmitForMe.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdWJtaXRGb3JNZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -82,6 +126,22 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/_Admin_Header_Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9IZWFkZXJfRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/_Admin_Request_Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbl9SZXF1ZXN0X1RhYmxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/_LayAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/_Layout1.cshtml]

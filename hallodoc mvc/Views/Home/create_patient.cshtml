@@ -1,4 +1,4 @@
-﻿@model hallodoc_mvc.Models.AspNetUser
+﻿@model hallodoc_mvc_Repository.ViewModel.Create
 
 @{
     ViewBag.cssLink1 = "~/css/patient_login.css";
@@ -32,7 +32,7 @@
                 </div>
                 <h2 class="mb-3 text-center mt-2 mb-4">Create Account</h2>
 
-                <form asp-controller="Aspnetusers" asp-action="Create" class="mb-3">
+                <form asp-controller="Home" asp-action="create_patient" class="mb-3">
                     <div class="form-floating mb-4">
                         <input asp-for="UserName" type="text" class="form-control bg-transparent border-2 border-info"
                                id="exampleInputemail" placeholder="Email">
