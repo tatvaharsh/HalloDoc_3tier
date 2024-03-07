@@ -1029,6 +1029,10 @@
       "PackagePath": "staticwebassets\\uplodedfiles\\MVC.pdf"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\Virat KohliDocker Desktop.exe",
+      "PackagePath": "staticwebassets\\uplodedfiles\\Virat KohliDocker Desktop.exe"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\box-arrow-right.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\box-arrow-right.svg"
     },
@@ -1135,6 +1139,14 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\harshmehtabox-arrow-right (1).svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\harshmehtabox-arrow-right (1).svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\harshmehtabox-arrow-right.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\harshmehtabox-arrow-right.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\harshmehtaplus.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\harshmehtaplus.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\person-circle.svg",

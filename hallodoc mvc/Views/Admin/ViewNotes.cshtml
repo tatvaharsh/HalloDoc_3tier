@@ -28,7 +28,15 @@
                             </div>
                             <div class="mt-2">
                                 <h6> Transfer Notes</h6>
-                                <small class="text-secondary">@Model.TransferNotes</small>
+                                <small class="text-secondary">
+                                @foreach (var item in @Model.TransferNotes)
+                                {
+                                    <div>
+                                        @item
+                                    </div>
+                                }
+
+                                 </small>
                             </div>
                         </div>
                     </div>

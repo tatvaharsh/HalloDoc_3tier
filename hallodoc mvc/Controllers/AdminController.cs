@@ -1,12 +1,15 @@
 ﻿using Azure.Core;
+using hallocdoc_mvc_Service.Implementation;
 using hallocdoc_mvc_Service.Interface;
 using hallodoc_mvc_Repository.DataContext;
 using hallodoc_mvc_Repository.DataModels;
 using hallodoc_mvc_Repository.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.IO.Compression;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using HalloDoc.Auth;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -14,16 +17,27 @@ namespace hallodoc_mvc.Controllers
     {
         private readonly IAdmin_Service _service;
 
-        public AdminController(IAdmin_Service service)
+        private readonly IJwtService _jwtService;
+
+        public AdminController(IAdmin_Service service,IJwtService jwtService)
         {
             //_context = context;
             _service = service;
+            _jwtService = jwtService;
         }
-        public IActionResult Admin_Dashboard()
+
+        [CustomAuthorize("Admin")]
+        public IActionResult Admin_Dashboard(ModalData md)
         {
            var admin = HttpContext.Session.GetString("UserName");
+            if(admin != null)
+            {
             ViewBag.Username = admin;
-            return View(); 
+                ModalData data = _service.GetAssignData(md);
+               
+                return View(data); 
+            }
+            return RedirectToAction("Admin_Login");
         }
 
         public IActionResult Admin_Login()
@@ -36,17 +50,17 @@ namespace hallodoc_mvc.Controllers
         {   
             if (ModelState.IsValid)
             {
+                bool isReg = _service.ValidateUser(model);
 
-                if (ModelState.IsValid)
+                if (isReg)
                 {
-                    bool isReg = _service.ValidateUser(model);
-
-                    if (isReg)
+                    var Admin = _service.getAdmin(model.Email);
+                    if (Admin != null)
                     {
-                        var Admin = _service.getAdmin(model.Email);
-                         HttpContext.Session.SetInt32("Id", Admin.AdminId);
-                      
-                         HttpContext.Session.SetString("UserName", Admin.FirstName);
+                        HttpContext.Session.SetInt32("Id", Admin.AdminId);
+                        HttpContext.Session.SetString("UserName", Admin.FirstName);
+                        var token = _jwtService.GenerateJwtToken(model);
+                        Response.Cookies.Append("jwt", token);
                         ViewBag.Username = Admin.FirstName;
                         return RedirectToAction("Admin_Dashboard");
                     }
@@ -58,6 +72,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("Id");
+            Response.Cookies.Delete("jwt");
             return RedirectToAction("Admin_Login");
         }
 
@@ -134,10 +149,11 @@ namespace hallodoc_mvc.Controllers
             ModalData data = _service.GetAssignData(md);
             return PartialView("AssignCase",data);
         }
+
         [HttpPost]
         public IActionResult AssignCase(ModalData md,int Id)
         {
-            int admin = (int)HttpContext.Session.GetInt32("Id");
+                int admin = (int)HttpContext.Session.GetInt32("Id");
             _service.AssignCase(md,Id,admin);
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
@@ -260,6 +276,73 @@ namespace hallodoc_mvc.Controllers
             _service.SendEmail(id);
             return RedirectToAction(nameof(ViewUpload), "Admin", new { id = id });
         }
+        public IActionResult Order(Order md)
+        {
+            Order data = _service.GetOrderData(md);
+            return PartialView("Order", data);
 
+
+        }
+
+        public IActionResult GetVendor(int Id)
+        {
+            var phy = _service.Getvendor(Id);
+   
+         
+            return Json(phy);
+        }
+
+        public IActionResult Getdetails(int Id)
+        {
+            var phy = _service.Getvendordata(Id);
+  
+            return Json(phy);
+        }
+        [HttpPost]
+        public IActionResult Order(Order md, int Id)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            _service.OrderPost(md, Id, admin);
+            return RedirectToAction(nameof(AdminController.Admin_Dashboard));
+        }
+        public IActionResult Transfer(ModalData md)
+        {
+            ModalData data = _service.GetAssignData(md);
+            return PartialView("Transfer", data);
+        }
+    
+        [HttpPost]
+        public IActionResult Transfer( int Id, ModalData md)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            _service.AssignCase(md, Id, admin);
+            return RedirectToAction(nameof(AdminController.Admin_Dashboard));
+        }
+        public IActionResult Clear()
+        {
+
+            return PartialView("Clear");
+        }
+        [HttpPost]
+        public IActionResult Clear(int Id)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            _service.Clear(Id, admin);
+
+            return RedirectToAction(nameof(AdminController.Admin_Dashboard));
+        }
+        public IActionResult SendAgreement(int Id ,int requestType)
+        {
+            ViewBag.requestType = requestType;
+
+            RequestClient rc = _service.GetAgreementtdata(Id);
+            return PartialView("SendAgreement",rc);
+        }
+        [HttpPost]
+        public IActionResult SendAgreement(int Id)
+        {
+            _service.SendAgreementMail(Id);
+            return RedirectToAction(nameof(AdminController.Admin_Dashboard));
+        }
     }
 }

@@ -27,5 +27,9 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public List<CaseTag> CaseTags { get; set; }
 
+        public string? email { get; set; }
+
+        public string? number { get; set; }
+
     }
 }

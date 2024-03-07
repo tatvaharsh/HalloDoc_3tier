@@ -37,42 +37,12 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\h
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc.runtimeconfig.json
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc.pdb
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.csproj.AssemblyReference.cache
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.GeneratedMSBuildEditorConfig.editorconfig
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.AssemblyInfoInputs.cache
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.AssemblyInfo.cs
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.csproj.CoreCompileInputs.cache
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.MvcApplicationPartsAssemblyInfo.cache
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.RazorAssemblyInfo.cache
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.RazorAssemblyInfo.cs
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets\msbuild.hallodoc mvc.Microsoft.AspNetCore.StaticWebAssets.props
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets\msbuild.build.hallodoc mvc.props
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.hallodoc mvc.props
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.hallodoc mvc.props
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets.pack.json
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets.build.json
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets.development.json
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\scopedcss\bundle\hallodoc mvc.styles.css
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\scopedcss\projectbundle\hallodoc mvc.bundle.scp.css
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\refint\hallodoc mvc.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.pdb
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.genruntimeconfig.cache
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\ref\hallodoc mvc.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Humanizer.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Mono.TextTemplating.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Npgsql.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.CodeDom.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.csproj.CopyComplete
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Azure.Core.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Azure.Identity.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Humanizer.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.AspNetCore.Razor.Language.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.Build.dll
@@ -90,7 +60,12 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\M
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.DiaSymReader.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.DotNet.Scaffolding.Shared.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.Identity.Client.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.Identity.Client.Extensions.Msal.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
@@ -109,7 +84,11 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\M
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Mono.TextTemplating.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Npgsql.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\NuGet.Common.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\NuGet.Configuration.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\NuGet.DependencyResolver.Core.dll
@@ -119,6 +98,7 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\N
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\NuGet.ProjectModel.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\NuGet.Protocol.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\NuGet.Versioning.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.CodeDom.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.Composition.AttributedModel.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.Composition.Convention.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.Composition.Hosting.dll
@@ -133,6 +113,9 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\S
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.Security.Permissions.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.Windows.Extensions.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\xunit.abstractions.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\xunit.core.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\xunit.execution.dotnet.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\af\Humanizer.resources.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\ar\Humanizer.resources.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\az\Humanizer.resources.dll
@@ -284,10 +267,31 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\r
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\xunit.abstractions.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\xunit.core.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\xunit.execution.dotnet.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc Repository.dll
-D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc Repository.pdb
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallocdoc_mvc_Service.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc Repository.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallocdoc_mvc_Service.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc Repository.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.csproj.AssemblyReference.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.AssemblyInfoInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.AssemblyInfo.cs
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.csproj.CoreCompileInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.MvcApplicationPartsAssemblyInfo.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.RazorAssemblyInfo.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.RazorAssemblyInfo.cs
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets\msbuild.hallodoc mvc.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets\msbuild.build.hallodoc mvc.props
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.hallodoc mvc.props
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.hallodoc mvc.props
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets.pack.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets.build.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\staticwebassets.development.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\scopedcss\bundle\hallodoc mvc.styles.css
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\scopedcss\projectbundle\hallodoc mvc.bundle.scp.css
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.csproj.CopyComplete
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\refint\hallodoc mvc.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.genruntimeconfig.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\ref\hallodoc mvc.dll

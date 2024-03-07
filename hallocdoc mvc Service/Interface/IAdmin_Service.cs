@@ -36,5 +36,12 @@ namespace hallocdoc_mvc_Service.Interface
         void DeleteFile(int id);
         void DeleteAllFiles(int id);
         void SendEmail(int id);
+        Order GetOrderData(Order md);
+        List<HealthProfessional> Getvendor(int id);
+        List<HealthProfessional> Getvendordata(int id);
+        void OrderPost(Order md, int id, int admin);
+        void Clear(int id, int admin);
+        RequestClient GetAgreementtdata(int id);
+        void SendAgreementMail(int Id);
     }
 }

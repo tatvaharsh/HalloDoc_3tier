@@ -1,0 +1,42 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.ModalData
+
+<button type="button" class="visually-hidden btn btn-primary hello " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Launch static backdrop modal
+</button>
+
+<div class="modal fade" tabindex="-1" id="staticBackdrop" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-center align-items-center border-0">
+              
+            </div>
+            <form asp-action="Clear">
+                <div class="modal-body text-center">
+                    <i class="fa-solid fa-circle-exclamation fa-lg mt-3" style="color: #FFD43B; font-size: 40px; "></i>
+                    <h3 class="m-2">Confirmation for clear case</h3>
+                    <div class="p-4">
+                        <p>Are sure you want to clear this request? Once clear this request then you are not able to see this request.</p>
+                    </div>
+                    <button type="submit" class="btn btn-info text-white">Clear</button>
+                    <button type="button" class="btn btn-outline-info text-info" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+            <div class="modal-footer d-flex justify-content-center border-0">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+         
+        const popup = new bootstrap.Modal('#staticBackdrop')
+
+        popup.show();
+        console.log("hello");
+    });
+    
+
+
+</script>

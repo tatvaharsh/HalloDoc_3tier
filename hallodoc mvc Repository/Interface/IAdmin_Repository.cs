@@ -17,7 +17,7 @@ namespace hallodoc_mvc_Repository.Interface
         IQueryable<Request> GetAdminPending();
         IQueryable<Request> GetAdminStatus();
         List<Request> GetRequest();
-        bool Validate(LoginViewModel model);
+        AspNetUser Validate(LoginViewModel model);
         Admin getaspuser(string email);
         List<Region> GetRegion();
         RequestNote? setnotes(int id);
@@ -41,6 +41,13 @@ namespace hallodoc_mvc_Repository.Interface
         RequestWiseFile GetDocumentFile(int id);
         void update_RequestWiseTable(RequestWiseFile df);
         List<RequestWiseFile> GetDocumentList(int id);
-   
+        List<HealthProfessionalType> GetHealthprofessionalByType();
+        List<HealthProfessional> getvendorbyprofessiontype(int Profession);
+        List<HealthProfessional> getdatabyvendorid(int id);
+        OrderDetail GetOredrDetail(int id);
+        void AddOrderdetails(OrderDetail oredr);
+
+        List<string> GetAspNetRole(int? id);
+        RequestClient getagreement(int id);
     }
 }

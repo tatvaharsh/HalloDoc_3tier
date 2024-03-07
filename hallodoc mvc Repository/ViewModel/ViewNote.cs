@@ -10,7 +10,7 @@ namespace hallodoc_mvc_Repository.ViewModel
     {
         public int RequestId { get; set; }
 
-        public string? TransferNotes { get; set; }
+        public List<string?> TransferNotes { get; set; }
 
         public string? PhysicianNotes { get; set; }
 

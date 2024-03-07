@@ -1,4 +1,5 @@
-﻿@{
+﻿@model hallodoc_mvc_Repository.ViewModel.ModalData
+@{
     ViewData["Title"] = "Admin Dashboard Page";
     Layout = "_LayAdmin";
 }
@@ -26,7 +27,7 @@
             <div class="container-fluid">
                 <div class="row nav" id="myTab" role="tablist">
 
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 mb-3 nav-item" role="presentation" onclick="getData()">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 mb-3 nav-item" role="presentation" onclick="GetData()">
                         <div class="border rounded p-1 p-sm-3 new active" id="new-tab" data-bs-toggle="tab"
                              data-bs-target="#new-tab-pane" type="button" role="tab" aria-controls="new-tab-pane"
                              aria-selected="true">
@@ -41,7 +42,7 @@
 
                     </div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" onclick="GetData()">
                         <div class="border rounded p-1 p-sm-3 Pending" id="Pending-tab" data-bs-toggle="tab"
                              data-bs-target="#Pending-tab-pane" type="button" role="tab"
                              aria-controls="Pending-tab-pane" aria-selected="false" tabindex="-1">
@@ -55,7 +56,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
                         <div class="border rounded p-1 p-sm-3 Active" id="Active-tab" data-bs-toggle="tab"
                              data-bs-target="#Active-tab-pane" type="button" role="tab"
                              aria-controls="Active-tab-pane" aria-selected="false" tabindex="-1">
@@ -69,7 +70,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
                         <div class="border rounded p-1 p-sm-3 Conclude" id="Conclude-tab" data-bs-toggle="tab"
                              data-bs-target="#Conclude-tab-pane" type="button" role="tab"
                              aria-controls="Conclude-tab-pane" aria-selected="false" tabindex="-1">
@@ -83,7 +84,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
                         <div class="border rounded p-1 p-sm-3 ToClose" id="ToClose-tab" data-bs-toggle="tab"
                              data-bs-target="#ToClose-tab-pane" type="button" role="tab"
                              aria-controls="ToClose-tab-pane" aria-selected="false" tabindex="-1">
@@ -98,7 +99,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="getData()">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
                         <div class="border rounded p-1 p-sm-3 Unpaid" id="Unpaid-tab" data-bs-toggle="tab"
                              data-bs-target="#Unpaid-tab-pane" type="button" role="tab"
                              aria-controls="Unpaid-tab-pane" aria-selected="false" tabindex="-1">
@@ -153,9 +154,10 @@
 
                             <select class="form-select border-info mb-2" id="region" aria-label="Default select example" onchange="filter()">
                                 <option selected>All Region</option>
-                                <option value="1">Singapore</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                @foreach (var item in Model.region)
+                                {
+                                    <option value="@item.RegionId">@item.Name</option>
+                                }
                             </select>
                         </div>
 
@@ -225,8 +227,10 @@
                             <div><p style="font-size:smaller;">Vip</p></div>
                         </div>
                     </div>
-                <div id="tableContainer">
-                </div>
+                
+                    <div id="tableContainer"></div>
+
+
                 </div>
 
 
@@ -245,9 +249,9 @@
     <partial name="_ValidationScriptsPartial" />
 }
 
+
 <script>
-
-
+    
     //const abc = (e) =>{
     //    const states = document.getElementsByClassName("border");
     //    for (let i = 0; i < states.length; ++i) {
@@ -269,6 +273,27 @@
     //        }
     //    }
     //}
+    const GetData = () => {
+        const states = document.getElementsByClassName("border");
+        for (let i = 0; i < states.length; ++i) {
+            if (states[i].classList.contains("active")) {
+                console.log(states[i].classList[states[i].classList.length - 2])
+                $.ajax({
+                    method: "POST",
+                    url: `/Admin/${states[i].classList[states[i].classList.length - 2]}`,
+
+
+                    success: function (result) {
+                        $('#tableContainer').html(result);
+                    },
+
+                    error: function () {
+                        alert('Error loading partial view');
+                    }
+                });
+            }
+        }
+    }
 
 
     const abc = (e) => {
@@ -300,33 +325,6 @@
         }
     }
 
-
-    const getData = () => {
-        const states = document.getElementsByClassName("border");
-        for (let i = 0; i < states.length; ++i) {
-            if (states[i].classList.contains("active")) {
-                console.log(states[i].classList[states[i].classList.length - 2])
-                $.ajax({
-                    method: "POST",
-                    url: `/Admin/${states[i].classList[states[i].classList.length - 2]}`,
-
-
-                    success: function (result) {
-                        $('#tableContainer').html(result);
-                    },
-
-                    error: function () {
-                        alert('Error loading partial view');
-                    }
-                });
-
-
-
-
-            }
-        }
-    }
-
     window.onload = () => {
         $.ajax({
             url: `/Admin/New`,
@@ -349,6 +347,7 @@
         });
     }
     function assignCase(requestId) {
+        
         $("#mymodal").load('/Admin/AssignCase/' + requestId, () => {
             const modal = new bootstrap.Modal(document.getElementById('myModalAssign'));
             modal.show();
@@ -361,5 +360,25 @@
             modal.show();
         });
     }
-
+    function TransferCase(requestId) {
+        $("#mymodal").load('/Admin/Transfer/' + requestId, () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('myModalTransfer'));
+            modal.show();
+        });
+    }
+    function Clear(requestId) {
+        $("#mymodal").load('/Admin/Clear/' + requestId, () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
+            modal.show();
+        });
+    }
+    function SendAgreement(requestId, requestType) {
+        $("#mymodal").load('/Admin/SendAgreement/' + requestId + '?requestType=' + requestType, () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('myModalSendAgreement'));
+            modal.show();
+        });
+    }
 </script>

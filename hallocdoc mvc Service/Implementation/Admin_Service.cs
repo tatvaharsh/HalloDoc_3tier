@@ -414,7 +414,13 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public bool ValidateUser(LoginViewModel model)
         {
-            return _Repository.Validate(model);
+            AspNetUser asp = _Repository.Validate(model);
+            if (asp.Id>0)
+            {
+                model.Id=asp.Id;
+                return true;  
+            }
+            return false;
         }
 
         public Admin getAdmin(string email)
@@ -426,6 +432,7 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             List<Region> r = _Repository.GetRegion();
             md.region = r;
+           
             return md;
         }
 
@@ -466,12 +473,12 @@ namespace hallocdoc_mvc_Service.Implementation
             var cancelNote = string.Empty;
 
             var requestStatusLog = _Repository.GetStatusLogsByRequest(id);
-            string? transfer = "";
+            List<string?> transfer = new();
             
             requestStatusLog.ForEach(x =>
             {
                 Physician? phy = _Repository.GetPhysician(x.TransToPhysicianId);
-                transfer="Admin transferred to Dr : "+phy?.FirstName+" on " +x.CreatedDate.ToString("dd/MM/yyyy")+ " at "+x.CreatedDate.ToString("HH: mm:ss: tt")+" "+x.Notes;
+                transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
             });
             
             var log = requestStatusLog.FirstOrDefault(x => x.Status == 3);
@@ -737,6 +744,100 @@ namespace hallocdoc_mvc_Service.Implementation
             };
             client.SendMailAsync(mailMessage);
         
+        }
+
+        public Order GetOrderData(Order md)
+        {
+
+            List<HealthProfessionalType> r = _Repository.GetHealthprofessionalByType();
+          
+            md.HealthProfessionalType = r;
+          
+            return md;
+        }
+
+        public List<HealthProfessional> Getvendor(int id)
+        {
+
+           return _Repository.getvendorbyprofessiontype(id);
+
+        }
+
+        public List<HealthProfessional> Getvendordata(int id)
+        {
+            return _Repository.getdatabyvendorid(id);
+        }
+
+        public void OrderPost(Order md, int id, int admin)
+        {
+           
+            OrderDetail oredr = new()
+            {
+                VendorId=md.SelectedVendorId,
+                RequestId=id,
+                FaxNumber=md.Fax,
+                Email=md.Email,
+                BusinessContact=md.Email,
+                Prescription=md.Detail,
+                NoOfRefill=md.refill,
+                CreatedDate=DateTime.Now,
+                CreatedBy=admin.ToString(),
+
+            };
+            _Repository.AddOrderdetails(oredr);
+        }
+
+        public void Clear(int id, int admin)
+        {
+            Request req = _Repository.GetRequestById(id);
+
+            req.Status = 11;
+
+            req.ModifiedDate = DateTime.Now;
+            _Repository.UpdateRequesttbl(req);
+
+            RequestStatusLog reqlog = new()
+            {
+                RequestId = id,
+                Status = 11,
+                AdminId = admin,
+   
+                CreatedDate = DateTime.Now,
+
+            };
+            _Repository.AddRequestStatuslog(reqlog);
+        }
+
+        public RequestClient GetAgreementtdata(int id)
+        {
+            return _Repository.getagreement(id);
+        }
+
+        public void SendAgreementMail(int Id)
+        {
+            RequestClient rc = _Repository.getagreement(Id);
+
+            if (rc.Email != null)
+            {
+                var receiver = rc.Email;
+                var subject = "Send Agreement";
+                var message = "Tap on link for Send Agreement";
+
+
+                var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+                var password = "binal@2002";
+
+                var client = new SmtpClient("smtp.office365.com", 587)
+                {
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(mail, password)
+                };
+
+                client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
+
+
+
+            }
         }
     }
 }

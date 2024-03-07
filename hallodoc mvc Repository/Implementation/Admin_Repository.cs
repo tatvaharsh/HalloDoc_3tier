@@ -58,17 +58,17 @@ namespace hallodoc_mvc_Repository.Implementation
             return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null).ToList();
         }
 
-        public bool Validate(LoginViewModel model)
+        public AspNetUser Validate(LoginViewModel model)
         {
             var aspUser = _context.AspNetUsers.FirstOrDefault(u => u.Email == model.Email && u.PasswordHash == model.Passwordhash);
 
             if (aspUser == null)
             {
-                return false;
+                return new AspNetUser();
             }
             else
             {
-                return true;
+                return aspUser;
             }
         }
 
@@ -197,6 +197,40 @@ namespace hallodoc_mvc_Repository.Implementation
             return reqdoc;
         }
 
+        public List<HealthProfessionalType> GetHealthprofessionalByType()
+        {
+            return _context.HealthProfessionalTypes.ToList();
+        }
 
+        public List<HealthProfessional> getvendorbyprofessiontype(int Profession)
+        {
+           return _context.HealthProfessionals.Where(i=>i.Profession==Profession).ToList();
+        }
+
+        public List<HealthProfessional> getdatabyvendorid(int id)
+        {
+            return _context.HealthProfessionals.Where(i => i.VendorId == id).ToList();
+        }
+
+        public OrderDetail GetOredrDetail(int id)
+        {
+           return _context.OrderDetails.FirstOrDefault(i => i.VendorId == id);
+        }
+
+        public void AddOrderdetails(OrderDetail oredr)
+        {
+           _context.OrderDetails.Add(oredr);
+            _context.SaveChanges();
+        }
+
+        public List<string> GetAspNetRole(int? id)
+        {
+            return _context.AspNetUsers.Include(x => x.Roles).FirstOrDefault(x => x.Id == id).Roles.Select(x=>x.Name).ToList() ;
+        }
+
+        public RequestClient getagreement(int id)
+        {
+           return _context.RequestClients.FirstOrDefault(x=>x.RequestId== id);
+        }
     }
 }
