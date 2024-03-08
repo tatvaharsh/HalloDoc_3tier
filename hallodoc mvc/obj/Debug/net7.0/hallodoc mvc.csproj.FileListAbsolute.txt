@@ -295,3 +295,4 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\r
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.pdb
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.genruntimeconfig.cache
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\ref\hallodoc mvc.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\ImageResizer.dll

@@ -23,7 +23,6 @@ namespace hallodoc_mvc_Repository.Implementation
         public IQueryable<Request> GetAdminCode()
         {
                 return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 1);
-     
         }
         public IQueryable<Request> GetAdminStatus()
         {
@@ -90,7 +89,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<RequestStatusLog?> GetStatusLogsByRequest(int id)
         {
-            return _context.RequestStatusLogs.Where(x=>x.RequestId==id).ToList();
+            return _context.RequestStatusLogs.Where(x=>x.RequestId==id).ToList() ?? new List<RequestStatusLog>();
 
         }
 
@@ -231,6 +230,23 @@ namespace hallodoc_mvc_Repository.Implementation
         public RequestClient getagreement(int id)
         {
            return _context.RequestClients.FirstOrDefault(x=>x.RequestId== id);
+        }
+
+        public void updaterequestclient(RequestClient r)
+        {
+            _context.RequestClients.Update(r);
+            _context.SaveChanges();
+        }
+
+        public List<Request> GetCountData()
+        {
+            return _context.Requests.Include(x => x.RequestClients).ToList();
+        }
+
+        public void AddRequestclosed(RequestClosed requestClosed)
+        {
+            _context.RequestCloseds.Add(requestClosed);
+            _context.SaveChanges();
         }
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+BQp/V/ZuYo+tS7+wYcPj49Gfbm1zkE8TMmSCK3RMYUi+PNMAuLMC9aSC4RaZO0yJqRAO0j/T3CFHUrOwOIQPg==",
+  "dgSpecHash": "95zcuBnm6CpHafQ2qBjAyXjvMRya4oaXJwJ55UrEuwZMkomUbiYM41ZfWhPQGPJlL0/v6n8rI2djQ4JH5v77BA==",
   "success": true,
   "projectFilePath": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\hallodoc mvc.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,7 @@
     "C:\\Users\\pca114\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\pca114\\.nuget\\packages\\imageresizer\\4.2.8\\imageresizer.4.2.8.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
@@ -286,5 +287,16 @@
     "C:\\Users\\pca114\\.nuget\\packages\\xunit.extensibility.core\\2.6.6\\xunit.extensibility.core.2.6.6.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\xunit.extensibility.execution\\2.6.6\\xunit.extensibility.execution.2.6.6.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'ImageResizer 4.2.8' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "ImageResizer",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

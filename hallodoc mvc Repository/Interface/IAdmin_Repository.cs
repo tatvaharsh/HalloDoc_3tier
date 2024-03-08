@@ -49,5 +49,8 @@ namespace hallodoc_mvc_Repository.Interface
 
         List<string> GetAspNetRole(int? id);
         RequestClient getagreement(int id);
+        void updaterequestclient(RequestClient REQ);
+        List<Request> GetCountData();
+        void AddRequestclosed(RequestClosed requestClosed);
     }
 }

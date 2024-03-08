@@ -14,6 +14,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using System.Security.Cryptography.Xml;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -59,13 +60,25 @@ namespace hallocdoc_mvc_Service.Implementation
                 query = query.Where(r => r.RequestClients.FirstOrDefault().RegionId == region);
 
             }
+            
 
             var dashData = new List<AdminDashboard>();
 
-           
 
-            foreach(var item in query)
+
+
+
+            foreach (var item in query.ToList())
             {
+            List<RequestStatusLog?> requestStatusLog = _Repository.GetStatusLogsByRequest(item.RequestId);
+            List<string>? transfer = new();
+
+            requestStatusLog.ForEach(x =>
+            {
+                Physician? phy = _Repository.GetPhysician(x.TransToPhysicianId);
+                transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
+            });
+
                 DateOnly Mydate = new(item.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(item.RequestClients.FirstOrDefault().StrMonth, "MMM", CultureInfo.InvariantCulture).Month, item.RequestClients.FirstOrDefault().IntDate.Value);
                 dashData.Add(new AdminDashboard
                 {
@@ -80,9 +93,10 @@ namespace hallocdoc_mvc_Service.Implementation
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
                     Address = item.RequestClients.FirstOrDefault()?.Street + ", " + item.RequestClients.FirstOrDefault()?.City + ", " + item.RequestClients.FirstOrDefault()?.State,
-                    //Notes = item.RequestClients.FirstOrDefault()?.Notes,
+                    Notes = transfer,
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
+                    
                 });
             }
 
@@ -183,17 +197,23 @@ namespace hallocdoc_mvc_Service.Implementation
 
             
 
-            foreach (var item in query)
+            foreach (var item in query.ToList())
             {
 
-                //List<RequestStatusLog?> requestStatusLog = _Repository.GetStatusLogsByRequest(item.RequestId);
-                //List<string?> transfer = new();
+                List<RequestStatusLog?> requestStatusLog = _Repository.GetStatusLogsByRequest(item.RequestId);
+                List<string>? transfer = new();
 
-                //requestStatusLog.ForEach(x =>
-                //{
-                //    Physician? phy = _Repository.GetPhysician(x.TransToPhysicianId);
-                //    transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
-                //});
+                requestStatusLog.ForEach(x =>
+                {
+                    Physician? phy = _Repository.GetPhysician(x.TransToPhysicianId);
+                    if (phy != null) {
+                    transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
+                    }
+                    else
+                    {
+                     transfer.Add("Admin changed to status" + " " + x.Notes);
+                    }
+                });
 
 
                 DateOnly Mydate = new(item.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(item.RequestClients.FirstOrDefault().StrMonth, "MMM", CultureInfo.InvariantCulture).Month, item.RequestClients.FirstOrDefault().IntDate.Value);
@@ -206,7 +226,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
                     Address = item.RequestClients.FirstOrDefault()?.Street + ", " + item.RequestClients.FirstOrDefault()?.City + ", " + item.RequestClients.FirstOrDefault()?.State,
-                    //Notes = transfer,
+                    Notes = transfer,
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
                 });
@@ -306,8 +326,17 @@ namespace hallocdoc_mvc_Service.Implementation
 
             var dashData = new List<AdminDashboard>();
 
-            foreach (var item in query)
+            foreach (var item in query.ToList())
             {
+
+                List<RequestStatusLog?> requestStatusLog = _Repository.GetStatusLogsByRequest(item.RequestId);
+                List<string>? transfer = new();
+
+                requestStatusLog.ForEach(x =>
+                {
+                    Physician? phy = _Repository.GetPhysician(x.TransToPhysicianId);
+                    transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
+                });
                 DateOnly Mydate = new(item.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(item.RequestClients.FirstOrDefault().StrMonth, "MMM", CultureInfo.InvariantCulture).Month, item.RequestClients.FirstOrDefault().IntDate.Value);
                 dashData.Add(new AdminDashboard
                 {
@@ -318,7 +347,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
                     Address = item.RequestClients.FirstOrDefault()?.Street + ", " + item.RequestClients.FirstOrDefault()?.City + ", " + item.RequestClients.FirstOrDefault()?.State,
-                    //Notes = item.RequestClients.FirstOrDefault()?.Notes,
+                    Notes = transfer,
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
                 });
@@ -432,7 +461,37 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             List<Region> r = _Repository.GetRegion();
             md.region = r;
-           
+
+
+            List<Request> countdata = _Repository.GetCountData();
+
+            var num = countdata.GroupBy(x => x.Status).Select(x => new
+            {
+                status = x.Key,
+                c = x.Count(),
+            });
+
+            int a = num.FirstOrDefault(x => x.status == 1)?.c ?? 0;
+            int b = num.FirstOrDefault(x => x.status == 2)?.c ?? 0;
+
+            int c = num.FirstOrDefault(x => x.status == 4)?.c ?? 0;
+            c += num.FirstOrDefault(x => x.status == 5)?.c ?? 0;
+
+            int d = num.FirstOrDefault(x => x.status == 6)?.c ?? 0;
+
+            int e = num.FirstOrDefault(x => x.status == 3)?.c ?? 0;
+            e += num.FirstOrDefault(x => x.status == 7)?.c ?? 0;
+            e += num.FirstOrDefault(x => x.status == 8)?.c ?? 0;
+
+            int f = num.FirstOrDefault(x => x.status == 9)?.c ?? 0;
+
+            md.CountNew = a;
+            md.CountPending = b;
+            md.CountActive = c;
+            md.CountConclude = d;
+            md.CountClose = e;
+            md.CountUnpaid = f;
+
             return md;
         }
 
@@ -839,5 +898,99 @@ namespace hallocdoc_mvc_Service.Implementation
 
             }
         }
+
+        public Close getclosedata(int id)
+        {
+            List<RequestWiseFile> rwf = _Repository.getfile(id);
+            Request? req = _Repository.getdetail(id);
+            var r = _Repository.getagreement(id);
+            DateOnly Mydate = new(r.IntYear.Value, DateOnly.ParseExact(r.StrMonth, "MMM", CultureInfo.InvariantCulture).Month, r.IntDate.Value);
+
+            Close c = new()
+            {
+                FirstName = req.FirstName,
+                Confirmationnumber = req.ConfirmationNumber,
+                RequestId = req.RequestId,
+                //FileName = item.FileName,
+                //FileId = item.RequestWiseFileId,
+                //Uploaddate = item.CreatedDate,
+
+                Fname = r.FirstName,
+                Lname = r.LastName,
+                Email = r.Email,
+                BirthDate = Mydate,
+                Phone = r.PhoneNumber,
+            };
+
+            List<ViewDocument> viewDocuments = new List<ViewDocument>();
+
+            if (rwf.Count != 0)
+            {
+                foreach (var item in rwf)
+                {
+                    viewDocuments.Add(new ViewDocument
+                    {
+                        FirstName = req.FirstName,
+                        Confirmationnumber = req.ConfirmationNumber,
+                        RequestId = req.RequestId,
+                        FileName = item.FileName,
+                        FileId = item.RequestWiseFileId,
+                        Uploaddate = item.CreatedDate,
+                    });
+                }
+            }
+            else
+            {
+                viewDocuments.Add(new ViewDocument
+                {
+                    FirstName = req.FirstName,
+                    Confirmationnumber = req.ConfirmationNumber,
+                    RequestId = req.RequestId,
+                });
+            }
+
+            c.viewDocuments = viewDocuments;
+           
+            return c;
+        }
+
+        public void editdata(Close model, int id)
+        {
+            var r = _Repository.getagreement(id);
+
+            
+                r.Email = model.Email;
+                r.PhoneNumber = model.Phone;
+
+           
+            _Repository.updaterequestclient(r);
+  
+        }
+
+        public void close(int id,int admin)
+        {
+            Request req = _Repository.GetRequestById(id);
+
+            req.Status = 9;
+            req.ModifiedDate = DateTime.Now;
+            _Repository.UpdateRequesttbl(req);
+
+            RequestStatusLog reqlog = new()
+            {
+                RequestId = id,
+                Status = 9,
+                AdminId = admin,
+                CreatedDate = DateTime.Now,
+            };
+            _Repository.AddRequestStatuslog(reqlog);
+
+            RequestClosed requestClosed = new()
+            {
+                RequestId= id,
+                RequestStatusLogId=reqlog.RequestStatusLogId
+            };
+            _Repository.AddRequestclosed(requestClosed);
+        }
+
     }
 }

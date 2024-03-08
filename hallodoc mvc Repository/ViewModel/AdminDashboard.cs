@@ -32,7 +32,7 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public string Phone { get; set; }  //rc
 
-        public List<string?> Notes { get; set; } //null
+        public List<string>? Notes { get; set; }
 
         public string? Address { get; set; } //rc
 

@@ -10,9 +10,12 @@ using Microsoft.EntityFrameworkCore;
 using System.IO.Compression;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using HalloDoc.Auth;
+using NuGet.Protocol;
+
 
 namespace hallodoc_mvc.Controllers
 {
+   
     public class AdminController : Controller
     {
         private readonly IAdmin_Service _service;
@@ -29,12 +32,14 @@ namespace hallodoc_mvc.Controllers
         [CustomAuthorize("Admin")]
         public IActionResult Admin_Dashboard(ModalData md)
         {
+            
            var admin = HttpContext.Session.GetString("UserName");
             if(admin != null)
             {
             ViewBag.Username = admin;
                 ModalData data = _service.GetAssignData(md);
-               
+                TempData["success"] = "Login Successfully!!!";
+
                 return View(data); 
             }
             return RedirectToAction("Admin_Login");
@@ -69,8 +74,12 @@ namespace hallodoc_mvc.Controllers
             }
             return View();
         }
+
         public IActionResult Logout()
         {
+            
+     
+            HttpContext.Session.Clear();
             HttpContext.Session.Remove("Id");
             Response.Cookies.Delete("jwt");
             return RedirectToAction("Admin_Login");
@@ -123,7 +132,10 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult ViewCase(int Id)
         {
-            ViewCase vc=_service.Getcase(Id);
+            var admin = HttpContext.Session.GetString("UserName");
+            ViewBag.Username = admin;
+
+            ViewCase vc =_service.Getcase(Id);
 
             return View(vc);
         }
@@ -343,6 +355,27 @@ namespace hallodoc_mvc.Controllers
         {
             _service.SendAgreementMail(Id);
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
+        }
+        public IActionResult Close(int Id)
+        {
+            Close c = _service.getclosedata(Id);
+            return View(c);
+        }
+
+       
+
+        [HttpPost]
+        public IActionResult CloseConfirm(int Id, [FromForm] Close model)
+        {
+             _service.editdata(model,Id); 
+            return RedirectToAction(nameof(Close), new {Id = Id});
+        }
+        public IActionResult saavclose(int Id)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            _service.close(Id, admin);
+            TempData["success"] = "Case Closed Successfully!!!";
+            return RedirectToAction("Admin_Dashboard");
         }
     }
 }

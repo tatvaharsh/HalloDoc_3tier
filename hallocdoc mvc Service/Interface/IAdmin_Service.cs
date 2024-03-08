@@ -43,5 +43,8 @@ namespace hallocdoc_mvc_Service.Interface
         void Clear(int id, int admin);
         RequestClient GetAgreementtdata(int id);
         void SendAgreementMail(int Id);
+        Close getclosedata(int id);
+        void editdata(Close model, int id);
+        void close(int id,int admin);
     }
 }

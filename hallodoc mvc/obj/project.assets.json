@@ -640,6 +640,19 @@
           }
         }
       },
+      "ImageResizer/4.2.8": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Antiforgery/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -5683,6 +5696,19 @@
         "lib/netstandard1.0/zh-Hant/Humanizer.resources.dll",
         "lib/netstandard2.0/zh-Hant/Humanizer.resources.dll",
         "logo.png"
+      ]
+    },
+    "ImageResizer/4.2.8": {
+      "sha512": "3OZKxlsyYr9Zxsz0KwXJ5S749azmjcPV4B344ssR/3oneEY6ZdTawDPochD4Z4RHBs4bYBf592lVhmEngxtZ7g==",
+      "type": "package",
+      "path": "imageresizer/4.2.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "imageresizer.4.2.8.nupkg.sha512",
+        "imageresizer.nuspec",
+        "lib/net45/ImageResizer.XML",
+        "lib/net45/ImageResizer.dll"
       ]
     },
     "Microsoft.AspNetCore.Antiforgery/2.2.0": {
@@ -13221,6 +13247,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "ImageResizer >= 4.2.8",
       "Microsoft.AspNetCore.Http.Features >= 5.0.17",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.15",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.15",
@@ -13275,6 +13302,10 @@
       "net7.0": {
         "targetAlias": "net7.0",
         "dependencies": {
+          "ImageResizer": {
+            "target": "Package",
+            "version": "[4.2.8, )"
+          },
           "Microsoft.AspNetCore.Http.Features": {
             "target": "Package",
             "version": "[5.0.17, )"
@@ -13330,5 +13361,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'ImageResizer 4.2.8' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "ImageResizer",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

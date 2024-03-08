@@ -31,5 +31,11 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public string? number { get; set; }
 
+        public int? CountPending { get; set; }
+        public int? CountNew { get; set; }
+        public int? CountUnpaid { get; set; }
+        public int? CountClose { get; set; }
+        public int? CountActive { get; set; }
+        public int? CountConclude { get; set; }
     }
 }

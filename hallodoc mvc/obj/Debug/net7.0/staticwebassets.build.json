@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rRbjlUVxb8tzLH8UPGpDhl7Fs5pnh+5h+OMlsiACnvA=",
+  "Hash": "2pss3sDz7JafGD8RNcDM0uYLm1gEC6yE2S0JJXWkvcc=",
   "Source": "hallodoc mvc",
   "BasePath": "_content/hallodoc mvc",
   "Mode": "Default",
@@ -4333,6 +4333,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uplodedfiles\\chaityamehtasuccess-icon.svg"
+    },
+    {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\ChintanbhaiMehtaperson-circle.svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "uplodedfiles/ChintanbhaiMehtaperson-circle.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uplodedfiles\\ChintanbhaiMehtaperson-circle.svg"
+    },
+    {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\ChintanbhaiMehtasuccess-icon.svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "uplodedfiles/ChintanbhaiMehtasuccess-icon.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uplodedfiles\\ChintanbhaiMehtasuccess-icon.svg"
     },
     {
       "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\clock.svg",

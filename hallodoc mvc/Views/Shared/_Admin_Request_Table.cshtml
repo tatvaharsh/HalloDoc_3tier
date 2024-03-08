@@ -234,9 +234,16 @@
 
                         @if (@Model.FirstOrDefault().Status == 1 || @Model.FirstOrDefault().Status == 2 || @Model.FirstOrDefault().Status == 3 || @Model.FirstOrDefault().Status == 4 || @Model.FirstOrDefault().Status == 7 || @Model.FirstOrDefault().Status == 8)
                         {
-                            <td>
-                               @* @obj.Notes*@
-                            </td>
+                        <td>
+                            @{
+                                int count = 1;
+                            }
+                            @foreach (var x in obj.Notes)
+                            {   
+                                <div>@count) @x</div>
+                                count++;
+                            }
+                        </td>
                         }
 
                         <td>
@@ -295,9 +302,9 @@
                                     {
                                         <li><a class="dropdown-item" href="#">Encounter</a></li>
                                     }
-                                    @if (Model.FirstOrDefault().Status == 5)
+                                    @if (Model.FirstOrDefault().Status == 3)
                                     {
-                                        <li><a class="dropdown-item" href="#">Close Case</a></li>
+                                    <li><a class="dropdown-item" asp-action="Close" asp-route-id="@obj.Id">Close Case</a></li>
                                     }
                                 </ul>
                             </div>
