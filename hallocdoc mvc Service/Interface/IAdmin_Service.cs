@@ -46,5 +46,9 @@ namespace hallocdoc_mvc_Service.Interface
         Close getclosedata(int id);
         void editdata(Close model, int id);
         void close(int id,int admin);
+        void agreeagreement(int id);
+     
+        ModalData cancelmodal(int id);
+        void cancelagreement(int id, ModalData md);
     }
 }

@@ -37,5 +37,8 @@ namespace hallodoc_mvc_Repository.ViewModel
         public int? CountClose { get; set; }
         public int? CountActive { get; set; }
         public int? CountConclude { get; set; }
+
+
+        public int? Token { get; set; }
     }
 }

@@ -91,8 +91,28 @@
                             </small>
                         </div>
                     </div>
+                </div>   
+            }
+
+            @if (Model.Patientcancellationnote != string.Empty)
+            {
+                <div class="form-floating mb-3 col-12 col-sm-6 ">
+                    <div class=" border shadow rounded d-flex">
+                        <div class="m-3">
+                            <i class="fa-solid fa-user-doctor fs-5"></i>
+                        </div>
+                        <div class="mt-2">
+                            <h6> Patient Cancellation Note</h6>
+                            <small class="text-secondary">
+                                @if (Model != null)
+                                {
+                                    <small class="text-secondary"> @Model.Patientcancellationnote </small>
+                                }
+                            </small>
+                        </div>
+                    </div>
                 </div>
-                
+
             }
         </div>
 

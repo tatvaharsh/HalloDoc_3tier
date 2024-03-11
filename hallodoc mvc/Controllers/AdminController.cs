@@ -11,6 +11,7 @@ using System.IO.Compression;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using HalloDoc.Auth;
 using NuGet.Protocol;
+using NuGet.Common;
 
 
 namespace hallodoc_mvc.Controllers
@@ -348,7 +349,12 @@ namespace hallodoc_mvc.Controllers
             ViewBag.requestType = requestType;
 
             RequestClient rc = _service.GetAgreementtdata(Id);
-            return PartialView("SendAgreement",rc);
+            ModalData md = new()
+            {
+                number=rc.PhoneNumber,
+                email=rc.Email,
+            };
+            return PartialView("SendAgreement",md);
         }
         [HttpPost]
         public IActionResult SendAgreement(int Id)
@@ -377,5 +383,27 @@ namespace hallodoc_mvc.Controllers
             TempData["success"] = "Case Closed Successfully!!!";
             return RedirectToAction("Admin_Dashboard");
         }
+        public IActionResult Agreement(int token)
+        {
+            ModalData md = _service.cancelmodal(token);
+            return View(md);
+        }
+
+        public IActionResult Agree(int id)
+        {
+            _service.agreeagreement(id);
+            return View();
+        }
+        public IActionResult GetCancel(int id,ModalData md)
+        {
+            _service.cancelagreement(id,md);
+            return RedirectToAction(nameof(Agreement));
+        }
+        public IActionResult Encounter()
+        {
+            return View();  
+        }
+
+
     }
 }

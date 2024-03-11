@@ -186,7 +186,14 @@ html[data-bs-theme="dark"] .text-testing {
 }
 
 
-
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid #555;
+    margin: auto;
+}
 
 
 .accordion-button::after {

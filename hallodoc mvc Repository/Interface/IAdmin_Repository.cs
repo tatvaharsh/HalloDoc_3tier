@@ -52,5 +52,7 @@ namespace hallodoc_mvc_Repository.Interface
         void updaterequestclient(RequestClient REQ);
         List<Request> GetCountData();
         void AddRequestclosed(RequestClosed requestClosed);
+        Request getreqid(int id);
+        RequestClient getclient(int id);
     }
 }

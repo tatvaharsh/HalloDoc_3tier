@@ -343,7 +343,7 @@
                 <div class="accordion-button collapsed d-flex flex-column" style="background-color: #00bae920;text-decoration: none !important;position: relative;" data-bs-toggle="collapse" data-bs-target="#@id" aria-expanded="true" aria-controls="flush-collapse">
 
                     <div class="w-100 d-flex justify-content-between m-1">
-                        <div class="">@item.LName,@item.FName</div>
+                        <div class="">@item.LName, @item.FName</div>
                         <div class="">
                             @if (item.RequestTypeId == 1)
                             {
@@ -383,7 +383,7 @@
                     <div class="w-100 d-flex justify-content-between m-1 align-items-center">
                         <div class="">@item.Address</div>
                         <div class="">
-                            <button class="btn rounded-pill btn-outline-info z-3" type="button">
+                            <button class="btn text-nowrap rounded-pill btn-outline-info z-3" type="button">
                                 <small>Map Location</small>
                             </button>
                         </div>
@@ -469,19 +469,19 @@
                                     </span>
                                 </div>
                                 <div class="mt-3 row justify-content-between">
-                                    <button class="col p-2 m-1 btn rounded-pill  text-white b1" data-bs-toggle="modal" data-bs-target="#myModalAssign" type="button" style="background-color: #9f22c1;">
+                                    <button class="col p-2 m-1 btn rounded-pill  text-white b1" onclick="assignCase(@item.Id)" data-bs-toggle="modal" data-bs-target="#myModalAssign" type="button" style="background-color: #9f22c1;">
                                         Assign Case
                                     </button>
-                                    <button class="col p-2 m-1 btn rounded-pill btn-danger b1" type="button">
+                                    <button class="col p-2 m-1 btn rounded-pill btn-danger b1" onclick="cancelCase(@item.Id)" type="button">
                                         Cancel Case
                                     </button>
                                 </div>
 
                                 <div class="row justify-content-between mt-2">
-                                    <button class="col p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
+                                    <a class="col p-2 m-1 btn rounded-pill btn-success b1" asp-action="ViewNotes" asp-route-id="@item.Id" style="background-color: #23a727;">
                                         View Notes
-                                    </button>
-                                    <button class="col p-2 m-1 btn rounded-pill btn-danger b1" type="button">
+                                    </a>
+                                    <button class="col p-2 m-1 btn rounded-pill btn-danger b1" onclick="blockCase(@item.Id)" type="button">
                                         Block Patient
                                     </button>
                                 </div>
@@ -498,7 +498,7 @@
                                     <span class="accordion-heading-inner ms-2">
                                         Date of Birth:
                                         <span class="accordion-value-inner">
-                                            BirthDate
+                                            @item.DateOfBirth
                                         </span>
                                     </span>
                                 </div>
@@ -525,7 +525,14 @@
                                     <span class="accordion-heading-inner ms-2">
                                         Transfer Notes:
                                         <span class="accordion-value-inner">
-                                            Admin Transfered to Dr.Tatva on 12-2-2010
+                                            @{
+                                                int count = 1;
+                                            }
+                                            @foreach (var x in item.Notes)
+                                            {
+                                                <span>@count) @x</span>
+                                                count++;
+                                            }
                                         </span>
                                     </span>
                                 </div>
@@ -543,7 +550,7 @@
                                     <span class="accordion-heading-inner ms-2">
                                        Physician:
                                         <span class="accordion-value-inner">
-                                            Physician---
+                                            @item.Physician
                                         </span>
                                     </span>
                                 </div>

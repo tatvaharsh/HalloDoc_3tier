@@ -23,14 +23,15 @@
 <div class="p-sm-2 p-md-5 mt-4 mt-sm-0">
     <div class="tab-content" id="myTabContent">
 
-
+        
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
              tabindex="0">
             <div class="container-fluid">
+                
                 <div class="row nav" id="myTab" role="tablist">
-
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 mb-3 nav-item" role="presentation" onclick="GetData()">
-                        <div class="border rounded p-1 p-sm-3 new active" id="new-tab" data-bs-toggle="tab"
+                   
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 mb-3 nav-item"  role="presentation" onclick="GetData()">
+                        <div class="Box border rounded p-1 p-sm-3 new active" id="new-tab" onclick="changeactive()" value="1" data-bs-toggle="tab"
                              data-bs-target="#new-tab-pane" type="button" role="tab" aria-controls="new-tab-pane"
                              aria-selected="true">
                             <div class="d-flex align-items-center">
@@ -40,12 +41,14 @@
                             <div class="ps-1 pt-3">
                                 <h4>@Model.CountNew</h4>
                             </div>
+                           
                         </div>
-
+                        <div class="triangle-down" style="border-top-color:rgba(2, 2, 146)" id="tdown1"></div>
                     </div>
+                       
 
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" onclick="GetData()">
-                        <div class="border rounded p-1 p-sm-3 Pending" id="Pending-tab" data-bs-toggle="tab"
+                        <div class="Box border rounded p-1 p-sm-3 Pending" id="Pending-tab" value="2" onclick="changeactive()" data-bs-toggle="tab"
                              data-bs-target="#Pending-tab-pane" type="button" role="tab"
                              aria-controls="Pending-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
@@ -56,10 +59,12 @@
                                 <h4>@Model.CountPending</h4>
                             </div>
                         </div>
+                        <div class="triangle-down d-none" id="tdown2"></div>
                     </div>
+                       
 
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
-                        <div class="border rounded p-1 p-sm-3 Active" id="Active-tab" data-bs-toggle="tab"
+                        <div class="Box border rounded p-1 p-sm-3 Active" id="Active-tab" onclick="changeactive()" value="3" data-bs-toggle="tab"
                              data-bs-target="#Active-tab-pane" type="button" role="tab"
                              aria-controls="Active-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
@@ -70,10 +75,12 @@
                                 <h4>@Model.CountActive</h4>
                             </div>
                         </div>
+                        <div class="triangle-down d-none" id="tdown3"></div>
                     </div>
+                       
 
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
-                        <div class="border rounded p-1 p-sm-3 Conclude" id="Conclude-tab" data-bs-toggle="tab"
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4"  role="presentation" onclick="GetData()">
+                        <div class="Box border rounded p-1 p-sm-3 Conclude" id="Conclude-tab" onclick="changeactive()" value="4" data-bs-toggle="tab"
                              data-bs-target="#Conclude-tab-pane" type="button" role="tab"
                              aria-controls="Conclude-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
@@ -84,10 +91,12 @@
                                 <h4>@Model.CountConclude</h4>
                             </div>
                         </div>
+                        <div class="triangle-down d-none" id="tdown4"></div>
                     </div>
+                       
 
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
-                        <div class="border rounded p-1 p-sm-3 ToClose" id="ToClose-tab" data-bs-toggle="tab"
+                        <div class="Box border rounded p-1 p-sm-3 ToClose" id="ToClose-tab" onclick="changeactive()" value="5" data-bs-toggle="tab"
                              data-bs-target="#ToClose-tab-pane" type="button" role="tab"
                              aria-controls="ToClose-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
@@ -99,10 +108,12 @@
                                 <h4>@Model.CountClose</h4>
                             </div>
                         </div>
+                        <div class="triangle-down d-none" id="tdown5"></div>
                     </div>
+                       
 
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
-                        <div class="border rounded p-1 p-sm-3 Unpaid" id="Unpaid-tab" data-bs-toggle="tab"
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4"  role="presentation" onclick="GetData()">
+                        <div class="Box border rounded p-1 p-sm-3 Unpaid" id="Unpaid-tab" onclick="changeactive()" value="6" data-bs-toggle="tab"
                              data-bs-target="#Unpaid-tab-pane" type="button" role="tab"
                              aria-controls="Unpaid-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
@@ -113,7 +124,9 @@
                                 <h4>@Model.CountUnpaid</h4>
                             </div>
                         </div>
+                        <div class="triangle-down d-none" id="tdown6"></div>
                     </div>
+                       
 
                 </div>
 
@@ -253,7 +266,48 @@
 
 
 <script>
+    function changeactive(){
+
     
+    document.querySelectorAll('.Box').forEach(element=>{
+       
+            if(element.classList.contains('active')){
+                console.log('active');
+                var value= element.getAttribute('value');
+                if(value==1){
+                    document.getElementById(`tdown${value}`).style.borderTopColor = "rgba(2, 2, 146)";
+                }
+                else if (value == 2) {
+                    document.getElementById(`tdown${value}`).style.borderTopColor = " rgb(0, 92, 104)";
+                }
+                else if(value==3){
+                    document.getElementById(`tdown${value}`).style.borderTopColor = "rgb(2, 54, 37)";
+
+                }
+                else if (value==4){
+                    document.getElementById(`tdown${value}`).style.borderTopColor = " rgb(99, 3, 91)";
+
+                }
+                else if(value==5){
+
+                    document.getElementById(`tdown${value}`).style.borderTopColor = " rgb(3, 47, 83)";
+
+
+                }
+                else{
+                    document.getElementById(`tdown${value}`).style.borderTopColor = " rgb(44, 1, 70)";
+
+                }
+                document.getElementById(`tdown${value}`).classList.remove('d-none');
+            }
+            else{
+                console.log("incactive");
+                var value = element.getAttribute('value');
+                document.getElementById(`tdown${value}`).classList.add('d-none');
+            }
+       
+    })
+    }
     //const abc = (e) =>{
     //    const states = document.getElementsByClassName("border");
     //    for (let i = 0; i < states.length; ++i) {
@@ -384,3 +438,12 @@
         });
     }
 </script>
+<style>
+    .foot {
+        position: fixed;
+    }
+
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+</style>

@@ -22,33 +22,33 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public IQueryable<Request> GetAdminCode()
         {
-                return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 1);
+                return _context.Requests.Include(x=>x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 1);
         }
         public IQueryable<Request> GetAdminStatus()
         {
           
-                return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null &&  (x.Status == 4 || x.Status == 5));
+                return _context.Requests.Include(x=>x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null &&  (x.Status == 4 || x.Status == 5));
         }
         public IQueryable<Request> GetAdminPending()
         {
           
-                return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 2);
+                return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 2);
          
         }
         public IQueryable<Request> GetAdminConclude()
         {
          
-                return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 6);
+                return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 6);
          
         }
         public IQueryable<Request> GetAdminToclose()
         {
-            return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null && (x.Status == 3 || x.Status == 7 || x.Status == 8));
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && (x.Status == 3 || x.Status == 7 || x.Status == 8));
         }
         public IQueryable<Request> GetAdminUnpaid()
         {
    
-                return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 9);
+                return _context.Requests.Include(x=>x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 9);
          
         }
 
@@ -247,6 +247,16 @@ namespace hallodoc_mvc_Repository.Implementation
         {
             _context.RequestCloseds.Add(requestClosed);
             _context.SaveChanges();
+        }
+
+        public Request getreqid(int id)
+        {
+            return _context.Requests.FirstOrDefault(x => x.RequestId == id);
+        }
+
+        public RequestClient getclient(int id)
+        {
+           return _context.RequestClients.FirstOrDefault(x=>x.RequestId==id);
         }
     }
 }
