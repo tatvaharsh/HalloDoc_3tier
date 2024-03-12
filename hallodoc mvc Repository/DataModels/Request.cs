@@ -92,6 +92,9 @@ public partial class Request
     [InverseProperty("Requests")]
     public virtual CaseTag? CaseTagNavigation { get; set; }
 
+    [InverseProperty("Request")]
+    public virtual ICollection<EncounterForm> EncounterForms { get; set; } = new List<EncounterForm>();
+
     [ForeignKey("PhysicianId")]
     [InverseProperty("Requests")]
     public virtual Physician? Physician { get; set; }

@@ -34,6 +34,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<EmailLog> EmailLogs { get; set; }
 
+    public virtual DbSet<EncounterForm> EncounterForms { get; set; }
+
     public virtual DbSet<HealthProfessional> HealthProfessionals { get; set; }
 
     public virtual DbSet<HealthProfessionalType> HealthProfessionalTypes { get; set; }
@@ -86,7 +88,7 @@ public partial class ApplicationDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("User ID = postgres;Password=A1@laremine;Server=localhost;Port=5432;Database=hallodoc;Integrated Security=true;Pooling=true;");
+        => optionsBuilder.UseNpgsql("User ID = postgres;Password=A1@laremine;Server=localhost;Port=5432;\nDatabase=hallodoc;Integrated Security=true;Pooling=true;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -180,9 +182,23 @@ public partial class ApplicationDbContext : DbContext
             entity.HasKey(e => e.EmailLogId).HasName("EmailLog_pkey");
         });
 
+        modelBuilder.Entity<EncounterForm>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("EncounterForm_pkey");
+
+            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
+            entity.Property(e => e.IsFinalized).HasDefaultValueSql("'0'::\"bit\"");
+
+            entity.HasOne(d => d.Request).WithMany(p => p.EncounterForms)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("fk_encounter_request");
+        });
+
         modelBuilder.Entity<HealthProfessional>(entity =>
         {
             entity.HasKey(e => e.VendorId).HasName("HealthProfessionals_pkey");
+
+            entity.Property(e => e.CreatedDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             entity.HasOne(d => d.ProfessionNavigation).WithMany(p => p.HealthProfessionals).HasConstraintName("HealthProfessionals_Profession_fkey");
         });
@@ -190,6 +206,8 @@ public partial class ApplicationDbContext : DbContext
         modelBuilder.Entity<HealthProfessionalType>(entity =>
         {
             entity.HasKey(e => e.HealthProfessionalId).HasName("HealthProfessionalType_pkey");
+
+            entity.Property(e => e.CreatedDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
         });
 
         modelBuilder.Entity<Menu>(entity =>
@@ -346,6 +364,8 @@ public partial class ApplicationDbContext : DbContext
         modelBuilder.Entity<RequestWiseFile>(entity =>
         {
             entity.HasKey(e => e.RequestWiseFileId).HasName("RequestWiseFile_pkey");
+
+            entity.Property(e => e.CreatedDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
             entity.HasOne(d => d.Admin).WithMany(p => p.RequestWiseFiles).HasConstraintName("RequestWiseFile_AdminId_fkey");
 

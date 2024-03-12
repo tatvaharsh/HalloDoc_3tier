@@ -258,5 +258,38 @@ namespace hallodoc_mvc_Repository.Implementation
         {
            return _context.RequestClients.FirstOrDefault(x=>x.RequestId==id);
         }
+
+        public EncounterForm getencounterbyid(int id)
+        {
+            return _context.EncounterForms.FirstOrDefault(x => x.RequestId == id);
+        }
+
+        public void updateEncounterForm(EncounterForm ef)
+        {
+            _context.EncounterForms.Update(ef);
+            _context.SaveChanges();
+        }
+
+        public Admin getadminbyadminid(int admin)
+        {
+          return _context.Admins.FirstOrDefault(x => x.AdminId == admin);
+        }
+
+        public List<AdminRegion> getadminreg(int admin)
+        {
+            return _context.AdminRegions.Where(x=>x.AdminId==admin).ToList();
+        }
+
+        public string GetRegionname(int? regionId)
+        {
+            return _context.Regions.FirstOrDefault(x => x.RegionId == regionId).Name;
+        }
+
+        public AspNetUser getuserbyaspid(int aspNetUserId)
+        {
+            return _context.AspNetUsers.FirstOrDefault(x => x.Id == aspNetUserId);
+        }
+
+      
     }
 }

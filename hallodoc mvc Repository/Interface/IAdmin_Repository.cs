@@ -54,5 +54,12 @@ namespace hallodoc_mvc_Repository.Interface
         void AddRequestclosed(RequestClosed requestClosed);
         Request getreqid(int id);
         RequestClient getclient(int id);
+        EncounterForm getencounterbyid(int id);
+        void updateEncounterForm(EncounterForm ef);
+        Admin getadminbyadminid(int admin);
+        List<AdminRegion> getadminreg(int admin);
+        string GetRegionname(int? regionId);
+        AspNetUser getuserbyaspid(int aspNetUserId);
+     
     }
 }

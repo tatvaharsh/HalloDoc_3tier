@@ -15,6 +15,8 @@ using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Security.Cryptography.Xml;
+using Microsoft.CodeAnalysis;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -1073,6 +1075,110 @@ namespace hallocdoc_mvc_Service.Implementation
             };
             _Repository.AddRequestStatuslog(reqlog);
 
+        }
+
+        public Encounter getencounter(int id)
+        {
+            RequestClient rc = _Repository.getagreement(id);
+
+           EncounterForm ef =  _Repository.getencounterbyid(id);
+            DateOnly Mydate = new(rc.IntYear.Value, DateOnly.ParseExact(rc.StrMonth, "MMM", CultureInfo.InvariantCulture).Month, rc.IntDate.Value);
+           
+                Encounter en = new()
+                {
+
+                    Requestid = id,
+                    patientData = rc,
+                    DOB = Mydate,
+                    Date = ef.Date,
+                    HistoryIllness = ef.HistoryIllness,
+                    MedicalHistory = ef.MedicalHistory,
+                    Medications = ef.Medications,
+                    Allergies = ef.Allergies,
+                    Temp = ef.Temp,
+                    Hr = ef.Hr,
+                    Rr = ef.Rr,
+                    BpS = ef.BpS,
+                    BpD = ef.BpD,
+                    O2 = ef.O2,
+                    Pain = ef.Pain,
+                    Heent = ef.Heent,
+                    Cv = ef.Cv,
+                    Chest = ef.Chest,
+                    Abd = ef.Abd,
+                    Extr = ef.Extr,
+                    Skin = ef.Skin,
+                    Neuro = ef.Neuro,
+                    Other = ef.Other,
+                    Diagnosis = ef.Diagnosis,
+                    TreatmentPlan = ef.TreatmentPlan,
+                    MedicationDispensed = ef.MedicationDispensed,
+                    Procedures = ef.Procedures,
+                    FollowUp = ef.FollowUp,
+
+                };
+
+            return en;
+           
+           
+        }
+
+        public void editencounter(int id, Encounter model)
+        {
+            EncounterForm ef = _Repository.getencounterbyid(id);
+            ef.Date = model.Date;
+            ef.HistoryIllness = model.HistoryIllness;
+            ef.MedicalHistory = model.MedicalHistory;
+            ef.Medications = model.Medications;
+            ef.Procedures = model.Procedures;
+            ef.FollowUp = model.FollowUp;
+            ef.Heent = model.Heent;
+            ef.Cv = model.Cv;
+            ef.Chest = model.Chest;
+            ef.Abd = model.Abd;
+            ef.Extr = model.Extr;
+            ef.Skin = model.Skin;
+            ef.Neuro = model.Neuro;
+            ef.Other = model.Other;
+            ef.Diagnosis = model.Diagnosis;
+            ef.TreatmentPlan = model.TreatmentPlan;
+            ef.MedicationDispensed = model.MedicationDispensed;
+            ef.Medications = model.Medications;
+            ef.Allergies = model.Allergies;
+            ef.Temp = model.Temp;
+            ef.Hr = model.Hr;
+            ef.Rr = model.Rr;
+            ef.BpD = model.BpD;
+            ef.BpS = model.BpS;
+            ef.O2 = model.O2;
+            ef.Pain = model.Pain;
+            ef.Chest = model.Chest;
+            _Repository.updateEncounterForm(ef);
+
+        }
+
+        public Profile getprofile(int admin)
+        {
+            Admin a = _Repository.getadminbyadminid(admin);
+            List<AdminRegion> dsa = _Repository.getadminreg(admin);
+            List<Regiondetails> rd = new();
+            foreach (AdminRegion region in dsa)
+            {
+                rd.Add(new Regiondetails
+                {
+                    Regionid=region.RegionId,
+                    Regionname=_Repository.GetRegionname(region.RegionId),
+                });
+            }
+            Profile pf = new()
+            {
+                AdminData = a,
+                Reg = rd,
+                Role = _Repository.GetAspNetRole(admin)[0],
+                user = _Repository.getuserbyaspid(a.AspNetUserId),
+                State=_Repository.GetRegionname(a.RegionId),
+            };
+            return pf;
         }
     }
 }

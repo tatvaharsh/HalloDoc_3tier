@@ -399,11 +399,22 @@ namespace hallodoc_mvc.Controllers
             _service.cancelagreement(id,md);
             return RedirectToAction(nameof(Agreement));
         }
-        public IActionResult Encounter()
+        public IActionResult Encounter(int id,Encounter model)
         {
-            return View();  
+            Encounter en = _service.getencounter(id);
+            return View(en);  
         }
-
+        public IActionResult ChangeEncounter(int id,Encounter model)
+        {
+             _service.editencounter(id, model);
+            return RedirectToAction("Encounter", new {id=id});
+        }
+        public IActionResult Admin_Profile()
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            
+            return View(_service.getprofile(admin));
+        }
 
     }
 }

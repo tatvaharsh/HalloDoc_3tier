@@ -300,7 +300,7 @@
                                     }
                                     @if (Model.FirstOrDefault().Status == 3 || Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
                                     {
-                                        <li><a class="dropdown-item" href="#">Encounter</a></li>
+                                    <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id">Encounter</a></li>
                                     }
                                     @if (Model.FirstOrDefault().Status == 3)
                                     {

@@ -50,5 +50,8 @@ namespace hallocdoc_mvc_Service.Interface
      
         ModalData cancelmodal(int id);
         void cancelagreement(int id, ModalData md);
+        Encounter getencounter(int id);
+        void editencounter(int id, Encounter model);
+        Profile getprofile(int admin);
     }
 }
