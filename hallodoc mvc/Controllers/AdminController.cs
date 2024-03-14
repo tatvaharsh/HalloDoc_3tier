@@ -1,4 +1,4 @@
-﻿using Azure.Core;
+﻿
 using hallocdoc_mvc_Service.Implementation;
 using hallocdoc_mvc_Service.Interface;
 using hallodoc_mvc_Repository.DataContext;
@@ -12,7 +12,8 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using HalloDoc.Auth;
 using NuGet.Protocol;
 using NuGet.Common;
-
+using ClosedXML.Excel;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -40,7 +41,7 @@ namespace hallodoc_mvc.Controllers
             ViewBag.Username = admin;
                 ModalData data = _service.GetAssignData(md);
                 TempData["success"] = "Login Successfully!!!";
-
+                //TempData.Clear();
                 return View(data); 
             }
             return RedirectToAction("Admin_Login");
@@ -140,8 +141,11 @@ namespace hallodoc_mvc.Controllers
 
             return View(vc);
         }
+
+        [HttpGet]
         public IActionResult ViewNotes(int Id)
         {
+
             ViewNote rn = _service.GetNotes(Id);
             return View(rn);
         }
@@ -152,8 +156,7 @@ namespace hallodoc_mvc.Controllers
             int admin =(int)HttpContext.Session.GetInt32("Id");
             var vn= _service.setViewNotesData(model,Id,admin);
 
-
-            return View(vn);
+            return RedirectToAction("ViewNotes",Id);
         }
 
 
@@ -344,6 +347,8 @@ namespace hallodoc_mvc.Controllers
 
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
+
+        [HttpGet]
         public IActionResult SendAgreement(int Id ,int requestType)
         {
             ViewBag.requestType = requestType;
@@ -357,9 +362,11 @@ namespace hallodoc_mvc.Controllers
             return PartialView("SendAgreement",md);
         }
         [HttpPost]
-        public IActionResult SendAgreement(int Id)
+        public IActionResult SendAgreement(int Id, ModalData md)
         {
-            _service.SendAgreementMail(Id);
+            var token=_jwtService.GenerateJwtTokenByEmail(md.email);
+
+            _service.SendAgreementMail(Id,md,token);
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
         public IActionResult Close(int Id)
@@ -383,10 +390,15 @@ namespace hallodoc_mvc.Controllers
             TempData["success"] = "Case Closed Successfully!!!";
             return RedirectToAction("Admin_Dashboard");
         }
-        public IActionResult Agreement(int token)
+        public IActionResult Agreement(int token, string t)
         {
-            ModalData md = _service.cancelmodal(token);
-            return View(md);
+            if(_jwtService.ValidateJwtToken(t , out JwtSecurityToken jwtSecurityToken))
+            {
+                ModalData md = _service.cancelmodal(token);
+                return View(md);
+            }
+            return NotFound();
+            
         }
 
         public IActionResult Agree(int id)
@@ -415,6 +427,208 @@ namespace hallodoc_mvc.Controllers
             
             return View(_service.getprofile(admin));
         }
+
+        public IActionResult Sendlink()
+        {
+          
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Sendlink(ViewCase model)
+        {
+            _service.sendlink(model);
+            return RedirectToAction("Admin_Dashboard");
+        }
+        public IActionResult RequestSupport()
+        {
+            return View();
+        }
+        public IActionResult DownloadAll()
+        {
+            try
+            {
+                List<Request> data = GetTableData();
+                var workbook = new XLWorkbook();
+                var worksheet = workbook.Worksheets.Add("Data");
+
+
+                worksheet.Cell(1, 1).Value = "Name";
+                worksheet.Cell(1, 2).Value = "Date Of Birth";
+                worksheet.Cell(1, 3).Value = "Requestor";
+                worksheet.Cell(1, 4).Value = "Physician Name";
+                worksheet.Cell(1, 5).Value = "Date of Service";
+                worksheet.Cell(1, 6).Value = "Requested Date";
+                worksheet.Cell(1, 7).Value = "Phone Number";
+                worksheet.Cell(1, 8).Value = "Address";
+                worksheet.Cell(1, 9).Value = "Notes";
+
+                int row = 2;
+                foreach (var item in data)
+                {
+                    var statusClass = "";
+                    var dos = "";
+                    var notes = "";
+                    if (item.RequestTypeId == 1)
+                    {
+                        statusClass = "Business";
+                    }
+                    else if (item.RequestTypeId == 4)
+                    {
+                        statusClass = "Concierge";
+                    }
+                    else if (item.RequestTypeId == 2)
+                    {
+                        statusClass = "Patient";
+                    }
+                    else
+                    {
+                        statusClass = "Family/Friend";
+                    }
+                    foreach (var stat in item.RequestStatusLogs)
+                    {
+                        if (stat.Status == 2)
+                        {
+                            dos = stat.CreatedDate.ToString("MMMM dd,yyyy");
+                            notes = stat.Notes ?? "";
+                        }
+                    }
+                    worksheet.Cell(row, 1).Value = item.RequestClients.FirstOrDefault().FirstName + item.RequestClients.FirstOrDefault().LastName;
+                    worksheet.Cell(row, 2).Value = DateTime.Parse($"{item.RequestClients.FirstOrDefault().IntYear}-{item.RequestClients.FirstOrDefault().StrMonth}-{item.RequestClients.FirstOrDefault().IntDate}").ToString("MMMM dd,yyyy");
+                    worksheet.Cell(row, 3).Value = statusClass.Substring(0, 1).ToUpper() + statusClass.Substring(1).ToLower() + item.FirstName + item.LastName;
+                    worksheet.Cell(row, 4).Value = ("Dr." + item?.Physician == null ? "" : item?.Physician?.FirstName);
+                    worksheet.Cell(row, 5).Value = dos;
+                    worksheet.Cell(row, 6).Value = item.CreatedDate.ToString("MMMM dd,yyyy");
+                    worksheet.Cell(row, 7).Value = item.RequestClients.FirstOrDefault().PhoneNumber + "(Patient)" + (item.RequestTypeId != 4 ? item.PhoneNumber + statusClass.Substring(0, 1).ToUpper() + statusClass.Substring(1).ToLower() : "");
+                    worksheet.Cell(row, 8).Value = (item.RequestClients.FirstOrDefault().Address == null ? item.RequestClients.FirstOrDefault().Address + item.RequestClients.FirstOrDefault().Street + item.RequestClients.FirstOrDefault().City + item.RequestClients.FirstOrDefault().State + item.RequestClients.FirstOrDefault().ZipCode : item.RequestClients.FirstOrDefault().Street + item.RequestClients.FirstOrDefault().City + item.RequestClients.FirstOrDefault().State + item.RequestClients.FirstOrDefault().ZipCode);
+                    worksheet.Cell(row, 9).Value = item.RequestClients.FirstOrDefault().Notes;
+                    row++;
+                }
+                worksheet.Columns().AdjustToContents();
+
+                var memoryStream = new MemoryStream();
+                workbook.SaveAs(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "data.xlsx");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception: {ex.Message}");
+                Console.WriteLine($"Stack Trace: {ex.StackTrace}");
+                throw;
+            }
+        }
+
+        public List<Request> GetTableData()
+        {
+            List<Request> data = new List<Request>();
+            //var user_id = HttpContext.Session.GetInt32("id");
+            //data = _context.Requests.Include(r => r.RequestClient).Where(u => u.UserId == user_id).ToList();
+            data = _service.GetRequestDataInList();
+            return data;
+        }
+
+        public IActionResult CreateReq()
+        {
+            return View();
+        
+        }
+        [HttpPost]
+        public IActionResult CreateReq(patient_form model)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (!ModelState.IsValid)
+            {
+
+                return View(model);
+            }
+            _service.PatientForm(model,admin);
+
+            return RedirectToAction(nameof(Admin_Dashboard));
+
+        }
+
+        public IActionResult Export(string s, int reqtype, int regid, int state)
+        {
+            var data = _service.Export(s,reqtype,regid,state);
+            var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Data");
+
+
+            worksheet.Cell(1, 1).Value = "Name";
+            worksheet.Cell(1, 2).Value = "Date Of Birth";
+            worksheet.Cell(1, 3).Value = "Requestor";
+            worksheet.Cell(1, 4).Value = "Physician Name";
+            worksheet.Cell(1, 5).Value = "Date of Service";
+            worksheet.Cell(1, 6).Value = "Requested Date";
+            worksheet.Cell(1, 7).Value = "Phone Number";
+            worksheet.Cell(1, 8).Value = "Address";
+            worksheet.Cell(1, 9).Value = "Notes";
+
+            int row = 2;
+            foreach (var item in data)
+            {
+                var statusClass = "";
+                var dos = "";
+                var notes = "";
+                if (item.RequestTypeId == 1)
+                {
+                    statusClass = "Business";
+                }
+                else if (item.RequestTypeId == 4)
+                {
+                    statusClass = "Concierge";
+                }
+                else if (item.RequestTypeId == 2)
+                {
+                    statusClass = "Patient";
+                }
+                else
+                {
+                    statusClass = "Family/Friend";
+                }
+                foreach (var stat in item.RequestStatusLogs)
+                {
+                    if (stat.Status == 2)
+                    {
+                        dos = stat.CreatedDate.ToString("MMMM dd,yyyy");
+                        notes = stat.Notes ?? "";
+                    }
+                }
+                worksheet.Cell(row, 1).Value = item.RequestClients.FirstOrDefault().FirstName + item.RequestClients.FirstOrDefault().LastName;
+                worksheet.Cell(row, 2).Value = DateTime.Parse($"{item.RequestClients.FirstOrDefault().IntYear}-{item.RequestClients.FirstOrDefault().StrMonth}-{item.RequestClients.FirstOrDefault().IntDate}").ToString("MMMM dd,yyyy");
+                worksheet.Cell(row, 3).Value = statusClass.Substring(0, 1).ToUpper() + statusClass.Substring(1).ToLower() + item.FirstName + item.LastName;
+                worksheet.Cell(row, 4).Value = ("Dr." + item?.Physician == null ? "" : item?.Physician?.FirstName);
+                worksheet.Cell(row, 5).Value = dos;
+                worksheet.Cell(row, 6).Value = item.CreatedDate.ToString("MMMM dd,yyyy");
+                worksheet.Cell(row, 7).Value = item.RequestClients.FirstOrDefault().PhoneNumber + "(Patient)" + (item.RequestTypeId != 4 ? item.PhoneNumber + statusClass.Substring(0, 1).ToUpper() + statusClass.Substring(1).ToLower() : "");
+                worksheet.Cell(row, 8).Value = (item.RequestClients.FirstOrDefault().Address == null ? item.RequestClients.FirstOrDefault().Address + item.RequestClients.FirstOrDefault().Street + item.RequestClients.FirstOrDefault().City + item.RequestClients.FirstOrDefault().State + item.RequestClients.FirstOrDefault().ZipCode : item.RequestClients.FirstOrDefault().Street + item.RequestClients.FirstOrDefault().City + item.RequestClients.FirstOrDefault().State + item.RequestClients.FirstOrDefault().ZipCode);
+                worksheet.Cell(row, 9).Value = item.RequestClients.FirstOrDefault().Notes;
+                row++;
+            }
+            worksheet.Columns().AdjustToContents();
+
+            var memoryStream = new MemoryStream();
+            workbook.SaveAs(memoryStream);
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "data.xlsx");
+        }
+
+        [HttpPost]
+        public IActionResult EditAdminProfile(Profile model) 
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            _service.editadminprofile(model,admin);
+            return RedirectToAction("Admin_profile");
+        }
+
+        [HttpPost]
+        public IActionResult EditAdminp(Profile model)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            _service.editadminp(model, admin);
+            return RedirectToAction("Admin_profile");
+        }
+
 
     }
 }

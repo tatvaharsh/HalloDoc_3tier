@@ -37,6 +37,9 @@ namespace hallodoc_mvc_Repository.ViewModel
         public List<IFormFile>?  File { get; set; }
 
         public int? UserId { get; set; }
+        public int? Room { get; set; }
+        public String? Symtom { get; set; }
+        public String? adminnote { get; set; }
     }
 }
 

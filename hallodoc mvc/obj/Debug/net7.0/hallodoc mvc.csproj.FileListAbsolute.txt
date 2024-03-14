@@ -296,3 +296,10 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\h
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.genruntimeconfig.cache
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\ref\hallodoc mvc.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\ImageResizer.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\ClosedXML.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\DocumentFormat.OpenXml.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\ExcelNumberFormat.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Irony.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\SixLabors.Fonts.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.IO.Packaging.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\XLParser.dll

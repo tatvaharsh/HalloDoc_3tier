@@ -621,6 +621,14 @@
       "PackagePath": "staticwebassets\\SRSScreenShorts\\geo-alt.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\image_2024_03_14T12_14_53_474Z.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\image_2024_03_14T12_14_53_474Z.png"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\image_2024_03_14T12_14_53_486Z.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\image_2024_03_14T12_14_53_486Z.png"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\list.svg",
       "PackagePath": "staticwebassets\\SRSScreenShorts\\list.svg"
     },
@@ -1073,6 +1081,10 @@
       "PackagePath": "staticwebassets\\uplodedfiles\\cvcxvcvcvcxvcloud-arrow-down.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\data.xlsx",
+      "PackagePath": "staticwebassets\\uplodedfiles\\data.xlsx"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\dfgfdfdsg.msi",
       "PackagePath": "staticwebassets\\uplodedfiles\\dfgfdfdsg.msi"
     },
@@ -1183,6 +1195,10 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\sdadsdff.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\sdadsdff.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\success-icon (1).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\success-icon (1).svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\success-icon.svg",

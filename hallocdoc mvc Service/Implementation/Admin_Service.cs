@@ -17,6 +17,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Security.Cryptography.Xml;
 using Microsoft.CodeAnalysis;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Runtime.Intrinsics.X86;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -35,7 +36,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             if (search != null)
             {
-                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.Contains(search) || (bool)r.RequestClients.FirstOrDefault().LastName.Contains(search));
+                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
             }
 
             if (requestor == 3)
@@ -60,7 +61,6 @@ namespace hallocdoc_mvc_Service.Implementation
             if (region != null && region != -1)
             {
                 query = query.Where(r => r.RequestClients.FirstOrDefault().RegionId == region);
-
             }
             
 
@@ -120,7 +120,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             if (search != null)
             {
-                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.Contains(search) || (bool)r.RequestClients.FirstOrDefault().LastName.Contains(search));
+                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
             }
 
             if (requestor == 3)
@@ -180,7 +180,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             if (search != null)
             {
-                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.Contains(search) || (bool)r.RequestClients.FirstOrDefault().LastName.Contains(search));
+                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
             }
 
             if (requestor == 3)
@@ -259,7 +259,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             if (search != null)
             {
-                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.Contains(search) || (bool)r.RequestClients.FirstOrDefault().LastName.Contains(search));
+                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
             }
 
             if (requestor == 3)
@@ -319,7 +319,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             if (search != null)
             {
-                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.Contains(search) || (bool)r.RequestClients.FirstOrDefault().LastName.Contains(search));
+                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
             }
 
             if (requestor == 3)
@@ -395,7 +395,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             if (search != null)
             {
-                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.Contains(search) || (bool)r.RequestClients.FirstOrDefault().LastName.Contains(search));
+                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
             }
 
             if (requestor == 3)
@@ -918,15 +918,16 @@ namespace hallocdoc_mvc_Service.Implementation
             return _Repository.getagreement(id);
         }
 
-        public void SendAgreementMail(int Id)
+        public void SendAgreementMail(int Id, ModalData md, string token)
         {
             RequestClient rc = _Repository.getagreement(Id);
+            
 
-            if (rc.Email != null)
+            if (md.email != null)
             {
-                var receiver = rc.Email;
+                var receiver = md.email;
                 var subject = "Send Agreement";
-                var message = "Tap on link for Send Agreement : http://localhost:5198/Admin/Agreement?token="+Id;
+                var message = "Tap on link for Send Agreement : http://localhost:5198/Admin/Agreement?t="+token+"&token="+Id;
 
 
                 var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -1083,7 +1084,10 @@ namespace hallocdoc_mvc_Service.Implementation
 
            EncounterForm ef =  _Repository.getencounterbyid(id);
             DateOnly Mydate = new(rc.IntYear.Value, DateOnly.ParseExact(rc.StrMonth, "MMM", CultureInfo.InvariantCulture).Month, rc.IntDate.Value);
-           
+            if (ef != null)
+            {
+
+         
                 Encounter en = new()
                 {
 
@@ -1118,7 +1122,10 @@ namespace hallocdoc_mvc_Service.Implementation
 
                 };
 
-            return en;
+                return en;
+            }
+            return new();
+
            
            
         }
@@ -1161,24 +1168,242 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             Admin a = _Repository.getadminbyadminid(admin);
             List<AdminRegion> dsa = _Repository.getadminreg(admin);
+            List<Region> r = _Repository.GetRegion();
             List<Regiondetails> rd = new();
             foreach (AdminRegion region in dsa)
             {
                 rd.Add(new Regiondetails
                 {
-                    Regionid=region.RegionId,
-                    Regionname=_Repository.GetRegionname(region.RegionId),
+                    Regionid = region.RegionId,
+                    Regionname = _Repository.GetRegionname(region.RegionId),
                 });
             }
             Profile pf = new()
             {
                 AdminData = a,
-                Reg = rd,
+                region = r,
                 Role = _Repository.GetAspNetRole(admin)[0],
                 user = _Repository.getuserbyaspid(a.AspNetUserId),
                 State=_Repository.GetRegionname(a.RegionId),
+                Reg=rd,
             };
             return pf;
+        }
+
+        public List<Request> GetRequestDataInList()
+        {
+            return _Repository.getINlist();
+        }
+
+        public void sendlink(ViewCase model)
+        {
+            var receiver = model.Email;
+            var subject = "Send Link";
+            var message = "Tap on link for Send Link : http://localhost:5198/Home/submit_screen";
+
+
+            var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+            var password = "binal@2002";
+
+            var client = new SmtpClient("smtp.office365.com", 587)
+            {
+                EnableSsl = true,
+                Credentials = new NetworkCredential(mail, password)
+            };
+
+            client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
+        }
+
+        public void PatientForm(patient_form model, int admin)
+        {
+
+
+            var aspnetuser1 = _Repository.getAsp(model.Email);
+            var user1 = _Repository.getUser(model.Email);
+            //send mail//
+            var receiver = model.Email;
+            var subject = "Send Link";
+            var message = "Tap on link for Send Link : http://localhost:5198/Home/create_patient";
+
+
+            var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+            var password = "binal@2002";
+
+            var client = new SmtpClient("smtp.office365.com", 587)
+            {
+                EnableSsl = true,
+                Credentials = new NetworkCredential(mail, password)
+            };
+            //complete//
+
+            client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
+
+
+            if (aspnetuser1 == null)
+            {
+                AspNetUser aspnetuser2 = new AspNetUser
+                {
+
+                    UserName = model.FirstName + "_" + model.LastName,
+                    Email = model.Email,
+                    //PasswordHash = model.Password,
+                    PhoneNumber = model.PhoneNumber,
+                    CreatedDate = DateTime.Now,
+                    PasswordHash = model.Password,
+                };
+                _Repository.AddAspnetUser(aspnetuser2);
+                aspnetuser1 = aspnetuser2;
+            }
+
+
+
+            Region region = new Region
+            {
+                Name = model.State,
+                Abbreviation = model.State.Substring(0, 3),
+            };
+            Region isRegion = _Repository.isRegion(region.Abbreviation);
+
+            if (isRegion == null)
+            {
+                isRegion = region;
+                _Repository.AddRegion(region);
+            }
+
+            if (user1 == null)
+            {
+                User user = new User
+                {
+                    AspNetUserId = aspnetuser1.Id,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Mobile = model.PhoneNumber,
+                    ZipCode = model.ZipCode,
+                    State = model.State,
+                    City = model.City,
+                    RegionId = isRegion.RegionId,
+                    Street = model.Street,
+                    IntDate = model.BirthDate.Day,
+                    IntYear = model.BirthDate.Year,
+                    StrMonth = model.BirthDate.ToString("MMM"),
+                    CreatedDate = DateTime.Now,
+
+                    CreatedBy = aspnetuser1.Id
+                };
+
+                _Repository.AddUser(user);
+
+                user1 = user;
+            }
+
+
+
+
+            Request request = new Request
+            {
+                RequestTypeId = 2,
+          
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                CreatedDate = DateTime.Now,
+                Status = 1,
+
+            };
+
+            _Repository.AddRequesttbl(request);
+
+
+
+
+
+            RequestClient requestclient = new RequestClient
+            {
+
+                RequestId = request.RequestId,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                Location = model.City,
+                Address = model.Street,
+                RegionId = isRegion.RegionId,
+                IntDate = model.BirthDate.Day,
+                StrMonth = model.BirthDate.ToString("MMM"),
+                IntYear = model.BirthDate.Year,
+                Street = model.Street,
+                City = model.City,
+                State = model.State,
+                ZipCode = model.ZipCode,
+
+            };
+
+            _Repository.AddRequestClient(requestclient);
+
+            RequestNote rn = new()
+            {
+                AdminNotes = model.adminnote,
+                RequestId = request.RequestId,
+                CreatedBy = admin,
+                CreatedDate= DateTime.Now,
+            };
+
+            _Repository.AddRequestNotes(rn);
+        }
+
+        public List<Request> Export(string s, int reqtype, int regid, int state)
+        {
+            Dictionary<int, int> mapping = new()
+            {
+                 { 1, 1 }, { 2, 2 }, { 3, 5 }, { 4, 3 }, { 5, 3 }, { 6, 4 }, { 7, 5 }, { 8, 5 }, { 9, 6 },{10,0},{11,0}
+            };
+
+            var query = _Repository.getINlist();
+
+            query = query.Where(x => mapping[x.Status] == state).ToList();
+
+            if (s != null)
+            {
+                query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.Contains(s) || (bool)r.RequestClients.FirstOrDefault().LastName.Contains(s)).ToList();
+            }
+
+            if (reqtype != 0)
+            {
+                query = query.Where(r => r.RequestTypeId == reqtype).ToList();
+            }
+
+            if (regid != 0)
+            {
+                query = query.Where(r => r.RequestClients.FirstOrDefault().RegionId == regid).ToList();
+
+            }
+
+            return query;
+        }
+
+        public void editadminprofile(Profile model,int admin)
+        {
+            Admin a = _Repository.getadminbyadminid(admin);
+            a.FirstName = model.AdminData.FirstName;
+            a.LastName = model.AdminData.LastName;
+            a.Email = model.AdminData.Email;
+            a.Mobile = model.AdminData.Mobile;
+            _Repository.updateadmintbl(a);
+            
+        }
+
+        public void editadminp(Profile model, int admin)
+        {
+            Admin a = _Repository.getadminbyadminid(admin);
+            a.Address1 = model.AdminData.Address1;
+            a.Address2 = model.AdminData.Address2;
+            a.City = model.AdminData.City;
+            a.Zip = model.AdminData.Zip;
+            a.Mobile=model.AdminData.Mobile;
+            a.RegionId = _Repository.GetRegionid(model.State);
+            _Repository.updateadmintbl(a);
         }
     }
 }

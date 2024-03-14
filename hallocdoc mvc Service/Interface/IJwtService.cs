@@ -14,5 +14,7 @@ namespace hallocdoc_mvc_Service.Implementation
         string GenerateJwtToken(LoginViewModel model);
 
         bool ValidateJwtToken(string token, out JwtSecurityToken jwtSecurityToken);
+
+        string GenerateJwtTokenByEmail(string email);
     }
 }

@@ -290,6 +290,68 @@ namespace hallodoc_mvc_Repository.Implementation
             return _context.AspNetUsers.FirstOrDefault(x => x.Id == aspNetUserId);
         }
 
-      
+        public List<Request> getINlist()
+        {
+            return _context.Requests.Include(r => r.RequestClients).Include(x=>x.Physician).ToList();
+        }
+
+        public AspNetUser getAsp(string email)
+        {
+            return _context.AspNetUsers.FirstOrDefault(u => u.Email == email);
+        }
+
+        public void AddAspnetUser(AspNetUser aspnetuser2)
+        {
+            _context.AspNetUsers.Add(aspnetuser2);
+            _context.SaveChanges();
+        }
+
+        public Region isRegion(string abbreviation)
+        {
+            string region2 = abbreviation.ToLower();
+            Region region = _context.Regions.FirstOrDefault(r => r.Abbreviation.ToLower() == region2);
+            return region;
+        }
+
+        public Region AddRegion(Region region)
+        { 
+            _context.Regions.Add(region);
+            _context.SaveChanges();
+            return region;
+        }
+
+        public void AddRequesttbl(Request request)
+        {
+            _context.Requests.Add(request);
+            _context.SaveChanges();
+        }
+
+        public void AddRequestClient(RequestClient requestclient)
+        {
+            _context.RequestClients.Add(requestclient);
+            _context.SaveChanges();
+        }
+
+        public void updateadmintbl(Admin a)
+        {
+            _context.Admins.Update(a);
+            _context.SaveChanges();
+        }
+
+        public int? GetRegionid(string state)
+        {
+           return _context.Regions.FirstOrDefault(x=>x.Name.ToLower()== state.ToLower()).RegionId;
+        }
+
+        public User getUser(string email)
+        {
+            return _context.Users.FirstOrDefault(u => u.Email == email);
+        }
+
+        public void AddUser(User user)
+        {
+            _context.Users.Add(user);
+            _context.SaveChanges();
+        }
     }
 }

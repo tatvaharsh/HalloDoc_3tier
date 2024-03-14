@@ -60,6 +60,16 @@ namespace hallodoc_mvc_Repository.Interface
         List<AdminRegion> getadminreg(int admin);
         string GetRegionname(int? regionId);
         AspNetUser getuserbyaspid(int aspNetUserId);
-     
+        List<Request> getINlist();
+        AspNetUser getAsp(string email);
+        void AddAspnetUser(AspNetUser aspnetuser2);
+        Region isRegion(string abbreviation);
+        Region AddRegion(Region region);
+        void AddRequesttbl(Request request);
+        void AddRequestClient(RequestClient requestclient);
+        void updateadmintbl(Admin a);
+        int? GetRegionid(string state);
+        User getUser(string email);
+        void AddUser(User user);
     }
 }

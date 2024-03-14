@@ -28,7 +28,10 @@
                             </div>
                             <div class="mt-2">
                                 <h6> Transfer Notes</h6>
-                                <small class="text-secondary">
+                        @if (Model.TransferNotes != null)
+                        {
+
+                            <small class="text-secondary">
                                 @foreach (var item in @Model.TransferNotes)
                                 {
                                     <div>
@@ -36,7 +39,8 @@
                                     </div>
                                 }
 
-                                 </small>
+                            </small>
+                        }
                             </div>
                         </div>
                     </div>
@@ -127,7 +131,7 @@
                 </div>
             </div>
             <div class="d-grid gap-2 d-flex justify-content-center  justify-content-md-end m-4 pt-4 ">
-                <button type="submit" class="btn text-white btn-info">Save Changes</button>
+                <button type="submit" id="myForm" class="btn text-white btn-info">Save Changes</button>
             </div>
         </div>
 
@@ -144,5 +148,29 @@
         color: #5bc0de !important;
     }
 </style>
+<script>
+    $(document).ready(function () {
+        $("#myForm").submit(function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Perform form validation or data processing here (optional)
+
+            swal({
+                title: "Are you sure you want to submit?",
+                text: "This action cannot be undone!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, submit!",
+                cancelButtonText: "No, cancel"
+            }).then(function (result) {
+                if (result.value) { // If user confirms submission
+                    $(this).unbind('submit').submit(); // Submit the form manually
+                }
+            });
+        });
+    });
+</script>
 
 <script src="~/js/AdminDashboard.js"></script>

@@ -93,5 +93,29 @@ namespace hallocdoc_mvc_Service.Implementation
                 return false;
             }
         }
+
+        public string GenerateJwtTokenByEmail(string email)
+        {
+
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email, email),
+            };
+
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("qqweertyuiopsdfg5hdfghjklxcvbnmedfghjertyusxdcfvSADFAKSHDFGBASDHFBVAJKSHFDBAJKSBHDFASDGBFSADKJHvgbhnjmfg"));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expires = DateTime.UtcNow.AddMinutes(30);
+
+            var token = new JwtSecurityToken(
+                "Issuer",
+                "Audience",
+                claims,
+                expires: expires,
+                signingCredentials: creds
+                );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
     }
 }

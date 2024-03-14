@@ -42,7 +42,7 @@ namespace hallocdoc_mvc_Service.Interface
         void OrderPost(Order md, int id, int admin);
         void Clear(int id, int admin);
         RequestClient GetAgreementtdata(int id);
-        void SendAgreementMail(int Id);
+        void SendAgreementMail(int Id,ModalData md, string token);
         Close getclosedata(int id);
         void editdata(Close model, int id);
         void close(int id,int admin);
@@ -53,5 +53,11 @@ namespace hallocdoc_mvc_Service.Interface
         Encounter getencounter(int id);
         void editencounter(int id, Encounter model);
         Profile getprofile(int admin);
+        List<Request> GetRequestDataInList();
+        void sendlink(ViewCase model);
+        void PatientForm(patient_form model,int admin);
+        List<Request> Export(string s, int reqtype, int regid, int state);
+        void editadminprofile(Profile model,int admin);
+        void editadminp(Profile model, int admin);
     }
 }

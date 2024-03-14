@@ -238,10 +238,13 @@
                             @{
                                 int count = 1;
                             }
+                            @if(obj.Notes!=null){
                             @foreach (var x in obj.Notes)
                             {   
                                 <div>@count) @x</div>
                                 count++;
+                            }
+
                             }
                         </td>
                         }
@@ -262,50 +265,66 @@
 
                                     @if (Model.FirstOrDefault().Status == 1)
                                     {
-                                        <li><a class="dropdown-item" onclick="assignCase(@obj.Id)">Assign Case</a></li>
+                                    <li><a class="dropdown-item" onclick="assignCase(@obj.Id)"><i class="fa-solid fa-book me-1"></i>Assign Case</a></li>
+                                    <li><a class="dropdown-item" onclick="cancelCase(@obj.Id)"><i class="fa-solid fa-xmark me-1"></i>Cancle Case</a></li>
+                                    <li><a class="dropdown-item" onclick="blockCase(@obj.Id)"><i class="fa fa-ban me-1 " aria-hidden="true"></i>Block Patient</a></li>
                                     }
-                                    @if (Model.FirstOrDefault().Status == 1)
-                                    {
-                                        <li><a class="dropdown-item" onclick="cancelCase(@obj.Id)">Cancle Case</a></li>
-                                    }
-                                    <li><a class="dropdown-item"  asp-action="ViewCase" asp-route-id="@obj.Id" >View Case</a></li>
-                                    <li><a class="dropdown-item" asp-action="ViewNotes" asp-route-id="@obj.Id">View Notes</a></li>
-                                    @if (Model.FirstOrDefault().Status == 1)
-                                    {
-                                        <li><a class="dropdown-item"  onclick="blockCase(@obj.Id)">Block Patient</a></li>
-                                    }
-                                    @if (Model.FirstOrDefault().Status != 1)
-                                    {
-                                    <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id">View Uploads</a></li>
-                                }
+
                                     @if (Model.FirstOrDefault().Status == 2)
                                     {
-                                    <li><a class="dropdown-item" onclick="TransferCase(@obj.Id)">Transfer</a></li>
+                                    <li><a class="dropdown-item" onclick="TransferCase(@obj.Id)"><i class="fa-solid fa-paper-plane me-1"></i>Transfer</a></li>
+                                    <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
+                                    <li><a class="dropdown-item" onclick="Clear(@obj.Id)"><i class="fa-solid fa-circle-check me-1"></i>Clear Case</a></li>
+                                    <li><a class="dropdown-item" onclick="SendAgreement(@obj.Id ,@obj.RequestTypeId)"><i class="fa-solid fa-handshake me-1"></i>Send Agreement</a></li>
+                                    }
+
+
+                                @if (Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
+                                {
+
+                                    <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
+                                    <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+                                    <li><a class="dropdown-item" asp-action="Order" asp-route-id="@obj.Id"><i class="fa-solid fa-box me-1"></i>Orders</a></li>
                                 }
-                                    @if (Model.FirstOrDefault().Status == 2 || Model.FirstOrDefault().Status == 3 || Model.FirstOrDefault().Status == 7 || Model.FirstOrDefault().Status == 8)
-                                    {
-                                    <li><a class="dropdown-item" onclick="Clear(@obj.Id)">Clear Case</a></li>
-                                    }
-                                    @if (Model.FirstOrDefault().Status == 2)
-                                    {
-                                    <li><a class="dropdown-item" onclick="SendAgreement(@obj.Id ,@obj.RequestTypeId)">Send Agreement</a></li>
+
+                                @if (Model.FirstOrDefault().Status == 6)
+                                {
+
+                                    <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
+                                    <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+                                    <li><a class="dropdown-item" asp-action="Order" asp-route-id="@obj.Id"><i class="fa-solid fa-box me-1"></i>Orders</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-doctor me-1"></i>Docter Notes</a></li>
                                 }
-                                    @if (Model.FirstOrDefault().Status == 3 || Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5 || Model.FirstOrDefault().Status == 6 || Model.FirstOrDefault().Status == 7 || Model.FirstOrDefault().Status == 3) 
-                                    {
-                                    <li><a class="dropdown-item" asp-action="Order" asp-route-id="@obj.Id">Orders</a></li>
+
+
+                                @if (Model.FirstOrDefault().Status == 3 || Model.FirstOrDefault().Status == 7 || Model.FirstOrDefault().Status == 8)
+                                {
+
+                                    <li><a class="dropdown-item" asp-action="Order" asp-route-id="@obj.Id"><i class="fa-solid fa-box me-1"></i>Orders</a></li>
+                                    <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
+                                    <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+                                    <li><a class="dropdown-item" asp-action="Close" asp-route-id="@obj.Id"><i class="fa-solid fa-circle-xmark me-1"></i>Close Case</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-doctor me-1"></i>Docter Notes</a></li>
+                                    <li><a class="dropdown-item" onclick="Clear(@obj.Id)"><i class="fa-solid fa-circle-check me-1"></i>Clear Case</a></li>
                                 }
-                                    @if (Model.FirstOrDefault().Status == 3 || Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
-                                    {
-                                        <li><a class="dropdown-item" href="#">Docter Notes</a></li>
-                                    }
-                                    @if (Model.FirstOrDefault().Status == 3 || Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
-                                    {
-                                    <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id">Encounter</a></li>
-                                    }
-                                    @if (Model.FirstOrDefault().Status == 3)
-                                    {
-                                    <li><a class="dropdown-item" asp-action="Close" asp-route-id="@obj.Id">Close Case</a></li>
-                                    }
+
+
+
+                                @if (Model.FirstOrDefault().Status == 9)
+                                {
+
+                                    <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
+                        
+                                }
+
+
+
+
+
+
+                                <li><a class="dropdown-item" asp-action="ViewCase" asp-route-id="@obj.Id"><img src="~/SRSScreenShorts/image_2024_03_14T12_14_53_474Z.png" style="height:20px;" class="me-1" />View Case</a></li>
+                                <li><a class="dropdown-item" asp-action="ViewNotes" asp-route-id="@obj.Id"><img src="~/SRSScreenShorts//image_2024_03_14T12_14_53_486Z.png" style="height:20px;" class="me-1" />View Notes</a></li>
+
                                 </ul>
                             </div>
 

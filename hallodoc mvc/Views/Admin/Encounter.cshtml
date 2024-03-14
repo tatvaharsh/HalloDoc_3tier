@@ -1,7 +1,7 @@
 ﻿@model hallodoc_mvc_Repository.ViewModel.Encounter
 @{
     ViewData["Title"] = "Encounter Page";
- 
+    Layout = "_LayAdmin";
 }
 <style>
     .iti {
@@ -37,17 +37,17 @@
                     <h3 class="mb-3 text-center text-info">Medical Report-Confidential</h3>
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
-                            <input name="first_name" type="text" class="form-control" id="exampleFormControlInput1" value="@Model.patientData.FirstName" placeholder="Firstname" disabled>
+                            <input name="first_name" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.patientData.FirstName" placeholder="Firstname" disabled>
                             <label for="exampleFormControlInput1" class="form-label ps-4">Firstname</label>
                             <span class="text-danger"></span>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
-                            <input name="last_name" type="text" class="form-control" id="exampleFormControlInput1" value="@Model.patientData.LastName" placeholder="Lastname" disabled>
+                            <input name="last_name" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.patientData.LastName" placeholder="Lastname" disabled>
                             <label for="exampleFormControlInput1" class="form-label ps-4">Lastname</label>
                             <span class="text-danger"></span>
                         </div>
                         <div class="col-12 form-floating mb-3 text-muted">
-                            <input name="Location" type="text" class="form-control" id="exampleFormControlInput1" value="@Model.patientData.Address" placeholder="Location" disabled>
+                            <input name="Location" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.patientData.Address" placeholder="Location" disabled>
                             <label for="exampleFormControlInput1" class="form-label ps-4">Location</label>
                             <span class="text-danger"></span>
                         </div>
@@ -62,30 +62,30 @@
                             <label for="exampleFormControlInput1" class="form-label ps-4">Date</label>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
-                            <input id="phone" class="form-control inp2" type="tel" placeholder="Phone Number" value="@Model.patientData.PhoneNumber" disabled>
+                            <input id="phone" class="form-control inp2" type="tel" placeholder="Phone Number" asp-for="@Model.patientData.PhoneNumber" disabled>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
-                            <input name="email" type="email" class="form-control" id="email" value="@Model.patientData.Email" placeholder="Email" disabled>
+                            <input name="email" type="email" class="form-control" id="email" asp-for="@Model.patientData.Email" placeholder="Email" disabled>
                             <label for="email" class="form-label ps-4">Email</label>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.HistoryIllness" value="@Model.HistoryIllness" style="height: 100px" readonly></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.HistoryIllness"  style="height: 100px" readonly></textarea>
                             <label for="floatingTextarea2" class="ps-4">History Of present illness or Injury</label>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating  mb-3 text-muted">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.MedicalHistory" value="@Model.MedicalHistory" style="height: 100px" readonly></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.MedicalHistory" style="height: 100px" readonly></textarea>
                             <label for="floatingTextarea2" class="ps-4">Medical History</label>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Medications" value="@Model.Medications" style="height: 100px" readonly></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Medications"  style="height: 100px" readonly></textarea>
                             <label for="floatingTextarea2" class="ps-4">Medications</label>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-6 form-floating mb-3 text-muted">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Allergies" value="@Model.Allergies" style="height: 100px" readonly></textarea>
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Allergies"  style="height: 100px" readonly></textarea>
                             <label for="floatingTextarea2" class="ps-4">Allergies</label>
                         </div>
                         <div class="col-sm-6 col-md-4 col-lg-4 col-6 form-floating mb-3 text-muted">
-                            <input name="Temp" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.Temp" value="@Model.Temp" placeholder="Temp" readonly>
+                            <input name="Temp" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.Temp" placeholder="Temp" readonly>
                             <label for="exampleFormControlInput1" class="form-label ps-4">Temp</label>
                             <span class="text-danger"></span>
                         </div>
@@ -196,11 +196,11 @@
     const errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
 
     // initialise plugin
-    const iti = window.intlTelInput(input, {
+    var iti = window.intlTelInput(input, {
         initialCountry: "us",
         utilsScript: "/intl-tel-input/js/utils.js?1706723638591"
     });
-    const iti1 = window.intlTelInput(input2, {
+    var iti1 = window.intlTelInput(input2, {
         initialCountry: "us",
         utilsScript: "/intl-tel-input/js/utils.js?1706723638591"
     });

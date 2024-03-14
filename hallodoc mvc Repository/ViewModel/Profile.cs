@@ -18,5 +18,6 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public String State { get; set; }
 
+        public List<Region>? region { get; set; }
     }
 }
