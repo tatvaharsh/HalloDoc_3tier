@@ -67,7 +67,14 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public bool ValidateUser(LoginViewModel model)
         {
-            return _Repository.ValidateUser(model);
+            AspNetUser asp = _Repository.ValidateUser(model);
+            if (asp.Id > 0)
+            {
+                model.Id = asp.Id;
+                return true;
+            }
+            return false;
+           
         }
 
         List<Request> IPatient_Service.getRequest(int? id)

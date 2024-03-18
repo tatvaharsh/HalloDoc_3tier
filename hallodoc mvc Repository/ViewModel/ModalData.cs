@@ -15,7 +15,8 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public string? note { get; set; }
 
-        public string? PatientName { get; set; }
+        public string? PatientName { get; set; } 
+        public string? Adminname { get; set; }
 
         public List<Region>? region { get; set; }
 

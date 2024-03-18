@@ -45,5 +45,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         public string? Region { get; set; } //region
 
         public int Status { get; set; } //req
+
+        public int PgCount { get; set; }
     }
 }

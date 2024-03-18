@@ -18,6 +18,8 @@ using System.Security.Cryptography.Xml;
 using Microsoft.CodeAnalysis;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Runtime.Intrinsics.X86;
+using System.Security.Policy;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -30,13 +32,14 @@ namespace hallocdoc_mvc_Service.Implementation
             _Repository = Repository;
         }
 
-        public List<AdminDashboard> getDashData(int? requestType, string? search, int? requestor, int? region)
+        public List<AdminDashboard> getDashData(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
-            var query  = _Repository.GetAdminCode();
+            var query = _Repository.GetAdminCode();
 
             if (search != null)
             {
                 query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
+                pageid = 1;
             }
 
             if (requestor == 3)
@@ -62,43 +65,43 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 query = query.Where(r => r.RequestClients.FirstOrDefault().RegionId == region);
             }
-            
-
+            var a = query.Skip(pageid * 2 - 2).Take(2).ToList();
+            int c = query.Count();
             var dashData = new List<AdminDashboard>();
 
 
 
 
 
-            foreach (var item in query.ToList())
+            foreach (var item in a)
             {
-            List<RequestStatusLog?> requestStatusLog = _Repository.GetStatusLogsByRequest(item.RequestId);
-            List<string>? transfer = new();
+                List<RequestStatusLog?> requestStatusLog = _Repository.GetStatusLogsByRequest(item.RequestId);
+                List<string>? transfer = new();
 
-            requestStatusLog.ForEach(x =>
-            {
-                Physician? phy = _Repository.GetPhysician(x.TransToPhysicianId);
-                if (phy != null)
+                requestStatusLog.ForEach(x =>
                 {
-                    transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
-                }
-                else
-                {
-                    transfer.Add("Admin changed to status" + " " + x.Status + " "+ x.Notes);
-                }
-            });
+                    Physician? phy = _Repository.GetPhysician(x.TransToPhysicianId);
+                    if (phy != null)
+                    {
+                        transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
+                    }
+                    else
+                    {
+                        transfer.Add("Admin changed to status" + " " + x.Status + " " + x.Notes);
+                    }
+                });
 
                 DateOnly Mydate = new(item.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(item.RequestClients.FirstOrDefault().StrMonth, "MMM", CultureInfo.InvariantCulture).Month, item.RequestClients.FirstOrDefault().IntDate.Value);
                 dashData.Add(new AdminDashboard
                 {
                     Id = item.RequestId,
-                    LName=item.RequestClients.FirstOrDefault()?.LastName,
-                    FName=item.RequestClients.FirstOrDefault()?.FirstName,
-                    Email=item.RequestClients.FirstOrDefault()?.Email,
+                    LName = item.RequestClients.FirstOrDefault()?.LastName,
+                    FName = item.RequestClients.FirstOrDefault()?.FirstName,
+                    Email = item.RequestClients.FirstOrDefault()?.Email,
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
-                    RPhone=item.PhoneNumber,
-                    DateOfBirth=Mydate,
-                    Requestor = item.FirstName+' '+item.LastName,
+                    RPhone = item.PhoneNumber,
+                    DateOfBirth = Mydate,
+                    Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
                     Address = item.RequestClients.FirstOrDefault()?.Street + ", " + item.RequestClients.FirstOrDefault()?.City + ", " + item.RequestClients.FirstOrDefault()?.State,
@@ -106,21 +109,21 @@ namespace hallocdoc_mvc_Service.Implementation
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
-
-
+                    PgCount = c,
                 });
             }
 
             return dashData;
         }
 
-        public List<AdminDashboard> getDashDataActive(int? requestType, string? search, int? requestor, int? region)
+        public List<AdminDashboard> getDashDataActive(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             var query = _Repository.GetAdminStatus();
 
             if (search != null)
             {
                 query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
+                pageid = 1;
             }
 
             if (requestor == 3)
@@ -147,10 +150,11 @@ namespace hallocdoc_mvc_Service.Implementation
                 query = query.Where(r => r.RequestClients.FirstOrDefault().RegionId == region);
 
             }
-
+            var a = query.Skip(pageid * 2 - 2).Take(2).ToList();
+            int c = query.Count();
             var dashData = new List<AdminDashboard>();
 
-            foreach (var item in query)
+            foreach (var item in a)
             {
                 DateOnly Mydate = new(item.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(item.RequestClients.FirstOrDefault().StrMonth, "MMM", CultureInfo.InvariantCulture).Month, item.RequestClients.FirstOrDefault().IntDate.Value);
                 dashData.Add(new AdminDashboard
@@ -160,7 +164,8 @@ namespace hallocdoc_mvc_Service.Implementation
                     FName = item.RequestClients.FirstOrDefault()?.FirstName,
                     Email = item.RequestClients.FirstOrDefault()?.Email,
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
-                    DateOfBirth=Mydate,
+                    DateOfBirth = Mydate,
+                    RPhone = item.PhoneNumber,
                     Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
@@ -169,18 +174,20 @@ namespace hallocdoc_mvc_Service.Implementation
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
+                    PgCount = c,
                 });
             }
 
             return dashData;
         }
-        public List<AdminDashboard> getDashDataPending(int? requestType, string? search, int? requestor, int? region)
+        public List<AdminDashboard> getDashDataPending(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             var query = _Repository.GetAdminPending();
 
             if (search != null)
             {
                 query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
+                pageid = 1;
             }
 
             if (requestor == 3)
@@ -207,12 +214,13 @@ namespace hallocdoc_mvc_Service.Implementation
                 query = query.Where(r => r.RequestClients.FirstOrDefault().RegionId == region);
 
             }
-
+            var a = query.Skip(pageid * 2 - 2).Take(2).ToList();
+            int c = query.Count();
             var dashData = new List<AdminDashboard>();
 
-            
 
-            foreach (var item in query.ToList())
+
+            foreach (var item in a)
             {
 
                 List<RequestStatusLog?> requestStatusLog = _Repository.GetStatusLogsByRequest(item.RequestId);
@@ -221,12 +229,13 @@ namespace hallocdoc_mvc_Service.Implementation
                 requestStatusLog.ForEach(x =>
                 {
                     Physician? phy = _Repository.GetPhysician(x.TransToPhysicianId);
-                    if (phy != null) {
-                    transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
+                    if (phy != null)
+                    {
+                        transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
                     }
                     else
                     {
-                     transfer.Add("Admin changed to status" + " " + x.Notes);
+                        transfer.Add("Admin changed to status" + " " + x.Notes);
                     }
                 });
 
@@ -238,9 +247,10 @@ namespace hallocdoc_mvc_Service.Implementation
                     LName = item.RequestClients.FirstOrDefault()?.LastName,
                     FName = item.RequestClients.FirstOrDefault()?.FirstName,
                     Email = item.RequestClients.FirstOrDefault()?.Email,
-                    Physician=item.Physician?.FirstName,
+                    RPhone = item.PhoneNumber,
+                    Physician = item.Physician?.FirstName,
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
-                    DateOfBirth=Mydate,
+                    DateOfBirth = Mydate,
                     Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
@@ -248,18 +258,20 @@ namespace hallocdoc_mvc_Service.Implementation
                     Notes = transfer,
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
+                    PgCount = c,
                 });
             }
 
             return dashData;
         }
-        public List<AdminDashboard> getDashDataConclude(int? requestType, string? search, int? requestor, int? region)
+        public List<AdminDashboard> getDashDataConclude(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             var query = _Repository.GetAdminConclude();
 
             if (search != null)
             {
                 query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
+                pageid = 1;
             }
 
             if (requestor == 3)
@@ -286,10 +298,11 @@ namespace hallocdoc_mvc_Service.Implementation
                 query = query.Where(r => r.RequestClients.FirstOrDefault().RegionId == region);
 
             }
-
+            var a = query.Skip(pageid * 2 - 2).Take(2).ToList();
+            int c = query.Count();
             var dashData = new List<AdminDashboard>();
 
-            foreach (var item in query)
+            foreach (var item in a)
             {
                 DateOnly Mydate = new(item.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(item.RequestClients.FirstOrDefault().StrMonth, "MMM", CultureInfo.InvariantCulture).Month, item.RequestClients.FirstOrDefault().IntDate.Value);
                 dashData.Add(new AdminDashboard
@@ -299,7 +312,8 @@ namespace hallocdoc_mvc_Service.Implementation
                     FName = item.RequestClients.FirstOrDefault()?.FirstName,
                     Email = item.RequestClients.FirstOrDefault()?.Email,
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
-                    DateOfBirth=Mydate,
+                    DateOfBirth = Mydate,
+                    RPhone = item.PhoneNumber,
                     Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
@@ -308,18 +322,20 @@ namespace hallocdoc_mvc_Service.Implementation
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
+                    PgCount = c,
                 });
             }
 
             return dashData;
         }
-        public List<AdminDashboard> getDashDataToclose(int? requestType, string? search, int? requestor, int? region)
+        public List<AdminDashboard> getDashDataToclose(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             var query = _Repository.GetAdminToclose();
 
             if (search != null)
             {
                 query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
+                pageid = 1;
             }
 
             if (requestor == 3)
@@ -346,10 +362,11 @@ namespace hallocdoc_mvc_Service.Implementation
                 query = query.Where(r => r.RequestClients.FirstOrDefault().RegionId == region);
 
             }
-
+            var a = query.Skip(pageid * 2 - 2).Take(2).ToList();
+            int c = query.Count();
             var dashData = new List<AdminDashboard>();
 
-            foreach (var item in query.ToList())
+            foreach (var item in a)
             {
 
                 List<RequestStatusLog?> requestStatusLog = _Repository.GetStatusLogsByRequest(item.RequestId);
@@ -375,7 +392,8 @@ namespace hallocdoc_mvc_Service.Implementation
                     FName = item.RequestClients.FirstOrDefault()?.FirstName,
                     Email = item.RequestClients.FirstOrDefault()?.Email,
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
-                    DateOfBirth=Mydate,
+                    DateOfBirth = Mydate,
+                    RPhone = item.PhoneNumber,
                     Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
@@ -384,18 +402,20 @@ namespace hallocdoc_mvc_Service.Implementation
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
+                    PgCount = c,
                 });
             }
 
             return dashData;
         }
-        public List<AdminDashboard> getDashDataUnpaid(int? requestType, string? search, int? requestor, int? region)
+        public List<AdminDashboard> getDashDataUnpaid(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             var query = _Repository.GetAdminUnpaid();
 
             if (search != null)
             {
                 query = query.Where(r => (bool)r.RequestClients.FirstOrDefault().FirstName.ToLower().Contains(search.ToLower()) || (bool)r.RequestClients.FirstOrDefault().LastName.ToLower().Contains(search.ToLower()));
+                pageid = 1;
             }
 
             if (requestor == 3)
@@ -423,19 +443,22 @@ namespace hallocdoc_mvc_Service.Implementation
 
             }
 
+            var a = query.Skip(pageid * 2 - 2).Take(2).ToList();
+            int c = query.Count();
             var dashData = new List<AdminDashboard>();
 
-            foreach (var item in query)
+            foreach (var item in a)
             {
                 DateOnly Mydate = new(item.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(item.RequestClients.FirstOrDefault().StrMonth, "MMM", CultureInfo.InvariantCulture).Month, item.RequestClients.FirstOrDefault().IntDate.Value);
                 dashData.Add(new AdminDashboard
                 {
-                    Id= item.RequestId,
+                    Id = item.RequestId,
                     LName = item.RequestClients.FirstOrDefault()?.LastName,
                     FName = item.RequestClients.FirstOrDefault()?.FirstName,
                     Email = item.RequestClients.FirstOrDefault()?.Email,
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
-                    DateOfBirth=Mydate,
+                    DateOfBirth = Mydate,
+                    RPhone = item.PhoneNumber,
                     Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
@@ -444,6 +467,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
+                    PgCount = c,
                 });
             }
 
@@ -452,40 +476,40 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public ViewCase Getcase(int reqId)
         {
-            var requestData = _Repository.GetRequest().Where(x=>x.RequestId==reqId);
+            var requestData = _Repository.GetRequest().Where(x => x.RequestId == reqId);
             //var requestData = _context.Requests.FirstOrDefault(r => r.Requestid == ReqId);
 
             DateOnly date = new DateOnly(requestData.FirstOrDefault().RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(requestData.FirstOrDefault().RequestClients.FirstOrDefault().StrMonth, "MMM", CultureInfo.InvariantCulture).Month, requestData.FirstOrDefault().RequestClients.FirstOrDefault().IntDate.Value);
 
 
             ViewCase ViewCase = new()
-                {
-                    FirstName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.FirstName,
-                    LastName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.LastName,
-                    PhoneNumber = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.PhoneNumber,
-                    Email = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.Email,
-                    PatientNotes = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.Notes,
-                    BirthDate = date,
-                    AddressORBusinessName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.Address,
-                    Status = requestData.FirstOrDefault().Status,
-                    ReqType = requestData.FirstOrDefault().RequestTypeId,
-                    ConfirmationNO = requestData.FirstOrDefault()?.ConfirmationNumber,
-                            
-                    // Room = requestData.roo,
-                    // PatientRegion = requestData.
-                };
+            {
+                FirstName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.FirstName,
+                LastName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.LastName,
+                PhoneNumber = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.PhoneNumber,
+                Email = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.Email,
+                PatientNotes = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.Notes,
+                BirthDate = date,
+                AddressORBusinessName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.Address,
+                Status = requestData.FirstOrDefault().Status,
+                ReqType = requestData.FirstOrDefault().RequestTypeId,
+                ConfirmationNO = requestData.FirstOrDefault()?.ConfirmationNumber,
 
-                return ViewCase;
-            
+                // Room = requestData.roo,
+                // PatientRegion = requestData.
+            };
+
+            return ViewCase;
+
         }
 
         public bool ValidateUser(LoginViewModel model)
         {
             AspNetUser asp = _Repository.Validate(model);
-            if (asp.Id>0)
+            if (asp.Id > 0)
             {
-                model.Id=asp.Id;
-                return true;  
+                model.Id = asp.Id;
+                return true;
             }
             return false;
         }
@@ -497,6 +521,8 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public ModalData GetAssignData(ModalData md)
         {
+           
+
             List<Region> r = _Repository.GetRegion();
             md.region = r;
 
@@ -529,7 +555,7 @@ namespace hallocdoc_mvc_Service.Implementation
             md.CountConclude = d;
             md.CountClose = e;
             md.CountUnpaid = f;
-
+            
             return md;
         }
 
@@ -545,7 +571,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 notedata.ModifiedBy = admin;
                 notedata.ModifiedDate = DateTime.Now;
                 _Repository.save();
-                
+
             }
             else
             {
@@ -558,7 +584,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 };
 
                 _Repository.AddRequestNotes(newnotedata);
-              
+
             }
             return model;
         }
@@ -572,17 +598,17 @@ namespace hallocdoc_mvc_Service.Implementation
 
             var requestStatusLog = _Repository.GetStatusLogsByRequest(id);
             List<string?> transfer = new();
-            
+
             requestStatusLog.ForEach(x =>
             {
                 Physician? phy = _Repository.GetPhysician(x.TransToPhysicianId);
                 transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
             });
-            
+
             var log = requestStatusLog.FirstOrDefault(x => x.Status == 3);
-            if(log != null)
+            if (log != null)
             {
-            cancelNote = log.Notes;
+                cancelNote = log.Notes;
             }
 
             var log1 = requestStatusLog.FirstOrDefault(x => x.Status == 7);
@@ -617,44 +643,44 @@ namespace hallocdoc_mvc_Service.Implementation
         public RequestClient? GetCancelCaseData(ModalData md, int id)
         {
             var canceldata = _Repository.Cancelname(id);
-            
+
 
             var AdminCancelCaseModel = new RequestClient()
             {
                 RequestId = id,
                 FirstName = canceldata.FirstName,
-                LastName= canceldata.LastName
+                LastName = canceldata.LastName
             };
             return AdminCancelCaseModel;
         }
 
         public List<CaseTag> GetCaseReason()
         {
-           return _Repository.GetCases();
+            return _Repository.GetCases();
         }
 
         public void CanclePost(ModalData md, int id, int admin)
         {
-            Request req =_Repository.GetRequestById(id);
+            Request req = _Repository.GetRequestById(id);
 
             req.Status = 3;
             req.CaseTag = md.reason;
-            req.ModifiedDate=DateTime.Now;
+            req.ModifiedDate = DateTime.Now;
             _Repository.UpdateRequesttbl(req);
 
             RequestStatusLog reqlog = new()
             {
-                RequestId=id,
+                RequestId = id,
                 Status = 3,
-                AdminId=admin,
-                Notes=md.note,
-                CreatedDate=DateTime.Now,
-                 
+                AdminId = admin,
+                Notes = md.note,
+                CreatedDate = DateTime.Now,
+
             };
             _Repository.AddRequestStatuslog(reqlog);
         }
 
-        public void AssignCase(ModalData md, int id,int admin)
+        public void AssignCase(ModalData md, int id, int admin)
         {
             Request req = _Repository.GetRequestById(id);
 
@@ -674,9 +700,9 @@ namespace hallocdoc_mvc_Service.Implementation
             };
             _Repository.AddRequestStatuslog(reqlog);
 
-           
 
-           
+
+
 
         }
 
@@ -717,11 +743,11 @@ namespace hallocdoc_mvc_Service.Implementation
             BlockRequest blreq = new()
             {
                 PhoneNumber = rc.PhoneNumber,
-                Email=rc.Email,
-                Reason=md.note,
-                RequestId=id.ToString(),
-                CreatedDate=DateTime.Now
-                
+                Email = rc.Email,
+                Reason = md.note,
+                RequestId = id.ToString(),
+                CreatedDate = DateTime.Now
+
             };
             _Repository.AddBlockRequest(blreq);
         }
@@ -730,28 +756,28 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             List<RequestWiseFile> rwf = _Repository.getfile(id);
             Request? req = _Repository.getdetail(id);
-            
+
             List<ViewDocument> vd = new();
-           
-            if (rwf.Count!=0)
+
+            if (rwf.Count != 0)
             {
 
-          
 
-            foreach (var item in rwf)
-            {
-                vd.Add(new ViewDocument
+
+                foreach (var item in rwf)
                 {
-                    FirstName = req.FirstName,
-                    Confirmationnumber = req.ConfirmationNumber,
-                    RequestId = req.RequestId,
-                    FileName = item.FileName,
-                    FileId = item.RequestWiseFileId,
-                    Uploaddate=item.CreatedDate,
-                 
-                    
-                });
-            }
+                    vd.Add(new ViewDocument
+                    {
+                        FirstName = req.FirstName,
+                        Confirmationnumber = req.ConfirmationNumber,
+                        RequestId = req.RequestId,
+                        FileName = item.FileName,
+                        FileId = item.RequestWiseFileId,
+                        Uploaddate = item.CreatedDate,
+
+
+                    });
+                }
             }
             else
             {
@@ -760,7 +786,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     FirstName = req.FirstName,
                     Confirmationnumber = req.ConfirmationNumber,
                     RequestId = req.RequestId,
-               
+
 
 
                 });
@@ -768,7 +794,7 @@ namespace hallocdoc_mvc_Service.Implementation
             return vd;
         }
 
-        public void FileUpload(int id, List<IFormFile> file,int admin)
+        public void FileUpload(int id, List<IFormFile> file, int admin)
         {
             foreach (IFormFile files in file)
             {
@@ -784,7 +810,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 requestWiseFile.FileName = filename;
                 requestWiseFile.RequestId = id;
                 requestWiseFile.DocType = 1;
-                requestWiseFile.AdminId= admin;
+                requestWiseFile.AdminId = admin;
                 _Repository.AddRequestWiseFiles(requestWiseFile);
 
             }
@@ -794,7 +820,7 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             RequestWiseFile df = _Repository.GetDocumentFile(id)
 ;
-            df.IsDeleted = new System.Collections.BitArray(1,true);
+            df.IsDeleted = new System.Collections.BitArray(1, true);
             _Repository.update_RequestWiseTable(df);
         }
 
@@ -848,23 +874,23 @@ namespace hallocdoc_mvc_Service.Implementation
                 Credentials = new NetworkCredential(mail, password)
             };
             client.SendMailAsync(mailMessage);
-        
+
         }
 
         public Order GetOrderData(Order md)
         {
 
             List<HealthProfessionalType> r = _Repository.GetHealthprofessionalByType();
-          
+
             md.HealthProfessionalType = r;
-          
+
             return md;
         }
 
         public List<HealthProfessional> Getvendor(int id)
         {
 
-           return _Repository.getvendorbyprofessiontype(id);
+            return _Repository.getvendorbyprofessiontype(id);
 
         }
 
@@ -875,18 +901,18 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public void OrderPost(Order md, int id, int admin)
         {
-           
+
             OrderDetail oredr = new()
             {
-                VendorId=md.SelectedVendorId,
-                RequestId=id,
-                FaxNumber=md.Fax,
-                Email=md.Email,
-                BusinessContact=md.Email,
-                Prescription=md.Detail,
-                NoOfRefill=md.refill,
-                CreatedDate=DateTime.Now,
-                CreatedBy=admin.ToString(),
+                VendorId = md.SelectedVendorId,
+                RequestId = id,
+                FaxNumber = md.Fax,
+                Email = md.Email,
+                BusinessContact = md.Email,
+                Prescription = md.Detail,
+                NoOfRefill = md.refill,
+                CreatedDate = DateTime.Now,
+                CreatedBy = admin.ToString(),
 
             };
             _Repository.AddOrderdetails(oredr);
@@ -906,7 +932,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 RequestId = id,
                 Status = 11,
                 AdminId = admin,
-   
+
                 CreatedDate = DateTime.Now,
 
             };
@@ -921,13 +947,13 @@ namespace hallocdoc_mvc_Service.Implementation
         public void SendAgreementMail(int Id, ModalData md, string token)
         {
             RequestClient rc = _Repository.getagreement(Id);
-            
+
 
             if (md.email != null)
             {
                 var receiver = md.email;
                 var subject = "Send Agreement";
-                var message = "Tap on link for Send Agreement : http://localhost:5198/Admin/Agreement?t="+token+"&token="+Id;
+                var message = "Tap on link for Send Agreement : http://localhost:5198/Admin/Agreement?t=" + token + "&token=" + Id;
 
 
                 var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -997,7 +1023,7 @@ namespace hallocdoc_mvc_Service.Implementation
             }
 
             c.viewDocuments = viewDocuments;
-           
+
             return c;
         }
 
@@ -1005,16 +1031,16 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             var r = _Repository.getagreement(id);
 
-            
-                r.Email = model.Email;
-                r.PhoneNumber = model.Phone;
 
-           
+            r.Email = model.Email;
+            r.PhoneNumber = model.Phone;
+
+
             _Repository.updaterequestclient(r);
-  
+
         }
 
-        public void close(int id,int admin)
+        public void close(int id, int admin)
         {
             Request req = _Repository.GetRequestById(id);
 
@@ -1033,15 +1059,15 @@ namespace hallocdoc_mvc_Service.Implementation
 
             RequestClosed requestClosed = new()
             {
-                RequestId= id,
-                RequestStatusLogId=reqlog.RequestStatusLogId
+                RequestId = id,
+                RequestStatusLogId = reqlog.RequestStatusLogId
             };
             _Repository.AddRequestclosed(requestClosed);
         }
 
         public void agreeagreement(int id)
         {
-            Request req=_Repository.getreqid(id);
+            Request req = _Repository.getreqid(id);
             req.Status = 4;
             _Repository.UpdateRequesttbl(req);
 
@@ -1057,7 +1083,7 @@ namespace hallocdoc_mvc_Service.Implementation
             return resp;
         }
 
-        public void cancelagreement(int id,ModalData md)
+        public void cancelagreement(int id, ModalData md)
         {
             Request req = _Repository.GetRequestById(id);
 
@@ -1070,7 +1096,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 RequestId = id,
                 Status = 7,
-                Notes=md.note,
+                Notes = md.note,
                 CreatedDate = DateTime.Now,
 
             };
@@ -1082,12 +1108,12 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             RequestClient rc = _Repository.getagreement(id);
 
-           EncounterForm ef =  _Repository.getencounterbyid(id);
+            EncounterForm ef = _Repository.getencounterbyid(id);
             DateOnly Mydate = new(rc.IntYear.Value, DateOnly.ParseExact(rc.StrMonth, "MMM", CultureInfo.InvariantCulture).Month, rc.IntDate.Value);
             if (ef != null)
             {
 
-         
+
                 Encounter en = new()
                 {
 
@@ -1126,8 +1152,8 @@ namespace hallocdoc_mvc_Service.Implementation
             }
             return new();
 
-           
-           
+
+
         }
 
         public void editencounter(int id, Encounter model)
@@ -1184,8 +1210,8 @@ namespace hallocdoc_mvc_Service.Implementation
                 region = r,
                 Role = _Repository.GetAspNetRole(admin)[0],
                 user = _Repository.getuserbyaspid(a.AspNetUserId),
-                State=_Repository.GetRegionname(a.RegionId),
-                Reg=rd,
+                State = _Repository.GetRegionname(a.RegionId),
+                Reg = rd,
             };
             return pf;
         }
@@ -1303,7 +1329,7 @@ namespace hallocdoc_mvc_Service.Implementation
             Request request = new Request
             {
                 RequestTypeId = 2,
-          
+
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber,
@@ -1347,7 +1373,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 AdminNotes = model.adminnote,
                 RequestId = request.RequestId,
                 CreatedBy = admin,
-                CreatedDate= DateTime.Now,
+                CreatedDate = DateTime.Now,
             };
 
             _Repository.AddRequestNotes(rn);
@@ -1383,15 +1409,25 @@ namespace hallocdoc_mvc_Service.Implementation
             return query;
         }
 
-        public void editadminprofile(Profile model,int admin)
+        public void editadminprofile(Profile model, int admin, List<int> r)
         {
             Admin a = _Repository.getadminbyadminid(admin);
-            a.FirstName = model.AdminData.FirstName;
-            a.LastName = model.AdminData.LastName;
-            a.Email = model.AdminData.Email;
-            a.Mobile = model.AdminData.Mobile;
-            _Repository.updateadmintbl(a);
-            
+            if (model.AdminData != null)
+            {
+                a.FirstName = model.AdminData.FirstName;
+                a.LastName = model.AdminData.LastName;
+                a.Email = model.AdminData.Email;
+                a.Mobile = model.AdminData.Mobile;
+                _Repository.updateadmintbl(a);
+            }
+            if (r.Count > 0)
+            {
+                _Repository.deletereg(admin);
+                foreach (var ritem in r)
+                {
+                    _Repository.AddRegionbyid(ritem, admin);
+                }
+            }
         }
 
         public void editadminp(Profile model, int admin)
@@ -1401,9 +1437,14 @@ namespace hallocdoc_mvc_Service.Implementation
             a.Address2 = model.AdminData.Address2;
             a.City = model.AdminData.City;
             a.Zip = model.AdminData.Zip;
-            a.Mobile=model.AdminData.Mobile;
+            a.Mobile = model.AdminData.Mobile;
             a.RegionId = _Repository.GetRegionid(model.State);
             _Repository.updateadmintbl(a);
+        }
+
+        public string Adminname(int admin1)
+        {
+          return  _Repository.Adminname(admin1);
         }
     }
 }

@@ -1,5 +1,8 @@
 ﻿@model hallodoc_mvc_Repository.ViewModel.patient_form
-
+@{
+    ViewData["Title"] = "Create Request";
+    Layout = "_LayAdmin";
+}
 
 
 
@@ -44,7 +47,7 @@
 
 
 
-@await Html.PartialAsync("_Admin_Header_Dashboard")
+
 <div class="container mt-2 mb-5">
     <div class="d-flex justify-content-between align-items-center">
         <h4>Submit Information</h4>
@@ -120,7 +123,7 @@
                     <label for="floatingInputRoom" class="ms-2">Room # (Optional)</label>
                 </div>
                 <div class="col form-floating mb-3">
-                    <a class="btn btn-outline border-info p-3 text-info me-2">
+                    <a class="btn btn-outline border-info p-3 text-info me-2" >
                         <span>Verify</span>
                     </a>
                     <a class="btn btn-outline border-info p-3 text-info " id="openBtn">

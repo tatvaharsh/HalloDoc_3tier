@@ -353,5 +353,35 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.Users.Add(user);
             _context.SaveChanges();
         }
+
+        public bool IsAdminRegion(int ritem, int a)
+        {
+            if (_context.AdminRegions.FirstOrDefault(x => x.AdminId==a && x.RegionId == ritem)!=null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void deletereg(int admin)
+        {
+            var employeeToDelete = _context.AdminRegions.Where(e => e.AdminId == admin).ToList();
+            foreach(var a in employeeToDelete)
+            {
+                _context.AdminRegions.Remove(a);
+                _context.SaveChanges();
+            }
+        }
+
+        public void AddRegionbyid(int ritem, int admin)
+        {
+            _context.AdminRegions.Add(new AdminRegion { RegionId = ritem, AdminId = admin });
+            _context.SaveChanges();
+        }
+
+        public string Adminname(int admin1)
+        {
+            return _context.Admins.FirstOrDefault(x => x.AdminId == admin1).FirstName;
+        }
     }
 }

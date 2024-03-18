@@ -1,8 +1,12 @@
 ﻿@model hallodoc_mvc_Repository.ViewModel.LoginViewModel
 @{
     ViewData["Title"] = "Admin Login Page";
-    Layout = "_LayAdmin";
+    Layout = "_Layadnavless";
 }
+
+<Partial name="_Toast" />
+
+
 
 <div class="container-fluid">
     <div class="row">
@@ -31,6 +35,7 @@
                             <input type="text" class="form-control border-2 border-info" id="exampleInputUsername" asp-for="Email"
                                    placeholder="Username">
                             <label for="exampleInputUsername">Username</label>
+                            <span asp-validation-for="Email" class="text-danger"></span>
                             <div class="user-icon position-absolute top-0 end-0 mx-3 my-2">
                                 <i class="bi bi-person-circle fs-4"></i>
                             </div>
@@ -39,6 +44,7 @@
                             <input type="password" class="form-control border-2 border-info" id="exampleInputPassword1" asp-for="Passwordhash"
                                    placeholder="Password">
                             <label for="exampleInputPassword1">Password</label>
+                            <span asp-validation-for="Passwordhash" class="text-danger"></span>
 
                         </div>
                         <div class="mb-4 pt-4 d-grid">
@@ -60,5 +66,5 @@
         </div>
     </div>
 </div>
-
+<partial name="_ValidationScriptsPartial" />
 

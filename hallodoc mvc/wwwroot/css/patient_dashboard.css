@@ -153,7 +153,9 @@ body {
     margin-right: 13px;
     background-color: white;
 }
-
+::-webkit-scrollbar {
+    display: none;
+}
 .logout-mob {
     /* padding: 5px; */
     border: 1px solid #0dcaf0;

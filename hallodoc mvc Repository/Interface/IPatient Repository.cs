@@ -35,6 +35,6 @@ namespace hallodoc_mvc_Repository.Interface
         public void Save();
        public void updateAspnetuserTable(AspNetUser asp);
         public void UpdateUserTable(User req);
-        bool ValidateUser(LoginViewModel model);
+        AspNetUser ValidateUser(LoginViewModel model);
     }
 }

@@ -1,5 +1,9 @@
 ﻿
 @model IEnumerable<hallodoc_mvc_Repository.ViewModel.AdminDashboard>
+@{
+    var c = Model.FirstOrDefault()?.PgCount;
+    var page = ViewBag.page;
+}
 @functions {
     public string GetTableColorClass(int RequstTypeId)
     {
@@ -1003,5 +1007,43 @@
 </div>
 
 
+<nav aria-label="..." style="display:flex; justify-content:center; margin-top:10px;">
 
+    <input type="hidden" id="page" />
+    <ul class="pagination" onchange="filter()">
+        <li class="page-item">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="xyz(@(page-1))">Previous</a>
+        </li>
 
+        @if (page - 1 > 0)
+        {
+            <li class="page-item"><a class="page-link " href="#" onclick="xyz(@(page-1))">@(page - 1)</a></li>
+        }
+
+        <li class="page-item"><a class="page-link active" href="#" onclick="xyz(@(page))">@(page)</a></li>
+
+        @if(page*2 < c)
+        {
+            <li class="page-item" aria-current="page">
+                <a class="page-link" href="#" onclick="xyz(@(page+1))">@(page + 1)</a>
+            </li>
+        }
+
+        @if (page * 2 < c)
+        {
+            <li class="page-item">
+                <a class="page-link" href="#" onclick="xyz(@(page+1))">Next</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+@*<div class="text-center"> Page @(page) of @(Math.Ceiling(Convert.ToDecimal(c/2.0))) </div>*@
+
+                

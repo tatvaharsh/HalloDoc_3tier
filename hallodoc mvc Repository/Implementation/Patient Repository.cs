@@ -144,16 +144,16 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.Users.Update(req);
         }
 
-        public bool ValidateUser(LoginViewModel model)
+        public AspNetUser ValidateUser(LoginViewModel model)
         {
-            bool isReg = _context.AspNetUsers.Any(u=> u.Email == model.Email && u.PasswordHash== model.Passwordhash);
+            AspNetUser isReg = _context.AspNetUsers.FirstOrDefault(u=> u.Email == model.Email && u.PasswordHash== model.Passwordhash);
             if (isReg==null)
             {
-                return false;
+                   return new AspNetUser(); 
             }
             else
             {
-                return true;
+                return isReg;
             }
         }
 

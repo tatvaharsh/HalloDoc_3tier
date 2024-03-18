@@ -4,7 +4,20 @@
     Layout = "_LayAdmin";
 }
 
-@await Html.PartialAsync("_Admin_Header_Dashboard")
+<Partial name="_Toast" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        if (TempData["success"] != null) {
+            toastr.success(TempData["success"]);
+            // Optionally remove TempData after displaying the message:
+            // TempData.Remove("success");
+        }
+    });
+</script>
+
+
+
+
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mx-3 mt-5">
         <h4>Notes</h4>

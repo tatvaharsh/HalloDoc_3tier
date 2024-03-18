@@ -14,12 +14,12 @@ namespace hallocdoc_mvc_Service.Interface
         Admin getAdmin(string email);
         ModalData GetAssignData(ModalData md);
         ViewCase Getcase(int reqId);
-        List<AdminDashboard> getDashData(int? requestType, string? search, int? requestor, int? region);
-        List<AdminDashboard> getDashDataActive(int? requestType, string? search, int? requestor, int? region);
-        List<AdminDashboard> getDashDataConclude(int? requestType, string? search, int? requestor, int? region);
-        List<AdminDashboard> getDashDataPending(int? requestType, string? search, int? requestor, int? region);
-        List<AdminDashboard> getDashDataToclose(int? requestType, string? search, int? requestor, int? region);
-        List<AdminDashboard> getDashDataUnpaid(int? requestType, string? search, int? requestor, int? region);
+        List<AdminDashboard> getDashData(int? requestType, string? search, int? requestor, int? region, int pageid);
+        List<AdminDashboard> getDashDataActive(int? requestType, string? search, int? requestor, int? region, int pageid);
+        List<AdminDashboard> getDashDataConclude(int? requestType, string? search, int? requestor, int? region, int pageid);
+        List<AdminDashboard> getDashDataPending(int? requestType, string? search, int? requestor, int? region, int pageid);
+        List<AdminDashboard> getDashDataToclose(int? requestType, string? search, int? requestor, int? region, int pageid);
+        List<AdminDashboard> getDashDataUnpaid(int? requestType, string? search, int? requestor, int? region, int pageid);
         ViewNote? GetNotes(int id);
         ViewNote? setViewNotesData(ViewNote model, int id,int admin);
         bool ValidateUser(LoginViewModel model);
@@ -57,7 +57,8 @@ namespace hallocdoc_mvc_Service.Interface
         void sendlink(ViewCase model);
         void PatientForm(patient_form model,int admin);
         List<Request> Export(string s, int reqtype, int regid, int state);
-        void editadminprofile(Profile model,int admin);
+        void editadminprofile(Profile model,int admin, List<int> reg);
         void editadminp(Profile model, int admin);
+        string Adminname(int admin1);
     }
 }

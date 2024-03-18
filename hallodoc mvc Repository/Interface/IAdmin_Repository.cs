@@ -71,5 +71,9 @@ namespace hallodoc_mvc_Repository.Interface
         int? GetRegionid(string state);
         User getUser(string email);
         void AddUser(User user);
+        bool IsAdminRegion(int ritem, int admin);
+        void deletereg(int admin);
+        void AddRegionbyid(int ritem, int admin);
+        string Adminname(int admin1);
     }
 }

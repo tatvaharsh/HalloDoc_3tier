@@ -18,7 +18,9 @@
 .view-main {
     font-size: 1.4rem !important;
 }
-
+::-webkit-scrollbar {
+    display: none;
+}
 .top-part {
     width: 100%;
     display: flex;

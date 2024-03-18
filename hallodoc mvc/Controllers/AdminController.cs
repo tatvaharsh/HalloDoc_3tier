@@ -1,5 +1,4 @@
-﻿
-using hallocdoc_mvc_Service.Implementation;
+﻿using hallocdoc_mvc_Service.Implementation;
 using hallocdoc_mvc_Service.Interface;
 using hallodoc_mvc_Repository.DataContext;
 using hallodoc_mvc_Repository.DataModels;
@@ -34,13 +33,13 @@ namespace hallodoc_mvc.Controllers
         [CustomAuthorize("Admin")]
         public IActionResult Admin_Dashboard(ModalData md)
         {
-            
-           var admin = HttpContext.Session.GetString("UserName");
-            if(admin != null)
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+         
+            if(admin1 != null)
             {
-            ViewBag.Username = admin;
+                ViewBag.Username = _service.Adminname(admin1);
                 ModalData data = _service.GetAssignData(md);
-                TempData["success"] = "Login Successfully!!!";
+                //TempData["success"] = "Login Successfully!!!";
                 //TempData.Clear();
                 return View(data); 
             }
@@ -49,6 +48,7 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult Admin_Login()
         {
+
             return View();
         }
 
@@ -65,15 +65,19 @@ namespace hallodoc_mvc.Controllers
                     if (Admin != null)
                     {
                         HttpContext.Session.SetInt32("Id", Admin.AdminId);
-                        HttpContext.Session.SetString("UserName", Admin.FirstName);
+                       
                         var token = _jwtService.GenerateJwtToken(model);
                         Response.Cookies.Append("jwt", token);
                         ViewBag.Username = Admin.FirstName;
+                       TempData["success"] = "Login Successfully!!!";
                         return RedirectToAction("Admin_Dashboard");
                     }
                 }
+                TempData["error"] = "Login Failed!!!";
+
 
             }
+               
             return View();
         }
 
@@ -93,49 +97,76 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
 
-        public IActionResult New(int? requestType, string? search, int? requestor, int? region)
+        public IActionResult TabChange(int nav)
         {
-           
-            var data = _service.getDashData(requestType,search,requestor,region);
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+        
+            switch (nav)
+            {
+                case 1:
+                    return PartialView("AdminNavDash");
+                case 3: 
+                    return PartialView("Admin_Profile", _service.getprofile(admin)); 
+               
+
+            }
+            return View();
+        }
+
+        public IActionResult New(int? requestType, string? search, int? requestor, int? region, int pageid)
+        {
+            if (pageid == 0) { pageid = 1; };
+            var data = _service.getDashData(requestType,search,requestor,region,pageid);
+            ViewBag.page = pageid;
             return PartialView("_Admin_Request_Table",data);
         }
-        public IActionResult Pending(int? requestType, string? search, int? requestor, int? region)
+        public IActionResult Pending(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
-            var data = _service.getDashDataPending(requestType, search, requestor, region);
+            if (pageid == 0) { pageid = 1; };
+            var data = _service.getDashDataPending(requestType, search, requestor, region,pageid);
             //AdminDashboard adminDashboard = new AdminDashboard();
+            ViewBag.page = pageid;
             return PartialView("_Admin_Request_Table",data);
         }
-        public IActionResult Active(int? requestType, string? search, int? requestor, int? region)
+        public IActionResult Active(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
-            var data = _service.getDashDataActive(requestType, search, requestor, region);
+            if (pageid == 0) { pageid = 1; };
+            var data = _service.getDashDataActive(requestType, search, requestor, region, pageid);
             //AdminDashboard adminDashboard = new AdminDashboard();
+            ViewBag.page = pageid;
             return PartialView("_Admin_Request_Table", data);
         }
 
-        public IActionResult Conclude(int? requestType, string? search, int? requestor, int? region)
+        public IActionResult Conclude(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
-            var data = _service.getDashDataConclude(requestType, search, requestor, region);
+            if (pageid == 0) { pageid = 1; };
+            var data = _service.getDashDataConclude(requestType, search, requestor, region, pageid);
             //AdminDashboard adminDashboard = new AdminDashboard();
+            ViewBag.page = pageid;
             return PartialView("_Admin_Request_Table", data);
         }
-        public IActionResult ToClose(int? requestType, string? search, int? requestor, int? region)
+        public IActionResult ToClose(int? requestType, string? search, int? requestor, int? region,int pageid)
         {
-            var data = _service.getDashDataToclose(requestType,search,requestor,region);
+            if (pageid == 0) { pageid = 1; };
+            var data = _service.getDashDataToclose(requestType,search,requestor,region, pageid);
             //AdminDashboard adminDashboard = new AdminDashboard();
+            ViewBag.page = pageid;
             return PartialView("_Admin_Request_Table", data);
         }
      
-        public IActionResult Unpaid(int? requestType, string? search, int? requestor, int? region)
+        public IActionResult Unpaid(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
-            var data = _service.getDashDataUnpaid(requestType, search, requestor, region);
+            if (pageid == 0) { pageid = 1; };
+            var data = _service.getDashDataUnpaid(requestType, search, requestor, region, pageid);
             //AdminDashboard adminDashboard = new AdminDashboard();
+            ViewBag.page = pageid;
             return PartialView("_Admin_Request_Table", data);
         }
 
         public IActionResult ViewCase(int Id)
         {
-            var admin = HttpContext.Session.GetString("UserName");
-            ViewBag.Username = admin;
+          
+
 
             ViewCase vc =_service.Getcase(Id);
 
@@ -145,7 +176,8 @@ namespace hallodoc_mvc.Controllers
         [HttpGet]
         public IActionResult ViewNotes(int Id)
         {
-
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin);
             ViewNote rn = _service.GetNotes(Id);
             return View(rn);
         }
@@ -154,8 +186,9 @@ namespace hallodoc_mvc.Controllers
         public IActionResult ViewNotes(ViewNote model,int Id)
         {
             int admin =(int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin);
             var vn= _service.setViewNotesData(model,Id,admin);
-
+            TempData["success"] = "Note Added Successfully!!!";
             return RedirectToAction("ViewNotes",Id);
         }
 
@@ -413,6 +446,8 @@ namespace hallodoc_mvc.Controllers
         }
         public IActionResult Encounter(int id,Encounter model)
         {
+            ViewBag.Username = HttpContext.Session.GetString("UserName");
+            
             Encounter en = _service.getencounter(id);
             return View(en);  
         }
@@ -614,11 +649,12 @@ namespace hallodoc_mvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditAdminProfile(Profile model) 
+        public IActionResult EditAdminProfile(Profile model, List<int> reg) 
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
-            _service.editadminprofile(model,admin);
-            return RedirectToAction("Admin_profile");
+            ViewBag.Username = _service.Adminname(admin);
+            _service.editadminprofile(model,admin,reg);
+            return RedirectToAction("Admin_Profile");
         }
 
         [HttpPost]
@@ -628,6 +664,7 @@ namespace hallodoc_mvc.Controllers
             _service.editadminp(model, admin);
             return RedirectToAction("Admin_profile");
         }
+
 
 
     }

@@ -11,173 +11,184 @@
 }
 
 <body>
-<div id="body">
-    <script src="~/js/patient_dashboard.js"></script>
-    <!-- Navbar -->
-    <div class="navbar-custom">
+    <div id="body">
+        <script src="~/js/patient_dashboard.js"></script>
+        <!-- Navbar -->
+        <div class="navbar-custom">
             <img src="/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" alt="" class="logo" />
-        <div class="right-side-elements">
-            <span class="welcome-text">Welcome <span class="name-text">@Accessor.HttpContext.Session.GetString("Username")</span></span>
-            <a class="logout log" asp-controller="Home" asp-action="patient_login">
-                <span class="logout-text">Logout</span>
-            </a>
+            <div class="right-side-elements">
+                <span class="welcome-text">Welcome <span class="name-text">@Accessor.HttpContext.Session.GetString("Username")</span></span>
+                <a class="logout log" asp-controller="Home" asp-action="patient_login">
+                    <span class="logout-text">Logout</span>
+                </a>
                 <a class="logout-mob log" asp-controller="Home" asp-action="patient_login">
                     <img id="logout" src="/SRSScreenShorts\box-arrow-right.svg" alt="" class="logout-img" />
-            </a>
-            <button class="moon" onclick="changeMode()">
+                </a>
+                <button class="moon" onclick="changeMode()">
                     <img id="moon" src="/SRSScreenShorts\moon.svg" alt="" class="moon-img" />
                     <img id="sun" src="/SRSScreenShorts\moon.svg" alt="" class="moon-img hidden" />
-            </button>
+                </button>
+            </div>
         </div>
-    </div>
 
-    <!-- Sidebar -->
+        <!-- Sidebar -->
 
-    <div id="mySidebar" class="sidebar">
-        <div class="tab sidebar-tab">
+        <div id="mySidebar" class="sidebar">
+            <div class="tab sidebar-tab">
                 <span class="mob-welcome-text">Welcome <span class="mob-name-text">@ViewBag.username</span></span>
-            <button class="tablinks sidebar-tablinks mobile-sidebar-active">
-                <a asp-controller="Patient" asp-action="PatientDashboard" class="mobile-sidebar-a">
-                    Dashboard
-                </a>
-            </button>
-            <button class="tablinks sidebar-tablinks">
-                <a asp-controller="Patient" asp-action="PatientProfile" class="mobile-sidebar-a">
-                    Profile
-                </a>
-            </button>
-        </div>
-    </div>
-
-    <!-- Dark Background when sidebar is open -->
-    <div class="overlay" onclick="sidebar_close()">
-    </div>
-
-    <!-- Navbar Below Container -->
-
-    <div class="nav-below-container"></div>
-
-    <!-- Navbar - Below -->
-
-    <nav class="navbar navbar-expand-sm navbar-light bg-light margin-top ">
-        <button class="navbar-toggler list-border" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="sidebar_open()">
-                <img src="/SRSScreenShorts\list.svg" alt="" class="list-img" />
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="tab">
-                <button class="tablinks sidebar-active">
-                    <a asp-controller="Home" asp-action="PatientDashboard">
+                <button class="tablinks sidebar-tablinks mobile-sidebar-active">
+                    <a asp-controller="Patient" asp-action="PatientDashboard" class="mobile-sidebar-a">
                         Dashboard
                     </a>
                 </button>
-                <button class="tablinks">
-                        <a asp-controller="Home" asp-action="PatientProfile">
+                <button class="tablinks sidebar-tablinks">
+                    <a asp-controller="Patient" asp-action="PatientProfile" class="mobile-sidebar-a">
                         Profile
                     </a>
                 </button>
             </div>
         </div>
-    </nav>
 
-    <!-- Create Request Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="modal-title" id="exampleModalLongTitle">Create New Request</div>
-                    <span aria-hidden="true" data-bs-dismiss="modal" class="cross-btn">&times;</span>
+        <!-- Dark Background when sidebar is open -->
+        <div class="overlay" onclick="sidebar_close()">
+        </div>
+
+        <!-- Navbar Below Container -->
+
+        <div class="nav-below-container"></div>
+
+        <!-- Navbar - Below -->
+
+        <nav class="navbar navbar-expand-sm navbar-light bg-light margin-top ">
+            <button class="navbar-toggler list-border" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="sidebar_open()">
+                <img src="/SRSScreenShorts\list.svg" alt="" class="list-img" />
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="tab">
+                    <button class="tablinks sidebar-active">
+                        <a asp-controller="Home" asp-action="PatientDashboard">
+                            Dashboard
+                        </a>
+                    </button>
+                    <button class="tablinks">
+                        <a asp-controller="Home" asp-action="PatientProfile">
+                            Profile
+                        </a>
+                    </button>
                 </div>
-                <form action="">
-                    <input type="hidden" name="" id="redirect-value" value="SubmitForMe">
-                    <div class="modal-body">
-                        <span class="modal-head">Here, I want to create new request for ...</span>
-                        <div class="modal-flex">
-                            <div class="btn common-btn cancel-btn create-request-active" onclick="toggleButton(this,'SubmitForMe')"> Me </div>
-                            <div class="btn common-btn cancel-btn" onclick="toggleButton(this,'SubmitSomeoneElse')"> Some One Else</div>
+            </div>
+        </nav>
+
+        <!-- Create Request Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title" id="exampleModalLongTitle">Create New Request</div>
+                        <span aria-hidden="true" data-bs-dismiss="modal" class="cross-btn">&times;</span>
+                    </div>
+                    <form action="">
+                        <input type="hidden" name="" id="redirect-value" value="SubmitForMe">
+                        <div class="modal-body">
+                            <span class="modal-head">Here, I want to create new request for ...</span>
+                            <div class="modal-flex">
+                                <div class="btn common-btn cancel-btn create-request-active" onclick="toggleButton(this,'SubmitForMe')"> Me </div>
+                                <div class="btn common-btn cancel-btn" onclick="toggleButton(this,'SubmitSomeoneElse')"> Some One Else</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-info continue-btn" data-bs-dismiss="modal" onclick="redirect()">Continue</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info continue-btn" data-bs-dismiss="modal" onclick="redirect()">Continue</button>
                             <button type="button" class="btn cancel-btn " data-bs-dismiss="modal">Cancel </button>
-                    </div>
-                </form>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Table View - Desktop -->
-
-    <div id="Dashboard" class="tabcontent">
-        <span class="main-heading" id="main-heading">Medical History</span>
-        <div class="main-content">
-            <div class="create-request">
-                <button type="button" class="create-request-btn" id="request-btn" data-bs-toggle="modal"
-                        data-bs-target="#myModal">
-                    Create New Request
-                </button>
-                <a class="create-request-btn-mob" data-bs-toggle="modal" data-bs-target="#myModal">
-                        <img id="create-request" src="/SRSScreenShorts\plus.svg" alt="" class="logout-img" />
-                </a>
-            </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="heading">Created date</th>
-                        <th class="heading">Current Status</th>
-                        <th class="heading d-flex flex-left">Document</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                                @foreach (var item in ViewBag.data)
-                                {
+        <!-- Table View - Desktop -->
+        <div id="Dashboard" class="tabcontent ">
+            <div class="container mb-5 ">
+                <div class="row main-content">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between mt-3">
+                            <h4 class="mt-3">Medical History</h4>
+                        </div>
+                        <span class="main-heading" id="main-heading"></span>
+                        <div class="main-content ">
+                            <div class="create-request">
+                                <button type="button" class="create-request-btn" id="request-btn" data-bs-toggle="modal"
+                                        data-bs-target="#myModal">
+                                    Create New Request
+                                </button>
+                                <a class="create-request-btn-mob" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    <img id="create-request" src="/SRSScreenShorts\plus.svg" alt="" class="logout-img" />
+                                </a>
+                            </div>
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td>@item.CreatedDate.ToString("MMMM dd,yyyy")</td>
-                                         <td>
-                                        @if( item.Status==1){
-                                           <p>Unassigned</p>
-                                        }
-                                      
-                                        </td>
-                                        
-                                            @{
-                                           var Count = 0;
-                                           
-                                           @foreach(var obj in ViewBag.rwfiles)
-                                             {
-                                                if (item.RequestId == obj.RequestId)
-                                              {
-                                                    Count++;
-                                               }
-                                      
-                                              }
-                                    if(Count!=0){
-                                    <td>
-                                    <a class="" asp-controller="Home" asp-action="ViewDocument" asp-route-id="@item.RequestId">
-                                            <span class="logout-text">(@Count) Documents</span>
-                                        </a>
-                                        </td>
-                                    }
-                                        }
+                                        <th class="heading">Created date</th>
+                                        <th class="heading">Current Status</th>
+                                        <th class="heading d-flex ">Document</th>
                                     </tr>
-                                }
+                                </thead>
+                                <tbody>
 
-                </tbody>
-            </table>
+                                    @foreach (var item in ViewBag.data)
+                                    {
+                                        <tr>
+                                            <td>@item.CreatedDate.ToString("MMMM dd,yyyy")</td>
+                                            <td>
 
-            <!-- Table Mobile - Accordian -->
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                    @foreach(var item in ViewBag.data)
-                    {
-                    <div class="accordion-item">
+                                                @if (item.Status == 1)
+                                                {
+                                                    <p>Unassigned</p>
+                                                }
+
+                                            </td>
+
+                                            @{
+                                                var Count = 0;
+
+                                                @foreach (var obj in ViewBag.rwfiles)
+                                                {
+                                                    if (item.RequestId == obj.RequestId)
+                                                    {
+                                                        Count++;
+                                                    }
+
+                                                }
+                                                if (Count != 0)
+                                                {
+                                                    <td>
+                                                        <a  asp-controller="Home" asp-action="ViewDocument" asp-route-id="@item.RequestId">
+                                                            <button class=" btn btn-white text-info border-info logout-text">(@Count) Documents</button>
+                                                        </a>
+                                                    </td>
+                                                }
+                                            }
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            
+        <!-- Table Mobile - Accordian -->
+        <div class="accordion accordion-flush " id="accordionFlushExample">
+            @foreach (var item in ViewBag.data)
+            {
+                <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                <img src="/SRSScreenShorts\clock.svg" alt="" class="accordion-img"> <span class="accordion-heading">
+                            <img src="/SRSScreenShorts\clock.svg" alt="" class="accordion-img"> <span class="accordion-heading">
                                 Created
-                                        Date: <span class="accordion-value">@item.CreatedDate.ToString("MMMM dd,yyyy")</span>
+                                Date: <span class="accordion-value">@item.CreatedDate.ToString("MMMM dd,yyyy")</span>
                             </span>
                         </button>
                     </h2>
@@ -185,34 +196,52 @@
                          data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body main-flex">
                             <div class="inner-flex">
-                                    <img src="/SRSScreenShorts\person-circle.svg" alt="" class="accordion-img-inner">
+                                <img src="/SRSScreenShorts\person-circle.svg" alt="" class="accordion-img-inner">
                                 <span class="accordion-heading-inner">
                                     Provider :
                                     <span class="accordion-value-inner">Dr. AGOLA</span>
                                 </span>
                             </div>
                             <div class="inner-flex">
-                                    <img src="/SRSScreenShorts\success-icon.svg" alt="" class="accordion-img-inner"> <span class="accordion-heading-inner">
+                                <img src="/SRSScreenShorts\success-icon.svg" alt="" class="accordion-img-inner"> <span class="accordion-heading-inner">
                                     Current
-                                            Status: <span class="accordion-value-inner">
-                                                @if (item.Status == 1)
-                                                {
-                                                    <p>Unassigned</p>
-                                                }
-                                            </span>
+                                    Status: <span class="accordion-value-inner">
+                                        @if (item.Status == 1)
+                                        {
+                                            <p>Unassigned</p>
+                                        }
+                                    </span>
                                 </span>
                             </div>
+                            @{
+                                var Count = 0;
 
-                            <a class="document-mob" asp-controller="Home" asp-action="ViewDocument">
-                                <span class="logout-text">(1) Documents</span>
-                            </a>
+                                @foreach (var obj in ViewBag.rwfiles)
+                                {
+                                    if (item.RequestId == obj.RequestId)
+                                    {
+                                        Count++;
+                                    }
+
+                                }
+                                if (Count != 0)
+                                {
+                                    <td>
+                                        <a class="w-100" asp-controller="Home" asp-action="ViewDocument" asp-route-id="@item.RequestId">
+                                            <button class=" btn btn-white text-info border-info logout-text">(@Count) Documents</button>
+                                        </a>
+                                    </td>
+                                }
+                            }
                         </div>
                     </div>
                 </div>
-                        
-                    }
-            </div>
+
+            }
         </div>
     </div>
-</div>
+    </div>
+    </div>
+    </div>
+    </div>
 </body>

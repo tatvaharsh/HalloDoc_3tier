@@ -1,4 +1,6 @@
-﻿<nav class="navbar header adminnav  shadow  top-0 z-3" id="adminnav">
+﻿
+
+<nav class="navbar header adminnav  shadow  top-0 z-3" id="adminnav">
     <div class="container-fluid ">
         <div class="d-flex justify-content-center ">
             <button class="btn d-inline-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
@@ -39,30 +41,32 @@
         <div class="px-3">
             <ul class="nav nav-underline" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active text-muted px-3" id="home-tab" data-bs-toggle="tab"
-                            data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+                    <button class="nav-link active text-muted px-3" id="home-tab" data-bs-toggle="tab" onclick="tabchanged(1)"
+                            data-bs-target="" type="button" role="tab" aria-controls="home-tab-pane"
                             aria-selected="true">
                         Dashboard
                     </button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link text-muted px-3" id="provider-location-tab" data-bs-toggle="tab"
-                            data-bs-target="#provider-location-tab-pane" type="button" role="tab"
+                    <button class="nav-link text-muted px-3" id="provider-location-tab" data-bs-toggle="tab" onclick="tabchanged(2)"
+                            data-bs-target="" type="button" role="tab"
                             aria-controls="provider-location-tab-pane" aria-selected="false">
                         Provider-location
                     </button>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-muted px-3" id="profile-tab" data-bs-toggle="tab">
+                    <button class="nav-link text-muted px-3" id="provider-location-tab" data-bs-toggle="tab" onclick="tabchanged(3)"
+                            data-bs-target="" type="button" role="tab"
+                            aria-controls="provider-location-tab-pane" aria-selected="false">
                         Profile
-                    </a>
+                    </button>
                 </li>
 
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link text-muted px-3" id="Providers-tab" data-bs-toggle="tab"
-                            data-bs-target="#Providers-tab-pane" type="button" role="tab"
+                    <button class="nav-link text-muted px-3" id="Providers-tab" data-bs-toggle="tab" onclick="tabchanged(4)"
+                            data-bs-target="" type="button" role="tab"
                             aria-controls="Providers-tab-pane" aria-selected="false">
                         Providers
                     </button>
@@ -173,3 +177,7 @@
     </div>
 
 </nav>
+
+<script>
+    
+</script>
