@@ -75,5 +75,26 @@ namespace hallodoc_mvc_Repository.Interface
         void deletereg(int admin);
         void AddRegionbyid(int ritem, int admin);
         string Adminname(int admin1);
+        void UpdateAsp(AspNetUser asp);
+        List<Physician> getphysician();
+        List<PhysicianLocation> GetPhyLocation();
+        string Getrolebyroleid(int? roleId);
+        PhysicianNotification phynoti(int physicianId);
+        void updatephynoti(PhysicianNotification pl);
+        void addPhynoti(PhysicianNotification p);
+        List<Region> GetReg();
+        List<Role> getrole();
+        void AddPhysician(Physician phy);
+        void AddPhysicianRegion(PhysicianRegion reg);
+        ICollection<AspNetRole> PhycianRoles();
+        List<Role> getroletbl();
+        List<Menu> getmenutbl(int value);
+        void AddRoletbl(Role role);
+        void AddRoleMenutbl(RoleMenu rolemenu);
+        void RemoveRoleMenu(int roleId);
+        void AddRoleMenu(RoleMenu rolemenu);
+        Role GetDataFromRoles(int? id);
+        List<RoleMenu> GetDataFromRoleMenu(int id);
+        List<Menu> GetMenuDataWithCheckwise(short accountType);
     }
 }

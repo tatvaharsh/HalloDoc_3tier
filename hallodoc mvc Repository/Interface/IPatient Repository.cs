@@ -32,6 +32,7 @@ namespace hallodoc_mvc_Repository.Interface
         public User getUser(string email);
        public User getUser(int? user1);
         Region isRegion(string abbreviation);
+        ICollection<AspNetRole> RolePatient();
         public void Save();
        public void updateAspnetuserTable(AspNetUser asp);
         public void UpdateUserTable(User req);

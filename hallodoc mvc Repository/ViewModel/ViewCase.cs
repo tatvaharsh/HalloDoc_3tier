@@ -21,5 +21,6 @@ namespace hallodoc_mvc_Repository.ViewModel
         public string? Room { get; set; }
         public short? Status { get; set; }
         public int ReqType { get; set; }
+        public int? ReqId { get; set; }
     }
 }

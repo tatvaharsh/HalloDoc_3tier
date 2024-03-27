@@ -5,6 +5,7 @@ using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -179,8 +180,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public RequestWiseFile GetDocumentFile(int id)
         {
-            var file = _context.RequestWiseFiles.Find(id)
-;
+            var file = _context.RequestWiseFiles.Find(id);
             return file;
         }
 
@@ -382,6 +382,134 @@ namespace hallodoc_mvc_Repository.Implementation
         public string Adminname(int admin1)
         {
             return _context.Admins.FirstOrDefault(x => x.AdminId == admin1).FirstName;
+        }
+
+        public void UpdateAsp(AspNetUser asp)
+        {
+            _context.AspNetUsers.Update(asp);
+            _context.SaveChanges();
+        }
+
+        public List<Physician> getphysician()
+        {
+            return _context.Physicians.ToList();
+        }
+
+        public List<PhysicianLocation> GetPhyLocation()
+        {
+            return _context.PhysicianLocations.ToList();
+        }
+
+        public string Getrolebyroleid(int? roleId)
+        {
+            return _context.Roles.FirstOrDefault(x => x.RoleId == roleId).Name;
+        }
+
+        public PhysicianNotification phynoti(int physicianId)
+        {
+            return _context.PhysicianNotifications.FirstOrDefault(x => x.PhysicianId == physicianId) ?? new();
+        }
+
+        public void updatephynoti(PhysicianNotification pl)
+        {
+            _context.PhysicianNotifications.Update(pl);
+            _context.SaveChanges();
+        }
+
+        public void addPhynoti(PhysicianNotification p)
+        {
+            _context.PhysicianNotifications.Add(p);
+            _context.SaveChanges();
+        }
+
+        public List<Region> GetReg()
+        {
+          return  _context.Regions.ToList();
+        }
+
+        public List<Role> getrole()
+        {
+           return _context.Roles.ToList();
+        }
+
+        public void AddPhysician(Physician phy)
+        {
+            _context.Physicians.Add(phy);
+            _context.SaveChanges();
+        }
+
+        public void AddPhysicianRegion(PhysicianRegion reg)
+        {
+           _context.PhysicianRegions.Add(reg);
+            _context.SaveChanges(); 
+        }
+
+        public ICollection<AspNetRole> PhycianRoles()
+        {
+           return _context.AspNetRoles.Where(x=>x.Id==3).ToList(); 
+        }
+
+        public List<Role> getroletbl()
+        {
+            return _context.Roles.ToList();
+        }
+
+        public List<Menu> getmenutbl(int value)
+        {
+            if (value == 0)
+            {
+                return _context.Menus.ToList();
+            }
+            else
+            {
+                return _context.Menus.Where(x => x.AccountType == value).ToList();
+            }
+          
+
+        }
+
+        public void AddRoletbl(Role role)
+        {
+           _context.Roles.Add(role);
+            _context.SaveChanges();
+        }
+
+        public void AddRoleMenutbl(RoleMenu rolemenu)
+        {
+            _context.RoleMenus.Add(rolemenu);
+            _context.SaveChanges();
+        }
+
+        void IAdmin_Repository.RemoveRoleMenu(int roleId)
+        {
+            var menu = _context.RoleMenus.Where(m => m.RoleId == roleId).ToList();
+            foreach (var item in menu)
+            {
+                _context.RoleMenus.Remove(item);
+            }
+        }
+
+        public void AddRoleMenu(RoleMenu rolemenu)
+        {
+            _context.RoleMenus.Add(rolemenu);
+            _context.SaveChanges();
+        }
+
+     
+
+        Role IAdmin_Repository.GetDataFromRoles(int? id)
+        {
+            return _context.Roles.FirstOrDefault(m => m.RoleId == id);
+        }
+
+        public List<RoleMenu> GetDataFromRoleMenu(int id)
+        {
+            return _context.RoleMenus.Where(x => x.RoleId == id).ToList();
+        }
+
+        public List<Menu> GetMenuDataWithCheckwise(short accountType)
+        {
+            return _context.Menus.Where(m => m.AccountType == accountType).ToList();
         }
     }
 }

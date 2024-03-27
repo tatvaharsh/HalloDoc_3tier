@@ -9,6 +9,8 @@ using hallocdoc_mvc_Service.Interface;
 using System.Net.Mail;
 using System.Net;
 using System.Globalization;
+using HalloDoc.Auth;
+using hallocdoc_mvc_Service.Implementation;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -16,13 +18,14 @@ namespace hallodoc_mvc.Controllers
     {
         //private readonly ApplicationDbContext _context;
         private readonly IPatient_Service _service;
+        private readonly IJwtService _jwtService;
 
 
-
-        public HomeController(IPatient_Service service)
+        public HomeController(IPatient_Service service,IJwtService _jwtservice)
         {
             //_context = context;
             _service = service;
+            _jwtService = _jwtservice;
         }
         public IActionResult patient_screen()
         {
@@ -34,13 +37,7 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
 
-
-        /*
-                public HomeController(ILogger<HomeController> logger)
-                {
-                    _logger = logger;
-                }*/
-
+        
         [HttpPost]
         public IActionResult patient_login(LoginViewModel model)
         {
@@ -54,6 +51,8 @@ namespace hallodoc_mvc.Controllers
                     var user = _service.getUser(model.Email);
                     HttpContext.Session.SetInt32("Userid", user.UserId);
                     HttpContext.Session.SetString("Username", user.FirstName + " " + user.LastName);
+                    var token = _jwtService.GenerateJwtToken(model);
+                    Response.Cookies.Append("jwt", token);
                     ViewBag.username = user.FirstName + " " + user.LastName;
                     return RedirectToAction("PatientDashboard");
                 }
@@ -219,7 +218,7 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
 
-
+        [CustomAuthorize("Patient")]
         [HttpGet]
         public async Task<IActionResult> PatientDashboard()
         {

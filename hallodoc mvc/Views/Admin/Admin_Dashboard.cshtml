@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Admin Dashboard Page";
     var page = ViewBag.page;
-    Layout = "_LayAdmin";
+    Layout = ViewBag.Layout;
 }
 <link rel="stylesheet" href="~/css/Admin_Pages/Admin_Dashboard.css" />
 
@@ -14,7 +14,7 @@
 
 <!-- navbar -->
 <Partial name="_Toast" />
-<script type="text/javascript">
+@*<script type="text/javascript">
     $(document).ready(function () {
         if (TempData["success"] != null) {
             toastr.success(TempData["success"]);
@@ -22,7 +22,7 @@
             // TempData.Remove("success");
         }
     });
-</script>
+</script>*@
 
 <style>
     .searchfocus:focus {
@@ -164,19 +164,19 @@
 
                     </h5>
                     <div class="d-flex">
-                        <button type="button" class="btn btn-info d-flex ms-1 ms-sm-2 p-sm-2 p-1 align-items-center text-light" onclick="Sendlink()">
+                        <button type="button" title="Send Link" class="btn btn-info d-flex ms-1 ms-sm-2 p-sm-2 p-1 align-items-center text-light" onclick="Sendlink()">
                             <i class="bi bi-send"></i><span class="d-md-block d-none  px-2 ">Send Link</span>
                         </button>
-                        <a asp-action="CreateReq" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
+                        <a asp-action="CreateReq" title="Create Request" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
                             <i class="bi bi-pencil-square"></i><span class="d-md-block d-none px-2 ">Create Request</span>
                         </a>
-                        <button type="button" onclick="Export()" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
+                        <button type="button" title="Export" onclick="Export()" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
                             <i class="bi bi-arrow-up-right"></i></i><span class="d-md-block d-none px-2 ">Export</span>
                         </button>
-                        <a  asp-action="DownloadAll" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
+                        <a asp-action="DownloadAll" title="Export All" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
                             <i class="bi bi-box-arrow-up-right"></i><span class="d-md-block d-none px-2 ">Export All</span>
                         </a>
-                        <button type="button" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light" onclick="RequestSupport()">
+                        <button type="button" title="Request DTY Support" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light" onclick="RequestSupport()">
                             <i class="bi bi-person-plus"></i><span class="d-md-block d-none px-2 ">Request DTY Support</span>
                         </button>
                     </div>
@@ -186,9 +186,9 @@
                     <div class="d-md-flex  justify-content-between align-items-center gap-2 mb-2">
 
                         <div class="d-md-flex gap-1">
-                             <form role="search" class=" d-flex align-items-center border border-rounded rounded border-info mb-2 me-3">
+                            <form role="search" class=" d-flex align-items-center border border-rounded rounded border-info mb-2 me-3" style=" height: 40px; width: 100%;">
                                 
-                                <input class="form-control searchfocus border-0" type="search" id="search" placeholder="Search" aria-label="Search" onkeyup="filter()">
+                                <input class="form-control searchfocus border-0" type="search" id="search" placeholder="Search" aria-label="Search" onkeyup="filter()" style="width:120px;">
                             </form>
 
                      
@@ -298,6 +298,26 @@
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />
 }
+
+<script>
+
+    //alert();
+    //document.addEventListener("DOMContentLoaded", ()=>{
+    //alert();
+    $.ajax({
+        url: `/Admin/New`,
+        type: 'POST',
+        dataType: 'html',
+        // Pass your data here
+        success: function (response) {
+            $("#tableContainer").html(response)
+        },
+        error: function () {
+            alert('An error occurred.');
+        }
+    });
+    //});
+</script>
 
 
 <script>
@@ -454,6 +474,8 @@
         });
     }
 
+    
+
     function blockCase(requestId) {
         $("#mymodal").load('/Admin/Block/' + requestId, () => {
             const modal = new bootstrap.Modal(document.getElementById('myModalBlock'));
@@ -495,8 +517,10 @@
             modal.show();
         });
     }
+
     function Sendlink() {
-        $("#mymodal").load('/Admin/Sendlink/', () => {
+
+        $("#mymodal").load('/Admin/Sendlink', () => {
             console.log(document.getElementById("mymodal"));
             const modal = new bootstrap.Modal(document.getElementById('SendLink'));
             modal.show();

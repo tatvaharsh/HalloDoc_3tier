@@ -13,6 +13,9 @@ using NuGet.Protocol;
 using NuGet.Common;
 using ClosedXML.Excel;
 using System.IdentityModel.Tokens.Jwt;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using NuGet.Protocol.Core.Types;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -22,26 +25,49 @@ namespace hallodoc_mvc.Controllers
         private readonly IAdmin_Service _service;
 
         private readonly IJwtService _jwtService;
+        
+        private readonly IConfiguration _configuration;
 
-        public AdminController(IAdmin_Service service,IJwtService jwtService)
+
+
+        public AdminController(IAdmin_Service service,IJwtService jwtService, IConfiguration configuration)
         {
             //_context = context;
             _service = service;
             _jwtService = jwtService;
+            _configuration = configuration;
         }
 
         [CustomAuthorize("Admin")]
-        public IActionResult Admin_Dashboard(ModalData md)
+        public IActionResult Admin_Dashboard()
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
          
             if(admin1 != null)
             {
                 ViewBag.Username = _service.Adminname(admin1);
-                ModalData data = _service.GetAssignData(md);
+                ModalData data = _service.GetAssignData(new ModalData());
                 //TempData["success"] = "Login Successfully!!!";
                 //TempData.Clear();
+                ViewBag.Layout = "_LayAdmin";
                 return View(data); 
+            }
+            return RedirectToAction("Admin_Login");
+        }
+        
+        [CustomAuthorize("Admin")]
+        public IActionResult Admin_DashboardPartial()
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+         
+            if(admin1 != null)
+            {
+                ViewBag.Username = _service.Adminname(admin1);
+                ModalData data = _service.GetAssignData(new ModalData());
+                //TempData["success"] = "Login Successfully!!!";
+                //TempData.Clear();
+                ViewBag.Layout = null;
+                return PartialView("Admin_Dashboard", data); 
             }
             return RedirectToAction("Admin_Login");
         }
@@ -104,10 +130,16 @@ namespace hallodoc_mvc.Controllers
             switch (nav)
             {
                 case 1:
-                    return PartialView("AdminNavDash");
+                    return RedirectToAction(nameof(Admin_DashboardPartial));
+                case 2:
+                    return PartialView("ProviderLocation", _service.ProviderLocation());
                 case 3: 
-                    return PartialView("Admin_Profile", _service.getprofile(admin)); 
-               
+                    return PartialView("Admin_Profile", _service.getprofile(admin));  
+                case 4: 
+                    return PartialView("Provider", _service.GetRegions());
+                case 8:
+                    return PartialView("AccountAccess", _service.getAccess());
+
 
             }
             return View();
@@ -165,11 +197,7 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult ViewCase(int Id)
         {
-          
-
-
-            ViewCase vc =_service.Getcase(Id);
-
+            ViewCase vc = _service.Getcase(Id);
             return View(vc);
         }
 
@@ -298,6 +326,12 @@ namespace hallodoc_mvc.Controllers
                 zipStream.Seek(0, SeekOrigin.Begin);
                 return File(zipStream.ToArray(), "application/zip", "selected_files.zip");
             }
+        }       
+        [HttpPost]
+        public ActionResult deletefilecus(int id, int[] filenames)
+        {
+            _service.DeleteCustom(filenames);
+            return RedirectToAction(nameof(ViewUpload), new { id = id });
         }
 
 
@@ -310,16 +344,11 @@ namespace hallodoc_mvc.Controllers
         }
         public IActionResult DeleteFile(int id)
         {
-            _service.DeleteFile(id);
-            return RedirectToAction(nameof(Admin_Dashboard));
+           var rq = _service.DeleteFile(id);
+            return RedirectToAction(nameof(ViewUpload), "Admin", new { id = rq });
         }
 
-        public IActionResult DeleteAllFiles(int id)
-        {
-            _service.DeleteAllFiles(id);
-            return RedirectToAction(nameof(Admin_Dashboard));
-
-        }
+  
         public IActionResult SendEmail(int id)
         {
             _service.SendEmail(id);
@@ -456,6 +485,8 @@ namespace hallodoc_mvc.Controllers
              _service.editencounter(id, model);
             return RedirectToAction("Encounter", new {id=id});
         }
+
+      
         public IActionResult Admin_Profile()
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
@@ -466,17 +497,32 @@ namespace hallodoc_mvc.Controllers
         public IActionResult Sendlink()
         {
           
-            return View();
+            return PartialView();
         }
         [HttpPost]
         public IActionResult Sendlink(ViewCase model)
         {
+            //var accountSid = _configuration["Twilio:accountSid"];
+            //var authToken = _configuration["Twilio:authToken"];
+            //var twilionumber = _configuration["Twilio:twilioNumber"];
+       
+
+            //var messageBody = $"Hello {model.FirstName} {model.LastName},\nClick the following link to create new request in our portal,\nhttp://localhost:5198/Home/submit_screen\n\n\nRegards,\nHalloDoc";
+
+            //TwilioClient.Init(accountSid, authToken);
+
+            //var message = MessageResource.Create(
+            //    from: new Twilio.Types.PhoneNumber(twilionumber),
+            //    body: messageBody,
+            //    to: new Twilio.Types.PhoneNumber("+91" + model.PhoneNumber)
+            //);
+
             _service.sendlink(model);
             return RedirectToAction("Admin_Dashboard");
         }
         public IActionResult RequestSupport()
         {
-            return View();
+            return PartialView();
         }
         public IActionResult DownloadAll()
         {
@@ -496,6 +542,7 @@ namespace hallodoc_mvc.Controllers
                 worksheet.Cell(1, 7).Value = "Phone Number";
                 worksheet.Cell(1, 8).Value = "Address";
                 worksheet.Cell(1, 9).Value = "Notes";
+                worksheet.Cell(1, 10).Value = "Status";
 
                 int row = 2;
                 foreach (var item in data)
@@ -536,6 +583,7 @@ namespace hallodoc_mvc.Controllers
                     worksheet.Cell(row, 7).Value = item.RequestClients.FirstOrDefault().PhoneNumber + "(Patient)" + (item.RequestTypeId != 4 ? item.PhoneNumber + statusClass.Substring(0, 1).ToUpper() + statusClass.Substring(1).ToLower() : "");
                     worksheet.Cell(row, 8).Value = (item.RequestClients.FirstOrDefault().Address == null ? item.RequestClients.FirstOrDefault().Address + item.RequestClients.FirstOrDefault().Street + item.RequestClients.FirstOrDefault().City + item.RequestClients.FirstOrDefault().State + item.RequestClients.FirstOrDefault().ZipCode : item.RequestClients.FirstOrDefault().Street + item.RequestClients.FirstOrDefault().City + item.RequestClients.FirstOrDefault().State + item.RequestClients.FirstOrDefault().ZipCode);
                     worksheet.Cell(row, 9).Value = item.RequestClients.FirstOrDefault().Notes;
+                    worksheet.Cell(row, 10).Value = item.Status;
                     row++;
                 }
                 worksheet.Columns().AdjustToContents();
@@ -598,6 +646,7 @@ namespace hallodoc_mvc.Controllers
             worksheet.Cell(1, 7).Value = "Phone Number";
             worksheet.Cell(1, 8).Value = "Address";
             worksheet.Cell(1, 9).Value = "Notes";
+            worksheet.Cell(1, 10).Value = "Status";
 
             int row = 2;
             foreach (var item in data)
@@ -638,6 +687,7 @@ namespace hallodoc_mvc.Controllers
                 worksheet.Cell(row, 7).Value = item.RequestClients.FirstOrDefault().PhoneNumber + "(Patient)" + (item.RequestTypeId != 4 ? item.PhoneNumber + statusClass.Substring(0, 1).ToUpper() + statusClass.Substring(1).ToLower() : "");
                 worksheet.Cell(row, 8).Value = (item.RequestClients.FirstOrDefault().Address == null ? item.RequestClients.FirstOrDefault().Address + item.RequestClients.FirstOrDefault().Street + item.RequestClients.FirstOrDefault().City + item.RequestClients.FirstOrDefault().State + item.RequestClients.FirstOrDefault().ZipCode : item.RequestClients.FirstOrDefault().Street + item.RequestClients.FirstOrDefault().City + item.RequestClients.FirstOrDefault().State + item.RequestClients.FirstOrDefault().ZipCode);
                 worksheet.Cell(row, 9).Value = item.RequestClients.FirstOrDefault().Notes;
+                worksheet.Cell(row, 10).Value = item.Status;
                 row++;
             }
             worksheet.Columns().AdjustToContents();
@@ -651,19 +701,125 @@ namespace hallodoc_mvc.Controllers
         [HttpPost]
         public IActionResult EditAdminProfile(Profile model, List<int> reg) 
         {
+            if(model.AdminData.Mobile?.Length != 10)
+            {
+                TempData["error"] = "Enter Valid MobileNumber";
+                return RedirectToAction("Admin_Dashboard");
+            }
+
             int admin = (int)HttpContext.Session.GetInt32("Id");
             ViewBag.Username = _service.Adminname(admin);
-            _service.editadminprofile(model,admin,reg);
-            return RedirectToAction("Admin_Profile");
+            _service.editadminprofile(model, admin);
+            TempData["success"] = "Profile Changed Successfully!!!";
+            return RedirectToAction("Admin_Dashboard");
         }
 
         [HttpPost]
         public IActionResult EditAdminp(Profile model)
         {
+            if (model.AdminData.Mobile?.Length != 10)
+            {
+                TempData["error"] = "Enter Valid MobileNumber";
+                return RedirectToAction("Admin_Dashboard");
+            }
             int admin = (int)HttpContext.Session.GetInt32("Id");
             _service.editadminp(model, admin);
-            return RedirectToAction("Admin_profile");
+            TempData["success"] = "Profile Changed successfully!!!";
+            return RedirectToAction("Admin_Dashboard");
         }
+
+        [HttpPost]
+        public IActionResult ResetPassword(Profile model)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            _service.reset(model,admin);
+            TempData["success"] = "Password Changed successfully!!!";
+            return RedirectToAction("Admin_Dashboard");
+        }
+
+        public IActionResult Provider(int region)
+        {
+            List<Provider> p = _service.Getphysician(region);
+            return PartialView("_TablePhysician",p);
+        }
+
+        public IActionResult CreatePhysicianAccount()
+        {
+            var reg = _service.getreg();
+            var roles = _service.getrole();
+            CreatePhy createPhy = new CreatePhy()
+            {
+                reg = reg,
+                roles = roles
+            };
+            return View(createPhy);
+        }
+
+        public IActionResult EditPhysicianAccount()
+        {
+            return View();
+        }
+        public IActionResult ProviderMenuModal(int id)
+        {
+            return PartialView(new ModalData() { phyid=id});
+        }
+
+        public void ChangeToggle(int id)
+        {
+            _service.ChangeToggle(id);
+
+        }
+
+        public IActionResult SendEmailOrMessage(int id, ModalData md)
+        {
+            _service.Sendit(id, md);
+            return RedirectToAction("Provider");
+        }
+
+        [HttpPost]
+        public IActionResult CreatePhysicianAccount(CreatePhy model)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            if (ModelState.IsValid)
+            {
+                _service.CreateProvider(model,admin1);
+                return RedirectToAction("Admin_Dashboard");
+            }
+            var reg = _service.getreg();
+            var roles = _service.getrole();
+            model.reg = reg; model.roles = roles;
+            return View(model);
+        }
+
+
+        
+        public IActionResult CreateRole(int check)
+        {
+            RoleModel model = _service.GetMenutbl(check);
+            return View(model);
+        }
+        public IActionResult AssignRole(string RoleName, string[] selectedRoles, int check)
+        {
+
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            _service.AssignRole(RoleName, selectedRoles, check, admin1);
+            return PartialView("AccountAccess", _service.getAccess());
+        }
+
+        public IActionResult EditRole(int id)
+        {
+           
+
+            return View(_service.GetRolewiseData(id));
+        }
+        public IActionResult UpdateRole(RoleModel model)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            _service.UpdateRole(model);
+            return PartialView("AccountAccess", _service.getAccess());
+        }
+
+
 
 
 

@@ -1,36 +1,40 @@
 ﻿@model hallodoc_mvc_Repository.ViewModel.ViewCase
 
 
+
 <div class="modal fade" id="SendLink" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="SendLinkLabel" aria-hidden="true">
     <div class="modal-dialog" style="top: 22%;">
-        <div class="modal-content">
+        <div class="modal-content " >
             <div class="modal-header bg-info">
                 <h1 class="modal-title fs-5 text-white" id="SendLinkLabel">
                     Send Mail To Patient For Submitting Request
                 </h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form asp-action="Sendlink" method="post" id="SendLinkForm">
+            <form asp-action="Sendlink" class=" needs-validation" method="post" id="SendLinkForm" novalidate>
                 <div class="modal-body text-secondary">
                     <div class="form-floating mt-3">
-                        <input type="text" class=" form-control" id="floatingInputFirst" asp-for="FirstName"
-                               placeholder="First Name" aria-label="First Name" />
-                        <label class="ms-2 text-secondary" for="floatingInputFirst">First Name</label>
+                        <input type="text" class=" form-control" id="validationCustom01" asp-for="FirstName"
+                               placeholder="First Name" aria-label="First Name" required />
+                        <label class="ms-2 text-secondary"  for="floatingInputFirst">First Name</label>
+                        <span class="valid-feedback">
+                            Looks good!
+                        </span>
                     </div>
                     <div class="form-floating mt-3">
                         <input type="text" class=" form-control" id="floatingInputLast" placeholder="Last Name" asp-for="LastName"
-                               aria-label="Last Name" />
+                               aria-label="Last Name" required />
                         <label class="ms-2 text-secondary" for="floatingInputLast">Last Name</label>
                     </div>
                     <div class="form-floating mt-3">
                         <input type="tel" class="form-control" id="floatingInputemail" placeholder="phone" asp-for="PhoneNumber"
-                               aria-label="phone">
+                               aria-label="phone" pattern="^[0-9]{2}[0-9]{8}$" required>
                         <label class="" for="floatingInputemail">PhoneNumber</label>
                     </div>
                     <div class="form-floating mt-3">
                         <input type="email" class="form-control" id="floatingInputemail" placeholder="Email" asp-for="Email"
-                               aria-label="Email">
+                               aria-label="Email"    required>
                         <label class="" for="floatingInputemail">Email</label>
                     </div>
                 </div>
@@ -47,3 +51,25 @@
         </div>
     </div>
 </div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>

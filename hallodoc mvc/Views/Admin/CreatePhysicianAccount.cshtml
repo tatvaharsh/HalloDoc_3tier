@@ -1,0 +1,299 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.CreatePhy
+@{
+    Layout = "_LayAdmin";
+}
+<style>
+    .iti {
+        width: 100%;
+    }
+
+    #phone, #phone1 {
+        height: 58px;
+    }
+
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between mt-3">
+                <h4 class="mt-3">Create Provider Account</h4>
+                <a class="text-start text-info text-decoration-none ">
+                    <button class="btn btn-white  text-info border-info rounded ">
+                        <i class="fa-solid  fa-less-than"></i> Back
+                    </button>
+                </a>
+            </div>
+            <form enctype="multipart/form-data" method="post" asp-action="CreatePhysicianAccount">
+                <div class="container rounded  shadow py-3">
+
+                    <h5 class="mb-3">Account Information</h5>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-xl-4 form-floating mb-3 text-muted">
+                            <input name="Username" type="text" class="form-control d3class" id="username" asp-for="Username" placeholder="Firstname" disabled>
+                            <label for="exampleFormControlInput1" class="form-label ms-2">User Name</label>
+                        </div>
+                        <div class="col-sm-12 col-md-4 col-xl-4 form-floating mb-3 text-muted">
+                            <input name="Password" type="text" class="form-control d3class" id="exampleFormControlInput1" placeholder="Lastname" asp-for="Password">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Password </label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 col-xl-4">
+                            <div class="mb-3 border border-light rounded-5">
+                                <select class="form-select p-3 pla1 d3class" aria-label="form-select-lg example" asp-for="SelectedRoleId">
+                                    <option selected value="">Select Role</option>
+                                    @foreach (var item in Model.roles)
+                                    {
+                                        <option value="@item.RoleId">@item.Name</option>
+
+                                    }
+                                </select>
+                                <span asp-validation-for="SelectedRoleId" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row mt-3">
+                        <div class="col-12 h5 mb-3">
+                            Administrator Information
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control dclass" id="fname" placeholder="Firstname"  asp-for="Firstname">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Firstname</label>
+                            <span class="text-danger" asp-validation-for="Firstname"></span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control dclass" id="lname" placeholder="Lastname" onchange="u1()" asp-for="Lastname">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Lastname</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="email" class="form-control dclass" id="email" placeholder="Email" asp-for="email">
+                            <label for="email" class="form-label ms-2">Email</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input id="phone" class="form-control inp2 dclass" type="tel" placeholder="Phone Number" asp-for="phone">
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control dclass" id="exampleFormControlInput1" placeholder="Lastname" asp-for="medicallicence">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Medical Licence</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control dclass" id="exampleFormControlInput1" placeholder="NPI Number" asp-for="npi">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">NPI Number</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-xl-6">
+                            @foreach (var item in Model.reg)
+                            {
+                                <input type="checkbox" value="@item.RegionId" name="SelectedRegions">
+                                <label>@item.Name</label>
+                            }
+                        </div>
+                    </div>
+
+
+
+                    <div class="row mt-3">
+                        <div class="col-12 h5 mb-3">
+                            Mailing & Billing Information
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d1class" id="Address-1" placeholder="Address 1" asp-for="address1">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Address 1</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d1class" id="Address-2" placeholder="Address 2" asp-for="address2">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Address 2</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6  form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d1class" id="city" placeholder="City" asp-for="city">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">City</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6  form-floating mb-3 text-muted">
+                            <select class="form-select p-3 pla1 d3class" aria-label="form-select-lg example" asp-for="SelectedStateId">
+
+                                <option selected value="">Select State</option>
+                                @foreach (var item in Model.reg)
+                                {
+                                    <option value="@item.RegionId">@item.Name</option>
+
+                                }
+
+                            </select>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-xl-6  form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d1class" id="zipcode" placeholder="Zip Code" asp-for="zipcode">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Zip Code</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input id="phone1" class="form-control inp2 d1class" type="tel" placeholder="Phone Number" asp-for="phone">
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row mt-3">
+                        <div class="col-12 h5 mb-3">
+                            Provider Profile
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d2class" id="Address-1" placeholder="Business Name" asp-for="Businessname">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Business Name</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d2class" id="Address-2" placeholder="Business Website" asp-for="Businesswebsite">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Business Website</label>
+                        </div>
+                        <fieldset id="upload" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="input-group mb-3 ">
+                                <input type="file" class="form-control d2class" id="inputGroupFile02" asp-for="Photo">
+                                <label class="input-group-text text-muted p-0" for="inputGroupFile02">
+                                    <label class="btn btn-info text-white mx-0">
+                                        <i class="fa-solid fa-cloud-arrow-up" style="color: #ffffff;"></i>
+                                        Upload
+                                    </label>
+
+                                </label>
+                            </div>
+                        </fieldset>
+
+
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control d2class" placeholder="Admin Notes" id="floatingTextarea2" style="height: 100px" asp-for="Adminnote"></textarea>
+                            <label for="floatingTextarea2" class="ms-2">Admin Notes</label>
+                        </div>
+
+                    </div>
+
+                    <hr />
+
+                    <div class="row mx-2">
+                        <div class="col-12 h5 mb-3">
+                            Onboarding
+                        </div>
+                    </div>
+                    <div class="row mx-2">
+                        <input class="form-check-input col-1" type="checkbox" value="" id="1">
+                        <label class="form-check-label col-5" for="1">
+                            Independent Contractor Agreement
+                        </label>
+                        <fieldset id="upload" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="input-group mb-3 ">
+                                <input type="file" class="form-control d2class" id="inputGroupFile02" asp-for="AgreementDoc">
+                                <label class="input-group-text text-muted p-0" for="inputGroupFile02">
+                                    <label class="btn btn-info text-white mx-0">
+                                        <i class="fa-solid fa-cloud-arrow-up" style="color: #ffffff;"></i>
+                                        Upload
+                                    </label>
+
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="row mx-2">
+                        <input class="form-check-input col-1" type="checkbox" value="" id="1">
+                        <label class="form-check-label col-5" for="1">
+                            Background Check
+                        </label>
+                        <fieldset id="upload" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="input-group mb-3 ">
+                                <input type="file" class="form-control d2class" id="inputGroupFile02" asp-for="BackgroundDoc">
+                                <label class="input-group-text text-muted p-0" for="inputGroupFile02">
+                                    <label class="btn btn-info text-white mx-0">
+                                        <i class="fa-solid fa-cloud-arrow-up" style="color: #ffffff;"></i>
+                                        Upload
+                                    </label>
+
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="row mx-2">
+                        <input class="form-check-input col-1" type="checkbox" value="" id="1">
+                        <label class="form-check-label col-5" for="1">
+                            HIPAA Compilance
+                        </label>
+                        <fieldset id="upload" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="input-group mb-3 ">
+                                <input type="file" class="form-control d2class" id="inputGroupFile02" asp-for="HIPAA">
+                                <label class="input-group-text text-muted p-0" for="inputGroupFile02">
+                                    <label class="btn btn-info text-white mx-0">
+                                        <i class="fa-solid fa-cloud-arrow-up" style="color: #ffffff;"></i>
+                                        Upload
+                                    </label>
+
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="row mx-2">
+                        <input class="form-check-input col-1" type="checkbox" value="" id="1">
+                        <label class="form-check-label col-5" for="1">
+                            Non-Disclosure Agreement
+                        </label>
+                        <fieldset id="upload" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="input-group mb-3 ">
+                                <input type="file" class="form-control d2class" id="inputGroupFile02" asp-for="NonDisclosureDoc">
+                                <label class="input-group-text text-muted p-0" for="inputGroupFile02">
+                                    <label class="btn btn-info text-white mx-0">
+                                        <i class="fa-solid fa-cloud-arrow-up" style="color: #ffffff;"></i>
+                                        Upload
+                                    </label>
+
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+
+
+
+                </div>
+                <hr />
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-success text-white me-md-2" type="submit">Create Account</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<script>
+
+    const input = document.querySelector("#phone");
+    const input2 = document.querySelector("#phone1");
+    const button = document.querySelector("#btn");
+    const errorMsg = document.querySelector("#error-msg");
+    const validMsg = document.querySelector("#valid-msg");
+
+    // here, the index maps to the error code returned from getValidationError - see readme
+    const errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+
+    // initialise plugin
+    const iti = window.intlTelInput(input, {
+        initialCountry: "us",
+        utilsScript: "/intl-tel-input/js/utils.js?1706723638591"
+    });
+    const iti1 = window.intlTelInput(input2, {
+        initialCountry: "us",
+        utilsScript: "/intl-tel-input/js/utils.js?1706723638591"
+    });
+
+    function u1() {
+
+        var a = document.getElementById("fname").value;
+        var b = document.getElementById("lname").value;
+
+        document.getElementById("username").value = "MD." + a + "." + b;
+    }
+
+</script>

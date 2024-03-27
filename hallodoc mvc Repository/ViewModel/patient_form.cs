@@ -34,7 +34,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         [Required(ErrorMessage = "DOB is required")]
         public required DateOnly BirthDate { get; set; } 
 
-        public List<IFormFile>?  File { get; set; }
+        public List<IFormFile?>? File { get; set; }
 
         public int? UserId { get; set; }
         public int? Room { get; set; }

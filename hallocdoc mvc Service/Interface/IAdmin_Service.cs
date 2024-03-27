@@ -33,7 +33,7 @@ namespace hallocdoc_mvc_Service.Interface
         void BlockPost(ModalData md, int id, int admin);
         List<ViewDocument> ViewUploadData(int id);
         void FileUpload(int id, List<IFormFile> file,int admin);
-        void DeleteFile(int id);
+        int DeleteFile(int id);
         void DeleteAllFiles(int id);
         void SendEmail(int id);
         Order GetOrderData(Order md);
@@ -57,8 +57,23 @@ namespace hallocdoc_mvc_Service.Interface
         void sendlink(ViewCase model);
         void PatientForm(patient_form model,int admin);
         List<Request> Export(string s, int reqtype, int regid, int state);
-        void editadminprofile(Profile model,int admin, List<int> reg);
+        void editadminprofile(Profile model,int admin);
         void editadminp(Profile model, int admin);
         string Adminname(int admin1);
+        void DeleteCustom(int[] filenames);
+        void reset(Profile model, int a);
+        Provider GetRegions();
+        List<Provider> Getphysician(int region);
+        List<PhysicianLocation> ProviderLocation();
+        void ChangeToggle(int phyid);
+        void Sendit(int id, ModalData md);
+        List<Region> getreg();
+        List<Role> getrole();
+        void CreateProvider(CreatePhy model,int admin1);
+        RoleModel getAccess();
+        RoleModel GetMenutbl(int value);
+        void AssignRole(string roleName, string[] selectedRoles, int check, int admin1);
+        void UpdateRole(RoleModel model);
+        RoleModel GetRolewiseData(int id);
     }
 }

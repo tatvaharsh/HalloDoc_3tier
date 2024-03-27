@@ -51,7 +51,7 @@ namespace HalloDoc.Auth
 
             if (token == null || !jwtService.ValidateJwtToken(token, out JwtSecurityToken jwtToken))
             {
-                context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "PatientLogin", }));
+                context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Admin", action = "Admin_Login", }));
                 return;
             }
 

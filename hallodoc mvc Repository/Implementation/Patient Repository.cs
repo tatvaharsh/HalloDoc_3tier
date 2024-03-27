@@ -129,6 +129,11 @@ namespace hallodoc_mvc_Repository.Implementation
             return region;
         }
 
+        public ICollection<AspNetRole> RolePatient()
+        {
+            return _context.AspNetRoles.Where(x => x.Id == 1).ToList();
+        }
+
         public void Save()
         {
             _context.SaveChanges();

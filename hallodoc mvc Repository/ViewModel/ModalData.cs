@@ -39,7 +39,9 @@ namespace hallodoc_mvc_Repository.ViewModel
         public int? CountActive { get; set; }
         public int? CountConclude { get; set; }
 
+            public int MessageType { get; set; }
 
+        public int? phyid { get; set; }
         public int? Token { get; set; }
     }
 }

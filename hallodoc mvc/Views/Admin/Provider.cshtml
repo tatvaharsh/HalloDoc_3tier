@@ -1,0 +1,76 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.Provider
+
+<div class="container p-0">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between mt-3">
+                <h4 class="mt-3">Provider Information</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container hideonmobile  rounded shadow mt-3 p-0">
+    
+    <div class="row pt-3 pb-3 mx-1">
+        <select class="form-select w-auto ms-2" onchange="sortbtregion(this.value)" id="region" aria-label="Default select example">
+            <option selected>All Region</option>
+            @foreach (var item in Model.regions)
+            {
+                <option value="@item.RegionId">@item.Name</option>
+            }
+        </select>
+
+        <div class="col text-end">
+           <a asp-action="CreatePhysicianAccount" asp-controller="Admin"> <button class="btn btn-info text-white me-3" style="border-color: #54d4d3; color: #54d4d3;">
+                Create Provider Accout
+            </button>
+            </a>
+        </div>
+    </div>
+   
+    <div id="TablePhysicianData"></div>
+
+    
+</div>
+
+<script>
+    //$.ajax({
+    //    url: '/Admin/Provider',
+    //    type: 'POST',
+    //    dataType: 'html',
+    //    // Pass your data here
+    //    success: function (response) {
+    //        $("#TablePhysicianData").html(response)
+    //    },
+    //    error: function () {
+    //        alert('An error occurred.');
+    //    }
+    //});
+
+    sortbtregion(0);
+    function sortbtregion(id){
+      
+        $.ajax({
+            url: '/Admin/Provider',
+            type: 'POST',
+            dataType: 'html',
+            data: { region: id },
+            // Passyour data here
+            success: function (response) {
+                $("#TablePhysicianData").html(response)
+            },
+            error: function () {
+                alert('An error occurred.');
+            }
+        });
+    }
+
+</script>
+
+<style>
+
+   .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+
+</style>

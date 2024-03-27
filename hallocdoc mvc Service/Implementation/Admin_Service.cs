@@ -20,6 +20,9 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Runtime.Intrinsics.X86;
 using System.Security.Policy;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Net.Http.Headers;
+using Microsoft.EntityFrameworkCore.Metadata;
+using System.Collections;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -314,6 +317,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
                     DateOfBirth = Mydate,
                     RPhone = item.PhoneNumber,
+                   
                     Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
@@ -393,6 +397,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     Email = item.RequestClients.FirstOrDefault()?.Email,
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
                     DateOfBirth = Mydate,
+                    Region=_Repository.GetRegionname(item.RequestClients.FirstOrDefault().RegionId),
                     RPhone = item.PhoneNumber,
                     Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
@@ -484,6 +489,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             ViewCase ViewCase = new()
             {
+                ReqId= reqId,
                 FirstName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.FirstName,
                 LastName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.LastName,
                 PhoneNumber = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.PhoneNumber,
@@ -816,12 +822,14 @@ namespace hallocdoc_mvc_Service.Implementation
             }
         }
 
-        public void DeleteFile(int id)
+        public int DeleteFile(int id)
         {
             RequestWiseFile df = _Repository.GetDocumentFile(id)
 ;
             df.IsDeleted = new System.Collections.BitArray(1, true);
             _Repository.update_RequestWiseTable(df);
+
+            return df.RequestId;
         }
 
         void IAdmin_Service.DeleteAllFiles(int id)
@@ -1223,9 +1231,11 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public void sendlink(ViewCase model)
         {
+     
+
             var receiver = model.Email;
             var subject = "Send Link";
-            var message = "Tap on link for Send Link : http://localhost:5198/Home/submit_screen";
+            var message = "Tap on link for Send Link : <!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <style>\r\n        /* Your provided CSS */\r\n        .button-74 {\r\n            background-color: #fbeee0;\r\n            border: 2px solid #422800;\r\n            border-radius: 30px;\r\n            box-shadow: #422800 4px 4px 0 0;\r\n            color: #422800;\r\n            cursor: pointer;\r\n            display: inline-block;\r\n            font-weight: 600;\r\n            font-size: 18px;\r\n            padding: 0 18px;\r\n            line-height: 50px;\r\n            text-align: center;\r\n            text-decoration: none;\r\n            user-select: none;\r\n            -webkit-user-select: none;\r\n            touch-action: manipulation;\r\n        }\r\n\r\n        .button-74:hover {\r\n            background-color: #fff;\r\n        }\r\n\r\n        .button-74:active {\r\n            box-shadow: #422800 2px 2px 0 0;\r\n            transform: translate(2px, 2px);\r\n        }\r\n\r\n        @media (min-width: 768px) {\r\n            .button-74 {\r\n                min-width: 120px;\r\n                padding: 0 25px;\r\n            }\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n    <a href=\"http://localhost:5198/Home/submit_screen\" class=\"button-74\">Click me!</a>\r\n</body>\r\n</html>\r\n";
 
 
             var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -1237,7 +1247,12 @@ namespace hallocdoc_mvc_Service.Implementation
                 Credentials = new NetworkCredential(mail, password)
             };
 
-            client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
+            client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message)
+            {
+                IsBodyHtml = true
+            });
+
+
         }
 
         public void PatientForm(patient_form model, int admin)
@@ -1409,7 +1424,7 @@ namespace hallocdoc_mvc_Service.Implementation
             return query;
         }
 
-        public void editadminprofile(Profile model, int admin, List<int> r)
+        public void editadminprofile(Profile model, int admin)
         {
             Admin a = _Repository.getadminbyadminid(admin);
             if (model.AdminData != null)
@@ -1420,10 +1435,10 @@ namespace hallocdoc_mvc_Service.Implementation
                 a.Mobile = model.AdminData.Mobile;
                 _Repository.updateadmintbl(a);
             }
-            if (r.Count > 0)
+            if (model.SelectedRegions?.Count > 0)
             {
                 _Repository.deletereg(admin);
-                foreach (var ritem in r)
+                foreach (var ritem in model.SelectedRegions)
                 {
                     _Repository.AddRegionbyid(ritem, admin);
                 }
@@ -1445,6 +1460,327 @@ namespace hallocdoc_mvc_Service.Implementation
         public string Adminname(int admin1)
         {
           return  _Repository.Adminname(admin1);
+        }
+
+        public void DeleteCustom(int[] filenames)
+        {
+            foreach(var item in filenames)
+            {
+                var rwf=_Repository.GetDocumentFile(item);
+                rwf.IsDeleted = new System.Collections.BitArray(1, true);
+                _Repository.update_RequestWiseTable(rwf);
+            }
+        }
+
+        public void reset(Profile model, int a)
+        {
+            Admin ad = _Repository.getadminbyadminid(a);
+            AspNetUser asp = _Repository.getuserbyaspid(ad.AspNetUserId);
+
+            if (asp.Id > 0)
+            {
+                asp.PasswordHash = model.user.PasswordHash;
+                _Repository.UpdateAsp(asp);
+            }
+        }
+
+        public Provider GetRegions()
+        {
+           var p= _Repository.GetRegion();
+            Provider pr = new()
+            {
+                regions = p,
+            };
+            return pr;
+        }
+
+        public List<Provider> Getphysician(int region)
+        {
+            List<Physician> p = new();
+            List<Provider> providers = new();
+            p = _Repository.getphysician();
+            //Role roles = new();
+            //roles = _Repository.Getrolebyroleid(p.FirstOrDefault().RoleId);
+
+            if (region > 0)
+            {
+                p = _Repository.GetPhysiciansByRegion(region);
+            }
+
+            //Provider pr = new()
+            //{
+
+            //    physicians = p,
+                
+            //};
+            foreach(var item in p)
+            {
+                bool ischeck;
+              
+                PhysicianNotification phynoti =  _Repository.phynoti(item.PhysicianId);
+                if (phynoti.PhysicianId  > 0)
+                {
+                    ischeck = phynoti.IsNotificationStopped;
+                }
+                else
+                {
+                   
+                    ischeck = false;
+                    
+                }
+              
+                providers.Add(new Provider
+                {
+                    PhyId = item.PhysicianId,
+                    Name = item.FirstName + " " + item.LastName,
+                    Role = _Repository.Getrolebyroleid(item.RoleId),    
+                    Status = item.Status,
+                    Notification = ischeck,
+                });
+
+            }
+            return providers ;
+         
+        }
+
+        public List<PhysicianLocation> ProviderLocation()
+        {
+            return _Repository.GetPhyLocation();
+        }
+
+        public void ChangeToggle(int phyid)
+        {
+            PhysicianNotification pl = _Repository.phynoti(phyid);
+
+            if (pl.Id > 0)
+            {
+                pl.IsNotificationStopped = !pl.IsNotificationStopped;
+                //Update
+                _Repository.updatephynoti(pl);
+            }
+            else
+            {
+                PhysicianNotification p = new()
+                {
+                    PhysicianId = phyid,
+                    IsNotificationStopped=true,
+                };
+                //Add p
+                _Repository.addPhynoti(p);
+            }
+
+        }
+
+        public void Sendit(int id, ModalData md)
+        {
+           Physician p = _Repository.GetPhysician(id);
+            if (p != null && md.MessageType==2)
+            {
+                var receiver = p.Email;
+                var subject = "Send Link";
+                var message = "Tap on Message which Admin wants you to send : "+md.note;
+
+
+                var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+                var password = "binal@2002";
+
+                var client = new SmtpClient("smtp.office365.com", 587)
+                {
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(mail, password)
+                };
+
+                client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message)
+                {
+                    IsBodyHtml = true
+                });
+            }
+        }
+
+        public List<Region> getreg()
+        {
+            var t = _Repository.GetReg();
+            return t;
+       
+        }
+
+        public List<Role> getrole()
+        {
+            var y = _Repository.getrole();
+            return y;
+        }
+
+        public void CreateProvider(CreatePhy model, int admin1)
+        {
+
+            AspNetUser asp = new AspNetUser()
+            {
+                UserName = "MD."+model.Firstname+"."+model.Lastname,
+                PasswordHash = model.Password,
+                Email = model.email,
+                PhoneNumber = model.phone,
+                CreatedDate = DateTime.Now,
+                Roles = _Repository.PhycianRoles(),
+            };
+            _Repository.AddAspnetUser(asp);
+
+
+            Physician phy = new Physician()
+            {
+                AspNetUserId = asp.Id,
+                FirstName = model.Firstname,
+                LastName = model.Lastname,
+                Email = model.email,
+                Mobile = model.phone,
+                MedicalLicense = model.medicallicence,
+  
+                AdminNotes = model.Adminnote,
+                
+                IsAgreementDoc = model.AgreementDoc != null ? new BitArray(1, true) : new BitArray(1, false),
+                IsBackgroundDoc = model.BackgroundDoc != null ? new BitArray(1, true) : new BitArray(1, false),
+                IsTrainingDoc = model.HIPAA != null ? new BitArray(1, true) : new BitArray(1, false),
+                IsNonDisclosureDoc = model.NonDisclosureDoc != null ? new BitArray(1, true) : new BitArray(1, false),
+                Photo =model.Photo.FileName,
+                Address1=model.address1,
+                Address2=model.address2,
+                City=model.city,
+                RegionId=model.SelectedStateId,   
+                Zip =model.zipcode,
+                
+                CreatedBy = admin1,
+                CreatedDate=DateTime.Now,
+                Status=1,
+                BusinessName=model.Businessname,
+                BusinessWebsite=model.Businesswebsite,
+
+                RoleId=model.SelectedRoleId,
+                Npinumber=model.npi,
+                //licence
+                //signature
+                //iscredential
+                //istokengenerate
+                //syncemail
+            };
+            _Repository.AddPhysician(phy);
+
+            foreach (var item in model.SelectedRegions)
+            {
+                PhysicianRegion reg = new()
+                {
+                    PhysicianId = phy.PhysicianId,
+                    RegionId = item,
+                };
+                _Repository.AddPhysicianRegion(reg);
+
+            }
+
+            if (model.Photo != null)
+            {
+                string filename = "Photo" + Path.GetExtension(model.Photo?.FileName);
+                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\" + phy.PhysicianId + "\\" + filename);
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                using FileStream stream = new(path, FileMode.Create);
+                model.Photo?.CopyTo(stream);
+            }
+            if (model.HIPAA != null)
+            {
+                string filename = "HIPAA" + Path.GetExtension(model.HIPAA?.FileName);
+                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\" + phy.PhysicianId + "\\" + filename);
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                using FileStream stream = new(path, FileMode.Create);
+                model.HIPAA?.CopyTo(stream);
+            }
+            if (model.AgreementDoc != null)
+            {
+                string filename = "AgreementDoc" + Path.GetExtension(model.AgreementDoc?.FileName);
+                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\" + phy.PhysicianId + "\\" + filename);
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                using FileStream stream = new(path, FileMode.Create);
+                model.AgreementDoc?.CopyTo(stream);
+            }
+            if (model.BackgroundDoc != null)
+            {
+                string filename = "BackgroundDoc" + Path.GetExtension(model.BackgroundDoc?.FileName);
+                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\" + phy.PhysicianId + "\\" + filename);
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                using FileStream stream = new(path, FileMode.Create);
+                model.BackgroundDoc?.CopyTo(stream);
+            }
+            if (model.NonDisclosureDoc != null)
+            {
+                string filename = "NonDisclosureDoc" + Path.GetExtension(model.NonDisclosureDoc?.FileName);
+                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\" + phy.PhysicianId + "\\" + filename);
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                using FileStream stream = new(path, FileMode.Create);
+                model.NonDisclosureDoc?.CopyTo(stream);
+            }
+
+
+
+        }
+
+        public RoleModel getAccess()
+        {
+            var a = _Repository.getroletbl();
+            RoleModel roleModel = new RoleModel() 
+            { 
+                rolesofphy = a
+            };
+            return roleModel;
+        }
+
+        public RoleModel GetMenutbl(int value)
+        {
+            List<Menu> menus = _Repository.getmenutbl(value);
+            RoleModel rm = new RoleModel();
+            rm.menu = menus;
+            rm.SelectedRole=value;
+
+            return rm;
+        }
+
+        public void AssignRole(string roleName, string[] selectedRoles, int check, int admin1)
+        {
+            var roles = selectedRoles[0].Split(',');
+            Role role = new Role();
+            role.Name = roleName;
+            role.CreatedDate = DateTime.Now;
+            role.AccountType = (short)check;
+            role.CreatedBy = admin1.ToString();
+            role.IsDeleted = new BitArray(1, false);
+            _Repository.AddRoletbl(role);
+
+            foreach (string item in roles)
+            {
+                RoleMenu rolemenu = new RoleMenu();
+                rolemenu.RoleId = role.RoleId;
+                rolemenu.MenuId = Int32.Parse(item);
+                _Repository.AddRoleMenutbl(rolemenu);
+            }
+        }
+
+        void IAdmin_Service.UpdateRole(RoleModel model)
+        {
+            _Repository.RemoveRoleMenu(model.RoleId);
+            foreach (var item in model.RoleIds)
+            {
+                RoleMenu rolemenu = new RoleMenu();
+                rolemenu.RoleId = model.RoleId;
+                rolemenu.MenuId = item;
+                _Repository.AddRoleMenu(rolemenu);
+            }
+        }
+
+        public RoleModel GetRolewiseData(int id)
+        {
+            var role = _Repository.GetDataFromRoles(id);
+            RoleModel model = new RoleModel();
+            model.rolemenus = _Repository.GetDataFromRoleMenu(id);
+            model.menu = _Repository.GetMenuDataWithCheckwise(role.AccountType);
+            model.RoleName = role.Name;
+            model.RoleId = role.RoleId;
+            model.SelectedRole = role.AccountType;
+            return model;
         }
     }
 }

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<hallodoc_mvc_Repository.ViewModel.Provider>
+
+
+<div id="modal"></div>
+
+
+
+<table class="table">
+    <thead>
+        <tr class="bg-light text-muted h-100">
+            <th scope="col">Stop Notification</th>
+            <th scope="col">Provider Name<i class="fa fa-arrow-up" aria-hidden="true"></i></th>
+            <th scope="col">Role</th>
+            <th scope="col">On Call Status</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody class="text-muted">
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="form-check form-switch ">
+                        <input class="form-check-input" onchange="changetoggle(@item.PhyId)" type="checkbox" id="flexSwitchCheckChecked" checked="@item.Notification">
+                    </div>
+                </td>
+                <td>@item.Name</td>
+                <td>@item.Role</td>
+                <td>bhjbvchj</td>
+                @switch (item.Status) {
+                case 1:
+                        <td>Active</td>
+                        break;
+                case 2:
+                        <td>Pending</td>
+                        break;
+                case 3:
+                        <td>Not Active</td>
+                        break;
+                default:
+                        <td>Not Active</td>
+                        break;
+                }
+                
+                <td>
+                    <button type="button" class="btn btn-outline-info" onclick="SmsModal(@item.PhyId)">Contact</button>
+                    <a asp-action="EditPhysicianAccount" asp-controller="Admin"><button type="button" class="btn btn-outline-info">Edit</button></a>
+                </td>
+            </tr>
+            
+        }
+
+
+    </tbody>
+</table>
+
+
+<script>
+
+
+    function SmsModal(id) {
+
+        $("#modal").load('/Admin/ProviderMenuModal/'+id, () => {
+            console.log(document.getElementById("modal"));
+            const modal = new bootstrap.Modal(document.getElementById('SmS'));
+            modal.show();
+        });
+    }
+
+    function changetoggle(id) {
+        fetch('/Admin/ChangeToggle/'+id)
+    }
+</script>

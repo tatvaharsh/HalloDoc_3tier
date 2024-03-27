@@ -5,6 +5,22 @@
       "PackagePath": "staticwebassets\\hallodoc mvc.bundle.scp.css"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\AgreementDoc.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\4\\AgreementDoc.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\BackgroundDoc.xlsx",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\4\\BackgroundDoc.xlsx"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\HIPAA.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\4\\HIPAA.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\Photo.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\4\\Photo.svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\11116016_415.jpg",
       "PackagePath": "staticwebassets\\SRSScreenShorts\\11116016_415.jpg"
     },
@@ -1037,12 +1053,36 @@
       "PackagePath": "staticwebassets\\uplodedfiles\\FDSDFDsdadsdff.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtafile-word-fill (1).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtafile-word-fill (1).svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtafile-word-fill (2).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtafile-word-fill (2).svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtafile-word-fill (3).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtafile-word-fill (3).svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtafile-word-fill (4).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtafile-word-fill (4).svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtafile-word-fill (5).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtafile-word-fill (5).svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtafile-word-fill.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtafile-word-fill.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\MVC.pdf",
       "PackagePath": "staticwebassets\\uplodedfiles\\MVC.pdf"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\RajuRastogichaityamehtageo-alt.svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\RajuRastogichaityamehtageo-alt.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\Virat KohliDocker Desktop.exe",
@@ -1079,6 +1119,22 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\cvcxvcvcvcxvcloud-arrow-down.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\cvcxvcvcvcxvcloud-arrow-down.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\data (6).xlsx",
+      "PackagePath": "staticwebassets\\uplodedfiles\\data (6).xlsx"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\data (7).xlsx",
+      "PackagePath": "staticwebassets\\uplodedfiles\\data (7).xlsx"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\data (8).xlsx",
+      "PackagePath": "staticwebassets\\uplodedfiles\\data (8).xlsx"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\data (9).xlsx",
+      "PackagePath": "staticwebassets\\uplodedfiles\\data (9).xlsx"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\data.xlsx",
@@ -1203,6 +1259,10 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\success-icon.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\success-icon.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\test2test2dhruvzalasuccess-icon (1).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\test2test2dhruvzalasuccess-icon (1).svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\test2test2dhruvzalasuccess-icon.svg",

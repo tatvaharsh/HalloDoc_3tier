@@ -6,8 +6,8 @@
             <button class="btn d-inline-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                 <span class="navbar-toggler-icon"></span>
             </button>   
-            <a class="navbar-brand" href="#">
-                <img src="~/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" class="logo img-fluid mx-2" alt=""
+            <a asp-controller="Admin" asp-action="Admin_Dashboard" class="navbar-brand">
+                <img src="~/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png"  class="logo img-fluid mx-2" alt=""
                      style="height: 70px;">
             </a>        </div>
         <div class="d-flex ">
@@ -64,12 +64,17 @@
                     </button>
                 </li>
 
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link text-muted px-3" id="Providers-tab" data-bs-toggle="tab" onclick="tabchanged(4)"
+                <li class="nav-item dropdown" role="presentation">
+                    <button class="nav-link text-muted px-3 dropdown-toggle show" id="Providers-tab" data-bs-toggle="dropdown"
                             data-bs-target="" type="button" role="tab"
                             aria-controls="Providers-tab-pane" aria-selected="false">
                         Providers
                     </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" onclick="tabchanged(4)" role="tab" data-bs-toggle="tab">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
                 </li>
 
                 <li class="nav-item" role="presentation">
@@ -80,12 +85,16 @@
                     </button>
                 </li>
 
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link text-muted px-3" id="Access-tab" data-bs-toggle="tab"
-                            data-bs-target="#Access-tab-pane" type="button" role="tab" aria-controls="Access-tab-pane"
+                <li class="nav-item dropdown" role="presentation">
+                    <button class="nav-link text-muted px-3" id="Access-tab" data-bs-toggle="dropdown"
+                            data-bs-target="" type="button" role="tab" aria-controls="Access-tab-pane"
                             aria-selected="false">
                         Access
                     </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" onclick="tabchanged(8)" role="tab" data-bs-toggle="tab">Account</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                    </div>
                 </li>
 
                 <li class="nav-item" role="presentation">

@@ -203,12 +203,12 @@ namespace hallocdoc_mvc_Service.Implementation
                     PhoneNumber = model.PhoneNumber,
                     CreatedDate = DateTime.Now,
                     PasswordHash = model.Password,
+                    Roles = _Repository.RolePatient(),
                 };
                 _Repository.AddAspnetuser(aspnetuser2);
                  aspnetuser1 = aspnetuser2;
+
             }
-            
-            
 
             Region region = new Region
             {
@@ -250,9 +250,6 @@ namespace hallocdoc_mvc_Service.Implementation
                 user1 = user;
             }
 
-
-
-
             Request request = new Request
             {
                 RequestTypeId = 2,
@@ -263,14 +260,9 @@ namespace hallocdoc_mvc_Service.Implementation
                 Email = model.Email,
                 CreatedDate = DateTime.Now,
                 Status = 1,
-
             };
 
             _Repository.AddRequest(request);
-
-       
-
-
 
             RequestClient requestclient = new RequestClient
             {
@@ -294,10 +286,8 @@ namespace hallocdoc_mvc_Service.Implementation
             };
 
             _Repository.AddRequestClients(requestclient);
-
-       
-
-
+            if(model.File != null)
+            {
 
             foreach (IFormFile files in model.File)
             {
@@ -315,6 +305,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 requestWiseFile.DocType = 1;
                 _Repository.AddRequestWiseFiles(requestWiseFile);
               
+            }
             }
         }
 
@@ -680,6 +671,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 CreatedDate = DateTime.Now,
             };
             _Repository.AddRequest(reqobj);
+
 
 
           

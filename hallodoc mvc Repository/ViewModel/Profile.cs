@@ -11,13 +11,16 @@ namespace hallodoc_mvc_Repository.ViewModel
     {
         public Admin AdminData { get; set; }
 
-        public List<Regiondetails> Reg { get; set; }
+        public List<Regiondetails>? Reg { get; set; }
 
-        public String Role { get; set; }
-        public AspNetUser user { get; set; }
+        public string? Role { get; set; }
 
-        public String State { get; set; }
+        public AspNetUser? user { get; set; }
+
+        public String? State { get; set; }
 
         public List<Region>? region { get; set; }
+
+        public List<int>? SelectedRegions { get; set; }
     }
 }
