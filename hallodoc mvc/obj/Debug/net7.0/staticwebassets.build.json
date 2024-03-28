@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YlLsto54g+1Vp7noMDZUqqiMltgyxhk8RJY8H1P9nvY=",
+  "Hash": "vR2DFPwbgrWta8ZRrgEMfo2kjziEvqjZYCRmKQ+Lsgg=",
   "Source": "hallodoc mvc",
   "BasePath": "_content/hallodoc mvc",
   "Mode": "Default",
@@ -1530,6 +1530,23 @@
       "OriginalItemSpec": "wwwroot\\PhysicianDoc\\4\\AgreementDoc.svg"
     },
     {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\BackgroundDoc.svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "PhysicianDoc/4/BackgroundDoc.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PhysicianDoc\\4\\BackgroundDoc.svg"
+    },
+    {
       "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\BackgroundDoc.xlsx",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
@@ -1564,6 +1581,40 @@
       "OriginalItemSpec": "wwwroot\\PhysicianDoc\\4\\HIPAA.svg"
     },
     {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\LicenseDoc.svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "PhysicianDoc/4/LicenseDoc.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PhysicianDoc\\4\\LicenseDoc.svg"
+    },
+    {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\NonDisclosureDoc.svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "PhysicianDoc/4/NonDisclosureDoc.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PhysicianDoc\\4\\NonDisclosureDoc.svg"
+    },
+    {
       "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\Photo.svg",
       "SourceId": "hallodoc mvc",
       "SourceType": "Discovered",
@@ -1579,6 +1630,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\PhysicianDoc\\4\\Photo.svg"
+    },
+    {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\Signature.svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "PhysicianDoc/4/Signature.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PhysicianDoc\\4\\Signature.svg"
     },
     {
       "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\11116016_415.jpg",

@@ -47,7 +47,12 @@ namespace hallodoc_mvc_Repository.ViewModel
         public IFormFile? AgreementDoc { get; set; }
         public IFormFile? Photo { get; set; }
 
-        public string? pic { get; set; }
+        public IFormFile? Signature { get; set; }
+        public IFormFile? LicenseDoc { get; set; }
+        public bool islisence { get; set; }
+
+        public string pic { get; set; }
+        public string SignatureCheck { get; set; }
         public bool ishippa { get; set; }
         public bool isnonclosure { get; set; }
         public bool isagreement { get; set; }

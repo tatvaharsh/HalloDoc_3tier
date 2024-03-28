@@ -99,5 +99,10 @@ namespace hallodoc_mvc_Repository.Interface
         Physician getphycian(int id);
         AspNetUser GetAspNetUser(int id);
         List<PhysicianRegion> GetSelectedPhyReg(int id);
+        void UpdatePhytbl(Physician p);
+
+
+        void RemovePhyRegion(int physicianId);
+            void AddPhyRegions(List<PhysicianRegion> physicianRegions);
     }
 }

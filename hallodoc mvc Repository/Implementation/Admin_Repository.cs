@@ -401,7 +401,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<Physician> getphysician()
         {
-            return _context.Physicians.ToList();
+            return _context.Physicians.AsEnumerable().Where(x => x.IsDeleted == null).ToList();
         }
 
         public List<PhysicianLocation> GetPhyLocation()
@@ -534,6 +534,25 @@ namespace hallodoc_mvc_Repository.Implementation
         public List<PhysicianRegion> GetSelectedPhyReg(int id)
         {
             return _context.PhysicianRegions.Where(x=>x.PhysicianId == id).ToList();
+        }
+
+        public void UpdatePhytbl(Physician p)
+        {
+            _context.Physicians.Update(p);
+            _context.SaveChanges();
+        }
+
+        public void RemovePhyRegion(int physicianId)
+        {
+            List<PhysicianRegion> physicianRegions = _context.PhysicianRegions.Where(x=>x.PhysicianId == physicianId).ToList();
+
+            _context.PhysicianRegions.RemoveRange(physicianRegions);
+            _context.SaveChanges();
+        }
+        public void AddPhyRegions(List<PhysicianRegion> physicianRegions)
+        {
+            _context.PhysicianRegions.AddRange(physicianRegions);
+            _context.SaveChanges();
         }
     }
 }

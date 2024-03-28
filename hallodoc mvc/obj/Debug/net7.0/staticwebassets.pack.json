@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\PhysicianDoc\\4\\AgreementDoc.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\BackgroundDoc.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\4\\BackgroundDoc.svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\BackgroundDoc.xlsx",
       "PackagePath": "staticwebassets\\PhysicianDoc\\4\\BackgroundDoc.xlsx"
     },
@@ -17,8 +21,20 @@
       "PackagePath": "staticwebassets\\PhysicianDoc\\4\\HIPAA.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\LicenseDoc.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\4\\LicenseDoc.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\NonDisclosureDoc.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\4\\NonDisclosureDoc.svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\Photo.svg",
       "PackagePath": "staticwebassets\\PhysicianDoc\\4\\Photo.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\Signature.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\4\\Signature.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\11116016_415.jpg",

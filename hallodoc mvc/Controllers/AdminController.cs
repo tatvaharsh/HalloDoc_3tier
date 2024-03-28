@@ -819,9 +819,35 @@ namespace hallodoc_mvc.Controllers
             return PartialView("AccountAccess", _service.getAccess());
         }
 
+        [HttpPost]
+        public IActionResult EditPhyInfo(int id,CreatePhy model) 
+        {
+            _service.EditPhyInfo(id,model);
+            return RedirectToAction("Admin_Dashboard");
+        }
 
-
-
-
+        [HttpPost]
+        public IActionResult EditPhyMailBillInfo(int id, CreatePhy model)
+        {
+            _service.EditPhyMailBillInfo(id, model);
+            return RedirectToAction("Admin_Dashboard");
+        }
+        [HttpPost]
+        public IActionResult EditPhyProvider(int id, CreatePhy model)
+        {
+            _service.EditPhyProvider(id, model);
+            return RedirectToAction("Admin_Dashboard");
+        }
+        [HttpPost]
+        public IActionResult EditPhyDocs(int id, CreatePhy model)
+        {
+            _service.EditPhyDocs(id, model);
+            return RedirectToAction("Admin_Dashboard");
+        }
+        public IActionResult DeletePhy(int id)
+        {
+            _service.DeletePhy(id);
+            return RedirectToAction("Admin_Dashboard");
+        }
     }
 }

@@ -76,5 +76,10 @@ namespace hallocdoc_mvc_Service.Interface
         void UpdateRole(RoleModel model);
         RoleModel GetRolewiseData(int id);
         CreatePhy getphysiciandata(int id);
+        void EditPhyInfo(int id, CreatePhy model);
+        void EditPhyMailBillInfo(int id, CreatePhy model);
+        void EditPhyProvider(int id, CreatePhy model);
+        void EditPhyDocs(int id, CreatePhy model);
+        void DeletePhy(int id);
     }
 }
