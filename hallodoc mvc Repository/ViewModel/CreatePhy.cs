@@ -1,6 +1,7 @@
 ﻿using hallodoc_mvc_Repository.DataModels;
 using Microsoft.AspNetCore.Http;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace hallodoc_mvc_Repository.ViewModel
 {
     public class CreatePhy
     {
+        public int id { get; set; }
         public List<Region>? reg { get; set; }
         public List<Role>? roles { get; set; }
         [Required(ErrorMessage = "FirstName is required")]
@@ -21,6 +23,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         [Required(ErrorMessage = "LastName is required")]
         public string Lastname { get; set; }  
         public string email { get; set; }
+        public string alterphone { get; set; }
         public string phone { get; set; }
         public string medicallicence { get; set; }
         public string npi { get; set; }
@@ -29,6 +32,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         public string? Businessname { get; set; }
         public string? Adminnote { get; set; }
         public string? Businesswebsite { get; set; }
+        public string? syncemail { get; set; }
         public string? city { get; set; }
      
         public string? zipcode { get; set; }
@@ -42,6 +46,14 @@ namespace hallodoc_mvc_Repository.ViewModel
         public IFormFile? BackgroundDoc { get; set; }
         public IFormFile? AgreementDoc { get; set; }
         public IFormFile? Photo { get; set; }
+
+        public string? pic { get; set; }
+        public bool ishippa { get; set; }
+        public bool isnonclosure { get; set; }
+        public bool isagreement { get; set; }
+        public bool isbackground { get; set; }
+
+
 
 
 

@@ -68,7 +68,8 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 query = query.Where(r => r.RequestClients.FirstOrDefault().RegionId == region);
             }
-            var a = query.Skip(pageid * 2 - 2).Take(2).ToList();
+            int size = 2;
+            var a = query.Skip(pageid * size - size).Take(size).ToList();
             int c = query.Count();
             var dashData = new List<AdminDashboard>();
 
@@ -1646,7 +1647,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 City=model.city,
                 RegionId=model.SelectedStateId,   
                 Zip =model.zipcode,
-                
+                AltPhone=model.alterphone,
                 CreatedBy = admin1,
                 CreatedDate=DateTime.Now,
                 Status=1,
@@ -1781,6 +1782,45 @@ namespace hallocdoc_mvc_Service.Implementation
             model.RoleId = role.RoleId;
             model.SelectedRole = role.AccountType;
             return model;
+        }
+
+        public CreatePhy getphysiciandata(int id)
+        {
+            var p = _Repository.getphycian(id);
+            var a = _Repository.GetAspNetUser(p.AspNetUserId??0);
+            CreatePhy cp = new()
+            {
+                id=id,
+                Firstname = p.FirstName,
+                Lastname = p.LastName,
+                email = p.Email,
+                phone = p.Mobile,
+                medicallicence = p.MedicalLicense,
+                npi = p.Npinumber,
+                address1 = p.Address1,
+                address2 = p.Address2,
+                city = p.City,
+                SelectedStateId = p.RegionId,
+                SelectedRoleId = p.RoleId,
+                zipcode = p.Zip,
+                alterphone = p.AltPhone,
+                Businessname = p.BusinessName,
+                Businesswebsite = p.BusinessWebsite,
+                Adminnote = p.AdminNotes,
+                Username = a.UserName,
+                Password = a.PasswordHash,
+                roles = _Repository.getrole(),
+                reg = _Repository.GetReg(),
+                SelectedRegions = _Repository.GetSelectedPhyReg(id).Select(x => x.RegionId).ToList(),
+                pic = p.Photo,
+                isagreement = p.IsAgreementDoc == null ? false : p.IsAgreementDoc[0],
+                isbackground =p.IsBackgroundDoc == null ? false : p.IsBackgroundDoc[0],
+                ishippa=p.IsTrainingDoc == null ? false : p.IsTrainingDoc[0],
+                isnonclosure= p.IsNonDisclosureDoc == null ? false : p.IsNonDisclosureDoc[0],
+                
+        };
+            return cp;
+
         }
     }
 }

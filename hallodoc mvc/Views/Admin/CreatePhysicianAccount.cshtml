@@ -88,7 +88,7 @@
                             <label for="exampleFormControlInput1" class="form-label ms-2">NPI Number</label>
                         </div>
 
-                        <div class="col-sm-12 col-md-6 col-xl-6">
+                        <div class="col-sm-12 col-md-6 col-xl-6" >
                             @foreach (var item in Model.reg)
                             {
                                 <input type="checkbox" value="@item.RegionId" name="SelectedRegions">
@@ -133,7 +133,7 @@
                             <label for="exampleFormControlInput1" class="form-label ms-2">Zip Code</label>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
-                            <input id="phone1" class="form-control inp2 d1class" type="tel" placeholder="Phone Number" asp-for="phone">
+                            <input id="phone1" class="form-control inp2 d1class" type="tel" placeholder="Phone Number" asp-for="alterphone">
                         </div>
                     </div>
 

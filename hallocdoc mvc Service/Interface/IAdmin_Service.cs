@@ -75,5 +75,6 @@ namespace hallocdoc_mvc_Service.Interface
         void AssignRole(string roleName, string[] selectedRoles, int check, int admin1);
         void UpdateRole(RoleModel model);
         RoleModel GetRolewiseData(int id);
+        CreatePhy getphysiciandata(int id);
     }
 }

@@ -755,9 +755,11 @@ namespace hallodoc_mvc.Controllers
             return View(createPhy);
         }
 
-        public IActionResult EditPhysicianAccount()
+        public IActionResult EditPhysicianAccount(int id)
         {
-            return View();
+            var data = _service.getphysiciandata(id);
+           
+            return View(data);
         }
         public IActionResult ProviderMenuModal(int id)
         {
@@ -808,8 +810,6 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult EditRole(int id)
         {
-           
-
             return View(_service.GetRolewiseData(id));
         }
         public IActionResult UpdateRole(RoleModel model)

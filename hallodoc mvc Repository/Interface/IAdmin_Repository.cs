@@ -96,5 +96,8 @@ namespace hallodoc_mvc_Repository.Interface
         Role GetDataFromRoles(int? id);
         List<RoleMenu> GetDataFromRoleMenu(int id);
         List<Menu> GetMenuDataWithCheckwise(short accountType);
+        Physician getphycian(int id);
+        AspNetUser GetAspNetUser(int id);
+        List<PhysicianRegion> GetSelectedPhyReg(int id);
     }
 }

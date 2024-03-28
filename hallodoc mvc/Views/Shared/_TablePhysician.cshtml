@@ -45,7 +45,7 @@
                 
                 <td>
                     <button type="button" class="btn btn-outline-info" onclick="SmsModal(@item.PhyId)">Contact</button>
-                    <a asp-action="EditPhysicianAccount" asp-controller="Admin"><button type="button" class="btn btn-outline-info">Edit</button></a>
+                    <a asp-action="EditPhysicianAccount" asp-controller="Admin" asp-route-id="@item.PhyId"><button type="button" class="btn btn-outline-info">Edit</button></a>
                 </td>
             </tr>
             

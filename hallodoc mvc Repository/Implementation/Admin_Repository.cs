@@ -53,11 +53,20 @@ namespace hallodoc_mvc_Repository.Implementation
          
         }
 
+        /// <summary>
+        /// Get request by id
+        /// </summary>
+        /// <returns></returns>
         public List<Request> GetRequest()
         {
             return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null).ToList();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"> </param>
+        /// <returns></returns>
         public AspNetUser Validate(LoginViewModel model)
         {
             var aspUser = _context.AspNetUsers.FirstOrDefault(u => u.Email == model.Email && u.PasswordHash == model.Passwordhash);
@@ -510,6 +519,21 @@ namespace hallodoc_mvc_Repository.Implementation
         public List<Menu> GetMenuDataWithCheckwise(short accountType)
         {
             return _context.Menus.Where(m => m.AccountType == accountType).ToList();
+        }
+
+        public Physician getphycian(int id)
+        {
+            return _context.Physicians.FirstOrDefault(x => x.PhysicianId == id);
+        }
+
+        public AspNetUser? GetAspNetUser(int id)
+        {
+            return _context.AspNetUsers.FirstOrDefault(x => x.Id == id);
+        }
+
+        public List<PhysicianRegion> GetSelectedPhyReg(int id)
+        {
+            return _context.PhysicianRegions.Where(x=>x.PhysicianId == id).ToList();
         }
     }
 }
