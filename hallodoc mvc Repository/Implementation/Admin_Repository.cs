@@ -23,24 +23,24 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public IQueryable<Request> GetAdminCode()
         {
-                return _context.Requests.Include(x=>x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 1);
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 1);
         }
         public IQueryable<Request> GetAdminStatus()
         {
-          
-                return _context.Requests.Include(x=>x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null &&  (x.Status == 4 || x.Status == 5));
+
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && (x.Status == 4 || x.Status == 5));
         }
         public IQueryable<Request> GetAdminPending()
         {
-          
-                return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 2);
-         
+
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 2);
+
         }
         public IQueryable<Request> GetAdminConclude()
         {
-         
-                return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 6);
-         
+
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 6);
+
         }
         public IQueryable<Request> GetAdminToclose()
         {
@@ -48,9 +48,9 @@ namespace hallodoc_mvc_Repository.Implementation
         }
         public IQueryable<Request> GetAdminUnpaid()
         {
-   
-                return _context.Requests.Include(x=>x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 9);
-         
+
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 9);
+
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace hallodoc_mvc_Repository.Implementation
         public Admin getaspuser(string email)
 
         {
-           return _context.Admins.FirstOrDefault(u => u.Email == email);
+            return _context.Admins.FirstOrDefault(u => u.Email == email);
         }
 
         public List<Region> GetRegion()
@@ -99,7 +99,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<RequestStatusLog?> GetStatusLogsByRequest(int id)
         {
-            return _context.RequestStatusLogs.Where(x=>x.RequestId==id).ToList() ?? new List<RequestStatusLog>();
+            return _context.RequestStatusLogs.Where(x => x.RequestId == id).ToList() ?? new List<RequestStatusLog>();
 
         }
 
@@ -116,17 +116,17 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<Physician> GetPhysiciansByRegion(int regionid)
         {
-            return _context.Physicians.Where(x=>x.RegionId == regionid).ToList();
+            return _context.Physicians.Where(x => x.RegionId == regionid).ToList();
         }
 
         public RequestClient? Cancelname(int id)
         {
-           return _context.RequestClients.FirstOrDefault(i => i.RequestId == id);
+            return _context.RequestClients.FirstOrDefault(i => i.RequestId == id);
         }
 
         public List<CaseTag> GetCases()
         {
-             var cases =_context.CaseTags.ToList();
+            var cases = _context.CaseTags.ToList();
             return cases;
         }
 
@@ -162,7 +162,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public RequestClient? GetRequestclient(int id)
         {
-           return _context.RequestClients.FirstOrDefault(x=> x.RequestId == id);
+            return _context.RequestClients.FirstOrDefault(x => x.RequestId == id);
         }
 
         public void AddBlockRequest(BlockRequest blreq)
@@ -173,7 +173,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<RequestWiseFile> getfile(int id)
         {
-            return _context.RequestWiseFiles.Where(i => i.RequestId == id && i.IsDeleted==null).ToList();
+            return _context.RequestWiseFiles.Where(i => i.RequestId == id && i.IsDeleted == null).ToList();
         }
 
         public Request? getdetail(int id)
@@ -212,7 +212,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<HealthProfessional> getvendorbyprofessiontype(int Profession)
         {
-           return _context.HealthProfessionals.Where(i=>i.Profession==Profession).ToList();
+            return _context.HealthProfessionals.Where(i => i.Profession == Profession).ToList();
         }
 
         public List<HealthProfessional> getdatabyvendorid(int id)
@@ -222,23 +222,23 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public OrderDetail GetOredrDetail(int id)
         {
-           return _context.OrderDetails.FirstOrDefault(i => i.VendorId == id);
+            return _context.OrderDetails.FirstOrDefault(i => i.VendorId == id);
         }
 
         public void AddOrderdetails(OrderDetail oredr)
         {
-           _context.OrderDetails.Add(oredr);
+            _context.OrderDetails.Add(oredr);
             _context.SaveChanges();
         }
 
         public List<string> GetAspNetRole(int? id)
         {
-            return _context.AspNetUsers.Include(x => x.Roles).FirstOrDefault(x => x.Id == id).Roles.Select(x=>x.Name).ToList() ;
+            return _context.AspNetUsers.Include(x => x.Roles).FirstOrDefault(x => x.Id == id).Roles.Select(x => x.Name).ToList();
         }
 
         public RequestClient getagreement(int id)
         {
-           return _context.RequestClients.FirstOrDefault(x=>x.RequestId== id);
+            return _context.RequestClients.FirstOrDefault(x => x.RequestId == id);
         }
 
         public void updaterequestclient(RequestClient r)
@@ -265,7 +265,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public RequestClient getclient(int id)
         {
-           return _context.RequestClients.FirstOrDefault(x=>x.RequestId==id);
+            return _context.RequestClients.FirstOrDefault(x => x.RequestId == id);
         }
 
         public EncounterForm getencounterbyid(int id)
@@ -281,12 +281,12 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public Admin getadminbyadminid(int admin)
         {
-          return _context.Admins.FirstOrDefault(x => x.AdminId == admin);
+            return _context.Admins.FirstOrDefault(x => x.AdminId == admin);
         }
 
         public List<AdminRegion> getadminreg(int admin)
         {
-            return _context.AdminRegions.Where(x=>x.AdminId==admin).ToList();
+            return _context.AdminRegions.Where(x => x.AdminId == admin).ToList();
         }
 
         public string GetRegionname(int? regionId)
@@ -301,7 +301,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<Request> getINlist()
         {
-            return _context.Requests.Include(r => r.RequestClients).Include(x=>x.Physician).ToList();
+            return _context.Requests.Include(r => r.RequestClients).Include(x => x.Physician).ToList();
         }
 
         public AspNetUser getAsp(string email)
@@ -323,7 +323,7 @@ namespace hallodoc_mvc_Repository.Implementation
         }
 
         public Region AddRegion(Region region)
-        { 
+        {
             _context.Regions.Add(region);
             _context.SaveChanges();
             return region;
@@ -349,7 +349,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public int? GetRegionid(string state)
         {
-           return _context.Regions.FirstOrDefault(x=>x.Name.ToLower()== state.ToLower()).RegionId;
+            return _context.Regions.FirstOrDefault(x => x.Name.ToLower() == state.ToLower()).RegionId;
         }
 
         public User getUser(string email)
@@ -365,7 +365,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public bool IsAdminRegion(int ritem, int a)
         {
-            if (_context.AdminRegions.FirstOrDefault(x => x.AdminId==a && x.RegionId == ritem)!=null)
+            if (_context.AdminRegions.FirstOrDefault(x => x.AdminId == a && x.RegionId == ritem) != null)
             {
                 return true;
             }
@@ -375,7 +375,7 @@ namespace hallodoc_mvc_Repository.Implementation
         public void deletereg(int admin)
         {
             var employeeToDelete = _context.AdminRegions.Where(e => e.AdminId == admin).ToList();
-            foreach(var a in employeeToDelete)
+            foreach (var a in employeeToDelete)
             {
                 _context.AdminRegions.Remove(a);
                 _context.SaveChanges();
@@ -433,12 +433,12 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<Region> GetReg()
         {
-          return  _context.Regions.ToList();
+            return _context.Regions.ToList();
         }
 
         public List<Role> getrole()
         {
-           return _context.Roles.ToList();
+            return _context.Roles.ToList();
         }
 
         public void AddPhysician(Physician phy)
@@ -449,18 +449,18 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public void AddPhysicianRegion(PhysicianRegion reg)
         {
-           _context.PhysicianRegions.Add(reg);
-            _context.SaveChanges(); 
+            _context.PhysicianRegions.Add(reg);
+            _context.SaveChanges();
         }
 
         public ICollection<AspNetRole> PhycianRoles()
         {
-           return _context.AspNetRoles.Where(x=>x.Id==3).ToList(); 
+            return _context.AspNetRoles.Where(x => x.Id == 3).ToList();
         }
 
         public List<Role> getroletbl()
         {
-            return _context.Roles.ToList();
+            return _context.Roles.AsEnumerable().Where(x => !x.IsDeleted[0]).ToList();
         }
 
         public List<Menu> getmenutbl(int value)
@@ -473,13 +473,13 @@ namespace hallodoc_mvc_Repository.Implementation
             {
                 return _context.Menus.Where(x => x.AccountType == value).ToList();
             }
-          
+
 
         }
 
         public void AddRoletbl(Role role)
         {
-           _context.Roles.Add(role);
+            _context.Roles.Add(role);
             _context.SaveChanges();
         }
 
@@ -504,7 +504,7 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.SaveChanges();
         }
 
-     
+
 
         Role IAdmin_Repository.GetDataFromRoles(int? id)
         {
@@ -533,7 +533,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<PhysicianRegion> GetSelectedPhyReg(int id)
         {
-            return _context.PhysicianRegions.Where(x=>x.PhysicianId == id).ToList();
+            return _context.PhysicianRegions.Where(x => x.PhysicianId == id).ToList();
         }
 
         public void UpdatePhytbl(Physician p)
@@ -544,7 +544,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public void RemovePhyRegion(int physicianId)
         {
-            List<PhysicianRegion> physicianRegions = _context.PhysicianRegions.Where(x=>x.PhysicianId == physicianId).ToList();
+            List<PhysicianRegion> physicianRegions = _context.PhysicianRegions.Where(x => x.PhysicianId == physicianId).ToList();
 
             _context.PhysicianRegions.RemoveRange(physicianRegions);
             _context.SaveChanges();
@@ -552,6 +552,46 @@ namespace hallodoc_mvc_Repository.Implementation
         public void AddPhyRegions(List<PhysicianRegion> physicianRegions)
         {
             _context.PhysicianRegions.AddRange(physicianRegions);
+            _context.SaveChanges();
+        }
+
+        public void UpdateRoletbl(Role role)
+        {
+            _context.Roles.Update(role);
+            _context.SaveChanges();
+        }
+
+
+        public List<AspNetUser> getallusers()
+        {
+            return _context.AspNetUsers.Where(x => x.Roles.Where(x=>x.Id==2 || x.Id==3).Any()).Include(x => x.AdminAspNetUsers).Include(x => x.PhysicianAspNetUsers).Include(x=>x.Roles).ToList();
+        }
+
+        public List<Role> GetAminRoles()
+        {
+            return _context.Roles.Where(x=>x.AccountType==1).ToList();
+        }
+
+        public ICollection<AspNetRole> AdminRoles()
+        {
+            return _context.AspNetRoles.Where(x => x.Id == 2).ToList();
+        }
+
+        public void AddAdmintbl(Admin aD)
+        {
+            _context.Admins.Add(aD);
+            _context.SaveChanges();
+        }
+
+        public void AddAdminRegiontbl(AdminRegion reg)
+        {
+           _context.AdminRegions.Add(reg);
+            _context.SaveChanges(); 
+        }
+
+        public void AddPhyLocation(PhysicianLocation pl)
+        {
+            _context.PhysicianLocations.Add(pl);
             _context.SaveChanges();
         }
     }

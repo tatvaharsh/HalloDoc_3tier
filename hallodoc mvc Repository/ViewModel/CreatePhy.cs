@@ -51,16 +51,15 @@ namespace hallodoc_mvc_Repository.ViewModel
         public IFormFile? LicenseDoc { get; set; }
         public bool islisence { get; set; }
 
-        public string pic { get; set; }
-        public string SignatureCheck { get; set; }
+        public string? pic { get; set; }
+        public string? SignatureCheck { get; set; }
         public bool ishippa { get; set; }
         public bool isnonclosure { get; set; }
         public bool isagreement { get; set; }
         public bool isbackground { get; set; }
 
 
-
-
-
+        public decimal? lat { get; set; }
+        public decimal? log { get; set; }
     }
 }

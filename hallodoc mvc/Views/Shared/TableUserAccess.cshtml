@@ -1,0 +1,54 @@
+﻿@model IEnumerable<hallodoc_mvc_Repository.ViewModel.UserAccess>
+<table class="table">
+    <thead>
+        <tr class="bg-light text-muted h-100">
+            <th scope="col">Account type</th>
+            <th scope="col">Account POC</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Status</th>
+            <th scope="col">Open Requests</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+<tbody class="text-muted">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.accountType
+                </td>
+                <td>@item.Username </td>
+                <td>@item.Phonenumber</td>
+                <td>
+                   
+                        @switch (item.Status)
+                        {
+                            case 1:
+                                <span>Active</span>
+
+                                break;
+                            case 2:
+                                <span>
+                                    Pending
+                                </span>
+                                break;
+                            case 3:
+                                <span>
+                                    InActive
+                                </span>
+                                break;
+                        }
+                    
+
+                 
+                   
+                </td>
+                <td>'numberofrequest' </td>
+                <td>
+                    <a><button type="button" class="btn btn-outline-info">Edit</button></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -81,5 +81,9 @@ namespace hallocdoc_mvc_Service.Interface
         void EditPhyProvider(int id, CreatePhy model);
         void EditPhyDocs(int id, CreatePhy model);
         void DeletePhy(int id);
+        void DeleteRoles(int id);
+        List<UserAccess> GetUserAccessData(int region);
+        List<Role> GetRoleOfAdmin();
+        void CreateAdmin(CreateAdmin model, int admin1);
     }
 }

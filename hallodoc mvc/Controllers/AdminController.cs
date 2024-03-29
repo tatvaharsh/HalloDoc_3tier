@@ -139,6 +139,16 @@ namespace hallodoc_mvc.Controllers
                     return PartialView("Provider", _service.GetRegions());
                 case 8:
                     return PartialView("AccountAccess", _service.getAccess());
+                case 9:
+                    return PartialView("UserAccess");
+                case 10:
+                    return PartialView("AdminAccount", new CreateAdmin()
+                    {
+                        reg = _service.getreg(),
+                        roles = _service.GetRoleOfAdmin(),
+                    }); 
+                    
+
 
 
             }
@@ -750,7 +760,9 @@ namespace hallodoc_mvc.Controllers
             CreatePhy createPhy = new CreatePhy()
             {
                 reg = reg,
-                roles = roles
+                roles = roles,
+
+
             };
             return View(createPhy);
         }
@@ -802,7 +814,6 @@ namespace hallodoc_mvc.Controllers
         }
         public IActionResult AssignRole(string RoleName, string[] selectedRoles, int check)
         {
-
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
             _service.AssignRole(RoleName, selectedRoles, check, admin1);
             return PartialView("AccountAccess", _service.getAccess());
@@ -817,6 +828,11 @@ namespace hallodoc_mvc.Controllers
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
             _service.UpdateRole(model);
             return PartialView("AccountAccess", _service.getAccess());
+        }
+        public IActionResult DeleteRole(int id)
+        {
+            _service.DeleteRoles(id);
+                return View("AccountAccess", _service.getAccess());
         }
 
         [HttpPost]
@@ -849,5 +865,29 @@ namespace hallodoc_mvc.Controllers
             _service.DeletePhy(id);
             return RedirectToAction("Admin_Dashboard");
         }
+
+        public IActionResult UserAccess(int region)
+        {
+            var data = _service.GetUserAccessData(region);
+            return PartialView("TableUserAccess",data);
+        }
+
+
+        [HttpPost]
+        public IActionResult CreateAdminAccount(CreateAdmin model)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            if (ModelState.IsValid)
+            {
+                _service.CreateAdmin(model, admin1);
+                return RedirectToAction("Admin_Dashboard");
+            }
+      
+            var reg = _service.getreg();
+            var roles = _service.GetRoleOfAdmin();
+            model.reg = reg; model.roles = roles;
+            return View(model);
+        }
+
     }
 }

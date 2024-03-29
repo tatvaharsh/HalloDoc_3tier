@@ -1,0 +1,53 @@
+﻿
+@{
+    
+}
+<div class="container p-0">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between mt-3">
+                <h4 class="mt-3">User Access</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container hideonmobile bg-white rounded shadow mt-3 p-0">
+    <div class="row pt-3 ps-2 pb-3">
+        <div class="col-md-4 col-xl-4 col-lg-4 col-6">
+            <select class="form-select" aria-label="Default select example" onchange="sortbtregion(this.value)">
+                <option value="0">All</option>
+                <option value="2">Admin</option>
+                <option value="3">Physician</option>
+            </select>
+        </div>
+    </div>
+
+        <div id="TableUserAccessData"></div>
+</div>
+
+<style>
+    
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+</style>
+
+<script>
+    sortbtregion(0);
+    function sortbtregion(id) {
+
+        $.ajax({
+            url: '/Admin/UserAccess',
+            type: 'POST',
+            dataType: 'html',
+            data: { region: id },
+            // Passyour data here
+            success: function (response) {
+                $("#TableUserAccessData").html(response)
+            },
+            error: function () {
+                alert('An error occurred.');
+            }
+        });
+    }
+</script>

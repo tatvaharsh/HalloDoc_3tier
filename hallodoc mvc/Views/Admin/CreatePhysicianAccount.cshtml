@@ -26,7 +26,7 @@
                     </button>
                 </a>
             </div>
-            <form enctype="multipart/form-data" method="post" asp-action="CreatePhysicianAccount">
+            <form enctype="multipart/form-data" method="post" id="main-form" asp-action="CreatePhysicianAccount">
                 <div class="container rounded  shadow py-3">
 
                     <h5 class="mb-3">Account Information</h5>
@@ -55,7 +55,8 @@
                         </div>
                     </div>
 
-
+                    <input type="hidden" asp-for="lat" id="lat">
+                    <input type="hidden" asp-for="log" id="long">
 
 
                     <div class="row mt-3">
@@ -104,7 +105,7 @@
                             Mailing & Billing Information
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
-                            <input type="text" class="form-control d1class" id="Address-1" placeholder="Address 1" asp-for="address1">
+                            <input type="text" class="form-control d1class" id="address1" placeholder="Address 1" asp-for="address1">
                             <label for="exampleFormControlInput1" class="form-label ms-2">Address 1</label>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
@@ -116,7 +117,7 @@
                             <label for="exampleFormControlInput1" class="form-label ms-2">City</label>
                         </div>
                         <div class="col-sm-12 col-md-6 col-xl-6  form-floating mb-3 text-muted">
-                            <select class="form-select p-3 pla1 d3class" aria-label="form-select-lg example" asp-for="SelectedStateId">
+                            <select class="form-select p-3 pla1 d3class" id="Select-state" aria-label="form-select-lg example" asp-for="SelectedStateId">
 
                                 <option selected value="">Select State</option>
                                 @foreach (var item in Model.reg)
@@ -181,7 +182,7 @@
                         </div>
                     </div>
                     <div class="row mx-2">
-                        <input class="form-check-input col-1" type="checkbox" value="" id="1" >
+                        <input class="form-check-input col-1" type="checkbox" value="" id="1"     >
                         <label class="form-check-label col-5" for="1">
                             Independent Contractor Agreement
                         </label>
@@ -253,13 +254,10 @@
                         </fieldset>
                     </div>
 
-
-
-
                 </div>
                 <hr />
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-success text-white me-md-2" type="submit">Create Account</button>
+                    <button class="btn btn-success text-white me-md-2" id="submit-physician" type="submit">Create Account</button>
 
                 </div>
             </form>
@@ -294,6 +292,42 @@
         var b = document.getElementById("lname").value;
 
         document.getElementById("username").value = "MD." + a + "." + b;
+    }
+
+
+
+    const submitButton = document.getElementById("submit-physician");
+    submitButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default form submission
+        getLatLong();// Call getLatLong function
+        window.location
+    });
+
+
+    const getLatLong = () => {
+        var geocoder = new google.maps.Geocoder();
+        const selectElement = document.getElementById("Select-state")
+        for (let option of selectElement.options) {
+            if (option.value == selectElement.value) {
+                const address = document.getElementById("address1").value + ',' + document.getElementById("city").value + ',' + option.text + ' ' + document.getElementById("zipcode").value
+                console.log(address)
+                geocoder.geocode({ address: address }, function (results, status) {
+                    if (status == "OK") {
+                        var latitude = results[0].geometry.location.lat();
+                        var longitude = results[0].geometry.location.lng();
+                        document.getElementById('lat').value = latitude;
+                        document.getElementById('long').value = longitude;
+                        console.log(document.getElementById('lat').value);
+                        console.log(document.getElementById('long').value);
+                
+                        document.getElementById("main-form").submit();
+                    } else {
+                        document.getElementById("main-form").submit();
+                    }
+                });
+            }
+        }
+
     }
 
 </script>

@@ -104,5 +104,13 @@ namespace hallodoc_mvc_Repository.Interface
 
         void RemovePhyRegion(int physicianId);
             void AddPhyRegions(List<PhysicianRegion> physicianRegions);
+        void UpdateRoletbl(Role role);
+
+        List<AspNetUser> getallusers();
+        List<Role> GetAminRoles();
+        ICollection<AspNetRole> AdminRoles();
+        void AddAdmintbl(Admin aD);
+        void AddAdminRegiontbl(AdminRegion reg);
+        void AddPhyLocation(PhysicianLocation pl);
     }
 }

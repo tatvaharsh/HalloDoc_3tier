@@ -1,0 +1,187 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.CreateAdmin
+<style>
+    .iti {
+        width: 100%;
+    }
+
+    #phone, #phone1 {
+        height: 58px;
+    }
+
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between mt-3">
+                <h4 class="mt-3">Create Admin Account</h4>
+                <a class="text-start text-info text-decoration-none ">
+                    <button class="btn btn-white  text-info border-info rounded ">
+                        <i class="fa-solid  fa-less-than"></i> Back
+                    </button>
+                </a>
+            </div>
+            <form asp-action="CreateAdminAccount" class="rounded shadow" method="post">
+                <div class="container  py-3">
+
+                    <h5 class="mb-3">Account Information</h5>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-xl-4 form-floating mb-3 text-muted">
+                            <input name="Username" type="text" class="form-control d3class" id="username" asp-for="Username" placeholder="Firstname" disabled>
+                            <label for="exampleFormControlInput1" class="form-label ms-2">User Name</label>
+                        </div>
+                        <div class="col-sm-12 col-md-4 col-xl-4 form-floating mb-3 text-muted">
+                            <input name="Password" type="text" class="form-control d3class" id="exampleFormControlInput1" placeholder="Lastname" asp-for="Password">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Password </label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-4 col-xl-4">
+                            <div class="mb-3 border border-light rounded-5">
+                                <select class="form-select p-3 pla1 d3class" aria-label="form-select-lg example" asp-for="SelectedRoleId">
+                                    <option>Select Role</option>
+                                    @foreach (var item in Model.roles)
+                                    {
+                                        <option va="@item.RoleId">@item.Name</option>
+
+                                    }
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="container row mt-3  py-3">
+                        <div class="col-12 h5 mb-3">
+                            Administrator Information
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control dclass" id="fname" placeholder="Firstname" asp-for="Firstname">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Firstname</label>
+
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control dclass" id="lname" placeholder="Lastname" onchange="u1()" asp-for="Lastname">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Lastname</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="email" class="form-control dclass" id="email" placeholder="Email" asp-for="email">
+                            <label for="email" class="form-label ms-2">Email</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input id="phone" class="form-control inp2 dclass" type="tel" placeholder="Phone Number" asp-for="phone">
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control dclass" id="exampleFormControlInput1" placeholder="Lastname" asp-for="medicallicence">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Medical Licence</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control dclass" id="exampleFormControlInput1" placeholder="NPI Number" asp-for="npi">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">NPI Number</label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-xl-6">
+                            @foreach (var item in Model.reg)
+                            {
+                               
+                                <input type="checkbox" name="SelectedRegions" value="@item.RegionId" />
+                                <label>@item.Name</label>
+                            }
+                        </div>
+                    </div>
+
+
+
+                    <div class="container row mt-3  py-3">
+                        <div class="col-12 h5 mb-3">
+                            Mailing & Billing Information
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d1class" id="Address-1" placeholder="Address 1" asp-for="address1">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Address 1</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d1class" id="Address-2" placeholder="Address 2" asp-for="address2">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Address 2</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6  form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d1class" id="city" placeholder="City" asp-for="city">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">City</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6  form-floating mb-3 text-muted">
+                            <select class="form-select p-3 pla1 d3class" aria-label="form-select-lg example" asp-for="SelectedStateId">
+
+                                <option>Select State</option>
+                                @foreach (var item in Model.reg)
+                                {
+                                    <option value="@item.RegionId">@item.Name</option>
+
+                                }
+
+                            </select>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-xl-6  form-floating mb-3 text-muted">
+                            <input type="text" class="form-control d1class" id="zipcode" placeholder="Zip Code" asp-for="zipcode">
+                            <label for="exampleFormControlInput1" class="form-label ms-2">Zip Code</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input id="phone1" class="form-control inp2 d1class" type="tel" placeholder="Phone Number" asp-for="alterphone">
+                        </div>
+                    </div>
+
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-success text-white me-md-2" type="submit">Create Account</button>
+
+                    </div>
+
+
+
+
+
+
+
+
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+
+    const input = document.querySelector("#phone");
+    const input2 = document.querySelector("#phone1");
+    const button = document.querySelector("#btn");
+    const errorMsg = document.querySelector("#error-msg");
+    const validMsg = document.querySelector("#valid-msg");
+
+    // here, the index maps to the error code returned from getValidationError - see readme
+    const errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+
+    // initialise plugin
+    const iti = window.intlTelInput(input, {
+        initialCountry: "us",
+        utilsScript: "/intl-tel-input/js/utils.js?1706723638591"
+    });
+    const iti1 = window.intlTelInput(input2, {
+        initialCountry: "us",
+        utilsScript: "/intl-tel-input/js/utils.js?1706723638591"
+    });
+
+    function u1() {
+
+        var a = document.getElementById("fname").value;
+        var b = document.getElementById("lname").value;
+
+        document.getElementById("username").value =  a + "." + b;
+    }
+
+</script>

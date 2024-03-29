@@ -1641,7 +1641,8 @@ namespace hallocdoc_mvc_Service.Implementation
                 IsBackgroundDoc = model.BackgroundDoc != null ? new BitArray(1, true) : new BitArray(1, false),
                 IsTrainingDoc = model.HIPAA != null ? new BitArray(1, true) : new BitArray(1, false),
                 IsNonDisclosureDoc = model.NonDisclosureDoc != null ? new BitArray(1, true) : new BitArray(1, false),
-                Photo =model.Photo.FileName,
+                IsLicenseDoc = model.LicenseDoc != null ? new BitArray(1, true) : new BitArray(1, false),
+                Photo =model?.Photo?.FileName ?? null,
                 Address1=model.address1,
                 Address2=model.address2,
                 City=model.city,
@@ -1674,6 +1675,17 @@ namespace hallocdoc_mvc_Service.Implementation
                 _Repository.AddPhysicianRegion(reg);
 
             }
+
+            PhysicianLocation pl = new()
+            {
+                PhysicianId = phy.PhysicianId,
+                Latitude = model?.lat ?? 0,
+                Longitude = model?.log ?? 0,
+                CreatedDate = DateTime.Now,
+                PhysicianName = phy.FirstName,
+                Address = model.address1
+            };
+            _Repository.AddPhyLocation(pl);
 
             if (model.Photo != null)
             {
@@ -1949,6 +1961,96 @@ namespace hallocdoc_mvc_Service.Implementation
             var p = _Repository.getphycian(id);
             p.IsDeleted = new BitArray(1, true);
             _Repository.UpdatePhytbl(p);
+        }
+
+        public void DeleteRoles(int id)
+        {
+            var role = _Repository.GetDataFromRoles(id);
+            role.IsDeleted = new BitArray(1,true);
+            _Repository.UpdateRoletbl(role);
+        }
+
+        public List<UserAccess> GetUserAccessData(int region)
+        {
+          //return _Repository.GetAdminAndPhysicianData(region);
+
+            List<AspNetUser> asp = _Repository.getallusers();
+
+            if (region != 0)
+            {
+                asp=asp.Where(x=>x.Roles.Where(x=>x.Id==region).Any()).ToList();
+            }
+
+            List<UserAccess> ua = new();
+
+            foreach (var user in asp)
+            {
+                ua.Add(new()
+                {
+                    Username=user.AdminAspNetUsers.Count!=0?user.AdminAspNetUsers.First().FirstName+" "+ user.AdminAspNetUsers.First().LastName:
+                    user.PhysicianAspNetUsers.Count!=0?user.PhysicianAspNetUsers.First().FirstName+" "+ user.PhysicianAspNetUsers.First().LastName:"",
+                    Phonenumber=user.AdminAspNetUsers.Count!=0?user.AdminAspNetUsers.FirstOrDefault()?.Mobile : user.PhysicianAspNetUsers.Count!=0?user.PhysicianAspNetUsers.FirstOrDefault()?.Mobile:"",
+                    accountType=user.Roles.First().Name,
+                    Status=user.AdminAspNetUsers.Count!=0?user.AdminAspNetUsers.First().Status:user.PhysicianAspNetUsers.Count!=0?user.PhysicianAspNetUsers.First().Status:0,
+
+
+                });
+            }
+            return ua;
+        }
+
+        public List<Role> GetRoleOfAdmin()
+        {
+            var a= _Repository.GetAminRoles();
+            return a;
+        }
+
+        public void CreateAdmin(CreateAdmin model, int admin1)
+        {
+
+            AspNetUser asp = new AspNetUser()
+            {
+                UserName = model.Firstname + " " + model.Lastname,
+                PasswordHash = model.Password,
+                Email = model.email,
+                PhoneNumber = model.phone,
+                CreatedDate = DateTime.Now,
+                Roles = _Repository.AdminRoles(),
+            };
+            _Repository.AddAspnetUser(asp);
+
+            Admin AD = new Admin()
+            {
+                AspNetUserId=asp.Id,
+                FirstName=model.Firstname,
+                LastName=model.Lastname,
+                Email=model.email,
+                Mobile=model.phone,
+                Address1=model.address1,
+                Address2=model.address2,    
+                City=model.city,
+                RegionId=model.SelectedStateId,
+                Zip=model.zipcode,
+                AltPhone=model.alterphone,
+                CreatedBy=admin1,
+                CreatedDate=DateTime.Now,
+                Status=1,
+                RoleId=model.SelectedRoleId
+            };
+            _Repository.AddAdmintbl(AD);
+
+            foreach (var item in model.SelectedRegions)
+            {
+                AdminRegion reg = new()
+                {
+                    AdminId = AD.AdminId,
+                    RegionId = item,
+                };
+                _Repository.AddAdminRegiontbl(reg);
+
+            }
+
+
         }
     }
 }
