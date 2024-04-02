@@ -72,14 +72,14 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <a class="dropdown-item" onclick="tabchanged(4)" role="tab" data-bs-toggle="tab">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" onclick="tabchanged(5)" role="tab" data-bs-toggle="tab">Scheduling</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
 
                 <li class="nav-item" role="presentation">
                     <button class="nav-link text-muted px-3" id="Partners-tab" data-bs-toggle="tab"
-                            data-bs-target="#Partners-tab-pane" type="button" role="tab"
+                            data-bs-target="" type="button" role="tab" onclick="tabchanged(7)"
                             aria-controls="Partners-tab-pane" aria-selected="false">
                         Partners
                     </button>

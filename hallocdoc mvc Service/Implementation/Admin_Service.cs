@@ -3,26 +3,12 @@ using hallodoc_mvc_Repository.DataModels;
 using hallodoc_mvc_Repository.Interface;
 using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Net.Mail;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using System.Security.Cryptography.Xml;
 using Microsoft.CodeAnalysis;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using System.Runtime.Intrinsics.X86;
-using System.Security.Policy;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Net.Http.Headers;
-using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore;
 using System.Collections;
+using System.Globalization;
+using System.Net;
+using System.Net.Mail;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -318,7 +304,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
                     DateOfBirth = Mydate,
                     RPhone = item.PhoneNumber,
-                   
+
                     Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
                     Phone = item.RequestClients.FirstOrDefault()?.PhoneNumber,
@@ -398,7 +384,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     Email = item.RequestClients.FirstOrDefault()?.Email,
                     Name = item.RequestClients.FirstOrDefault()?.FirstName,
                     DateOfBirth = Mydate,
-                    Region=_Repository.GetRegionname(item.RequestClients.FirstOrDefault().RegionId),
+                    Region = _Repository.GetRegionname(item.RequestClients.FirstOrDefault().RegionId),
                     RPhone = item.PhoneNumber,
                     Requestor = item.FirstName + ' ' + item.LastName,
                     RequestDate = item.CreatedDate,
@@ -490,7 +476,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             ViewCase ViewCase = new()
             {
-                ReqId= reqId,
+                ReqId = reqId,
                 FirstName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.FirstName,
                 LastName = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.LastName,
                 PhoneNumber = requestData.FirstOrDefault()?.RequestClients.FirstOrDefault()?.PhoneNumber,
@@ -528,7 +514,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public ModalData GetAssignData(ModalData md)
         {
-           
+
 
             List<Region> r = _Repository.GetRegion();
             md.region = r;
@@ -562,7 +548,7 @@ namespace hallocdoc_mvc_Service.Implementation
             md.CountConclude = d;
             md.CountClose = e;
             md.CountUnpaid = f;
-            
+
             return md;
         }
 
@@ -1232,7 +1218,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public void sendlink(ViewCase model)
         {
-     
+
 
             var receiver = model.Email;
             var subject = "Send Link";
@@ -1460,14 +1446,14 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public string Adminname(int admin1)
         {
-          return  _Repository.Adminname(admin1);
+            return _Repository.Adminname(admin1);
         }
 
         public void DeleteCustom(int[] filenames)
         {
-            foreach(var item in filenames)
+            foreach (var item in filenames)
             {
-                var rwf=_Repository.GetDocumentFile(item);
+                var rwf = _Repository.GetDocumentFile(item);
                 rwf.IsDeleted = new System.Collections.BitArray(1, true);
                 _Repository.update_RequestWiseTable(rwf);
             }
@@ -1487,7 +1473,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public Provider GetRegions()
         {
-           var p= _Repository.GetRegion();
+            var p = _Repository.GetRegion();
             Provider pr = new()
             {
                 regions = p,
@@ -1512,36 +1498,36 @@ namespace hallocdoc_mvc_Service.Implementation
             //{
 
             //    physicians = p,
-                
+
             //};
-            foreach(var item in p)
+            foreach (var item in p)
             {
                 bool ischeck;
-              
-                PhysicianNotification phynoti =  _Repository.phynoti(item.PhysicianId);
-                if (phynoti.PhysicianId  > 0)
+
+                PhysicianNotification phynoti = _Repository.phynoti(item.PhysicianId);
+                if (phynoti.PhysicianId > 0)
                 {
                     ischeck = phynoti.IsNotificationStopped;
                 }
                 else
                 {
-                   
+
                     ischeck = false;
-                    
+
                 }
-              
+
                 providers.Add(new Provider
                 {
                     PhyId = item.PhysicianId,
                     Name = item.FirstName + " " + item.LastName,
-                    Role = _Repository.Getrolebyroleid(item.RoleId),    
+                    Role = _Repository.Getrolebyroleid(item.RoleId),
                     Status = item.Status,
                     Notification = ischeck,
                 });
 
             }
-            return providers ;
-         
+            return providers;
+
         }
 
         public List<PhysicianLocation> ProviderLocation()
@@ -1564,7 +1550,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 PhysicianNotification p = new()
                 {
                     PhysicianId = phyid,
-                    IsNotificationStopped=true,
+                    IsNotificationStopped = true,
                 };
                 //Add p
                 _Repository.addPhynoti(p);
@@ -1574,12 +1560,12 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public void Sendit(int id, ModalData md)
         {
-           Physician p = _Repository.GetPhysician(id);
-            if (p != null && md.MessageType==2)
+            Physician p = _Repository.GetPhysician(id);
+            if (p != null && md.MessageType == 2)
             {
                 var receiver = p.Email;
                 var subject = "Send Link";
-                var message = "Tap on Message which Admin wants you to send : "+md.note;
+                var message = "Tap on Message which Admin wants you to send : " + md.note;
 
 
                 var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -1602,7 +1588,7 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             var t = _Repository.GetReg();
             return t;
-       
+
         }
 
         public List<Role> getrole()
@@ -1616,7 +1602,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             AspNetUser asp = new AspNetUser()
             {
-                UserName = "MD."+model.Firstname+"."+model.Lastname,
+                UserName = "MD." + model.Firstname + "." + model.Lastname,
                 PasswordHash = model.Password,
                 Email = model.email,
                 PhoneNumber = model.phone,
@@ -1634,29 +1620,29 @@ namespace hallocdoc_mvc_Service.Implementation
                 Email = model.email,
                 Mobile = model.phone,
                 MedicalLicense = model.medicallicence,
-  
+
                 AdminNotes = model.Adminnote,
-                
+
                 IsAgreementDoc = model.AgreementDoc != null ? new BitArray(1, true) : new BitArray(1, false),
                 IsBackgroundDoc = model.BackgroundDoc != null ? new BitArray(1, true) : new BitArray(1, false),
                 IsTrainingDoc = model.HIPAA != null ? new BitArray(1, true) : new BitArray(1, false),
                 IsNonDisclosureDoc = model.NonDisclosureDoc != null ? new BitArray(1, true) : new BitArray(1, false),
                 IsLicenseDoc = model.LicenseDoc != null ? new BitArray(1, true) : new BitArray(1, false),
-                Photo =model?.Photo?.FileName ?? null,
-                Address1=model.address1,
-                Address2=model.address2,
-                City=model.city,
-                RegionId=model.SelectedStateId,   
-                Zip =model.zipcode,
-                AltPhone=model.alterphone,
+                Photo = model?.Photo?.FileName ?? null,
+                Address1 = model.address1,
+                Address2 = model.address2,
+                City = model.city,
+                RegionId = model.SelectedStateId,
+                Zip = model.zipcode,
+                AltPhone = model.alterphone,
                 CreatedBy = admin1,
-                CreatedDate=DateTime.Now,
-                Status=1,
-                BusinessName=model.Businessname,
-                BusinessWebsite=model.Businesswebsite,
+                CreatedDate = DateTime.Now,
+                Status = 1,
+                BusinessName = model.Businessname,
+                BusinessWebsite = model.Businesswebsite,
 
-                RoleId=model.SelectedRoleId,
-                Npinumber=model.npi,
+                RoleId = model.SelectedRoleId,
+                Npinumber = model.npi,
                 //licence
                 //signature
                 //iscredential
@@ -1735,8 +1721,8 @@ namespace hallocdoc_mvc_Service.Implementation
         public RoleModel getAccess()
         {
             var a = _Repository.getroletbl();
-            RoleModel roleModel = new RoleModel() 
-            { 
+            RoleModel roleModel = new RoleModel()
+            {
                 rolesofphy = a
             };
             return roleModel;
@@ -1747,7 +1733,7 @@ namespace hallocdoc_mvc_Service.Implementation
             List<Menu> menus = _Repository.getmenutbl(value);
             RoleModel rm = new RoleModel();
             rm.menu = menus;
-            rm.SelectedRole=value;
+            rm.SelectedRole = value;
 
             return rm;
         }
@@ -1799,10 +1785,10 @@ namespace hallocdoc_mvc_Service.Implementation
         public CreatePhy getphysiciandata(int id)
         {
             var p = _Repository.getphycian(id);
-            var a = _Repository.GetAspNetUser(p.AspNetUserId??0);
+            var a = _Repository.GetAspNetUser(p.AspNetUserId ?? 0);
             CreatePhy cp = new()
             {
-                id=id,
+                id = id,
                 Firstname = p.FirstName,
                 Lastname = p.LastName,
                 email = p.Email,
@@ -1823,13 +1809,13 @@ namespace hallocdoc_mvc_Service.Implementation
                 Password = a.PasswordHash,
                 roles = _Repository.getrole(),
                 reg = _Repository.GetReg(),
-                pic=p.Photo,
-                SignatureCheck=p.Signature,
+                pic = p.Photo,
+                SignatureCheck = p.Signature,
                 SelectedRegions = _Repository.GetSelectedPhyReg(id).Select(x => x.RegionId).ToList(),
                 isagreement = p.IsAgreementDoc == null ? false : p.IsAgreementDoc[0],
-                isbackground =p.IsBackgroundDoc == null ? false : p.IsBackgroundDoc[0],
-                ishippa=p.IsTrainingDoc == null ? false : p.IsTrainingDoc[0],
-                isnonclosure= p.IsNonDisclosureDoc == null ? false : p.IsNonDisclosureDoc[0],
+                isbackground = p.IsBackgroundDoc == null ? false : p.IsBackgroundDoc[0],
+                ishippa = p.IsTrainingDoc == null ? false : p.IsTrainingDoc[0],
+                isnonclosure = p.IsNonDisclosureDoc == null ? false : p.IsNonDisclosureDoc[0],
                 islisence = p.IsLicenseDoc == null ? false : p.IsLicenseDoc[0],
             };
             return cp;
@@ -1868,7 +1854,7 @@ namespace hallocdoc_mvc_Service.Implementation
             var p = _Repository.getphycian(id);
             p.Address1 = model.address1;
             p.Address2 = model.address2;
-            p.City=model.city;
+            p.City = model.city;
             p.RegionId = model.SelectedStateId;
             p.Zip = model.zipcode;
             p.AltPhone = model.alterphone;
@@ -1966,19 +1952,19 @@ namespace hallocdoc_mvc_Service.Implementation
         public void DeleteRoles(int id)
         {
             var role = _Repository.GetDataFromRoles(id);
-            role.IsDeleted = new BitArray(1,true);
+            role.IsDeleted = new BitArray(1, true);
             _Repository.UpdateRoletbl(role);
         }
 
         public List<UserAccess> GetUserAccessData(int region)
         {
-          //return _Repository.GetAdminAndPhysicianData(region);
+            //return _Repository.GetAdminAndPhysicianData(region);
 
             List<AspNetUser> asp = _Repository.getallusers();
 
             if (region != 0)
             {
-                asp=asp.Where(x=>x.Roles.Where(x=>x.Id==region).Any()).ToList();
+                asp = asp.Where(x => x.Roles.Where(x => x.Id == region).Any()).ToList();
             }
 
             List<UserAccess> ua = new();
@@ -1987,12 +1973,11 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 ua.Add(new()
                 {
-                    Username=user.AdminAspNetUsers.Count!=0?user.AdminAspNetUsers.First().FirstName+" "+ user.AdminAspNetUsers.First().LastName:
-                    user.PhysicianAspNetUsers.Count!=0?user.PhysicianAspNetUsers.First().FirstName+" "+ user.PhysicianAspNetUsers.First().LastName:"",
-                    Phonenumber=user.AdminAspNetUsers.Count!=0?user.AdminAspNetUsers.FirstOrDefault()?.Mobile : user.PhysicianAspNetUsers.Count!=0?user.PhysicianAspNetUsers.FirstOrDefault()?.Mobile:"",
-                    accountType=user.Roles.First().Name,
-                    Status=user.AdminAspNetUsers.Count!=0?user.AdminAspNetUsers.First().Status:user.PhysicianAspNetUsers.Count!=0?user.PhysicianAspNetUsers.First().Status:0,
-
+                    Username = user.AdminAspNetUsers.Count != 0 ? user.AdminAspNetUsers.First().FirstName + " " + user.AdminAspNetUsers.First().LastName :
+                    user.PhysicianAspNetUsers.Count != 0 ? user.PhysicianAspNetUsers.First().FirstName + " " + user.PhysicianAspNetUsers.First().LastName : "",
+                    Phonenumber = user.AdminAspNetUsers.Count != 0 ? user.AdminAspNetUsers.FirstOrDefault()?.Mobile : user.PhysicianAspNetUsers.Count != 0 ? user.PhysicianAspNetUsers.FirstOrDefault()?.Mobile : "",
+                    accountType = user.Roles.First().Name,
+                    Status = user.AdminAspNetUsers.Count != 0 ? user.AdminAspNetUsers.First().Status : user.PhysicianAspNetUsers.Count != 0 ? user.PhysicianAspNetUsers.First().Status : 0,
 
                 });
             }
@@ -2001,7 +1986,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public List<Role> GetRoleOfAdmin()
         {
-            var a= _Repository.GetAminRoles();
+            var a = _Repository.GetAminRoles();
             return a;
         }
 
@@ -2021,21 +2006,21 @@ namespace hallocdoc_mvc_Service.Implementation
 
             Admin AD = new Admin()
             {
-                AspNetUserId=asp.Id,
-                FirstName=model.Firstname,
-                LastName=model.Lastname,
-                Email=model.email,
-                Mobile=model.phone,
-                Address1=model.address1,
-                Address2=model.address2,    
-                City=model.city,
-                RegionId=model.SelectedStateId,
-                Zip=model.zipcode,
-                AltPhone=model.alterphone,
-                CreatedBy=admin1,
-                CreatedDate=DateTime.Now,
-                Status=1,
-                RoleId=model.SelectedRoleId
+                AspNetUserId = asp.Id,
+                FirstName = model.Firstname,
+                LastName = model.Lastname,
+                Email = model.email,
+                Mobile = model.phone,
+                Address1 = model.address1,
+                Address2 = model.address2,
+                City = model.city,
+                RegionId = model.SelectedStateId,
+                Zip = model.zipcode,
+                AltPhone = model.alterphone,
+                CreatedBy = admin1,
+                CreatedDate = DateTime.Now,
+                Status = 1,
+                RoleId = model.SelectedRoleId
             };
             _Repository.AddAdmintbl(AD);
 
@@ -2052,5 +2037,126 @@ namespace hallocdoc_mvc_Service.Implementation
 
 
         }
+
+        public List<HealthProfessionalType> GetProfession()
+        {
+            var professions = _Repository.GetProfession();
+            return professions;
+        }
+
+        public List<Partnersdata> GetAllHealthProfessionaldata(int p, string search)
+        {
+            List<HealthProfessional> hp = new();
+
+            hp = _Repository.GetHealthProfession();
+
+
+            if (p != 0)
+            {
+                hp = _Repository.GetHealthProfessionByProfession(p);
+            }
+            if (search != null)
+            {
+                hp = hp.Where(r => r.VendorName.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            List<Partnersdata> data = new List<Partnersdata>();
+            hp.ForEach(item =>
+            {
+                data.Add(new Partnersdata()
+                {
+                    VendorId = item.VendorId,
+                    VendorName = item.VendorName,
+                    ProfessionName = _Repository.Profession(item.Profession),
+                    VendorEmail = item.Email,
+                    FaxNo = item.FaxNumber,
+                    PhoneNo = item.PhoneNumber,
+                    Businesscontact = item.BusinessContact,
+                });
+            });
+            return data;
+
+        }
+
+        public void AddBusiness(PartnersCM model)
+        {
+
+
+
+            HealthProfessional hp = new HealthProfessional()
+            {
+                VendorName = model.BusinessName,
+                FaxNumber = model.FAXNumber,
+                PhoneNumber = model.Phonenumber,
+                Email = model.Email,
+                BusinessContact = model.BusinessContact,
+                State = _Repository.GetRegionname(model.RegionId),
+                Zip = model.Zip,
+                City = model.City,
+                Address = model.Street,
+                CreatedDate = DateTime.Now,
+                Profession = model.SelectedhealthprofID,
+                RegionId = model.RegionId,
+
+            };
+
+            _Repository.AddHealthProfessiontbl(hp);
+
+
+        }
+
+        public PartnersCM GetPartnerData(int vendorid)
+        {
+            PartnersCM model = new();
+            HealthProfessional hp = _Repository.GetData(vendorid);
+            model.BusinessName = hp.VendorName;
+            model.FAXNumber = hp.FaxNumber;
+            model.BusinessContact=hp.BusinessContact;
+            model.Street = hp.Address;
+            model.City = hp.City;
+             model.Email = hp.Email;
+            model.Zip = hp.Zip;
+            model.RegionId = (Int32)hp.RegionId;
+            model.regions = _Repository.GetReg();
+            model.Professions = _Repository.GetProfession();
+            model.SelectedhealthprofID = hp.Profession??0;
+            model.Phonenumber = hp.PhoneNumber;
+            model.partnersdatas.Add(new Partnersdata()
+            {
+                VendorId = hp.VendorId
+            });
+            return model;
+        }
+
+        public void EditPartner(PartnersCM model,int vendorid)
+        {
+            HealthProfessional hp1 = _Repository.GetData(vendorid);
+
+            hp1.VendorName = model.BusinessName;
+            hp1.FaxNumber = model.FAXNumber;
+            hp1.PhoneNumber = model.Phonenumber;
+            hp1.Email = model.Email;
+            hp1.BusinessContact = model.BusinessContact;
+            hp1.State = _Repository.GetRegionname(model.RegionId);
+            hp1.Zip = model.Zip;
+            hp1.City = model.City;
+            hp1.Address = model.Street;
+            hp1.CreatedDate = DateTime.Now;
+            hp1.Profession = model.SelectedhealthprofID;
+             hp1.RegionId = model.RegionId;
+
+
+            _Repository.UpdateHealthProfessiontbl(hp1);
+
+        }
+
+        public void DeletePartner(int id)
+        {
+            HealthProfessional hp1 = _Repository.GetData(id);
+            hp1.IsDeleted = new BitArray(1,true);
+
+            _Repository.UpdateHealthProfessiontbl(hp1);
+        }
     }
 }
+

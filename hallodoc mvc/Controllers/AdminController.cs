@@ -123,10 +123,9 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
 
-        public IActionResult TabChange(int nav)
+        public IActionResult TabChange(int nav, bool isPartial)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
-        
             switch (nav)
             {
                 case 1:
@@ -137,8 +136,22 @@ namespace hallodoc_mvc.Controllers
                     return PartialView("Admin_Profile", _service.getprofile(admin));  
                 case 4: 
                     return PartialView("Provider", _service.GetRegions());
+                case 5:
+                    return PartialView("Scheduling");
+                case 7:
+                    return PartialView("Partners", new PartnersCM()
+                    {
+                        //partnersdatas =_service.GetAllHealthProfessionaldata(0),
+                        Professions = _service.GetProfession()
+                    });
                 case 8:
-                    return PartialView("AccountAccess", _service.getAccess());
+                    if(isPartial == true)
+                    {
+                        ViewBag.Layout = null;
+                        return PartialView("AccountAccess", _service.getAccess());
+                    }
+                    ViewBag.Layout = "_LayAdmin";
+                    return View("AccountAccess", _service.getAccess());
                 case 9:
                     return PartialView("UserAccess");
                 case 10:
@@ -148,6 +161,7 @@ namespace hallodoc_mvc.Controllers
                         roles = _service.GetRoleOfAdmin(),
                     }); 
                     
+
 
 
 
@@ -816,7 +830,7 @@ namespace hallodoc_mvc.Controllers
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
             _service.AssignRole(RoleName, selectedRoles, check, admin1);
-            return PartialView("AccountAccess", _service.getAccess());
+            return RedirectToAction("TabChange", new { nav= 8 });
         }
 
         public IActionResult EditRole(int id)
@@ -865,6 +879,11 @@ namespace hallodoc_mvc.Controllers
             _service.DeletePhy(id);
             return RedirectToAction("Admin_Dashboard");
         }
+        public IActionResult Scheduling()
+        {
+            
+            return View();
+        }
 
         public IActionResult UserAccess(int region)
         {
@@ -889,5 +908,57 @@ namespace hallodoc_mvc.Controllers
             return View(model);
         }
 
+        public IActionResult CreateShiftModal()
+        {
+            return View();
+        }
+
+        public IActionResult Partners(int professionid,string search)
+        {
+            var Partnersdata = _service.GetAllHealthProfessionaldata(professionid,search);
+            return PartialView("TablePartner", new PartnersCM()
+            {
+                Professions = _service.GetProfession(),
+                partnersdatas = Partnersdata,
+            });
+        }
+
+        public IActionResult AddBusiness()
+        {
+            PartnersCM partnersCM = new()
+            {
+                Professions = _service.GetProfession(),
+                regions = _service.getreg(),
+            };
+            return View(partnersCM);
+        }
+
+        [HttpPost]
+        public IActionResult AddBusiness(PartnersCM model)
+        {
+            _service.AddBusiness(model);
+            return RedirectToAction("Admin_Dashboard");
+        }
+
+        public IActionResult EditPartner(int id)
+        {
+           var a=  _service.GetPartnerData(id);
+    
+            return View(a);
+        }
+
+        [HttpPost]
+        public IActionResult EditPartner(PartnersCM model,int id)
+        {
+            _service.EditPartner(model,id);
+            return RedirectToAction("Admin_Dashboard");
+        }
+
+   
+        public IActionResult DeletePartner(int id)
+        {
+            _service.DeletePartner(id);
+            return RedirectToAction("Admin_Dashboard");
+        }
     }
 }

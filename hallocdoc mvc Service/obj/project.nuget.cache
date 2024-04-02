@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "43+l/mev29oTTrVo8nvslwyttbMZtBrp2VM32UUHQ1r2Aqk17XAU4xEAJba6QckN1CtpwTcWa4WlNyU8nuSqow==",
+  "dgSpecHash": "j9dADTEC2HlPb34SL/Exs4R/V4emI+DuFBEaP48TJw/MAH1I316XdQhKUUTcz/N+RbVfHylC4Hl0i2EuKX6oag==",
   "success": true,
   "projectFilePath": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallocdoc mvc Service\\hallocdoc_mvc_Service.csproj",
   "expectedPackageFiles": [
@@ -89,7 +89,7 @@
     "C:\\Users\\pca114\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\pca114\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\pca114\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\newtonsoft.json.bson\\1.0.1\\newtonsoft.json.bson.1.0.1.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\npgsql\\7.0.6\\npgsql.7.0.6.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\7.0.11\\npgsql.entityframeworkcore.postgresql.7.0.11.nupkg.sha512",
@@ -109,6 +109,8 @@
     "C:\\Users\\pca114\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\pca114\\.nuget\\packages\\syncfusion.ej2.aspnet.core\\25.1.37\\syncfusion.ej2.aspnet.core.25.1.37.nupkg.sha512",
+    "C:\\Users\\pca114\\.nuget\\packages\\syncfusion.licensing\\25.1.37\\syncfusion.licensing.25.1.37.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\pca114\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",

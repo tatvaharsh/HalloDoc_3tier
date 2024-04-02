@@ -1,0 +1,84 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.PartnersCM
+
+<div class="container">
+    <h4 class="mb-3 p-3 p-md-2 ">Vendor(s)</h4>
+    <div class="border rounded shadow p-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+            <div class="d-lg-flex gap-2">
+
+                <form role="search" class=" d-flex align-items-center border border-rounded rounded border-info mb-2">
+                    <i type="search" class="bi bi-search ms-2" style="position: absolute;"></i>
+                    <input class="form-control border-0 my-search-input ps-5" id="search" type="search"
+                           placeholder="Search Vendors" aria-label="Search" onkeyup="Partners()"> 
+                </form>
+                <form role="search" class="d-flex align-items-center border border-rounded rounded border-info mb-2">
+                    <i type="search" class="bi bi-search px-2" style="position: absolute;"></i>
+                    <select class="form-select border-0 ProfessionsDropdown ps-5" aria-label="Default select example"
+                            onchange="Partners(this.value)">
+                        <option value="">All Professions</option>
+                        @foreach (var obj in Model.Professions.ToList())
+                        {
+                            <option value="@obj.HealthProfessionalId">
+                                @obj.ProfessionName
+                            </option>
+                        }
+                    </select>
+                </form>
+            </div>
+            <div class="d-flex mb-3" id="buttonProvider" >
+                <a asp-action="AddBusiness" class="btn btn-outline-info d-md-block d-none" >
+                    <i type="search" class="bi bi-plus-lg"> </i>Add Business
+                </a>
+                <button type="button" class="btn border-info text-light d-md-none d-block px-2 py-0"
+                        onclick="AddBusiness()">
+                    <i class="bi bi-plus text-info fs-3"></i>
+                </button>
+            </div>
+        </div>
+        <div class="table-responsive d-lg-block d-none">
+           
+            <div id="TablePartnerData"></div>
+        </div>
+    </div>
+</div>
+<style>
+    #DataTables_Table_0_info, #DataTables_Table_0_paginate, #DataTables_Table_0_length {
+        display: none !important;
+    }
+</style>
+
+<script>
+    function Partners(professionid) {
+        $.ajax({
+            method: "GET",
+            url: "/Admin/Partners",
+            data: { professionid: professionid , search : document.getElementById("search").value },
+            success: function (result) {
+                $("#TablePartnerData").html(result);
+                if (professionid != 0) {
+                    $(".ProfessionsDropdown").val(professionid);
+                }
+            },
+
+            error: function () {
+                alert("Error loading partial view");
+            },
+        });
+    }
+
+
+    $.ajax({
+        method: "GET",
+        url: "/Admin/Partners",
+        data: { professionid: 0 },
+        success: function (result) {
+            $("#TablePartnerData").html(result);
+            
+        },
+
+        error: function () {
+            alert("Error loading partial view");
+        },
+    });
+</script>

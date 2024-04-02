@@ -1,0 +1,40 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.PartnersCM
+<table class="table PartnerTable">
+    <thead style="background-color: rgb(219, 219, 219);">
+        <tr>
+            <th style="background: transparent;">Profession</th>
+            <th style="background: transparent;">Business Name</th>
+            <th style="background: transparent;">Email</th>
+            <th style="background: transparent;">FAX Number</th>
+            <th style="background: transparent;">Phone Number</th>
+            <th style="background: transparent;">Business Contact</th>
+            <th style="background: transparent;">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model.partnersdatas)
+        {
+            <tr class="align-middle">
+                <td>@obj.ProfessionName</td>
+                <td>@obj.VendorName</td>
+                <td>@obj.VendorEmail</td>
+                <td>@obj.FaxNo</td>
+                <td>@obj.PhoneNo</td>
+                <td>@obj.Businesscontact</td>
+                <td>
+                    <div id="actionBtnGroup" style="display: flex;">
+                        <a asp-action="EditPartner" class="btn btn-outline-dark border-info text-info editbtn "
+                                asp-route-id="@obj.VendorId">
+                            Edit
+                        </a>
+                        <a asp-action="DeletePartner" class="btn btn-outline-dark border-info text-info delbtn ms-1 "
+                           asp-route-id="@obj.VendorId">
+                            Delete
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

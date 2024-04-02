@@ -85,5 +85,12 @@ namespace hallocdoc_mvc_Service.Interface
         List<UserAccess> GetUserAccessData(int region);
         List<Role> GetRoleOfAdmin();
         void CreateAdmin(CreateAdmin model, int admin1);
+        List<HealthProfessionalType> GetProfession();
+
+        List<Partnersdata> GetAllHealthProfessionaldata(int p,string search);
+        void AddBusiness(PartnersCM model);
+        PartnersCM GetPartnerData(int vendorid);
+        void EditPartner(PartnersCM model,int vendorid);
+        void DeletePartner(int id);
     }
 }

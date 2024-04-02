@@ -594,5 +594,48 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.PhysicianLocations.Add(pl);
             _context.SaveChanges();
         }
+
+        public List<HealthProfessionalType> GetProfession()
+        {
+            return _context.HealthProfessionalTypes.ToList();
+        }
+
+        public List<HealthProfessional> GetHealthProfession()
+        {
+          return _context.HealthProfessionals.AsEnumerable().Where(x => x.IsDeleted == null).ToList();
+        }
+
+        public string Profession(int? profession)
+        {
+            return  _context.HealthProfessionalTypes.FirstOrDefault(x => x.HealthProfessionalId == profession).ProfessionName;
+            
+        }
+
+        public List<HealthProfessional> GetHealthProfessionByProfession(int p)
+        {
+            return _context.HealthProfessionals.Where(x => x.Profession==p).ToList();
+        }
+
+        public void AddHealthProfessiontbl(HealthProfessional hp)
+        {
+            _context.HealthProfessionals.Add(hp);
+            _context.SaveChanges();
+        }
+
+        public HealthProfessional GetData(int vendorid)
+        {
+           return _context.HealthProfessionals.FirstOrDefault(x=>x.VendorId==vendorid);
+        }
+
+        public List<HealthProfessionalType> GetProfessionbyid(int? profession)
+        {
+           return _context.HealthProfessionalTypes.Where(x=>x.HealthProfessionalId==profession).ToList();   
+        }
+
+        public void UpdateHealthProfessiontbl(HealthProfessional hp)
+        {
+            _context.HealthProfessionals.Update(hp);
+            _context.SaveChanges();
+        }
     }
 }

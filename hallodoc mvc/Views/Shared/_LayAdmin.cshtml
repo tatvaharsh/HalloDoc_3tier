@@ -43,7 +43,7 @@
             $.ajax({
                 url: `/Admin/TabChange`,
                 type: 'POST',
-                data: { nav: id },
+                data: { nav: id, isPartial: true },
                 success: function (response) {
                     $("#TabContainer").html(response);
                 },

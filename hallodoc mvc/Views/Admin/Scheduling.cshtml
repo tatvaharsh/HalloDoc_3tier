@@ -1,0 +1,89 @@
+﻿<style>
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+        background-color:aqua !important;
+    }
+</style>
+
+<div class="row d-flex justify-content-center">
+
+    <div class="col-lg-8 mb-5">
+        <div class="d-flex justify-content-between mt-4 mb-4">
+            <h3>Scheduling</h3>
+            <a class="btn btn-outline-info back-btn">
+                &lt; Back
+            </a>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <select class="form-select h-100" id="role" style="width:fit-content" aria-label="Default select example">
+                <option value="" selected disabled>All Regions</option>
+            </select>
+            <div>
+                <button type="button" class="btn btn-info text-white">Providers On Call</button>
+                <button type="button" class="btn btn-info text-white">Shift for Review</button>
+                <button type="button" class="btn btn-info text-white" onclick="createshift()">Add new Shift</button>
+            </div>
+        </div>
+
+        <h4 class="mt-4">@DateTime.Now.DayOfWeek, @DateTime.Now.ToString("MMM dd, yyyy")</h4>
+
+        <div class="d-flex justify-content-end">
+            <div class="mx-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" style="color:lightpink" class="bi bi-square-fill" viewBox="0 0 16 16">
+                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" />
+                </svg>
+                <span>Pending Shifts</span>
+            </div>
+            <div class="ms-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" style="color:lightgreen" class="bi bi-square-fill" viewBox="0 0 16 16">
+                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" />
+                </svg>
+                <span>Approved Shifts</span>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <div>
+                <button type="button" class="btn btn-info text-white rounded-circle">&lt;</button>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar2-week mx-2" viewBox="0 0 16 16">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+                    <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z" />
+                </svg>
+                <button type="button" class="btn btn-info text-white rounded-circle">&gt;</button>
+            </div>
+
+            <ul class="nav nav-pills mb-3 schedulingbtn gap-2" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation" >
+                    <button class="nav-link active btn btn-info" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Day</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-profile-tab btn btn-info" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Week</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-contact-tab btn btn-info" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Month</button>
+                </li>                
+            </ul>
+        </div>
+
+        <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">Day</div>
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">Week</div>
+            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">Month</div>
+        </div>
+
+    </div>
+</div>
+<div id="schmodal"></div>
+
+<script>
+    function createshift() {
+        $('#schmodal').load('/Admin/CreateShiftModal/', () => {
+            const modal = new bootstrap.Modal(document.getElementById('createshift'));
+            modal.show();
+        });
+    }
+</script>

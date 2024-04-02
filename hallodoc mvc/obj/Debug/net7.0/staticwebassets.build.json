@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cQG52rDGTJw0O5G0SSy3DArtPL+x8Ue3rXNeKIRWoII=",
+  "Hash": "trGU4cxIv0xoo9j+5/tViUZNFc/0dmKo/Go4+PlT/pU=",
   "Source": "hallodoc mvc",
   "BasePath": "_content/hallodoc mvc",
   "Mode": "Default",
@@ -1647,6 +1647,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\PhysicianDoc\\4\\Signature.svg"
+    },
+    {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\5\\AgreementDoc.svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "PhysicianDoc/5/AgreementDoc.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\PhysicianDoc\\5\\AgreementDoc.svg"
     },
     {
       "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\5\\Photo.svg",

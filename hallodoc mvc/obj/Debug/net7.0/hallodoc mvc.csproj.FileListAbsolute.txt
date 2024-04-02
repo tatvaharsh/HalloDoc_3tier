@@ -104,6 +104,8 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\N
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\NuGet.Protocol.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\NuGet.Versioning.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\SixLabors.Fonts.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Syncfusion.EJ2.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Syncfusion.Licensing.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.CodeDom.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.Composition.AttributedModel.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\System.Composition.Convention.dll
@@ -285,6 +287,7 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\h
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.AssemblyInfoInputs.cache
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.AssemblyInfo.cs
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.csproj.CoreCompileInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.MvcApplicationPartsAssemblyInfo.cs
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.MvcApplicationPartsAssemblyInfo.cache
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.RazorAssemblyInfo.cache
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\obj\Debug\net7.0\hallodoc mvc.RazorAssemblyInfo.cs

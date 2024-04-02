@@ -112,5 +112,13 @@ namespace hallodoc_mvc_Repository.Interface
         void AddAdmintbl(Admin aD);
         void AddAdminRegiontbl(AdminRegion reg);
         void AddPhyLocation(PhysicianLocation pl);
+        List<HealthProfessionalType> GetProfession();
+        List<HealthProfessional> GetHealthProfession();
+        string Profession(int? profession);
+        List<HealthProfessional> GetHealthProfessionByProfession(int p);
+        void AddHealthProfessiontbl(HealthProfessional hp);
+        HealthProfessional GetData(int vendorid);
+        List<HealthProfessionalType> GetProfessionbyid(int? profession);
+        void UpdateHealthProfessiontbl(HealthProfessional hp);
     }
 }
