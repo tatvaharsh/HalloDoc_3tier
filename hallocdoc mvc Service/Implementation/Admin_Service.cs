@@ -9,6 +9,7 @@ using System.Collections;
 using System.Globalization;
 using System.Net;
 using System.Net.Mail;
+using System.Text;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -2156,6 +2157,81 @@ namespace hallocdoc_mvc_Service.Implementation
             hp1.IsDeleted = new BitArray(1,true);
 
             _Repository.UpdateHealthProfessiontbl(hp1);
+        }
+
+        public void CreateShift(CreateShift shift)
+        {
+            
+                Shift s = new()
+                {
+                    PhysicianId = shift.SelectedPhysicianId??0,
+                    StartDate = shift.ShiftDate,
+                    IsRepeat = shift.IsRepeat,
+                    RepeatUpto = shift.Repeat,
+                };
+                if (shift.IsRepeat && shift.Days != null)
+                {
+                    string days = "0000000";
+                    StringBuilder daysofweek = new(days);
+                    foreach (var i in shift.Days)
+                    {
+                        daysofweek[i] = '1';
+                    }
+                    s.WeekDays = daysofweek.ToString();
+                }
+                _admin.SaveTable(s);
+
+                ShiftDetail detail = new()
+                {
+                    ShiftId = s.ShiftId,
+                    ShiftDate = shift.StartDate,
+                    RegionId = shift.RegionId,
+                    StartTime = shift.StartTime,
+                    EndTime = shift.EndTime,
+                };
+                _admin.SaveTable(detail);
+
+                ShiftDetailRegion shiftRegion = new()
+                {
+                    ShiftDetailId = detail.ShiftDetailId,
+                    RegionId = shift.RegionId,
+                };
+                _admin.SaveTable(shiftRegion);
+
+
+                int currentday = (int)shift.StartDate.DayOfWeek;
+
+                while (shift.Repeat != 0 && s.WeekDays != null)
+                {
+                    for (var i = 0; i < 7; i++)
+                    {
+                        if (s.WeekDays[i] == '1')
+                        {
+                            int toAdd = i - currentday;
+                            if (toAdd < 0) { toAdd += 7; }
+
+                            ShiftDetail detail1 = new()
+                            {
+                                ShiftId = s.ShiftId,
+                                ShiftDate = shift.StartDate.AddDays(toAdd),
+                                RegionId = shift.RegionId,
+                                StartTime = shift.StartTime,
+                                EndTime = shift.EndTime,
+                            };
+                            _admin.SaveTable(detail1);
+
+                            ShiftDetailRegion shiftRegion1 = new()
+                            {
+                                ShiftDetailId = detail1.ShiftDetailId,
+                                RegionId = shift.RegionId,
+                            };
+                            _admin.SaveTable(shiftRegion1);
+                        }
+                    }
+                    shift.Repeat--;
+                    shift.StartDate = shift.StartDate.AddDays(7);
+                };
+           
         }
     }
 }

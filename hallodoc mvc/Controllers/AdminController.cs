@@ -908,10 +908,6 @@ namespace hallodoc_mvc.Controllers
             return View(model);
         }
 
-        public IActionResult CreateShiftModal()
-        {
-            return View();
-        }
 
         public IActionResult Partners(int professionid,string search)
         {
@@ -959,6 +955,30 @@ namespace hallodoc_mvc.Controllers
         {
             _service.DeletePartner(id);
             return RedirectToAction("Admin_Dashboard");
+        }
+        public IActionResult CreateShiftModal()
+        {
+            CreateShift model = new()
+            {
+                Region = _service.getreg(),
+                
+            };
+            return View(model);
+        }
+
+        public IActionResult GetPhysicianForShift(int id)
+        {
+            var phy = _service.GetPhysician(id);
+            CreateShift model = new CreateShift
+            {
+                Physicians = phy
+            };
+            return Json(phy);
+        }
+
+        public IActionResult CreateShift(CreateShift model)
+        {   
+            return View();
         }
     }
 }

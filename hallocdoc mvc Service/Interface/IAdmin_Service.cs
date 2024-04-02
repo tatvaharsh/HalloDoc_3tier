@@ -92,5 +92,6 @@ namespace hallocdoc_mvc_Service.Interface
         PartnersCM GetPartnerData(int vendorid);
         void EditPartner(PartnersCM model,int vendorid);
         void DeletePartner(int id);
+        void CreateShift(CreateShift model);
     }
 }
