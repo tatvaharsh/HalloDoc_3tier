@@ -120,5 +120,11 @@ namespace hallodoc_mvc_Repository.Interface
         HealthProfessional GetData(int vendorid);
         List<HealthProfessionalType> GetProfessionbyid(int? profession);
         void UpdateHealthProfessiontbl(HealthProfessional hp);
+        void AddShifttbl(Shift s);
+        void AddShiftDetails(ShiftDetail detail);
+        void AddShiftRegion(ShiftDetailRegion shiftRegion);
+        List<Physician> DayData();
+        void UpdateShiftDetails();
+        ShiftDetail ChangeShift(int shiftId);
     }
 }

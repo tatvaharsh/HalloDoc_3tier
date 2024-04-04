@@ -1,0 +1,114 @@
+﻿@model IEnumerable<hallodoc_mvc_Repository.ViewModel.ShiftReview>
+
+<div class="row pt-3 pb-3 mx-1">
+    <select class="form-select w-auto ms-2" onchange="sortbtregion(this.value)" id="region" aria-label="Default select example">
+        <option value="0">All Region</option>
+        @foreach (var item in Model.FirstOrDefault().regions)
+        {
+            <option value="@item.RegionId">@item.Name</option>
+        }
+    </select>
+
+    <div class="col text-end">
+
+        <button class="btn btn-success text-white me-3">
+            View Current Month Shifts
+        </button>
+        <button class="btn btn-success text-white me-3" id="approveBtn">
+            Approved Selected
+        </button>
+        <button class="btn btn-danger text-white me-3">
+            Delete Selected
+        </button>
+
+    </div>
+</div>
+<table class="table">
+  
+    <thead>
+        <tr class="bg-light text-muted h-100">
+            <th scope="col"><input id="check1" type="checkbox" /></th>
+            <th scope="col">Staff &uarr;</th>
+            <th scope="col">Day</th>
+            <th scope="col">Time</th>
+            <th scope="col">Region</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><input class="boxes fileCheckbox" type="checkbox"  value="@item.shiftdetailid"/></td>
+                <td>@item.ProviderName</td>
+                <td>@item.ShiftDate</td>
+                <td>@item.StartTime-@item.EndTime</td>
+                <td>@item.Region</td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<script>
+    var flag = false;
+    document.getElementById("check1").addEventListener('click', function () {
+        var elements = document.getElementsByClassName('boxes');
+
+        if (flag==false) {
+            for (var element of elements) {
+                element.checked = true;
+                flag=true;
+            }
+        }
+        else {
+            for(var element of elements){
+            element.checked = false;
+            flag=false;
+            }
+        }
+
+    });
+
+    $('#approveBtn').click(function () {
+        var shiftDetailsId = [];
+        var regionId = $('#regionValue').val();
+
+        $('.fileCheckbox:checked').each(function () {
+            var fileId = $(this).val();
+            shiftDetailsId.push(fileId);
+        });
+        ApproveShift(shiftDetailsId);
+    });
+
+    function ApproveShift(shiftDetailsId) {
+        event.preventDefault();
+
+        $.ajax({
+            method: "POST",
+            url: "/Admin/ApproveShift",
+            data: { shiftDetailsId: shiftDetailsId },
+            traditional: true,
+
+            success: function (result) {
+                
+                    if (shiftDetailsId.length === 0) {
+                        Swal.fire({
+                            title: "Oops!", text: "Please Select Any Shift To Proceed Ahead", icon: "error", timer: 1500, timerProgressBar: true
+                        });
+
+                    }
+                    else {
+                        Swal.fire({
+                            title: "HalloDoc", text: "Shifts Approved!!! ", icon: "success", timer: 1500, timerProgressBar: true
+                        });
+                    sortbtregion(0)
+                    }
+            },
+
+            error: function () {
+                Swal.fire("Oops!", "Something is Wrong !!!", "error");
+            }
+        });
+    }
+ 
+</script>

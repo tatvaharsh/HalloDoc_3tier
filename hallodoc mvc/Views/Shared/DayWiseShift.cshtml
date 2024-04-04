@@ -1,0 +1,137 @@
+﻿@model IEnumerable<hallodoc_mvc_Repository.ViewModel.Scheduling>
+
+
+<h4 class="mt-4">@Model.FirstOrDefault().CurrentDate.ToString("dddd, MMM dd, yyyy")</h4>
+
+<div class="d-flex justify-content-end">
+    <div class="mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" style="color:lightpink" class="bi bi-square-fill" viewBox="0 0 16 16">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" />
+        </svg>
+        <span>Pending Shifts</span>
+    </div>
+    <div class="ms-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" style="color:lightgreen" class="bi bi-square-fill" viewBox="0 0 16 16">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" />
+        </svg>
+        <span>Approved Shifts</span>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between mt-4">
+    <div>
+        <button type="button" class="btn btn-info text-white rounded-circle" onclick="AddDate(@Model.FirstOrDefault().CurrentDate.AddDays(-1).Day,@Model.FirstOrDefault().CurrentDate.AddDays(-1).Month,@Model.FirstOrDefault().CurrentDate.AddDays(-1).Year)">&lt;</button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar2-week mx-2" viewBox="0 0 16 16">
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z" />
+        </svg>
+        <button type="button" class="btn btn-info text-white rounded-circle" onclick="AddDate(@Model.FirstOrDefault().CurrentDate.AddDays(1).Day,@Model.FirstOrDefault().CurrentDate.AddDays(1).Month,@Model.FirstOrDefault().CurrentDate.AddDays(1).Year)">&gt;</button>
+    </div>
+
+    <ul class="nav nav-pills mb-3 schedulingbtn gap-2" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active btn btn-info" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" onclick="Shifttab(1)">Day</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab btn btn-info" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onclick="Shifttab(2)">Week</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact-tab btn btn-info" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false" onclick="Shifttab(3)">Month</button>
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+<div class="table-responsive rounded">
+    <table class="table table-bordered" style="width:100%;z-index:5">
+       
+        <thead id="dayshiftheader" class="dayshiftheader">
+            <tr>
+                <th>STAFF</th>
+                <th>12A</th>
+                <th>1A</th>
+                <th>2A</th>
+                <th>3A</th>
+                <th>4A</th>
+                <th>5A</th>
+                <th>6A</th>
+                <th>7A</th>
+                <th>8A</th>
+                <th>9A</th>
+                <th>10A</th>
+                <th>11A</th>
+                <th>12P</th>
+                <th>1P</th>
+                <th>2P</th>
+                <th>3P</th>
+                <th>4P</th>
+                <th>5P</th>
+                <th>6P</th>
+                <th>7P</th>
+                <th>8P</th>
+                <th>9P</th>
+                <th>10P</th>
+                <th>11P</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var physician in Model)
+            {
+                <tr>
+                    <td>@physician.Physicians.FirstName @physician.Physicians.LastName</td>
+                    @{
+                        int x = 24;
+                    }
+                    @for (int i = 0; i < x; i++)
+                    {
+                        @if (physician.shifts.Any(x => x.StartTime.Hour == i))
+                        {
+                            int diff = physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.EndTime.Hour - physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.StartTime.Hour;
+                            int temp = diff;
+                            while (diff != 0)
+                            {
+                                if (physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.Status == 0)
+                                {
+                                    <td style="background-color:lightpink; color:orangered" class="text-center"> @physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
+                                }
+                                else
+                                {
+                                    <td style="background-color:lightgreen; color:orangered" class="text-center">@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
+                                }
+                                diff--;
+                            }
+                            i += temp - 1;
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+                    }
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+<script>
+    function AddDate(day, month, year){
+            $.ajax({
+                url: `/Admin/Shifttab`,
+                type: 'POST',
+                dataType: 'html',
+            data: { id: 1, day: day, month: month, year: year },
+                // Pass your data here
+                success: function (response) {
+                    $("#ShiftTableContainer").html(response)
+                },
+                error: function () {
+                    alert('An error occurred.');
+                }
+            });
+       
+    }
+</script>

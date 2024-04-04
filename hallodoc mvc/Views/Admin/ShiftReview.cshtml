@@ -1,0 +1,45 @@
+﻿
+@{
+    Layout = "_LayAdmin";
+}
+<div class="container p-0">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between mt-3">
+                <h4 class="mt-3">Requested Shifts</h4>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container hideonmobile  rounded shadow mt-3 p-0">
+
+    
+
+    <div id="TableShiftData"></div>
+
+
+</div>
+
+
+<script>
+    sortbtregion(0);
+    function sortbtregion(id) {
+        $.ajax({
+            url: '/Admin/ShiftReviews',
+            type: 'POST',
+            dataType: 'html',
+            data: { region: id },
+            // Passyour data here
+            success: function (response) {
+                $("#TableShiftData").html(response);
+                $('#region').val(id);
+            },
+            error: function () {
+                alert('An error occurred.');
+            }
+        });
+    }
+
+
+
+</script>

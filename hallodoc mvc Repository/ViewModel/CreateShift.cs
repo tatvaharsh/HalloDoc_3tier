@@ -14,6 +14,8 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public List<Physician>? Physicians { get; set; }
 
+        public List<ShiftDetail>? ShiftDetails { get; set; }
+
         public int? SelectedPhysicianId { get; set; }
         public int SelectedRegionId { get; set; }
         public DateTime ShiftDate { get; set; }
@@ -21,6 +23,6 @@ namespace hallodoc_mvc_Repository.ViewModel
         public TimeOnly End { get; set; }   
         public List<int>? Weekday { get; set; }
         public int? Repeat { get; set;}
-        public BitArray RepeatToggle { get; set;}
+        public bool RepeatToggle { get; set;}
     }
 }

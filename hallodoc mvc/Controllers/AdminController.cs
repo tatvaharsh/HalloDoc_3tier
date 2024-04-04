@@ -137,7 +137,13 @@ namespace hallodoc_mvc.Controllers
                 case 4: 
                     return PartialView("Provider", _service.GetRegions());
                 case 5:
-                    return PartialView("Scheduling");
+                    if (isPartial == true)
+                    {
+                        ViewBag.Layout = null;
+                        return PartialView("Scheduling");
+                    }
+                    ViewBag.Layout = "_LayAdmin";
+                    return View("Scheduling", _service.GetRegions());
                 case 7:
                     return PartialView("Partners", new PartnersCM()
                     {
@@ -879,11 +885,8 @@ namespace hallodoc_mvc.Controllers
             _service.DeletePhy(id);
             return RedirectToAction("Admin_Dashboard");
         }
-        public IActionResult Scheduling()
-        {
-            
-            return View();
-        }
+
+   
 
         public IActionResult UserAccess(int region)
         {
@@ -963,7 +966,7 @@ namespace hallodoc_mvc.Controllers
                 Region = _service.getreg(),
                 
             };
-            return View(model);
+            return PartialView(model);
         }
 
         public IActionResult GetPhysicianForShift(int id)
@@ -977,8 +980,44 @@ namespace hallodoc_mvc.Controllers
         }
 
         public IActionResult CreateShift(CreateShift model)
-        {   
-            return View();
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            _service.CreateShift(model, admin1);
+            return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
+           
+        }
+        public IActionResult Shifttab(int id, int day, int month, int year) 
+        {
+            if(id == 1)
+            {
+                return PartialView("DayWiseShift", _service.GetDayWiseData(day, month, year));
+            
+            }
+            else if(id == 2)
+            {
+                return PartialView("WeekWiseShift", _service.GetWeekWiseData(day, month, year));
+            }
+            else
+            {
+                return PartialView("MonthWiseShift",_service.GetMonthWiseData(day, month, year));
+            }
+        }
+        public IActionResult ShiftReview()
+        {
+            return View(_service.GetRegions());
+        }
+        public IActionResult ShiftReviews(int region)
+        {
+            return PartialView("TableShiftData",_service.GetPendingShiftData(region));
+        }
+
+        public IActionResult ApproveShift(int[] shiftDetailsId)
+        {
+
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            _service.ApproveSelectedShift(shiftDetailsId, admin1);
+
+            return Ok();
         }
     }
 }

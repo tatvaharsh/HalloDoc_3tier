@@ -5,11 +5,13 @@ using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections;
 using System.Globalization;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -2112,15 +2114,15 @@ namespace hallocdoc_mvc_Service.Implementation
             HealthProfessional hp = _Repository.GetData(vendorid);
             model.BusinessName = hp.VendorName;
             model.FAXNumber = hp.FaxNumber;
-            model.BusinessContact=hp.BusinessContact;
+            model.BusinessContact = hp.BusinessContact;
             model.Street = hp.Address;
             model.City = hp.City;
-             model.Email = hp.Email;
+            model.Email = hp.Email;
             model.Zip = hp.Zip;
             model.RegionId = (Int32)hp.RegionId;
             model.regions = _Repository.GetReg();
             model.Professions = _Repository.GetProfession();
-            model.SelectedhealthprofID = hp.Profession??0;
+            model.SelectedhealthprofID = hp.Profession ?? 0;
             model.Phonenumber = hp.PhoneNumber;
             model.partnersdatas.Add(new Partnersdata()
             {
@@ -2129,7 +2131,7 @@ namespace hallocdoc_mvc_Service.Implementation
             return model;
         }
 
-        public void EditPartner(PartnersCM model,int vendorid)
+        public void EditPartner(PartnersCM model, int vendorid)
         {
             HealthProfessional hp1 = _Repository.GetData(vendorid);
 
@@ -2144,7 +2146,7 @@ namespace hallocdoc_mvc_Service.Implementation
             hp1.Address = model.Street;
             hp1.CreatedDate = DateTime.Now;
             hp1.Profession = model.SelectedhealthprofID;
-             hp1.RegionId = model.RegionId;
+            hp1.RegionId = model.RegionId;
 
 
             _Repository.UpdateHealthProfessiontbl(hp1);
@@ -2154,84 +2156,279 @@ namespace hallocdoc_mvc_Service.Implementation
         public void DeletePartner(int id)
         {
             HealthProfessional hp1 = _Repository.GetData(id);
-            hp1.IsDeleted = new BitArray(1,true);
+            hp1.IsDeleted = new BitArray(1, true);
 
             _Repository.UpdateHealthProfessiontbl(hp1);
         }
-
-        public void CreateShift(CreateShift shift)
+        public void CreateShift(CreateShift shift, int admin)
         {
-            
-                Shift s = new()
+
+            Shift s = new()
+            {
+                PhysicianId = shift.SelectedPhysicianId ?? 0,
+                StartDate = DateOnly.FromDateTime(shift.ShiftDate),
+                IsRepeat = shift.RepeatToggle,
+                RepeatUpto = shift.Repeat,
+                CreatedBy = admin,
+                CreatedDate = DateTime.Now
+            };
+            if (shift.Weekday != null)
+            {
+                string days = "0000000";
+                StringBuilder daysofweek = new(days);
+                foreach (var i in shift.Weekday)
                 {
-                    PhysicianId = shift.SelectedPhysicianId??0,
-                    StartDate = shift.ShiftDate,
-                    IsRepeat = shift.IsRepeat,
-                    RepeatUpto = shift.Repeat,
-                };
-                if (shift.IsRepeat && shift.Days != null)
-                {
-                    string days = "0000000";
-                    StringBuilder daysofweek = new(days);
-                    foreach (var i in shift.Days)
-                    {
-                        daysofweek[i] = '1';
-                    }
-                    s.WeekDays = daysofweek.ToString();
+                    daysofweek[i] = '1';
                 }
-                _admin.SaveTable(s);
+                s.WeekDays = daysofweek.ToString();
+            }
+            
+            _Repository.AddShifttbl(s);
 
-                ShiftDetail detail = new()
+            ShiftDetail detail = new()
+            {
+                ShiftId = s.ShiftId,
+                ShiftDate = shift.ShiftDate,
+                RegionId = shift.SelectedRegionId,
+                StartTime = shift.Start,
+                EndTime = shift.End,
+                Status = 0,//peniding=0 and approve = 1
+                IsDeleted = new BitArray(1, false),
+            };
+            _Repository.AddShiftDetails(detail);
+
+            ShiftDetailRegion shiftRegion = new()
+            {
+                ShiftDetailId = detail.ShiftDetailId,
+                RegionId = shift.SelectedRegionId,
+                IsDeleted = new BitArray(1, false),
+            };
+            _Repository.AddShiftRegion(shiftRegion);
+
+
+            int currentday = (int)shift.ShiftDate.DayOfWeek;
+
+            while (shift.Repeat != 0 && s.WeekDays != null)
+            {
+                for (var i = 0; i < 7; i++)
                 {
-                    ShiftId = s.ShiftId,
-                    ShiftDate = shift.StartDate,
-                    RegionId = shift.RegionId,
-                    StartTime = shift.StartTime,
-                    EndTime = shift.EndTime,
-                };
-                _admin.SaveTable(detail);
-
-                ShiftDetailRegion shiftRegion = new()
-                {
-                    ShiftDetailId = detail.ShiftDetailId,
-                    RegionId = shift.RegionId,
-                };
-                _admin.SaveTable(shiftRegion);
-
-
-                int currentday = (int)shift.StartDate.DayOfWeek;
-
-                while (shift.Repeat != 0 && s.WeekDays != null)
-                {
-                    for (var i = 0; i < 7; i++)
+                    if (s.WeekDays[i] == '1')
                     {
-                        if (s.WeekDays[i] == '1')
+                        int toAdd = i - currentday;
+                        if (toAdd < 0) { toAdd += 7; }
+
+                        ShiftDetail detail1 = new()
                         {
-                            int toAdd = i - currentday;
-                            if (toAdd < 0) { toAdd += 7; }
+                            ShiftId = s.ShiftId,
+                            ShiftDate = shift.ShiftDate.AddDays(toAdd),
+                            RegionId = shift.SelectedRegionId,
+                            StartTime = shift.Start,
+                            EndTime = shift.End,
+                            Status = 0,
+                            IsDeleted = new BitArray(1, false),
+                        };
+                        _Repository.AddShiftDetails(detail1);
 
-                            ShiftDetail detail1 = new()
-                            {
-                                ShiftId = s.ShiftId,
-                                ShiftDate = shift.StartDate.AddDays(toAdd),
-                                RegionId = shift.RegionId,
-                                StartTime = shift.StartTime,
-                                EndTime = shift.EndTime,
-                            };
-                            _admin.SaveTable(detail1);
+                        ShiftDetailRegion shiftRegion1 = new()
+                        {
+                            ShiftDetailId = detail1.ShiftDetailId,
+                            RegionId = shift.SelectedRegionId,
+                            IsDeleted = new BitArray(1, false),
+                        };
+                        _Repository.AddShiftRegion(shiftRegion1);
+                    }
+                }
+                shift.Repeat--;
+                shift.ShiftDate = shift.ShiftDate.AddDays(7);
+            };
 
-                            ShiftDetailRegion shiftRegion1 = new()
+        }
+
+        public List<Physician> GetPhyTbl()
+        {
+            return _Repository.getphysician();
+        }
+
+        public List<Scheduling> GetDayWiseData(int day, int month, int year)
+        {
+            List<Physician> data = _Repository.DayData();
+            List<Scheduling> schedulings = new List<Scheduling>();
+
+            DateTime date = day == 0 ? new(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day) : new(year, month, day);
+
+            foreach (var item in data)
+            {
+                Scheduling s = new()
+                {
+                    Physicians = item,
+                };
+                if (item.Shifts.Count > 0)
+                {
+                    foreach (var shifts in item.Shifts)
+                    {
+                        foreach(var shiftdetails in shifts.ShiftDetails)
+                        {
+                            if (shiftdetails.ShiftDate == date)
                             {
-                                ShiftDetailId = detail1.ShiftDetailId,
-                                RegionId = shift.RegionId,
-                            };
-                            _admin.SaveTable(shiftRegion1);
+                                ShiftDetail detail = new()
+                                {
+                                    ShiftDetailId = shifts.ShiftDetails.First().ShiftDetailId,
+                                    StartTime = shifts.ShiftDetails.First().StartTime,
+                                    EndTime = shifts.ShiftDetails.First().EndTime,
+                                    ShiftDate = shifts.ShiftDetails.First().ShiftDate,
+                                };
+                                s.shifts.Add(detail);
+                            }
+                        }
+                   
+                    }
+                }
+                schedulings.Add(s);
+                schedulings.FirstOrDefault().CurrentDate = date;
+
+            }
+            return schedulings;
+        }
+
+        public List<Scheduling>? GetWeekWiseData(int day, int month, int year)
+        {
+            List<Physician> data = _Repository.DayData();
+            List<Scheduling> schedulings = new List<Scheduling>();
+            DateTime date = day == 0 ? new(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day) : new(year, month, day);
+            date = date.AddDays(-(int)date.DayOfWeek);
+
+            foreach (var item in data)
+            {
+                Scheduling s = new()
+                {
+                    Physicians = item,
+
+                };
+                if (item.Shifts.Count > 0)
+                {
+                    foreach (var shifts in item.Shifts)
+                    {
+                        foreach (var shiftDetail in shifts.ShiftDetails)
+                        {
+
+                            if ((shiftDetail.ShiftDate - date).TotalDays < 7 && (shiftDetail.ShiftDate - date).TotalDays >= 0) //  Any(x => (x.ShiftDate - date).TotalDays<7))
+                            {
+                                ShiftDetail detail = new()
+                                {
+                                    ShiftDetailId = shiftDetail.ShiftDetailId,
+                                    StartTime = shiftDetail.StartTime,
+                                    EndTime = shiftDetail.EndTime,
+                                    ShiftDate = shiftDetail.ShiftDate,
+                                };
+                                s.shifts.Add(detail);
+                            }
                         }
                     }
-                    shift.Repeat--;
-                    shift.StartDate = shift.StartDate.AddDays(7);
+                }
+
+                s.shifts = s.shifts.GroupBy(x => x.ShiftDate).Select(x => new ShiftDetail
+                {
+                    ShiftDate = x.Key,
+                    ShiftDetailId = x.Sum(x => (x.EndTime.Hour - x.StartTime.Hour)),
+                }).ToList();
+
+                schedulings.Add(s);
+                schedulings.FirstOrDefault().CurrentDate = date;
+
+            }
+            return schedulings;
+
+        }
+
+        public List<Scheduling>? GetMonthWiseData(int day, int month, int year)
+        {
+            List<Physician> data = _Repository.DayData();
+            List<Scheduling> schedulings = new();
+
+            DateTime date = day == 0 ? new(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day) : new(year, month, day);
+
+            foreach (var item in data)
+            {
+                Scheduling s = new()
+                {
+                    Physicians = item,
                 };
-           
+                if (item.Shifts.Count > 0)
+                {
+                    foreach (var shifts in item.Shifts)
+                    {
+                        foreach (var detail in shifts.ShiftDetails)
+                        {
+                            if (detail.ShiftDate.Month == date.Month && detail.ShiftDate.Year == date.Year)
+                            {
+                                ShiftDetail detail1 = new()
+                                {
+                                    ShiftDetailId = detail.ShiftDetailId,
+                                    StartTime = detail.StartTime,
+                                    EndTime = detail.EndTime,
+                                    ShiftDate = detail.ShiftDate,
+                                };
+                                s.shifts.Add(detail1);
+                            }
+
+                        }
+                    }
+                }
+                schedulings.Add(s);
+                schedulings.FirstOrDefault().CurrentDate = date;
+
+            }
+            return schedulings;
+
+        }
+
+        public List<ShiftReview>? GetPendingShiftData(int region)
+        {
+          
+            List<Physician> physicians = _Repository.DayData();
+            List<ShiftReview> shiftReviews = new();
+            if (region != 0)
+            {
+                physicians = physicians.Where(x => x.RegionId == region).ToList();
+            };
+            foreach (var item in physicians)
+            {
+                if (item.Shifts.Count > 0)
+                {
+                    foreach (var shifts in item.Shifts)
+                    {
+                        foreach (var detail in shifts.ShiftDetails)
+                        {
+
+                            ShiftReview sr = new()
+                            {
+                                ShiftDate = detail.ShiftDate,
+                                StartTime = detail.StartTime,
+                                EndTime = detail.EndTime,
+                                ProviderName= item.FirstName,
+                                Region=_Repository.GetRegionname(item.RegionId),
+                                shiftdetailid=detail.ShiftDetailId,
+                                regions = _Repository.GetRegion(),
+
+                            };
+                            shiftReviews.Add(sr);   
+                        }
+                    }
+                }
+            }
+                return shiftReviews;
+        }
+
+        public void ApproveSelectedShift(int[] shiftDetailsId, int admin1)
+        {
+            foreach (var shiftId in shiftDetailsId)
+            {
+                var shift = _Repository.ChangeShift(shiftId);
+                shift.Status = 1;
+                shift.ModifiedDate = DateTime.Now;
+                shift.ModifiedBy = admin1;
+            }
+            _Repository.UpdateShiftDetails();
         }
     }
 }

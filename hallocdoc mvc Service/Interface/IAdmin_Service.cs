@@ -1,6 +1,7 @@
 ﻿using hallodoc_mvc_Repository.DataModels;
 using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.AspNetCore.Http;
+using Syncfusion.EJ2.Schedule;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -92,6 +93,12 @@ namespace hallocdoc_mvc_Service.Interface
         PartnersCM GetPartnerData(int vendorid);
         void EditPartner(PartnersCM model,int vendorid);
         void DeletePartner(int id);
-        void CreateShift(CreateShift model);
+        void CreateShift(CreateShift model,int admin);
+        List<Physician> GetPhyTbl();
+        List<Scheduling> GetDayWiseData(int day, int month, int year);
+        List<Scheduling>? GetWeekWiseData(int day, int month, int year);
+        List<Scheduling>? GetMonthWiseData(int day, int month, int year);
+        List<ShiftReview>? GetPendingShiftData(int region);
+        void ApproveSelectedShift(int[] shiftDetailsId, int admin1);
     }
 }

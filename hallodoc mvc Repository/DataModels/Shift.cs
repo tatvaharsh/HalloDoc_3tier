@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,9 +16,6 @@ public partial class Shift
 
     public DateOnly StartDate { get; set; }
 
-    [Column(TypeName = "bit(1)")]
-    public BitArray IsRepeat { get; set; } = null!;
-
     [StringLength(7)]
     public string? WeekDays { get; set; }
 
@@ -33,6 +29,8 @@ public partial class Shift
     [Column("IP")]
     [StringLength(20)]
     public string? Ip { get; set; }
+
+    public bool IsRepeat { get; set; }
 
     [ForeignKey("CreatedBy")]
     [InverseProperty("Shifts")]

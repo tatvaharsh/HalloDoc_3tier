@@ -637,5 +637,38 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.HealthProfessionals.Update(hp);
             _context.SaveChanges();
         }
+
+        public void AddShifttbl(Shift s)
+        {
+            _context.Shifts.Add(s);
+            _context.SaveChanges(); 
+        }
+
+        public void AddShiftDetails(ShiftDetail detail)
+        {
+            _context.ShiftDetails.Add(detail);
+            _context.SaveChanges();
+        }
+
+        public void AddShiftRegion(ShiftDetailRegion shiftRegion)
+        {
+            _context.ShiftDetailRegions.Add(shiftRegion);
+            _context.SaveChanges();
+        }
+
+        public List<Physician> DayData()
+        {
+            return _context.Physicians.Include(x => x.Shifts).ThenInclude(x => x.ShiftDetails).ToList();
+        }
+
+        public void UpdateShiftDetails()
+        {
+            _context.SaveChanges();
+        }
+
+        public ShiftDetail ChangeShift(int shiftId)
+        {
+           return _context.ShiftDetails.FirstOrDefault(i => i.ShiftDetailId == shiftId);
+        }
     }
 }
