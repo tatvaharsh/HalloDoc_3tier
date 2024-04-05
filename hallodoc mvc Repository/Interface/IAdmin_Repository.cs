@@ -1,6 +1,8 @@
 ﻿using hallodoc_mvc_Repository.DataModels;
 using hallodoc_mvc_Repository.ViewModel;
+using Syncfusion.EJ2.Charts;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -126,5 +128,13 @@ namespace hallodoc_mvc_Repository.Interface
         List<Physician> DayData();
         void UpdateShiftDetails();
         ShiftDetail ChangeShift(int shiftId);
+        ShiftDetail Shiftdetials(int shiftId);
+        
+        Physician DayDatabyPhysician(int? selectedPhysicianId);
+        List<Physician> onduty(int regionid,TimeOnly currentTime,BitArray deletedBit);
+        List<Physician> offduty(int regionId, TimeOnly currentTime, BitArray deletedBit);
+        ShiftDetail GetShiftDetails(int shiftdetailid);
+        void Update(ShiftDetail shiftDetail);
+        int getAspid(int admin1);
     }
 }

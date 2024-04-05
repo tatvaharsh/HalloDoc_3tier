@@ -12,6 +12,8 @@
     }
 </style>
 
+<Partial name="_Toast" />
+
 <div class="row d-flex justify-content-center">
 
     <div class="col-lg-8 mb-5">
@@ -27,7 +29,7 @@
                 <option value="" selected disabled>All Regions</option>
             </select>
             <div>
-                <button type="button" class="btn btn-info text-white">Providers On Call</button>
+                <button type="button" class="btn btn-info text-white" onclick="GetOnCall(0)">Providers On Call</button>
                 <a asp-action="ShiftReview" type="button" class="btn btn-info text-white" >Shift for Review</a>
                 <button type="button" class="btn btn-info text-white" onclick="createshift()">Add new Shift</button>
             </div>
@@ -79,5 +81,20 @@
         },
     });
 
-
+    function GetOnCall(regionid) {
+        $.ajax({
+            method: "GET",
+            url: "/Admin/GetOnCall",
+            data: { regionid: regionid },
+            success: function (res) {
+                if (res) {
+                    $('#TabContainer').html(res);
+                    $('#MDsRegion').val(regionid);
+                }
+            },
+            error: function () {
+                Swal.fire("Oops!", "Something is Wrong !!!", "error");
+            }
+        });
+    }
 </script>

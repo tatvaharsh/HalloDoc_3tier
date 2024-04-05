@@ -104,10 +104,22 @@
                                 {
                                     if (shift.ShiftDate.Day == k)
                                     {
-                                        <div class="p-1 m-1" style="background-color:lightcoral">
-                                            @shift.StartTime - @shift.EndTime
-                                            <div>(@item.Physicians.FirstName @item.Physicians.LastName)</div>
-                                        </div>
+                                        if (shift.Status == 0)
+                                        {
+                                            <div class="p-1 m-1" style="background-color:lightcoral">
+                                                @shift.StartTime - @shift.EndTime
+                                                <div>(@item.Physicians.FirstName @item.Physicians.LastName)</div>
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="p-1 m-1" style="background-color:lightgreen">
+                                                @shift.StartTime - @shift.EndTime
+                                                <div>(@item.Physicians.FirstName @item.Physicians.LastName)</div>
+                                            </div>
+                                        }
+
                                     }
                                 }
                             }

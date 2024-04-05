@@ -982,7 +982,12 @@ namespace hallodoc_mvc.Controllers
         public IActionResult CreateShift(CreateShift model)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
-            _service.CreateShift(model, admin1);
+           bool flag= _service.CreateShift(model, admin1);
+            if (!flag)
+            {
+                TempData["error"] = "Shift has been clashed";
+                return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
+            }
             return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
            
         }
@@ -1018,6 +1023,54 @@ namespace hallodoc_mvc.Controllers
             _service.ApproveSelectedShift(shiftDetailsId, admin1);
 
             return Ok();
+        }
+
+        public IActionResult DeleteSelectedShift(int[] shiftDetailsId)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+
+            _service.DeleteShiftReview(shiftDetailsId, admin1);
+
+            return Ok();
+        }
+        [HttpGet]
+        public IActionResult GetOnCall(int regionid)
+        {
+            var MdsCallModal = _service.GetOnCallDetails(regionid);
+            return PartialView("MdOnCall", MdsCallModal);
+        }
+
+        [HttpGet]
+        public IActionResult EditShift(int shiftdetailid)
+        {
+            return PartialView("EditShift", _service.EditShift(shiftdetailid));
+        }
+
+        [HttpPost]
+        public IActionResult EditShift(EditShift editShift, int shiftdetailid)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            int adminid = _service.GetAspId(admin1);
+            _service.UpdateShift(editShift, shiftdetailid, adminid);
+            TempData["success"] = "Shift Updated Successfully!!!";
+            return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
+        }
+        public IActionResult ChangeShiftStatus(int shiftdetailid)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            int adminid = _service.GetAspId(admin1);
+           
+            _service.ChangeShiftStatus(shiftdetailid, adminid);
+            TempData["success"] = "Shift Updated Successfully!!!";
+            return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
+        }
+        public IActionResult DeleteShiftViaModal(int shiftdetailid)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            int adminid = _service.GetAspId(admin1);
+            _service.DeleteShiftViaModal(shiftdetailid, adminid);
+            TempData["success"] = "Shift Updated Successfully!!!";
+            return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
         }
     }
 }

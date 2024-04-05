@@ -3,7 +3,11 @@ using hallodoc_mvc_Repository.DataModels;
 using hallodoc_mvc_Repository.Interface;
 using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Syncfusion.EJ2.Charts;
+using Syncfusion.EJ2.CircularGauge;
+using Syncfusion.EJ2.Spreadsheet;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -658,7 +662,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<Physician> DayData()
         {
-            return _context.Physicians.Include(x => x.Shifts).ThenInclude(x => x.ShiftDetails).ToList();
+            return _context.Physicians.Include(x => x.Shifts).ThenInclude(x => x.ShiftDetails.Where(x=>x.IsDeleted == new BitArray(1,false))).ToList();
         }
 
         public void UpdateShiftDetails()
@@ -669,6 +673,64 @@ namespace hallodoc_mvc_Repository.Implementation
         public ShiftDetail ChangeShift(int shiftId)
         {
            return _context.ShiftDetails.FirstOrDefault(i => i.ShiftDetailId == shiftId);
+        }
+
+        public ShiftDetail Shiftdetials(int shiftId)
+        {
+            return _context.ShiftDetails.FirstOrDefault(i => i.ShiftDetailId == shiftId);
+        }
+
+        
+
+        public Physician DayDatabyPhysician(int? selectedPhysicianId)
+        {
+            return _context.Physicians.Include(s => s.Shifts).ThenInclude(s => s.ShiftDetails).FirstOrDefault(s => s.PhysicianId == selectedPhysicianId)??new();
+        }
+
+        public List<Physician> onduty(int regionid,TimeOnly currentTime,BitArray deletedBit)
+        {
+           return _context.ShiftDetails
+                .Include(sd => sd.Shift.Physician)
+            .Where(sd => (regionid == 0 || sd.RegionId == regionid) &&
+            sd.ShiftDate.Date == DateTime.Today &&
+                             currentTime >= sd.StartTime &&
+                             currentTime < sd.EndTime &&
+                             sd.IsDeleted.Equals(deletedBit))
+                .Select(sd => sd.Shift.Physician)
+                .Distinct()
+                .ToList();
+        }
+
+        public List<Physician> offduty(int regionId, TimeOnly currentTime, BitArray deletedBit)
+        {
+           var a= _context.Physicians
+                .Include(p => p.PhysicianRegions)
+                .Where(p => (regionId == 0 || p.RegionId==regionId) &&
+                            !_context.ShiftDetails.Any(sd => sd.Shift.PhysicianId == p.PhysicianId &&
+                                                               sd.ShiftDate.Date == DateTime.Today &&
+                                                               currentTime >= sd.StartTime &&
+                                                               currentTime <= sd.EndTime &&
+                                                               sd.IsDeleted.Equals(deletedBit)) && p.IsDeleted == null)
+                .ToList();
+
+            //a = a.Where(x => x.RegionId == regionId).ToList();
+            return a;
+        }
+
+        public ShiftDetail GetShiftDetails(int shiftdetailid)
+        {
+            return _context.ShiftDetails.Include(x => x.Shift).FirstOrDefault(x => x.ShiftDetailId == shiftdetailid);
+        }
+
+        public void Update(ShiftDetail shiftDetail)
+        {
+            _context.ShiftDetails.Update(shiftDetail);
+            _context.SaveChanges();
+        }
+
+        public int getAspid(int admin1)
+        {
+            return _context.Admins.FirstOrDefault(x => x.AdminId == admin1).AspNetUserId;
         }
     }
 }

@@ -93,12 +93,19 @@ namespace hallocdoc_mvc_Service.Interface
         PartnersCM GetPartnerData(int vendorid);
         void EditPartner(PartnersCM model,int vendorid);
         void DeletePartner(int id);
-        void CreateShift(CreateShift model,int admin);
+        bool     CreateShift(CreateShift model,int admin);
         List<Physician> GetPhyTbl();
         List<Scheduling> GetDayWiseData(int day, int month, int year);
         List<Scheduling>? GetWeekWiseData(int day, int month, int year);
         List<Scheduling>? GetMonthWiseData(int day, int month, int year);
         List<ShiftReview>? GetPendingShiftData(int region);
         void ApproveSelectedShift(int[] shiftDetailsId, int admin1);
+        void DeleteShiftReview(int[] shiftDetailsId, int admin1);
+        OnCallModal GetOnCallDetails(int regionid);
+        EditShift EditShift(int shiftdetailid);
+        void UpdateShift(EditShift editShift, int shiftdetailid, int adminid);
+        int GetAspId(int admin1);
+        void ChangeShiftStatus(int shiftdetailid, int adminid);
+        void DeleteShiftViaModal(int shiftdetailid, int adminid);
     }
 }

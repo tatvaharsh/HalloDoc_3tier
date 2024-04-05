@@ -42,12 +42,12 @@
 </div>
 
 
-
+<div id="editshift"></div>
 
 
 <div class="table-responsive rounded">
     <table class="table table-bordered" style="width:100%;z-index:5">
-       
+
         <thead id="dayshiftheader" class="dayshiftheader">
             <tr>
                 <th>STAFF</th>
@@ -95,12 +95,14 @@
                             {
                                 if (physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.Status == 0)
                                 {
-                                    <td style="background-color:lightpink; color:orangered" class="text-center"> @physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
+                                    <td style="background-color:lightpink; color:orangered" class="text-center" onclick="openeditmodal(@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i).ShiftDetailId)"> @physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
                                 }
                                 else
                                 {
-                                    <td style="background-color:lightgreen; color:orangered" class="text-center">@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
+
+                                    <td style="background-color:lightgreen; color:orangered" class="text-center" onclick="openeditmodal(@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i).ShiftDetailId)">@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
                                 }
+
                                 diff--;
                             }
                             i += temp - 1;
@@ -118,20 +120,28 @@
 
 </div>
 <script>
-    function AddDate(day, month, year){
-            $.ajax({
-                url: `/Admin/Shifttab`,
-                type: 'POST',
-                dataType: 'html',
+    function AddDate(day, month, year) {
+        $.ajax({
+            url: `/Admin/Shifttab`,
+            type: 'POST',
+            dataType: 'html',
             data: { id: 1, day: day, month: month, year: year },
-                // Pass your data here
-                success: function (response) {
-                    $("#ShiftTableContainer").html(response)
-                },
-                error: function () {
-                    alert('An error occurred.');
-                }
-            });
-       
+            // Pass your data here
+            success: function (response) {
+                $("#ShiftTableContainer").html(response)
+            },
+            error: function () {
+                alert('An error occurred.');
+            }
+        });
+
+    }
+
+
+    function openeditmodal(id) {
+        $('#editshift').load('/Admin/EditShift?shiftdetailid=' + id, () => {
+            const modal = new bootstrap.Modal(document.getElementById('editshiftmodal'));
+            modal.show();
+        });
     }
 </script>

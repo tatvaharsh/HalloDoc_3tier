@@ -5,6 +5,7 @@ using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections;
 using System.Globalization;
@@ -2160,9 +2161,28 @@ namespace hallocdoc_mvc_Service.Implementation
 
             _Repository.UpdateHealthProfessiontbl(hp1);
         }
-        public void CreateShift(CreateShift shift, int admin)
+        public bool CreateShift(CreateShift shift, int admin)
         {
+            Physician data = _Repository.DayDatabyPhysician(shift.SelectedPhysicianId);
+            bool flag = true;
+            foreach (var item in data.Shifts)
+            {
+                foreach (var item2 in item.ShiftDetails)
+                {
+                    DateOnly date = DateOnly.FromDateTime(item2.ShiftDate);
+                    DateOnly date2 = DateOnly.FromDateTime(shift.ShiftDate);
 
+                    if (date == date2 && shift.Start.Hour < item2.EndTime.Hour && shift.End.Hour > item2.StartTime.Hour)
+                    {
+                        flag = false;
+                    }
+
+                }
+            }
+            if (!flag)
+            {
+                return false;
+            }
             Shift s = new()
             {
                 PhysicianId = shift.SelectedPhysicianId ?? 0,
@@ -2182,7 +2202,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 }
                 s.WeekDays = daysofweek.ToString();
             }
-            
+
             _Repository.AddShifttbl(s);
 
             ShiftDetail detail = new()
@@ -2195,7 +2215,10 @@ namespace hallocdoc_mvc_Service.Implementation
                 Status = 0,//peniding=0 and approve = 1
                 IsDeleted = new BitArray(1, false),
             };
+            
             _Repository.AddShiftDetails(detail);
+
+            
 
             ShiftDetailRegion shiftRegion = new()
             {
@@ -2227,6 +2250,29 @@ namespace hallocdoc_mvc_Service.Implementation
                             Status = 0,
                             IsDeleted = new BitArray(1, false),
                         };
+
+
+                        bool flag2 = true;
+                        foreach (var item in data.Shifts)
+                        {
+                            foreach (var item2 in item.ShiftDetails)
+                            {
+                                DateOnly date = DateOnly.FromDateTime(item2.ShiftDate);
+                                DateOnly date2 = DateOnly.FromDateTime(detail1.ShiftDate);
+
+                                if (date == date2 && detail1.StartTime.Hour < item2.EndTime.Hour && detail1.EndTime.Hour > item2.StartTime.Hour)
+                                {
+                                    flag2 = false;
+                                }
+
+                            }
+                        }
+                        if (!flag2)
+                        {
+                            return false;
+                        }
+
+
                         _Repository.AddShiftDetails(detail1);
 
                         ShiftDetailRegion shiftRegion1 = new()
@@ -2241,7 +2287,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 shift.Repeat--;
                 shift.ShiftDate = shift.ShiftDate.AddDays(7);
             };
-
+            return true;
         }
 
         public List<Physician> GetPhyTbl()
@@ -2266,21 +2312,22 @@ namespace hallocdoc_mvc_Service.Implementation
                 {
                     foreach (var shifts in item.Shifts)
                     {
-                        foreach(var shiftdetails in shifts.ShiftDetails)
+                        foreach (var shiftdetails in shifts.ShiftDetails)
                         {
                             if (shiftdetails.ShiftDate == date)
                             {
                                 ShiftDetail detail = new()
                                 {
-                                    ShiftDetailId = shifts.ShiftDetails.First().ShiftDetailId,
-                                    StartTime = shifts.ShiftDetails.First().StartTime,
-                                    EndTime = shifts.ShiftDetails.First().EndTime,
-                                    ShiftDate = shifts.ShiftDetails.First().ShiftDate,
+                                    ShiftDetailId = shifts.ShiftDetails.First(X=>X.ShiftDate==date).ShiftDetailId,
+                                    StartTime = shifts.ShiftDetails.First(X => X.ShiftDate == date).StartTime,
+                                    EndTime = shifts.ShiftDetails.First(X => X.ShiftDate == date).EndTime,
+                                    ShiftDate = shifts.ShiftDetails.First(X => X.ShiftDate == date).ShiftDate,
+                                    Status = shifts.ShiftDetails.First(X => X.ShiftDate == date).Status,
                                 };
                                 s.shifts.Add(detail);
                             }
                         }
-                   
+
                     }
                 }
                 schedulings.Add(s);
@@ -2367,6 +2414,7 @@ namespace hallocdoc_mvc_Service.Implementation
                                     StartTime = detail.StartTime,
                                     EndTime = detail.EndTime,
                                     ShiftDate = detail.ShiftDate,
+                                    Status =detail.Status,
                                 };
                                 s.shifts.Add(detail1);
                             }
@@ -2384,7 +2432,8 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public List<ShiftReview>? GetPendingShiftData(int region)
         {
-          
+
+
             List<Physician> physicians = _Repository.DayData();
             List<ShiftReview> shiftReviews = new();
             if (region != 0)
@@ -2405,18 +2454,19 @@ namespace hallocdoc_mvc_Service.Implementation
                                 ShiftDate = detail.ShiftDate,
                                 StartTime = detail.StartTime,
                                 EndTime = detail.EndTime,
-                                ProviderName= item.FirstName,
-                                Region=_Repository.GetRegionname(item.RegionId),
-                                shiftdetailid=detail.ShiftDetailId,
+                                ProviderName = item.FirstName,
+                                Region = _Repository.GetRegionname(item.RegionId),
+                                shiftdetailid = detail.ShiftDetailId,
                                 regions = _Repository.GetRegion(),
 
                             };
-                            shiftReviews.Add(sr);   
+                            shiftReviews.Add(sr);
                         }
                     }
                 }
             }
-                return shiftReviews;
+
+            return shiftReviews;
         }
 
         public void ApproveSelectedShift(int[] shiftDetailsId, int admin1)
@@ -2429,6 +2479,107 @@ namespace hallocdoc_mvc_Service.Implementation
                 shift.ModifiedBy = admin1;
             }
             _Repository.UpdateShiftDetails();
+        }
+
+
+        public void DeleteShiftReview(int[] shiftDetailsId, int admin1)
+        {
+            foreach (var shiftId in shiftDetailsId)
+            {
+                var shift = _Repository.Shiftdetials(shiftId);
+                shift.IsDeleted = new BitArray(1, true);
+                shift.ModifiedDate = DateTime.Now;
+                shift.ModifiedBy = admin1;
+
+            }
+            _Repository.UpdateShiftDetails();
+        }
+
+        public OnCallModal GetOnCallDetails(int regionId)
+        {
+            var currentTime = new TimeOnly(DateTime.Now.Hour, DateTime.Now.Minute);
+            BitArray deletedBit = new BitArray(new[] { false });
+
+            var onDutyQuery = _Repository.onduty(regionId, currentTime, deletedBit);
+
+
+            var offDutyQuery = _Repository.offduty(regionId, currentTime, deletedBit);
+            var onCallModal = new OnCallModal
+            {
+                OnCall = onDutyQuery,
+                OffDuty = offDutyQuery,
+                regions = _Repository.GetRegion(),
+            };
+
+            return onCallModal;
+        }
+
+        public EditShift EditShift(int shiftdetailid)
+        {
+            ShiftDetail shiftDetail = _Repository.GetShiftDetails(shiftdetailid);
+            DateOnly date = DateOnly.FromDateTime(DateTime.Now);
+            int Hour = DateTime.Now.Hour;
+            bool flag = true;
+            //if(DateOnly.FromDateTime(shiftDetail.ShiftDate)<=date && (shiftDetail.StartTime.Hour<Hour|| DateOnly.FromDateTime(shiftDetail.ShiftDate) < date))
+            //{
+            //    flag = false;
+            //}
+
+            if(shiftDetail.ShiftDate<DateTime.Now && shiftDetail.StartTime.Hour < DateTime.Now.Hour)
+            {
+                flag = false;
+            }
+            EditShift edit = new()
+            {
+                Regions = _Repository.GetRegion(),
+                Physicians = _Repository.getphysician(),
+                SelectedRegion = shiftDetail.RegionId ?? 0,
+                SelectedPhy = shiftDetail.Shift.PhysicianId,
+                ShftDate = shiftDetail.ShiftDate,
+                StartTime = shiftDetail.StartTime,
+                Status = shiftDetail.Status,
+                EndTime = shiftDetail.EndTime,
+                ShiftDetailId = shiftdetailid,
+                isEditable = flag,
+            };
+            return edit;
+        
+            
+          
+        }
+
+        public void UpdateShift(EditShift editShift, int shiftdetailid, int adminid)
+        {
+            ShiftDetail shiftDetail = _Repository.GetShiftDetails(shiftdetailid);
+            shiftDetail.ShiftDate = editShift.ShftDate;
+            shiftDetail.StartTime = editShift.StartTime;
+            shiftDetail.EndTime = editShift.EndTime;
+            shiftDetail.ModifiedDate = DateTime.Now;
+            shiftDetail.ModifiedBy = adminid;
+            _Repository.Update(shiftDetail);
+        }
+
+        public int GetAspId(int admin1)
+        {
+            return _Repository.getAspid(admin1);
+        }
+
+        public void ChangeShiftStatus(int shiftdetailid, int adminid)
+        {
+            ShiftDetail detail = _Repository.GetShiftDetails(shiftdetailid);
+            detail.Status = (short)(detail.Status == 1 ? 0 : 1);
+            detail.ModifiedBy = adminid;
+            detail.ModifiedDate = DateTime.Now;
+            _Repository.Update(detail);
+        }
+
+        public void DeleteShiftViaModal(int shiftdetailid, int adminid)
+        {
+            ShiftDetail detail = _Repository.GetShiftDetails(shiftdetailid);
+            detail.IsDeleted = new BitArray(1,true);
+            detail.ModifiedBy = adminid;
+            detail.ModifiedDate = DateTime.Now;
+            _Repository.Update(detail);
         }
     }
 }
