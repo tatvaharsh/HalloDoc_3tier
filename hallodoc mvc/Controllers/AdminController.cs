@@ -16,6 +16,8 @@ using System.IdentityModel.Tokens.Jwt;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using NuGet.Protocol.Core.Types;
+using System.Reflection;
+using DocumentFormat.OpenXml.VariantTypes;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -137,11 +139,14 @@ namespace hallodoc_mvc.Controllers
                 case 4: 
                     return PartialView("Provider", _service.GetRegions());
                 case 5:
+                    
                     if (isPartial == true)
                     {
                         ViewBag.Layout = null;
-                        return PartialView("Scheduling");
+                        
+                        return PartialView("Scheduling", _service.GetRegions());
                     }
+                   
                     ViewBag.Layout = "_LayAdmin";
                     return View("Scheduling", _service.GetRegions());
                 case 7:
@@ -165,8 +170,47 @@ namespace hallodoc_mvc.Controllers
                     {
                         reg = _service.getreg(),
                         roles = _service.GetRoleOfAdmin(),
-                    }); 
-                    
+                    });
+                case 11:
+                    if (isPartial == true)
+                    {
+                        ViewBag.Layout = null;
+                        return PartialView("PatientHistory");
+                    }
+                    ViewBag.Layout = "_LayAdmin";
+                    return View("PatientHistory");
+                case 12:
+                    if (isPartial == true)
+                    {
+                        ViewBag.Layout = null;
+                        return PartialView("EmailLog");
+                    }
+                    ViewBag.Layout = "_LayAdmin";
+                    return View("EmailLog");
+                case 14:
+                    if (isPartial == true)
+                    {
+                        ViewBag.Layout = null;
+                        return PartialView("SearchRecord", new AdminRecord()
+                        {
+                            ReqType = _service.GetRequestTypes(),
+                        });
+                    }
+                    ViewBag.Layout = "_LayAdmin";
+                    return View("SearchRecord", new AdminRecord()
+                    {
+                        ReqType = _service.GetRequestTypes(),
+                    });
+                case 15:
+                    if (isPartial == true)
+                    {
+                        ViewBag.Layout = null;
+                        return PartialView("BlockHistory");
+                    }
+                    ViewBag.Layout = "_LayAdmin";
+                    return View("BlockHistory");
+
+
 
 
 
@@ -381,7 +425,8 @@ namespace hallodoc_mvc.Controllers
   
         public IActionResult SendEmail(int id)
         {
-            _service.SendEmail(id);
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            _service.SendEmail(id,admin);
             return RedirectToAction(nameof(ViewUpload), "Admin", new { id = id });
         }
         public IActionResult Order(Order md)
@@ -456,9 +501,10 @@ namespace hallodoc_mvc.Controllers
         [HttpPost]
         public IActionResult SendAgreement(int Id, ModalData md)
         {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
             var token=_jwtService.GenerateJwtTokenByEmail(md.email);
 
-            _service.SendAgreementMail(Id,md,token);
+            _service.SendAgreementMail(Id,md,token,admin);
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
         public IActionResult Close(int Id)
@@ -532,10 +578,11 @@ namespace hallodoc_mvc.Controllers
         [HttpPost]
         public IActionResult Sendlink(ViewCase model)
         {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
             //var accountSid = _configuration["Twilio:accountSid"];
             //var authToken = _configuration["Twilio:authToken"];
             //var twilionumber = _configuration["Twilio:twilioNumber"];
-       
+
 
             //var messageBody = $"Hello {model.FirstName} {model.LastName},\nClick the following link to create new request in our portal,\nhttp://localhost:5198/Home/submit_screen\n\n\nRegards,\nHalloDoc";
 
@@ -547,7 +594,7 @@ namespace hallodoc_mvc.Controllers
             //    to: new Twilio.Types.PhoneNumber("+91" + model.PhoneNumber)
             //);
 
-            _service.sendlink(model);
+            _service.sendlink(model, admin1);
             return RedirectToAction("Admin_Dashboard");
         }
         public IActionResult RequestSupport()
@@ -734,7 +781,7 @@ namespace hallodoc_mvc.Controllers
             if(model.AdminData.Mobile?.Length != 10)
             {
                 TempData["error"] = "Enter Valid MobileNumber";
-                return RedirectToAction("Admin_Dashboard");
+                return RedirectToAction(nameof(TabChange), new { nav = 3, isPartial = false });
             }
 
             int admin = (int)HttpContext.Session.GetInt32("Id");
@@ -806,7 +853,8 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult SendEmailOrMessage(int id, ModalData md)
         {
-            _service.Sendit(id, md);
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            _service.Sendit(id, md,admin1);
             return RedirectToAction("Provider");
         }
 
@@ -959,13 +1007,15 @@ namespace hallodoc_mvc.Controllers
             _service.DeletePartner(id);
             return RedirectToAction("Admin_Dashboard");
         }
-        public IActionResult CreateShiftModal()
+        public IActionResult CreateShiftModal(int id)
         {
+            
             CreateShift model = new()
             {
                 Region = _service.getreg(),
                 
             };
+            
             return PartialView(model);
         }
 
@@ -981,21 +1031,23 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult CreateShift(CreateShift model)
         {
+          
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
            bool flag= _service.CreateShift(model, admin1);
             if (!flag)
             {
                 TempData["error"] = "Shift has been clashed";
-                return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
+                return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false});
             }
             return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
            
         }
-        public IActionResult Shifttab(int id, int day, int month, int year) 
+        public IActionResult Shifttab(int id, int day, int month, int year,int region) 
         {
             if(id == 1)
             {
-                return PartialView("DayWiseShift", _service.GetDayWiseData(day, month, year));
+                var a = _service.GetDayWiseData(day, month, year, region);
+                return PartialView("DayWiseShift", a);
             
             }
             else if(id == 2)
@@ -1072,5 +1124,132 @@ namespace hallodoc_mvc.Controllers
             TempData["success"] = "Shift Updated Successfully!!!";
             return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
         }
+        public IActionResult PatientHistoryTable(string? fname, string? lname, string? email, string? phone)
+        {
+            List<PatientHistoryTable> model = _service.PatientHistoryTable(fname, lname, email, phone);
+            return PartialView("PatientHistoryTable", model);
+        }
+        public IActionResult PatientRecord(int id)
+        {
+            List<PatientRecord> model = _service.PatientRecord(id);
+            return View("PatientRecord", model);
+        }
+
+        public IActionResult SearchRecord(AdminRecord model)
+        {
+            model.ReqType = _service.GetRequestTypes();
+
+            return PartialView(model);
+        }
+
+
+        [HttpPost]
+        public IActionResult _SearchRecordsTable(AdminRecord model, int status, string mobile, string email, string pname, DateTime tdate, DateTime fdate, int reqtype, string searchstr)
+        {
+       
+            model = _service.getSearchRecordData(model);
+            if (!string.IsNullOrWhiteSpace(searchstr))
+            {
+                model.Data = model.Data.Where(x => x.FirstName.ToLower().Contains(searchstr.ToLower())).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(mobile))
+            {
+                model.Data = model.Data.Where(x => x.PhoneNumber.ToLower().Contains(mobile.ToLower())).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                model.Data = model.Data.Where(x => x.Email.ToLower().Contains(email.ToLower())).ToList();
+            }
+      
+            if (status != 0)
+            {
+                int[] st = new int[1];
+                switch (status)
+                {
+                    case 1: st = new int[] { 1 };break;
+                    case 2: st = new int[] { 2 };break;
+                    case 3: st = new int[] { 4,5 };break;
+                    case 4: st = new int[] { 6 };break;
+                    case 5: st = new int[] { 3,7,8 };break;
+                    case 6: st = new int[] { 9 };break;
+                }
+                model.Data = model.Data.Where(x => st.Any(y => y == x.Request.Status)).ToList();
+
+            }
+            if (reqtype != 0)
+            {
+
+                model.Data = model.Data.Where(x => x.Request.RequestTypeId == reqtype).ToList();
+
+            }
+            if (fdate != DateTime.MinValue)
+            {
+
+                model.Data = model.Data.Where(x => x.Request.CreatedDate > fdate).OrderBy(x => x.Request.CreatedDate).ToList();
+
+            }
+
+            if (tdate != DateTime.MinValue)
+            {
+                model.Data = model.Data.Where(x => x.Request.CreatedDate < tdate).OrderBy(x => x.Request.CreatedDate).ToList();
+            }
+
+            if (tdate != DateTime.MinValue && tdate != DateTime.MinValue)
+            {
+                model.Data = model.Data.Where(x => x.Request.CreatedDate > fdate && x.Request.CreatedDate < tdate).OrderBy(x => x.Request.CreatedDate).ToList();
+            }
+
+
+
+            return PartialView(model);
+        }
+
+        public IActionResult DeleteAccountRecord(int id)
+        {
+            _service.deleteRequest(id)
+;
+            return RedirectToAction(nameof(TabChange), new { nav = 14, isPartial = false });
+        }
+      
+        [HttpPost]
+        public IActionResult _BlockHistoryTable(string searchstr,DateTime date ,string email,string mobile)
+        {
+            var a = _service.getBlockHistoryData();
+            if (!string.IsNullOrWhiteSpace(searchstr))
+            {
+                a.blockRequests = a.blockRequests.Where(x => x.Request.RequestClients.First().FirstName.Contains(searchstr, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(mobile))
+            {
+                a.blockRequests = a.blockRequests.Where(x => x.PhoneNumber.Contains(mobile, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                a.blockRequests = a.blockRequests.Where(x => x.Email.Contains(email, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (date != DateTime.MinValue)
+            {
+                a.blockRequests = a.blockRequests.Where(x => x.CreatedDate < date).OrderBy(x => x.CreatedDate).ToList();
+            }
+            return PartialView(a);
+        }
+
+        public IActionResult UnblockAccount(int id)
+        {
+            _service.Unblock(id);
+            return RedirectToAction(nameof(TabChange), new { nav = 15, isPartial = false });
+        }
+
+        public IActionResult EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate)
+        {
+            return PartialView("_EmailLogsTable", _service.EmailLogs(role, name, email, createdate, sentdate));
+        }
+
+
+
+
+
+
     }
 }

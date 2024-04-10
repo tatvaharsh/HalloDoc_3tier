@@ -70,6 +70,9 @@ public partial class Admin
     [InverseProperty("AdminCreatedByNavigations")]
     public virtual AspNetUser CreatedByNavigation { get; set; } = null!;
 
+    [InverseProperty("Admin")]
+    public virtual ICollection<EmailLog> EmailLogs { get; set; } = new List<EmailLog>();
+
     [ForeignKey("ModifiedBy")]
     [InverseProperty("AdminModifiedByNavigations")]
     public virtual AspNetUser? ModifiedByNavigation { get; set; }

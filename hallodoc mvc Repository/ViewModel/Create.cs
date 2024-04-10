@@ -17,6 +17,8 @@ namespace hallodoc_mvc_Repository.ViewModel
         public string UserName { get; set; } = null!;
 
         public string? PasswordHash { get; set; }
+        [Compare("PasswordHash", ErrorMessage = "Passwords do not match")]
+        public string? CPasswordHash { get; set; }
 
 
     }

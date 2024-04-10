@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -42,10 +41,25 @@ public partial class EmailLog
     [Column(TypeName = "timestamp without time zone")]
     public DateTime? SentDate { get; set; }
 
-    [Column(TypeName = "bit(1)")]
-    public BitArray? IsEmailSent { get; set; }
-
     public int? SentTries { get; set; }
 
     public int? Action { get; set; }
+
+    public bool? IsEmailSent { get; set; }
+
+    [ForeignKey("AdminId")]
+    [InverseProperty("EmailLogs")]
+    public virtual Admin? Admin { get; set; }
+
+    [ForeignKey("PhysicianId")]
+    [InverseProperty("EmailLogs")]
+    public virtual Physician? Physician { get; set; }
+
+    [ForeignKey("RequestId")]
+    [InverseProperty("EmailLogs")]
+    public virtual Request? Request { get; set; }
+
+    [ForeignKey("RoleId")]
+    [InverseProperty("EmailLogs")]
+    public virtual Role? Role { get; set; }
 }

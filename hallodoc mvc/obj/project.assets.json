@@ -4921,6 +4921,19 @@
           }
         }
       },
+      "System.Web.Helpers.Crypto/3.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/System.Web.Helpers.Crypto.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/net40/System.Web.Helpers.Crypto.dll": {
+            "related": ".pdb"
+          }
+        }
+      },
       "System.Windows.Extensions/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -5081,6 +5094,7 @@
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.AspNetCore.Mvc": "2.2.0",
           "Syncfusion.EJ2.AspNet.Core": "25.1.37",
+          "System.Web.Helpers.Crypto": "3.2.3",
           "hallodoc mvc Repository": "1.0.0"
         },
         "compile": {
@@ -5096,7 +5110,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.11",
-          "Syncfusion.EJ2.AspNet.Core": "25.1.37"
+          "Syncfusion.EJ2.AspNet.Core": "25.1.37",
+          "System.Web.Helpers.Crypto": "3.2.3"
         },
         "compile": {
           "bin/placeholder/hallodoc mvc Repository.dll": {}
@@ -13410,6 +13425,19 @@
         "system.threading.timer.nuspec"
       ]
     },
+    "System.Web.Helpers.Crypto/3.2.3": {
+      "sha512": "Kpf+faYrakOcPGMkhyA+jG1D7cyOqIwS9B35cfh8Fc5jf2lVMhxRQpDWhwNGmgZw+PBAQ1TfZMGBRojD1Glp5Q==",
+      "type": "package",
+      "path": "system.web.helpers.crypto/3.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/System.Web.Helpers.Crypto.dll",
+        "lib/net40/System.Web.Helpers.Crypto.pdb",
+        "system.web.helpers.crypto.3.2.3.nupkg.sha512",
+        "system.web.helpers.crypto.nuspec"
+      ]
+    },
     "System.Windows.Extensions/6.0.0": {
       "sha512": "IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "type": "package",
@@ -13684,6 +13712,7 @@
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 7.0.11",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.11",
       "Syncfusion.EJ2.AspNet.Core >= 25.1.37",
+      "System.Web.Helpers.Crypto >= 3.2.3",
       "Twilio >= 7.0.2",
       "hallocdoc_mvc_Service >= 1.0.0",
       "xunit.extensibility.execution >= 2.6.6"
@@ -13773,6 +13802,10 @@
             "target": "Package",
             "version": "[25.1.37, )"
           },
+          "System.Web.Helpers.Crypto": {
+            "target": "Package",
+            "version": "[3.2.3, )"
+          },
           "Twilio": {
             "target": "Package",
             "version": "[7.0.2, )"
@@ -13812,6 +13845,16 @@
       "warningLevel": 1,
       "message": "Package 'ImageResizer 4.2.8' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
       "libraryId": "ImageResizer",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Web.Helpers.Crypto 3.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Web.Helpers.Crypto",
       "targetGraphs": [
         "net7.0"
       ]

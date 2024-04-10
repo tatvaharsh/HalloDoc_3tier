@@ -242,7 +242,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public RequestClient getagreement(int id)
         {
-            return _context.RequestClients.FirstOrDefault(x => x.RequestId == id);
+            return _context.RequestClients.Include(x => x.Request).FirstOrDefault(x => x.RequestId == id);
         }
 
         public void updaterequestclient(RequestClient r)
@@ -568,12 +568,12 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<AspNetUser> getallusers()
         {
-            return _context.AspNetUsers.Where(x => x.Roles.Where(x=>x.Id==2 || x.Id==3).Any()).Include(x => x.AdminAspNetUsers).Include(x => x.PhysicianAspNetUsers).Include(x=>x.Roles).ToList();
+            return _context.AspNetUsers.Where(x => x.Roles.Where(x => x.Id == 2 || x.Id == 3).Any()).Include(x => x.AdminAspNetUsers).Include(x => x.PhysicianAspNetUsers).Include(x => x.Roles).ToList();
         }
 
         public List<Role> GetAminRoles()
         {
-            return _context.Roles.Where(x=>x.AccountType==1).ToList();
+            return _context.Roles.Where(x => x.AccountType == 1).ToList();
         }
 
         public ICollection<AspNetRole> AdminRoles()
@@ -589,8 +589,8 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public void AddAdminRegiontbl(AdminRegion reg)
         {
-           _context.AdminRegions.Add(reg);
-            _context.SaveChanges(); 
+            _context.AdminRegions.Add(reg);
+            _context.SaveChanges();
         }
 
         public void AddPhyLocation(PhysicianLocation pl)
@@ -606,18 +606,18 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<HealthProfessional> GetHealthProfession()
         {
-          return _context.HealthProfessionals.AsEnumerable().Where(x => x.IsDeleted == null).ToList();
+            return _context.HealthProfessionals.AsEnumerable().Where(x => x.IsDeleted == null).ToList();
         }
 
         public string Profession(int? profession)
         {
-            return  _context.HealthProfessionalTypes.FirstOrDefault(x => x.HealthProfessionalId == profession).ProfessionName;
-            
+            return _context.HealthProfessionalTypes.FirstOrDefault(x => x.HealthProfessionalId == profession).ProfessionName;
+
         }
 
         public List<HealthProfessional> GetHealthProfessionByProfession(int p)
         {
-            return _context.HealthProfessionals.Where(x => x.Profession==p).ToList();
+            return _context.HealthProfessionals.Where(x => x.Profession == p).ToList();
         }
 
         public void AddHealthProfessiontbl(HealthProfessional hp)
@@ -628,12 +628,12 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public HealthProfessional GetData(int vendorid)
         {
-           return _context.HealthProfessionals.FirstOrDefault(x=>x.VendorId==vendorid);
+            return _context.HealthProfessionals.FirstOrDefault(x => x.VendorId == vendorid);
         }
 
         public List<HealthProfessionalType> GetProfessionbyid(int? profession)
         {
-           return _context.HealthProfessionalTypes.Where(x=>x.HealthProfessionalId==profession).ToList();   
+            return _context.HealthProfessionalTypes.Where(x => x.HealthProfessionalId == profession).ToList();
         }
 
         public void UpdateHealthProfessiontbl(HealthProfessional hp)
@@ -645,7 +645,7 @@ namespace hallodoc_mvc_Repository.Implementation
         public void AddShifttbl(Shift s)
         {
             _context.Shifts.Add(s);
-            _context.SaveChanges(); 
+            _context.SaveChanges();
         }
 
         public void AddShiftDetails(ShiftDetail detail)
@@ -662,7 +662,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<Physician> DayData()
         {
-            return _context.Physicians.Include(x => x.Shifts).ThenInclude(x => x.ShiftDetails.Where(x=>x.IsDeleted == new BitArray(1,false))).ToList();
+            return _context.Physicians.Include(x => x.Shifts).ThenInclude(x => x.ShiftDetails.Where(x => x.IsDeleted == new BitArray(1, false))).ToList();
         }
 
         public void UpdateShiftDetails()
@@ -672,7 +672,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public ShiftDetail ChangeShift(int shiftId)
         {
-           return _context.ShiftDetails.FirstOrDefault(i => i.ShiftDetailId == shiftId);
+            return _context.ShiftDetails.FirstOrDefault(i => i.ShiftDetailId == shiftId);
         }
 
         public ShiftDetail Shiftdetials(int shiftId)
@@ -680,38 +680,38 @@ namespace hallodoc_mvc_Repository.Implementation
             return _context.ShiftDetails.FirstOrDefault(i => i.ShiftDetailId == shiftId);
         }
 
-        
+
 
         public Physician DayDatabyPhysician(int? selectedPhysicianId)
         {
-            return _context.Physicians.Include(s => s.Shifts).ThenInclude(s => s.ShiftDetails).FirstOrDefault(s => s.PhysicianId == selectedPhysicianId)??new();
+            return _context.Physicians.Include(s => s.Shifts).ThenInclude(s => s.ShiftDetails).FirstOrDefault(s => s.PhysicianId == selectedPhysicianId) ?? new();
         }
 
-        public List<Physician> onduty(int regionid,TimeOnly currentTime,BitArray deletedBit)
+        public List<Physician> onduty(int regionid, TimeOnly currentTime, BitArray deletedBit)
         {
-           return _context.ShiftDetails
-                .Include(sd => sd.Shift.Physician)
-            .Where(sd => (regionid == 0 || sd.RegionId == regionid) &&
-            sd.ShiftDate.Date == DateTime.Today &&
-                             currentTime >= sd.StartTime &&
-                             currentTime < sd.EndTime &&
-                             sd.IsDeleted.Equals(deletedBit))
-                .Select(sd => sd.Shift.Physician)
-                .Distinct()
-                .ToList();
+            return _context.ShiftDetails
+                 .Include(sd => sd.Shift.Physician)
+             .Where(sd => (regionid == 0 || sd.RegionId == regionid) &&
+             sd.ShiftDate.Date == DateTime.Today &&
+                              currentTime >= sd.StartTime &&
+                              currentTime < sd.EndTime &&
+                              sd.IsDeleted.Equals(deletedBit))
+                 .Select(sd => sd.Shift.Physician)
+                 .Distinct()
+                 .ToList();
         }
 
         public List<Physician> offduty(int regionId, TimeOnly currentTime, BitArray deletedBit)
         {
-           var a= _context.Physicians
-                .Include(p => p.PhysicianRegions)
-                .Where(p => (regionId == 0 || p.RegionId==regionId) &&
-                            !_context.ShiftDetails.Any(sd => sd.Shift.PhysicianId == p.PhysicianId &&
-                                                               sd.ShiftDate.Date == DateTime.Today &&
-                                                               currentTime >= sd.StartTime &&
-                                                               currentTime <= sd.EndTime &&
-                                                               sd.IsDeleted.Equals(deletedBit)) && p.IsDeleted == null)
-                .ToList();
+            var a = _context.Physicians
+                 .Include(p => p.PhysicianRegions)
+                 .Where(p => (regionId == 0 || p.RegionId == regionId) &&
+                             !_context.ShiftDetails.Any(sd => sd.Shift.PhysicianId == p.PhysicianId &&
+                                                                sd.ShiftDate.Date == DateTime.Today &&
+                                                                currentTime >= sd.StartTime &&
+                                                                currentTime <= sd.EndTime &&
+                                                                sd.IsDeleted.Equals(deletedBit)) && p.IsDeleted == null)
+                 .ToList();
 
             //a = a.Where(x => x.RegionId == regionId).ToList();
             return a;
@@ -731,6 +731,144 @@ namespace hallodoc_mvc_Repository.Implementation
         public int getAspid(int admin1)
         {
             return _context.Admins.FirstOrDefault(x => x.AdminId == admin1).AspNetUserId;
+        }
+
+        public IQueryable<PatientHistoryTable> GetPatientHistoryTable(string? fname, string? lname, string? email, string? phone)
+        {
+            IQueryable<PatientHistoryTable> tabledata =
+                                                       from u in _context.Users
+
+                                                       select new PatientHistoryTable
+                                                       {
+                                                           aspId = u.UserId,
+                                                           Firstname = u.FirstName ?? "-",
+                                                           Lastname = u.LastName ?? "-",
+                                                           Email = u.Email ?? "-",
+                                                           phone = u.Mobile ?? "-",
+                                                           Address = (u.Street ?? "") + " , " + (u.City ?? "") + " , " + (u.State ?? ""),
+                                                       };
+            if (!string.IsNullOrEmpty(fname))
+            {
+                tabledata = tabledata.Where(e => e.Firstname.ToLower().Contains(fname.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(lname))
+            {
+                tabledata = tabledata.Where(e => e.Lastname.ToLower().Contains(lname.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(email))
+            {
+                tabledata = tabledata.Where(e => e.Email.ToLower().Contains(email.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(phone))
+            {
+                tabledata = tabledata.Where(e => e.phone.Contains(phone));
+            }
+            return tabledata;
+        }
+
+        public List<Request> GetAllRequestsByAid(int id)
+        {
+
+            return _context.Requests.Where(r => r.UserId == id && r.IsDeleted != new BitArray(1, true) && r.Status != 11).ToList();
+
+        }
+
+        public int GetNumberOfDocsByRid(int requestid)
+        {
+            return _context.RequestWiseFiles.Where(f => f.RequestId == requestid && f.IsDeleted == null).Count();
+        }
+
+        public string? GetStatus(short status)
+        {
+            switch (status)
+            {
+                case 1:
+                    return "Unassigned";
+
+                case 2:
+                    return "Accepted";
+
+                case 3:
+                    return "MDEnRoute";
+
+                case 4:
+                    return "MDEnRoute";
+
+                case 5:
+                    return "Conclude";
+
+                case 6:
+                    return "Cancelled";
+
+                case 7:
+                    return "CancelledByPatient";
+
+                case 8:
+                    return "Closed";
+
+                default:
+                    return "Unpaid";
+
+
+            }
+        }
+
+        public List<RequestType>? getRequestTypeList()
+        {
+            return _context.RequestTypes.ToList();
+        }
+
+        public List<RequestClient> getRequestClientList()
+        {
+            return _context.RequestClients.Include(e => e.Request).Where(e => e.Request.IsDeleted == null).ToList();
+        }
+
+        public List<RequestNote> getRequestNotesList()
+        {
+            return _context.RequestNotes.ToList();
+        }
+
+        public List<BlockRequest> getBlockData()
+        {
+            return _context.BlockRequests.Include(e => e.Request).ThenInclude(m => m.RequestClients).ToList();
+        }
+
+        public BlockRequest getBlockRequestById(int id)
+        {
+            return _context.BlockRequests.FirstOrDefault(x => x.RequestId == id);
+        }
+
+        public void updateBlockRequest(BlockRequest req)
+        {
+            _context.BlockRequests.Update(req);
+            _context.SaveChanges();
+        }
+
+        public void AddEmaillogtbl(EmailLog emailLog)
+        {
+            _context.EmailLogs.Add(emailLog);
+            _context.SaveChanges();
+        }
+
+        public List<Emaillogs> EmailLogs()
+        {
+
+            return _context.EmailLogs
+                .Select(x => new Emaillogs()
+                {
+                    EmailLogId = x.EmailLogId,
+                    Recipient = x.Admin != null ? x.Admin.FirstName + " " + x.Admin.LastName :
+                               x.Physician != null ? x.Physician.FirstName + " " + x.Physician.LastName :
+                               x.Request != null ? x.Request.RequestClients.First().FirstName + " " + x.Request.RequestClients.First().LastName :
+                               "-",
+                    Email = x.EmailId,
+                    CreatedDate = x.CreateDate,
+                    SentDate = x.SentDate,
+                    SentTries = x.SentTries,
+                    IsSent = x.IsEmailSent,
+                    ConfirmationNumber = x.ConfirmationNumber,
+                }).ToList();
+
         }
     }
 }

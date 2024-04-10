@@ -152,6 +152,8 @@ public partial class ApplicationDbContext : DbContext
         modelBuilder.Entity<BlockRequest>(entity =>
         {
             entity.HasKey(e => e.BlockRequestId).HasName("BlockRequests_pkey");
+
+            entity.HasOne(d => d.Request).WithMany(p => p.BlockRequests).HasConstraintName("BlockRequests_RequestId_fkey");
         });
 
         modelBuilder.Entity<Business>(entity =>
@@ -180,6 +182,14 @@ public partial class ApplicationDbContext : DbContext
         modelBuilder.Entity<EmailLog>(entity =>
         {
             entity.HasKey(e => e.EmailLogId).HasName("EmailLog_pkey");
+
+            entity.HasOne(d => d.Admin).WithMany(p => p.EmailLogs).HasConstraintName("EmailLog_AdminId_fkey");
+
+            entity.HasOne(d => d.Physician).WithMany(p => p.EmailLogs).HasConstraintName("EmailLog_PhysicianId_fkey");
+
+            entity.HasOne(d => d.Request).WithMany(p => p.EmailLogs).HasConstraintName("EmailLog_RequestId_fkey");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.EmailLogs).HasConstraintName("EmailLog_RoleId_fkey");
         });
 
         modelBuilder.Entity<EncounterForm>(entity =>

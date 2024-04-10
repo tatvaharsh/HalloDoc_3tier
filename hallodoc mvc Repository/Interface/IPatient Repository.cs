@@ -21,11 +21,13 @@ namespace hallodoc_mvc_Repository.Interface
         void AddRequestClients(RequestClient requestclient);
         void AddRequestConcierge(RequestConcierge reqCon);
         void AddRequestWiseFiles(RequestWiseFile requestWiseFile);
+        ICollection<AspNetRole> AddRole();
         void AddUser(User user);
         public AspNetUser AspEmail(string email);
         public AspNetUser getAspuserTable(int id);
         List<Request> getcon(int id);
         public List<RequestWiseFile> getFiles();
+        RequestClient getRcbyemail(string userName);
         public List<Request> getRequest(int? id);
         public List<RequestWiseFile> getRequestWiseFile(int id);
        public RequestWiseFile getRequestWiseFileById(int id);

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace hallodoc_mvc_Repository.ViewModel
     public class CreateShift
     {
         public List<Region>? Region { get; set; }
-
+        
         public List<Physician>? Physicians { get; set; }
 
         public List<ShiftDetail>? ShiftDetails { get; set; }

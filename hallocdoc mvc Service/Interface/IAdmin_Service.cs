@@ -36,14 +36,14 @@ namespace hallocdoc_mvc_Service.Interface
         void FileUpload(int id, List<IFormFile> file,int admin);
         int DeleteFile(int id);
         void DeleteAllFiles(int id);
-        void SendEmail(int id);
+        void SendEmail(int id,int admin);
         Order GetOrderData(Order md);
         List<HealthProfessional> Getvendor(int id);
         List<HealthProfessional> Getvendordata(int id);
         void OrderPost(Order md, int id, int admin);
         void Clear(int id, int admin);
         RequestClient GetAgreementtdata(int id);
-        void SendAgreementMail(int Id,ModalData md, string token);
+        void SendAgreementMail(int Id,ModalData md, string token,int admin);
         Close getclosedata(int id);
         void editdata(Close model, int id);
         void close(int id,int admin);
@@ -55,7 +55,7 @@ namespace hallocdoc_mvc_Service.Interface
         void editencounter(int id, Encounter model);
         Profile getprofile(int admin);
         List<Request> GetRequestDataInList();
-        void sendlink(ViewCase model);
+        void sendlink(ViewCase model,int admin1);
         void PatientForm(patient_form model,int admin);
         List<Request> Export(string s, int reqtype, int regid, int state);
         void editadminprofile(Profile model,int admin);
@@ -67,7 +67,7 @@ namespace hallocdoc_mvc_Service.Interface
         List<Provider> Getphysician(int region);
         List<PhysicianLocation> ProviderLocation();
         void ChangeToggle(int phyid);
-        void Sendit(int id, ModalData md);
+        void Sendit(int id, ModalData md,int admin1);
         List<Region> getreg();
         List<Role> getrole();
         void CreateProvider(CreatePhy model,int admin1);
@@ -95,7 +95,7 @@ namespace hallocdoc_mvc_Service.Interface
         void DeletePartner(int id);
         bool     CreateShift(CreateShift model,int admin);
         List<Physician> GetPhyTbl();
-        List<Scheduling> GetDayWiseData(int day, int month, int year);
+        List<Scheduling> GetDayWiseData(int day, int month, int year,int region);
         List<Scheduling>? GetWeekWiseData(int day, int month, int year);
         List<Scheduling>? GetMonthWiseData(int day, int month, int year);
         List<ShiftReview>? GetPendingShiftData(int region);
@@ -107,5 +107,13 @@ namespace hallocdoc_mvc_Service.Interface
         int GetAspId(int admin1);
         void ChangeShiftStatus(int shiftdetailid, int adminid);
         void DeleteShiftViaModal(int shiftdetailid, int adminid);
+        List<PatientHistoryTable> PatientHistoryTable(string? fname, string? lname, string? email, string? phone);
+        List<PatientRecord> PatientRecord(int id);
+        List<RequestType>? GetRequestTypes();
+        AdminRecord getSearchRecordData(AdminRecord model);
+        void deleteRequest(int id);
+        AdminRecord? getBlockHistoryData();
+        void Unblock(int id);
+        List<Emaillogs>? EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate);
     }
 }

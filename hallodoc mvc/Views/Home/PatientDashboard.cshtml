@@ -131,7 +131,7 @@
                                     <tr>
                                         <th class="heading">Created date</th>
                                         <th class="heading">Current Status</th>
-                                        <th class="heading d-flex ">Document</th>
+                                        <th class="heading  ">Document</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -162,7 +162,7 @@
                                                 }
                                                 if (Count != 0)
                                                 {
-                                                    <td>
+                                                    <td class="text-center">
                                                         <a  asp-controller="Home" asp-action="ViewDocument" asp-route-id="@item.RequestId">
                                                             <button class=" btn btn-white text-info border-info logout-text">(@Count) Documents</button>
                                                         </a>
@@ -199,7 +199,7 @@
                                 <img src="/SRSScreenShorts\person-circle.svg" alt="" class="accordion-img-inner">
                                 <span class="accordion-heading-inner">
                                     Provider :
-                                    <span class="accordion-value-inner">Dr. AGOLA</span>
+                                            <span class="accordion-value-inner">@item.Physician.FirstName</span>
                                 </span>
                             </div>
                             <div class="inner-flex">

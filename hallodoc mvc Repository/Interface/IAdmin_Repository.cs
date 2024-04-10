@@ -136,5 +136,17 @@ namespace hallodoc_mvc_Repository.Interface
         ShiftDetail GetShiftDetails(int shiftdetailid);
         void Update(ShiftDetail shiftDetail);
         int getAspid(int admin1);
+        IQueryable<PatientHistoryTable> GetPatientHistoryTable(string? fname, string? lname, string? email, string? phone);
+        List<Request> GetAllRequestsByAid(int id);
+        string? GetStatus(short status);
+        int GetNumberOfDocsByRid(int requestId);
+        List<RequestType>? getRequestTypeList();
+        List<RequestClient> getRequestClientList();
+        List<RequestNote> getRequestNotesList();
+        List<BlockRequest> getBlockData();
+        BlockRequest getBlockRequestById(int id);
+        void updateBlockRequest(BlockRequest req);
+        void AddEmaillogtbl(EmailLog emailLog);
+        List<Emaillogs> EmailLogs();
     }
 }

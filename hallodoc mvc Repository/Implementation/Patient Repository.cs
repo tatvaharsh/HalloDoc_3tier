@@ -76,6 +76,11 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.SaveChanges();
         }
 
+        public ICollection<AspNetRole> AddRole()
+        {
+            return _context.AspNetRoles.Where(x => x.Id == 1).ToList(); 
+        }
+
         public void AddUser(User user)
         {
             _context.Users.Add(user);
@@ -97,9 +102,14 @@ namespace hallodoc_mvc_Repository.Implementation
            return _context.RequestWiseFiles.ToList();
         }
 
+        public RequestClient getRcbyemail(string userName)
+        {
+            return _context.RequestClients.FirstOrDefault(x => x.Email == userName);
+        }
+
         public List<Request> getRequest(int? id)
         {
-            return _context.Requests.Where(u => u.UserId == id).ToList();
+            return _context.Requests.Include(x=>x.Physician).Where(u => u.UserId == id).ToList();
         }
 
         public List<RequestWiseFile> getRequestWiseFile(int id)
@@ -142,6 +152,7 @@ namespace hallodoc_mvc_Repository.Implementation
         public void updateAspnetuserTable(AspNetUser asp)
         {
             _context.AspNetUsers.Update(asp);
+
         }
 
         public void UpdateUserTable(User req)

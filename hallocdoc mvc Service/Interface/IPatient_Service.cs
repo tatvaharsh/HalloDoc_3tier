@@ -28,6 +28,7 @@ namespace hallocdoc_mvc_Service.Interface
         public User getUser(string email);
        public User getUser(int? user1);
         void PatientForm(patient_form model);
+        void Resetpass(Create model,string email);
         void SubmitForMe(patient_form pf,int userid);
         void Update(Create model);
         bool ValidateUser(LoginViewModel model);

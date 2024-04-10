@@ -1,0 +1,85 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.AdminRecord
+@{
+    ViewBag.tab = "partners";
+}
+
+<table class="table table-responsive">
+    <thead>
+        <tr class="bg-light text-muted h-100">
+
+            <th scope="col">No.</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Created Date</th>
+            <th scope="col">Notes</th>
+            <th scope="col">IsActive</th>
+            <th scope="col">Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var no = 1;
+        }
+        @foreach (var data in Model.blockRequests)
+        {
+            <tr>
+
+                <td>@no</td>
+
+                <td> @data.Request.RequestClients.First().FirstName @data.Request.RequestClients.First().LastName  </td>
+                <td> @data.PhoneNumber </td>
+                <td> @data.Email </td>
+                <td> @data.Request.CreatedDate </td>
+                <td>@data.Reason</td>
+                <td><input type="checkbox" asp-for=@data.IsActive[0] /></td>
+                <td>
+                    <button class="btn btn-outline-info" onclick="DeleteAccount(@data.BlockRequestId)">Unblock</button>
+                    <div class="modal fade" id="a-@data.BlockRequestId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-success" id="exampleModalLabel">Unblock Account</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure want to Unblock this account?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                    <a asp-action="UnblockAccount" asp-route-id="@data.Request.RequestId" class="btn btn-success">Yes,Unblock</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            no++;
+        }
+
+    </tbody>
+
+
+</table>
+
+
+<script>
+
+    function DeleteAccount(id) {
+
+
+        const modal = new bootstrap.Modal(document.getElementById('a-' + id));
+        modal.show();
+    }
+
+
+</script>
+
+
+
+
+
+
+

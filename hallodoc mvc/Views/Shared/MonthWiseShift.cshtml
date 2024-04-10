@@ -51,13 +51,22 @@
     </ul>
 </div>
 
+<div id="editshift"></div>
+
 
 <div class="table-responsive rounded">
-    <table class="table table-b" style="width:100%;z-index:5">
+    <table class="table table-b table-bordered" style="width:100%;z-index:5">
+        <colgroup>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+        </colgroup>
         <thead class="dayshiftheader">
             <tr style="background-color: lightgray;">
-
-
                 <th>SUN</th>
                 <th>MON</th>
                 <th>TUE</th>
@@ -65,15 +74,9 @@
                 <th>THU</th>
                 <th>FRI</th>
                 <th>SAT</th>
-
-
             </tr>
-
         </thead>
         <tbody>
-
-
-
 
             @{
                 int k = 1;
@@ -96,7 +99,7 @@
                     @while (k <= totalDays)
                      {
                         <td>
-                            <div>@k</div>
+                            <div style="background-color:#cfcff9;">@k</div>
 
                             @foreach(var item in Model)
                             {
@@ -106,7 +109,7 @@
                                     {
                                         if (shift.Status == 0)
                                         {
-                                            <div class="p-1 m-1" style="background-color:lightcoral">
+                                            <div class="p-1 m-1" style="background-color:lightcoral" onclick="openit(@shift.ShiftDetailId)">
                                                 @shift.StartTime - @shift.EndTime
                                                 <div>(@item.Physicians.FirstName @item.Physicians.LastName)</div>
                                             </div>
@@ -114,7 +117,7 @@
                                         }
                                         else
                                         {
-                                            <div class="p-1 m-1" style="background-color:lightgreen">
+                                            <div class="p-1 m-1" style="background-color:lightgreen" onclick="openit(@shift.ShiftDetailId)">
                                                 @shift.StartTime - @shift.EndTime
                                                 <div>(@item.Physicians.FirstName @item.Physicians.LastName)</div>
                                             </div>
@@ -164,5 +167,13 @@
             }
         });
 
+    }
+
+
+    function openit(id) {
+        $('#editshift').load('/Admin/EditShift?shiftdetailid=' + id, () => {
+            const modal = new bootstrap.Modal(document.getElementById('editshiftmodal'));
+            modal.show();
+        });
     }
 </script>

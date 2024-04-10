@@ -45,7 +45,10 @@
 </div>
 
 <div class="table-responsive rounded">
-    <table class="table table-b" style="width:100%;z-index:5">
+    <table class="table table-b table-bordered" style="width:100%;z-index:5">
+        <colgroup>
+            <col style="width:16%"; />    
+        </colgroup>
         <thead class="dayshiftheader">
             <tr style="background-color: lightgray;">
                 <th class="text-center">STAFF</th>
@@ -61,7 +64,10 @@
             @foreach(var item in Model)
             {
                 <tr>
-                    <td>@item.Physicians.FirstName @item.Physicians.LastName</td>
+                    <td class="d-flex">
+                        <div class="me-2 text-center" style="width:40px;height:40px"><img class="w-100 h-100 border rounded-5" src="~/PhysicianDoc/@item.Physicians.PhysicianId/Photo.svg" /></div>
+                        <div>@item.Physicians.FirstName @item.Physicians.LastName</div>
+                     </td>
 
                     @for(int i = 0; i < 7; i++)
                     {

@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Syncfusion.EJ2.Notifications;
 using System;
 using System.Collections;
 using System.Globalization;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace hallocdoc_mvc_Service.Implementation
@@ -742,7 +744,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 PhoneNumber = rc.PhoneNumber,
                 Email = rc.Email,
                 Reason = md.note,
-                RequestId = id.ToString(),
+                RequestId = id,
                 CreatedDate = DateTime.Now
 
             };
@@ -834,11 +836,11 @@ namespace hallocdoc_mvc_Service.Implementation
             }
         }
 
-        public void SendEmail(int id)
+        public void SendEmail(int id, int admin)
         {
             List<RequestWiseFile> requestWiseFiles = _Repository.GetDocumentList(id);
             Request request = _Repository.GetRequestById(id);
-            var receiver = "harsh.mehta8576@gmail.com";
+            var receiver = request.Email;
             var subject = "Documents of Request " + request.ConfirmationNumber?.ToUpper();
             var message = "Find the Files uploaded for your request in below:";
             var mailMessage = new MailMessage(from: "tatva.dotnet.binalmalaviya@outlook.com", to: receiver, subject, message);
@@ -874,6 +876,20 @@ namespace hallocdoc_mvc_Service.Implementation
             };
             client.SendMailAsync(mailMessage);
 
+
+            EmailLog emailLog = new()
+            {
+                EmailTemplate = message,
+                SubjectName = subject,
+              SentTries = 1,
+              IsEmailSent = true,
+                EmailId = request.Email,
+                CreateDate = DateTime.Now,
+                SentDate = DateTime.Now,
+                RequestId=request.RequestId,
+
+            };
+            _Repository.AddEmaillogtbl(emailLog);
         }
 
         public Order GetOrderData(Order md)
@@ -943,7 +959,7 @@ namespace hallocdoc_mvc_Service.Implementation
             return _Repository.getagreement(id);
         }
 
-        public void SendAgreementMail(int Id, ModalData md, string token)
+        public void SendAgreementMail(int Id, ModalData md, string token, int admin)
         {
             RequestClient rc = _Repository.getagreement(Id);
 
@@ -967,8 +983,27 @@ namespace hallocdoc_mvc_Service.Implementation
                 client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
 
 
+                EmailLog emailLog = new()
+                {
+                    EmailTemplate = message,
+                    SubjectName = subject,
+                    SentTries = 1,
+                    IsEmailSent = true,
+
+                    EmailId = md.email,
+                    ConfirmationNumber=rc.Request.ConfirmationNumber,
+                    RequestId=rc.RequestId,
+                    CreateDate = DateTime.Now,
+                    SentDate = DateTime.Now,
+
+                };
+                _Repository.AddEmaillogtbl(emailLog);
 
             }
+
+   
+
+
         }
 
         public Close getclosedata(int id)
@@ -1220,7 +1255,7 @@ namespace hallocdoc_mvc_Service.Implementation
             return _Repository.getINlist();
         }
 
-        public void sendlink(ViewCase model)
+        public void sendlink(ViewCase model, int admin1)
         {
 
 
@@ -1243,6 +1278,18 @@ namespace hallocdoc_mvc_Service.Implementation
                 IsBodyHtml = true
             });
 
+            EmailLog emailLog = new()
+            {
+                EmailTemplate = message,
+                SubjectName = subject,
+                SentTries = 1,
+                IsEmailSent = true,
+                EmailId = model.Email,
+                CreateDate=DateTime.Now,
+                SentDate=DateTime.Now,
+
+            };
+            _Repository.AddEmaillogtbl(emailLog);
 
         }
 
@@ -1562,7 +1609,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         }
 
-        public void Sendit(int id, ModalData md)
+        public void Sendit(int id, ModalData md,int admin1)
         {
             Physician p = _Repository.GetPhysician(id);
             if (p != null && md.MessageType == 2)
@@ -1585,6 +1632,20 @@ namespace hallocdoc_mvc_Service.Implementation
                 {
                     IsBodyHtml = true
                 });
+
+                EmailLog emailLog = new()
+                {
+                    EmailTemplate = message,
+                    SubjectName = subject,
+                    SentTries = 1,
+                    IsEmailSent = true,
+                    EmailId = p.Email,
+                   PhysicianId=p.PhysicianId,
+                    CreateDate = DateTime.Now,
+                    SentDate = DateTime.Now,
+
+                };
+                _Repository.AddEmaillogtbl(emailLog);
             }
         }
 
@@ -2165,6 +2226,10 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             Physician data = _Repository.DayDatabyPhysician(shift.SelectedPhysicianId);
             bool flag = true;
+            //if((shift.Start.Hour==0 && shift.Start.Minute==0 && shift.End.Hour==0 && shift.End.Minute==0) || (shift.Start.Hour >= shift.End.Hour))
+            //{
+            //    flag = false;
+            //}
             foreach (var item in data.Shifts)
             {
                 foreach (var item2 in item.ShiftDetails)
@@ -2295,44 +2360,60 @@ namespace hallocdoc_mvc_Service.Implementation
             return _Repository.getphysician();
         }
 
-        public List<Scheduling> GetDayWiseData(int day, int month, int year)
+        public List<Scheduling> GetDayWiseData(int day, int month, int year,int region)
         {
             List<Physician> data = _Repository.DayData();
             List<Scheduling> schedulings = new List<Scheduling>();
 
             DateTime date = day == 0 ? new(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day) : new(year, month, day);
 
-            foreach (var item in data)
+            if (region != 0)
             {
-                Scheduling s = new()
+                data = data.Where(x => x.RegionId == region).ToList();
+            }
+
+            if(data.Count != 0)
+            {
+                foreach (var item in data)
                 {
-                    Physicians = item,
-                };
-                if (item.Shifts.Count > 0)
-                {
-                    foreach (var shifts in item.Shifts)
+                    Scheduling s = new()
                     {
-                        foreach (var shiftdetails in shifts.ShiftDetails)
+                        Physicians = item,
+                    };
+                    if (item.Shifts.Count > 0)
+                    {
+                        foreach (var shifts in item.Shifts)
                         {
-                            if (shiftdetails.ShiftDate == date)
+                            foreach (var shiftdetails in shifts.ShiftDetails)
                             {
-                                ShiftDetail detail = new()
+                                if (shiftdetails.ShiftDate == date)
                                 {
-                                    ShiftDetailId = shifts.ShiftDetails.First(X=>X.ShiftDate==date).ShiftDetailId,
-                                    StartTime = shifts.ShiftDetails.First(X => X.ShiftDate == date).StartTime,
-                                    EndTime = shifts.ShiftDetails.First(X => X.ShiftDate == date).EndTime,
-                                    ShiftDate = shifts.ShiftDetails.First(X => X.ShiftDate == date).ShiftDate,
-                                    Status = shifts.ShiftDetails.First(X => X.ShiftDate == date).Status,
-                                };
-                                s.shifts.Add(detail);
+                                    ShiftDetail detail = new()
+                                    {
+                                        ShiftDetailId = shifts.ShiftDetails.First(X => X.ShiftDate == date).ShiftDetailId,
+                                        StartTime = shifts.ShiftDetails.First(X => X.ShiftDate == date).StartTime,
+                                        EndTime = shifts.ShiftDetails.First(X => X.ShiftDate == date).EndTime,
+                                        ShiftDate = shifts.ShiftDetails.First(X => X.ShiftDate == date).ShiftDate,
+                                        Status = shifts.ShiftDetails.First(X => X.ShiftDate == date).Status,
+                                    };
+                                    s.shifts.Add(detail);
+                                }
                             }
+
                         }
-
                     }
-                }
-                schedulings.Add(s);
-                schedulings.FirstOrDefault().CurrentDate = date;
+                    schedulings.Add(s);
+                    schedulings.FirstOrDefault().CurrentDate = date;
 
+                }
+            }
+            
+            if (schedulings.Count == 0)
+            {
+                schedulings.Add(new()
+                {
+                    CurrentDate=date
+                });
             }
             return schedulings;
         }
@@ -2520,15 +2601,11 @@ namespace hallocdoc_mvc_Service.Implementation
             DateOnly date = DateOnly.FromDateTime(DateTime.Now);
             int Hour = DateTime.Now.Hour;
             bool flag = true;
-            //if(DateOnly.FromDateTime(shiftDetail.ShiftDate)<=date && (shiftDetail.StartTime.Hour<Hour|| DateOnly.FromDateTime(shiftDetail.ShiftDate) < date))
-            //{
-            //    flag = false;
-            //}
-
-            if(shiftDetail.ShiftDate<DateTime.Now && shiftDetail.StartTime.Hour < DateTime.Now.Hour)
+            if (DateOnly.FromDateTime(shiftDetail.ShiftDate) <= date && (shiftDetail.StartTime.Hour < Hour || DateOnly.FromDateTime(shiftDetail.ShiftDate) < date))
             {
                 flag = false;
             }
+
             EditShift edit = new()
             {
                 Regions = _Repository.GetRegion(),
@@ -2580,6 +2657,102 @@ namespace hallocdoc_mvc_Service.Implementation
             detail.ModifiedBy = adminid;
             detail.ModifiedDate = DateTime.Now;
             _Repository.Update(detail);
+        }
+
+        public List<PatientHistoryTable> PatientHistoryTable(string? fname, string? lname, string? email, string? phone)
+        {
+            IQueryable<PatientHistoryTable> tabledata = _Repository.GetPatientHistoryTable(fname, lname, email, phone);
+            return tabledata.ToList();
+        }
+
+        public List<PatientRecord> PatientRecord(int id)
+        {
+            List<Request> requests = _Repository.GetAllRequestsByAid(id);
+            List<PatientRecord> records = new List<PatientRecord>();
+            foreach (Request request in requests)
+            {
+                Physician physician = new Physician();
+                if (request.PhysicianId != null)
+                {
+                    physician = _Repository.getphycian((int)request.PhysicianId);
+                }
+                PatientRecord record = new PatientRecord
+                {
+                    rid = request.RequestId,
+                    Name = request.FirstName + " " + request.LastName,
+                    createdDate = request.CreatedDate.ToString("MMM dd, yyyy"),
+                    conNo = request.ConfirmationNumber ?? "-",
+                    phyName = physician.FirstName == null && physician.LastName == null ? "-" : "Dr. " + physician.FirstName + " " + physician.LastName,
+                    concludeDate = request.Status == 6 && request.ModifiedDate != null ? request.ModifiedDate.Value.ToString("MMM dd, yyyy") : "-",
+                    status = _Repository.GetStatus(request.Status) ?? "-",
+                    docNo = _Repository.GetNumberOfDocsByRid(request.RequestId),
+                };
+                records.Add(record);
+            }
+            return records;
+        }
+
+        public List<RequestType>? GetRequestTypes()
+        {
+            
+                return _Repository.getRequestTypeList();
+   
+        }
+
+        public AdminRecord getSearchRecordData(AdminRecord model)
+        {
+            model.Data = _Repository.getRequestClientList();
+            model.ReqNotes = _Repository.getRequestNotesList();
+            model.ReqType = _Repository.getRequestTypeList();
+            model.phy = _Repository.getphysician();
+            return model;
+        }
+
+        public void deleteRequest(int id)
+        {
+            Request r = _Repository.GetRequestById(id);
+  
+            r.IsDeleted = new BitArray(1, true);
+            r.ModifiedDate = DateTime.Now;
+            _Repository.UpdateRequesttbl(r);
+        }
+
+        public AdminRecord? getBlockHistoryData()
+        {
+            AdminRecord model = new();
+            model.blockRequests = _Repository.getBlockData();
+            return model;
+        }
+
+        public void Unblock(int id)
+        {
+            BlockRequest req = _Repository.getBlockRequestById(id);
+            req.IsActive = new BitArray(1, true);
+            req.ModifiedDate = DateTime.Now;
+            _Repository.updateBlockRequest(req);
+
+
+            Request r = _Repository.GetRequestById(id);
+            r.Status = 1;
+            r.ModifiedDate = DateTime.Now;
+            _Repository.UpdateRequesttbl(r);
+
+
+   
+        }
+
+        public List<Emaillogs>? EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate)
+        {
+           
+                List<Emaillogs> logs = _Repository.EmailLogs();
+
+                if (name != null) { logs = logs.Where(x => x.Recipient.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList(); }
+                if (email != null) { logs = logs.Where(x => x.Email.Contains(email, StringComparison.OrdinalIgnoreCase)).ToList(); }
+                if (createdate != DateTime.MinValue) { logs = logs.Where(x => x.CreatedDate.Date == createdate).ToList(); }
+                if (sentdate != DateTime.MinValue) { logs = logs.Where(x => x.SentDate.HasValue && x.SentDate.Value.Date == sentdate).ToList(); }
+
+                return logs;
+            
         }
     }
 }

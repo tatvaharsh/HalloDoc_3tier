@@ -14,15 +14,7 @@
 
 <!-- navbar -->
 <Partial name="_Toast" />
-@*<script type="text/javascript">
-    $(document).ready(function () {
-        if (TempData["success"] != null) {
-            toastr.success(TempData["success"]);
-            // Optionally remove TempData after displaying the message:
-            // TempData.Remove("success");
-        }
-    });
-</script>*@
+
 
 <style>
     .searchfocus:focus {
@@ -60,7 +52,8 @@
                              data-bs-target="#new-tab-pane" type="button" role="tab" aria-controls="new-tab-pane"
                              aria-selected="true">
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-person-plus me-2 d-none d-sm-inline"></i>
+                                <img id="onactive"  class="d-none" src="/SRSScreenShorts/new_active.png" style="width:25px;height:25px;"/>
+                                <img id="offactive" class="d-none" src="/SRSScreenShorts/new.png" style="width:25px;height:25px;" />
                                 <h6 class="px-1 m-0">New</h6>
                             </div>
                             <div class="ps-1 pt-3">
@@ -77,7 +70,8 @@
                              data-bs-target="#Pending-tab-pane" type="button" role="tab"
                              aria-controls="Pending-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-person me-2 d-none d-sm-inline"></i>
+                                <img id="pendingactive" class="d-none" src="/SRSScreenShorts/pending_active.png" style="width:25px;height:25px;" />
+                                <img id="pendingoffactive" class="d-none" src="/SRSScreenShorts/pending.png" style="width:25px;height:25px;" />
                                 <h6 class="px-1 m-0">Pending</h6>
                             </div>
                             <div class="ps-1 pt-3">
@@ -93,7 +87,8 @@
                              data-bs-target="#Active-tab-pane" type="button" role="tab"
                              aria-controls="Active-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-check2-circle me-2 d-none d-sm-inline"></i>
+                                <img id="Activeactive" class="d-none" src="/SRSScreenShorts/active_active.png" style="width:25px;height:25px;" />
+                                <img id="Activeoffactive" class="d-none" src="/SRSScreenShorts/active.png" style="width:25px;height:25px;" />
                                 <h6 class="px-1 m-0">Active</h6>
                             </div>
                             <div class="ps-1 pt-3">
@@ -109,7 +104,8 @@
                              data-bs-target="#Conclude-tab-pane" type="button" role="tab"
                              aria-controls="Conclude-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-clock-history me-2 d-none d-sm-inline"></i>
+                                <img id="Concludeactive" class="d-none" src="/SRSScreenShorts/conclude_active.png" style="width:25px;height:25px;" />
+                                <img id="Concludeoffactive" class="d-none" src="/SRSScreenShorts/conclude.png" style="width:25px;height:25px;" />
                                 <h6 class="px-1 m-0">Conclude</h6>
                             </div>
                             <div class="ps-1 pt-3">
@@ -125,7 +121,8 @@
                              data-bs-target="#ToClose-tab-pane" type="button" role="tab"
                              aria-controls="ToClose-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-person-x me-2 d-none d-sm-inline"></i>
+                                <img id="Closeactive" class="d-none" src="/SRSScreenShorts/toclose_active.png" style="width:25px;height:25px;" />
+                                <img id="Closeoffactive" class="d-none" src="/SRSScreenShorts/toclose.png" style="width:25px;height:25px;" />
 
                                 <h6 class="px-1 m-0">To Close</h6>
                             </div>
@@ -142,7 +139,8 @@
                              data-bs-target="#Unpaid-tab-pane" type="button" role="tab"
                              aria-controls="Unpaid-tab-pane" aria-selected="false" tabindex="-1">
                             <div class="d-flex align-items-center">
-                                <i class="bi bi-currency-dollar  me-2 d-none d-sm-inline"></i>
+                                <img id="Unpaidactive" class="d-none" src="/SRSScreenShorts/unpaid_active.png" style="width:25px;height:25px;" />
+                                <img id="Unpaidoffactive" class="d-none" src="/SRSScreenShorts/unpaid.png" style="width:25px;height:25px;" />
                                 <h6 class="px-1 m-0">Unpaid</h6>
                             </div>
                             <div class="ps-1 pt-3">
@@ -380,9 +378,56 @@
 
 
 <script>
+ 
+    document.addEventListener("DOMContentLoaded", ()=>{
+        changeactive();
+    });
     function changeactive(){
 
-    
+        if (document.getElementById("new-tab").classList.contains("active")) {
+            document.getElementById("onactive").classList.remove("d-none");
+            document.getElementById("offactive").classList.add("d-none");
+            //document.getElementById("pendingoffactive").classList.remove("d-none");
+        } else {
+            document.getElementById("offactive").classList.remove("d-none");
+            document.getElementById("onactive").classList.add("d-none");
+        }
+        if (document.getElementById("Pending-tab").classList.contains("active")) {
+            document.getElementById("pendingactive").classList.remove("d-none");
+            document.getElementById("pendingoffactive").classList.add("d-none");
+        } else {
+            document.getElementById("pendingoffactive").classList.remove("d-none");
+            document.getElementById("pendingactive").classList.add("d-none");
+        }
+        if (document.getElementById("Active-tab").classList.contains("active")) {
+            document.getElementById("Activeactive").classList.remove("d-none");
+            document.getElementById("Activeoffactive").classList.add("d-none");
+        } else {
+            document.getElementById("Activeoffactive").classList.remove("d-none");
+            document.getElementById("Activeactive").classList.add("d-none");
+        }
+        if (document.getElementById("Conclude-tab").classList.contains("active")) {
+            document.getElementById("Concludeactive").classList.remove("d-none");
+            document.getElementById("Concludeoffactive").classList.add("d-none");
+        } else {
+            document.getElementById("Concludeoffactive").classList.remove("d-none");
+            document.getElementById("Concludeactive").classList.add("d-none");
+        }
+        if (document.getElementById("ToClose-tab").classList.contains("active")) {
+            document.getElementById("Closeactive").classList.remove("d-none");
+            document.getElementById("Closeoffactive").classList.add("d-none");
+        } else {
+            document.getElementById("Closeoffactive").classList.remove("d-none");
+            document.getElementById("Closeactive").classList.add("d-none");
+        }
+        if (document.getElementById("Unpaid-tab").classList.contains("active")) {
+            document.getElementById("Unpaidactive").classList.remove("d-none");
+            document.getElementById("Unpaidoffactive").classList.add("d-none");
+        } else {
+            document.getElementById("Unpaidoffactive").classList.remove("d-none");
+            document.getElementById("Unpaidactive").classList.add("d-none");
+        }
+
     document.querySelectorAll('.Box').forEach(element=>{
        
             if(element.classList.contains('active')){

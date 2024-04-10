@@ -11,6 +11,8 @@ using System.Net;
 using System.Globalization;
 using HalloDoc.Auth;
 using hallocdoc_mvc_Service.Implementation;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -84,10 +86,44 @@ namespace hallodoc_mvc.Controllers
 
 
         }
-        public IActionResult ResetPassword()
+        public IActionResult ResetPassword(string token)
         {
+
+            Response.Cookies.Append("create", token);
+            if (_jwtService.ValidateJwtToken(token, out JwtSecurityToken jwtSecurityToken))
+            {
+                return View();
+            }
+            return NotFound();
+        }
+        [HttpPost]
+        public IActionResult ResetPassword(Create model)
+        {
+            var cookie = Request.Cookies["create"];
+            var email = new JwtSecurityTokenHandler().ReadJwtToken(cookie).Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            var Email = _service.getUser(email);
+            if (Email == null)
+            {
+                ModelState.AddModelError(nameof(model.PasswordHash), "Please enter your valid email!");
+                return View();
+            }
+
+            if (model.PasswordHash == null || model.CPasswordHash == null)
+            {
+                ModelState.AddModelError(nameof(model.PasswordHash), "Please enter your credentials!");
+                return View();
+            }
+
+            if (model.PasswordHash != model.CPasswordHash)
+            {
+                ModelState.AddModelError(nameof(model.PasswordHash), "Please enter same values!");
+                return View();
+            }
+
+            _service.Resetpass(model,email);
             return View();
         }
+
 
         public IActionResult submit_screen()
         {
@@ -203,18 +239,38 @@ namespace hallodoc_mvc.Controllers
             return RedirectToAction(nameof(HomeController.submit_screen), "Home");
         }
 
-        public IActionResult create_patient()
+        public IActionResult create_patient(string token)
         {
-            return View();
+            Response.Cookies.Append("create", token);
+            if (_jwtService.ValidateJwtToken(token, out JwtSecurityToken jwtSecurityToken))
+            {
+                return View();
+            }
+            return NotFound();
         }
 
         [HttpPost]
         public IActionResult create_patient(Create model)
         {
-            _service.Update(model);
+            var cookie = Request.Cookies["create"];
+            var email = new JwtSecurityTokenHandler().
+                ReadJwtToken(cookie).
+                Claims.
+                FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
 
-           
+            if (model.UserName == null || model.PasswordHash == null)
+            {
+                ModelState.AddModelError(nameof(model.PasswordHash), "Please enter your credentials!");
+                return View();
+            }
 
+            if (email != model.UserName)
+            {
+                ModelState.AddModelError(nameof(model.UserName), "Please use your registered email address!");
+                return View();
+            }
+
+              _service.Update(model);
             return View();
         }
 
@@ -230,7 +286,7 @@ namespace hallodoc_mvc.Controllers
 
             var req = _service.getRequest(HttpContext.Session.GetInt32("Userid"));
             //var req = _context.Requests.Where(u => u.UserId == HttpContext.Session.GetInt32("Userid")).ToList();
-
+            
             ViewBag.data = req;
 
 

@@ -19,10 +19,12 @@ namespace hallocdoc_mvc_Service.Implementation
     public class Patient_Service : IPatient_Service
     {
         private readonly IPatient_Repository _Repository;
-
-        public Patient_Service(IPatient_Repository Repository)
+        private readonly IJwtService _JwtService;
+        public Patient_Service(IPatient_Repository Repository, IJwtService jwtService)
         {
-            _Repository= Repository; 
+            _Repository = Repository;
+            _JwtService = jwtService;
+
         }
 
         public void editprofile(PatientProfile model,int id)
@@ -321,7 +323,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 var receiver = req.Email;
                 var subject = "Create Account";
-                var message = "Tap on link for Create Account: https://localhost:7050/Home/create_patient";
+                var message = "Tap on link for Create Account: http://localhost:5198/Home/create_patient?token="+_JwtService.GenerateJwtTokenByEmail(receiver);
 
 
                 var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -335,7 +337,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
                 client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
 
-
+               
 
             }
 
@@ -353,51 +355,51 @@ namespace hallocdoc_mvc_Service.Implementation
                 _Repository.AddRegion(region);
             }
 
-            if (aspuser == null)
-            {
-                AspNetUser aspNetUser = new AspNetUser
-                {
-                    UserName = req.FirstName,
-                    PasswordHash = req.Password,
-                    Email = req.Email,
-                    CreatedDate = DateTime.Now,
-                    PhoneNumber = req.Mobile,
-                };
-                _Repository.AddAspnetuser(aspNetUser);
+            //if (aspuser == null)
+            //{
+            //    AspNetUser aspNetUser = new AspNetUser
+            //    {
+            //        UserName = req.FirstName,
+            //        PasswordHash = req.Password,
+            //        Email = req.Email,
+            //        CreatedDate = DateTime.Now,
+            //        PhoneNumber = req.Mobile,
+            //    };
+            //    _Repository.AddAspnetuser(aspNetUser);
 
-                aspuser = aspNetUser;
-            }
+            //    aspuser = aspNetUser;
+            //}
 
-            if (usertbl == null)
-            {
-                User user = new()
-                {
-                    AspNetUserId = aspuser.Id,
-                    FirstName = req.FirstName,
-                    LastName = req.LastName,
-                    Email = req.Email,
-                    Mobile = req.Mobile,
-                    ZipCode = req.ZipCode,
-                    State = req.State,
-                    City = req.City,
-                    Street = req.Street,
-                    Status = 1,
-                    RegionId = isRegion.RegionId,
-                    CreatedBy = aspuser.Id,
-                    IntDate = req.DOB.Day,
-                    IntYear = req.DOB.Year,
-                    StrMonth = req.DOB.ToString("MMM"),
-                    CreatedDate = DateTime.Now,
-                };
-                _Repository.AddUser(user);
+            //if (usertbl == null)
+            //{
+            //    User user = new()
+            //    {
+            //        AspNetUserId = aspuser.Id,
+            //        FirstName = req.FirstName,
+            //        LastName = req.LastName,
+            //        Email = req.Email,
+            //        Mobile = req.Mobile,
+            //        ZipCode = req.ZipCode,
+            //        State = req.State,
+            //        City = req.City,
+            //        Street = req.Street,
+            //        Status = 1,
+            //        RegionId = isRegion.RegionId,
+            //        CreatedBy = aspuser.Id,
+            //        IntDate = req.DOB.Day,
+            //        IntYear = req.DOB.Year,
+            //        StrMonth = req.DOB.ToString("MMM"),
+            //        CreatedDate = DateTime.Now,
+            //    };
+            //    _Repository.AddUser(user);
 
-                usertbl = user;
-            }
+            //    usertbl = user;
+            //}
 
             Request reqobj = new()
             {
                 RequestTypeId = 3,
-                UserId = usertbl.UserId,
+               
                 FirstName = req.FamFirstName,
                 LastName = req.FamLastName,
                 Email = req.FamEmail,
@@ -442,7 +444,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 var receiver = req.Email;
                 var subject = "Create Account";
-                var message = "Tap on link for Create Account: https://localhost:7050/Home/create_patient";
+                var message = "Tap on link for Create Account: http://localhost:5198/Home/create_patient?token=" + _JwtService.GenerateJwtTokenByEmail(receiver);
 
 
                 var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -473,41 +475,41 @@ namespace hallocdoc_mvc_Service.Implementation
 
 
 
-            if (aspuser == null)
-            {
-                AspNetUser aspNetUser = new AspNetUser
-                {
-                    UserName = req.FirstName,
-                    PasswordHash = req.Password,
-                    Email = req.Email,
-                    PhoneNumber = req.Mobile,
-                    CreatedDate = DateTime.Now,
-                };
-                _Repository.AddAspnetuser(aspNetUser);
-                aspuser = aspNetUser;
-            }
+            //if (aspuser == null)
+            //{
+            //    AspNetUser aspNetUser = new AspNetUser
+            //    {
+            //        UserName = req.FirstName,
+            //        PasswordHash = req.Password,
+            //        Email = req.Email,
+            //        PhoneNumber = req.Mobile,
+            //        CreatedDate = DateTime.Now,
+            //    };
+            //    _Repository.AddAspnetuser(aspNetUser);
+            //    aspuser = aspNetUser;
+            //}
 
-            if (usertbl == null)
-            {
-                User user = new User
-                {
-                    AspNetUserId = aspuser.Id,
-                    FirstName = req.FirstName,
-                    LastName = req.LastName,
-                    Email = req.Email,
-                    Mobile = req.Mobile,
-                    Status = 1,
-                    IntDate = req.DOB.Day,
-                    IntYear = req.DOB.Year,
-                    StrMonth = req.DOB.ToString("MMM"),
-                    CreatedBy = aspuser.Id,
-                    CreatedDate = DateTime.Now,
-                    RegionId=isRegion.RegionId
-                };
-                _Repository.AddUser(user);
+            //if (usertbl == null)
+            //{
+            //    User user = new User
+            //    {
+            //        AspNetUserId = aspuser.Id,
+            //        FirstName = req.FirstName,
+            //        LastName = req.LastName,
+            //        Email = req.Email,
+            //        Mobile = req.Mobile,
+            //        Status = 1,
+            //        IntDate = req.DOB.Day,
+            //        IntYear = req.DOB.Year,
+            //        StrMonth = req.DOB.ToString("MMM"),
+            //        CreatedBy = aspuser.Id,
+            //        CreatedDate = DateTime.Now,
+            //        RegionId=isRegion.RegionId
+            //    };
+            //    _Repository.AddUser(user);
             
-                usertbl = user;
-            }
+            //    usertbl = user;
+            //}
 
 
             Request reqobj = new Request
@@ -586,7 +588,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 var receiver = req.Email;
                 var subject = "Create Account";
-                var message = "Tap on link for Create Account: https://localhost:7050/Home/create_patient";
+                var message = "Tap on link for Create Account: http://localhost:5198/Home/create_patient?token=" + _JwtService.GenerateJwtTokenByEmail(receiver);
 
 
                 var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -617,47 +619,47 @@ namespace hallocdoc_mvc_Service.Implementation
             }
 
 
-            if (aspuser == null)
-            {
-                AspNetUser aspNetUser = new AspNetUser
-                {
-                    UserName = req.FirstName,
-                    PasswordHash = req.Password,
-                    Email = req.Email,
-                    PhoneNumber = req.Mobile,
-                    CreatedDate = DateTime.Now,
-                };
-                _Repository.AddAspnetuser(aspNetUser);
+            //if (aspuser == null)
+            //{
+            //    AspNetUser aspNetUser = new AspNetUser
+            //    {
+            //        UserName = req.FirstName,
+            //        PasswordHash = req.Password,
+            //        Email = req.Email,
+            //        PhoneNumber = req.Mobile,
+            //        CreatedDate = DateTime.Now,
+            //    };
+            //    _Repository.AddAspnetuser(aspNetUser);
               
-                aspuser = aspNetUser;
-            }
+            //    aspuser = aspNetUser;
+            //}
 
-            if (usertbl == null)
-            {
-                User user = new User
-                {
-                    AspNetUserId = aspuser.Id,
-                    FirstName = req.FirstName,
-                    LastName = req.LastName,
-                    Email = req.Email,
-                    Mobile = req.Mobile,
-                    ZipCode = req.ZipCode,
-                    State = req.State,
-                    City = req.City,
-                    Street = req.Street,
-                    Status = 1,
-                    CreatedBy = aspuser.Id,
-                    IntDate = req.DOB.Day,
-                    IntYear = req.DOB.Year,
-                    StrMonth = req.DOB.ToString("MMM"),
-                    CreatedDate = DateTime.Now,
-                    RegionId=isRegion.RegionId
+            //if (usertbl == null)
+            //{
+            //    User user = new User
+            //    {
+            //        AspNetUserId = aspuser.Id,
+            //        FirstName = req.FirstName,
+            //        LastName = req.LastName,
+            //        Email = req.Email,
+            //        Mobile = req.Mobile,
+            //        ZipCode = req.ZipCode,
+            //        State = req.State,
+            //        City = req.City,
+            //        Street = req.Street,
+            //        Status = 1,
+            //        CreatedBy = aspuser.Id,
+            //        IntDate = req.DOB.Day,
+            //        IntYear = req.DOB.Year,
+            //        StrMonth = req.DOB.ToString("MMM"),
+            //        CreatedDate = DateTime.Now,
+            //        RegionId=isRegion.RegionId
                     
-                };
-                _Repository.AddUser(user);
+            //    };
+            //    _Repository.AddUser(user);
                
-                usertbl = user;
-            }
+            //    usertbl = user;
+            //}
 
             Request reqobj = new Request
             {
@@ -722,17 +724,63 @@ namespace hallocdoc_mvc_Service.Implementation
 
         }
 
-        public void Update(Create model)
+        public void Update(Create req)
         {
+
+            AspNetUser aspuser = _Repository.AspEmail(req.UserName);
+            //AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
+            //User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
+            User usertbl = _Repository.getUser(req.UserName);
+            RequestClient rc = _Repository.getRcbyemail(req.UserName);
+
             /* _context.AspNetUsers.FirstOrDefault(u => u.Email == model.UserName);*/
-            var asp = _Repository.AspEmail(model.UserName);
+            if (aspuser == null)
+            {
+                AspNetUser aspNetUser = new AspNetUser
+                {
+                    UserName = rc.FirstName,
+                    PasswordHash = req.PasswordHash,
+                    Email = req.UserName,
+                    PhoneNumber = rc.PhoneNumber,
+                    CreatedDate = DateTime.Now,
+                    Roles = _Repository.AddRole(),
+                };
+                _Repository.AddAspnetuser(aspNetUser);
 
-            asp.UserName = model.UserName;
-            asp.PasswordHash = model.PasswordHash;
+                aspuser = aspNetUser;
+            }
 
-            _Repository.updateAspnetuserTable(asp);
-            _Repository.Save();
-       
+    
+
+            if (usertbl == null)
+            {
+                User user = new User
+                {
+                    AspNetUserId = aspuser.Id,
+                    FirstName = rc.FirstName,
+                    LastName = rc.LastName,
+                    Email = req.UserName,
+                    Mobile = rc.PhoneNumber,
+                    ZipCode = rc.ZipCode,
+                    State = rc.State,
+                    City = rc.City,
+                    Street = rc.Street,
+                    Status = 1,
+                    CreatedBy = aspuser.Id,
+                    IntDate = rc.IntDate,
+                    IntYear = rc.IntYear,
+                    StrMonth = rc.StrMonth,
+                    CreatedDate = DateTime.Now,
+                    RegionId = rc.RegionId
+
+                };
+                _Repository.AddUser(user);
+
+        
+            }
+
+        
+
 
         }
 
@@ -750,7 +798,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 var receiver = model.UserName;
                 var subject = "Reset Password";
-                var message = "Tap on link for Create Account: https://localhost:7050/Home/create_patient";
+                var message = "Tap on link for Reset Account: http://localhost:5198/Home/ResetPassword?token=" + _JwtService.GenerateJwtTokenByEmail(receiver);
 
 
                 var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -773,6 +821,17 @@ namespace hallocdoc_mvc_Service.Implementation
         public List<Request> getRequestcon(int id)
         {
            return _Repository.getcon(id);
+        }
+
+        public void Resetpass(Create model, string email)
+        {
+            AspNetUser aspuser = _Repository.AspEmail(email);
+            if (aspuser != null)
+            {
+                aspuser.PasswordHash = model.PasswordHash;
+                _Repository.updateAspnetuserTable(aspuser);
+                _Repository.Save();
+            }
         }
     }
 }

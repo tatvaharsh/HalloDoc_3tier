@@ -78,47 +78,68 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var physician in Model)
+            
+            @if (Model.FirstOrDefault()?.Physicians !=null)
+            {
+                @foreach (var physician in Model)
+                {
+                    <tr>
+                        <td class="d-flex">
+                            <div class="me-2 text-center" style="width:40px;height:40px"><img class="w-100 h-100 border rounded-5" src="~/PhysicianDoc/@physician.Physicians.PhysicianId/Photo.svg" /></div>
+                            <div>@physician.Physicians.FirstName @physician.Physicians.LastName</div>
+                        </td>
+                        @{
+                            int x = 24;
+                        }
+                        @for (int i = 0; i < x; i++)
+                        {
+                            @if (physician.shifts.Any(x => x.StartTime.Hour == i))
+                            {
+                                int diff = physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.EndTime.Hour - physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.StartTime.Hour;
+                
+                                int temp = diff;
+                                @*<td>shift</td>*@
+                                while (diff != 0)
+                                {
+                                    if (physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.Status == 0)
+                                    {
+                                        <td style="background-color:lightpink; color:orangered" class="text-center" onclick="openeditmodal(@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i).ShiftDetailId)"> @physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
+                                    }
+                                    else
+                                    {
+
+                                        <td style="background-color:lightgreen; color:orangered" class="text-center" onclick="openeditmodal(@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i).ShiftDetailId)">@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
+                                    }
+
+                                    diff--;
+                                }
+                                if(temp!=0){
+
+                                i += temp - 1;
+                                }
+            
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                        }
+
+                    </tr>
+            }
+            }
+            else
             {
                 <tr>
-                    <td>@physician.Physicians.FirstName @physician.Physicians.LastName</td>
-                    @{
-                        int x = 24;
-                    }
-                    @for (int i = 0; i < x; i++)
-                    {
-                        @if (physician.shifts.Any(x => x.StartTime.Hour == i))
-                        {
-                            int diff = physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.EndTime.Hour - physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.StartTime.Hour;
-                            int temp = diff;
-                            while (diff != 0)
-                            {
-                                if (physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.Status == 0)
-                                {
-                                    <td style="background-color:lightpink; color:orangered" class="text-center" onclick="openeditmodal(@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i).ShiftDetailId)"> @physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
-                                }
-                                else
-                                {
-
-                                    <td style="background-color:lightgreen; color:orangered" class="text-center" onclick="openeditmodal(@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i).ShiftDetailId)">@physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.ShiftDetailId</td>
-                                }
-
-                                diff--;
-                            }
-                            i += temp - 1;
-                        }
-                        else
-                        {
-                            <td></td>
-                        }
-                    }
-
+                    <td colspan="25" class="text-center">No data avaialable</td>
                 </tr>
+
             }
-        </tbody>
+                  </tbody>
     </table>
 
 </div>
+
 <script>
     function AddDate(day, month, year) {
         $.ajax({

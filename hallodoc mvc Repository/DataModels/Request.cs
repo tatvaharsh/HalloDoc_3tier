@@ -88,9 +88,15 @@ public partial class Request
 
     public int? CaseTag { get; set; }
 
+    [InverseProperty("Request")]
+    public virtual ICollection<BlockRequest> BlockRequests { get; set; } = new List<BlockRequest>();
+
     [ForeignKey("CaseTag")]
     [InverseProperty("Requests")]
     public virtual CaseTag? CaseTagNavigation { get; set; }
+
+    [InverseProperty("Request")]
+    public virtual ICollection<EmailLog> EmailLogs { get; set; } = new List<EmailLog>();
 
     [InverseProperty("Request")]
     public virtual ICollection<EncounterForm> EncounterForms { get; set; } = new List<EncounterForm>();
