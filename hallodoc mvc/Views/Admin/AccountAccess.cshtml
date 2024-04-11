@@ -14,14 +14,14 @@
 <div class="container hideonmobile  rounded shadow mt-3 p-0">
     <div class="row pt-3 ps-2 pb-3">
         <div class="col text-end">
-            <a asp-action="CreateRole" asp-controller="Admin">
-                <button class="btn btn-white border-info text-info me-3">
-                    Create Access
-                </button>
+
+            <a asp-action="CreateRole" asp-controller="Admin" class="btn btn-info text-white me-3" style="border-color: #54d4d3; color: #54d4d3;">
+                <span class="d-none d-md-inline">Create Access</span>
+                <span class="d-md-none"><i class="fa-solid fa-plus" style="color: white;"></i></span>
             </a>
         </div>
     </div>
-    <table class="table">
+    <table class="table d-md-table d-none">
         <thead>
             <tr class="bg-light text-muted h-100">
                 <th scope="col">Name</th>
@@ -63,6 +63,38 @@
             }
         </tbody>
     </table>
+    <div class="d-md-none border-bottom">
+
+        @foreach (var item in Model.rolesofphy)
+        {
+            <div class="border-bottom px-2" id="accordiancolor">
+
+                <div class="my-2">
+                    <div class="my-1">Name: <strong>@item.Name</strong></div>
+                    <div class="my-1">
+                        Account Type:
+                        @if (item.AccountType == 1)
+                        {
+                            <span>Admin</span>
+                        }
+                        else if (item.AccountType == 2)
+                        {
+                            <span>Physician</span>
+                        }
+                        else
+                        {
+                            <span>Patient</span>
+                        }
+                    </div>
+                    <div class="my-1">
+                        <a class="btn btn-white text-info border-info bg-transparent" asp-action="EditRole" asp-route-id="@item.RoleId">Edit</a>
+                        <a class="btn btn-white text-info border-info bg-transparent" asp-action="DeleteRole" asp-route-id="@item.RoleId">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
 </div>
 <style>
 

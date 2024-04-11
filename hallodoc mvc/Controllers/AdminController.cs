@@ -187,6 +187,14 @@ namespace hallodoc_mvc.Controllers
                     }
                     ViewBag.Layout = "_LayAdmin";
                     return View("EmailLog");
+                case 13:
+                    if (isPartial == true)
+                    {
+                        ViewBag.Layout = null;
+                        return PartialView("SmsLog");
+                    }
+                    ViewBag.Layout = "_LayAdmin";
+                    return View("SmsLog");
                 case 14:
                     if (isPartial == true)
                     {
@@ -579,21 +587,6 @@ namespace hallodoc_mvc.Controllers
         public IActionResult Sendlink(ViewCase model)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
-            //var accountSid = _configuration["Twilio:accountSid"];
-            //var authToken = _configuration["Twilio:authToken"];
-            //var twilionumber = _configuration["Twilio:twilioNumber"];
-
-
-            //var messageBody = $"Hello {model.FirstName} {model.LastName},\nClick the following link to create new request in our portal,\nhttp://localhost:5198/Home/submit_screen\n\n\nRegards,\nHalloDoc";
-
-            //TwilioClient.Init(accountSid, authToken);
-
-            //var message = MessageResource.Create(
-            //    from: new Twilio.Types.PhoneNumber(twilionumber),
-            //    body: messageBody,
-            //    to: new Twilio.Types.PhoneNumber("+91" + model.PhoneNumber)
-            //);
-
             _service.sendlink(model, admin1);
             return RedirectToAction("Admin_Dashboard");
         }
@@ -1247,7 +1240,74 @@ namespace hallodoc_mvc.Controllers
         }
 
 
+        public IActionResult SmsLogs(int role, string name, string mobile, DateTime createdate, DateTime sentdate)
+        {
+            return PartialView("_SmsLogsTable", _service.SmsLog(role, name, mobile, createdate, sentdate));
+        }
 
+        public IActionResult ExportRecords(string providername, string patientname, int status, int reqtype, string email, string phone, DateTime fromdate, DateTime todate)
+        {
+            List<AdminRecord> records = _service.SearchRecords(providername, patientname, status, reqtype, email, phone, fromdate, todate);
+            var workbook = new XLWorkbook();
+            var worksheet = workbook.Worksheets.Add("Data");
+
+
+            worksheet.Cell(1, 1).Value = "Patient Name";
+            worksheet.Cell(1, 2).Value = "Request Type";
+            worksheet.Cell(1, 3).Value = "Date of Service";
+            worksheet.Cell(1, 4).Value = "Email";
+            worksheet.Cell(1, 5).Value = "Phone Number";
+            worksheet.Cell(1, 6).Value = "Address";
+            worksheet.Cell(1, 7).Value = "Zip";
+            worksheet.Cell(1, 8).Value = "Status";
+            worksheet.Cell(1, 9).Value = "Physician";
+            worksheet.Cell(1, 10).Value = "Physician Notes";
+            worksheet.Cell(1, 11).Value = "Admin Notes";
+            worksheet.Cell(1, 12).Value = "Patient Notes";
+
+
+            int row = 2;
+            foreach (var item in records)
+            {
+                var statusClass = "";
+                if (item.ReqtypeId == 2)
+                {
+                    statusClass = "Patient";
+                }
+                else if (item.ReqtypeId == 1)
+                {
+                    statusClass = "Business";
+                }
+                else if (item.ReqtypeId == 3)
+                {
+                    statusClass = "Family";
+                }
+                else
+                {
+                    statusClass = "Concierge";
+                }
+
+                worksheet.Cell(row, 1).Value = item.PatientName;
+                worksheet.Cell(row, 2).Value = statusClass;
+                worksheet.Cell(row, 3).Value = item.DateOfService;
+                worksheet.Cell(row, 4).Value = item.Email;
+                worksheet.Cell(row, 5).Value = item.PhoneNumber;
+                worksheet.Cell(row, 6).Value = item.Address;
+                worksheet.Cell(row, 7).Value = item.zip;
+                worksheet.Cell(row, 8).Value = item.status;
+                worksheet.Cell(row, 9).Value = item.ProviderName;
+                worksheet.Cell(row, 10).Value = item.PhysicianNote;
+                worksheet.Cell(row, 11).Value = item.AdminNote;
+                worksheet.Cell(row, 12).Value = item.PatientNote;
+                row++;
+            }
+            worksheet.Columns().AdjustToContents();
+
+            var memoryStream = new MemoryStream();
+            workbook.SaveAs(memoryStream);
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "PatientRecords.xlsx");
+        }
 
 
 

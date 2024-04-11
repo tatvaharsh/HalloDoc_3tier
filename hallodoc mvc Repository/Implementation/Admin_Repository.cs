@@ -870,5 +870,53 @@ namespace hallodoc_mvc_Repository.Implementation
                 }).ToList();
 
         }
+
+        public List<Emaillogs> SmsLogs()
+        {
+            return _context.Smslogs
+          .Select(x => new Emaillogs()
+          {
+              EmailLogId = x.SmslogId,
+              Recipient = x.Admin != null ? x.Admin.FirstName + " " + x.Admin.LastName :
+                         x.Physician != null ? x.Physician.FirstName + " " + x.Physician.LastName :
+                         x.Request != null ? x.Request.RequestClients.First().FirstName + " " + x.Request.RequestClients.First().LastName :
+                         "-",
+              Mobile = x.MobileNumber,
+              RoleName = x.Role.Name??"-",
+              CreatedDate = x.CreateDate,
+              SentDate = x.SentDate,
+              SentTries = x.SentTries,
+              IsSent = x.IsSmssent,
+              ConfirmationNumber = x.ConfirmationNumber,
+          }).ToList();
+        }
+
+        public void SmsLogtbl(Smslog smslog)
+        {
+            _context.Smslogs.Add(smslog);
+            _context.SaveChanges();
+        }
+
+        public List<AdminRecord> SearchRecords()
+        {
+            return _context.Requests
+         .Where(x => x.IsDeleted == null)
+         .Select(x => new AdminRecord()
+         {
+             RequestId = x.RequestId,
+             PatientName = x.RequestClients.First().FirstName + " " + x.RequestClients.First().LastName,
+             Email = x.RequestClients.First().Email,
+             PhoneNumber = x.RequestClients.First().PhoneNumber ?? "-",
+             Address = x.RequestClients.First().Street + ", " + x.RequestClients.First().City + ", " + x.RequestClients.First().State ?? "",
+             zip = x.RequestClients.First().ZipCode ?? "-",
+             status = x.Status,
+             ReqtypeId = x.RequestTypeId,
+             ProviderName = x.Physician.FirstName + " " + x.Physician.LastName,
+             PhysicianNote = x.RequestNotes.First().PhysicianNotes,
+             AdminNote = x.RequestNotes.First().AdminNotes,
+             PatientNote = x.RequestClients.First().Notes,
+            
+         }).ToList();
+        }
     }
 }

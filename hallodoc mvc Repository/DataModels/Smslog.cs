@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -36,10 +35,26 @@ public partial class Smslog
     [Column(TypeName = "timestamp without time zone")]
     public DateTime? SentDate { get; set; }
 
-    [Column("IsSMSSent", TypeName = "bit(1)")]
-    public BitArray? IsSmssent { get; set; }
-
     public int SentTries { get; set; }
 
     public int? Action { get; set; }
+
+    [Column("IsSMSSent")]
+    public bool? IsSmssent { get; set; }
+
+    [ForeignKey("AdminId")]
+    [InverseProperty("Smslogs")]
+    public virtual Admin? Admin { get; set; }
+
+    [ForeignKey("PhysicianId")]
+    [InverseProperty("Smslogs")]
+    public virtual Physician? Physician { get; set; }
+
+    [ForeignKey("RequestId")]
+    [InverseProperty("Smslogs")]
+    public virtual Request? Request { get; set; }
+
+    [ForeignKey("RoleId")]
+    [InverseProperty("Smslogs")]
+    public virtual Role? Role { get; set; }
 }

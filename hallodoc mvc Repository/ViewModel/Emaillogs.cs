@@ -13,6 +13,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         public string Recipient { get; set; } = null!;
 
         public string Email { get; set; } = null!;
+        public string Mobile { get; set; } = null!;
 
         public string RoleName { get; set; } = null!;
 

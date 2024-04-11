@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="container hideonmobile  rounded shadow mt-3 p-0">
-    
+
     <div class="row pt-3 pb-3 mx-1">
         <select class="form-select w-auto ms-2" onchange="sortbtregion(this.value)" id="region" aria-label="Default select example">
             <option selected>All Region</option>
@@ -21,16 +21,19 @@
         </select>
 
         <div class="col text-end">
-           <a asp-action="CreatePhysicianAccount" asp-controller="Admin"> <button class="btn btn-info text-white me-3" style="border-color: #54d4d3; color: #54d4d3;">
-                Create Provider Accout
-            </button>
-            </a>
+            
+                <a asp-action="CreatePhysicianAccount" asp-controller="Admin" class="btn btn-info text-white me-3" style="border-color: #54d4d3; color: #54d4d3;">
+                    <span class="d-none d-md-inline">Create Provider Accout</span>
+                    <span class="d-md-none"><i class="fa-solid fa-plus" style="color: white;"></i></span>
+                </a>
+
+         
         </div>
     </div>
-   
+
     <div id="TablePhysicianData"></div>
 
-    
+
 </div>
 
 <script>
@@ -48,8 +51,8 @@
     //});
 
     sortbtregion(0);
-    function sortbtregion(id){
-      
+    function sortbtregion(id) {
+
         $.ajax({
             url: '/Admin/Provider',
             type: 'POST',
@@ -69,7 +72,7 @@
 
 <style>
 
-   .nav-underline .nav-link.active {
+    .nav-underline .nav-link.active {
         color: #5bc0de !important;
     }
 

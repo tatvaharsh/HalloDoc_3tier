@@ -17,6 +17,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         public string? zip { get; set; }
         public string? Address { get; set; }
         public string? PhoneNumber { get; set; }
+        public string? ProviderName { get; set; }
         public string? Email { get; set; }
         public string? CloseCaseDate { get; set; }
         public string? DateOfService { get; set; }
@@ -36,5 +37,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         public List<Physician>? Physicians { get; set; }
         public string? SelectedRegion { get; set; }
         public int? SelectedPhysicianId { get; set; }
+        public int? ReqtypeId { get; set; }
+        public short? status { get; set; }
     }
 }

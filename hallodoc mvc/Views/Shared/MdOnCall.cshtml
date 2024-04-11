@@ -32,7 +32,12 @@
 
         </div>
     </div>
-    <div class="border rounded shadow p-3">
+    <div class="text-end mb-3">
+        <button type="button" class="btn btn-info text-light d-md-none me-2" onclick="GetScheduling()">Calendar View</button>
+        <a asp-action="ShiftReview" class="btn btn-info text-light d-md-none">Shift for Review</a>
+
+    </div>
+    <div class="d-md-block d-none border rounded shadow p-3">
         <div class="my-2 mb-3">
             <h5>MD's On Call</h5>
             <div id="matched-events" class="row my-2">
@@ -58,6 +63,42 @@
 
 
                     <div class="col-4 my-2 fw-bolder d-flex align-items-center">
+                        <div class="me-2 text-center" style="width:40px;height:40px"><img class="w-100 h-100 border rounded-5" src="~/PhysicianDoc/@offduty.PhysicianId/Photo.svg" /></div>
+                        <div>Dr @offduty.FirstName</div>
+                    </div>
+
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <div class="d-md-none border rounded shadow p-3">
+        <div class="my-2 mb-3">
+            <h5>MD's On Call</h5>
+            <div id="matched-events" >
+                @foreach (var oncall in Model.OnCall)
+                {
+                    <div class="col-12  fw-bolder d-flex align-items-center mb-3">
+                        <div class="me-2 text-center" style="width:40px;height:40px"><img class="w-100 h-100 border rounded-5" src="~/PhysicianDoc/@oncall.PhysicianId/Photo.svg" /></div>
+                        <div>Dr @oncall.FirstName</div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+
+        <div class="mt-3">
+            <h5>Physicians Off Duty</h5>
+
+            <div id="unmatched-events" >
+                @foreach (var offduty in Model.OffDuty)
+                {
+
+
+                    <div class="col-12  fw-bolder d-flex align-items-center mb-3">
                         <div class="me-2 text-center" style="width:40px;height:40px"><img class="w-100 h-100 border rounded-5" src="~/PhysicianDoc/@offduty.PhysicianId/Photo.svg" /></div>
                         <div>Dr @offduty.FirstName</div>
                     </div>

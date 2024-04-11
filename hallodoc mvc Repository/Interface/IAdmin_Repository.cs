@@ -148,5 +148,8 @@ namespace hallodoc_mvc_Repository.Interface
         void updateBlockRequest(BlockRequest req);
         void AddEmaillogtbl(EmailLog emailLog);
         List<Emaillogs> EmailLogs();
+        List<Emaillogs> SmsLogs();
+        void SmsLogtbl(Smslog smslog);
+        List<AdminRecord> SearchRecords();
     }
 }

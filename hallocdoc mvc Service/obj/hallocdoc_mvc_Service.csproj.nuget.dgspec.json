@@ -69,6 +69,10 @@
             "System.Web.Helpers.Crypto": {
               "target": "Package",
               "version": "[3.2.3, )"
+            },
+            "Twilio": {
+              "target": "Package",
+              "version": "[7.0.2, )"
             }
           },
           "imports": [

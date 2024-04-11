@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.Extensions.Configuration;
 using Syncfusion.EJ2.Notifications;
 using System;
 using System.Collections;
@@ -14,6 +15,8 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Xml.Linq;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace hallocdoc_mvc_Service.Implementation
@@ -22,10 +25,13 @@ namespace hallocdoc_mvc_Service.Implementation
     {
         private readonly IAdmin_Repository _Repository;
 
-        public Admin_Service(IAdmin_Repository Repository)
+        private readonly IConfiguration _configuration;
+        public Admin_Service(IAdmin_Repository Repository,IConfiguration configuration)
         {
             _Repository = Repository;
+            _configuration = configuration;
         }
+
 
         public List<AdminDashboard> getDashData(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
@@ -1257,11 +1263,40 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public void sendlink(ViewCase model, int admin1)
         {
+            //var accountSid = _configuration["Twilio:accountSid"];
+            //var authToken = _configuration["Twilio:authToken"];
+            //var twilionumber = _configuration["Twilio:twilioNumber"];
+
+
+            //var messageBody = $"Hello {model.FirstName} {model.LastName},\nClick the following link to create new request in our portal,\nhttp://localhost:5198/Home/submit_screen\n\n\nRegards,\nHalloDoc";
+
+            //TwilioClient.Init(accountSid, authToken);
+
+            //var message = MessageResource.Create(
+            //    from: new Twilio.Types.PhoneNumber(twilionumber),
+            //    body: messageBody,
+            //    to: new Twilio.Types.PhoneNumber("+91" + model.PhoneNumber)
+            //);
+
+
+            //Smslog smslog = new()
+            //{
+            //    Smstemplate = messageBody,
+            //    MobileNumber = model.PhoneNumber,
+            //    CreateDate = DateTime.Now,
+            //    SentDate = DateTime.Now,
+            //    SentTries = 1,
+            //    IsSmssent=true,
+            //};
+            //_Repository.SmsLogtbl(smslog);
+
+
+
 
 
             var receiver = model.Email;
             var subject = "Send Link";
-            var message = "Tap on link for Send Link : <!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <style>\r\n        /* Your provided CSS */\r\n        .button-74 {\r\n            background-color: #fbeee0;\r\n            border: 2px solid #422800;\r\n            border-radius: 30px;\r\n            box-shadow: #422800 4px 4px 0 0;\r\n            color: #422800;\r\n            cursor: pointer;\r\n            display: inline-block;\r\n            font-weight: 600;\r\n            font-size: 18px;\r\n            padding: 0 18px;\r\n            line-height: 50px;\r\n            text-align: center;\r\n            text-decoration: none;\r\n            user-select: none;\r\n            -webkit-user-select: none;\r\n            touch-action: manipulation;\r\n        }\r\n\r\n        .button-74:hover {\r\n            background-color: #fff;\r\n        }\r\n\r\n        .button-74:active {\r\n            box-shadow: #422800 2px 2px 0 0;\r\n            transform: translate(2px, 2px);\r\n        }\r\n\r\n        @media (min-width: 768px) {\r\n            .button-74 {\r\n                min-width: 120px;\r\n                padding: 0 25px;\r\n            }\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n    <a href=\"http://localhost:5198/Home/submit_screen\" class=\"button-74\">Click me!</a>\r\n</body>\r\n</html>\r\n";
+            var messages = "Tap on link for Send Link : <!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <style>\r\n        /* Your provided CSS */\r\n        .button-74 {\r\n            background-color: #fbeee0;\r\n            border: 2px solid #422800;\r\n            border-radius: 30px;\r\n            box-shadow: #422800 4px 4px 0 0;\r\n            color: #422800;\r\n            cursor: pointer;\r\n            display: inline-block;\r\n            font-weight: 600;\r\n            font-size: 18px;\r\n            padding: 0 18px;\r\n            line-height: 50px;\r\n            text-align: center;\r\n            text-decoration: none;\r\n            user-select: none;\r\n            -webkit-user-select: none;\r\n            touch-action: manipulation;\r\n        }\r\n\r\n        .button-74:hover {\r\n            background-color: #fff;\r\n        }\r\n\r\n        .button-74:active {\r\n            box-shadow: #422800 2px 2px 0 0;\r\n            transform: translate(2px, 2px);\r\n        }\r\n\r\n        @media (min-width: 768px) {\r\n            .button-74 {\r\n                min-width: 120px;\r\n                padding: 0 25px;\r\n            }\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n    <a href=\"http://localhost:5198/Home/submit_screen\" class=\"button-74\">Click me!</a>\r\n</body>\r\n</html>\r\n";
 
 
             var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -1273,14 +1308,14 @@ namespace hallocdoc_mvc_Service.Implementation
                 Credentials = new NetworkCredential(mail, password)
             };
 
-            client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message)
+            client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, messages)
             {
                 IsBodyHtml = true
             });
 
             EmailLog emailLog = new()
             {
-                EmailTemplate = message,
+                EmailTemplate = messages,
                 SubjectName = subject,
                 SentTries = 1,
                 IsEmailSent = true,
@@ -2753,6 +2788,32 @@ namespace hallocdoc_mvc_Service.Implementation
 
                 return logs;
             
+        }
+
+        public List<Emaillogs>? SmsLog(int role, string name, string mobile, DateTime createdate, DateTime sentdate)
+        {
+            List<Emaillogs> logs = _Repository.SmsLogs();
+
+            if (name != null) { logs = logs.Where(x => x.Recipient.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList(); }
+            if (mobile != null) { logs = logs.Where(x => x.Mobile.Contains(mobile, StringComparison.OrdinalIgnoreCase)).ToList(); }
+            if (createdate != DateTime.MinValue) { logs = logs.Where(x => x.CreatedDate.Date == createdate).ToList(); }
+            if (sentdate != DateTime.MinValue) { logs = logs.Where(x => x.SentDate.HasValue && x.SentDate.Value.Date == sentdate).ToList(); }
+
+            return logs;
+        }
+
+        public List<AdminRecord> SearchRecords(string providername, string patientname, int status, int reqtype, string email, string phone, DateTime fromdate, DateTime todate)
+        {
+            List<AdminRecord> records = _Repository.SearchRecords();
+
+            if (providername != null) { records = records.Where(x => x.ProviderName.Contains(providername, StringComparison.OrdinalIgnoreCase)).ToList(); }
+            if (patientname != null) { records = records.Where(x => x.PatientName.Contains(patientname, StringComparison.OrdinalIgnoreCase)).ToList(); }
+            if (email != null) { records = records.Where(x => x.Email.Contains(email, StringComparison.OrdinalIgnoreCase)).ToList(); }
+            if (phone != null) { records = records.Where(x => x.PhoneNumber.Contains(phone, StringComparison.OrdinalIgnoreCase)).ToList(); }
+            if (status != 0) { records = records.Where(x => x.status == status).ToList(); }
+            if (reqtype != 0) { records = records.Where(x => x.ReqtypeId == reqtype).ToList(); }
+
+            return records;
         }
     }
 }
