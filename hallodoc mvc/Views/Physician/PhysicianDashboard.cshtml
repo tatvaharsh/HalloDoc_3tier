@@ -1,0 +1,473 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.ModalData
+@{
+    ViewData["Title"] = "PhysicianDashboard";
+    Layout = "~/Views/Shared/Physician/_LayPhysician.cshtml";
+}
+
+
+<link rel="stylesheet" href="~/css/Admin_Pages/Admin_Dashboard.css" />
+
+
+
+<link rel="stylesheet" href="~/js/AdminDashboard.js" />
+
+
+<!-- navbar -->
+<Partial name="_Toast" />
+
+
+<style>
+    .searchfocus:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    .searchfocus::placeholder {
+        padding-left: 5px;
+    }
+</style>
+
+
+
+
+
+
+
+<!------------------modal----------->
+<div id="mymodal">
+</div>
+
+<!-- main-container -->
+<div class="p-sm-2 p-md-5 mt-4 mt-sm-0">
+    <div class="tab-content" id="myTabContent">
+
+
+        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+             tabindex="0">
+            <div class="container-fluid">
+
+                <div class="row nav" id="myTab" role="tablist">
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-4 mb-3 nav-item" role="presentation" onclick="GetData()">
+                        <div class="Box border rounded p-1 p-sm-3 new active" id="new-tab" onclick="changeactive()" value="1" data-bs-toggle="tab"
+                             data-bs-target="#new-tab-pane" type="button" role="tab" aria-controls="new-tab-pane"
+                             aria-selected="true">
+                            <div class="d-flex align-items-center">
+                                <img id="onactive" class="d-none" src="/SRSScreenShorts/new_active.png" style="width:25px;height:25px;" />
+                                <img id="offactive" class="d-none" src="/SRSScreenShorts/new.png" style="width:25px;height:25px;" />
+                                <h6 class="px-1 m-0">New</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>@Model.CountNew</h4>
+                            </div>
+
+                        </div>
+                        <div class="triangle-down" style="border-top-color:rgba(2, 2, 146)" id="tdown1"></div>
+                    </div>
+
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" onclick="GetData()">
+                        <div class="Box border rounded p-1 p-sm-3 Pending" id="Pending-tab" value="2" onclick="changeactive()" data-bs-toggle="tab"
+                             data-bs-target="#Pending-tab-pane" type="button" role="tab"
+                             aria-controls="Pending-tab-pane" aria-selected="false" tabindex="-1">
+                            <div class="d-flex align-items-center">
+                                <img id="pendingactive" class="d-none" src="/SRSScreenShorts/pending_active.png" style="width:25px;height:25px;" />
+                                <img id="pendingoffactive" class="d-none" src="/SRSScreenShorts/pending.png" style="width:25px;height:25px;" />
+                                <h6 class="px-1 m-0">Pending</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>@Model.CountPending</h4>
+                            </div>
+                        </div>
+                        <div class="triangle-down d-none" id="tdown2"></div>
+                    </div>
+
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
+                        <div class="Box border rounded p-1 p-sm-3 Active" id="Active-tab" onclick="changeactive()" value="3" data-bs-toggle="tab"
+                             data-bs-target="#Active-tab-pane" type="button" role="tab"
+                             aria-controls="Active-tab-pane" aria-selected="false" tabindex="-1">
+                            <div class="d-flex align-items-center">
+                                <img id="Activeactive" class="d-none" src="/SRSScreenShorts/active_active.png" style="width:25px;height:25px;" />
+                                <img id="Activeoffactive" class="d-none" src="/SRSScreenShorts/active.png" style="width:25px;height:25px;" />
+                                <h6 class="px-1 m-0">Active</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>@Model.CountActive</h4>
+                            </div>
+                        </div>
+                        <div class="triangle-down d-none" id="tdown3"></div>
+                    </div>
+
+
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 mb-3 col-4" role="presentation" onclick="GetData()">
+                        <div class="Box border rounded p-1 p-sm-3 Conclude" id="Conclude-tab" onclick="changeactive()" value="4" data-bs-toggle="tab"
+                             data-bs-target="#Conclude-tab-pane" type="button" role="tab"
+                             aria-controls="Conclude-tab-pane" aria-selected="false" tabindex="-1">
+                            <div class="d-flex align-items-center">
+                                <img id="Concludeactive" class="d-none" src="/SRSScreenShorts/conclude_active.png" style="width:25px;height:25px;" />
+                                <img id="Concludeoffactive" class="d-none" src="/SRSScreenShorts/conclude.png" style="width:25px;height:25px;" />
+                                <h6 class="px-1 m-0">Conclude</h6>
+                            </div>
+                            <div class="ps-1 pt-3">
+                                <h4>@Model.CountConclude</h4>
+                            </div>
+                        </div>
+                        <div class="triangle-down d-none" id="tdown4"></div>
+                    </div>
+
+
+                    
+
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mt-1 mb-3">
+                    <h5>
+               
+
+                    </h5>
+                    <div class="d-flex">
+                        <button type="button" title="Send Link" class="btn btn-info d-flex ms-1 ms-sm-2 p-sm-2 p-1 align-items-center text-light" onclick="Sendlink()">
+                            <i class="bi bi-send"></i><span class="d-md-block d-none  px-2 ">Send Link</span>
+                        </button>
+                        <a asp-action="CreateReq" title="Create Request" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
+                            <i class="bi bi-pencil-square"></i><span class="d-md-block d-none px-2 ">Create Request</span>
+                        </a>
+                       
+                    </div>
+                </div>
+
+                <div class="table-responsive border rounded p-3 shadow ">
+                    <div class="d-md-flex  justify-content-between align-items-center gap-2 mb-2">
+
+                        <div class="d-md-flex gap-1">
+                            <form role="search" class=" d-flex align-items-center border border-rounded rounded border-info mb-2 me-3" style=" height: 40px; width: 100%;">
+
+                                <input class="form-control searchfocus border-0 ps-2" type="search" id="search" placeholder="Search" aria-label="Search" onkeyup="filter()" style="width:120px;">
+                            </form>
+
+
+                      
+
+
+                        </div>
+
+                        <input type="hidden" id="requestor" />
+
+
+                        <div class="d-flex nav nav-underline d-none d-md-flex gap-2 requestTypes align-items-center mb-2" id="" role="tablist">
+                            <div class=" requestBtn 234 345 34 0 nav-item" role="presentation" value="0" onclick="abc(0)">
+                                <span class="nav-link active  text-dark" data-bs-toggle="tab" role="tab" id="all" aria-controls="home-tab-pane"
+                                      aria-selected="true">All</span>
+                            </div>
+                            <div class="nav-item" role="presentation">
+
+                                <div class="btn rounded-0 d-md-flex gap-2 text-dark mx-auto text-center requestBtn align-items-center Sorts nav-link " data-bs-toggle="tab" role="tab" aria-controls="dv-tab-pane"
+                                     aria-selected="false" onclick="abc(2)" value="2">
+                                    <i class="bi bi-circle-fill green-icon"></i>
+                                    <div class="fs-6"><small>Patient</small> </div>
+                                </div>
+                            </div>
+                            <div class="nav-item" role="presentation">
+
+                                <div class="btn d-md-flex rounded-0 text-dark gap-2 mx-auto text-center requestBtn align-items-center Sorts nav-link " data-bs-toggle="tab" role="tab" aria-controls="dv-tab-pane"
+                                     aria-selected="false" onclick="abc(3)" value="3">
+                                    <i class="bi bi-circle-fill orange-icon"></i>
+                                    <div><small>Family/Friend</small></div>
+                                </div>
+                            </div>
+                            <div class="nav-item" role="presentation">
+                                <div class="btn d-md-flex rounded-0 text-dark gap-2 mx-auto text-center requestBtn align-items-center Sorts nav-link" data-bs-toggle="tab" role="tab" aria-controls="dv-tab-pane"
+                                     aria-selected="false" onclick="abc(1)" value="1">
+                                    <i class="bi bi-circle-fill pink-icon"></i>
+                                    <div><small>Business</small></div>
+                                </div>
+                            </div>
+                            <div class="nav-item" role="presentation">
+                                <div class="btn d-md-flex rounded-0 text-dark gap-2 mx-auto text-center requestBtn align-items-center Sorts nav-link" data-bs-toggle="tab" role="tab" aria-controls="dv-tab-pane"
+                                     aria-selected="false" onclick="abc(4)" value="4">
+                                    <i class="bi bi-circle-fill blue-icon"></i>
+                                    <div><small>Concierge</small></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="d-flex nav nav-underline d-md-none d-block align-items-center  justify-content-around mb-2">
+
+                        <div class="btn requestBtn 234 345 34 0 nav-item" role="presentation" value="0" onclick="abc(0)" style="margin-bottom:15px;">
+                            <span class="nav-link active  text-dark" data-bs-toggle="tab" role="tab" id="allaccord" aria-controls="home-tab-pane"
+                                  aria-selected="true">All</span>
+                        </div>
+                        <div class="btn d-md-flex mx-0 p-1 text-center requestBtn align-items-center Sorts nav-item" role="presentation" onclick="abc(2)" value="2">
+                            <i class="bi bi-circle-fill green-icon"></i>
+
+                            <p style="font-size:smaller; ">
+                                <span class="nav-link p-0 text-dark" data-bs-toggle="tab" role="tab" aria-controls="home-tab-pane"
+                                      aria-selected="true">Patient</span>
+                            </p>
+
+                        </div>
+                        <div class="btn d-md-flex mx-0 p-1 text-center requestBtn align-items-center Sorts nav-item" role="presentation" onclick="abc(3)" value="3">
+                            <i class="bi bi-circle-fill orange-icon"></i>
+                            <div>
+                                <p style="font-size:smaller;">
+                                    <span class="nav-link p-0 text-dark" data-bs-toggle="tab" role="tab" aria-controls="home-tab-pane"
+                                          aria-selected="true">Family/Friend</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="btn d-md-flex  mx-0 p-1 text-center requestBtn align-items-center Sorts nav-item" role="presentation" onclick="abc(1)" value="1">
+                            <i class="bi bi-circle-fill pink-icon"></i>
+                            <div>
+                                <p style="font-size:smaller;">
+                                    <span class="nav-link p-0 text-dark" data-bs-toggle="tab" role="tab" aria-controls="home-tab-pane"
+                                          aria-selected="true">Business</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="btn d-md-flex mx-0 p-1 text-center requestBtn align-items-center Sorts nav-item" role="presentation" onclick="abc(4)" value="4">
+                            <i class="bi bi-circle-fill blue-icon"></i>
+                            <div>
+                                <p style="font-size:smaller;">
+                                    <span class="nav-link p-0 text-dark" data-bs-toggle="tab" role="tab" aria-controls="home-tab-pane"
+                                          aria-selected="true">Concierge</span>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="tableContainer"></div>
+
+
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+
+  
+    //$.ajax({
+    //    url: `/Physician/New`,
+    //    type: 'POST',
+    //    dataType: 'html',
+    
+    //    success: function (response) {
+    //        $("#tableContainer").html(response)
+    //    },
+    //    error: function () {
+    //        alert('An error occurred.');
+    //    }
+    //});
+  
+</script>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        changeactive();
+    });
+    function changeactive() {
+
+        if (document.getElementById("new-tab").classList.contains("active")) {
+            document.getElementById("onactive").classList.remove("d-none");
+            document.getElementById("offactive").classList.add("d-none");
+           
+        } else {
+            document.getElementById("offactive").classList.remove("d-none");
+            document.getElementById("onactive").classList.add("d-none");
+        }
+        if (document.getElementById("Pending-tab").classList.contains("active")) {
+            document.getElementById("pendingactive").classList.remove("d-none");
+            document.getElementById("pendingoffactive").classList.add("d-none");
+        } else {
+            document.getElementById("pendingoffactive").classList.remove("d-none");
+            document.getElementById("pendingactive").classList.add("d-none");
+        }
+        if (document.getElementById("Active-tab").classList.contains("active")) {
+            document.getElementById("Activeactive").classList.remove("d-none");
+            document.getElementById("Activeoffactive").classList.add("d-none");
+        } else {
+            document.getElementById("Activeoffactive").classList.remove("d-none");
+            document.getElementById("Activeactive").classList.add("d-none");
+        }
+        if (document.getElementById("Conclude-tab").classList.contains("active")) {
+            document.getElementById("Concludeactive").classList.remove("d-none");
+            document.getElementById("Concludeoffactive").classList.add("d-none");
+        } else {
+            document.getElementById("Concludeoffactive").classList.remove("d-none");
+            document.getElementById("Concludeactive").classList.add("d-none");
+        }
+       
+
+        document.querySelectorAll('.Box').forEach(element => {
+
+            if (element.classList.contains('active')) {
+                console.log('active');
+                var value = element.getAttribute('value');
+                if (value == 1) {
+                    document.getElementById(`tdown${value}`).style.borderTopColor = "rgba(2, 2, 146)";
+                }
+                else if (value == 2) {
+                    document.getElementById(`tdown${value}`).style.borderTopColor = " rgb(0, 92, 104)";
+                }
+                else if (value == 3) {
+                    document.getElementById(`tdown${value}`).style.borderTopColor = "rgb(2, 54, 37)";
+
+                }
+                else if (value == 4) {
+                    document.getElementById(`tdown${value}`).style.borderTopColor = " rgb(99, 3, 91)";
+
+                }
+                else if (value == 5) {
+
+                    document.getElementById(`tdown${value}`).style.borderTopColor = " rgb(3, 47, 83)";
+
+
+                }
+                else {
+                    document.getElementById(`tdown${value}`).style.borderTopColor = " rgb(44, 1, 70)";
+
+                }
+                document.getElementById(`tdown${value}`).classList.remove('d-none');
+            }
+            else {
+                console.log("incactive");
+                var value = element.getAttribute('value');
+                document.getElementById(`tdown${value}`).classList.add('d-none');
+            }
+
+        })
+    }
+
+    var regid = 0;
+    var reqtype = 0;
+    var s = '';
+    var state = 1;
+    var page = 0;
+
+    const GetData = () => {
+        const states = document.getElementsByClassName("border");
+
+        for (let i = 0; i < states.length; ++i) {
+            if (states[i].classList.contains("active")) {
+                state = states[i].getAttribute('value');
+                console.log(states[i].classList[states[i].classList.length - 2])
+                $.ajax({
+                    method: "POST",
+                    url: `/Physician/${states[i].classList[states[i].classList.length - 2]}`,
+
+
+                    success: function (result) {
+                        $('#tableContainer').html(result);
+                        $('#all').click();
+                        $('#allaccord').click();
+                    },
+
+                    error: function () {
+                        alert('Error loading partial view');
+                    }
+                });
+            }
+        }
+    }
+
+
+    const abc = (e) => {
+
+        document.getElementById("requestor").value = e
+        filter();
+    }
+    const xyz = (e) => {
+        document.getElementById("page").value = e
+        page = e;
+        filter();
+    }
+
+
+    const filter = () => {
+        const states = document.getElementsByClassName("border");
+        console.log(document.getElementById("requestor").value)
+        for (let i = 0; i < states.length; ++i) {
+            if (states[i].classList.contains("active")) {
+                console.log(`${states[i].classList[states[i].classList.length - 2]}`)
+              
+                regid = 0;
+                reqtype = document.getElementById("requestor").value;
+                s = document.getElementById("search").value;
+
+                $.ajax({
+                    url: `/Physician/${states[i].classList[states[i].classList.length - 2]}`,
+                    type: 'POST',
+                    dataType: 'html',
+                    data: { search: document.getElementById("search").value, region: 0, requestor: document.getElementById("requestor").value, pageid: page },
+                    // Pass your data here
+                    success: function (response) {
+                        $("#tableContainer").html(response)
+                    },
+                    error: function () {
+                        alert('An error occurred.');
+                    }
+                });
+            }
+        }
+    }
+
+
+
+    window.onload = () => {
+        $.ajax({
+            url: `/Physician/New`,
+            type: 'POST',
+            dataType: 'html',
+            // Pass your data here
+            success: function (response) {
+                $("#tableContainer").html(response)
+            },
+            error: function () {
+                alert('An error occurred.');
+            }
+        });
+    }
+
+
+    function Sendlink() {
+
+        $("#mymodal").load('/Physician/Sendlink', () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('SendLink'));
+            modal.show();
+        });
+    }
+
+
+</script>
+<style>
+    .foot {
+        position: fixed;
+    }
+
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+</style>

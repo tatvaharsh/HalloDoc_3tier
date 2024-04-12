@@ -23,7 +23,7 @@ namespace hallocdoc_mvc_Service.Interface
         List<AdminDashboard> getDashDataUnpaid(int? requestType, string? search, int? requestor, int? region, int pageid);
         ViewNote? GetNotes(int id);
         ViewNote? setViewNotesData(ViewNote model, int id,int admin);
-        bool ValidateUser(LoginViewModel model);
+        AspNetUser ValidateUser(LoginViewModel model);
 
         List<Physician> GetPhysician(int id);
         RequestClient? GetCancelCaseData(ModalData md, int id);

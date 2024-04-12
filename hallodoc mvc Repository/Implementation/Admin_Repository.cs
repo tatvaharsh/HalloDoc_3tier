@@ -73,16 +73,7 @@ namespace hallodoc_mvc_Repository.Implementation
         /// <returns></returns>
         public AspNetUser Validate(LoginViewModel model)
         {
-            var aspUser = _context.AspNetUsers.FirstOrDefault(u => u.Email == model.Email && u.PasswordHash == model.Passwordhash);
-
-            if (aspUser == null)
-            {
-                return new AspNetUser();
-            }
-            else
-            {
-                return aspUser;
-            }
+            return _context.AspNetUsers.Include(X=>X.Roles).FirstOrDefault(u => u.Email == model.Email && u.PasswordHash == model.Passwordhash)??new();
         }
 
         public Admin getaspuser(string email)

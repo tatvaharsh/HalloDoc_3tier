@@ -236,6 +236,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/PhysicianDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFBoeXNpY2lhbkRhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/Sendlink.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFNlbmRsaW5rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/ViewCase.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFZpZXdDYXNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/ViewNotes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFZpZXdOb3Rlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/BlockHistory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEJsb2NrSGlzdG9yeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -270,6 +286,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/PatientHistoryTable.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBhdGllbnRIaXN0b3J5VGFibGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/Physician/_LayPhysician.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBoeXNpY2lhblxfTGF5UGh5c2ljaWFuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/Physician/_Physician_Header_Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBoeXNpY2lhblxfUGh5c2ljaWFuX0hlYWRlcl9EYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/Physician/_Physician_Request_Table.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFBoeXNpY2lhblxfUGh5c2ljaWFuX1JlcXVlc3RfVGFibGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/SearchRecord.cshtml]

@@ -74,50 +74,50 @@ namespace hallodoc_mvc.Controllers
             return RedirectToAction("Admin_Login");
         }
 
-        public IActionResult Admin_Login()
-        {
+        //public IActionResult Admin_Login()
+        //{
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        [HttpPost]
-        public IActionResult Admin_Login(LoginViewModel model)
-        {   
-            if (ModelState.IsValid)
-            {
-                bool isReg = _service.ValidateUser(model);
+        //[HttpPost]
+        //public IActionResult Admin_Login(LoginViewModel model)
+        //{   
+        //    if (ModelState.IsValid)
+        //    {
+        //        bool isReg = _service.ValidateUser(model);
 
-                if (isReg)
-                {
-                    var Admin = _service.getAdmin(model.Email);
-                    if (Admin != null)
-                    {
-                        HttpContext.Session.SetInt32("Id", Admin.AdminId);
+        //        if (isReg)
+        //        {
+        //            var Admin = _service.getAdmin(model.Email);
+        //            if (Admin != null)
+        //            {
+        //                HttpContext.Session.SetInt32("Id", Admin.AdminId);
                        
-                        var token = _jwtService.GenerateJwtToken(model);
-                        Response.Cookies.Append("jwt", token);
-                        ViewBag.Username = Admin.FirstName;
-                       TempData["success"] = "Login Successfully!!!";
-                        return RedirectToAction("Admin_Dashboard");
-                    }
-                }
-                TempData["error"] = "Login Failed!!!";
+        //                var token = _jwtService.GenerateJwtToken(model);
+        //                Response.Cookies.Append("jwt", token);
+        //                ViewBag.Username = Admin.FirstName;
+        //               TempData["success"] = "Login Successfully!!!";
+        //                return RedirectToAction("Admin_Dashboard");
+        //            }
+        //        }
+        //        TempData["error"] = "Login Failed!!!";
 
 
-            }
+        //    }
                
-            return View();
-        }
+        //    return View();
+        //}
 
-        public IActionResult Logout()
-        {
+        //public IActionResult Logout()
+        //{
             
      
-            HttpContext.Session.Clear();
-            HttpContext.Session.Remove("Id");
-            Response.Cookies.Delete("jwt");
-            return RedirectToAction("Admin_Login");
-        }
+        //    HttpContext.Session.Clear();
+        //    HttpContext.Session.Remove("Id");
+        //    Response.Cookies.Delete("jwt");
+        //    return RedirectToAction("Admin_Login");
+        //}
 
 
         public IActionResult Admin_Forgot()

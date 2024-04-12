@@ -13,6 +13,7 @@ namespace hallodoc_mvc_Repository.ViewModel
 
     public class AdminDashboard
     {
+        public DateTime? AcceptedDate { get; set; }
         public int Id { get; set; }
         public string? RPhone { get; set; }
 

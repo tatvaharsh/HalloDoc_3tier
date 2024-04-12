@@ -1,0 +1,177 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.ViewCase
+@{
+    ViewData["Title"] = "View Case";
+    Layout = "~/Views/Shared/Physician/_LayPhysician.cshtml";
+}
+<link href="~/css/Admin_Pages/ViewCase.css" rel="stylesheet" type="text/css" />
+
+@functions {
+    public string GetReqType(int ReqType)
+    {
+        switch (ReqType)
+        {
+            case 1: return "Business";
+            case 2: return "Patient";
+            case 3: return "Family";
+            case 4: return "Concierge";
+            default: return "Unknown";
+        }
+    }
+    public string GetTableColorClass(int RequstTypeId)
+    {
+        switch (RequstTypeId)
+        {
+            case 1: return "pink";
+            case 2: return "green";
+            case 3: return "orange";
+            case 4: return "blue";
+            default: return "green";
+        }
+    }
+    public string okok(int Status)
+    {
+        switch (Status)
+        {
+            case 1: return "New";
+            case 2: return "Pending";
+            case 3: return "To Close";
+            case 4: return "Active";
+            case 5: return "Active";
+            case 6: return "Conclude";
+            case 7: return "To Close";
+            case 8: return "To Close";
+            case 9: return "Unpaid";
+            default: return "New";
+        }
+    }
+}
+
+
+
+<div class="container">
+    <div class=" mt-5 d-flex justify-content-between align-items-center">
+      @*  <h4> New Request <span class="badge rounded-5 Reqtyp" >@Model.ReqType</span></h4>*@
+        <h4>
+            @okok(Convert.ToInt32(@Model.Status)) Profile <span class="badge rounded-5 Reqtyp" style="background-color:@GetTableColorClass(@Model.ReqType);">@GetReqType(@Model.ReqType)</span>
+        </h4>
+      
+     
+        <a asp-controller="Physician" asp-action="PhysicianDashboard"
+           class="btn shadow  btn-outline-secondary border-info text-info px-3 ">
+            <i class="fa-solid fa-angle-left"></i> Back
+        </a>
+    </div>
+    <form action="" class="shadow border rounded my-3" method="post">
+        <div class="mx-3 my-4 ">
+            <div class="mt-3">
+                <h4 class="ms-auto me-auto mb-4">Patient Information</h4>
+                <h6 style="font-size: 14px">Confirmation Number</h6>
+                <p class="text-info fs-5 mb-3">@Model.ConfirmationNO</p>
+
+                <div class="row">
+                    <div class=" col-12 form-floating mb-3 ">
+                        <textarea class="form-control h-100 dclass" id="floatingInput" placeholder="Textarea" rows="3" asp-for="@Model.PatientNotes"
+                                  disabled></textarea>
+                        <label for="floatingInput" class="text-wrap ms-2">Patient Notes</label>
+                    </div>
+                </div>
+                <hr />
+                <div class="mt-1">
+                    <div class="row">
+
+                        <div class="form-floating mb-3 col-12 col-sm-6">
+                            <input type="text" class="form-control dclass" id="floatingInput" placeholder="John"
+                                   required value="@Model.FirstName" disabled>
+                            <label for="floatingInput" class="ms-2 ">First Name</label>
+                        </div>
+
+                        <div class="form-floating mb-3 col-12 col-sm-6">
+                            <input type="text" class="form-control dclass" id="floatingInput" placeholder="Wick"
+                                   value="@Model.LastName" disabled>
+                            <label for="floatingInput" class="ms-2 ">Last Name</label>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="form-floating mb-3 col-12 col-sm-6">
+                            <input type="date" class="form-control floatingInput" asp-for="BirthDate" asp-format="{0:yyyy-MM-dd}" placeholder="Date Of Birth " disabled>
+                            <label for="floatingInput " class="mx-2">Date Of Birth</label>
+                        </div>
+
+                        @*DSG*@
+                        <div class="form-floating mb-3 col-12 col-sm-5">
+
+                            <input type="tel" class="form-control" id="phone" value="@Model.PhoneNumber" disabled style="height: calc(3.5rem + calc(var(--bs-border-width) * 2));">
+                        </div>
+
+                        <div class="form-floating mb-3 col-12 col-sm-1 ">
+                            <button type="button" class="dclass btn btn-outline-dark border-info p-3 text-info w-100" style="height: 100%;">
+                                <i class="bi bi-telephone"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="form-floating mb-3 col-12 col-sm-6">
+                        <input type="email" class="form-control emailInp dclass" value="@Model.Email" id="floatingInput1"
+                                disabled>
+                        <label for="floatingInput" class="ms-2 ">Email</label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <h4 class="ms-auto me-auto">Location Information</h4>
+
+
+                    <div class="form-floating mb-3 col-12 col-sm-6">
+                        <input type="text" class="form-control dclass" id="floatingInput" value="@Model.PatientRegion" placeholder="Maryland"
+                               disabled>
+                        <label for="floatingInput" class="ms-2 ">Region</label>
+                    </div>
+
+                    <div class="form-floating mb-3 col-12 col-sm-5">
+                        <input type="text" class="form-control dclass" id="floatingInput" value="@Model.AddressORBusinessName" placeholder="Maryland"
+                               disabled>
+                        <label for="floatingInput" class="ms-2 ">Business Name / Address</label>
+                    </div>
+
+
+                    <div class="form-floating mb-3 col-12 col-sm-1 ">
+                        <a type="button" class="dclass btn btn-outline-dark border-info p-3 text-info w-100"
+                           href="https://www.google.com/maps/search/?api=1&query={Uri.EscapeDataString(@Model.AddressORBusinessName).ToString()}" ;" target="_blank" onclick="map_init()">
+                            <i class="bi bi-geo-alt-fill "></i>
+                        </a>
+                    </div>
+
+                    <div class="form-floating mb-3 col-12 col-sm-6">
+                        <input type="text" class="form-control dclass" id="floatingInput" placeholder="007" disabled>
+                        <label for="floatingInput" class="ms-2 ">Room #</label>
+                    </div>
+
+                </div>
+                <div class="d-grid gap-2 d-flex justify-content-center  justify-content-md-end mt-4 pt-4 mb-3">
+                    <button type="button" class="btn text-white btn-info">Assign</button>
+
+                    <a asp-action="ViewNotes" asp-route-id="@Model.ReqId" class="btn text-white btn-info">View Notes</a>
+
+                    <button type="button" class="btn text-white btn-danger">Cancel</button>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<script src="~/js/AdminDashboard.js"></script>
+
+         
