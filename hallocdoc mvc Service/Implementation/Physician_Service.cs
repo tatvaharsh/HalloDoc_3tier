@@ -188,7 +188,7 @@ namespace hallocdoc_mvc_Service.Implementation
         public ViewNote GetNotes(int id)
         {
             var notes = _Repository.setnotes(id);
-
+            
             var cancelNote = string.Empty;
             var patientcancel = "";
 
