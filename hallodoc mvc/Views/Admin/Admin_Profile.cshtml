@@ -1,7 +1,8 @@
 ﻿@model hallodoc_mvc_Repository.ViewModel.Profile
 @{
     ViewData["Title"] = "Admin Profile";
-  
+    Layout = ViewBag.Layout;
+
 }
 <Partial name="_Toast" />
 <div class="container-fluid mb-5">
@@ -195,7 +196,7 @@
 
 </style>
 <script>
-
+    document.getElementById("profile-tab").classList.add("active");
     function changep(){
         const reg=[];
         var i = 0;

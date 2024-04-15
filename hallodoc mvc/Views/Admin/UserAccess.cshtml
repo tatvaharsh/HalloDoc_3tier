@@ -1,6 +1,6 @@
 ﻿
 @{
-    
+    Layout = ViewBag.Layout;
 }
 <div class="container p-0">
     <div class="row">
@@ -50,4 +50,7 @@
             }
         });
     }
+    document.getElementById("Access-tab").classList.add("active");
+    document.getElementById("user").classList.add("active");
+    document.getElementById("Access-tab").setAttribute('aria-expanded', true);
 </script>

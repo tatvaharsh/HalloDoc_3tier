@@ -1666,7 +1666,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     PhysicianId = p.PhysicianId,
                     CreateDate = DateTime.Now,
                     SentDate = DateTime.Now,
-
+                    
                 };
                 _Repository.AddEmaillogtbl(emailLog);
             }
@@ -1828,22 +1828,37 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public void AssignRole(string roleName, string[] selectedRoles, int check, int admin1)
         {
-            var roles = selectedRoles[0].Split(',');
-            Role role = new Role();
-            role.Name = roleName;
-            role.CreatedDate = DateTime.Now;
-            role.AccountType = (short)check;
-            role.CreatedBy = admin1.ToString();
-            role.IsDeleted = new BitArray(1, false);
-            _Repository.AddRoletbl(role);
-
-            foreach (string item in roles)
+            if (check == 3)
             {
-                RoleMenu rolemenu = new RoleMenu();
-                rolemenu.RoleId = role.RoleId;
-                rolemenu.MenuId = Int32.Parse(item);
-                _Repository.AddRoleMenutbl(rolemenu);
+                Role role1 = new Role();
+                role1.Name = roleName;
+                role1.CreatedDate = DateTime.Now;
+                role1.AccountType = (short)check;
+                role1.CreatedBy = admin1.ToString();
+                role1.IsDeleted = new BitArray(1, false);
+                _Repository.AddRoletbl(role1);
             }
+            else
+            {
+                var roles = selectedRoles[0].Split(',');
+                Role role = new Role();
+                role.Name = roleName;
+                role.CreatedDate = DateTime.Now;
+                role.AccountType = (short)check;
+                role.CreatedBy = admin1.ToString();
+                role.IsDeleted = new BitArray(1, false);
+                _Repository.AddRoletbl(role);
+
+                foreach (string item in roles)
+                {
+                    RoleMenu rolemenu = new RoleMenu();
+                    rolemenu.RoleId = role.RoleId;
+                    rolemenu.MenuId = Int32.Parse(item);
+                    _Repository.AddRoleMenutbl(rolemenu);
+                }
+            }
+
+           
         }
 
         void IAdmin_Service.UpdateRole(RoleModel model)

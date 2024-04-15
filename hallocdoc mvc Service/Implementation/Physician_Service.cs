@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using System.Globalization;
+using System.Net.Mail;
+using System.Net;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -31,6 +33,11 @@ namespace hallocdoc_mvc_Service.Implementation
         public ModalData CountState(int admin1)
         {
             return _Repository.CountState(admin1);
+        }
+
+        public RequestClient GetAgreementtdata(int id)
+        {
+            return _Repository.getagreement(id);
         }
 
         public ViewCase Getcase(int reqId)
@@ -217,6 +224,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 RequestId = id,
                 Admincancellationnote = cancelNote,
+                PhysicianNotes = notes?.PhysicianNotes,
                 Patientcancellationnote = patientcancel,
                 AdminNotes = notes?.AdminNotes,
                 TransferNotes = transfer,
@@ -232,6 +240,107 @@ namespace hallocdoc_mvc_Service.Implementation
         public string Phyname(int admin1)
         {
             return _Repository.Getname(admin1);
+        }
+
+        public void SendAgreementMail(int id, ModalData md, string token, int phy)
+        {
+            RequestClient rc = _Repository.getagreement(id);
+
+
+            if (md.email != null)
+            {
+                var receiver = md.email;
+                var subject = "Send Agreement";
+                var message = "Tap on link for Send Agreement : http://localhost:5198/Admin/Agreement?t=" + token + "&token=" + id;
+
+
+                var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+                var password = "binal@2002";
+
+                var client = new SmtpClient("smtp.office365.com", 587)
+                {
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(mail, password)
+                };
+
+                client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
+
+
+                EmailLog emailLog = new()
+                {
+                    EmailTemplate = message,
+                    SubjectName = subject,
+                    SentTries = 1,
+                    IsEmailSent = true,
+
+                    EmailId = md.email,
+                    ConfirmationNumber = rc.Request.ConfirmationNumber,
+                    RequestId = rc.RequestId,
+                    CreateDate = DateTime.Now,
+                    SentDate = DateTime.Now,
+
+                };
+                _Repository.AddEmaillogtbl(emailLog);
+
+            }
+        }
+
+        public ViewNote setViewNotesData(ViewNote model, int id, int phy)
+        {
+           
+                //var notedata = _context.Requestnotes.FirstOrDefault(i => i.Requestid == requestid);
+                var notedata = _Repository.setnotes(id);
+
+                if (notedata != null)
+                {
+                    notedata.RequestId = id;
+                
+                    notedata.PhysicianNotes = model.PhysicianNotes;
+                    notedata.ModifiedBy = phy;
+                    notedata.ModifiedDate = DateTime.Now;
+                    _Repository.save();
+
+                }
+                else
+                {
+                    var newnotedata = new RequestNote()
+                    {
+                        RequestId = id,
+                        PhysicianNotes = model.PhysicianNotes,
+                        CreatedBy = phy,
+                        CreatedDate = DateTime.Now,
+                    };
+
+                    _Repository.AddRequestNotes(newnotedata);
+
+                }
+                return model;
+          
+        }
+
+        public void Transfer(int id, ModalData md , int phy)
+        {
+            RequestStatusLog statusLog = new RequestStatusLog()
+            {
+                RequestId = id,
+                Status = 1,
+                PhysicianId = phy,
+                Notes = md.note,
+                CreatedDate = DateTime.Now,
+
+            };
+            _Repository.AddRequesttbl(statusLog);
+
+            Request req = _Repository.GetRequestById(id);
+            req.Status = 1;
+            req.AcceptedDate = null;
+            req.PhysicianId = null;
+            _Repository.save();
+        }
+
+        public ViewDocument ViewUploadData(int id)
+        {
+            return _Repository.getUploaddata(id);
         }
     }
 }

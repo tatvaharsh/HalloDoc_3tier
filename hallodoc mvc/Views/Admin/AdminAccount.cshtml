@@ -1,4 +1,7 @@
 ﻿@model hallodoc_mvc_Repository.ViewModel.CreateAdmin
+@{
+    Layout = ViewBag.Layout;
+}
 <style>
     .iti {
         width: 100%;
@@ -184,4 +187,7 @@
         document.getElementById("username").value =  a + "." + b;
     }
 
+    document.getElementById("Access-tab").classList.add("active");
+    document.getElementById("admin").classList.add("active");
+    document.getElementById("Access-tab").setAttribute('aria-expanded', true);
 </script>

@@ -12,6 +12,7 @@ namespace hallocdoc_mvc_Service.Interface
     {
         void AddToPending(int id);
         ModalData CountState(int admin1);
+        RequestClient GetAgreementtdata(int id);
         ViewCase Getcase(int id);
         List<AdminDashboard> getDashDataActive(int? requestType, string? search, int? requestor, int? region, int pageid, int phy);
         List<AdminDashboard> getDashDataConclude(int? requestType, string? search, int? requestor, int? region, int pageid, int phy);
@@ -20,5 +21,9 @@ namespace hallocdoc_mvc_Service.Interface
         ViewNote GetNotes(int id);
         Physician getPhy(string email);
         string Phyname(int admin1);
+        void SendAgreementMail(int id, ModalData md, string token, int phy);
+        ViewNote setViewNotesData(ViewNote model, int id, int phy);
+        void Transfer(int id, ModalData md,int phy);
+        ViewDocument ViewUploadData(int id);
     }
 }

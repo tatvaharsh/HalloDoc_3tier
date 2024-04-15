@@ -2,6 +2,7 @@
 @{
     Layout = ViewBag.Layout;
 }
+<Partial name="_Toast" />
 <div class="container p-0">
     <div class="row">
         <div class="col-12">
@@ -103,3 +104,8 @@
     }
 
 </style>
+<script>
+    document.getElementById("Access-tab").classList.add("active");
+    document.getElementById("account").classList.add("active");
+    document.getElementById("Access-tab").setAttribute('aria-expanded', true);
+</script>

@@ -459,7 +459,21 @@
             modal.show();
         });
     }
+    function SendAgreement(requestId, requestType) {
+        $("#mymodal").load('/Physician/SendAgreement/' + requestId + '?requestType=' + requestType, () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('myModalSendAgreement'));
+            modal.show();
+        });
+    }
+    function TransferCase(Id) {
 
+        $("#mymodal").load('/Physician/Transfer/' + Id + '?Id=', () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('transfer'));
+            modal.show();
+        });
+    }
 
 </script>
 <style>

@@ -88,7 +88,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 return false;
 
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
@@ -105,7 +105,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("qqweertyuiopsdfg5hdfghjklxcvbnmedfghjertyusxdcfvSADFAKSHDFGBASDHFBVAJKSHFDBAJKSBHDFASDGBFSADKJHvgbhnjmfg"));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.UtcNow.AddMinutes(30);
+            var expires = DateTime.UtcNow.AddMinutes(360);
 
             var token = new JwtSecurityToken(
                 "Issuer",

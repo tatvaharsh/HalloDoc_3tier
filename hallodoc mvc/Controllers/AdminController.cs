@@ -18,21 +18,23 @@ using Twilio.Rest.Api.V2010.Account;
 using NuGet.Protocol.Core.Types;
 using System.Reflection;
 using DocumentFormat.OpenXml.VariantTypes;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace hallodoc_mvc.Controllers
 {
-   
+
     public class AdminController : Controller
     {
         private readonly IAdmin_Service _service;
 
         private readonly IJwtService _jwtService;
-        
+
         private readonly IConfiguration _configuration;
 
 
 
-        public AdminController(IAdmin_Service service,IJwtService jwtService, IConfiguration configuration)
+        public AdminController(IAdmin_Service service, IJwtService jwtService, IConfiguration configuration)
         {
             //_context = context;
             _service = service;
@@ -41,35 +43,36 @@ namespace hallodoc_mvc.Controllers
         }
 
         [CustomAuthorize("Admin")]
+        [Route("/admin/dashboard")]
         public IActionResult Admin_Dashboard()
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
-         
-            if(admin1 != null)
+
+            if (admin1 != null)
             {
                 ViewBag.Username = _service.Adminname(admin1);
                 ModalData data = _service.GetAssignData(new ModalData());
                 //TempData["success"] = "Login Successfully!!!";
                 //TempData.Clear();
                 ViewBag.Layout = "_LayAdmin";
-                return View(data); 
+                return View(data);
             }
             return RedirectToAction("Admin_Login");
         }
-        
+
         [CustomAuthorize("Admin")]
         public IActionResult Admin_DashboardPartial()
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
-         
-            if(admin1 != null)
+
+            if (admin1 != null)
             {
                 ViewBag.Username = _service.Adminname(admin1);
                 ModalData data = _service.GetAssignData(new ModalData());
                 //TempData["success"] = "Login Successfully!!!";
                 //TempData.Clear();
                 ViewBag.Layout = null;
-                return PartialView("Admin_Dashboard", data); 
+                return View("Admin_Dashboard", data);
             }
             return RedirectToAction("Admin_Login");
         }
@@ -93,7 +96,7 @@ namespace hallodoc_mvc.Controllers
         //            if (Admin != null)
         //            {
         //                HttpContext.Session.SetInt32("Id", Admin.AdminId);
-                       
+
         //                var token = _jwtService.GenerateJwtToken(model);
         //                Response.Cookies.Append("jwt", token);
         //                ViewBag.Username = Admin.FirstName;
@@ -105,25 +108,264 @@ namespace hallodoc_mvc.Controllers
 
 
         //    }
-               
+
         //    return View();
         //}
 
         //public IActionResult Logout()
         //{
-            
-     
+
+
         //    HttpContext.Session.Clear();
         //    HttpContext.Session.Remove("Id");
         //    Response.Cookies.Delete("jwt");
         //    return RedirectToAction("Admin_Login");
         //}
 
+        [Route("/admin/Location")]
+        public IActionResult ProviderLocation(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+
+                return PartialView("ProviderLocation", _service.ProviderLocation());
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("ProviderLocation", _service.ProviderLocation());
+            }
+        }
+
+        [Route("/admin/AdminProfile")]
+        public IActionResult AdminProfile(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+
+                return PartialView("Admin_Profile", _service.getprofile(admin));
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("Admin_Profile", _service.getprofile(admin));
+            }
+        }
+
+        [Route("/admin/Provider-Information")]
+        public IActionResult Provider(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+
+                return PartialView("Provider", _service.GetRegions());
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("Provider", _service.GetRegions());
+            }
+        }
+        [Route("/admin/Scheduling")]
+        public IActionResult ProviderScheduling(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+
+                return PartialView("Scheduling", _service.GetRegions());
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("Scheduling", _service.GetRegions());
+            }
+        }
+        [Route("/admin/Vendors")]
+        public IActionResult Vendor(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+                return PartialView("Partners", new PartnersCM()
+                {
+                    //partnersdatas =_service.GetAllHealthProfessionaldata(0),
+                    Professions = _service.GetProfession()
+                });
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return PartialView("Partners", new PartnersCM()
+                {
+                    //partnersdatas =_service.GetAllHealthProfessionaldata(0),
+                    Professions = _service.GetProfession()
+                });
+
+            }
+        }
+
+        [Route("/admin/AccountAccess")]
+        public IActionResult AccountAccess(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+                return PartialView("AccountAccess", _service.getAccess());
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("AccountAccess", _service.getAccess());
+
+            }
+        }
+
+        [Route("/admin/User")]
+        public IActionResult Useraccess(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+                return PartialView("UserAccess");
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("UserAccess");
+
+            }
+        }
+
+        [Route("/admin/AdminAccount")]
+        public IActionResult AdminAccount(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+                return PartialView("AdminAccount", new CreateAdmin()
+                {
+                    reg = _service.getreg(),
+                    roles = _service.GetRoleOfAdmin(),
+                });
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("AdminAccount", new CreateAdmin()
+                {
+                    reg = _service.getreg(),
+                    roles = _service.GetRoleOfAdmin(),
+                });
+
+            }
+        }
+        [Route("/admin/PatientHistory")]
+        public IActionResult PatientHistory(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+                return PartialView("PatientHistory");
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("PatientHistory");
+
+            }
+        }
+
+        [Route("/admin/Emaillog")]
+        public IActionResult Emaillog(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+                return PartialView("EmailLog");
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("EmailLog");
+
+            }
+        }
+
+
+        [Route("/admin/Smslog")]
+        public IActionResult smslog(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+                return PartialView("SmsLog");
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("SmsLog");
+
+            }
+        }
+        [Route("/admin/SearchRecord")]
+        public IActionResult Searchrecord(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+
+                ViewBag.Layout = null;
+                return PartialView("SearchRecord", new AdminRecord()
+                {
+                    ReqType = _service.GetRequestTypes(),
+                });
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("SearchRecord", new AdminRecord()
+                {
+                    ReqType = _service.GetRequestTypes(),
+                });
+            }
+        }
+
+        [Route("/admin/BlockHistory")]
+        public IActionResult BlockHistory(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+
+                ViewBag.Layout = null;
+                return PartialView("BlockHistory");
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("BlockHistory");
+            }
+        }
 
         public IActionResult Admin_Forgot()
         {
             return View();
         }
+
 
         public IActionResult TabChange(int nav, bool isPartial)
         {
@@ -133,96 +375,40 @@ namespace hallodoc_mvc.Controllers
                 case 1:
                     return RedirectToAction(nameof(Admin_DashboardPartial));
                 case 2:
-                    return PartialView("ProviderLocation", _service.ProviderLocation());
-                case 3: 
-                    return PartialView("Admin_Profile", _service.getprofile(admin));  
-                case 4: 
-                    return PartialView("Provider", _service.GetRegions());
+                    return RedirectToAction(nameof(ProviderLocation), new { isPartial = isPartial });
+                case 3:
+                    return RedirectToAction(nameof(AdminProfile), new { isPartial = isPartial });
+
+                case 4:
+                    return RedirectToAction(nameof(Provider), new { isPartial = isPartial });
                 case 5:
-                    
-                    if (isPartial == true)
-                    {
-                        ViewBag.Layout = null;
-                        
-                        return PartialView("Scheduling", _service.GetRegions());
-                    }
-                   
-                    ViewBag.Layout = "_LayAdmin";
-                    return View("Scheduling", _service.GetRegions());
+                    return RedirectToAction(nameof(ProviderScheduling), new { isPartial = isPartial });
+
                 case 7:
-                    return PartialView("Partners", new PartnersCM()
-                    {
-                        //partnersdatas =_service.GetAllHealthProfessionaldata(0),
-                        Professions = _service.GetProfession()
-                    });
+                    return RedirectToAction(nameof(Vendor), new { isPartial = isPartial });
+
                 case 8:
-                    if(isPartial == true)
-                    {
-                        ViewBag.Layout = null;
-                        return PartialView("AccountAccess", _service.getAccess());
-                    }
-                    ViewBag.Layout = "_LayAdmin";
-                    return View("AccountAccess", _service.getAccess());
+                    return RedirectToAction(nameof(AccountAccess), new { isPartial = isPartial });
                 case 9:
-                    return PartialView("UserAccess");
+                    return RedirectToAction(nameof(Useraccess), new { isPartial = isPartial });
+
                 case 10:
-                    return PartialView("AdminAccount", new CreateAdmin()
-                    {
-                        reg = _service.getreg(),
-                        roles = _service.GetRoleOfAdmin(),
-                    });
+                    return RedirectToAction(nameof(AdminAccount), new { isPartial = isPartial });
+
                 case 11:
-                    if (isPartial == true)
-                    {
-                        ViewBag.Layout = null;
-                        return PartialView("PatientHistory");
-                    }
-                    ViewBag.Layout = "_LayAdmin";
-                    return View("PatientHistory");
+                    return RedirectToAction(nameof(PatientHistory), new { isPartial = isPartial });
+
                 case 12:
-                    if (isPartial == true)
-                    {
-                        ViewBag.Layout = null;
-                        return PartialView("EmailLog");
-                    }
-                    ViewBag.Layout = "_LayAdmin";
-                    return View("EmailLog");
+                    return RedirectToAction(nameof(Emaillog), new { isPartial = isPartial });
+             
                 case 13:
-                    if (isPartial == true)
-                    {
-                        ViewBag.Layout = null;
-                        return PartialView("SmsLog");
-                    }
-                    ViewBag.Layout = "_LayAdmin";
-                    return View("SmsLog");
+                    return RedirectToAction(nameof(smslog), new { isPartial = isPartial });
+           
                 case 14:
-                    if (isPartial == true)
-                    {
-                        ViewBag.Layout = null;
-                        return PartialView("SearchRecord", new AdminRecord()
-                        {
-                            ReqType = _service.GetRequestTypes(),
-                        });
-                    }
-                    ViewBag.Layout = "_LayAdmin";
-                    return View("SearchRecord", new AdminRecord()
-                    {
-                        ReqType = _service.GetRequestTypes(),
-                    });
+                    return RedirectToAction(nameof(Searchrecord), new { isPartial = isPartial });
+              
                 case 15:
-                    if (isPartial == true)
-                    {
-                        ViewBag.Layout = null;
-                        return PartialView("BlockHistory");
-                    }
-                    ViewBag.Layout = "_LayAdmin";
-                    return View("BlockHistory");
-
-
-
-
-
-
+                    return RedirectToAction(nameof(BlockHistory), new { isPartial = isPartial });   
             }
             return View();
         }
@@ -230,17 +416,17 @@ namespace hallodoc_mvc.Controllers
         public IActionResult New(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             if (pageid == 0) { pageid = 1; };
-            var data = _service.getDashData(requestType,search,requestor,region,pageid);
+            var data = _service.getDashData(requestType, search, requestor, region, pageid);
             ViewBag.page = pageid;
-            return PartialView("_Admin_Request_Table",data);
+            return PartialView("_Admin_Request_Table", data);
         }
         public IActionResult Pending(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             if (pageid == 0) { pageid = 1; };
-            var data = _service.getDashDataPending(requestType, search, requestor, region,pageid);
+            var data = _service.getDashDataPending(requestType, search, requestor, region, pageid);
             //AdminDashboard adminDashboard = new AdminDashboard();
             ViewBag.page = pageid;
-            return PartialView("_Admin_Request_Table",data);
+            return PartialView("_Admin_Request_Table", data);
         }
         public IActionResult Active(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
@@ -259,15 +445,15 @@ namespace hallodoc_mvc.Controllers
             ViewBag.page = pageid;
             return PartialView("_Admin_Request_Table", data);
         }
-        public IActionResult ToClose(int? requestType, string? search, int? requestor, int? region,int pageid)
+        public IActionResult ToClose(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             if (pageid == 0) { pageid = 1; };
-            var data = _service.getDashDataToclose(requestType,search,requestor,region, pageid);
+            var data = _service.getDashDataToclose(requestType, search, requestor, region, pageid);
             //AdminDashboard adminDashboard = new AdminDashboard();
             ViewBag.page = pageid;
             return PartialView("_Admin_Request_Table", data);
         }
-     
+
         public IActionResult Unpaid(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             if (pageid == 0) { pageid = 1; };
@@ -293,33 +479,33 @@ namespace hallodoc_mvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult ViewNotes(ViewNote model,int Id)
+        public IActionResult ViewNotes(ViewNote model, int Id)
         {
-            int admin =(int)HttpContext.Session.GetInt32("Id");
+            int admin = (int)HttpContext.Session.GetInt32("Id");
             ViewBag.Username = _service.Adminname(admin);
-            var vn= _service.setViewNotesData(model,Id,admin);
+            var vn = _service.setViewNotesData(model, Id, admin);
             TempData["success"] = "Note Added Successfully!!!";
-            return RedirectToAction("ViewNotes",Id);
+            return RedirectToAction("ViewNotes", Id);
         }
 
 
         public IActionResult AssignCase(ModalData md)
         {
             ModalData data = _service.GetAssignData(md);
-            return PartialView("AssignCase",data);
+            return PartialView("AssignCase", data);
         }
 
         [HttpPost]
-        public IActionResult AssignCase(ModalData md,int Id)
+        public IActionResult AssignCase(ModalData md, int Id)
         {
-                int admin = (int)HttpContext.Session.GetInt32("Id");
-            _service.AssignCase(md,Id,admin);
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            _service.AssignCase(md, Id, admin);
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
 
-        public IActionResult Cancel(ModalData md,int Id)
+        public IActionResult Cancel(ModalData md, int Id)
         {
-            var cancelcase = _service.GetCancelCaseData(md,Id);
+            var cancelcase = _service.GetCancelCaseData(md, Id);
 
             ModalData modalData = new ModalData();
             {
@@ -329,14 +515,14 @@ namespace hallodoc_mvc.Controllers
                 modalData.CaseTags = _service.GetCaseReason();
             };
 
-            return PartialView("CancelModal",modalData);
+            return PartialView("CancelModal", modalData);
         }
 
         [HttpPost]
         public IActionResult canclePost(ModalData md, int Id)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
-            _service.CanclePost(md,Id,admin);
+            _service.CanclePost(md, Id, admin);
 
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
@@ -350,7 +536,7 @@ namespace hallodoc_mvc.Controllers
             };
             return Json(phy);
         }
-        public IActionResult Block(ModalData md,int Id)
+        public IActionResult Block(ModalData md, int Id)
         {
 
             var blockcase = _service.GetBlockCaseData(md, Id);
@@ -360,7 +546,7 @@ namespace hallodoc_mvc.Controllers
                 modalData.PatientName = blockcase.FirstName + ' ' + blockcase.LastName;
                 modalData.requestID = blockcase.RequestId;
 
-          
+
             };
 
             return PartialView("Block", modalData);
@@ -408,7 +594,7 @@ namespace hallodoc_mvc.Controllers
                 zipStream.Seek(0, SeekOrigin.Begin);
                 return File(zipStream.ToArray(), "application/zip", "selected_files.zip");
             }
-        }       
+        }
         [HttpPost]
         public ActionResult deletefilecus(int id, int[] filenames)
         {
@@ -421,20 +607,20 @@ namespace hallodoc_mvc.Controllers
         public IActionResult FileUpload(int id, [FromForm] List<IFormFile> File)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
-            _service.FileUpload(id, File,admin);
+            _service.FileUpload(id, File, admin);
             return RedirectToAction(nameof(ViewUpload), new { id = id });
         }
         public IActionResult DeleteFile(int id)
         {
-           var rq = _service.DeleteFile(id);
+            var rq = _service.DeleteFile(id);
             return RedirectToAction(nameof(ViewUpload), "Admin", new { id = rq });
         }
 
-  
+
         public IActionResult SendEmail(int id)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
-            _service.SendEmail(id,admin);
+            _service.SendEmail(id, admin);
             return RedirectToAction(nameof(ViewUpload), "Admin", new { id = id });
         }
         public IActionResult Order(Order md)
@@ -448,15 +634,15 @@ namespace hallodoc_mvc.Controllers
         public IActionResult GetVendor(int Id)
         {
             var phy = _service.Getvendor(Id);
-   
-         
+
+
             return Json(phy);
         }
 
         public IActionResult Getdetails(int Id)
         {
             var phy = _service.Getvendordata(Id);
-  
+
             return Json(phy);
         }
         [HttpPost]
@@ -471,9 +657,9 @@ namespace hallodoc_mvc.Controllers
             ModalData data = _service.GetAssignData(md);
             return PartialView("Transfer", data);
         }
-    
+
         [HttpPost]
-        public IActionResult Transfer( int Id, ModalData md)
+        public IActionResult Transfer(int Id, ModalData md)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
             _service.AssignCase(md, Id, admin);
@@ -494,25 +680,25 @@ namespace hallodoc_mvc.Controllers
         }
 
         [HttpGet]
-        public IActionResult SendAgreement(int Id ,int requestType)
+        public IActionResult SendAgreement(int Id, int requestType)
         {
             ViewBag.requestType = requestType;
 
             RequestClient rc = _service.GetAgreementtdata(Id);
             ModalData md = new()
             {
-                number=rc.PhoneNumber,
-                email=rc.Email,
+                number = rc.PhoneNumber,
+                email = rc.Email,
             };
-            return PartialView("SendAgreement",md);
+            return PartialView("SendAgreement", md);
         }
         [HttpPost]
         public IActionResult SendAgreement(int Id, ModalData md)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
-            var token=_jwtService.GenerateJwtTokenByEmail(md.email);
+            var token = _jwtService.GenerateJwtTokenByEmail(md.email);
 
-            _service.SendAgreementMail(Id,md,token,admin);
+            _service.SendAgreementMail(Id, md, token, admin);
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
         public IActionResult Close(int Id)
@@ -521,13 +707,13 @@ namespace hallodoc_mvc.Controllers
             return View(c);
         }
 
-       
+
 
         [HttpPost]
         public IActionResult CloseConfirm(int Id, [FromForm] Close model)
         {
-             _service.editdata(model,Id); 
-            return RedirectToAction(nameof(Close), new {Id = Id});
+            _service.editdata(model, Id);
+            return RedirectToAction(nameof(Close), new { Id = Id });
         }
         public IActionResult saavclose(int Id)
         {
@@ -536,15 +722,16 @@ namespace hallodoc_mvc.Controllers
             TempData["success"] = "Case Closed Successfully!!!";
             return RedirectToAction("Admin_Dashboard");
         }
+        [HttpGet]
         public IActionResult Agreement(int token, string t)
         {
-            if(_jwtService.ValidateJwtToken(t , out JwtSecurityToken jwtSecurityToken))
+            if (_jwtService.ValidateJwtToken(t, out JwtSecurityToken jwtSecurityToken))
             {
                 ModalData md = _service.cancelmodal(token);
                 return View(md);
             }
             return NotFound();
-            
+
         }
 
         public IActionResult Agree(int id)
@@ -552,35 +739,36 @@ namespace hallodoc_mvc.Controllers
             _service.agreeagreement(id);
             return View();
         }
-        public IActionResult GetCancel(int id,ModalData md)
+        public IActionResult GetCancel(int id, ModalData md)
         {
-            _service.cancelagreement(id,md);
+            _service.cancelagreement(id, md);
             return RedirectToAction(nameof(Agreement));
         }
-        public IActionResult Encounter(int id,Encounter model)
+        public IActionResult Encounter(int id, Encounter model)
         {
-            ViewBag.Username = HttpContext.Session.GetString("UserName");
-            
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin1);
+
             Encounter en = _service.getencounter(id);
-            return View(en);  
+            return View(en);
         }
-        public IActionResult ChangeEncounter(int id,Encounter model)
+        public IActionResult ChangeEncounter(int id, Encounter model)
         {
-             _service.editencounter(id, model);
-            return RedirectToAction("Encounter", new {id=id});
+            _service.editencounter(id, model);
+            return RedirectToAction("Encounter", new { id = id });
         }
 
-      
+
         public IActionResult Admin_Profile()
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
-            
+
             return View(_service.getprofile(admin));
         }
 
         public IActionResult Sendlink()
         {
-          
+
             return PartialView();
         }
         [HttpPost]
@@ -683,7 +871,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult CreateReq()
         {
             return View();
-        
+
         }
         [HttpPost]
         public IActionResult CreateReq(patient_form model)
@@ -694,7 +882,7 @@ namespace hallodoc_mvc.Controllers
 
                 return View(model);
             }
-            _service.PatientForm(model,admin);
+            _service.PatientForm(model, admin);
 
             return RedirectToAction(nameof(Admin_Dashboard));
 
@@ -702,7 +890,7 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult Export(string s, int reqtype, int regid, int state)
         {
-            var data = _service.Export(s,reqtype,regid,state);
+            var data = _service.Export(s, reqtype, regid, state);
             var workbook = new XLWorkbook();
             var worksheet = workbook.Worksheets.Add("Data");
 
@@ -769,9 +957,9 @@ namespace hallodoc_mvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditAdminProfile(Profile model, List<int> reg) 
+        public IActionResult EditAdminProfile(Profile model, List<int> reg)
         {
-            if(model.AdminData.Mobile?.Length != 10)
+            if (model.AdminData.Mobile?.Length != 10)
             {
                 TempData["error"] = "Enter Valid MobileNumber";
                 return RedirectToAction(nameof(TabChange), new { nav = 3, isPartial = false });
@@ -802,7 +990,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult ResetPassword(Profile model)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
-            _service.reset(model,admin);
+            _service.reset(model, admin);
             TempData["success"] = "Password Changed successfully!!!";
             return RedirectToAction("Admin_Dashboard");
         }
@@ -810,7 +998,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult Provider(int region)
         {
             List<Provider> p = _service.Getphysician(region);
-            return PartialView("_TablePhysician",p);
+            return PartialView("_TablePhysician", p);
         }
 
         public IActionResult CreatePhysicianAccount()
@@ -830,12 +1018,12 @@ namespace hallodoc_mvc.Controllers
         public IActionResult EditPhysicianAccount(int id)
         {
             var data = _service.getphysiciandata(id);
-           
+
             return View(data);
         }
         public IActionResult ProviderMenuModal(int id)
         {
-            return PartialView(new ModalData() { phyid=id});
+            return PartialView(new ModalData() { phyid = id });
         }
 
         public void ChangeToggle(int id)
@@ -847,7 +1035,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult SendEmailOrMessage(int id, ModalData md)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
-            _service.Sendit(id, md,admin1);
+            _service.Sendit(id, md, admin1);
             return RedirectToAction("Provider");
         }
 
@@ -857,7 +1045,7 @@ namespace hallodoc_mvc.Controllers
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
             if (ModelState.IsValid)
             {
-                _service.CreateProvider(model,admin1);
+                _service.CreateProvider(model, admin1);
                 return RedirectToAction("Admin_Dashboard");
             }
             var reg = _service.getreg();
@@ -867,7 +1055,7 @@ namespace hallodoc_mvc.Controllers
         }
 
 
-        
+
         public IActionResult CreateRole(int check)
         {
             RoleModel model = _service.GetMenutbl(check);
@@ -877,7 +1065,8 @@ namespace hallodoc_mvc.Controllers
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
             _service.AssignRole(RoleName, selectedRoles, check, admin1);
-            return RedirectToAction("TabChange", new { nav= 8 });
+            TempData["success"] = "Role Created successfully!!!";
+            return RedirectToAction("TabChange", new { nav = 8 });
         }
 
         public IActionResult EditRole(int id)
@@ -893,13 +1082,13 @@ namespace hallodoc_mvc.Controllers
         public IActionResult DeleteRole(int id)
         {
             _service.DeleteRoles(id);
-                return View("AccountAccess", _service.getAccess());
+            return View("AccountAccess", _service.getAccess());
         }
 
         [HttpPost]
-        public IActionResult EditPhyInfo(int id,CreatePhy model) 
+        public IActionResult EditPhyInfo(int id, CreatePhy model)
         {
-            _service.EditPhyInfo(id,model);
+            _service.EditPhyInfo(id, model);
             return RedirectToAction("Admin_Dashboard");
         }
 
@@ -927,12 +1116,12 @@ namespace hallodoc_mvc.Controllers
             return RedirectToAction("Admin_Dashboard");
         }
 
-   
+
 
         public IActionResult UserAccess(int region)
         {
             var data = _service.GetUserAccessData(region);
-            return PartialView("TableUserAccess",data);
+            return PartialView("TableUserAccess", data);
         }
 
 
@@ -945,7 +1134,7 @@ namespace hallodoc_mvc.Controllers
                 _service.CreateAdmin(model, admin1);
                 return RedirectToAction("Admin_Dashboard");
             }
-      
+
             var reg = _service.getreg();
             var roles = _service.GetRoleOfAdmin();
             model.reg = reg; model.roles = roles;
@@ -953,9 +1142,9 @@ namespace hallodoc_mvc.Controllers
         }
 
 
-        public IActionResult Partners(int professionid,string search)
+        public IActionResult Partners(int professionid, string search)
         {
-            var Partnersdata = _service.GetAllHealthProfessionaldata(professionid,search);
+            var Partnersdata = _service.GetAllHealthProfessionaldata(professionid, search);
             return PartialView("TablePartner", new PartnersCM()
             {
                 Professions = _service.GetProfession(),
@@ -982,19 +1171,19 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult EditPartner(int id)
         {
-           var a=  _service.GetPartnerData(id);
-    
+            var a = _service.GetPartnerData(id);
+
             return View(a);
         }
 
         [HttpPost]
-        public IActionResult EditPartner(PartnersCM model,int id)
+        public IActionResult EditPartner(PartnersCM model, int id)
         {
-            _service.EditPartner(model,id);
+            _service.EditPartner(model, id);
             return RedirectToAction("Admin_Dashboard");
         }
 
-   
+
         public IActionResult DeletePartner(int id)
         {
             _service.DeletePartner(id);
@@ -1002,13 +1191,13 @@ namespace hallodoc_mvc.Controllers
         }
         public IActionResult CreateShiftModal(int id)
         {
-            
+
             CreateShift model = new()
             {
                 Region = _service.getreg(),
-                
+
             };
-            
+
             return PartialView(model);
         }
 
@@ -1024,32 +1213,32 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult CreateShift(CreateShift model)
         {
-          
+
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
-           bool flag= _service.CreateShift(model, admin1);
+            bool flag = _service.CreateShift(model, admin1);
             if (!flag)
             {
                 TempData["error"] = "Shift has been clashed";
-                return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false});
+                return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
             }
             return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
-           
+
         }
-        public IActionResult Shifttab(int id, int day, int month, int year,int region) 
+        public IActionResult Shifttab(int id, int day, int month, int year, int region)
         {
-            if(id == 1)
+            if (id == 1)
             {
                 var a = _service.GetDayWiseData(day, month, year, region);
                 return PartialView("DayWiseShift", a);
-            
+
             }
-            else if(id == 2)
+            else if (id == 2)
             {
                 return PartialView("WeekWiseShift", _service.GetWeekWiseData(day, month, year));
             }
             else
             {
-                return PartialView("MonthWiseShift",_service.GetMonthWiseData(day, month, year));
+                return PartialView("MonthWiseShift", _service.GetMonthWiseData(day, month, year));
             }
         }
         public IActionResult ShiftReview()
@@ -1058,7 +1247,7 @@ namespace hallodoc_mvc.Controllers
         }
         public IActionResult ShiftReviews(int region)
         {
-            return PartialView("TableShiftData",_service.GetPendingShiftData(region));
+            return PartialView("TableShiftData", _service.GetPendingShiftData(region));
         }
 
         public IActionResult ApproveShift(int[] shiftDetailsId)
@@ -1104,7 +1293,7 @@ namespace hallodoc_mvc.Controllers
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
             int adminid = _service.GetAspId(admin1);
-           
+
             _service.ChangeShiftStatus(shiftdetailid, adminid);
             TempData["success"] = "Shift Updated Successfully!!!";
             return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
@@ -1139,7 +1328,7 @@ namespace hallodoc_mvc.Controllers
         [HttpPost]
         public IActionResult _SearchRecordsTable(AdminRecord model, int status, string mobile, string email, string pname, DateTime tdate, DateTime fdate, int reqtype, string searchstr)
         {
-       
+
             model = _service.getSearchRecordData(model);
             if (!string.IsNullOrWhiteSpace(searchstr))
             {
@@ -1153,18 +1342,18 @@ namespace hallodoc_mvc.Controllers
             {
                 model.Data = model.Data.Where(x => x.Email.ToLower().Contains(email.ToLower())).ToList();
             }
-      
+
             if (status != 0)
             {
                 int[] st = new int[1];
                 switch (status)
                 {
-                    case 1: st = new int[] { 1 };break;
-                    case 2: st = new int[] { 2 };break;
-                    case 3: st = new int[] { 4,5 };break;
-                    case 4: st = new int[] { 6 };break;
-                    case 5: st = new int[] { 3,7,8 };break;
-                    case 6: st = new int[] { 9 };break;
+                    case 1: st = new int[] { 1 }; break;
+                    case 2: st = new int[] { 2 }; break;
+                    case 3: st = new int[] { 4, 5 }; break;
+                    case 4: st = new int[] { 6 }; break;
+                    case 5: st = new int[] { 3, 7, 8 }; break;
+                    case 6: st = new int[] { 9 }; break;
                 }
                 model.Data = model.Data.Where(x => st.Any(y => y == x.Request.Status)).ToList();
 
@@ -1203,9 +1392,9 @@ namespace hallodoc_mvc.Controllers
 ;
             return RedirectToAction(nameof(TabChange), new { nav = 14, isPartial = false });
         }
-      
+
         [HttpPost]
-        public IActionResult _BlockHistoryTable(string searchstr,DateTime date ,string email,string mobile)
+        public IActionResult _BlockHistoryTable(string searchstr, DateTime date, string email, string mobile)
         {
             var a = _service.getBlockHistoryData();
             if (!string.IsNullOrWhiteSpace(searchstr))

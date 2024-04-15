@@ -41,9 +41,9 @@
         <div class="px-3">
             <ul class="nav nav-underline" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active text-muted px-3" id="home-tab" data-bs-toggle="tab" onclick="tabchanged(1)"
+                    <button class="nav-link text-muted px-3" id="home-tab" data-bs-toggle="tab" onclick="tabchanged(1)"
                             data-bs-target="" type="button" role="tab" aria-controls="home-tab-pane"
-                            aria-selected="true">
+                            aria-selected="false">
                         Dashboard
                     </button>
                 </li>
@@ -57,7 +57,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <button class="nav-link text-muted px-3" id="provider-location-tab" data-bs-toggle="tab" onclick="tabchanged(3)"
+                    <button class="nav-link text-muted px-3" id="profile-tab" data-bs-toggle="tab" onclick="tabchanged(3)"
                             data-bs-target="" type="button" role="tab"
                             aria-controls="provider-location-tab-pane" aria-selected="false">
                         Profile
@@ -71,8 +71,8 @@
                         Providers
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" onclick="tabchanged(4)" role="tab" data-bs-toggle="tab">Action</a>
-                        <a class="dropdown-item" onclick="tabchanged(5)" role="tab" data-bs-toggle="tab">Scheduling</a>
+                        <a class="dropdown-item" onclick="tabchanged(4)" role="tab" id="action" data-bs-toggle="tab">Action</a>
+                        <a class="dropdown-item" onclick="tabchanged(5)" role="tab" id="scheduling" data-bs-toggle="tab">Scheduling</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
@@ -92,9 +92,9 @@
                         Access
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" onclick="tabchanged(8)" role="tab" data-bs-toggle="tab">Account</a>
-                        <a class="dropdown-item" onclick="tabchanged(9)" role="tab" data-bs-toggle="tab">User Access</a>
-                        <a class="dropdown-item" onclick="tabchanged(10)" role="tab" data-bs-toggle="tab">Create Admin</a>
+                        <a class="dropdown-item" onclick="tabchanged(8)" role="tab" id="account" data-bs-toggle="tab">Account</a>
+                        <a class="dropdown-item" onclick="tabchanged(9)" role="tab" id="user" data-bs-toggle="tab">User Access</a>
+                        <a class="dropdown-item" onclick="tabchanged(10)" role="tab" id="admin" data-bs-toggle="tab">Create Admin</a>
                     </div>
                 </li>
 

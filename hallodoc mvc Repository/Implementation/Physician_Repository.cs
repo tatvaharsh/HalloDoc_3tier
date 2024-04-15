@@ -27,6 +27,24 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.SaveChanges();
         }
 
+        public void AddEmaillogtbl(EmailLog emailLog)
+        {
+            _context.EmailLogs.Add(emailLog);
+            _context.SaveChanges();
+        }
+
+        public void AddRequestNotes(RequestNote newnotedata)
+        {
+           _context.RequestNotes.Add(newnotedata);
+            _context.SaveChanges(); 
+        }
+
+        public void AddRequesttbl(RequestStatusLog statusLog)
+        {
+            _context.RequestStatusLogs.Add(statusLog);
+            _context.SaveChanges();
+        }
+
         public ModalData CountState(int admin1)
         {
             return _context.Physicians
@@ -56,6 +74,11 @@ namespace hallodoc_mvc_Repository.Implementation
                   AcceptedDate = x.AcceptedDate,
                   Id = x.RequestId
               }).ToList();
+        }
+
+        public RequestClient getagreement(int id)
+        {
+            return _context.RequestClients.Include(x => x.Request).FirstOrDefault(x => x.RequestId == id);
         }
 
         public Physician getaspuser(string email)
@@ -134,9 +157,38 @@ namespace hallodoc_mvc_Repository.Implementation
             return _context.Requests.Include(x => x.RequestClients).Where(x => x.RequestClients != null).ToList();
         }
 
+        public Request GetRequestById(int id)
+        {
+            return _context.Requests.FirstOrDefault(x => x.RequestId == id);
+        }
+
         public List<RequestStatusLog> GetStatusLogsByRequest(int id)
         {
             return _context.RequestStatusLogs.Where(x => x.RequestId == id).ToList() ?? new List<RequestStatusLog>();
+        }
+
+        public ViewDocument getUploaddata(int id)
+        {
+            return _context.Requests
+                .Where(x => x.RequestId == id && x.IsDeleted == null)
+                .Select(x => new ViewDocument
+                {
+                    FirstName=x.RequestClients.First().FirstName,
+                    Confirmationnumber=x.ConfirmationNumber,
+                    RequestId=x.RequestId,
+                    AllFiles=x.RequestWiseFiles.Where(x=>x.IsDeleted==null)
+                        .Select(x=>new UploadedFiles
+                        {
+                            FileName=x.FileName,
+                            FileId=x.RequestWiseFileId,
+                            Uploaddate=x.CreatedDate,
+                        }).ToList(),
+                }).First();
+        }
+
+        public void save()
+        {
+           _context.SaveChanges();
         }
 
         public RequestNote setnotes(int id)

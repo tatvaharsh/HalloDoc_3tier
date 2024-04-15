@@ -11,8 +11,12 @@ namespace hallodoc_mvc_Repository.Interface
     public interface IPhysician_Repository
     {
         void Accept(int id);
+        void AddEmaillogtbl(EmailLog emailLog);
+        void AddRequestNotes(RequestNote newnotedata);
+        void AddRequesttbl(RequestStatusLog statusLog);
         ModalData CountState(int admin1);
         List<AdminDashboard> GetActiveData(int phy);
+        RequestClient getagreement(int id);
         Physician getaspuser(string email);
         List<AdminDashboard> GetConcludeData(int phy);
         string Getname(int admin1);
@@ -20,7 +24,10 @@ namespace hallodoc_mvc_Repository.Interface
         List<AdminDashboard> GetPendingData(int phy);
         Physician? GetPhysician(int? transToPhysicianId);
         List<Request> GetRequest();
+        Request GetRequestById(int id);
         List<RequestStatusLog> GetStatusLogsByRequest(int id);
+        ViewDocument getUploaddata(int id);
+        void save();
         RequestNote setnotes(int id);
     }
 }

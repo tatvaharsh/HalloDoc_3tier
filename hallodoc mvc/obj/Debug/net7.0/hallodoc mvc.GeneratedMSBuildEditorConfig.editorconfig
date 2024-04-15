@@ -240,8 +240,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFBoeXNpY2lhbkRhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/SendAgreement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFNlbmRBZ3JlZW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/Sendlink.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFNlbmRsaW5rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/Transfer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFRyYW5zZmVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/ViewCase.cshtml]
@@ -250,6 +258,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/ViewNotes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFZpZXdOb3Rlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/ViewUpload.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFZpZXdVcGxvYWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/BlockHistory.cshtml]

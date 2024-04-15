@@ -48,6 +48,7 @@
 <div id="schmodal"></div>
 
 <script>
+ 
     function Shifttab(id) {
         var regid = document.getElementById("region").value;
     
@@ -99,5 +100,7 @@
         });
     }
 
-
+    document.getElementById("Providers-tab").classList.add("active");
+    document.getElementById("scheduling").classList.add("active");
+    document.getElementById("Provider-tab").setAttribute('aria-expanded', true);
 </script>

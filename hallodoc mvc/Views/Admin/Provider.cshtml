@@ -1,5 +1,8 @@
 ﻿@model hallodoc_mvc_Repository.ViewModel.Provider
-
+@{
+    ViewData["Title"] = "Provider";
+    Layout = ViewBag.Layout;
+}
 <div class="container p-0">
     <div class="row">
         <div class="col-12">
@@ -68,12 +71,16 @@
         });
     }
 
+    document.getElementById("Providers-tab").classList.add("active");
+    document.getElementById("action").classList.add("active");
+    document.getElementById("Provider-tab").setAttribute('aria-expanded', true);
 </script>
 
 <style>
 
     .nav-underline .nav-link.active {
-        color: #5bc0de !important;
+        color: #5bc0de !important;                     
     }
 
 </style>
+

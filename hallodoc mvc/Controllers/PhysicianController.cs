@@ -6,6 +6,7 @@ using hallocdoc_mvc_Service.Interface;
 using HalloDoc.Auth;
 using ClosedXML.Excel;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO.Compression;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -89,7 +90,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult Accept(int id) 
         {
             _Service.AddToPending(id);
-            return View("PhysicianDashboard");
+            return RedirectToAction(nameof(PhysicianDashboard));
         }
         public IActionResult ViewCase(int Id)
         {
@@ -105,14 +106,115 @@ namespace hallodoc_mvc.Controllers
             return View(rn);
         }
 
+        [HttpPost]
+        public IActionResult ViewNotes(ViewNote model, int Id)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            ViewBag.Username = _Service.Phyname(phy);
+            var vn = _Service.setViewNotesData(model, Id, phy);
+            TempData["success"] = "Note Added Successfully!!!";
+            return RedirectToAction("ViewNotes", Id);
+        }
+        [HttpGet]
+        public IActionResult SendAgreement(int Id, int requestType)
+        {
+            ViewBag.requestType = requestType;
+
+            RequestClient rc = _Service.GetAgreementtdata(Id);
+            ModalData md = new()
+            {
+                number = rc.PhoneNumber,
+                email = rc.Email,
+            };
+            return PartialView("SendAgreement", md);
+        }
+        [HttpPost]
+        public IActionResult SendAgreement(int Id, ModalData md)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            var token = _jwtService.GenerateJwtTokenByEmail(md.email);
+
+            _Service.SendAgreementMail(Id, md, token, phy);
+            return RedirectToAction(nameof(PhysicianDashboard));
+        }
+        public IActionResult ViewUpload(int id)
+        {
+
+            ViewDocument vd = _Service.ViewUploadData(id);
+            return View(vd);
+        }
+
+
+
         //[HttpPost]
-        //public IActionResult ViewNotes(ViewNote model, int Id)
+        //public ActionResult DownloadFiles([FromBody] string[] filenames)
         //{
-        //    int phy = (int)HttpContext.Session.GetInt32("PhyId");
-        //    ViewBag.Username = _Service.Phyname(phy);
-        //    var vn = _Service.setViewNotesData(model, Id, phy);
-        //    TempData["success"] = "Note Added Successfully!!!";
-        //    return RedirectToAction("ViewNotes", Id);
+
+        //    System.Diagnostics.Debug.WriteLine(filenames);
+        //    string repositoryPath = @"D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\wwwroot\uplodedfiles";
+        //    using (MemoryStream zipStream = new MemoryStream())
+        //    {
+        //        using (ZipArchive zipArchive = new ZipArchive(zipStream, ZipArchiveMode.Create, true))
+        //        {
+        //            foreach (string filename in filenames)
+        //            {
+
+        //                string filePath = Path.Combine(repositoryPath, filename);
+        //                System.Diagnostics.Debug.WriteLine(filePath + "/*/*/*/*/*/*/*/*/*/*/*");
+        //                if (System.IO.File.Exists(filePath))
+        //                {
+        //                    zipArchive.CreateEntryFromFile(filePath, filename);
+        //                }
+        //                else
+        //                {
+        //                }
+        //            }
+        //        }
+        //        zipStream.Seek(0, SeekOrigin.Begin);
+        //        return File(zipStream.ToArray(), "application/zip", "selected_files.zip");
+        //    }
         //}
+        //[HttpPost]
+        //public ActionResult deletefilecus(int id, int[] filenames)
+        //{
+        //    _service.DeleteCustom(filenames);
+        //    return RedirectToAction(nameof(ViewUpload), new { id = id });
+        //}
+
+
+        //[HttpPost]
+        //public IActionResult FileUpload(int id, [FromForm] List<IFormFile> File)
+        //{
+        //    int admin = (int)HttpContext.Session.GetInt32("Id");
+        //    _service.FileUpload(id, File, admin);
+        //    return RedirectToAction(nameof(ViewUpload), new { id = id });
+        //}
+        //public IActionResult DeleteFile(int id)
+        //{
+        //    var rq = _service.DeleteFile(id);
+        //    return RedirectToAction(nameof(ViewUpload), "Admin", new { id = rq });
+        //}
+
+
+        //public IActionResult SendEmail(int id)
+        //{
+        //    int admin = (int)HttpContext.Session.GetInt32("Id");
+        //    _service.SendEmail(id, admin);
+        //    return RedirectToAction(nameof(ViewUpload), "Admin", new { id = id });
+        //}
+
+        public IActionResult Transfer(int Id)
+        {
+
+            return PartialView("Transfer");
+        }
+
+        [HttpPost]
+        public IActionResult Transfer(int Id,ModalData md)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            _Service.Transfer(Id,md,phy);
+            return RedirectToAction(nameof(PhysicianDashboard));
+        }
     }
 }

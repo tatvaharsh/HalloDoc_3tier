@@ -1,0 +1,32 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.ModalData
+
+@* ----------------------------------------Block Patient---------------------------------*@
+<div class="modal fade" id="transfer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <div class="modal-title text-light" id="exampleModalLongTitle">Transfer Request</div>
+                <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <form class="p-3" method="post" asp-action="Transfer">
+
+                <div class="text-secondary">
+                    <span class="text-secondary">This Request will be transfered to Admin</span>
+                </div>
+
+                <div class="mt-4 form-floating text-secondary">
+                    <textarea class="form-control h-100" id="floatingInputBlock" placeholder="Reason for Block Request" asp-for="note" rows="3"></textarea>
+                    <label for="floatingInputBlock" class="text-wrap">Description</label>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-end">
+                    <button type="submit" id="myForm" class="btn btn-info continue-btn mx-2" data-bs-dismiss="modal">Submit</button>
+                    <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
