@@ -39,12 +39,29 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\h
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\hallodoc mvc.pdb
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Azure.Core.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Azure.Identity.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\ClosedXML.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\DocumentFormat.OpenXml.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\ExcelNumberFormat.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Humanizer.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\ImageResizer.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Irony.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.barcodes.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.bouncy-castle-connector.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.forms.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.io.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.kernel.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.layout.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.pdfa.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.pdfua.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.sign.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.styledxmlparser.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.svg.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.bouncy-castle-adapter.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\bc-fips-1.0.2.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\bcpkix-fips-1.0.2.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.bouncy-castle-fips-adapter.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\itext.commons.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Razor.Extensions.dll
@@ -64,6 +81,7 @@ D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\M
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.CodeAnalysis.Workspaces.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.DiaSymReader.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.DotNet.PlatformAbstractions.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.DotNet.Scaffolding.Shared.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll

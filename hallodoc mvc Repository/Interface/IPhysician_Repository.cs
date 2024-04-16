@@ -12,13 +12,29 @@ namespace hallodoc_mvc_Repository.Interface
     {
         void Accept(int id);
         void AddEmaillogtbl(EmailLog emailLog);
+        void AddEncounterFormtbl(EncounterForm ef);
+        void AddOrderdetails(OrderDetail oredr);
         void AddRequestNotes(RequestNote newnotedata);
+
+        void UpdateRequestNotes(RequestNote newnotedata);
+
+        bool GetEncounterStatus(int id);
+
+        void AddRequestStatusLog(RequestStatusLog req);
         void AddRequesttbl(RequestStatusLog statusLog);
+        void AddRequestWiseFiles(RequestWiseFile requestWiseFile);
         ModalData CountState(int admin1);
         List<AdminDashboard> GetActiveData(int phy);
         RequestClient getagreement(int id);
         Physician getaspuser(string email);
         List<AdminDashboard> GetConcludeData(int phy);
+        List<HealthProfessional> getdatabyvendorid(int id);
+        Request? getdetail(int id);
+        RequestWiseFile GetDocumentFile(int id);
+        List<RequestWiseFile> GetDocumentList(int id);
+        EncounterForm getencounterbyid(int id);
+        List<RequestWiseFile> getfile(int id);
+        List<HealthProfessionalType> GetHealthprofessionalByType();
         string Getname(int admin1);
         List<AdminDashboard> GetNewData(int phy);
         List<AdminDashboard> GetPendingData(int phy);
@@ -27,7 +43,12 @@ namespace hallodoc_mvc_Repository.Interface
         Request GetRequestById(int id);
         List<RequestStatusLog> GetStatusLogsByRequest(int id);
         ViewDocument getUploaddata(int id);
+        List<HealthProfessional> getvendorbyprofessiontype(int id);
         void save();
         RequestNote setnotes(int id);
+        void updateEncounterForm(EncounterForm ef);
+        void updateRequesttbl(Request a);
+        void update_RequestWiseTable(RequestWiseFile df);
+        int GetAspId(int phy);
     }
 }

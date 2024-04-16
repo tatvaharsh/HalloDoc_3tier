@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,9 @@ namespace hallodoc_mvc_Repository.ViewModel
     {
         public DateTime? AcceptedDate { get; set; }
         public int Id { get; set; }
+        public int? calltype { get; set; }
+        public BitArray? isfinal { get; set; }
+
         public string? RPhone { get; set; }
 
         public string? FName { get; set; }

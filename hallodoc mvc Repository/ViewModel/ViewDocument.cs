@@ -15,6 +15,8 @@ namespace hallodoc_mvc_Repository.ViewModel
         public string? FileName { get; set; }
         public int? FileId { get; set; }
         public string Confirmationnumber { get; set; }
+
+        public string? Notes { get; set; }
         public List<UploadedFiles> AllFiles { get; set; }
 
     }

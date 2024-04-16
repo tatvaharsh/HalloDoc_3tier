@@ -48,7 +48,7 @@
                 @if (Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
                 {
                     <th scope="col">Status</th>
-                    <th scope="col">Chat With</th>
+      
                 }
 
 
@@ -126,12 +126,18 @@
 
                     @if (Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
                     {
-                        <td>
-                            hi<button class="btn btn-outline-light" type="button">Provider</button>
-                        </td>
-                        <td>
-                            hello<button class="btn btn-outline-light" type="button">Provider</button>
-                        </td>
+                        @if(Model.FirstOrDefault().calltype == 1)
+                        {
+                            <td>
+                                <a asp-action="HousecallFinal" asp-route-id="@obj.Id" class="btn btn-outline-light" type="button">Housecall</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>--</td>
+                        }
+                       
+                  
                     }
 
                    
@@ -164,16 +170,37 @@
                                 {
 
                                     <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
+                                    @if (Model.FirstOrDefault().calltype == null)
+                                    {
+                                        <li><a class="dropdown-item" onclick="Encounter(@obj.Id)"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+                                    }
+                                    else if(Model.FirstOrDefault().isfinal[0]==true)
+                                    {
+                                        <li><a class="dropdown-item" onclick="Download(@obj.Id)"><i class="fa-solid fa-file me-1"></i>Download</a></li>
+                                    }
+                                    else
+                                    {
+                                        
                                     <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+                                    }
+
                                     <li><a class="dropdown-item" asp-action="Order" asp-route-id="@obj.Id"><i class="fa-solid fa-box me-1"></i>Orders</a></li>
                                 }
 
                                 @if (Model.FirstOrDefault().Status == 6)
                                 {
 
-                                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-doctor me-1"></i>Conclude Care</a></li>
+                                    <li><a class="dropdown-item" asp-action="ConcludeCareeeee" asp-route-id="@obj.Id"><i class="fa-solid fa-user-doctor me-1"></i>Conclude Care</a></li>
                                     <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
-                                    <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+                                    if (Model.FirstOrDefault().isfinal!=null &&  Model.FirstOrDefault().isfinal[0] == true)
+                                    {
+                                        <li><a class="dropdown-item" onclick="Download(@obj.Id)"><i class="fa-solid fa-file me-1"></i>Download</a></li>
+                                    }else
+                                    {
+
+                                        <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+                                    }
+                                    
                                 
                                 }
 

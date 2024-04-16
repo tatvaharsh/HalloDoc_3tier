@@ -474,7 +474,22 @@
             modal.show();
         });
     }
+    function Encounter(Id) {
 
+        $("#mymodal").load('/Physician/EncounterModal/' + Id + '?Id=', () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('encounter'));
+            modal.show();
+        });
+    }
+    function Download(Id) {
+
+        $("#mymodal").load('/Physician/DownloadEnc/' + Id + '?Id=', () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('enc'));
+            modal.show();
+        });
+    }
 </script>
 <style>
     .foot {

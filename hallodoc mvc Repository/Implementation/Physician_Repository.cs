@@ -33,9 +33,40 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.SaveChanges();
         }
 
+        public void AddEncounterFormtbl(EncounterForm ef)
+        {
+            _context.EncounterForms.Add(ef);
+            _context.SaveChanges(); 
+        }
+
+        public void AddOrderdetails(OrderDetail oredr)
+        {
+           _context.OrderDetails.Add(oredr);
+            _context.SaveChanges(); 
+        }
+
         public void AddRequestNotes(RequestNote newnotedata)
         {
            _context.RequestNotes.Add(newnotedata);
+            _context.SaveChanges(); 
+        }
+
+        public void UpdateRequestNotes(RequestNote newnotedata)
+        {
+           _context.RequestNotes.Update(newnotedata);
+            _context.SaveChanges(); 
+        }
+
+        public bool GetEncounterStatus(int id)
+        {
+            EncounterForm ef = _context.EncounterForms.FirstOrDefault(x=>x.RequestId == id);
+            return ef!=null && ef.IsFinalized[0] == true;
+        }
+
+
+        public void AddRequestStatusLog(RequestStatusLog req)
+        {
+            _context.RequestStatusLogs.Add(req);
             _context.SaveChanges(); 
         }
 
@@ -43,6 +74,12 @@ namespace hallodoc_mvc_Repository.Implementation
         {
             _context.RequestStatusLogs.Add(statusLog);
             _context.SaveChanges();
+        }
+
+        public void AddRequestWiseFiles(RequestWiseFile requestWiseFile)
+        {
+            _context.RequestWiseFiles.Add(requestWiseFile);
+            _context.SaveChanges(); 
         }
 
         public ModalData CountState(int admin1)
@@ -72,7 +109,9 @@ namespace hallodoc_mvc_Repository.Implementation
                   Status = x.Status,
                   Email = x.RequestClients.First().Email,
                   AcceptedDate = x.AcceptedDate,
-                  Id = x.RequestId
+                  Id = x.RequestId,
+                  isfinal = x.EncounterForms.First().IsFinalized,
+                  calltype = x.CallType
               }).ToList();
         }
 
@@ -100,8 +139,47 @@ namespace hallodoc_mvc_Repository.Implementation
                    Status = x.Status,
                    Email = x.RequestClients.First().Email,
                    AcceptedDate = x.AcceptedDate,
-                   Id = x.RequestId
+                   isfinal = x.EncounterForms.First().IsFinalized,
+                   calltype = x.CallType,
+                   Id = x.RequestId,
                }).ToList();
+        }
+
+        public List<HealthProfessional> getdatabyvendorid(int id)
+        {
+            return _context.HealthProfessionals.Where(i => i.VendorId == id).ToList();
+        }
+
+        public Request? getdetail(int id)
+        {
+            return _context.Requests.FirstOrDefault(i => i.RequestId == id);
+        }
+
+        public RequestWiseFile GetDocumentFile(int id)
+        {
+            var file = _context.RequestWiseFiles.Find(id);
+            return file;
+        }
+
+        public List<RequestWiseFile> GetDocumentList(int id)
+        {
+            List<RequestWiseFile> reqdoc = _context.RequestWiseFiles.Where(m => m.RequestId == id && m.IsDeleted == null).ToList();
+            return reqdoc;
+        }
+
+        public EncounterForm getencounterbyid(int id)
+        {
+            return _context.EncounterForms.FirstOrDefault(x => x.RequestId == id);
+        }
+
+        public List<RequestWiseFile> getfile(int id)
+        {
+            return _context.RequestWiseFiles.Where(i => i.RequestId == id && i.IsDeleted == null).ToList();
+        }
+
+        public List<HealthProfessionalType> GetHealthprofessionalByType()
+        {
+            return _context.HealthProfessionalTypes.ToList();
         }
 
         public string Getname(int admin1)
@@ -143,7 +221,9 @@ namespace hallodoc_mvc_Repository.Implementation
                   Status = x.Status,
                   Email = x.RequestClients.First().Email,
                   AcceptedDate = x.AcceptedDate,
-                  Id = x.RequestId
+                  Id = x.RequestId,
+                  isfinal = x.EncounterForms.First().IsFinalized,
+                  calltype = x.CallType
               }).ToList();
         }
 
@@ -186,6 +266,11 @@ namespace hallodoc_mvc_Repository.Implementation
                 }).First();
         }
 
+        public List<HealthProfessional> getvendorbyprofessiontype(int id)
+        {
+            return _context.HealthProfessionals.Where(i => i.Profession == id).ToList();
+        }
+
         public void save()
         {
            _context.SaveChanges();
@@ -194,6 +279,30 @@ namespace hallodoc_mvc_Repository.Implementation
         public RequestNote setnotes(int id)
         {
             return _context.RequestNotes.FirstOrDefault(i => i.RequestId == id);
+        }
+
+        public void updateEncounterForm(EncounterForm ef)
+        {
+
+            _context.EncounterForms.Update(ef);
+            _context.SaveChanges();
+        }
+
+        public void updateRequesttbl(Request a)
+        {
+            _context.Requests.Update(a);
+            _context.SaveChanges();
+        }
+
+        public void update_RequestWiseTable(RequestWiseFile df)
+        {
+            _context.RequestWiseFiles.Update(df);
+            _context.SaveChanges();
+        }
+
+        public int GetAspId(int phy)
+        {
+            return _context.Physicians.FirstOrDefault(x=>x.PhysicianId== phy).AspNetUserId??new();
         }
     }
 }

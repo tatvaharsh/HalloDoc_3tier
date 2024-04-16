@@ -1,0 +1,211 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.Encounter
+@{
+    ViewData["Title"] = "Encounter Page";
+    Layout = "~/Views/Shared/Physician/_LayPhysician.cshtml";
+}
+<style>
+    .iti {
+        width: 100%;
+    }
+
+    #phone, #phone1 {
+        height: 58px;
+    }
+
+   
+
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+
+
+</style>
+<Partial name="_Toast" />
+<div class="container mb-5 ">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between mt-3">
+                <h4 class="mt-3">Encounter Form</h4>
+                <a class="text-start text-info text-decoration-none " asp-action="PhysicianDashboard" asp-controller="Physician">
+                    <button class="btn btn-white  text-info border-info rounded ">
+                        <i class="fa-solid  fa-less-than"></i> Back
+                    </button>
+                </a>
+            </div>
+            <form asp-action="ChangeEncounter" asp-route-id="@Model.Requestid" method="post" id="enable">
+                <div class="container rounded bg-white shadow py-3">
+                    <h3 class="mb-3 text-center text-info">Medical Report-Confidential</h3>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input name="first_name" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.patientData.FirstName" placeholder="Firstname" disabled>
+                            <label for="exampleFormControlInput1" class="form-label mx-2">Firstname</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input name="last_name" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.patientData.LastName" placeholder="Lastname" disabled>
+                            <label for="exampleFormControlInput1" class="form-label mx-2">Lastname</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-12 form-floating mb-3 text-muted">
+                            <input name="Location" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.patientData.Address" placeholder="Location" disabled>
+                            <label for="exampleFormControlInput1" class="form-label mx-2">Location</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="date" name="DOB" class="form-control" id="dob" asp-for="@Model.DOB" asp-format="{0:yyyy-MM-dd}"
+                                   placeholder="Date Of Birth" disabled>
+                            <label for="exampleFormControlInput1" class="form-label mx-2">Date Of Birth</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input type="date" name="Date" class="form-control" id="Date" placeholder="Date" asp-for="@Model.Date" asp-format="{0:yyyy-MM-dd}"
+                                     >
+                            <label for="exampleFormControlInput1" class="form-label mx-2">Date</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input id="phone" class="form-control inp2" type="tel" placeholder="Phone Number" asp-for="@Model.patientData.PhoneNumber" disabled>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input name="email" type="email" class="form-control" id="email" asp-for="@Model.patientData.Email" placeholder="Email" disabled>
+                            <label for="email" class="form-label mx-2">Email</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.HistoryIllness"  style="height: 100px"  ></textarea>
+                            <label for="floatingTextarea2" class="mx-2">History Of present illness or Injury</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating  mb-3 text-muted">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.MedicalHistory" style="height: 100px"  ></textarea>
+                            <label for="floatingTextarea2" class="mx-2">Medical History</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Medications"  style="height: 100px"  ></textarea>
+                            <label for="floatingTextarea2" class="mx-2">Medications</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6 form-floating mb-3 text-muted">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Allergies"  style="height: 100px"  ></textarea>
+                            <label for="floatingTextarea2" class="mx-2">Allergies</label>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-4 col-6 form-floating mb-3 text-muted">
+                            <input name="Temp" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.Temp" placeholder="Temp"  >
+                            <label for="exampleFormControlInput1" class="form-label mx-2">Temp</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-4 col-6 form-floating mb-3 text-muted">
+                            <input name="Hr" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.Hr" placeholder="HR"  >
+                            <label for="exampleFormControlInput1" class="form-label mx-2">HR</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-xl-4 col-6 form-floating mb-3 text-muted">
+                            <input name="Rr" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.Rr" placeholder="RR"  >
+                            <label for="exampleFormControlInput1" class="form-label mx-2">RR</label>
+                            <span class="text-danger"></span>
+                        </div>
+
+                        <div class="col-sm-6 col-md-2 col-xl-2 col-6 form-floating mb-3 text-muted">
+                            <input name="BpS" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.BpD" placeholder="FirsBlood pressuretname"  >
+                            <label for="exampleFormControlInput1" class="form-label mx-2">Blood pressure</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-6 col-md-2 col-xl-2 col-6 form-floating mb-3 text-muted">
+                            <input name="BpD" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.BpS" placeholder="Blood pressure"  >
+                            <label for="exampleFormControlInput1" class="form-label mx-2">Blood pressure</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-xl-4 col-6 form-floating mb-3 text-muted">
+                            <input name="O2" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.O2" placeholder="O2"  >
+                            <label for="exampleFormControlInput1" class="form-label mx-2">O2</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-xl-4 col-6 form-floating mb-3 text-muted">
+                            <input name="Pain" type="text" class="form-control" id="exampleFormControlInput1" asp-for="@Model.Pain" placeholder="Pain"  >
+                            <label for="exampleFormControlInput1" class="form-label mx-2">Pain</label>
+                            <span class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6  form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Heent" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Heent</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Cv" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">CV</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Chest" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Chest</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Abd" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">ABD</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Extr" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Extr</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating  mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Skin" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Skin</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Neuro" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Neuro</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Other" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Other</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Diagnosis" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Diagnosis</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating  mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.TreatmentPlan" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Treatment Plan</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.MedicationDispensed" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Medications Dispensed</label>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-xl-6 form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.Procedures" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Procedures</label>
+                        </div>
+                        <div class="form-floating mb-3 text-muted">
+                            <input class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" asp-for="@Model.FollowUp" style="height: 100px"  >
+                            <label for="floatingTextarea2" class="mx-2">Followup</label>
+                        </div>
+                    </div>
+                    <div class="text-end pb-3">
+                        <button type="submit" class="btn btn-info text-white col-sm-3 col-md-2  me-2"  >Save Changes</button>
+                        <a asp-action="FinalEncounter" asp-route-id="@Model.Requestid" class="btn text-white col-sm-3 col-md-2" style="background-color:purple"; >Finalize</a>
+                        <a class="btn btn-outline-info col-sm-3 col-md-2 " >Cancel</a>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div >
+
+<script>
+    const input = document.querySelector("#phone");
+    const input2 = document.querySelector("#phone1");
+    const button = document.querySelector("#btn");
+    const errorMsg = document.querySelector("#error-msg");
+    const validMsg = document.querySelector("#valid-msg");
+
+    // here, the index maps to the error code returned from getValidationError - see readme
+    const errorMap = ["Invalid number", "Invalid country code", "Too short", "Too long", "Invalid number"];
+
+    // initialise plugin
+    var iti = window.intlTelInput(input, {
+        initialCountry: "us",
+        utilsScript: "/intl-tel-input/js/utils.js?1706723638591"
+    });
+    var iti1 = window.intlTelInput(input2, {
+        initialCountry: "us",
+        utilsScript: "/intl-tel-input/js/utils.js?1706723638591"
+    });
+
+
+   
+    
+</script>

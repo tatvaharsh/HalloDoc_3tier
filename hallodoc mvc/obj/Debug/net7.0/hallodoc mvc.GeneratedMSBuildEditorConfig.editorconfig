@@ -236,6 +236,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfVmFsaWRhdGlvblNjcmlwdHNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/ConcludeCareeeee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXENvbmNsdWRlQ2FyZWVlZWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/DownloadEnc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXERvd25sb2FkRW5jLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/Encounter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXEVuY291bnRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/EncounterModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXEVuY291bnRlck1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXE9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/PhysicianDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFBoeXNpY2lhbkRhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -262,6 +282,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/ViewUpload.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFZpZXdVcGxvYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Shared/BlockHistory.cshtml]

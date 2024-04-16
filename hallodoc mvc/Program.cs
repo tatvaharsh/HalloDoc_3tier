@@ -61,6 +61,7 @@ builder.Services.AddScoped<IPatient_Service, Patient_Service>();
 builder.Services.AddScoped<IPatient_Repository, Patient_Repository>();
 builder.Services.AddScoped<IAdmin_Service, Admin_Service>();
 builder.Services.AddScoped<IPhysician_Service, Physician_Service>();
+builder.Services.AddScoped<IPDFService, PDFService>();
 builder.Services.AddScoped<IAdmin_Repository, Admin_Repository>();
 builder.Services.AddScoped<IPhysician_Repository, Physician_Repository>();
 
