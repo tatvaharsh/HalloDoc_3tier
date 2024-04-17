@@ -12,6 +12,8 @@ namespace hallodoc_mvc_Repository.ViewModel
 {
     public class CreatePhy
     {
+        public string? pass { get; set; }
+        public string? textareas { get; set; }
         public int id { get; set; }
         public List<Region>? reg { get; set; }
         public List<Role>? roles { get; set; }

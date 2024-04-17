@@ -13,6 +13,8 @@ using System.Runtime.Intrinsics.X86;
 using Microsoft.AspNetCore.Http;
 using System.Net.Mail;
 using System.Net;
+using Twilio.TwiML.Voice;
+using Org.BouncyCastle.Ocsp;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -170,9 +172,9 @@ namespace hallocdoc_mvc_Service.Implementation
                 Email = req.Email,
                 Location = req.City,
                 Address = req.Street,
-
+          
                 IntDate = req.BirthDate.Day,
-                StrMonth = req.BirthDate.Month.ToString("MMM"),
+                StrMonth = req.BirthDate.ToString("MMM"),
                 IntYear = req.BirthDate.Year,
                 Street = req.Street,
                 City = req.City,
@@ -181,7 +183,41 @@ namespace hallocdoc_mvc_Service.Implementation
 
             };
             _Repository.AddRequestClients(requestclient);
-           
+
+            Region region = new Region
+            {
+                Name = req.State,
+                Abbreviation = req.State.Substring(0, 3),
+            };
+            Region isRegion = _Repository.isRegion(region.Abbreviation);
+
+            if (isRegion == null)
+            {
+                isRegion = region;
+                _Repository.AddRegion(region);
+            }
+            if (req.File != null)
+            {
+
+                foreach (IFormFile files in req.File)
+                {
+                    string filename = req.FirstName + req.LastName + files.FileName;
+                    string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\", filename);
+                    using (FileStream stream = new FileStream(path, FileMode.Create))
+                    {
+                        files.CopyToAsync(stream).Wait();
+                    }
+
+
+                    RequestWiseFile requestWiseFile = new RequestWiseFile();
+                    requestWiseFile.FileName = filename;
+                    requestWiseFile.RequestId = request.RequestId;
+                    requestWiseFile.DocType = 1;
+                    _Repository.AddRequestWiseFiles(requestWiseFile);
+
+                }
+            }
+
 
         }
 
@@ -831,6 +867,114 @@ namespace hallocdoc_mvc_Service.Implementation
                 aspuser.PasswordHash = model.PasswordHash;
                 _Repository.updateAspnetuserTable(aspuser);
                 _Repository.Save();
+            }
+        }
+
+        public void ForElse(patient_form req, int user1)
+        {
+            AspNetUser aspuser = _Repository.AspEmail(req.Email);
+            //AspNetUser aspuser = _context.AspNetUsers.FirstOrDefault(m => m.Email == req.Email);
+            //User usertbl = _context.Users.FirstOrDefault(m => m.Email == req.Email);
+            User usertbl = _Repository.getUser(req.Email);
+
+            AspNetUser asp = _Repository.AspByUserId(user1);
+
+
+            if (aspuser == null)
+            {
+                var receiver = req.Email;
+                var subject = "Create Account";
+                var message = "Tap on link for Create Account: http://localhost:5198/Home/create_patient?token=" + _JwtService.GenerateJwtTokenByEmail(receiver);
+
+
+                var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+                var password = "binal@2002";
+
+                var client = new SmtpClient("smtp.office365.com", 587)
+                {
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(mail, password)
+                };
+
+                client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
+
+
+
+            }
+
+
+            Region region = new Region
+            {
+                Name = req.State,
+                Abbreviation = req.State.Substring(0, 3),
+            };
+            Region isRegion = _Repository.isRegion(region.Abbreviation);
+
+            if (isRegion == null)
+            {
+                isRegion = region;
+                _Repository.AddRegion(region);
+            }
+
+         
+
+            Request reqobj = new()
+            {
+                RequestTypeId = 3,
+
+                FirstName = asp.UserName,
+              
+                Email = asp.Email,
+                PhoneNumber = asp.PhoneNumber,
+                Status = 1,
+                CreatedDate = DateTime.Now,
+            };
+            _Repository.AddRequest(reqobj);
+
+
+
+            RequestClient rc = new RequestClient
+            {
+                RequestId = reqobj.RequestId,
+                FirstName = req.FirstName,
+                LastName = req.LastName,
+                PhoneNumber = req.PhoneNumber,
+                Address = req.Street + ", " + req.City + ", " + req.State,
+                Notes = req.Symtom,
+                Email = req.Email,
+                RegionId = isRegion.RegionId,
+                IntDate = req.BirthDate.Day,
+                IntYear = req.BirthDate.Year,
+                StrMonth = req.BirthDate.ToString("MMM"),
+                Street = req.Street,
+                City = req.City,
+                State = req.State,
+                ZipCode = req.ZipCode,
+            };
+
+            _Repository.AddRequestClients(rc);
+
+
+            if (req.File != null)
+            {
+
+                foreach (IFormFile files in req.File)
+                {
+                    string filename = req.FirstName + req.LastName + files.FileName;
+                    string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\", filename);
+                    using (FileStream stream = new FileStream(path, FileMode.Create))
+                    {
+                        files.CopyToAsync(stream).Wait();
+                    }
+
+
+                    RequestWiseFile requestWiseFile = new RequestWiseFile();
+                    requestWiseFile.FileName = filename;
+                    requestWiseFile.RequestId = reqobj.RequestId;
+                    requestWiseFile.DocType = 1;
+                    _Repository.AddRequestWiseFiles(requestWiseFile);
+
+                }
             }
         }
     }

@@ -46,5 +46,20 @@ namespace hallocdoc_mvc_Service.Interface
         ViewNote setViewNotesData(ViewNote model, int id, int phy);
         void Transfer(int id, ModalData md,int phy);
         List<ViewDocument> ViewUploadData(int id);
+        CreatePhy? getphysiciandata(int admin1);
+        void changepass(string pass,int phy);
+        void SendMailToAdmin(int id,string textareas);
+        Provider? GetRegions();
+        Scheduling GetMonthWiseData(int day, int month, int year,int phy);
+        List<Region> getreg();
+        List<Physician> GetPhy(int id);
+        bool CreateShift(CreateShift model, int admin1);
+        string GetRegByPhy(int phy);
+        EditShift? EditShift(int shiftdetailid);
+        void UpdateShift(EditShift editShift, int shiftdetailid, int phy);
+        void ChangeShiftStatus(int shiftdetailid, int phy);
+        void DeleteShiftViaModal(int shiftdetailid, int phy);
+        void sendlink(ViewCase model, int phy);
+        void PatientForm(patient_form model, int phy);
     }
 }

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -85,6 +86,11 @@ namespace hallodoc_mvc_Repository.Implementation
         {
             _context.Users.Add(user);
             _context.SaveChanges();
+        }
+
+        public AspNetUser AspByUserId(int user1)
+        {
+            return _context.Users.Include(x => x.AspNetUser).FirstOrDefault(x => x.UserId == user1).AspNetUser;
         }
 
         public AspNetUser AspEmail(string email)

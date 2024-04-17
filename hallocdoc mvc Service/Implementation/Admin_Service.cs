@@ -170,6 +170,8 @@ namespace hallocdoc_mvc_Service.Implementation
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
                     PgCount = c,
+                    calltype = item.CallType,
+                    isfinal = item.EncounterForms.FirstOrDefault()?.IsFinalized ?? new BitArray(1, false),
                 });
             }
 
@@ -319,6 +321,8 @@ namespace hallocdoc_mvc_Service.Implementation
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
                     PgCount = c,
+                    calltype = item.CallType,
+                    isfinal = item.EncounterForms.FirstOrDefault()?.IsFinalized ?? new BitArray(1, false),
                 });
             }
 
@@ -400,6 +404,8 @@ namespace hallocdoc_mvc_Service.Implementation
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
                     PgCount = c,
+                    calltype = item.CallType,
+                    isfinal = item.EncounterForms.FirstOrDefault()?.IsFinalized ?? new BitArray(1, false),
                 });
             }
 
@@ -465,6 +471,8 @@ namespace hallocdoc_mvc_Service.Implementation
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
                     PgCount = c,
+                    calltype = item.CallType,
+                    isfinal = item.EncounterForms.FirstOrDefault()?.IsFinalized ?? new BitArray(1, false),
                 });
             }
 
@@ -1321,42 +1329,29 @@ namespace hallocdoc_mvc_Service.Implementation
 
 
             var aspnetuser1 = _Repository.getAsp(model.Email);
-            var user1 = _Repository.getUser(model.Email);
+         
             //send mail//
-            var receiver = model.Email;
-            var subject = "Send Link";
-            var message = "Tap on link for Send Link : http://localhost:5198/Home/create_patient";
-
-
-            var mail = "tatva.dotnet.binalmalaviya@outlook.com";
-            var password = "binal@2002";
-
-            var client = new SmtpClient("smtp.office365.com", 587)
-            {
-                EnableSsl = true,
-                Credentials = new NetworkCredential(mail, password)
-            };
-            //complete//
-
-            client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
-
+    
 
             if (aspnetuser1 == null)
             {
-                AspNetUser aspnetuser2 = new AspNetUser
+                var receiver = model.Email;
+                var subject = "Send Link";
+                var message = "Tap on link for Send Link : http://localhost:5198/Home/create_patient";
+
+
+                var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+                var password = "binal@2002";
+
+                var client = new SmtpClient("smtp.office365.com", 587)
                 {
-
-                    UserName = model.FirstName + "_" + model.LastName,
-                    Email = model.Email,
-                    //PasswordHash = model.Password,
-                    PhoneNumber = model.PhoneNumber,
-                    CreatedDate = DateTime.Now,
-                    PasswordHash = model.Password,
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(mail, password)
                 };
-                _Repository.AddAspnetUser(aspnetuser2);
-                aspnetuser1 = aspnetuser2;
-            }
+                //complete//
 
+                client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
+            }
 
 
             Region region = new Region
@@ -1371,34 +1366,6 @@ namespace hallocdoc_mvc_Service.Implementation
                 isRegion = region;
                 _Repository.AddRegion(region);
             }
-
-            if (user1 == null)
-            {
-                User user = new User
-                {
-                    AspNetUserId = aspnetuser1.Id,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Email = model.Email,
-                    Mobile = model.PhoneNumber,
-                    ZipCode = model.ZipCode,
-                    State = model.State,
-                    City = model.City,
-                    RegionId = isRegion.RegionId,
-                    Street = model.Street,
-                    IntDate = model.BirthDate.Day,
-                    IntYear = model.BirthDate.Year,
-                    StrMonth = model.BirthDate.ToString("MMM"),
-                    CreatedDate = DateTime.Now,
-
-                    CreatedBy = aspnetuser1.Id
-                };
-
-                _Repository.AddUser(user);
-
-                user1 = user;
-            }
-
 
 
 

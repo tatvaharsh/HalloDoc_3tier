@@ -16,6 +16,7 @@ namespace hallocdoc_mvc_Service.Interface
         public void editprofile(PatientProfile model,int id);
         void FamilyForm(FamilyReqModel req);
         public void FileUpload(int id, List<IFormFile> file);
+        void ForElse(patient_form req, int user1);
         void Forgot(Create model);
         void Forgotmail(Create model);
         void ForMe(patient_form req,int user1);

@@ -14,17 +14,24 @@ using System.Net.Mail;
 using System.Net;
 using Microsoft.AspNetCore.Http;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using iText.StyledXmlParser.Node;
+using Twilio.TwiML.Voice;
+using System.Collections;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
     public class Physician_Service : IPhysician_Service
     {
         private readonly IPhysician_Repository _Repository;
+        private readonly IConfiguration _configuration;
 
-        public Physician_Service(IPhysician_Repository physician)
+        public Physician_Service(IPhysician_Repository physician, IConfiguration configuration)
         {
             _Repository = physician;
-
+            _configuration = configuration;
         }
 
         public void AddProviderNote(int id, string note, int phy)
@@ -781,6 +788,502 @@ namespace hallocdoc_mvc_Service.Implementation
                 vd.FirstOrDefault().Notes = requestNote.PhysicianNotes;
             }
             return vd;
+        }
+
+        public CreatePhy? getphysiciandata(int admin1)
+        {
+            var p = _Repository.getphycian(admin1);
+            var a = _Repository.GetAspNetUser(p.AspNetUserId ?? 0);
+            CreatePhy cp = new()
+            {
+                id = admin1,
+                Firstname = p.FirstName,
+                Lastname = p.LastName,
+                email = p.Email,
+                phone = p.Mobile,
+                medicallicence = p.MedicalLicense,
+                npi = p.Npinumber,
+                address1 = p.Address1,
+                address2 = p.Address2,
+                city = p.City,
+                SelectedStateId = p.RegionId,
+                SelectedRoleId = p.RoleId,
+                zipcode = p.Zip,
+                alterphone = p.AltPhone,
+                Businessname = p.BusinessName,
+                Businesswebsite = p.BusinessWebsite,
+                Adminnote = p.AdminNotes,
+                Username = a.UserName,
+                Password = a.PasswordHash,
+                roles = _Repository.getrole(),
+                reg = _Repository.GetReg(),
+                pic = p.Photo,
+                SignatureCheck = p.Signature,
+                SelectedRegions = _Repository.GetSelectedPhyReg(admin1).Select(x => x.RegionId).ToList(),
+                isagreement = p.IsAgreementDoc == null ? false : p.IsAgreementDoc[0],
+                isbackground = p.IsBackgroundDoc == null ? false : p.IsBackgroundDoc[0],
+                ishippa = p.IsTrainingDoc == null ? false : p.IsTrainingDoc[0],
+                isnonclosure = p.IsNonDisclosureDoc == null ? false : p.IsNonDisclosureDoc[0],
+                islisence = p.IsLicenseDoc == null ? false : p.IsLicenseDoc[0],
+            };
+            return cp;
+
+        }
+
+        public void changepass(string pass, int p)
+        {
+            Physician pl = _Repository.GetPhysician(p);
+            AspNetUser asp = _Repository.GetAspNetUser((int)pl.AspNetUserId);
+            if (asp != null)
+            {
+                asp.PasswordHash = pass;
+                _Repository.UpdateAspNetUser(asp);
+            }
+        }
+
+        public void SendMailToAdmin(int id, string textareas)
+        {
+            var a = _Repository.GetPhysician(id);
+            var b = _Repository.GetAspNetUser((int)a.CreatedBy);
+            var receiver = b.Email;
+            var subject = "Request For Edit The Physician Account";
+            var messages = "Physician Requesting Admin for the Edit the Account"+textareas;
+
+            var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+            var password = "binal@2002";
+
+            var client = new SmtpClient("smtp.office365.com", 587)
+            {
+                EnableSsl = true,
+                Credentials = new NetworkCredential(mail, password)
+            };
+
+            client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, messages)
+            {
+                IsBodyHtml = true
+            });
+
+            EmailLog emailLog = new()
+            {
+                EmailTemplate = messages,
+                SubjectName = subject,
+                SentTries = 1,
+                IsEmailSent = true,
+                EmailId = a.Email,
+                CreateDate = DateTime.Now,
+                SentDate = DateTime.Now,
+
+            };
+            _Repository.AddEmaillogtbl(emailLog);
+        }
+
+
+        public Provider GetRegions()
+        {
+            var p = _Repository.GetReg();
+            Provider pr = new()
+            {
+                regions = p,
+            };
+            return pr;
+        }
+
+        public Scheduling GetMonthWiseData(int day, int month, int year , int phy)
+        {
+            DateTime date = day == 0 ? new(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day) : new(year, month, day);
+            return _Repository.GetMonthData(date, phy);
+        }
+
+        public List<Region> getreg()
+        {
+           return _Repository.GetReg(); 
+        }
+
+        public List<Physician> GetPhy(int id)
+        {
+            return _Repository.GetRequestByRegion(id).ToList();
+        }
+
+        public bool CreateShift(CreateShift shift, int admin)
+        {
+            Physician data = _Repository.GetShiftData(admin);
+            bool flag = true;
+         
+            foreach (var item in data.Shifts)
+            {
+                foreach (var item2 in item.ShiftDetails)
+                {
+                    DateOnly date = DateOnly.FromDateTime(item2.ShiftDate);
+                    DateOnly date2 = DateOnly.FromDateTime(shift.ShiftDate);
+
+                    if (date == date2 && shift.Start.Hour < item2.EndTime.Hour && shift.End.Hour > item2.StartTime.Hour)
+                    {
+                        flag = false;
+                    }
+
+                }
+            }
+            if (!flag)
+            {
+                return false;
+            }
+            Shift s = new()
+            {
+                PhysicianId = admin,
+                StartDate = DateOnly.FromDateTime(shift.ShiftDate),
+                IsRepeat = shift.RepeatToggle,
+                RepeatUpto = shift.Repeat,
+                CreatedBy = _Repository.GetAspId(admin),
+                CreatedDate = DateTime.Now
+            };
+            if (shift.Weekday != null)
+            {
+                string days = "0000000";
+                StringBuilder daysofweek = new(days);
+                foreach (var i in shift.Weekday)
+                {
+                    daysofweek[i] = '1';
+                }
+                s.WeekDays = daysofweek.ToString();
+            }
+
+            _Repository.AddShifttbl(s);
+
+            ShiftDetail detail = new()
+            {
+                ShiftId = s.ShiftId,
+                ShiftDate = shift.ShiftDate,
+                RegionId = data.RegionId,
+                StartTime = shift.Start,
+                EndTime = shift.End,
+                Status = 0,//peniding=0 and approve = 1
+                IsDeleted = new BitArray(1, false),
+            };
+
+            _Repository.AddShiftDetails(detail);
+
+
+
+            ShiftDetailRegion shiftRegion = new()
+            {
+                ShiftDetailId = detail.ShiftDetailId,
+                RegionId = (int)data.RegionId,
+                IsDeleted = new BitArray(1, false),
+            };
+            _Repository.AddShiftRegion(shiftRegion);
+
+
+            int currentday = (int)shift.ShiftDate.DayOfWeek;
+
+            while (shift.Repeat != 0 && s.WeekDays != null)
+            {
+                for (var i = 0; i < 7; i++)
+                {
+                    if (s.WeekDays[i] == '1')
+                    {
+                        int toAdd = i - currentday;
+                        if (toAdd < 0) { toAdd += 7; }
+
+                        ShiftDetail detail1 = new()
+                        {
+                            ShiftId = s.ShiftId,
+                            ShiftDate = shift.ShiftDate.AddDays(toAdd),
+                            RegionId = (int)data.RegionId,
+                            StartTime = shift.Start,
+                            EndTime = shift.End,
+                            Status = 0,
+                            IsDeleted = new BitArray(1, false),
+                        };
+
+
+                        bool flag2 = true;
+                        foreach (var item in data.Shifts)
+                        {
+                            foreach (var item2 in item.ShiftDetails)
+                            {
+                                DateOnly date = DateOnly.FromDateTime(item2.ShiftDate);
+                                DateOnly date2 = DateOnly.FromDateTime(detail1.ShiftDate);
+
+                                if (date == date2 && detail1.StartTime.Hour < item2.EndTime.Hour && detail1.EndTime.Hour > item2.StartTime.Hour)
+                                {
+                                    flag2 = false;
+                                }
+
+                            }
+                        }
+                        if (!flag2)
+                        {
+                            return false;
+                        }
+
+
+                        _Repository.AddShiftDetails(detail1);
+
+                        ShiftDetailRegion shiftRegion1 = new()
+                        {
+                            ShiftDetailId = detail1.ShiftDetailId,
+                            RegionId = (int)data.RegionId,
+                            IsDeleted = new BitArray(1, false),
+                        };
+                        _Repository.AddShiftRegion(shiftRegion1);
+                    }
+                }
+                shift.Repeat--;
+                shift.ShiftDate = shift.ShiftDate.AddDays(7);
+            };
+            return true;
+        }
+
+        public string GetRegByPhy(int phy)
+        {
+            return _Repository.GetPhysicianName(phy);
+        }
+
+        public EditShift EditShift(int shiftdetailid)
+        {
+            ShiftDetail shiftDetail = _Repository.GetShiftDetails(shiftdetailid);
+            DateOnly date = DateOnly.FromDateTime(DateTime.Now);
+            int Hour = DateTime.Now.Hour;
+            bool flag = true;
+            if (DateOnly.FromDateTime(shiftDetail.ShiftDate) <= date && (shiftDetail.StartTime.Hour < Hour || DateOnly.FromDateTime(shiftDetail.ShiftDate) < date))
+            {
+                flag = false;
+            }
+
+            EditShift edit = new()
+            {
+                Regions = _Repository.GetReg(),
+                Physicians = _Repository.GetPhyN(),
+                SelectedRegion = shiftDetail.RegionId ?? 0,
+                SelectedPhy = shiftDetail.Shift.PhysicianId,
+                ShftDate = shiftDetail.ShiftDate,
+                StartTime = shiftDetail.StartTime,
+                Status = shiftDetail.Status,
+                EndTime = shiftDetail.EndTime,
+                ShiftDetailId = shiftdetailid,
+                isEditable = flag,
+            };
+            return edit;
+
+
+
+        }
+
+        public void UpdateShift(EditShift editShift, int shiftdetailid, int phy)
+        {
+            ShiftDetail shiftDetail = _Repository.GetShiftDetails(shiftdetailid);
+            shiftDetail.ShiftDate = editShift.ShftDate;
+            shiftDetail.StartTime = editShift.StartTime;
+            shiftDetail.EndTime = editShift.EndTime;
+            shiftDetail.ModifiedDate = DateTime.Now;
+            shiftDetail.ModifiedBy = _Repository.GetAspId(phy);
+            _Repository.Update(shiftDetail);
+        }
+
+        public void ChangeShiftStatus(int shiftdetailid, int phy)
+        {
+
+            ShiftDetail detail = _Repository.GetShiftDetails(shiftdetailid);
+            detail.Status = (short)(detail.Status == 1 ? 0 : 1);
+            detail.ModifiedBy = _Repository.GetAspId(phy);
+            detail.ModifiedDate = DateTime.Now;
+            _Repository.Update(detail);
+        }
+
+        public void DeleteShiftViaModal(int shiftdetailid, int phy)
+        {
+            ShiftDetail detail = _Repository.GetShiftDetails(shiftdetailid);
+            detail.IsDeleted = new BitArray(1, true);
+            detail.ModifiedBy = _Repository.GetAspId(phy);
+            detail.ModifiedDate = DateTime.Now;
+            _Repository.Update(detail);
+        }
+
+        public void sendlink(ViewCase model, int phy)
+        {
+            var accountSid = _configuration["Twilio:accountSid"];
+            var authToken = _configuration["Twilio:authToken"];
+            var twilionumber = _configuration["Twilio:twilioNumber"];
+
+
+            var messageBody = $"Hello {model.FirstName} {model.LastName},\nClick the following link to create new request in our portal,\nhttp://localhost:5198/Home/submit_screen\n\n\nRegards,\nHalloDoc";
+
+            TwilioClient.Init(accountSid, authToken);
+
+            var message = MessageResource.Create(
+                from: new Twilio.Types.PhoneNumber(twilionumber),
+                body: messageBody,
+                to: new Twilio.Types.PhoneNumber("+91" + model.PhoneNumber)
+            );
+
+
+            Smslog smslog = new()
+            {
+                Smstemplate = messageBody,
+                MobileNumber = model.PhoneNumber,
+                CreateDate = DateTime.Now,
+                SentDate = DateTime.Now,
+                SentTries = 1,
+                IsSmssent = true,
+                PhysicianId = phy
+            };
+            _Repository.SmsLogtbl(smslog);
+
+
+
+
+
+            var receiver = model.Email;
+            var subject = "Send Link";
+            var messages = "Tap on link for Send Link : <!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <style>\r\n        /* Your provided CSS */\r\n        .button-74 {\r\n            background-color: #fbeee0;\r\n            border: 2px solid #422800;\r\n            border-radius: 30px;\r\n            box-shadow: #422800 4px 4px 0 0;\r\n            color: #422800;\r\n            cursor: pointer;\r\n            display: inline-block;\r\n            font-weight: 600;\r\n            font-size: 18px;\r\n            padding: 0 18px;\r\n            line-height: 50px;\r\n            text-align: center;\r\n            text-decoration: none;\r\n            user-select: none;\r\n            -webkit-user-select: none;\r\n            touch-action: manipulation;\r\n        }\r\n\r\n        .button-74:hover {\r\n            background-color: #fff;\r\n        }\r\n\r\n        .button-74:active {\r\n            box-shadow: #422800 2px 2px 0 0;\r\n            transform: translate(2px, 2px);\r\n        }\r\n\r\n        @media (min-width: 768px) {\r\n            .button-74 {\r\n                min-width: 120px;\r\n                padding: 0 25px;\r\n            }\r\n        }\r\n    </style>\r\n</head>\r\n<body>\r\n    <a href=\"http://localhost:5198/Home/submit_screen\" class=\"button-74\">Click me!</a>\r\n</body>\r\n</html>\r\n";
+
+
+            var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+            var password = "binal@2002";
+
+            var client = new SmtpClient("smtp.office365.com", 587)
+            {
+                EnableSsl = true,
+                Credentials = new NetworkCredential(mail, password)
+            };
+
+            client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, messages)
+            {
+                IsBodyHtml = true
+            });
+
+            EmailLog emailLog = new()
+            {
+                EmailTemplate = messages,
+                SubjectName = subject,
+                SentTries = 1,
+                IsEmailSent = true,
+                EmailId = model.Email,
+                CreateDate = DateTime.Now,
+                SentDate = DateTime.Now,
+                PhysicianId = phy
+
+            };
+            _Repository.AddEmaillogtbl(emailLog);
+
+        }
+
+        public void PatientForm(patient_form model, int phy)
+        {
+            Request request = new Request
+            {
+                RequestTypeId = 2,
+
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                CreatedDate = DateTime.Now,
+                Status = 1,
+
+            };
+
+            _Repository.AddRequestTbl(request);
+
+            var aspnetuser1 = _Repository.getAsp(model.Email);
+
+            //send mail//
+
+
+            if (aspnetuser1 == null)
+            {
+                var receiver = model.Email;
+                var subject = "Create Account";
+                var message = "Tap on link for Send Link : http://localhost:5198/Home/create_patient";
+
+
+                var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+                var password = "binal@2002";
+
+                var client = new SmtpClient("smtp.office365.com", 587)
+                {
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(mail, password)
+                };
+                //complete//
+
+                client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
+
+
+                EmailLog emailLog = new()
+                {
+                    EmailTemplate = message,
+                    SubjectName = subject,
+                    SentTries = 1,
+                    IsEmailSent = true,
+
+                    EmailId = model.Email,
+                    ConfirmationNumber = request.ConfirmationNumber,
+                    RequestId = request.RequestId,
+                    CreateDate = DateTime.Now,
+                    SentDate = DateTime.Now,
+                    PhysicianId = phy
+                };
+                _Repository.AddEmaillogtbl(emailLog);
+            }
+
+     
+
+
+            Region region = new Region
+            {
+                Name = model.State,
+                Abbreviation = model.State.Substring(0, 3),
+            };
+            Region isRegion = _Repository.isRegion(region.Abbreviation);
+
+            if (isRegion == null)
+            {
+                isRegion = region;
+                _Repository.AddRegion(region);
+            }
+
+
+
+         
+
+
+
+
+
+            RequestClient requestclient = new RequestClient
+            {
+
+                RequestId = request.RequestId,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                Email = model.Email,
+                Location = model.City,
+                Address = model.Street,
+                RegionId = isRegion.RegionId,
+                IntDate = model.BirthDate.Day,
+                StrMonth = model.BirthDate.ToString("MMM"),
+                IntYear = model.BirthDate.Year,
+                Street = model.Street,
+                City = model.City,
+                State = model.State,
+                ZipCode = model.ZipCode,
+
+            };
+
+            _Repository.AddRequestClient(requestclient);
+
+            RequestNote rn = new()
+            {
+                PhysicianNotes = model.phynotes,
+                RequestId = request.RequestId,
+                CreatedBy = _Repository.GetAspId(phy),
+                CreatedDate = DateTime.Now,
+            };
+
+            _Repository.AddRequestNotes(rn);
+
         }
     }
 }

@@ -11,18 +11,19 @@ namespace hallodoc_mvc.Controllers
     {
         private readonly IAdmin_Service _service;
         private readonly IPhysician_Service _physervice;
-
+        private readonly IPatient_Service _Service;
 
         private readonly IJwtService _jwtService;
 
         private readonly IConfiguration _configuration;
 
-        public LoginController(IAdmin_Service admin, IJwtService jwtService, IConfiguration configuration, IPhysician_Service p)
+        public LoginController(IAdmin_Service admin, IJwtService jwtService, IConfiguration configuration, IPhysician_Service p, IPatient_Service Service)
         {
             _service = admin;
             _jwtService = jwtService;
             _configuration = configuration;
             _physervice = p;
+            _Service = Service;
         }
 
 
@@ -38,7 +39,7 @@ namespace hallodoc_mvc.Controllers
             if (ModelState.IsValid)
             {
                 AspNetUser isReg = _service.ValidateUser(model);
-
+                
                 if (isReg.Id>0)
                 {
                     if(isReg.Roles.First().Id==2)
@@ -69,6 +70,18 @@ namespace hallodoc_mvc.Controllers
                             return RedirectToAction("PhysicianDashboard", "Physician");
                         }
                     }
+                    else
+                    {
+                        var user = _Service.getUser(model.Email);
+                        HttpContext.Session.SetInt32("Userid", user.UserId);
+                        HttpContext.Session.SetString("Username", user.FirstName + " " + user.LastName);
+                        model.Id = isReg.Id;
+                        var token = _jwtService.GenerateJwtToken(model);
+                        Response.Cookies.Append("jwt", token);
+                        ViewBag.username = user.FirstName + " " + user.LastName;
+                        TempData["success"] = "Login Successfully!!!";
+                        return RedirectToAction("PatientDashboard","Home");
+                    }
 
 
                     
@@ -76,7 +89,7 @@ namespace hallodoc_mvc.Controllers
                 TempData["error"] = "Login Failed!!!";
             }
 
-            return View("~/Views/Admin/Admin_Login.cshtml");
+            return View("~/Views/Home/patient_login.cshtml");
         }
 
         public IActionResult Logout()
@@ -84,7 +97,7 @@ namespace hallodoc_mvc.Controllers
             HttpContext.Session.Clear();
             HttpContext.Session.Remove("Id");
             Response.Cookies.Delete("jwt");
-            return RedirectToAction("Admin_Login");
+            return RedirectToAction("patient_login","Home");
         }
     }
 }

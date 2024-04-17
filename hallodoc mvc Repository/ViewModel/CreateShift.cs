@@ -25,5 +25,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         public List<int>? Weekday { get; set; }
         public int? Repeat { get; set;}
         public bool RepeatToggle { get; set;}
+
+        public string Regionname { get; set; }  
     }
 }

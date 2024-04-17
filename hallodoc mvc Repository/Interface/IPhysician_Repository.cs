@@ -50,5 +50,28 @@ namespace hallodoc_mvc_Repository.Interface
         void updateRequesttbl(Request a);
         void update_RequestWiseTable(RequestWiseFile df);
         int GetAspId(int phy);
+        Physician getphycian(int admin1);
+        AspNetUser GetAspNetUser(int v);
+        List<Role> getrole();
+        List<Region> GetReg();
+        List<PhysicianRegion> GetSelectedPhyReg(int admin1);
+        void UpdateAspNetUser(AspNetUser asp);
+        Scheduling GetMonthData(DateTime date, int phy);
+        List<Physician> GetRequestByRegion(int id);
+        Physician DayDatabyPhysician(int? selectedPhysicianId);
+        void AddShifttbl(Shift s);
+        void AddShiftDetails(ShiftDetail detail);
+        void AddShiftRegion(ShiftDetailRegion shiftRegion);
+        string GetPhysicianName(int phy);
+        ShiftDetail GetShiftDetails(int shiftdetailid);
+        List<Physician> GetPhyN();
+        void Update(ShiftDetail shiftDetail);
+        void SmsLogtbl(Smslog smslog);
+        AspNetUser getAsp(string email);
+        Region isRegion(string abbreviation);
+        void AddRegion(Region region);
+        void AddRequestTbl(Request request);
+        void AddRequestClient(RequestClient requestclient);
+        Physician GetShiftData(int admin);
     }
 }

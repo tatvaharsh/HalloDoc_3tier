@@ -1,0 +1,78 @@
+﻿
+@{
+    Layout = ViewBag.Layout;
+}
+<style>
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        background-color: aqua !important;
+    }
+</style>
+
+<Partial name="_Toast" />
+
+<div class="row d-flex justify-content-center">
+
+    <div class="col-lg-8 mb-5">
+        <div class="d-flex justify-content-between mt-4 mb-4">
+            <h3>Scheduling</h3>
+            <a class="btn btn-outline-info back-btn">
+                &lt; Back
+            </a>
+        </div>
+
+        <div class="d-flex justify-content-end">
+
+    
+            <div>
+       
+                <button type="button" class="btn btn-info text-white" onclick="createshift()">Add new Shift</button>
+            </div>
+        </div>
+
+        <div id="ShiftTableContainer"></div>
+
+
+    </div>
+</div>
+<div id="schmodal"></div>
+
+<script>
+    Shifttab()
+    function Shifttab() {
+        debugger;
+        $.ajax({
+            url: '/Physician/Shifttab',
+            type: 'POST',
+
+            success: function (response) {
+                $("#ShiftTableContainer").html(response);
+            },
+            error: function () {
+                alert('An error occurred.');
+            }
+        });
+ 
+
+    }
+
+ 
+
+    function createshift() {
+        $('#schmodal').load('/Physician/CreateShiftModal/', () => {
+            const modal = new bootstrap.Modal(document.getElementById('createshift'));
+            modal.show();
+        });
+    }
+
+
+
+   
+
+    //document.getElementById("Providers-tab").classList.add("active");
+    //document.getElementById("scheduling").classList.add("active");
+    //document.getElementById("Provider-tab").setAttribute('aria-expanded', true);
+</script>

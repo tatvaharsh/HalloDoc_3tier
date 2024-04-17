@@ -1,0 +1,172 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.patient_form
+@{
+    ViewData["Title"] = "Create Request";
+    Layout = "~/Views/Shared/Physician/_LayPhysician.cshtml";
+}
+
+
+
+
+
+<!-----------modal---------------------------->
+<div class="modal" id="myModal1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <section>
+                <div class="mapouter">
+                    <div class="gmap_canvas">
+                        <iframe width="600" height="500" id="gmap_canvas" src="" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+
+                            <!-- </iframe><a href="https://123movies-to.org">123 movies</a><br> -->
+                            <style>
+                                .mapouter {
+                                    position: relative;
+                                    text-align: right;
+                                    height: 500px;
+                                    width: 600px;
+                                }</style>
+                            <!-- <a href="https://www.embedgooglemap.net">embedgooglemap.net</a> -->
+                            <style>
+                                .gmap_canvas {
+                                    overflow: hidden;
+                                    background: none !important;
+                                    height: 500px;
+                                    width: 600px;
+                                }
+                            </style>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container mt-2 mb-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4>Submit Information</h4>
+
+        <a asp-action="PhysicianDashboard"
+           class="btn shadow  btn-outline-secondary border-info text-info px-3 ">
+            <i class="fa-solid fa-angle-left"></i> Back
+        </a>
+    </div>
+    <form class="shadow border rounded my-3" id="CreateRequestForm" method="post" onsubmit="SubmitCreateRequest()">
+        <div class="mx-3 my-4 ">
+            <h5 class="mb-3 mt-2">Patient</h5>
+
+            <div class="row mb-3">
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="FirstName" type="text" class="form-control bg-transparent" id="floatingInputFName" placeholder="Firstname">
+                    <label for="floatingInputFName" class="ms-2">First Name</label>
+                    <span class="text-danger" asp-validation-for="FirstName"></span>
+                </div>
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="LastName" type="text" class="form-control bg-transparent" id="floatingInputLName" placeholder="LastName">
+                    <label for="floatingInputLName" class="ms-2">Last Name</label>
+                    <span class="text-danger" asp-validation-for="LastName"></span>
+
+                </div>
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="PhoneNumber" type="tel" class="form-control bg-transparent" id="floatingInputPhone" placeholder="number">
+                    <label for="floatingInputPhone" class="ms-2">Phone Number</label>
+                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+
+                </div>
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="Email" type="email" class="form-control bg-transparent" id="floatingInputEmail" placeholder="name@example.com">
+                    <label for="floatingInputEmail" class="ms-2">Email</label>
+                    <span class="text-danger" asp-validation-for="Email"></span>
+
+                </div>
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="BirthDate" type="date" class="form-control bg-transparent" id="datePickerId" placeholder="DateOfBirth">
+                    <label for="datePickerId" class="ms-2">Date Of Birth</label>
+                    <span class="text-danger" asp-validation-for="BirthDate"></span>
+
+                </div>
+            </div>
+
+            <h5 class="mb-3 mt-3">Patient Location</h5>
+            <div class="row mb-3">
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="Street" type="text" class="form-control bg-transparent" id="street" placeholder="street">
+                    <label for="floatingInputStreet" class="ms-2">Street</label>
+                    <span class="text-danger" asp-validation-for="Street"></span>
+                </div>
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="City" type="text" class="form-control bg-transparent" id="city" placeholder="city">
+                    <label for="floatingInputCity" class="ms-2">City</label>
+                    <span class="text-danger" asp-validation-for="City"></span>
+
+                </div>
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="State" type="text" class="form-control bg-transparent" id="state" placeholder="state">
+                    <label for="floatingInputState" class="ms-2">State</label>
+                    <span class="text-danger" asp-validation-for="State"></span>
+
+                </div>
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="ZipCode" type="text" class="form-control bg-transparent" id="zipcode" placeholder="zipcode">
+                    <label for="floatingInputZipcode" class="ms-2">Zip Code (Optional)</label>
+                    <span class="text-danger" asp-validation-for="ZipCode"></span>
+
+                </div>
+                <div class="col-12 col-md-6 form-floating mb-3">
+                    <input asp-for="Room" type="text" class="form-control bg-transparent" id="floatingInputRoom" placeholder="room">
+                    <label for="floatingInputRoom" class="ms-2">Room # (Optional)</label>
+                </div>
+                <div class="col form-floating mb-3">
+                    <a class="btn btn-outline border-info p-3 text-info me-2" >
+                        <span>Verify</span>
+                    </a>
+                    <a class="btn btn-outline border-info p-3 text-info " id="openBtn">
+                        <i class="bi bi-geo-alt-fill "></i>
+                        <span>Map</span>
+                    </a>
+                </div>
+
+            </div>
+            <h5 class="mb-3 mt-2">Notes</h5>
+            <div class="form-floating mb-3">
+                <textarea asp-for="phynotes" class="form-control bg-transparent border border-2 h-100" rows="5" placeholder="Leave a comment here" id="floatingTextareaNotes"></textarea>
+                <label for="floatingTextareaNotes" class="text-wrap">Additional Notes(Optional)</label>
+            </div>
+            <div class="d-flex gap-2 justify-content-end mb-3">
+                <input class="btn btn-info text-white" type="submit" value="Submit">
+                <button type="reset" class="btn btn-outline-info">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<style>
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+</style>
+
+<partial name="_ValidationScriptsPartial" />
+
+<script>
+
+    $(document).ready(function () {
+        $("#openBtn").click(function () {
+            $("#myModal1").modal("show");
+            var Street = $("#street").val();
+            var City = $("#city").val();
+            var State = $("#state").val();
+            var ZipCode = $("#zipcode").val();
+            var address = "https://maps.google.com/maps?q=" + Street + City + State + ZipCode + "&t=&z=13&ie=UTF8&iwloc=&output=embed";
+            $("#gmap_canvas").attr("src", address);
+        });
+    });
+
+
+</script>

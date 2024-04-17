@@ -38,8 +38,9 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public int? UserId { get; set; }
         public int? Room { get; set; }
-        public String? Symtom { get; set; }
-        public String? adminnote { get; set; }
+        public string? Symtom { get; set; }
+        public string? adminnote { get; set; }
+        public string? phynotes { get; set; }
     }
 }
 

@@ -20,6 +20,7 @@ using System.Reflection;
 using DocumentFormat.OpenXml.VariantTypes;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using DocumentFormat.OpenXml.Spreadsheet;
+using static Org.BouncyCastle.Crypto.Fips.FipsKdf;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -32,14 +33,15 @@ namespace hallodoc_mvc.Controllers
 
         private readonly IConfiguration _configuration;
 
+        private readonly IPDFService _pdf;
 
-
-        public AdminController(IAdmin_Service service, IJwtService jwtService, IConfiguration configuration)
+        public AdminController(IAdmin_Service service, IJwtService jwtService, IConfiguration configuration, IPDFService pdf)
         {
             //_context = context;
             _service = service;
             _jwtService = jwtService;
             _configuration = configuration;
+            _pdf = pdf;
         }
 
         [CustomAuthorize("Admin")]
@@ -1496,6 +1498,22 @@ namespace hallodoc_mvc.Controllers
             workbook.SaveAs(memoryStream);
             memoryStream.Seek(0, SeekOrigin.Begin);
             return File(memoryStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "PatientRecords.xlsx");
+        }
+        public IActionResult DownloadEnc(int Id)
+        {
+            ModalData md = new()
+            {
+                requestID = Id,
+            };
+            return PartialView("DownloadEnc", md);
+        }
+        public IActionResult DownloadEncDoc(int Id)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+
+            Encounter en = _service.getencounter(Id);
+            byte[] pdfdata = _pdf.GeneratePDF(en);
+            return File(pdfdata, "application/pdf", "MedicalReport.pdf");
         }
 
 

@@ -23,6 +23,7 @@ namespace hallodoc_mvc_Repository.Interface
         void AddRequestWiseFiles(RequestWiseFile requestWiseFile);
         ICollection<AspNetRole> AddRole();
         void AddUser(User user);
+        AspNetUser AspByUserId(int user1);
         public AspNetUser AspEmail(string email);
         public AspNetUser getAspuserTable(int id);
         List<Request> getcon(int id);

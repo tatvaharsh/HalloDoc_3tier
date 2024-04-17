@@ -3,8 +3,11 @@ using hallodoc_mvc_Repository.DataModels;
 using hallodoc_mvc_Repository.Interface;
 using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Syncfusion.EJ2.Charts;
+using Syncfusion.EJ2.Layouts;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,6 +114,7 @@ namespace hallodoc_mvc_Repository.Implementation
                   AcceptedDate = x.AcceptedDate,
                   Id = x.RequestId,
                   isfinal = x.EncounterForms.First().IsFinalized,
+                  DateOfBirth = new(x.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(x.RequestClients.FirstOrDefault().StrMonth, "MMM").Month, x.RequestClients.FirstOrDefault().IntDate.Value),
                   calltype = x.CallType
               }).ToList();
         }
@@ -140,6 +144,7 @@ namespace hallodoc_mvc_Repository.Implementation
                    Email = x.RequestClients.First().Email,
                    AcceptedDate = x.AcceptedDate,
                    isfinal = x.EncounterForms.First().IsFinalized,
+                   DateOfBirth = new(x.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(x.RequestClients.FirstOrDefault().StrMonth, "MMM").Month, x.RequestClients.FirstOrDefault().IntDate.Value),
                    calltype = x.CallType,
                    Id = x.RequestId,
                }).ToList();
@@ -191,18 +196,20 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<AdminDashboard> GetNewData(int phy)
         {
+
             return _context.Requests
-                .Where(x=>x.PhysicianId==phy && x.Status==2 && x.AcceptedDate == null && x.IsDeleted==null)
-                .Select(x=>new AdminDashboard
-                {
-                    Name = x.RequestClients.First().FirstName+" "+ x.RequestClients.First().LastName,
-                    Address = x.RequestClients.First().Address,
+            .Where(x=>x.PhysicianId==phy && x.Status==2 && x.AcceptedDate == null && x.IsDeleted==null)
+            .Select(x=>new AdminDashboard
+            {
+                Name = x.RequestClients.First().FirstName+" "+ x.RequestClients.First().LastName,
+                Address = x.RequestClients.First().Address,
                     Phone = x.RequestClients.First().PhoneNumber??"--",
                     RPhone = x.PhoneNumber??"--",
                     RequestTypeId = x.RequestTypeId,
                     Status = x.Status,
                     Email = x.RequestClients.First().Email,
-                    Id = x.RequestId
+                    Id = x.RequestId,
+                    DateOfBirth = new(x.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(x.RequestClients.FirstOrDefault().StrMonth, "MMM").Month, x.RequestClients.FirstOrDefault().IntDate.Value),
 
                 }).ToList();
         }
@@ -222,6 +229,7 @@ namespace hallodoc_mvc_Repository.Implementation
                   Email = x.RequestClients.First().Email,
                   AcceptedDate = x.AcceptedDate,
                   Id = x.RequestId,
+                  DateOfBirth = new(x.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(x.RequestClients.FirstOrDefault().StrMonth, "MMM").Month, x.RequestClients.FirstOrDefault().IntDate.Value),
                   isfinal = x.EncounterForms.First().IsFinalized,
                   calltype = x.CallType
               }).ToList();
@@ -303,6 +311,146 @@ namespace hallodoc_mvc_Repository.Implementation
         public int GetAspId(int phy)
         {
             return _context.Physicians.FirstOrDefault(x=>x.PhysicianId== phy).AspNetUserId??new();
+        }
+
+        public Physician getphycian(int admin1)
+        {
+          
+                return _context.Physicians.FirstOrDefault(x => x.PhysicianId == admin1);
+           
+
+        }
+
+        public AspNetUser? GetAspNetUser(int v)
+        {
+           
+                return _context.AspNetUsers.FirstOrDefault(x => x.Id == v);
+         
+        }
+
+        public List<Role> getrole()
+        {
+            return _context.Roles.ToList();
+        }
+        public List<Region> GetReg()
+        {
+            return _context.Regions.ToList();
+        }
+        public List<PhysicianRegion> GetSelectedPhyReg(int id)
+        {
+            return _context.PhysicianRegions.Where(x => x.PhysicianId == id).ToList();
+        }
+
+        public void UpdateAspNetUser(AspNetUser asp)
+        {
+           _context.AspNetUsers.Update(asp);
+            _context.SaveChanges();
+        }
+
+        public Scheduling GetMonthData(DateTime date , int phy)
+        {
+        
+            return _context.Physicians.Where(x => x.PhysicianId == phy)
+                .Select(x => new Scheduling()
+                {
+                    Physicians = x,
+                    CurrentDate = date,
+                    shifts = x.Shifts.SelectMany(x=>x.ShiftDetails
+                            .Where(x=>x.ShiftDate.Month==date.Month && x.IsDeleted==new System.Collections.BitArray(1,false)))
+                            .ToList(),
+                }).First();
+        }
+    
+
+        public List<Physician> GetRequestByRegion(int id)
+        {
+            return _context.Physicians.Where(x => x.RegionId == id).ToList();
+        }
+
+        public Physician DayDatabyPhysician(int? selectedPhysicianId)
+        {
+            return _context.Physicians.Include(s => s.Shifts).ThenInclude(s => s.ShiftDetails).FirstOrDefault(s => s.PhysicianId == selectedPhysicianId) ?? new();
+        }
+
+        public void AddShifttbl(Shift s)
+        {
+            _context.Shifts.Add(s);
+            _context.SaveChanges();
+        }
+
+        public void AddShiftDetails(ShiftDetail detail)
+        {
+            _context.ShiftDetails.Add(detail);
+            _context.SaveChanges();
+        }
+
+        public void AddShiftRegion(ShiftDetailRegion shiftRegion)
+        {
+            _context.ShiftDetailRegions.Add(shiftRegion);
+            _context.SaveChanges();
+        }
+
+        public string GetPhysicianName(int phy)
+        {
+            return _context.Physicians.Include(y => y.Region).FirstOrDefault(x => x.PhysicianId == phy)!.Region!.Name;
+        }
+
+        public ShiftDetail GetShiftDetails(int shiftdetailid)
+        {
+            return _context.ShiftDetails.Include(x => x.Shift).FirstOrDefault(x => x.ShiftDetailId == shiftdetailid);
+        }
+
+        public List<Physician> GetPhyN()
+        {
+            return _context.Physicians.Where(x=>x.IsDeleted==null).ToList();
+        }
+
+        public void Update(ShiftDetail shiftDetail)
+        {
+            _context.ShiftDetails.Update(shiftDetail);
+            _context.SaveChanges();
+        }
+
+        public void SmsLogtbl(Smslog smslog)
+        {
+            _context.Smslogs.Add(smslog);
+            _context.SaveChanges();
+            
+        }
+
+        public AspNetUser getAsp(string email)
+        {
+            return _context.AspNetUsers.FirstOrDefault(u => u.Email == email);
+        }
+
+        public Region isRegion(string abbreviation)
+        {
+            string region2 = abbreviation.ToLower();
+            Region region = _context.Regions.FirstOrDefault(r => r.Abbreviation.ToLower() == region2);
+            return region;
+        }
+
+        public void AddRegion(Region region)
+        {
+            _context.Regions.Add(region);
+            _context.SaveChanges();
+          
+        }
+
+        public void AddRequestTbl(Request request)
+        {
+            _context.Requests.Add(request);
+            _context.SaveChanges();
+        }
+
+        public void AddRequestClient(RequestClient requestclient)
+        {
+           _context.RequestClients.Add(requestclient); _context.SaveChanges();      
+        }
+
+        public Physician GetShiftData(int admin)
+        {
+            return _context.Physicians.Include(s => s.Shifts).ThenInclude(s => s.ShiftDetails).FirstOrDefault(s => s.PhysicianId == admin) ?? new();
         }
     }
 }

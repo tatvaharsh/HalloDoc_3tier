@@ -1,7 +1,8 @@
 ﻿@model hallodoc_mvc_Repository.ViewModel.ModalData
 @{
     ViewData["Title"] = "PhysicianDashboard";
-    Layout = "~/Views/Shared/Physician/_LayPhysician.cshtml";
+    Layout = ViewBag.Layout;
+
 }
 
 
@@ -130,7 +131,7 @@
                         <button type="button" title="Send Link" class="btn btn-info d-flex ms-1 ms-sm-2 p-sm-2 p-1 align-items-center text-light" onclick="Sendlink()">
                             <i class="bi bi-send"></i><span class="d-md-block d-none  px-2 ">Send Link</span>
                         </button>
-                        <a asp-action="CreateReq" title="Create Request" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
+                        <a asp-action="CreateReq" asp-controller="Physician" title="Create Request" class="btn btn-info d-flex ms-1 ms-sm-2 p-1 p-sm-2 align-items-center text-light">
                             <i class="bi bi-pencil-square"></i><span class="d-md-block d-none px-2 ">Create Request</span>
                         </a>
                        
@@ -266,18 +267,18 @@
 <script>
 
   
-    //$.ajax({
-    //    url: `/Physician/New`,
-    //    type: 'POST',
-    //    dataType: 'html',
+    $.ajax({
+        url: `/Physician/New`,
+        type: 'POST',
+        dataType: 'html',
     
-    //    success: function (response) {
-    //        $("#tableContainer").html(response)
-    //    },
-    //    error: function () {
-    //        alert('An error occurred.');
-    //    }
-    //});
+        success: function (response) {
+            $("#tableContainer").html(response)
+        },
+        error: function () {
+            alert('An error occurred.');
+        }
+    });
   
 </script>
 

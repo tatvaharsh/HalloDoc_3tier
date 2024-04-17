@@ -32,7 +32,7 @@ namespace hallodoc_mvc_Repository.Implementation
         public IQueryable<Request> GetAdminStatus()
         {
 
-            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && (x.Status == 4 || x.Status == 5));
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Include(x=>x.EncounterForms).Where(x => x.RequestClients != null && (x.Status == 4 || x.Status == 5));
         }
         public IQueryable<Request> GetAdminPending()
         {
@@ -43,17 +43,17 @@ namespace hallodoc_mvc_Repository.Implementation
         public IQueryable<Request> GetAdminConclude()
         {
 
-            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 6);
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Include(x=>x.EncounterForms).Where(x => x.RequestClients != null && x.Status == 6);
 
         }
         public IQueryable<Request> GetAdminToclose()
         {
-            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && (x.Status == 3 || x.Status == 7 || x.Status == 8));
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Include(x => x.EncounterForms).Where(x => x.RequestClients != null && (x.Status == 3 || x.Status == 7 || x.Status == 8));
         }
         public IQueryable<Request> GetAdminUnpaid()
         {
 
-            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 9);
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Include(x => x.EncounterForms).Where(x => x.RequestClients != null && x.Status == 9);
 
         }
 

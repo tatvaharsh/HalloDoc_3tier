@@ -1,0 +1,178 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.Scheduling
+
+@{
+    int totalDays = DateTime.DaysInMonth(@Model.CurrentDate.Year, @Model.CurrentDate.Month);
+    DateTime date = new DateTime(Model.CurrentDate.Year, @Model.CurrentDate.Month, 1);
+    DateTime date2 = new DateTime(Model.CurrentDate.Year, @Model.CurrentDate.Month, totalDays);
+
+    int currentday = (int)date.DayOfWeek;
+    int lastDay = (int)date2.DayOfWeek;
+    var week = Math.Ceiling((totalDays + currentday) / 7.0);
+}
+
+
+<h4 class="mt-4">@Model.CurrentDate.ToString("MMM,yyyy")</h4>
+
+<div class="d-flex justify-content-end">
+    <div class="mx-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" style="color:lightpink" class="bi bi-square-fill" viewBox="0 0 16 16">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" />
+        </svg>
+        <span>Pending Shifts</span>
+    </div>
+    <div class="ms-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" style="color:lightgreen" class="bi bi-square-fill" viewBox="0 0 16 16">
+            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" />
+        </svg>
+        <span>Approved Shifts</span>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between mt-2 mb-4">
+    <div>
+        <button type="button" class="btn btn-info text-white rounded-circle" onclick="AddDate(@Model.CurrentDate.AddDays(-totalDays).Day,@Model.CurrentDate.AddDays(-totalDays).Month,@Model.CurrentDate.AddDays(-totalDays).Year)">&lt;</button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar2-week mx-2" viewBox="0 0 16 16">
+            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z" />
+            <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z" />
+        </svg>
+        <button type="button" class="btn btn-info text-white rounded-circle" onclick="AddDate(@Model.CurrentDate.AddDays(totalDays).Day,@Model.CurrentDate.AddDays(totalDays).Month,@Model.CurrentDate.AddDays(totalDays).Year)">&gt;</button>
+    </div>
+
+@*    <ul class="nav nav-pills mb-3 schedulingbtn gap-2" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link  btn btn-info" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="false" onclick="Shifttab()">Day</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab btn btn-info" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false" onclick="Shifttab()">Week</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-contact-tab btn btn-info" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="true" onclick="Shifttab()">Month</button>
+        </li>
+    </ul>*@
+</div>
+
+<div id="editshift"></div>
+
+
+<div class="table-responsive rounded">
+    <table class="table table-b table-bordered" style="width:100%;z-index:5">
+        <colgroup>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+            <col style="width:14%";/>
+        </colgroup>
+        <thead class="dayshiftheader">
+            <tr style="background-color: lightgray;">
+                <th>SUN</th>
+                <th>MON</th>
+                <th>TUE</th>
+                <th>WED</th>
+                <th>THU</th>
+                <th>FRI</th>
+                <th>SAT</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                int k = 1;
+                int count = 0;
+                bool flag = false;
+            }
+            @for (int i = 0; i < week; i++)
+            {
+                <tr>
+                    @if (!flag)
+                    {
+                        @for (int j = 0; j < currentday; j++)
+                        {
+
+                            <td></td>
+                            flag = true;
+                            count++;
+                        }
+                    }
+                    @while (k <= totalDays)
+                     {
+                        <td>
+                            <div style="background-color:#cfcff9;">@k</div>
+
+                            @foreach(var shift in Model.shifts)
+                            {
+                              
+                                    if (shift.ShiftDate.Day == k)
+                                    {
+                                        if (shift.Status == 0)
+                                        {
+                                            <div class="p-1 m-1" style="background-color:lightcoral" onclick="openit(@shift.ShiftDetailId)">
+                                                @shift.StartTime - @shift.EndTime
+                                                
+                                            </div>
+
+                                        }
+                                        else
+                                        {
+                                            <div class="p-1 m-1" style="background-color:lightgreen" onclick="openit(@shift.ShiftDetailId)">
+                                                @shift.StartTime - @shift.EndTime
+                                                
+                                            </div>
+                                        }
+
+                                    }
+                                
+                            }
+
+                        </td>
+                        k++;
+                        count++;
+                        if (count == 7)
+                        {
+                            count = 0;
+                            break;
+
+                        }
+                    }
+                    @if (i == week - 1)
+                    {
+                        for (int l = 0; l < 6 - lastDay; l++)
+                        {
+                            <td></td>
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<script>
+    function AddDate(day, month, year) {
+        $.ajax({
+            url: `/Physician/Shifttab`,
+            type: 'POST',
+            dataType: 'html',
+            data: {day: day, month: month, year: year },
+            // Pass your data here
+            success: function (response) {
+                $("#ShiftTableContainer").html(response)
+            },
+            error: function () {
+                alert('An error occurred.');
+            }
+        });
+
+    }
+
+
+    function openit(id) {
+        $('#editshift').load('/Physician/EditShift?shiftdetailid=' + id, () => {
+            const modal = new bootstrap.Modal(document.getElementById('editshiftmodal'));
+            modal.show();
+        });
+    }
+</script>

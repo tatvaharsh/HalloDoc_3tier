@@ -29,31 +29,96 @@ namespace hallodoc_mvc.Controllers
             _pdfservice = pdfservice;
         }
 
+        public IActionResult TabChange(int nav, bool isPartial)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("PhyId");
+            switch (nav)
+            {
+                case 1:
+                    return RedirectToAction(nameof(PhysicianDashboard), new { isPartial = isPartial });
+                case 2:
+                    return RedirectToAction(nameof(MyScheduling), new { isPartial = isPartial });
+                case 3:
+                    return RedirectToAction(nameof(PhysicianProfile), new { isPartial = isPartial });
+            }
+            return View();
+        }
+
 
         [CustomAuthorize("Physician")]
-        public IActionResult PhysicianDashboard()
+        public IActionResult PhysicianDashboard(bool isPartial)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("PhyId");
+            if (admin1 != null)
+            {
+                if (isPartial == true)
+                {
+                    ViewBag.Layout = null;
+                    ViewBag.Username = _Service.Phyname(admin1);
+                    ModalData MD = _Service.CountState(admin1);
+                    return View(MD);
+
+                }
+                else
+                {
+                    ViewBag.Layout = "~/Views/Shared/Physician/_LayPhysician.cshtml";
+                    ViewBag.Username = _Service.Phyname(admin1);
+                    ModalData MD = _Service.CountState(admin1);
+                    return View(MD);
+
+                }
+            }
+            return RedirectToAction("Admin_Login");
+
+        }
+        public IActionResult PhysicianProfile(bool isPartial)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("PhyId");
 
-            if (admin1 != null)
+            if (isPartial == true)
             {
+                ViewBag.Layout = null;
                 ViewBag.Username = _Service.Phyname(admin1);
-                //ModalData data = _service.GetAssignData(new ModalData());
-                //TempData["success"] = "Login Successfully!!!";
-                //TempData.Clear();
-                //ViewBag.Layout = "_LayAdmin";
-                ModalData MD = _Service.CountState(admin1);
-                return View(MD);
+                var data = _Service.getphysiciandata(admin1);
+
+                return View(data);
+
             }
-            return RedirectToAction("Admin_Login");
+            else
+            {
+                ViewBag.Layout = "~/Views/Shared/Physician/_LayPhysician.cshtml";
+                ViewBag.Username = _Service.Phyname(admin1);
+                var data = _Service.getphysiciandata(admin1);
+
+                return View(data);
+
+            }
+
+
         }
+        public IActionResult MyScheduling(bool isPartial)
+        {
+            int admin1 = (int)HttpContext.Session.GetInt32("PhyId");
+            if (isPartial == true)
+            {
+                ViewBag.Layout = null;
+
+                return PartialView("Scheduling");
+            }
+            else
+            {
+                ViewBag.Layout = "~/Views/Shared/Physician/_LayPhysician.cshtml";
+                return View("Scheduling");
+            }
+        }
+
 
 
         public IActionResult New(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
             int phy = (int)HttpContext.Session.GetInt32("PhyId");
             if (pageid == 0) { pageid = 1; };
-            var data = _Service.GetNewData(requestType, search, requestor, region, pageid,phy);
+            var data = _Service.GetNewData(requestType, search, requestor, region, pageid, phy);
             ViewBag.page = pageid;
             return PartialView("~/Views/Shared/Physician/_Physician_Request_Table.cshtml", data);
         }
@@ -90,7 +155,35 @@ namespace hallodoc_mvc.Controllers
             return PartialView();
         }
 
-        public IActionResult Accept(int id) 
+        [HttpPost]
+        public IActionResult Sendlink(ViewCase model)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            _Service.sendlink(model, phy);
+            return RedirectToAction(nameof(PhysicianDashboard));
+        }
+
+        public IActionResult CreateReq()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        public IActionResult CreateReq(patient_form model)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            if (!ModelState.IsValid)
+            {
+
+                return View(model);
+            }
+            _Service.PatientForm(model, phy);
+
+            return RedirectToAction(nameof(PhysicianDashboard));
+
+        }
+
+        public IActionResult Accept(int id)
         {
             _Service.AddToPending(id);
             return RedirectToAction(nameof(PhysicianDashboard));
@@ -175,7 +268,7 @@ namespace hallodoc_mvc.Controllers
                 }
                 zipStream.Seek(0, SeekOrigin.Begin);
                 return File(zipStream.ToArray(), "application/zip", "selected_files.zip");
-              
+
             }
         }
         [HttpPost]
@@ -217,10 +310,10 @@ namespace hallodoc_mvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult Transfer(int Id,ModalData md)
+        public IActionResult Transfer(int Id, ModalData md)
         {
             int phy = (int)HttpContext.Session.GetInt32("PhyId");
-            _Service.Transfer(Id,md,phy);
+            _Service.Transfer(Id, md, phy);
             return RedirectToAction(nameof(PhysicianDashboard));
         }
 
@@ -275,7 +368,7 @@ namespace hallodoc_mvc.Controllers
             _Service.editencounter(id, model);
             return RedirectToAction("Encounter", new { id = id });
         }
-        public IActionResult FinalEncounter(int id) 
+        public IActionResult FinalEncounter(int id)
         {
             _Service.final(id);
             return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
@@ -286,12 +379,12 @@ namespace hallodoc_mvc.Controllers
             {
                 requestID = Id,
             };
-            return PartialView("EncounterModal",md);
+            return PartialView("EncounterModal", md);
         }
         public IActionResult Housecall(int Id)
         {
             int phy = (int)HttpContext.Session.GetInt32("PhyId");
-            _Service.ChangeCallType(Id,phy);
+            _Service.ChangeCallType(Id, phy);
             return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
         }
         public IActionResult HousecallFinal(int Id)
@@ -303,7 +396,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult Consult(int Id)
         {
             int phy = (int)HttpContext.Session.GetInt32("PhyId");
-            _Service.Consult(Id,phy);
+            _Service.Consult(Id, phy);
             return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
         }
         public IActionResult DownloadEnc(int Id)
@@ -333,8 +426,8 @@ namespace hallodoc_mvc.Controllers
         [HttpPost]
         public IActionResult ConcludeCare(int id, [FromForm] string Note)
         {
-                int phy = (int)HttpContext.Session.GetInt32("PhyId");
-            _Service.AddProviderNote(id, Note,phy);
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            _Service.AddProviderNote(id, Note, phy);
             if (_Service.GetEncounterStatus(id))
             {
                 _Service.ConcludeCare(id, phy);
@@ -342,7 +435,83 @@ namespace hallodoc_mvc.Controllers
                 return RedirectToAction(nameof(PhysicianDashboard));
             }
             TempData["error"] = "Finalize Encounter Form to Conclude Care";
-            return RedirectToAction(nameof(Encounter), new {id = id});
+            return RedirectToAction(nameof(Encounter), new { id = id });
+        }
+        public IActionResult ChangeProviderPassword([FromForm] string pass)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            _Service.changepass(pass,phy);
+            TempData["success"] = "Password Changed Successfully";
+            return RedirectToAction("Tabchange", new { nav = 3 });
+        }
+        public IActionResult SendMailToAdmin(int id,string textareas)
+        {
+            _Service.SendMailToAdmin(id, textareas);
+            TempData["success"] = "Mail Send Successfully";
+            return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
+        }
+        public IActionResult Shifttab(int day, int month, int year)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            return PartialView("~/Views/Shared/Physician/MonthlyShift.cshtml", _Service.GetMonthWiseData(day, month, year,phy));
+           
+        }
+        public IActionResult CreateShiftModal(int id)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            CreateShift model = new()
+            {
+                
+                Regionname = _Service.GetRegByPhy(phy),
+            };
+
+            return PartialView(model);
+        }
+   
+        public IActionResult CreateShift(CreateShift model)
+        {
+
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+            bool flag = _Service.CreateShift(model, phy);
+            if (!flag)
+            {
+                TempData["error"] = "Shift has been clashed";
+                return RedirectToAction(nameof(TabChange), new { nav = 2, isPartial = false });
+            }
+            return RedirectToAction(nameof(TabChange), new { nav = 2, isPartial = false });
+
+        }
+        [HttpGet]
+        public IActionResult EditShift(int shiftdetailid)
+        {
+            return PartialView("EditShift", _Service.EditShift(shiftdetailid));
+        }
+
+        [HttpPost]
+        public IActionResult EditShift(EditShift editShift, int shiftdetailid)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+     
+            _Service.UpdateShift(editShift, shiftdetailid, phy);
+            TempData["success"] = "Shift Updated Successfully!!!";
+            return RedirectToAction(nameof(TabChange), new { nav = 2, isPartial = false });
+        }
+        public IActionResult ChangeShiftStatus(int shiftdetailid)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+           
+
+            _Service.ChangeShiftStatus(shiftdetailid, phy);
+            TempData["success"] = "Shift Updated Successfully!!!";
+            return RedirectToAction(nameof(TabChange), new { nav = 2, isPartial = false });
+        }
+        public IActionResult DeleteShiftViaModal(int shiftdetailid)
+        {
+            int phy = (int)HttpContext.Session.GetInt32("PhyId");
+          
+            _Service.DeleteShiftViaModal(shiftdetailid, phy);
+            TempData["success"] = "Shift Updated Successfully!!!";
+            return RedirectToAction(nameof(TabChange), new { nav = 2, isPartial = false });
         }
     }
 }

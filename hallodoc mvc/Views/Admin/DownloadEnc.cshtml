@@ -1,0 +1,26 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.ModalData
+
+<div class="modal fade" id="enc" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <div class="modal-title text-light" id="exampleModalLongTitle">Encounter Form Download</div>
+                <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
+            </div>
+            <form class="p-3" method="post" >
+
+
+                <div class="d-flex justify-content-center">
+                    <a asp-action="DownloadEncDoc" asp-route-id="@Model.requestID" id="myForm" class="btn  btn-outline-info  continue-btn mx-2" >Download</a>
+                
+                </div>
+                <div class="mt-4 d-flex justify-content-end">
+             
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+

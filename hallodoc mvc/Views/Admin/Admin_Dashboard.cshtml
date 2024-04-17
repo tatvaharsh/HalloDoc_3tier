@@ -641,6 +641,14 @@
             modal.show();
         });
     }
+    function Download(Id) {
+
+        $("#mymodal").load('/Admin/DownloadEnc/' + Id + '?Id=', () => {
+            console.log(document.getElementById("mymodal"));
+            const modal = new bootstrap.Modal(document.getElementById('enc'));
+            modal.show();
+        });
+    }
  
 
 </script>

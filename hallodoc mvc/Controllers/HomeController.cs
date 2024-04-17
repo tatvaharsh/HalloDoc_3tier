@@ -40,30 +40,30 @@ namespace hallodoc_mvc.Controllers
         }
 
         
-        [HttpPost]
-        public IActionResult patient_login(LoginViewModel model)
-        {
+        //[HttpPost]
+        //public IActionResult patient_login(LoginViewModel model)
+        //{
 
-            if (ModelState.IsValid)
-            {
-                bool isReg = _service.ValidateUser(model);
+        //    if (ModelState.IsValid)
+        //    {
+        //        bool isReg = _service.ValidateUser(model);
 
-                if (isReg)
-                {
-                    var user = _service.getUser(model.Email);
-                    HttpContext.Session.SetInt32("Userid", user.UserId);
-                    HttpContext.Session.SetString("Username", user.FirstName + " " + user.LastName);
-                    var token = _jwtService.GenerateJwtToken(model);
-                    Response.Cookies.Append("jwt", token);
-                    ViewBag.username = user.FirstName + " " + user.LastName;
-                    return RedirectToAction("PatientDashboard");
-                }
-            }
+        //        if (isReg)
+        //        {
+        //            var user = _service.getUser(model.Email);
+        //            HttpContext.Session.SetInt32("Userid", user.UserId);
+        //            HttpContext.Session.SetString("Username", user.FirstName + " " + user.LastName);
+        //            var token = _jwtService.GenerateJwtToken(model);
+        //            Response.Cookies.Append("jwt", token);
+        //            ViewBag.username = user.FirstName + " " + user.LastName;
+        //            return RedirectToAction("PatientDashboard");
+        //        }
+        //    }
 
-            return View();
+        //    return View();
 
            
-        }
+        //}
 
         public IActionResult forgot_password()
         {
@@ -292,9 +292,6 @@ namespace hallodoc_mvc.Controllers
 
             ViewBag.rwfiles = _service.getFiles(); /*_context.RequestWiseFiles.ToList();*/
 
-
-
-
             return View();
         }
 
@@ -326,7 +323,13 @@ namespace hallodoc_mvc.Controllers
             return RedirectToAction("PatientDashboard");
         }
 
-
+        [HttpPost]
+        public IActionResult SubmitSomeoneElse(patient_form req)
+        {
+            var user1 = (int)HttpContext.Session.GetInt32("Userid");
+            _service.ForElse(req, user1);
+            return RedirectToAction("PatientDashboard");
+        }
 
 
 

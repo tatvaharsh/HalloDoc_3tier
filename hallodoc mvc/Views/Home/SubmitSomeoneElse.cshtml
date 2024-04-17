@@ -32,7 +32,7 @@
                     </button>
                 </a>
             </div>
-            <form asp-action="patient_form" asp-controller="Home" class="maincontent shadow p-3 ">
+            <form asp-action="SubmitSomeoneElse" enctype="multipart/form-data" asp-controller="Home" class="maincontent shadow p-3 ">
                 <div class="">
                     <h3 class="text1">Patient Information</h3>
                     <div class="form-floating mt-3">
@@ -112,7 +112,7 @@
                 </div>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control floatingInput" placeholder="room">
+                        <input type="text" class="form-control floatingInput" placeholder="room" asp-for="Room">
                         <label for="floatingInput" class="mx-2">
                             Room # / Suite (Optional)
                         </label>
@@ -129,7 +129,7 @@
                 <h3 class="head3 mt-5 text1">Relation </h3>
                 <div class="row ">
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="text" class="form-control floatingInput" placeholder="  Relation With Patient(Optinal)">
+                        <input type="text" class="form-control floatingInput" placeholder="  Relation With Patient(Optinal)" >
                         <label for="floatingInput" class="mx-2">
                            Relation With Patient(Optinal)
                         </label>
@@ -148,7 +148,7 @@
                             <label for="file-upload" class="upload-label dob-label" id="form-label">Select File</label>
                         </div>
                         <label class="custom-file-upload mt-3">
-                            <input type="file" onchange="getFileData(this)" />
+                            <input type="file" onchange="getFileData(this)" asp-for="File" name="File"/>
                             <img src="/SRSScreenShorts/up.png" alt="" class="file-upload-img ">
                             Upload
                         </label>
