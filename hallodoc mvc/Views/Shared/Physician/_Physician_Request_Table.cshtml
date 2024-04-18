@@ -1,6 +1,7 @@
 ﻿@model List<hallodoc_mvc_Repository.ViewModel.AdminDashboard>
 @{
-
+    var c = Model.FirstOrDefault()?.PgCount;
+    var page = ViewBag.page;
 }
 @functions {
     public string GetTableColorClass(int RequstTypeId)
@@ -34,7 +35,14 @@
 
 
 
+@if(Model.Count() == 0)
+{
+    <div class="text-center w-100">
 
+        <h3>NO DATA FOUND</h3>
+    </div>
+}
+else{
 
 <table class="table border-4 d-none d-lg-table" id="adminTable">
     @if (Model.FirstOrDefault() != null)
@@ -59,7 +67,7 @@
             @foreach (var obj in Model)
             {
                 <tr class="align-middle table-@{
-                                    @GetTableColorClass(obj.RequestTypeId)
+                                        @GetTableColorClass(obj.RequestTypeId)
 }">
 
                     <td scope="row">
@@ -88,7 +96,7 @@
                         (Patient)
                         @if (obj.RequestTypeId == 1 && obj.RPhone != null)
                         {
-                            <a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller" href="tel:@obj.RPhone">
+                                <a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller;width:fit-content;" href="tel:@obj.RPhone">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
                                 </svg>
@@ -98,7 +106,7 @@
                         }
                         @if (obj.RequestTypeId == 3 && obj.RPhone != null)
                         {
-                            <a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller" href="tel:@obj.RPhone">
+                                <a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller;width:fit-content;" href="tel:@obj.RPhone">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
                                 </svg>
@@ -108,7 +116,7 @@
                         }
                         @if (obj.RequestTypeId == 4 && obj.RPhone != null)
                         {
-                            <a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller" href="tel:@obj.RPhone">
+                                <a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller;width:fit-content;" href="tel:@obj.RPhone">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
                                 </svg>
@@ -398,7 +406,7 @@
                                     <a asp-action="ViewNotes" asp-route-id="@item.Id" class="col p-2 m-1 btn rounded-pill btn-danger b1" type="button" style="background-color: #23a727;">
                                         View Notes
                                     </a>
-                               
+
                                 </div>
 
                                 <div class="row justify-content-between mt-2">
@@ -409,7 +417,7 @@
                                         Email
                                     </button>
                                 </div>
-                                
+
 
                                 <div class="d-flex justify-content-end align-items-center mt-2">
                                     <div class="align-self-center">Chat With :</div>
@@ -462,14 +470,38 @@
                                     <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewUpload" asp-route-id="@item.Id" style="background-color: #23a727;">
                                         View Uploads
                                     </a>
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="Encounter" asp-route-id="@item.Id" style="background-color: #23a727;">
-                                        Encounter
-                                    </a>
+                                    @if (item.calltype == null)
+                                    {
+                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Encounter(@item.Id)"><i class="fa-solid fa-file me-1"></i>Encounter</a>
+                                    }
+                                    else if (item.isfinal != null && item.isfinal[0] == true)
+                                    {
+                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Download(@item.Id)"><i class="fa-solid fa-file me-1"></i>Download</a>
+                                    }
+                                    else
+                                    {
+
+                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Encounter" asp-route-id="@item.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a>
+                                    }
                                 </div>
                                 <div class="row justify-content-between mt-2">
                                     <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Order" asp-route-id="@item.Id" style="background-color: #FFD700;">
                                         Orders
                                     </a>
+
+                                    @if (item.calltype == 1)
+                                    {
+
+                                        <a asp-action="HousecallFinal" asp-route-id="@item.Id" class="btn btn-outline-light col p-2 m-1 btn rounded-pill btn-info text-white b1" type="button">Housecall</a>
+                                      
+                                    }
+                                 
+
+
+
+                                </div>
+                                <div class="row justify-content-between mt-2">
+
                                     <button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
                                         Email
                                     </button>
@@ -514,9 +546,8 @@
                                 </div>
 
                                 <div class="mt-3 row justify-content-between">
-                                    <button onclick="cancelCase(@item.Id)" class="col p-2 m-1 btn rounded-pill btn-danger b1" type="button">
-                                        Cancel Case
-                                    </button>
+
+                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ConcludeCareeeee" asp-route-id="@item.Id"><i class="fa-solid fa-user-doctor me-1"></i>Conclude Care</a>
                                     <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewNotes" asp-route-id="@item.Id" style="background-color: #23a727;">
                                         View Notes
                                     </a>
@@ -531,18 +562,24 @@
                                     </a>
                                 </div>
                                 <div class="row justify-content-between mt-2">
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="Encounter" asp-route-id="@item.Id" style="background-color: #23a727;">
-                                        Encounter
-                                    </a>
-                                    <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Order" asp-route-id="@item.Id" style="background-color: #FFD700;">
-                                        Orders
-                                    </a>
-                                </div>
-                                <div class="row justify-content-between mt-2">
+                                    @if (item.calltype == null)
+                                    {
+                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Encounter(@item.Id)"><i class="fa-solid fa-file me-1"></i>Encounter</a>
+                                    }
+                                    else if (item.isfinal != null && item.isfinal[0] == true)
+                                    {
+                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Download(@item.Id)"><i class="fa-solid fa-file me-1"></i>Download</a>
+                                    }
+                                    else
+                                    {
+
+                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Encounter" asp-route-id="@item.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a>
+                                    }
                                     <button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
                                         Email
                                     </button>
                                 </div>
+                      
                                 <div class="d-flex justify-content-end align-items-center mt-2">
                                     <div class="align-self-center">Chat With :</div>
 
@@ -561,3 +598,41 @@
         }
     </div>
 </div>
+
+    <nav aria-label="..." style="display:flex; justify-content:center; margin-top:10px;">
+
+        <input type="hidden" id="page" />
+        <ul class="pagination" onchange="filter()">
+            <li class="page-item">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="xyz(@(page-1))">Previous</a>
+            </li>
+
+            @if (page - 1 > 0)
+            {
+                <li class="page-item"><a class="page-link " href="#" onclick="xyz(@(page-1))">@(page - 1)</a></li>
+            }
+
+            <li class="page-item"><a class="page-link active" href="#" onclick="xyz(@(page))">@(page)</a></li>
+
+            @if (page * 2 < c)
+            {
+                <li class="page-item" aria-current="page">
+                    <a class="page-link" href="#" onclick="xyz(@(page+1))">@(page + 1)</a>
+                </li>
+            }
+
+            @if (page * 2 < c)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="#" onclick="xyz(@(page+1))">Next</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}

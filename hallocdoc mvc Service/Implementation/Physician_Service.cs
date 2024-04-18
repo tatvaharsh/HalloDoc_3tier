@@ -20,6 +20,7 @@ using Twilio.TwiML.Voice;
 using System.Collections;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
+using System.Web.Helpers;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -497,6 +498,13 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 query = query.Where(r => r.RequestTypeId == 2).ToList();
             }
+            int size = 2;
+            int c = query.Count;
+            query= query.Skip(pageid * size - size).Take(size).ToList();
+            if(query.Count > 0)
+            {
+                query.First().PgCount= c;
+            }
             return query;
         }
 
@@ -836,7 +844,7 @@ namespace hallocdoc_mvc_Service.Implementation
             AspNetUser asp = _Repository.GetAspNetUser((int)pl.AspNetUserId);
             if (asp != null)
             {
-                asp.PasswordHash = pass;
+                asp.PasswordHash = Crypto.HashPassword(pass);
                 _Repository.UpdateAspNetUser(asp);
             }
         }

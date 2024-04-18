@@ -39,5 +39,8 @@ namespace hallodoc_mvc_Repository.ViewModel
         public int? SelectedPhysicianId { get; set; }
         public int? ReqtypeId { get; set; }
         public short? status { get; set; }
+
+        public int? PgCount { get; set;}
+  
     }
 }

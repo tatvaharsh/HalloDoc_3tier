@@ -37,12 +37,12 @@
             <div class="tab sidebar-tab">
                 <span class="mob-welcome-text">Welcome <span class="mob-name-text">@ViewBag.username</span></span>
                 <button class="tablinks sidebar-tablinks mobile-sidebar-active">
-                    <a asp-controller="Patient" asp-action="PatientDashboard" class="mobile-sidebar-a">
+                    <a asp-controller="Home" asp-action="PatientDashboard" class="mobile-sidebar-a">
                         Dashboard
                     </a>
                 </button>
                 <button class="tablinks sidebar-tablinks">
-                    <a asp-controller="Patient" asp-action="PatientProfile" class="mobile-sidebar-a">
+                    <a asp-controller="Home" asp-action="PatientProfile" class="mobile-sidebar-a">
                         Profile
                     </a>
                 </button>
@@ -250,14 +250,60 @@
                                         </span>
                                     </div>
                                     <div class="inner-flex">
-                                        <img src="/SRSScreenShorts\success-icon.svg" alt="" class="accordion-img-inner"> <span class="accordion-heading-inner">
+                                        <img src="/SRSScreenShorts\success-icon.svg" alt="" class="accordion-img-inner">
+                                        <span class="accordion-heading-inner">
                                             Current
-                                            Status: <span class="accordion-value-inner">
+                                            Status: 
                                                 @if (item.Status == 1)
                                                 {
-                                                    <p>Unassigned</p>
+                                                  <span>Unassigned</span>
                                                 }
-                                            </span>
+                                                else if (item.Status == 2)
+                                                {
+                                                    <span>Accepted</span>
+                                                }
+                                                else if (item.Status == 3)
+                                                {
+                                                    <span>Cancelled by Admin</span>
+                                                }
+                                                else if (item.Status == 4)
+                                                {
+                                                    <span>MDOnRoute</span>
+                                                }
+                                                else if (item.Status == 5)
+                                                {
+                                                    <span>MDOnSite</span>
+                                                }
+                                                else if (item.Status == 6)
+                                                {
+                                                    <span>Concluded</span>
+                                                }
+                                                else if (item.Status == 7)
+                                                {
+                                                    <span>Cancelled by you</span>
+                                                }
+                                                else if (item.Status == 8)
+                                                {
+                                                    <span>Closed</span>
+                                                }
+                                                else if (item.Status == 9)
+                                                {
+                                                    <span>Unpaid</span>
+                                                }
+                                                else if (item.Status == 10)
+                                                {
+                                                    <span>Case Cleared</span>
+                                                }
+                                                else if (item.Status == 11)
+                                                {
+                                                    <span>Request blocked</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Unknown Status</span>
+                                                }
+
+                                           
                                         </span>
                                     </div>
                                     @{

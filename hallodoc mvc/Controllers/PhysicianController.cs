@@ -17,7 +17,7 @@ namespace hallodoc_mvc.Controllers
         private readonly IPhysician_Service _Service;
         private readonly IPDFService _pdfservice;
         private readonly IJwtService _jwtService;
-
+        
         private readonly IConfiguration _configuration;
 
         public PhysicianController(IPhysician_Service service, IJwtService jwtService, IConfiguration configuration, IPDFService pdfservice)

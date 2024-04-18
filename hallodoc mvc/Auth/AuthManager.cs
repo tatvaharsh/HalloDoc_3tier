@@ -42,7 +42,7 @@ namespace HalloDoc.Auth
             var jwtService = context.HttpContext.RequestServices.GetService<IJwtService>();
             if (jwtService == null)
             {
-                context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Patient", action = "Login", }));
+                context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Login", }));
                 return;
             }
 

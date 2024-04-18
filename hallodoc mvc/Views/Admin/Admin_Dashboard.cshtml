@@ -7,6 +7,12 @@
 }
 <link rel="stylesheet" href="~/css/Admin_Pages/Admin_Dashboard.css" />
 
+<div class="backdrop" id="backdrop" style="z-index:140"></div>
+<div id="loader-container" class="vh-100 align-items-center justify-content-center" style="z-index:150">
+
+    <div class="loader" style="z-index:150"></div>
+
+</div>
 
 
 <link rel="stylesheet" href="~/js/AdminDashboard.js" />
@@ -353,6 +359,15 @@
 </div>
 
 <partial name="_Footer" />
+
+@*__________loader_________________________________*@
+
+
+
+  
+   
+@*------------loader------------------------------*@
+
 
 @section Scripts{
     <partial name="_ValidationScriptsPartial" />

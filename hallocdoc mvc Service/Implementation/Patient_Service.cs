@@ -15,6 +15,7 @@ using System.Net.Mail;
 using System.Net;
 using Twilio.TwiML.Voice;
 using Org.BouncyCastle.Ocsp;
+using System.Web.Helpers;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -240,7 +241,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     //PasswordHash = model.Password,
                     PhoneNumber = model.PhoneNumber,
                     CreatedDate = DateTime.Now,
-                    PasswordHash = model.Password,
+                    PasswordHash = Crypto.HashPassword(model.Password),
                     Roles = _Repository.RolePatient(),
                 };
                 _Repository.AddAspnetuser(aspnetuser2);
@@ -864,7 +865,7 @@ namespace hallocdoc_mvc_Service.Implementation
             AspNetUser aspuser = _Repository.AspEmail(email);
             if (aspuser != null)
             {
-                aspuser.PasswordHash = model.PasswordHash;
+                aspuser.PasswordHash = Crypto.HashPassword(model.PasswordHash);
                 _Repository.updateAspnetuserTable(aspuser);
                 _Repository.Save();
             }

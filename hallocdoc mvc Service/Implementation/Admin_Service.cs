@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Collections;
 using System.Globalization;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Web.Helpers;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -28,7 +30,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public List<AdminDashboard> getDashData(int? requestType, string? search, int? requestor, int? region, int pageid)
         {
-            var query = _Repository.GetAdminCode();
+            var query = _Repository.GetNewData();
 
             if (search != null)
             {
@@ -79,6 +81,9 @@ namespace hallocdoc_mvc_Service.Implementation
                     if (phy != null)
                     {
                         transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
+                    }
+                    else if(x.PhysicianId!=0){ 
+                        transfer.Add("Physician changed to status" + " " + x.Status + " " + x.Notes);
                     }
                     else
                     {
@@ -511,8 +516,15 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public AspNetUser ValidateUser(LoginViewModel model)
         {
-            return _Repository.Validate(model);
-
+            AspNetUser asp = _Repository.Validate(model);
+            if (asp.Id > 0)
+            {
+                if (Crypto.VerifyHashedPassword(asp.PasswordHash, model.Passwordhash))
+                {
+                    return asp;
+                }
+            }
+            return new();
         }
 
         public Admin getAdmin(string email)
@@ -569,7 +581,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 notedata.RequestId = id;
                 notedata.AdminNotes = model.AdminNotes;
-                notedata.ModifiedBy = admin;
+                notedata.ModifiedBy = _Repository.getAspid(admin);
                 notedata.ModifiedDate = DateTime.Now;
                 _Repository.save();
 
@@ -580,7 +592,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 {
                     RequestId = id,
                     AdminNotes = model.AdminNotes,
-                    CreatedBy = admin,
+                    CreatedBy = _Repository.getAspid(admin),
                     CreatedDate = DateTime.Now,
                 };
 
@@ -929,7 +941,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 Prescription = md.Detail,
                 NoOfRefill = md.refill,
                 CreatedDate = DateTime.Now,
-                CreatedBy = admin.ToString(),
+                CreatedBy = _Repository.getAspid(admin).ToString(),
 
             };
             _Repository.AddOrderdetails(oredr);
@@ -1415,7 +1427,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 AdminNotes = model.adminnote,
                 RequestId = request.RequestId,
-                CreatedBy = admin,
+                CreatedBy = _Repository.getAspid(admin),
                 CreatedDate = DateTime.Now,
             };
 
@@ -1507,7 +1519,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
             if (asp.Id > 0)
             {
-                asp.PasswordHash = model.user.PasswordHash;
+                asp.PasswordHash = Crypto.HashPassword(model.user.PasswordHash);
                 _Repository.UpdateAsp(asp);
             }
         }
@@ -1690,7 +1702,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 RegionId = model.SelectedStateId,
                 Zip = model.zipcode,
                 AltPhone = model.alterphone,
-                CreatedBy = admin1,
+                CreatedBy = _Repository.getAspid(admin1),
                 CreatedDate = DateTime.Now,
                 Status = 1,
                 BusinessName = model.Businessname,
@@ -1801,7 +1813,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 role1.Name = roleName;
                 role1.CreatedDate = DateTime.Now;
                 role1.AccountType = (short)check;
-                role1.CreatedBy = admin1.ToString();
+                role1.CreatedBy = _Repository.getAspid(admin1).ToString();
                 role1.IsDeleted = new BitArray(1, false);
                 _Repository.AddRoletbl(role1);
             }
@@ -1812,7 +1824,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 role.Name = roleName;
                 role.CreatedDate = DateTime.Now;
                 role.AccountType = (short)check;
-                role.CreatedBy = admin1.ToString();
+                role.CreatedBy = _Repository.getAspid(admin1).ToString();
                 role.IsDeleted = new BitArray(1, false);
                 _Repository.AddRoletbl(role);
 
@@ -2087,7 +2099,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 RegionId = model.SelectedStateId,
                 Zip = model.zipcode,
                 AltPhone = model.alterphone,
-                CreatedBy = admin1,
+                CreatedBy = _Repository.getAspid(admin1),
                 CreatedDate = DateTime.Now,
                 Status = 1,
                 RoleId = model.SelectedRoleId
@@ -2259,7 +2271,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 StartDate = DateOnly.FromDateTime(shift.ShiftDate),
                 IsRepeat = shift.RepeatToggle,
                 RepeatUpto = shift.Repeat,
-                CreatedBy = admin,
+                CreatedBy = _Repository.getAspid(admin),
                 CreatedDate = DateTime.Now
             };
             if (shift.Weekday != null)
@@ -2562,7 +2574,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 var shift = _Repository.ChangeShift(shiftId);
                 shift.Status = 1;
                 shift.ModifiedDate = DateTime.Now;
-                shift.ModifiedBy = admin1;
+                shift.ModifiedBy = _Repository.getAspid(admin1);
             }
             _Repository.UpdateShiftDetails();
         }
@@ -2575,7 +2587,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 var shift = _Repository.Shiftdetials(shiftId);
                 shift.IsDeleted = new BitArray(1, true);
                 shift.ModifiedDate = DateTime.Now;
-                shift.ModifiedBy = admin1;
+                shift.ModifiedBy = _Repository.getAspid(admin1);
 
             }
             _Repository.UpdateShiftDetails();
@@ -2637,7 +2649,7 @@ namespace hallocdoc_mvc_Service.Implementation
             shiftDetail.StartTime = editShift.StartTime;
             shiftDetail.EndTime = editShift.EndTime;
             shiftDetail.ModifiedDate = DateTime.Now;
-            shiftDetail.ModifiedBy = adminid;
+            shiftDetail.ModifiedBy = _Repository.getAspid(adminid);
             _Repository.Update(shiftDetail);
         }
 
@@ -2650,7 +2662,7 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             ShiftDetail detail = _Repository.GetShiftDetails(shiftdetailid);
             detail.Status = (short)(detail.Status == 1 ? 0 : 1);
-            detail.ModifiedBy = adminid;
+            detail.ModifiedBy = _Repository.getAspid(adminid);
             detail.ModifiedDate = DateTime.Now;
             _Repository.Update(detail);
         }
@@ -2659,14 +2671,15 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             ShiftDetail detail = _Repository.GetShiftDetails(shiftdetailid);
             detail.IsDeleted = new BitArray(1, true);
-            detail.ModifiedBy = adminid;
+            detail.ModifiedBy = _Repository.getAspid(adminid);
             detail.ModifiedDate = DateTime.Now;
             _Repository.Update(detail);
         }
 
-        public List<PatientHistoryTable> PatientHistoryTable(string? fname, string? lname, string? email, string? phone)
+        public List<PatientHistoryTable> PatientHistoryTable(string? fname, string? lname, string? email, string? phone, int page)
         {
-            IQueryable<PatientHistoryTable> tabledata = _Repository.GetPatientHistoryTable(fname, lname, email, phone);
+            IQueryable<PatientHistoryTable> tabledata = _Repository.GetPatientHistoryTable(fname, lname, email, phone,page);
+            
             return tabledata.ToList();
         }
 
@@ -2746,7 +2759,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         }
 
-        public List<Emaillogs>? EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate)
+        public List<Emaillogs>? EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate, int page)
         {
 
             List<Emaillogs> logs = _Repository.EmailLogs();
@@ -2755,7 +2768,12 @@ namespace hallocdoc_mvc_Service.Implementation
             if (email != null) { logs = logs.Where(x => x.Email.Contains(email, StringComparison.OrdinalIgnoreCase)).ToList(); }
             if (createdate != DateTime.MinValue) { logs = logs.Where(x => x.CreatedDate.Date == createdate).ToList(); }
             if (sentdate != DateTime.MinValue) { logs = logs.Where(x => x.SentDate.HasValue && x.SentDate.Value.Date == sentdate).ToList(); }
-
+            if (logs.Count != 0)
+            {
+                var Pgcount = logs.Count;
+            }
+            int size = 10;
+            logs = logs.Skip(page * size - size).Take(size).ToList();
             return logs;
 
         }

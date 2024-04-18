@@ -26,5 +26,6 @@ namespace hallodoc_mvc_Repository.ViewModel
         public int? SentTries { get; set; }
 
         public string? ConfirmationNumber { get; set; }
+        public int? PgCount { get; set; }
     }
 }

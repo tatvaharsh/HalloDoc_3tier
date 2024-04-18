@@ -21,6 +21,9 @@ using DocumentFormat.OpenXml.VariantTypes;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using DocumentFormat.OpenXml.Spreadsheet;
 using static Org.BouncyCastle.Crypto.Fips.FipsKdf;
+using DocumentFormat.OpenXml.Wordprocessing;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using iText.StyledXmlParser.Node;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -54,8 +57,6 @@ namespace hallodoc_mvc.Controllers
             {
                 ViewBag.Username = _service.Adminname(admin1);
                 ModalData data = _service.GetAssignData(new ModalData());
-                //TempData["success"] = "Login Successfully!!!";
-                //TempData.Clear();
                 ViewBag.Layout = "_LayAdmin";
                 return View(data);
             }
@@ -63,18 +64,30 @@ namespace hallodoc_mvc.Controllers
         }
 
         [CustomAuthorize("Admin")]
-        public IActionResult Admin_DashboardPartial()
+        public IActionResult Admin_DashboardPartial(bool isPartial)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
 
             if (admin1 != null)
             {
-                ViewBag.Username = _service.Adminname(admin1);
-                ModalData data = _service.GetAssignData(new ModalData());
-                //TempData["success"] = "Login Successfully!!!";
-                //TempData.Clear();
-                ViewBag.Layout = null;
-                return View("Admin_Dashboard", data);
+                if (isPartial == true)
+                {
+
+                    ViewBag.Username = _service.Adminname(admin1);
+                    ModalData data = _service.GetAssignData(new ModalData());
+                    //TempData["success"] = "Login Successfully!!!";
+                    //TempData.Clear();
+                    ViewBag.Layout = null;
+                    return View("Admin_Dashboard", data);
+                }
+                else
+                {
+                    ViewBag.Username = _service.Adminname(admin1);
+                    ModalData data = _service.GetAssignData(new ModalData());
+                    ViewBag.Layout = "_LayAdmin";
+                    return View("Admin_Dashboard", data);
+                }
+         
             }
             return RedirectToAction("Admin_Login");
         }
@@ -128,6 +141,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult ProviderLocation(bool isPartial)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin);
             if (isPartial == true)
             {
 
@@ -375,7 +389,7 @@ namespace hallodoc_mvc.Controllers
             switch (nav)
             {
                 case 1:
-                    return RedirectToAction(nameof(Admin_DashboardPartial));
+                    return RedirectToAction(nameof(Admin_DashboardPartial), new { isPartial = isPartial });
                 case 2:
                     return RedirectToAction(nameof(ProviderLocation), new { isPartial = isPartial });
                 case 3:
@@ -1308,9 +1322,11 @@ namespace hallodoc_mvc.Controllers
             TempData["success"] = "Shift Updated Successfully!!!";
             return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
         }
-        public IActionResult PatientHistoryTable(string? fname, string? lname, string? email, string? phone)
+        public IActionResult PatientHistoryTable(string? fname, string? lname, string? email, string? phone,int page)
         {
-            List<PatientHistoryTable> model = _service.PatientHistoryTable(fname, lname, email, phone);
+            if (page == 0) { page = 1; }
+            ViewBag.page = page;
+            List<PatientHistoryTable> model = _service.PatientHistoryTable(fname, lname, email, phone,page);
             return PartialView("PatientHistoryTable", model);
         }
         public IActionResult PatientRecord(int id)
@@ -1328,10 +1344,13 @@ namespace hallodoc_mvc.Controllers
 
 
         [HttpPost]
-        public IActionResult _SearchRecordsTable(AdminRecord model, int status, string mobile, string email, string pname, DateTime tdate, DateTime fdate, int reqtype, string searchstr)
+        public IActionResult _SearchRecordsTable(AdminRecord model, int status, string mobile, string email, string pname, DateTime tdate, DateTime fdate, int reqtype, string searchstr,int page)
         {
-
+            if (page == 0) { page = 1; }
+            ViewBag.page = page;
             model = _service.getSearchRecordData(model);
+            
+
             if (!string.IsNullOrWhiteSpace(searchstr))
             {
                 model.Data = model.Data.Where(x => x.FirstName.ToLower().Contains(searchstr.ToLower())).ToList();
@@ -1382,9 +1401,14 @@ namespace hallodoc_mvc.Controllers
             {
                 model.Data = model.Data.Where(x => x.Request.CreatedDate > fdate && x.Request.CreatedDate < tdate).OrderBy(x => x.Request.CreatedDate).ToList();
             }
+            if (model.Data.Count != 0)
+            {
+                model.PgCount = model.Data.Count;
+            }
+            int size = 10;
+            model.Data = model.Data.Skip(page * size - size).Take(size).ToList();
 
-
-
+            
             return PartialView(model);
         }
 
@@ -1425,14 +1449,18 @@ namespace hallodoc_mvc.Controllers
             return RedirectToAction(nameof(TabChange), new { nav = 15, isPartial = false });
         }
 
-        public IActionResult EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate)
+        public IActionResult EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate,int page)
         {
-            return PartialView("_EmailLogsTable", _service.EmailLogs(role, name, email, createdate, sentdate));
+            if (page == 0) { page = 1; }
+            ViewBag.page = page;
+            return PartialView("_EmailLogsTable", _service.EmailLogs(role, name, email, createdate, sentdate,page));
         }
 
 
-        public IActionResult SmsLogs(int role, string name, string mobile, DateTime createdate, DateTime sentdate)
+        public IActionResult SmsLogs(int role, string name, string mobile, DateTime createdate, DateTime sentdate, int page)
         {
+            if (page == 0) { page = 1; }
+            ViewBag.page = page;
             return PartialView("_SmsLogsTable", _service.SmsLog(role, name, mobile, createdate, sentdate));
         }
 

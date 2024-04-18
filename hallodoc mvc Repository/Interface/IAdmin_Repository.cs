@@ -12,7 +12,7 @@ namespace hallodoc_mvc_Repository.Interface
 {
     public interface IAdmin_Repository
     {
-        IQueryable<Request> GetAdminCode();
+        IQueryable<Request> GetNewData();
         IQueryable<Request> GetAdminConclude();
         IQueryable<Request> GetAdminToclose();
         IQueryable<Request> GetAdminUnpaid();
@@ -136,7 +136,7 @@ namespace hallodoc_mvc_Repository.Interface
         ShiftDetail GetShiftDetails(int shiftdetailid);
         void Update(ShiftDetail shiftDetail);
         int getAspid(int admin1);
-        IQueryable<PatientHistoryTable> GetPatientHistoryTable(string? fname, string? lname, string? email, string? phone);
+        IQueryable<PatientHistoryTable> GetPatientHistoryTable(string? fname, string? lname, string? email, string? phone,int page);
         List<Request> GetAllRequestsByAid(int id);
         string? GetStatus(short status);
         int GetNumberOfDocsByRid(int requestId);

@@ -25,7 +25,7 @@ namespace hallodoc_mvc_Repository.Implementation
             _context = context;
         }
 
-        public IQueryable<Request> GetAdminCode()
+        public IQueryable<Request> GetNewData()
         {
             return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Where(x => x.RequestClients != null && x.Status == 1);
         }
@@ -73,7 +73,7 @@ namespace hallodoc_mvc_Repository.Implementation
         /// <returns></returns>
         public AspNetUser Validate(LoginViewModel model)
         {
-            return _context.AspNetUsers.Include(X=>X.Roles).FirstOrDefault(u => u.Email == model.Email && u.PasswordHash == model.Passwordhash)??new();
+            return _context.AspNetUsers.Include(X=>X.Roles).FirstOrDefault(u => u.Email == model.Email)??new();
         }
 
         public Admin getaspuser(string email)
@@ -724,7 +724,7 @@ namespace hallodoc_mvc_Repository.Implementation
             return _context.Admins.FirstOrDefault(x => x.AdminId == admin1).AspNetUserId;
         }
 
-        public IQueryable<PatientHistoryTable> GetPatientHistoryTable(string? fname, string? lname, string? email, string? phone)
+        public IQueryable<PatientHistoryTable> GetPatientHistoryTable(string? fname, string? lname, string? email, string? phone,int page)
         {
             IQueryable<PatientHistoryTable> tabledata =
                                                        from u in _context.Users
@@ -754,6 +754,12 @@ namespace hallodoc_mvc_Repository.Implementation
             {
                 tabledata = tabledata.Where(e => e.phone.Contains(phone));
             }
+            if (tabledata.Count() != 0)
+            {
+                var c = tabledata.Count();
+            }
+            int size = 10;
+            tabledata = tabledata.Skip(page * size - size).Take(size);
             return tabledata;
         }
 

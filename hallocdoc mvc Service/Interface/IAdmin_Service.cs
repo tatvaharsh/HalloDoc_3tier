@@ -107,14 +107,14 @@ namespace hallocdoc_mvc_Service.Interface
         int GetAspId(int admin1);
         void ChangeShiftStatus(int shiftdetailid, int adminid);
         void DeleteShiftViaModal(int shiftdetailid, int adminid);
-        List<PatientHistoryTable> PatientHistoryTable(string? fname, string? lname, string? email, string? phone);
+        List<PatientHistoryTable> PatientHistoryTable(string? fname, string? lname, string? email, string? phone, int page);
         List<PatientRecord> PatientRecord(int id);
         List<RequestType>? GetRequestTypes();
         AdminRecord getSearchRecordData(AdminRecord model);
         void deleteRequest(int id);
         AdminRecord? getBlockHistoryData();
         void Unblock(int id);
-        List<Emaillogs>? EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate);
+        List<Emaillogs>? EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate,int page);
         List<Emaillogs>? SmsLog(int role, string name, string email, DateTime createdate, DateTime sentdate);
         List<AdminRecord> SearchRecords(string providername, string patientname, int status, int reqtype, string email, string phone, DateTime fromdate, DateTime todate);
     }

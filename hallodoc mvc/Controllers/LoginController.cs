@@ -42,49 +42,58 @@ namespace hallodoc_mvc.Controllers
                 
                 if (isReg.Id>0)
                 {
-                    if(isReg.Roles.First().Id==2)
+                    try
                     {
-                        var Admin = _service.getAdmin(model.Email);
-                        if (Admin != null)
+                        if (isReg.Roles.First().Id == 2)
                         {
-                            HttpContext.Session.SetInt32("Id", Admin.AdminId);
-                            model.Id=isReg.Id;
-                            var token = _jwtService.GenerateJwtToken(model);
-                            Response.Cookies.Append("jwt", token);
-                            ViewBag.Username = Admin.FirstName;
-                            TempData["success"] = "Login Successfully!!!";
-                            return RedirectToAction("Admin_Dashboard", "Admin");
+                            var Admin = _service.getAdmin(model.Email);
+                            if (Admin != null)
+                            {
+                                HttpContext.Session.SetInt32("Id", Admin.AdminId);
+                                model.Id = isReg.Id;
+                                var token = _jwtService.GenerateJwtToken(model);
+                                Response.Cookies.Append("jwt", token);
+                                ViewBag.Username = Admin.FirstName;
+                                TempData["success"] = "Login Successfully!!!";
+                                return RedirectToAction("Admin_Dashboard", "Admin");
+                            }
                         }
-                    }
-                    else if (isReg.Roles.First().Id == 3)
-                    {
-                        Physician physician = _physervice.getPhy(model.Email);
-                        if (physician != null)
+                        else if (isReg.Roles.First().Id == 3)
                         {
-                            HttpContext.Session.SetInt32("PhyId", physician.PhysicianId);
+                            Physician physician = _physervice.getPhy(model.Email);
+                            if (physician != null)
+                            {
+                                HttpContext.Session.SetInt32("PhyId", physician.PhysicianId);
+                                model.Id = isReg.Id;
+                                var token = _jwtService.GenerateJwtToken(model);
+                                Response.Cookies.Append("jwt", token);
+                                ViewBag.Username = physician.FirstName;
+                                TempData["success"] = "Login Successfully!!!";
+                                return RedirectToAction("PhysicianDashboard", "Physician");
+                            }
+                        }
+                        else
+                        {
+                            var user = _Service.getUser(model.Email);
+                            HttpContext.Session.SetInt32("Userid", user.UserId);
+                            HttpContext.Session.SetString("Username", user.FirstName + " " + user.LastName);
                             model.Id = isReg.Id;
                             var token = _jwtService.GenerateJwtToken(model);
                             Response.Cookies.Append("jwt", token);
-                            ViewBag.Username = physician.FirstName;
+                            ViewBag.username = user.FirstName + " " + user.LastName;
                             TempData["success"] = "Login Successfully!!!";
-                            return RedirectToAction("PhysicianDashboard", "Physician");
+                            return RedirectToAction("PatientDashboard", "Home");
                         }
+
                     }
-                    else
+                    catch
                     {
-                        var user = _Service.getUser(model.Email);
-                        HttpContext.Session.SetInt32("Userid", user.UserId);
-                        HttpContext.Session.SetString("Username", user.FirstName + " " + user.LastName);
-                        model.Id = isReg.Id;
-                        var token = _jwtService.GenerateJwtToken(model);
-                        Response.Cookies.Append("jwt", token);
-                        ViewBag.username = user.FirstName + " " + user.LastName;
-                        TempData["success"] = "Login Successfully!!!";
-                        return RedirectToAction("PatientDashboard","Home");
+                        TempData["error"] = "Invalid Creadentails!!!";
                     }
 
 
-                    
+
+
                 }
                 TempData["error"] = "Login Failed!!!";
             }

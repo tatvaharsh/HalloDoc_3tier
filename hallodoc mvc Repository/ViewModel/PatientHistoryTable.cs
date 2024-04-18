@@ -14,5 +14,6 @@ namespace hallodoc_mvc_Repository.ViewModel
         public string Email { get; set; }
         public string phone { get; set; }
         public string Address { get; set; }
+        public int? PgCount { get; set; }
     }
 }

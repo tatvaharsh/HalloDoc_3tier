@@ -1133,6 +1133,10 @@
       "PackagePath": "staticwebassets\\uplodedfiles\\FDSDFDsdadsdff.svg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtaTest Instructions.pdf",
+      "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtaTest Instructions.pdf"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtafile-word-fill (1).svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtafile-word-fill (1).svg"
     },
@@ -1155,6 +1159,14 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtafile-word-fill.svg",
       "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtafile-word-fill.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtaschema_hallodoc.pdf",
+      "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtaschema_hallodoc.pdf"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtasuccess-icon (1).svg",
+      "PackagePath": "staticwebassets\\uplodedfiles\\HarshMehtasuccess-icon (1).svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\MVC.pdf",
