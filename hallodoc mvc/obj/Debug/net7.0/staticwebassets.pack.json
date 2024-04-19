@@ -65,6 +65,10 @@
       "PackagePath": "staticwebassets\\SRSScreenShorts\\7774236_3736765.jpg"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Denied.gif",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\Denied.gif"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\Fig Contact your Provider.jpg",
       "PackagePath": "staticwebassets\\SRSScreenShorts\\Fig Contact your Provider.jpg"
     },
@@ -671,6 +675,10 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\conclude_active.png",
       "PackagePath": "staticwebassets\\SRSScreenShorts\\conclude_active.png"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\denied2.png",
+      "PackagePath": "staticwebassets\\SRSScreenShorts\\denied2.png"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\file-earmark-pdf-fill.svg",

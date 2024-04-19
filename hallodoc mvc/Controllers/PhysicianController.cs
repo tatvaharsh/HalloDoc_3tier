@@ -45,7 +45,7 @@ namespace hallodoc_mvc.Controllers
         }
 
 
-        [CustomAuthorize("Physician")]
+        [CustomAuthorize(null,"Physician")]
         public IActionResult PhysicianDashboard(bool isPartial)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("PhyId");

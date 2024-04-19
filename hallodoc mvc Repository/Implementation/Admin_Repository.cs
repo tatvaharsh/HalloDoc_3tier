@@ -32,7 +32,7 @@ namespace hallodoc_mvc_Repository.Implementation
         public IQueryable<Request> GetAdminStatus()
         {
 
-            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Include(x=>x.EncounterForms).Where(x => x.RequestClients != null && (x.Status == 4 || x.Status == 5));
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Include(x => x.EncounterForms).Where(x => x.RequestClients != null && (x.Status == 4 || x.Status == 5));
         }
         public IQueryable<Request> GetAdminPending()
         {
@@ -43,7 +43,7 @@ namespace hallodoc_mvc_Repository.Implementation
         public IQueryable<Request> GetAdminConclude()
         {
 
-            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Include(x=>x.EncounterForms).Where(x => x.RequestClients != null && x.Status == 6);
+            return _context.Requests.Include(x => x.Physician).Include(x => x.RequestClients).Include(x => x.EncounterForms).Where(x => x.RequestClients != null && x.Status == 6);
 
         }
         public IQueryable<Request> GetAdminToclose()
@@ -73,7 +73,7 @@ namespace hallodoc_mvc_Repository.Implementation
         /// <returns></returns>
         public AspNetUser Validate(LoginViewModel model)
         {
-            return _context.AspNetUsers.Include(X=>X.Roles).FirstOrDefault(u => u.Email == model.Email)??new();
+            return _context.AspNetUsers.Include(X => X.Roles).FirstOrDefault(u => u.Email == model.Email) ?? new();
         }
 
         public Admin getaspuser(string email)
@@ -724,7 +724,7 @@ namespace hallodoc_mvc_Repository.Implementation
             return _context.Admins.FirstOrDefault(x => x.AdminId == admin1).AspNetUserId;
         }
 
-        public IQueryable<PatientHistoryTable> GetPatientHistoryTable(string? fname, string? lname, string? email, string? phone,int page)
+        public IQueryable<PatientHistoryTable> GetPatientHistoryTable(string? fname, string? lname, string? email, string? phone, int page)
         {
             IQueryable<PatientHistoryTable> tabledata =
                                                        from u in _context.Users
@@ -738,28 +738,7 @@ namespace hallodoc_mvc_Repository.Implementation
                                                            phone = u.Mobile ?? "-",
                                                            Address = (u.Street ?? "") + " , " + (u.City ?? "") + " , " + (u.State ?? ""),
                                                        };
-            if (!string.IsNullOrEmpty(fname))
-            {
-                tabledata = tabledata.Where(e => e.Firstname.ToLower().Contains(fname.ToLower()));
-            }
-            if (!string.IsNullOrEmpty(lname))
-            {
-                tabledata = tabledata.Where(e => e.Lastname.ToLower().Contains(lname.ToLower()));
-            }
-            if (!string.IsNullOrEmpty(email))
-            {
-                tabledata = tabledata.Where(e => e.Email.ToLower().Contains(email.ToLower()));
-            }
-            if (!string.IsNullOrEmpty(phone))
-            {
-                tabledata = tabledata.Where(e => e.phone.Contains(phone));
-            }
-            if (tabledata.Count() != 0)
-            {
-                var c = tabledata.Count();
-            }
-            int size = 10;
-            tabledata = tabledata.Skip(page * size - size).Take(size);
+        
             return tabledata;
         }
 
@@ -864,6 +843,7 @@ namespace hallodoc_mvc_Repository.Implementation
                     SentTries = x.SentTries,
                     IsSent = x.IsEmailSent,
                     ConfirmationNumber = x.ConfirmationNumber,
+
                 }).ToList();
 
         }
@@ -879,7 +859,7 @@ namespace hallodoc_mvc_Repository.Implementation
                          x.Request != null ? x.Request.RequestClients.First().FirstName + " " + x.Request.RequestClients.First().LastName :
                          "-",
               Mobile = x.MobileNumber,
-              RoleName = x.Role.Name??"-",
+              RoleName = x.Role.Name ?? "-",
               CreatedDate = x.CreateDate,
               SentDate = x.SentDate,
               SentTries = x.SentTries,
@@ -912,7 +892,7 @@ namespace hallodoc_mvc_Repository.Implementation
              PhysicianNote = x.RequestNotes.First().PhysicianNotes,
              AdminNote = x.RequestNotes.First().AdminNotes,
              PatientNote = x.RequestClients.First().Notes,
-            
+
          }).ToList();
         }
     }

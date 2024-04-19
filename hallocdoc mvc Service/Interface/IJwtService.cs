@@ -11,7 +11,9 @@ namespace hallocdoc_mvc_Service.Implementation
 {
     public interface IJwtService
     {
-        string GenerateJwtToken(LoginViewModel model);
+        //string GenerateJwtToken(LoginViewModel model);
+
+        (string, string) GenerateJwtToken(LoginViewModel aspNetUser, string role);
 
         bool ValidateJwtToken(string token, out JwtSecurityToken jwtSecurityToken);
 

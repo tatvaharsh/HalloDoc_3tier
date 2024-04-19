@@ -38,6 +38,7 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
+   
 
         
         //[HttpPost]
@@ -274,7 +275,7 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
 
-        [CustomAuthorize("Patient")]
+        [CustomAuthorize(null,"Patient")]
         [HttpGet]
         public async Task<IActionResult> PatientDashboard()
         {
@@ -402,6 +403,10 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
 
+        public IActionResult Access()
+        {
+            return PartialView("_AccessDenied");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

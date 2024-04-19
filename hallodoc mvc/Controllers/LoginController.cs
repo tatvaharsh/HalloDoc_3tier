@@ -51,8 +51,9 @@ namespace hallodoc_mvc.Controllers
                             {
                                 HttpContext.Session.SetInt32("Id", Admin.AdminId);
                                 model.Id = isReg.Id;
-                                var token = _jwtService.GenerateJwtToken(model);
+                                var (token, menus) = _jwtService.GenerateJwtToken(model, "Admin");
                                 Response.Cookies.Append("jwt", token);
+                                HttpContext.Session.SetString("menus", menus);
                                 ViewBag.Username = Admin.FirstName;
                                 TempData["success"] = "Login Successfully!!!";
                                 return RedirectToAction("Admin_Dashboard", "Admin");
@@ -65,8 +66,9 @@ namespace hallodoc_mvc.Controllers
                             {
                                 HttpContext.Session.SetInt32("PhyId", physician.PhysicianId);
                                 model.Id = isReg.Id;
-                                var token = _jwtService.GenerateJwtToken(model);
+                                var (token, menus) = _jwtService.GenerateJwtToken(model, "Provider");
                                 Response.Cookies.Append("jwt", token);
+                                HttpContext.Session.SetString("menus", menus);
                                 ViewBag.Username = physician.FirstName;
                                 TempData["success"] = "Login Successfully!!!";
                                 return RedirectToAction("PhysicianDashboard", "Physician");
@@ -78,8 +80,9 @@ namespace hallodoc_mvc.Controllers
                             HttpContext.Session.SetInt32("Userid", user.UserId);
                             HttpContext.Session.SetString("Username", user.FirstName + " " + user.LastName);
                             model.Id = isReg.Id;
-                            var token = _jwtService.GenerateJwtToken(model);
+                            var (token, menus) = _jwtService.GenerateJwtToken(model, "Patient");
                             Response.Cookies.Append("jwt", token);
+                            HttpContext.Session.SetString("menus", menus);
                             ViewBag.username = user.FirstName + " " + user.LastName;
                             TempData["success"] = "Login Successfully!!!";
                             return RedirectToAction("PatientDashboard", "Home");

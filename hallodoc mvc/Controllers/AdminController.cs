@@ -24,6 +24,8 @@ using static Org.BouncyCastle.Crypto.Fips.FipsKdf;
 using DocumentFormat.OpenXml.Wordprocessing;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using iText.StyledXmlParser.Node;
+using DocumentFormat.OpenXml.EMMA;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -47,7 +49,7 @@ namespace hallodoc_mvc.Controllers
             _pdf = pdf;
         }
 
-        [CustomAuthorize("Admin")]
+        [CustomAuthorize("Dashboard", "Admin")]
         [Route("/admin/dashboard")]
         public IActionResult Admin_Dashboard()
         {
@@ -63,7 +65,7 @@ namespace hallodoc_mvc.Controllers
             return RedirectToAction("Admin_Login");
         }
 
-        [CustomAuthorize("Admin")]
+        [CustomAuthorize("Dashboard", "Admin")]
         public IActionResult Admin_DashboardPartial(bool isPartial)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
@@ -137,6 +139,7 @@ namespace hallodoc_mvc.Controllers
         //    return RedirectToAction("Admin_Login");
         //}
 
+        [CustomAuthorize("Provider Location", "Admin")]
         [Route("/admin/Location")]
         public IActionResult ProviderLocation(bool isPartial)
         {
@@ -154,6 +157,7 @@ namespace hallodoc_mvc.Controllers
             }
         }
 
+        [CustomAuthorize("My Profile", "Admin")]
         [Route("/admin/AdminProfile")]
         public IActionResult AdminProfile(bool isPartial)
         {
@@ -170,7 +174,7 @@ namespace hallodoc_mvc.Controllers
                 return View("Admin_Profile", _service.getprofile(admin));
             }
         }
-
+        [CustomAuthorize("Provider", "Admin")]
         [Route("/admin/Provider-Information")]
         public IActionResult Provider(bool isPartial)
         {
@@ -187,6 +191,7 @@ namespace hallodoc_mvc.Controllers
                 return View("Provider", _service.GetRegions());
             }
         }
+        [CustomAuthorize("Scheduling", "Admin")]
         [Route("/admin/Scheduling")]
         public IActionResult ProviderScheduling(bool isPartial)
         {
@@ -203,6 +208,7 @@ namespace hallodoc_mvc.Controllers
                 return View("Scheduling", _service.GetRegions());
             }
         }
+        [CustomAuthorize("Partners", "Admin")]
         [Route("/admin/Vendors")]
         public IActionResult Vendor(bool isPartial)
         {
@@ -227,7 +233,7 @@ namespace hallodoc_mvc.Controllers
 
             }
         }
-
+        [CustomAuthorize("Account Access", "Admin")]
         [Route("/admin/AccountAccess")]
         public IActionResult AccountAccess(bool isPartial)
         {
@@ -244,7 +250,7 @@ namespace hallodoc_mvc.Controllers
 
             }
         }
-
+        [CustomAuthorize("User Access", "Admin")]
         [Route("/admin/User")]
         public IActionResult Useraccess(bool isPartial)
         {
@@ -1420,8 +1426,10 @@ namespace hallodoc_mvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult _BlockHistoryTable(string searchstr, DateTime date, string email, string mobile)
+        public IActionResult _BlockHistoryTable(string searchstr, DateTime date, string email, string mobile,int page)
         {
+            if (page == 0) { page = 1; }
+            ViewBag.page = page;
             var a = _service.getBlockHistoryData();
             if (!string.IsNullOrWhiteSpace(searchstr))
             {
@@ -1440,6 +1448,12 @@ namespace hallodoc_mvc.Controllers
             {
                 a.blockRequests = a.blockRequests.Where(x => x.CreatedDate < date).OrderBy(x => x.CreatedDate).ToList();
             }
+            if (a.blockRequests.Count() != 0)
+            {
+                a.PgCount = a.blockRequests.Count();
+            }
+            int size = 10;
+            a.blockRequests = a.blockRequests.Skip(page * size - size).Take(size).ToList();
             return PartialView(a);
         }
 
@@ -1461,7 +1475,7 @@ namespace hallodoc_mvc.Controllers
         {
             if (page == 0) { page = 1; }
             ViewBag.page = page;
-            return PartialView("_SmsLogsTable", _service.SmsLog(role, name, mobile, createdate, sentdate));
+            return PartialView("_SmsLogsTable", _service.SmsLog(role, name, mobile, createdate, sentdate,page));
         }
 
         public IActionResult ExportRecords(string providername, string patientname, int status, int reqtype, string email, string phone, DateTime fromdate, DateTime todate)

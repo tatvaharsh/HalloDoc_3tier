@@ -7,12 +7,15 @@ using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Web.Helpers;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -82,7 +85,8 @@ namespace hallocdoc_mvc_Service.Implementation
                     {
                         transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
                     }
-                    else if(x.PhysicianId!=0){ 
+                    else if (x.PhysicianId != 0)
+                    {
                         transfer.Add("Physician changed to status" + " " + x.Status + " " + x.Notes);
                     }
                     else
@@ -1341,9 +1345,9 @@ namespace hallocdoc_mvc_Service.Implementation
 
 
             var aspnetuser1 = _Repository.getAsp(model.Email);
-         
+
             //send mail//
-    
+
 
             if (aspnetuser1 == null)
             {
@@ -1645,9 +1649,105 @@ namespace hallocdoc_mvc_Service.Implementation
                     PhysicianId = p.PhysicianId,
                     CreateDate = DateTime.Now,
                     SentDate = DateTime.Now,
-                    
+
                 };
                 _Repository.AddEmaillogtbl(emailLog);
+            }
+            else if (p != null && md.MessageType == 1)
+            {
+
+                var accountSid = _configuration["Twilio:accountSid"];
+                var authToken = _configuration["Twilio:authToken"];
+                var twilionumber = _configuration["Twilio:twilioNumber"];
+
+
+                var messageBody = $"Tap on Message which Admin wants you to send :  " + md.note + "\n\n\nRegards,\nHalloDoc";
+
+                TwilioClient.Init(accountSid, authToken);
+
+                var message = MessageResource.Create(
+                    from: new Twilio.Types.PhoneNumber(twilionumber),
+                    body: messageBody,
+                    to: new Twilio.Types.PhoneNumber("+91" + "9081818576")
+                );
+
+
+                Smslog smslog = new()
+                {
+                    Smstemplate = messageBody,
+                    MobileNumber = p.Mobile,
+                    CreateDate = DateTime.Now,
+                    SentDate = DateTime.Now,
+                    SentTries = 1,
+                    IsSmssent = true,
+                    PhysicianId = p.PhysicianId,
+                };
+                _Repository.SmsLogtbl(smslog);
+            }
+
+            else
+            {
+                var receiver = p.Email;
+                var subject = "Send Link";
+                var message = "Tap on Message which Admin wants you to send : " + md.note;
+
+
+                var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+                var password = "binal@2002";
+
+                var client = new SmtpClient("smtp.office365.com", 587)
+                {
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(mail, password)
+                };
+
+                client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message)
+                {
+                    IsBodyHtml = true
+                });
+
+                EmailLog emailLog = new()
+                {
+                    EmailTemplate = message,
+                    SubjectName = subject,
+                    SentTries = 1,
+                    IsEmailSent = true,
+                    EmailId = p.Email,
+                    PhysicianId = p.PhysicianId,
+                    CreateDate = DateTime.Now,
+                    SentDate = DateTime.Now,
+
+                };
+                _Repository.AddEmaillogtbl(emailLog);
+
+                var accountSid = _configuration["Twilio:accountSid"];
+                var authToken = _configuration["Twilio:authToken"];
+                var twilionumber = _configuration["Twilio:twilioNumber"];
+
+
+                var messageBody = $"\"Tap on Message which Admin wants you to send : \" + md.note\n\n\nRegards,\nHalloDoc";
+
+                TwilioClient.Init(accountSid, authToken);
+
+                var message1 = MessageResource.Create(
+                    from: new Twilio.Types.PhoneNumber(twilionumber),
+                    body: messageBody,
+                    to: new Twilio.Types.PhoneNumber("+91" + "9081818576")
+                );
+
+
+                Smslog smslog = new()
+                {
+                    Smstemplate = messageBody,
+                    MobileNumber = p.Mobile,
+                    CreateDate = DateTime.Now,
+                    SentDate = DateTime.Now,
+                    SentTries = 1,
+                    IsSmssent = true,
+                    PhysicianId = p.PhysicianId,
+                };
+                _Repository.SmsLogtbl(smslog);
+
             }
         }
 
@@ -1837,7 +1937,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 }
             }
 
-           
+
         }
 
         void IAdmin_Service.UpdateRole(RoleModel model)
@@ -2678,9 +2778,35 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public List<PatientHistoryTable> PatientHistoryTable(string? fname, string? lname, string? email, string? phone, int page)
         {
-            IQueryable<PatientHistoryTable> tabledata = _Repository.GetPatientHistoryTable(fname, lname, email, phone,page);
-            
-            return tabledata.ToList();
+            IQueryable<PatientHistoryTable> tabledata = _Repository.GetPatientHistoryTable(fname, lname, email, phone, page);
+            if (!string.IsNullOrEmpty(fname))
+            {
+                tabledata = tabledata.Where(e => e.Firstname.ToLower().Contains(fname.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(lname))
+            {
+                tabledata = tabledata.Where(e => e.Lastname.ToLower().Contains(lname.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(email))
+            {
+                tabledata = tabledata.Where(e => e.Email.ToLower().Contains(email.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(phone))
+            {
+                tabledata = tabledata.Where(e => e.phone.Contains(phone));
+            }
+            var count = tabledata.Count();
+            int size = 10;
+            List<PatientHistoryTable> list = tabledata.Skip(page * size - size).Take(size).ToList();
+            if (count != 0)
+            {
+                foreach (var item in list)
+                {
+                    item.PgCount = count;
+                };
+            }
+
+            return list;
         }
 
         public List<PatientRecord> PatientRecord(int id)
@@ -2768,9 +2894,12 @@ namespace hallocdoc_mvc_Service.Implementation
             if (email != null) { logs = logs.Where(x => x.Email.Contains(email, StringComparison.OrdinalIgnoreCase)).ToList(); }
             if (createdate != DateTime.MinValue) { logs = logs.Where(x => x.CreatedDate.Date == createdate).ToList(); }
             if (sentdate != DateTime.MinValue) { logs = logs.Where(x => x.SentDate.HasValue && x.SentDate.Value.Date == sentdate).ToList(); }
-            if (logs.Count != 0)
+            if (logs.Count() != 0)
             {
-                var Pgcount = logs.Count;
+                foreach (Emaillogs log in logs)
+                {
+                    log.PgCount = logs.Count();
+                };
             }
             int size = 10;
             logs = logs.Skip(page * size - size).Take(size).ToList();
@@ -2778,7 +2907,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         }
 
-        public List<Emaillogs>? SmsLog(int role, string name, string mobile, DateTime createdate, DateTime sentdate)
+        public List<Emaillogs>? SmsLog(int role, string name, string mobile, DateTime createdate, DateTime sentdate, int page)
         {
             List<Emaillogs> logs = _Repository.SmsLogs();
 
@@ -2786,7 +2915,15 @@ namespace hallocdoc_mvc_Service.Implementation
             if (mobile != null) { logs = logs.Where(x => x.Mobile.Contains(mobile, StringComparison.OrdinalIgnoreCase)).ToList(); }
             if (createdate != DateTime.MinValue) { logs = logs.Where(x => x.CreatedDate.Date == createdate).ToList(); }
             if (sentdate != DateTime.MinValue) { logs = logs.Where(x => x.SentDate.HasValue && x.SentDate.Value.Date == sentdate).ToList(); }
-
+            if (logs.Count() != 0)
+            {
+                foreach (Emaillogs log in logs)
+                {
+                    log.PgCount = logs.Count();
+                };
+            }
+            int size = 10;
+            logs = logs.Skip(page * size - size).Take(size).ToList();
             return logs;
         }
 

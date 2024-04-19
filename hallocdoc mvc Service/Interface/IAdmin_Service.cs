@@ -115,7 +115,7 @@ namespace hallocdoc_mvc_Service.Interface
         AdminRecord? getBlockHistoryData();
         void Unblock(int id);
         List<Emaillogs>? EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate,int page);
-        List<Emaillogs>? SmsLog(int role, string name, string email, DateTime createdate, DateTime sentdate);
+        List<Emaillogs>? SmsLog(int role, string name, string email, DateTime createdate, DateTime sentdate,int page);
         List<AdminRecord> SearchRecords(string providername, string patientname, int status, int reqtype, string email, string phone, DateTime fromdate, DateTime todate);
     }
 }

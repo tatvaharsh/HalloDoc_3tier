@@ -73,7 +73,7 @@
             }
         });
     });
-    function BusinessTable(element) {
+    function BusinessTable(page) {
 
 
         var searchstr = document.getElementById("PatientName").value
@@ -84,7 +84,7 @@
 
         $.ajax({
             url: "/Admin/_BlockHistoryTable",
-            data: { searchstr: searchstr, date: date, email: email, mobile: mobile },
+            data: { searchstr: searchstr, date: date, email: email, mobile: mobile,page:page },
             type: "POST",
             success: function (result) {
                 $("#tableContent").html(result)
