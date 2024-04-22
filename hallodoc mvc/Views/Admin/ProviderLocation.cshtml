@@ -49,12 +49,13 @@
 
     for (var i = 0; i < providers.length; i++) {
         var provider = providers[i];
+        
         var marker = L.marker([provider.latitude, provider.longitude])
             .bindPopup("<h4> " + provider.physicianName + "</h4><p> Address: " + provider.address + "</p>")
             .addTo(map);
         markers.push(marker);
     }
-
+    
     var group = L.featureGroup(markers).addTo(map);
     map.fitBounds(group.getBounds());
 

@@ -117,6 +117,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     Status = item.Status,
                     Physician = item.Physician?.FirstName,
                     PgCount = c,
+                    ChatWith = item.PhysicianId ?? 0,
                 });
             }
 
@@ -184,6 +185,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     PgCount = c,
                     calltype = item.CallType,
                     isfinal = item.EncounterForms.FirstOrDefault()?.IsFinalized ?? new BitArray(1, false),
+                    ChatWith = item.PhysicianId ?? 0,
                 });
             }
 
@@ -268,6 +270,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     RequestTypeId = item.RequestTypeId,
                     Status = item.Status,
                     PgCount = c,
+                    ChatWith = item.PhysicianId ?? 0,
                 });
             }
 
@@ -335,6 +338,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     PgCount = c,
                     calltype = item.CallType,
                     isfinal = item.EncounterForms.FirstOrDefault()?.IsFinalized ?? new BitArray(1, false),
+                    ChatWith = item.PhysicianId ?? 0,
                 });
             }
 
@@ -418,6 +422,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     PgCount = c,
                     calltype = item.CallType,
                     isfinal = item.EncounterForms.FirstOrDefault()?.IsFinalized ?? new BitArray(1, false),
+                    ChatWith = item.PhysicianId ?? 0,
                 });
             }
 
@@ -484,6 +489,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     Physician = item.Physician?.FirstName,
                     PgCount = c,
                     calltype = item.CallType,
+                    ChatWith = item.PhysicianId ?? 0,
                     isfinal = item.EncounterForms.FirstOrDefault()?.IsFinalized ?? new BitArray(1, false),
                 });
             }

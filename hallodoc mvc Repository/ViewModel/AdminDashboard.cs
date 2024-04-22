@@ -41,7 +41,7 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public string? Address { get; set; } //rc
 
-        public string ChatWith { get; set; } //-- nahi aave
+        public int? ChatWith { get; set; } //-- nahi aave
 
         public string Physician { get; set; } //phy
 

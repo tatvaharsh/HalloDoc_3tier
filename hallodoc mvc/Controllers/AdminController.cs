@@ -369,7 +369,6 @@ namespace hallodoc_mvc.Controllers
             return View();
         }
 
-
         public IActionResult TabChange(int nav, bool isPartial)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
