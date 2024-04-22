@@ -117,5 +117,6 @@ namespace hallocdoc_mvc_Service.Interface
         List<Emaillogs>? EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate,int page);
         List<Emaillogs>? SmsLog(int role, string name, string email, DateTime createdate, DateTime sentdate,int page);
         List<AdminRecord> SearchRecords(string providername, string patientname, int status, int reqtype, string email, string phone, DateTime fromdate, DateTime todate);
+        void SendEmailToOffDutyProvider(ModalData model);
     }
 }

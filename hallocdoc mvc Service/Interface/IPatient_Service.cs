@@ -20,7 +20,7 @@ namespace hallocdoc_mvc_Service.Interface
         void Forgot(Create model);
         void Forgotmail(Create model);
         void ForMe(patient_form req,int user1);
-       
+        AspNetUser getAspUser(string? email);
         public List<RequestWiseFile>  getFiles();
         public List<Request> getRequest(int? id);
         List<Request> getRequestcon(int id);

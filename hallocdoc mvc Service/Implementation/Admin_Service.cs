@@ -2,6 +2,7 @@
 using hallodoc_mvc_Repository.DataModels;
 using hallodoc_mvc_Repository.Interface;
 using hallodoc_mvc_Repository.ViewModel;
+using iText.Commons.Actions.Contexts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,8 @@ using System.Text;
 using System.Web.Helpers;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
+using Twilio.TwiML.Voice;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace hallocdoc_mvc_Service.Implementation
 {
@@ -641,6 +644,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 Patientcancellationnote = patientcancel,
                 AdminNotes = notes?.AdminNotes,
                 TransferNotes = transfer,
+                PhysicianNotes = notes?.PhysicianNotes
             };
             return data;
         }
@@ -1202,6 +1206,17 @@ namespace hallocdoc_mvc_Service.Implementation
 
                 return en;
             }
+            else
+            {
+                Encounter ent = new()
+                {
+                    Requestid = id,
+                    patientData = rc,
+                    DOB = Mydate,
+                };
+
+                return ent;
+            }
             return new();
 
 
@@ -1211,34 +1226,74 @@ namespace hallocdoc_mvc_Service.Implementation
         public void editencounter(int id, Encounter model)
         {
             EncounterForm ef = _Repository.getencounterbyid(id);
-            ef.Date = model.Date;
-            ef.HistoryIllness = model.HistoryIllness;
-            ef.MedicalHistory = model.MedicalHistory;
-            ef.Medications = model.Medications;
-            ef.Procedures = model.Procedures;
-            ef.FollowUp = model.FollowUp;
-            ef.Heent = model.Heent;
-            ef.Cv = model.Cv;
-            ef.Chest = model.Chest;
-            ef.Abd = model.Abd;
-            ef.Extr = model.Extr;
-            ef.Skin = model.Skin;
-            ef.Neuro = model.Neuro;
-            ef.Other = model.Other;
-            ef.Diagnosis = model.Diagnosis;
-            ef.TreatmentPlan = model.TreatmentPlan;
-            ef.MedicationDispensed = model.MedicationDispensed;
-            ef.Medications = model.Medications;
-            ef.Allergies = model.Allergies;
-            ef.Temp = model.Temp;
-            ef.Hr = model.Hr;
-            ef.Rr = model.Rr;
-            ef.BpD = model.BpD;
-            ef.BpS = model.BpS;
-            ef.O2 = model.O2;
-            ef.Pain = model.Pain;
-            ef.Chest = model.Chest;
-            _Repository.updateEncounterForm(ef);
+            if (ef != null)
+            {
+                ef.Date = model.Date;
+                ef.HistoryIllness = model.HistoryIllness;
+                ef.MedicalHistory = model.MedicalHistory;
+
+                ef.Procedures = model.Procedures;
+                ef.FollowUp = model.FollowUp;
+                ef.Heent = model.Heent;
+                ef.Cv = model.Cv;
+                ef.Chest = model.Chest;
+                ef.Abd = model.Abd;
+                ef.Extr = model.Extr;
+                ef.Skin = model.Skin;
+                ef.Neuro = model.Neuro;
+                ef.Other = model.Other;
+                ef.Diagnosis = model.Diagnosis;
+                ef.TreatmentPlan = model.TreatmentPlan;
+                ef.MedicationDispensed = model.MedicationDispensed;
+                ef.Medications = model.Medications;
+                ef.Allergies = model.Allergies;
+                ef.Temp = model.Temp;
+                ef.Hr = model.Hr;
+                ef.Rr = model.Rr;
+                ef.BpD = model.BpD;
+                ef.BpS = model.BpS;
+                ef.O2 = model.O2;
+                ef.Pain = model.Pain;
+
+                _Repository.updateEncounterForm(ef);
+            }
+            else
+            {
+                EncounterForm enf = new()
+                {
+                    RequestId = id,
+
+                    Date = DateTime.Now,
+                    HistoryIllness = model.HistoryIllness,
+                    MedicalHistory = model.MedicalHistory,
+                    Medications = model.Medications,
+                    Procedures = model.Procedures,
+                    Heent = model.Heent,
+                    Cv = model.Cv,
+                    Chest = model.Chest,
+                    Abd = model.Abd,
+                    Extr = model.Extr,
+                    Skin = model.Skin,
+                    Neuro = model.Neuro,
+                    Other = model.Other,
+                    Diagnosis = model.Diagnosis,
+                    TreatmentPlan = model.TreatmentPlan,
+                    MedicationDispensed = model.MedicationDispensed,
+                    IsFinalized = new BitArray(1,false),
+                    Allergies = model.Allergies,
+                    Temp = model.Temp,
+                    Hr = model.Hr,
+                    Rr = model.Rr,
+                    BpD = model.BpD,
+                    BpS = model.BpS,
+                    O2 = model.O2,
+                    Pain = model.Pain,
+                    FollowUp = model.FollowUp,
+
+                };
+                _Repository.AddEncounterForm(enf);
+            }
+
 
         }
 
@@ -1770,7 +1825,7 @@ namespace hallocdoc_mvc_Service.Implementation
             AspNetUser asp = new AspNetUser()
             {
                 UserName = "MD." + model.Firstname + "." + model.Lastname,
-                PasswordHash = model.Password,
+                PasswordHash = Crypto.HashPassword(model.Password),
                 Email = model.email,
                 PhoneNumber = model.phone,
                 CreatedDate = DateTime.Now,
@@ -2050,8 +2105,16 @@ namespace hallocdoc_mvc_Service.Implementation
             p.BusinessName = model.Businessname;
             p.BusinessWebsite = model.Businesswebsite;
             p.AdminNotes = model.Adminnote;
+            if (model.Photo != null)
+            {
             p.Photo = model.Photo.FileName;
+
+            }
+            if(model.Signature != null)
+            {
+
             p.Signature = model.Signature.FileName;
+            }
             if (model.Photo != null)
             {
                 string filename = "Photo" + Path.GetExtension(model.Photo?.FileName);
@@ -2160,6 +2223,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     Phonenumber = user.AdminAspNetUsers.Count != 0 ? user.AdminAspNetUsers.FirstOrDefault()?.Mobile : user.PhysicianAspNetUsers.Count != 0 ? user.PhysicianAspNetUsers.FirstOrDefault()?.Mobile : "",
                     accountType = user.Roles.First().Name,
                     Status = user.AdminAspNetUsers.Count != 0 ? user.AdminAspNetUsers.First().Status : user.PhysicianAspNetUsers.Count != 0 ? user.PhysicianAspNetUsers.First().Status : 0,
+                    phyid = user.Roles.First().Name == "Admin" ? _Repository.GetAdminByasp(user.Id) : _Repository.GetPhyByAsp(user.Id),
 
                 });
             }
@@ -2178,7 +2242,7 @@ namespace hallocdoc_mvc_Service.Implementation
             AspNetUser asp = new AspNetUser()
             {
                 UserName = model.Firstname + " " + model.Lastname,
-                PasswordHash = model.Password,
+                PasswordHash = Crypto.HashPassword(model.Password),
                 Email = model.email,
                 PhoneNumber = model.phone,
                 CreatedDate = DateTime.Now,
@@ -2939,6 +3003,45 @@ namespace hallocdoc_mvc_Service.Implementation
             if (reqtype != 0) { records = records.Where(x => x.ReqtypeId == reqtype).ToList(); }
 
             return records;
+        }
+
+        public void SendEmailToOffDutyProvider(ModalData model)
+        {
+            var a = _Repository.GetOffDuty();
+
+            foreach (var obj in a)
+            {
+                var receiver = obj.Email;
+                var subject = "Approved the Pending Request";
+                var message = "Please Approve The Pending Shifts of the Patients";
+
+
+                var mail = "tatva.dotnet.binalmalaviya@outlook.com";
+                var password = "binal@2002";
+
+                var client = new SmtpClient("smtp.office365.com", 587)
+                {
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential(mail, password)
+                };
+
+                client.SendMailAsync(new MailMessage(from: mail, to: receiver, subject, message));
+
+
+                EmailLog emailLog = new()
+                {
+                    EmailTemplate = message,
+                    SubjectName = subject,
+                    SentTries = 1,
+                    IsEmailSent = true,
+                    EmailId = obj.Email,
+                    CreateDate = DateTime.Now,
+                    SentDate = DateTime.Now,
+
+                };
+                _Repository.AddEmaillogtbl(emailLog);
+
+            }
         }
     }
 }

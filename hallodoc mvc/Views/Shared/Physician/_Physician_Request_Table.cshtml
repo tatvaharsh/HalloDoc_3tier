@@ -1,638 +1,648 @@
 ﻿@model List<hallodoc_mvc_Repository.ViewModel.AdminDashboard>
 @{
-    var c = Model.FirstOrDefault()?.PgCount;
-    var page = ViewBag.page;
+	var c = Model.FirstOrDefault()?.PgCount;
+	var page = ViewBag.page;
 }
 @functions {
-    public string GetTableColorClass(int RequstTypeId)
-    {
-        switch (RequstTypeId)
-        {
-            case 1: return "pink";
-            case 2: return "green";
-            case 3: return "orange";
-            case 4: return "blue";
-            default: return "green";
-        }
-    }
-    public string okok(int Status)
-    {
-        switch (Status)
-        {
-            case 1: return "New";
-            case 2: return "Pending";
-            case 3: return "Close";
-            case 4: return "Active";
-            case 5: return "Active";
-            case 6: return "Conclude";
-            case 7: return "Close";
-            case 8: return "Close";
-            case 9: return "Unpaid";
-            default: return "New";
-        }
-    }
+	public string GetTableColorClass(int RequstTypeId)
+	{
+		switch (RequstTypeId)
+		{
+			case 1: return "pink";
+			case 2: return "green";
+			case 3: return "orange";
+			case 4: return "blue";
+			default: return "green";
+		}
+	}
+	public string okok(int Status)
+	{
+		switch (Status)
+		{
+			case 1: return "New";
+			case 2: return "Pending";
+			case 3: return "Close";
+			case 4: return "Active";
+			case 5: return "Active";
+			case 6: return "Conclude";
+			case 7: return "Close";
+			case 8: return "Close";
+			case 9: return "Unpaid";
+			default: return "New";
+		}
+	}
 }
 
 
 
-@if(Model.Count() == 0)
+@if (Model.Count() == 0)
 {
-    <div class="text-center w-100">
+	<div class="text-center w-100">
 
-        <h3>NO DATA FOUND</h3>
-    </div>
+		<h3>NO DATA FOUND</h3>
+	</div>
 }
-else{
+else
+{
 
-<table class="table border-4 d-none d-lg-table" id="adminTable">
-    @if (Model.FirstOrDefault() != null)
-    {
-        <thead class="">
-            <tr>
-                <th scope="col">Name</th>
-                <th scope="col"></th>
-                <th scope="col">Phone</th>
-                <th scope="col">Address</th>
-                @if (Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
-                {
-                    <th scope="col">Status</th>
+	<table class="table border-4 d-none d-lg-table" id="adminTable">
+		@if (Model.FirstOrDefault() != null)
+		{
+			<thead class="">
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col"></th>
+					<th scope="col">Phone</th>
+					<th scope="col">Address</th>
+					@if (Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
+					{
+						<th scope="col">Status</th>
 
-                }
+					}
 
 
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var obj in Model)
-            {
-                <tr class="align-middle table-@{
-                                        @GetTableColorClass(obj.RequestTypeId)
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var obj in Model)
+				{
+					<tr class="align-middle table-@{
+											@GetTableColorClass(obj.RequestTypeId)
 }">
 
-                    <td scope="row">
-                        @obj.Name
-                    </td>
-                    <td scope="row">
-
-                        <a class="btn btn-outline-light p-1" style="font-size:smaller" href="mailto:@obj.Email">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-                            </svg>
-                        </a>
-
-                    </td>
-
-
-                    <td>
-
-                        <a class="btn btn-outline-light d-flex" style="font-size:smaller; width:fit-content;" href="tel:@obj.Phone">
-
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-                            </svg>
-                            @obj.Phone
-                        </a>
-                        (Patient)
-                        @if (obj.RequestTypeId == 1 && obj.RPhone != null)
-                        {
-                                <a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller;width:fit-content;" href="tel:@obj.RPhone">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-                                </svg>
-                                @obj.RPhone
-                            </a>
-                            <span>(Business)</span>
-                        }
-                        @if (obj.RequestTypeId == 3 && obj.RPhone != null)
-                        {
-                                <a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller;width:fit-content;" href="tel:@obj.RPhone">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-                                </svg>
-                                @obj.RPhone
-                            </a>
-                            <span>(Relative/Family)</span>
-                        }
-                        @if (obj.RequestTypeId == 4 && obj.RPhone != null)
-                        {
-                                <a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller;width:fit-content;" href="tel:@obj.RPhone">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-                                </svg>
-                                @obj.RPhone
-                            </a>
-                            <span>(Concierge) </span>
-                        }
+						<td scope="row">
+							@obj.Name
+						</td>
+						<td scope="row">
+
+							<a class="btn btn-outline-light p-1" style="font-size:smaller" href="mailto:@obj.Email">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+									<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+								</svg>
+							</a>
+
+						</td>
+
+
+						<td>
+
+							<a class="btn btn-outline-light d-flex" style="font-size:smaller; width:fit-content;" href="tel:@obj.Phone">
+
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
+									<path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+								</svg>
+								@obj.Phone
+							</a>
+							(Patient)
+							@if (obj.RequestTypeId == 1 && obj.RPhone != null)
+							{
+								<a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller;width:fit-content;" href="tel:@obj.RPhone">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+									</svg>
+									@obj.RPhone
+								</a>
+								<span>(Business)</span>
+							}
+							@if (obj.RequestTypeId == 3 && obj.RPhone != null)
+							{
+								<a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller;width:fit-content;" href="tel:@obj.RPhone">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+									</svg>
+									@obj.RPhone
+								</a>
+								<span>(Relative/Family)</span>
+							}
+							@if (obj.RequestTypeId == 4 && obj.RPhone != null)
+							{
+								<a class="btn btn-outline-light p-1 d-flex" style="font-size:smaller;width:fit-content;" href="tel:@obj.RPhone">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill mt-1" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
+									</svg>
+									@obj.RPhone
+								</a>
+								<span>(Concierge) </span>
+							}
 
-                    </td>
+						</td>
 
 
 
-                    <td>
-                        @obj.Address
-                    </td>
+						<td>
+							@obj.Address
+						</td>
 
-                    @if (Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
-                    {
-                        @if (Model.FirstOrDefault().calltype == 1)
-                        {
-                            <td>
-                                <a asp-action="HousecallFinal" asp-route-id="@obj.Id" class="btn btn-outline-light" type="button">Housecall</a>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>--</td>
-                        }
+						@if (Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
+						{
+							@if (obj.calltype == 1)
+							{
+								<td>
+									<a asp-action="HousecallFinal" asp-route-id="@obj.Id" class="btn btn-outline-light" type="button">Housecall</a>
+								</td>
+							}
+							else
+							{
+								<td>--</td>
+							}
 
 
-                    }
+						}
 
 
 
 
 
-                    <td>
-                        <div class="dropdown ">
-                            <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Actions
-                            </button>
-                            <ul class="dropdown-menu">
+						<td>
+							<div class="dropdown ">
+								<button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Actions
+								</button>
+								<ul class="dropdown-menu">
 
-                                @if (Model.FirstOrDefault().Status == 2 && Model.FirstOrDefault().AcceptedDate == null)
-                                {
-                                    <li><a class="dropdown-item" asp-action="Accept" asp-route-id="@obj.Id"><i class="fa-solid fa-book me-1"></i> Accept</a></li>
-
-                                }
+									@if (Model.FirstOrDefault().Status == 2 && Model.FirstOrDefault().AcceptedDate == null)
+									{
+										<li><a class="dropdown-item" asp-action="Accept" asp-route-id="@obj.Id"><i class="fa-solid fa-book me-1"></i> Accept</a></li>
+
+									}
 
-                                @if (Model.FirstOrDefault().Status == 2 && Model.FirstOrDefault().AcceptedDate != null)
-                                {
-
-                                    <li><a class="dropdown-item" onclick="SendAgreement(@obj.Id ,@obj.RequestTypeId)"><i class="fa-solid fa-handshake me-1"></i>Send Agreement</a></li>
-                                    <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
-                                    <li><a class="dropdown-item" onclick="TransferCase(@obj.Id)"><i class="fa-solid fa-paper-plane me-1"></i>Transfer</a></li>
-                                }
+									@if (Model.FirstOrDefault().Status == 2 && Model.FirstOrDefault().AcceptedDate != null)
+									{
+
+										<li><a class="dropdown-item" onclick="SendAgreement(@obj.Id ,@obj.RequestTypeId)"><i class="fa-solid fa-handshake me-1"></i>Send Agreement</a></li>
+										<li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
+										<li><a class="dropdown-item" onclick="TransferCase(@obj.Id)"><i class="fa-solid fa-paper-plane me-1"></i>Transfer</a></li>
+									}
 
 
-                                @if (Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
-                                {
+									@if (Model.FirstOrDefault().Status == 4 || Model.FirstOrDefault().Status == 5)
+									{
 
-                                    <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
-                                    @if (obj.calltype == null)
-                                    {
-                                        <li><a class="dropdown-item" onclick="Encounter(@obj.Id)"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
-                                    }
-                                    else if (obj.isfinal != null && obj.isfinal[0] == true)
-                                    {
-                                        <li><a class="dropdown-item" onclick="Download(@obj.Id)"><i class="fa-solid fa-file me-1"></i>Download</a></li>
-                                    }
-                                    else
-                                    {
+										<li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
+										@if (obj.calltype == null)
+										{
+											<li><a class="dropdown-item" onclick="Encounter(@obj.Id)"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+										}
+										else if (obj.isfinal != null && obj.isfinal[0] == true)
+										{
+											<li><a class="dropdown-item" onclick="Download(@obj.Id)"><i class="fa-solid fa-file me-1"></i>Download</a></li>
+										}
+										else
+										{
 
-                                        <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
-                                    }
+											<li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+										}
 
-                                    <li><a class="dropdown-item" asp-action="Order" asp-route-id="@obj.Id"><i class="fa-solid fa-box me-1"></i>Orders</a></li>
-                                }
-
-                                @if (Model.FirstOrDefault().Status == 6)
-                                {
-
-                                    <li><a class="dropdown-item" asp-action="ConcludeCareeeee" asp-route-id="@obj.Id"><i class="fa-solid fa-user-doctor me-1"></i>Conclude Care</a></li>
-                                    <li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
-                                    if (obj.isfinal != null && obj.isfinal[0] == true)
-                                    {
-                                        <li><a class="dropdown-item" onclick="Download(@obj.Id)"><i class="fa-solid fa-file me-1"></i>Download</a></li>
-                                    }
-                                    else
-                                    {
+										<li><a class="dropdown-item" asp-action="Order" asp-route-id="@obj.Id"><i class="fa-solid fa-box me-1"></i>Orders</a></li>
+									}
+
+									@if (Model.FirstOrDefault().Status == 6)
+									{
+
+										<li><a class="dropdown-item" asp-action="ConcludeCareeeee" asp-route-id="@obj.Id"><i class="fa-solid fa-user-doctor me-1"></i>Conclude Care</a></li>
+										<li><a class="dropdown-item" asp-action="ViewUpload" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>View Uploads</a></li>
+										if (obj.isfinal != null && obj.isfinal[0] == true)
+										{
+											<li><a class="dropdown-item" onclick="Download(@obj.Id)"><i class="fa-solid fa-file me-1"></i>Download</a></li>
+										}
+										else
+										{
 
-                                        <li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
-                                    }
+											<li><a class="dropdown-item" asp-action="Encounter" asp-route-id="@obj.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a></li>
+										}
 
-
-                                }
+
+									}
 
 
-
-
-
-
-
-
-                                <li><a class="dropdown-item" asp-action="ViewCase" asp-route-id="@obj.Id"><img src="~/SRSScreenShorts/image_2024_03_14T12_14_53_474Z.png" style="height:20px;" class="me-1" />View Case</a></li>
-                                <li><a class="dropdown-item" asp-action="ViewNotes" asp-route-id="@obj.Id"><img src="~/SRSScreenShorts//image_2024_03_14T12_14_53_486Z.png" style="height:20px;" class="me-1" />View Notes</a></li>
-
-                            </ul>
-                        </div>
-
-                    </td>
-                </tr>
-            }
-        </tbody>
-    }
-</table>
-
-
-<div class="mt-2 border rounded d-block d-lg-none">
-    @*   <form role="search" class=" d-flex align-items-center border border-rounded rounded border-info mb-2">
-    <i type="search" class="bi bi-search px-2"></i>
-    <input class="form-control searchfocus border-0 h-auto" type="search" id="my-search-input" placeholder="Search" aria-label="Search">
-    </form>*@
-
-    <div class="accordion container-fluid  p-0" id="accordionPanelsStayOpenExample"></div>
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-        @foreach (var item in Model)
-        {
-
-            TimeSpan t = DateTime.Now - item.RequestDate;
-            int hours = (int)t.TotalHours;
-            string id = 'a' + item.Id.ToString();
-
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-heading"></h2>
-                <div class="accordion-button collapsed d-flex flex-column" style="background-color: #00bae920;text-decoration: none !important;position: relative;" data-bs-toggle="collapse" data-bs-target="#@id" aria-expanded="true" aria-controls="flush-collapse">
-
-                    <div class="w-100 d-flex justify-content-between m-1">
-                        <div class="">@item.Name</div>
-                        <div class="">
-                            @if (item.RequestTypeId == 1)
-                            {
-                                <span>Business</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: #c122a1;" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                    <circle cx="8" cy="8" r="8" />
-                                </svg>
-
-                            }
-                            else if (item.RequestTypeId == 2)
-                            {
-                                <span>Patient</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: #23a727;" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                    <circle cx="8" cy="8" r="8" />
-                                </svg>
-
-                            }
-                            else if (item.RequestTypeId == 3)
-                            {
-                                <span>Family / Friend</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: orange;" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                    <circle cx="8" cy="8" r="8" />
-                                </svg>
-
-                            }
-                            else
-                            {
-                                <span>Concierge</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: #0d1dac;" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                    <circle cx="8" cy="8" r="8" />
-                                </svg>
-
-                            }
-                        </div>
-
-                    </div>
-                    <div class="w-100 d-flex justify-content-between m-1 align-items-center">
-                        <div class="">@item.Address</div>
-                        <div class="">
-                            <button class="btn text-nowrap rounded-pill btn-outline-info z-3" type="button">
-                                <small>Map Location</small>
-                            </button>
-                        </div>
-                    </div>
-
-
-
-
-                    @*<div class="w-100 d-flex justify-content-between m-1">
-                <div class="">
-                <i class="bi bi-clock text-info pe-1"></i>
-                Wait Time : <strong>@item.RequestDate (@hours:@t.Minutes)</strong>
-                </div>
-                </div>*@
-                </div>
-
-                <hr class="m-0 p-0 text-muted" />
-                <div id="@id" class="accordion-collapse collapse" style="background-color: #00bae920;" aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
-                    <div class="d-flex justify-content-end">
-                        <a role="button" asp-action="ViewCase" asp-route-id="@item.Id" class="btn rounded-pill border-secondary text-dark z-3 mx-3" style="background-color:rgba(255, 255, 255, 0.719);position: relative;bottom: 20px;right: 5px; z-index: 1050;" type="button">
-                            View
-                            Case
-                        </a>
-                    </div>
-                    <div class="accordion-body main-flex">
-
-                        <div class="">
-
-                            @if (item.Status == 2 && item.AcceptedDate == null)
-                            {
-                                <div class="inner-flex">
-                                    <i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Date of Birth:
-                                        <span class="accordion-value-inner">
-                                            @item.DateOfBirth
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="inner-flex mt-3">
-                                    <i class="bi bi-envelope rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Email:
-                                        <span class="accordion-value-inner">
-                                            @item.Email
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="inner-flex mt-3">
-                                    <i class="bi bi-telephone rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Patient:
-                                        <span class="accordion-value-inner">
-                                            @item.Phone
-                                        </span>
-                                    </span>
-                                </div>
-
-
-
-                                <div class="mt-3 row justify-content-between">
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="Accept" asp-route-id="@item.Id"><i class="fa-solid fa-book me-1"></i> Accept</a>
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewNotes" asp-route-id="@item.Id" style="background-color: #23a727;">
-                                        View Notes
-                                    </a>
-                                </div>
-
-
-                                <div class="row justify-content-between mt-2">
-
-                                    <button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
-                                        Email
-                                    </button>
-                                </div>
-
-                            }
-                            @if (item.Status == 2 && item.AcceptedDate != null)
-                            {
-                                <div class="inner-flex">
-                                    <i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Date of Birth:
-                                        <span class="accordion-value-inner">
-                                            @item.DateOfBirth
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="inner-flex mt-3">
-                                    <i class="bi bi-envelope rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Email:
-                                        <span class="accordion-value-inner">
-                                            @item.Email
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="inner-flex mt-3">
-                                    <i class="bi bi-telephone rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Patient:
-                                        <span class="accordion-value-inner">
-                                            @item.Phone
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="mt-3 row justify-content-between">
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" onclick="SendAgreement(@item.Id ,@item.RequestTypeId)"><i class="fa-solid fa-handshake me-1"></i>Send Agreement</a>
-                                    <a asp-action="ViewNotes" asp-route-id="@item.Id" class="col p-2 m-1 btn rounded-pill btn-danger b1" type="button" style="background-color: #23a727;">
-                                        View Notes
-                                    </a>
-
-                                </div>
-
-                                <div class="row justify-content-between mt-2">
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewUpload" asp-route-id="@item.Id" style="background-color: #23a727;">
-                                        View Uploads
-                                    </a>
-                                    <button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
-                                        Email
-                                    </button>
-                                </div>
-
-
-                                <div class="d-flex justify-content-end align-items-center mt-2">
-                                    <div class="align-self-center">Chat With :</div>
-
-                                    <button type="button" class="btn btn-outline-info mx-2" data-mdb-ripple-init data-mdb-ripple-color="dark">Patient</button>
-                                    <button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark">Admin</button>
-                                </div>
-
-
-                            }
-                            @if (item.Status == 4 || item.Status == 5)
-                            {
-                                <div class="inner-flex">
-                                    <i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Date of Birth:
-                                        <span class="accordion-value-inner">
-                                            @item.DateOfBirth
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="inner-flex mt-3">
-                                    <i class="bi bi-envelope rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Email:
-                                        <span class="accordion-value-inner">
-                                            @item.Email
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="inner-flex mt-3">
-                                    <i class="bi bi-telephone rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Patient:
-                                        <span class="accordion-value-inner">
-                                            @item.Phone
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="mt-3 row justify-content-between">
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewNotes" asp-route-id="@item.Id" style="background-color: #23a727;">
-                                        View Notes
-                                    </a>
-                                    <button class="col p-2 m-1 btn rounded-pill btn-info text-white b1" type="button" style="background-color: seagreen;">
-                                        Doctor Note
-                                    </button>
-                                </div>
-
-                                <div class="row justify-content-between mt-2">
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewUpload" asp-route-id="@item.Id" style="background-color: #23a727;">
-                                        View Uploads
-                                    </a>
-                                    @if (item.calltype == null)
-                                    {
-                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Encounter(@item.Id)"><i class="fa-solid fa-file me-1"></i>Encounter</a>
-                                    }
-                                    else if (item.isfinal != null && item.isfinal[0] == true)
-                                    {
-                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Download(@item.Id)"><i class="fa-solid fa-file me-1"></i>Download</a>
-                                    }
-                                    else
-                                    {
-
-                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Encounter" asp-route-id="@item.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a>
-                                    }
-                                </div>
-                                <div class="row justify-content-between mt-2">
-                                    <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Order" asp-route-id="@item.Id" style="background-color: #FFD700;">
-                                        Orders
-                                    </a>
-
-                                    @if (item.calltype == 1)
-                                    {
-
-                                        <a asp-action="HousecallFinal" asp-route-id="@item.Id" class="btn btn-outline-light col p-2 m-1 btn rounded-pill btn-info text-white b1" type="button">Housecall</a>
-                                      
-                                    }
-                                 
-
-
-
-                                </div>
-                                <div class="row justify-content-between mt-2">
-
-                                    <button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
-                                        Email
-                                    </button>
-                                </div>
-                                <div class="d-flex justify-content-end align-items-center mt-2">
-                                    <div class="align-self-center">Chat With :</div>
-
-                                    <button type="button" class="btn btn-outline-info mx-2" data-mdb-ripple-init data-mdb-ripple-color="dark">Patient</button>
-                                    <button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark">Provider</button>
-                                </div>
-
-
-                            }
-                            @if (item.Status == 6)
-                            {
-                                <div class="inner-flex">
-                                    <i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Date of Birth:
-                                        <span class="accordion-value-inner">
-                                            @item.DateOfBirth
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="inner-flex mt-3">
-                                    <i class="bi bi-envelope rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Email:
-                                        <span class="accordion-value-inner">
-                                            @item.Email
-                                        </span>
-                                    </span>
-                                </div>
-                                <div class="inner-flex mt-3">
-                                    <i class="bi bi-telephone rborder p-2" style="font-size: 13px;"></i>
-                                    <span class="accordion-heading-inner ms-2">
-                                        Patient:
-                                        <span class="accordion-value-inner">
-                                            @item.Phone
-                                        </span>
-                                    </span>
-                                </div>
-
-                                <div class="mt-3 row justify-content-between">
-
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ConcludeCareeeee" asp-route-id="@item.Id"><i class="fa-solid fa-user-doctor me-1"></i>Conclude Care</a>
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewNotes" asp-route-id="@item.Id" style="background-color: #23a727;">
-                                        View Notes
-                                    </a>
-                                </div>
-
-                                <div class="row justify-content-between mt-2">
-                                    <button class="col p-2 m-1 btn rounded-pill btn-info text-white b1" type="button" style="background-color: seagreen;">
-                                        Doctor Note
-                                    </button>
-                                    <a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewUpload" asp-route-id="@item.Id" style="background-color: #23a727;">
-                                        View Uploads
-                                    </a>
-                                </div>
-                                <div class="row justify-content-between mt-2">
-                                    @if (item.calltype == null)
-                                    {
-                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Encounter(@item.Id)"><i class="fa-solid fa-file me-1"></i>Encounter</a>
-                                    }
-                                    else if (item.isfinal != null && item.isfinal[0] == true)
-                                    {
-                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Download(@item.Id)"><i class="fa-solid fa-file me-1"></i>Download</a>
-                                    }
-                                    else
-                                    {
-
-                                        <a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Encounter" asp-route-id="@item.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a>
-                                    }
-                                    <button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
-                                        Email
-                                    </button>
-                                </div>
-                      
-                                <div class="d-flex justify-content-end align-items-center mt-2">
-                                    <div class="align-self-center">Chat With :</div>
-
-                                    <button type="button" class="btn btn-outline-info mx-2" data-mdb-ripple-init data-mdb-ripple-color="dark">Patient</button>
-                                    <button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark">Provider</button>
-                                </div>
-
-
-                            }
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-</div>
-
-    <nav aria-label="..." style="display:flex; justify-content:center; margin-top:10px;">
-
-        <input type="hidden" id="page" />
-        <ul class="pagination" onchange="filter()">
-            <li class="page-item">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="xyz(@(page-1))">Previous</a>
-            </li>
-
-            @if (page - 1 > 0)
-            {
-                <li class="page-item"><a class="page-link " href="#" onclick="xyz(@(page-1))">@(page - 1)</a></li>
-            }
-
-            <li class="page-item"><a class="page-link active" href="#" onclick="xyz(@(page))">@(page)</a></li>
-
-            @if (page * 2 < c)
-            {
-                <li class="page-item" aria-current="page">
-                    <a class="page-link" href="#" onclick="xyz(@(page+1))">@(page + 1)</a>
-                </li>
-            }
-
-            @if (page * 2 < c)
-            {
-                <li class="page-item">
-                    <a class="page-link" href="#" onclick="xyz(@(page+1))">Next</a>
-                </li>
-            }
-            else
-            {
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            }
-        </ul>
-    </nav>
+
+
+
+
+
+
+									<li><a class="dropdown-item" asp-action="ViewCase" asp-route-id="@obj.Id"><img src="~/SRSScreenShorts/image_2024_03_14T12_14_53_474Z.png" style="height:20px;" class="me-1" />View Case</a></li>
+									<li><a class="dropdown-item" asp-action="ViewNotes" asp-route-id="@obj.Id"><img src="~/SRSScreenShorts//image_2024_03_14T12_14_53_486Z.png" style="height:20px;" class="me-1" />View Notes</a></li>
+
+								</ul>
+							</div>
+
+						</td>
+					</tr>
+				}
+			</tbody>
+		}
+	</table>
+
+
+	<div class="mt-2 border rounded d-block d-lg-none">
+		@*   <form role="search" class=" d-flex align-items-center border border-rounded rounded border-info mb-2">
+	<i type="search" class="bi bi-search px-2"></i>
+	<input class="form-control searchfocus border-0 h-auto" type="search" id="my-search-input" placeholder="Search" aria-label="Search">
+	</form>*@
+
+		<div class="accordion container-fluid  p-0" id="accordionPanelsStayOpenExample"></div>
+		<div class="accordion accordion-flush" id="accordionFlushExample">
+			@foreach (var item in Model)
+			{
+
+				TimeSpan t = DateTime.Now - item.RequestDate;
+				int hours = (int)t.TotalHours;
+				string id = 'a' + item.Id.ToString();
+
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="flush-heading"></h2>
+					<div class="accordion-button collapsed d-flex flex-column" style="background-color: #00bae920;text-decoration: none !important;position: relative;" data-bs-toggle="collapse" data-bs-target="#@id" aria-expanded="true" aria-controls="flush-collapse">
+
+						<div class="w-100 d-flex justify-content-between m-1">
+							<div class="">@item.Name</div>
+							<div class="">
+								@if (item.RequestTypeId == 1)
+								{
+									<span>Business</span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: #c122a1;" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+										<circle cx="8" cy="8" r="8" />
+									</svg>
+
+								}
+								else if (item.RequestTypeId == 2)
+								{
+									<span>Patient</span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: #23a727;" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+										<circle cx="8" cy="8" r="8" />
+									</svg>
+
+								}
+								else if (item.RequestTypeId == 3)
+								{
+									<span>Family / Friend</span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: orange;" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+										<circle cx="8" cy="8" r="8" />
+									</svg>
+
+								}
+								else
+								{
+									<span>Concierge</span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: #0d1dac;" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+										<circle cx="8" cy="8" r="8" />
+									</svg>
+
+								}
+							</div>
+
+						</div>
+						<div class="w-100 d-flex justify-content-between m-1 align-items-center">
+							<div class="">@item.Address</div>
+							<div class="">
+								<button class="btn text-nowrap rounded-pill btn-outline-info z-3" type="button">
+									<small>Map Location</small>
+								</button>
+							</div>
+						</div>
+
+
+
+
+						@*<div class="w-100 d-flex justify-content-between m-1">
+				<div class="">
+				<i class="bi bi-clock text-info pe-1"></i>
+				Wait Time : <strong>@item.RequestDate (@hours:@t.Minutes)</strong>
+				</div>
+				</div>*@
+					</div>
+
+					<hr class="m-0 p-0 text-muted" />
+					<div id="@id" class="accordion-collapse collapse" style="background-color: #00bae920;" aria-labelledby="flush-heading" data-bs-parent="#accordionFlushExample">
+						<div class="d-flex justify-content-end">
+							<a role="button" asp-action="ViewCase" asp-route-id="@item.Id" class="btn rounded-pill border-secondary text-dark z-3 mx-3" style="background-color:rgba(255, 255, 255, 0.719);position: relative;bottom: 20px;right: 5px; z-index: 1050;" type="button">
+								View
+								Case
+							</a>
+						</div>
+						<div class="accordion-body main-flex">
+
+							<div class="">
+
+								@if (item.Status == 2 && item.AcceptedDate == null)
+								{
+									<div class="inner-flex">
+										<i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Date of Birth:
+											<span class="accordion-value-inner">
+												@item.DateOfBirth
+											</span>
+										</span>
+									</div>
+									<div class="inner-flex mt-3">
+										<i class="bi bi-envelope rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Email:
+											<span class="accordion-value-inner">
+												@item.Email
+											</span>
+										</span>
+									</div>
+									<div class="inner-flex mt-3">
+										<i class="bi bi-telephone rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Patient:
+											<span class="accordion-value-inner">
+												@item.Phone
+											</span>
+										</span>
+									</div>
+
+
+
+									<div class="mt-3 row justify-content-between">
+										<a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="Accept" asp-route-id="@item.Id"><i class="fa-solid fa-book me-1"></i> Accept</a>
+										<a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewNotes" asp-route-id="@item.Id" style="background-color: #23a727;">
+											View Notes
+										</a>
+									</div>
+
+
+									<div class="row justify-content-between mt-2">
+
+										<button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
+											Email
+										</button>
+									</div>
+
+								}
+								@if (item.Status == 2 && item.AcceptedDate != null)
+								{
+									<div class="inner-flex">
+										<i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Date of Birth:
+											<span class="accordion-value-inner">
+												@item.DateOfBirth
+											</span>
+										</span>
+									</div>
+									<div class="inner-flex mt-3">
+										<i class="bi bi-envelope rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Email:
+											<span class="accordion-value-inner">
+												@item.Email
+											</span>
+										</span>
+									</div>
+									<div class="inner-flex mt-3">
+										<i class="bi bi-telephone rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Patient:
+											<span class="accordion-value-inner">
+												@item.Phone
+											</span>
+										</span>
+									</div>
+									<div class="mt-3 row justify-content-between">
+										<a class="col p-2 m-1 btn rounded-pill btn-danger b1" onclick="SendAgreement(@item.Id ,@item.RequestTypeId)"><i class="fa-solid fa-handshake me-1"></i>Send Agreement</a>
+										<a asp-action="ViewNotes" asp-route-id="@item.Id" class="col p-2 m-1 btn rounded-pill btn-danger b1" type="button" style="background-color: #23a727;">
+											View Notes
+										</a>
+
+									</div>
+
+									<div class="row justify-content-between mt-2">
+										<a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewUpload" asp-route-id="@item.Id" style="background-color: #23a727;">
+											View Uploads
+										</a>
+										<button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
+											Email
+										</button>
+									</div>
+
+
+									<div class="d-flex justify-content-end align-items-center mt-2">
+										<div class="align-self-center">Chat With :</div>
+
+										<button type="button" class="btn btn-outline-info mx-2" data-mdb-ripple-init data-mdb-ripple-color="dark">Patient</button>
+										<button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark">Admin</button>
+									</div>
+
+
+								}
+								@if (item.Status == 4 || item.Status == 5)
+								{
+									<div class="inner-flex">
+										<i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Date of Birth:
+											<span class="accordion-value-inner">
+												@item.DateOfBirth
+											</span>
+										</span>
+									</div>
+									<div class="inner-flex mt-3">
+										<i class="bi bi-envelope rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Email:
+											<span class="accordion-value-inner">
+												@item.Email
+											</span>
+										</span>
+									</div>
+									<div class="inner-flex mt-3">
+										<i class="bi bi-telephone rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Patient:
+											<span class="accordion-value-inner">
+												@item.Phone
+											</span>
+										</span>
+									</div>
+									<div class="mt-3 row justify-content-between">
+										<a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewNotes" asp-route-id="@item.Id" style="background-color: #23a727;">
+											View Notes
+										</a>
+										<button class="col p-2 m-1 btn rounded-pill btn-info text-white b1" type="button" style="background-color: seagreen;">
+											Doctor Note
+										</button>
+									</div>
+
+									<div class="row justify-content-between mt-2">
+										<a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewUpload" asp-route-id="@item.Id" style="background-color: #23a727;">
+											View Uploads
+										</a>
+										@if (item.calltype == null)
+										{
+											<a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Encounter(@item.Id)"><i class="fa-solid fa-file me-1"></i>Encounter</a>
+										}
+										else if (item.isfinal != null && item.isfinal[0] == true)
+										{
+											<a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Download(@item.Id)"><i class="fa-solid fa-file me-1"></i>Download</a>
+										}
+										else
+										{
+
+											<a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Encounter" asp-route-id="@item.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a>
+										}
+									</div>
+									<div class="row justify-content-between mt-2">
+										<a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Order" asp-route-id="@item.Id" style="background-color: #FFD700;">
+											Orders
+										</a>
+
+										@if (item.calltype == 1)
+										{
+
+											<a asp-action="HousecallFinal" asp-route-id="@item.Id" class="btn btn-outline-light col p-2 m-1 btn rounded-pill btn-info text-white b1" type="button">Housecall</a>
+
+										}
+
+
+
+
+									</div>
+									<div class="row justify-content-between mt-2">
+
+										<button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
+											Email
+										</button>
+									</div>
+									<div class="d-flex justify-content-end align-items-center mt-2">
+										<div class="align-self-center">Chat With :</div>
+
+										<button type="button" class="btn btn-outline-info mx-2" data-mdb-ripple-init data-mdb-ripple-color="dark">Patient</button>
+										<button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark">Provider</button>
+									</div>
+
+
+								}
+								@if (item.Status == 6)
+								{
+									<div class="inner-flex">
+										<i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Date of Birth:
+											<span class="accordion-value-inner">
+												@item.DateOfBirth
+											</span>
+										</span>
+									</div>
+									<div class="inner-flex mt-3">
+										<i class="bi bi-envelope rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Email:
+											<span class="accordion-value-inner">
+												@item.Email
+											</span>
+										</span>
+									</div>
+									<div class="inner-flex mt-3">
+										<i class="bi bi-telephone rborder p-2" style="font-size: 13px;"></i>
+										<span class="accordion-heading-inner ms-2">
+											Patient:
+											<span class="accordion-value-inner">
+												@item.Phone
+											</span>
+										</span>
+									</div>
+
+									<div class="mt-3 row justify-content-between">
+
+										<a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ConcludeCareeeee" asp-route-id="@item.Id"><i class="fa-solid fa-user-doctor me-1"></i>Conclude Care</a>
+										<a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewNotes" asp-route-id="@item.Id" style="background-color: #23a727;">
+											View Notes
+										</a>
+									</div>
+
+									<div class="row justify-content-between mt-2">
+										<button class="col p-2 m-1 btn rounded-pill btn-info text-white b1" type="button" style="background-color: seagreen;">
+											Doctor Note
+										</button>
+										<a class="col p-2 m-1 btn rounded-pill btn-danger b1" asp-action="ViewUpload" asp-route-id="@item.Id" style="background-color: #23a727;">
+											View Uploads
+										</a>
+									</div>
+									<div class="row justify-content-between mt-2">
+										@if (item.calltype == null)
+										{
+											<a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Encounter(@item.Id)"><i class="fa-solid fa-file me-1"></i>Encounter</a>
+										}
+										else if (item.isfinal != null && item.isfinal[0] == true)
+										{
+											<a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" onclick="Download(@item.Id)"><i class="fa-solid fa-file me-1"></i>Download</a>
+										}
+										else
+										{
+
+											<a class="col p-2 m-1 btn rounded-pill btn-info text-white b1" asp-action="Encounter" asp-route-id="@item.Id"><i class="fa-solid fa-file me-1"></i>Encounter</a>
+										}
+										<button class="col-6 p-2 m-1 btn rounded-pill btn-success b1" type="button" style="background-color: #23a727;">
+											Email
+										</button>
+									</div>
+
+									<div class="d-flex justify-content-end align-items-center mt-2">
+										<div class="align-self-center">Chat With :</div>
+
+										<button type="button" class="btn btn-outline-info mx-2" data-mdb-ripple-init data-mdb-ripple-color="dark">Patient</button>
+										<button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark">Provider</button>
+									</div>
+
+
+								}
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+	</div>
+
+	<nav aria-label="..." style="display:flex; justify-content:center; margin-top:10px;">
+
+		<input type="hidden" id="page" />
+		<ul class="pagination" onchange="filter()">
+			<li class="page-item">
+				<a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="xyz(@(page-1))">Previous</a>
+			</li>
+
+			@if (page - 1 > 0)
+			{
+				<li class="page-item"><a class="page-link " href="#" onclick="xyz(@(page-1))">@(page - 1)</a></li>
+			}
+
+			<li class="page-item"><a class="page-link active" href="#" onclick="xyz(@(page))">@(page)</a></li>
+
+			@if (page * 2 < c)
+			{
+				<li class="page-item" aria-current="page">
+					<a class="page-link" href="#" onclick="xyz(@(page+1))">@(page + 1)</a>
+				</li>
+			}
+
+			@if (page * 2 < c)
+			{
+				<li class="page-item">
+					<a class="page-link" href="#" onclick="xyz(@(page+1))">Next</a>
+				</li>
+			}
+			else
+			{
+				<li class="page-item">
+					<a class="page-link" href="#">Next</a>
+				</li>
+			}
+		</ul>
+	</nav>
 }
+<style>
+	.page-link {
+		color: black;
+	}
+
+	html[data-bs-theme="dark"] .page-link {
+		color: white !important;
+	}
+</style>

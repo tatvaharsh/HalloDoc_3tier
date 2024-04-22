@@ -1,31 +1,12 @@
-﻿using hallocdoc_mvc_Service.Implementation;
+﻿using ClosedXML.Excel;
+using hallocdoc_mvc_Service.Implementation;
 using hallocdoc_mvc_Service.Interface;
-using hallodoc_mvc_Repository.DataContext;
+using HalloDoc.Auth;
 using hallodoc_mvc_Repository.DataModels;
 using hallodoc_mvc_Repository.ViewModel;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.IO.Compression;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using HalloDoc.Auth;
-using NuGet.Protocol;
-using NuGet.Common;
-using ClosedXML.Excel;
 using System.IdentityModel.Tokens.Jwt;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-using NuGet.Protocol.Core.Types;
-using System.Reflection;
-using DocumentFormat.OpenXml.VariantTypes;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using DocumentFormat.OpenXml.Spreadsheet;
-using static Org.BouncyCastle.Crypto.Fips.FipsKdf;
-using DocumentFormat.OpenXml.Wordprocessing;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using iText.StyledXmlParser.Node;
-using DocumentFormat.OpenXml.EMMA;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.IO.Compression;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -89,7 +70,7 @@ namespace hallodoc_mvc.Controllers
                     ViewBag.Layout = "_LayAdmin";
                     return View("Admin_Dashboard", data);
                 }
-         
+
             }
             return RedirectToAction("Admin_Login");
         }
@@ -422,15 +403,15 @@ namespace hallodoc_mvc.Controllers
 
                 case 12:
                     return RedirectToAction(nameof(Emaillog), new { isPartial = isPartial });
-             
+
                 case 13:
                     return RedirectToAction(nameof(smslog), new { isPartial = isPartial });
-           
+
                 case 14:
                     return RedirectToAction(nameof(Searchrecord), new { isPartial = isPartial });
-              
+
                 case 15:
-                    return RedirectToAction(nameof(BlockHistory), new { isPartial = isPartial });   
+                    return RedirectToAction(nameof(BlockHistory), new { isPartial = isPartial });
             }
             return View();
         }
@@ -511,9 +492,9 @@ namespace hallodoc_mvc.Controllers
         }
 
 
-        public IActionResult AssignCase(ModalData md)
+        public IActionResult AssignCase()
         {
-            ModalData data = _service.GetAssignData(md);
+            ModalData data = _service.GetAssignData(new hallodoc_mvc_Repository.ViewModel.ModalData());
             return PartialView("AssignCase", data);
         }
 
@@ -522,12 +503,13 @@ namespace hallodoc_mvc.Controllers
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
             _service.AssignCase(md, Id, admin);
+            TempData["success"] = "Case Assigned Successfully!!!";
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
 
-        public IActionResult Cancel(ModalData md, int Id)
+        public IActionResult Cancel(int Id)
         {
-            var cancelcase = _service.GetCancelCaseData(md, Id);
+            var cancelcase = _service.GetCancelCaseData(new hallodoc_mvc_Repository.ViewModel.ModalData(), Id);
 
             ModalData modalData = new ModalData();
             {
@@ -545,7 +527,7 @@ namespace hallodoc_mvc.Controllers
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
             _service.CanclePost(md, Id, admin);
-
+            TempData["success"] = "Case Cancelled Successfully!!!";
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
 
@@ -594,7 +576,7 @@ namespace hallodoc_mvc.Controllers
         {
 
             System.Diagnostics.Debug.WriteLine(filenames);
-            string repositoryPath = @"D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallodoc mvc\wwwroot\uplodedfiles";
+            string repositoryPath = Directory.GetCurrentDirectory()+"\\wwwroot\\uplodedfiles";
             using (MemoryStream zipStream = new MemoryStream())
             {
                 using (ZipArchive zipArchive = new ZipArchive(zipStream, ZipArchiveMode.Create, true))
@@ -645,9 +627,9 @@ namespace hallodoc_mvc.Controllers
             _service.SendEmail(id, admin);
             return RedirectToAction(nameof(ViewUpload), "Admin", new { id = id });
         }
-        public IActionResult Order(Order md)
+        public IActionResult Order()
         {
-            Order data = _service.GetOrderData(md);
+            Order data = _service.GetOrderData(new hallodoc_mvc_Repository.ViewModel.Order());
             return PartialView("Order", data);
 
 
@@ -672,11 +654,12 @@ namespace hallodoc_mvc.Controllers
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
             _service.OrderPost(md, Id, admin);
+            TempData["success"] = "Order Placed Successfully!!!";
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
-        public IActionResult Transfer(ModalData md)
+        public IActionResult Transfer()
         {
-            ModalData data = _service.GetAssignData(md);
+            ModalData data = _service.GetAssignData(new hallodoc_mvc_Repository.ViewModel.ModalData());
             return PartialView("Transfer", data);
         }
 
@@ -685,6 +668,7 @@ namespace hallodoc_mvc.Controllers
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
             _service.AssignCase(md, Id, admin);
+            TempData["success"] = "Case Transffered Successfully!!!";
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
         public IActionResult Clear()
@@ -759,12 +743,12 @@ namespace hallodoc_mvc.Controllers
         public IActionResult Agree(int id)
         {
             _service.agreeagreement(id);
-            return View();
+            return RedirectToAction("patient_login","Home");
         }
         public IActionResult GetCancel(int id, ModalData md)
         {
             _service.cancelagreement(id, md);
-            return RedirectToAction(nameof(Agreement));
+            return RedirectToAction("patient_login", "Home");
         }
         public IActionResult Encounter(int id, Encounter model)
         {
@@ -800,9 +784,17 @@ namespace hallodoc_mvc.Controllers
             _service.sendlink(model, admin1);
             return RedirectToAction("Admin_Dashboard");
         }
+    
         public IActionResult RequestSupport()
         {
             return PartialView();
+        }
+
+        [HttpPost]
+        public IActionResult RequestSupport(ModalData model)
+        {
+            _service.SendEmailToOffDutyProvider(model);
+            return RedirectToAction("Admin_Dashboard");
         }
         public IActionResult DownloadAll()
         {
@@ -1086,6 +1078,11 @@ namespace hallodoc_mvc.Controllers
         public IActionResult AssignRole(string RoleName, string[] selectedRoles, int check)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            if(RoleName==null || selectedRoles==null || selectedRoles.Length == 0)
+            {
+                TempData["error"] = "Enter Valid Details";
+                return RedirectToAction(nameof(CreateRole));
+            }
             _service.AssignRole(RoleName, selectedRoles, check, admin1);
             TempData["success"] = "Role Created successfully!!!";
             return RedirectToAction("TabChange", new { nav = 8 });
@@ -1099,12 +1096,14 @@ namespace hallodoc_mvc.Controllers
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
             _service.UpdateRole(model);
-            return PartialView("AccountAccess", _service.getAccess());
+            TempData["success"] = "Role Updated successfully!!!";
+            return RedirectToAction("TabChange", new { nav = 8 });
         }
         public IActionResult DeleteRole(int id)
         {
             _service.DeleteRoles(id);
-            return View("AccountAccess", _service.getAccess());
+            TempData["success"] = "Role Deleted successfully!!!";
+            return RedirectToAction("TabChange", new { nav = 8 });
         }
 
         [HttpPost]
@@ -1160,7 +1159,8 @@ namespace hallodoc_mvc.Controllers
             var reg = _service.getreg();
             var roles = _service.GetRoleOfAdmin();
             model.reg = reg; model.roles = roles;
-            return View(model);
+            TempData["error"] = "Something Went Wrong!!!";
+            return RedirectToAction("TabChange", new { nav = 8 });
         }
 
 
@@ -1188,6 +1188,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult AddBusiness(PartnersCM model)
         {
             _service.AddBusiness(model);
+            TempData["success"] = "Partner Added Successfully!!!";
             return RedirectToAction("Admin_Dashboard");
         }
 
@@ -1328,11 +1329,11 @@ namespace hallodoc_mvc.Controllers
             TempData["success"] = "Shift Updated Successfully!!!";
             return RedirectToAction(nameof(TabChange), new { nav = 5, isPartial = false });
         }
-        public IActionResult PatientHistoryTable(string? fname, string? lname, string? email, string? phone,int page)
+        public IActionResult PatientHistoryTable(string? fname, string? lname, string? email, string? phone, int page)
         {
             if (page == 0) { page = 1; }
             ViewBag.page = page;
-            List<PatientHistoryTable> model = _service.PatientHistoryTable(fname, lname, email, phone,page);
+            List<PatientHistoryTable> model = _service.PatientHistoryTable(fname, lname, email, phone, page);
             return PartialView("PatientHistoryTable", model);
         }
         public IActionResult PatientRecord(int id)
@@ -1350,12 +1351,12 @@ namespace hallodoc_mvc.Controllers
 
 
         [HttpPost]
-        public IActionResult _SearchRecordsTable(AdminRecord model, int status, string mobile, string email, string pname, DateTime tdate, DateTime fdate, int reqtype, string searchstr,int page)
+        public IActionResult _SearchRecordsTable(AdminRecord model, int status, string mobile, string email, string pname, DateTime tdate, DateTime fdate, int reqtype, string searchstr, int page)
         {
             if (page == 0) { page = 1; }
             ViewBag.page = page;
             model = _service.getSearchRecordData(model);
-            
+
 
             if (!string.IsNullOrWhiteSpace(searchstr))
             {
@@ -1414,7 +1415,7 @@ namespace hallodoc_mvc.Controllers
             int size = 10;
             model.Data = model.Data.Skip(page * size - size).Take(size).ToList();
 
-            
+
             return PartialView(model);
         }
 
@@ -1426,7 +1427,7 @@ namespace hallodoc_mvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult _BlockHistoryTable(string searchstr, DateTime date, string email, string mobile,int page)
+        public IActionResult _BlockHistoryTable(string searchstr, DateTime date, string email, string mobile, int page)
         {
             if (page == 0) { page = 1; }
             ViewBag.page = page;
@@ -1463,11 +1464,11 @@ namespace hallodoc_mvc.Controllers
             return RedirectToAction(nameof(TabChange), new { nav = 15, isPartial = false });
         }
 
-        public IActionResult EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate,int page)
+        public IActionResult EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate, int page)
         {
             if (page == 0) { page = 1; }
             ViewBag.page = page;
-            return PartialView("_EmailLogsTable", _service.EmailLogs(role, name, email, createdate, sentdate,page));
+            return PartialView("_EmailLogsTable", _service.EmailLogs(role, name, email, createdate, sentdate, page));
         }
 
 
@@ -1475,7 +1476,7 @@ namespace hallodoc_mvc.Controllers
         {
             if (page == 0) { page = 1; }
             ViewBag.page = page;
-            return PartialView("_SmsLogsTable", _service.SmsLog(role, name, mobile, createdate, sentdate,page));
+            return PartialView("_SmsLogsTable", _service.SmsLog(role, name, mobile, createdate, sentdate, page));
         }
 
         public IActionResult ExportRecords(string providername, string patientname, int status, int reqtype, string email, string phone, DateTime fromdate, DateTime todate)

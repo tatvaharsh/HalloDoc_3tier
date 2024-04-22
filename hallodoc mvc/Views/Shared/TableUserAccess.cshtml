@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<hallodoc_mvc_Repository.ViewModel.UserAccess>
 <table class="table d-none d-md-table">
     <thead>
-        <tr class="bg-light text-muted h-100">
+        <tr class=" text-muted h-100">
             <th scope="col">Account type</th>
             <th scope="col">Account POC</th>
             <th scope="col">Phone</th>
             <th scope="col">Status</th>
-            <th scope="col">Open Requests</th>
+          
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -44,9 +44,17 @@
                  
                    
                 </td>
-                <td>'numberofrequest' </td>
+              
                 <td>
-                    <a><button type="button" class="btn btn-outline-info">Edit</button></a>
+                    @if (item.accountType == "Physician")
+                    {
+                        <a asp-action="EditPhysicianAccount" asp-route-id="@item.phyid" class="btn btn-outline-info">Edit</a>
+
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-outline-info">Edit</button>
+                    }
                 </td>
             </tr>
         }
@@ -118,12 +126,7 @@
                     </div>
 
 
-                    <div class="mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-envelope text-info" viewBox="0 0 20 20">
-                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-                        </svg>
-                        <span> Open Request: 0</span>
-                    </div>
+                    
 
                     <div class="text-end">
                         <a type="button" class="btn btn-outline-info">Edit</a>

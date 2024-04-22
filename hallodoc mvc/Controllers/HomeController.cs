@@ -74,7 +74,7 @@ namespace hallodoc_mvc.Controllers
         [HttpPost]
         public IActionResult forgot_password(Create model)
         {
-            _service.Forgot(model);
+           
             if (ModelState.IsValid)
             {
                 _service.Forgotmail(model);
@@ -102,7 +102,9 @@ namespace hallodoc_mvc.Controllers
         {
             var cookie = Request.Cookies["create"];
             var email = new JwtSecurityTokenHandler().ReadJwtToken(cookie).Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            var Email = _service.getUser(email);
+            var Email = _service.getAspUser(email);
+
+
             if (Email == null)
             {
                 ModelState.AddModelError(nameof(model.PasswordHash), "Please enter your valid email!");
@@ -117,12 +119,12 @@ namespace hallodoc_mvc.Controllers
 
             if (model.PasswordHash != model.CPasswordHash)
             {
-                ModelState.AddModelError(nameof(model.PasswordHash), "Please enter same values!");
+                ModelState.AddModelError(nameof(model.PasswordHash), "Please check your credentials");
                 return View();
             }
 
             _service.Resetpass(model,email);
-            return View();
+            return RedirectToAction("patient_login");
         }
 
 

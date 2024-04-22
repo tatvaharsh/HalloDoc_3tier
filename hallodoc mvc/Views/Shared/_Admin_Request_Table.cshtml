@@ -88,7 +88,7 @@ else
                    @Model.FirstOrDefault().Status == 7 || @Model.FirstOrDefault().Status == 8 || @Model.FirstOrDefault().Status == 9)
                     {
                         <th scope="col">Physician Name</th>
-                        <th scope="col">Date Of Service</th>
+                    
                     }
 
                     @if (@Model.FirstOrDefault().Status == 1)
@@ -184,15 +184,6 @@ else
 
                         }
 
-
-                        @if (@Model.FirstOrDefault().Status == 2 || @Model.FirstOrDefault().Status == 3 || @Model.FirstOrDefault().Status == 4 || @Model.FirstOrDefault().Status == 5 ||
-                       @Model.FirstOrDefault().Status == 6 ||
-                       @Model.FirstOrDefault().Status == 7 || @Model.FirstOrDefault().Status == 8 || @Model.FirstOrDefault().Status == 9)
-                        {
-                            <td>
-                                DOS
-                            </td>
-                        }
 
                         @if (@Model.FirstOrDefault().Status == 1)
                         {

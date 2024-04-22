@@ -38,8 +38,9 @@
 
         <nav class="shadow-bottom ">
 
-
+            <a asp-action="submit_screen" asp-controller="Home">
             <img src="/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" class="logo" alt="">
+            </a>
             <button onclick="toggle()" class="b1">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi moon bi-moon" viewBox="0 0 16 16">
@@ -129,7 +130,7 @@
                         <label for="floatingInput" class="mx-2">State</label>
                     </div>
                     <div class="form-floating col-sm-6 mt-3 ">
-                        <input type="number" class="form-control floatingInput" placeholder="zipcode" asp-for="ZipCode">
+                        <input type="text" class="form-control floatingInput" placeholder="zipcode" asp-for="ZipCode">
                         <label for="floatingInput" class="mx-2">Zip Code</label>
                     </div>
                 </div>

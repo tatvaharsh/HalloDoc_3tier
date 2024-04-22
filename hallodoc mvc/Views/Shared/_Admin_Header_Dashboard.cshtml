@@ -1,338 +1,348 @@
 ﻿
 
 <nav class="navbar header adminnav  shadow  top-0 z-3" id="adminnav">
-    <div class="container-fluid ">
-        <div class="d-flex justify-content-center ">
-            <button class="btn d-inline-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a asp-controller="Admin" asp-action="Admin_Dashboard" class="navbar-brand">
-                <img src="~/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" class="logo img-fluid mx-2" alt=""
-                     style="height: 70px;">
-            </a>
-        </div>
-        <div class="d-flex ">
-            <div class="mx-2 d-flex align-items-center d-none d-sm-inline-block">
-                <p class="text-secondary fs-6">
-                    Welcome <span class="text-testing fw-bolder text-dark fs-5 ">
-                        @ViewBag.Username
-                    </span>
-                </p>
-            </div>
-            <div class="mx-2">
-                <a type="button" asp-controller="Login" asp-action="Logout"
-                   class="btn btn-outline-dark text-info shadow border-info py-2 ">
-                    <span class="d-none d-sm-inline-block ">Logout</span>
-                    <span class="d-inline-block d-sm-none">
-                        <i class="bi bi-box-arrow-right text-info"></i>
-                    </span>
-                </a>
-            </div>
-            <div class="me-2">
-                <button type="button" class="btn btn-outline-dark shadow border-info py-2" id="btnSwitch" onclick="toggle()">
-                    <i id="moon" class="bi bi-moon text-info"></i>
+	<div class="container-fluid ">
+		<div class="d-flex justify-content-center ">
+			<button class="btn d-inline-block d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<a asp-controller="Admin" asp-action="Admin_Dashboard" class="navbar-brand">
+				<img src="~/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" class="logo img-fluid mx-2" alt=""
+					 style="height: 70px;">
+			</a>
+		</div>
+		<div class="d-flex ">
+			<div class="mx-2 d-flex align-items-center d-none d-sm-inline-block">
+				<p class="text-secondary fs-6">
+					Welcome <span class="text-testing fw-bolder text-dark fs-5 ">
+						@ViewBag.Username
+					</span>
+				</p>
+			</div>
+			<div class="mx-2">
+				<a type="button" asp-controller="Login" asp-action="Logout"
+				   class="btn btn-outline-dark text-info shadow border-info py-2 ">
+					<span class="d-none d-sm-inline-block ">Logout</span>
+					<span class="d-inline-block d-sm-none">
+						<i class="bi bi-box-arrow-right text-info"></i>
+					</span>
+				</a>
+			</div>
+			<div class="me-2">
+				<button type="button" class="btn btn-outline-dark shadow border-info py-2" id="btnSwitch" onclick="toggle()">
+					<i id="moon" class="bi bi-moon text-info"></i>
 
-                </button>
-            </div>
-        </div>
-    </div>
+				</button>
+			</div>
+		</div>
+	</div>
 
-    <hr class="w-100 m-0 p-0 d-none d-lg-block">
-    <div class="collapse w-100 mx-lg-1 lg-show d-lg-block " id="navbarToggleExternalContent">
-        <div class="px-3">
-            <ul class="nav nav-underline" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link text-muted px-3" id="home-tab" data-bs-toggle="tab" onclick="tabchanged(1)"
-                            data-bs-target="" type="button" role="tab" aria-controls="home-tab-pane"
-                            aria-selected="false">
-                        Dashboard
-                    </button>
-                </li>
+	<hr class="w-100 m-0 p-0 d-none d-lg-block">
+	<div class="collapse w-100 mx-lg-1 lg-show d-lg-block " id="navbarToggleExternalContent">
+		<div class="px-3">
+			<ul class="nav nav-underline" id="myTab" role="tablist">
+				<li class="nav-item" role="presentation">
+					<button class="nav-link text-muted px-3" id="home-tab" data-bs-toggle="tab" onclick="tabchanged(1)"
+							data-bs-target="" type="button" role="tab" aria-controls="home-tab-pane"
+							aria-selected="false">
+						Dashboard
+					</button>
+				</li>
 
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link text-muted px-3" id="provider-location-tab" data-bs-toggle="tab" onclick="tabchanged(2)"
-                            data-bs-target="" type="button" role="tab"
-                            aria-controls="provider-location-tab-pane" aria-selected="false">
-                        Provider-location
-                    </button>
-                </li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link text-muted px-3" id="provider-location-tab" data-bs-toggle="tab" onclick="tabchanged(2)"
+							data-bs-target="" type="button" role="tab"
+							aria-controls="provider-location-tab-pane" aria-selected="false">
+						Provider-location
+					</button>
+				</li>
 
-                <li class="nav-item">
-                    <button class="nav-link text-muted px-3" id="profile-tab" data-bs-toggle="tab" onclick="tabchanged(3)"
-                            data-bs-target="" type="button" role="tab"
-                            aria-controls="provider-location-tab-pane" aria-selected="false">
-                        Profile
-                    </button>
-                </li>
+				<li class="nav-item">
+					<button class="nav-link text-muted px-3" id="profile-tab" data-bs-toggle="tab" onclick="tabchanged(3)"
+							data-bs-target="" type="button" role="tab"
+							aria-controls="provider-location-tab-pane" aria-selected="false">
+						Profile
+					</button>
+				</li>
 
-                <li class="nav-item dropdown" role="presentation">
-                    <button class="nav-link text-muted px-3 dropdown-toggle show" id="Providers-tab" data-bs-toggle="dropdown"
-                            data-bs-target="" type="button" role="tab"
-                            aria-controls="Providers-tab-pane" aria-selected="false">
-                        Providers
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" onclick="tabchanged(4)" role="tab" id="action" data-bs-toggle="tab">Action</a>
-                        <a class="dropdown-item" onclick="tabchanged(5)" role="tab" id="scheduling" data-bs-toggle="tab">Scheduling</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
+				<li class="nav-item dropdown" role="presentation">
+					<button class="nav-link text-muted px-3 dropdown-toggle show" id="Providers-tab" data-bs-toggle="dropdown"
+							data-bs-target="" type="button" role="tab"
+							aria-controls="Providers-tab-pane" aria-selected="false">
+						Providers
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<a class="dropdown-item" onclick="tabchanged(4)" role="tab" id="action" data-bs-toggle="tab">Provider</a>
+						<a class="dropdown-item" onclick="tabchanged(5)" role="tab" id="scheduling" data-bs-toggle="tab">Scheduling</a>
 
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link text-muted px-3" id="Partners-tab" data-bs-toggle="tab"
-                            data-bs-target="" type="button" role="tab" onclick="tabchanged(7)"
-                            aria-controls="Partners-tab-pane" aria-selected="false">
-                        Partners
-                    </button>
-                </li>
+					</div>
+				</li>
 
-                <li class="nav-item dropdown" role="presentation">
-                    <button class="nav-link text-muted px-3 dropdown-toggle show" id="Access-tab" data-bs-toggle="dropdown"
-                            data-bs-target="" type="button" role="tab" aria-controls="Access-tab-pane"
-                            aria-selected="false">
-                        Access
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" onclick="tabchanged(8)" role="tab" id="account" data-bs-toggle="tab">Account</a>
-                        <a class="dropdown-item" onclick="tabchanged(9)" role="tab" id="user" data-bs-toggle="tab">User Access</a>
-                        <a class="dropdown-item" onclick="tabchanged(10)" role="tab" id="admin" data-bs-toggle="tab">Create Admin</a>
-                    </div>
-                </li>
+				<li class="nav-item" role="presentation">
+					<button class="nav-link text-muted px-3" id="Partners-tab" data-bs-toggle="tab"
+							data-bs-target="" type="button" role="tab" onclick="tabchanged(7)"
+							aria-controls="Partners-tab-pane" aria-selected="false">
+						Partners
+					</button>
+				</li>
 
-                <li class="nav-item dropdown" role="presentation">
-                    <button class="nav-link text-muted px-3 dropdown-toggle show" id="Records-tab" data-bs-toggle="dropdown"
-                            data-bs-target="" type="button" role="tab" aria-controls="Records-tab-pane"
-                            aria-selected="false">
-                        Records
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" onclick="tabchanged(14)" role="tab" data-bs-toggle="tab">Search Record</a>
-                        <a class="dropdown-item" onclick="tabchanged(12)" role="tab" data-bs-toggle="tab">Email Logs</a>
-                        <a class="dropdown-item" onclick="tabchanged(13)" role="tab" data-bs-toggle="tab">SMS Logs</a>
-                        <a class="dropdown-item" onclick="tabchanged(11)" role="tab" data-bs-toggle="tab">Patient Record</a>
-                        <a class="dropdown-item" onclick="tabchanged(15)" role="tab" data-bs-toggle="tab">Block History</a>
-                    </div>
-                </li>
+				<li class="nav-item dropdown" role="presentation">
+					<button class="nav-link text-muted px-3 dropdown-toggle show" id="Access-tab" data-bs-toggle="dropdown"
+							data-bs-target="" type="button" role="tab" aria-controls="Access-tab-pane"
+							aria-selected="false">
+						Access
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<a class="dropdown-item" onclick="tabchanged(8)" role="tab" id="account" data-bs-toggle="tab">Account</a>
+						<a class="dropdown-item" onclick="tabchanged(9)" role="tab" id="user" data-bs-toggle="tab">User Access</a>
+						<a class="dropdown-item" onclick="tabchanged(10)" role="tab" id="admin" data-bs-toggle="tab">Create Admin</a>
+					</div>
+				</li>
+
+				<li class="nav-item dropdown" role="presentation">
+					<button class="nav-link text-muted px-3 dropdown-toggle show" id="Records-tab" data-bs-toggle="dropdown"
+							data-bs-target="" type="button" role="tab" aria-controls="Records-tab-pane"
+							aria-selected="false">
+						Records
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<a class="dropdown-item" onclick="tabchanged(14)" role="tab" data-bs-toggle="tab">Search Record</a>
+						<a class="dropdown-item" onclick="tabchanged(12)" role="tab" data-bs-toggle="tab">Email Logs</a>
+						<a class="dropdown-item" onclick="tabchanged(13)" role="tab" data-bs-toggle="tab">SMS Logs</a>
+						<a class="dropdown-item" onclick="tabchanged(11)" role="tab" data-bs-toggle="tab">Patient Record</a>
+						<a class="dropdown-item" onclick="tabchanged(15)" role="tab" data-bs-toggle="tab">Block History</a>
+					</div>
+				</li>
 
 
-            </ul>
-        </div>
-    </div>
+			</ul>
+		</div>
+	</div>
 
-   @* <div class="offcanvas offcanvas-start d-lg-none d-block" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-                Welcome
-                <strong>
-                    Admin
-                </strong>
-            </h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body p-0">
-            <div class="px-0 d-flex flex-column">
-                <ul class="list-unstyled" id="myTab" role="tablist">
+	@* <div class="offcanvas offcanvas-start d-lg-none d-block" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+	<div class="offcanvas-header">
+	<h5 class="offcanvas-title" id="offcanvasExampleLabel">
+	Welcome
+	<strong>
+	Admin
+	</strong>
+	</h5>
+	<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+	</div>
+	<div class="offcanvas-body p-0">
+	<div class="px-0 d-flex flex-column">
+	<ul class="list-unstyled" id="myTab" role="tablist">
 
-                    <li class="nav-item my-2 " role="presentation">
-                        <button class="nav-link offcanvas-btn active text-muted p-3 w-100" id="home-tabb" data-bs-toggle="tab"
-                                data-bs-target="" type="button" role="tab" aria-controls="home-tab-pane"
-                                aria-selected="false" onclick="tabchanged(1)">
-                            Dashboard
-                        </button>
-                    </li>
+	<li class="nav-item my-2 " role="presentation">
+	<button class="nav-link offcanvas-btn active text-muted p-3 w-100" id="home-tabb" data-bs-toggle="tab"
+	data-bs-target="" type="button" role="tab" aria-controls="home-tab-pane"
+	aria-selected="false" onclick="tabchanged(1)">
+	Dashboard
+	</button>
+	</li>
 
-                    <li class="nav-item my-2 " role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100" id="provider-location-tab" data-bs-toggle="tab"
-                                data-bs-target="" type="button" role="tab"
-                                aria-controls="provider-location-tab-pane" aria-selected="false" onclick="tabchanged(2)">
-                            Provider-location
-                        </button>
-                    </li>
+	<li class="nav-item my-2 " role="presentation">
+	<button class="nav-link offcanvas-btn text-muted p-3 w-100" id="provider-location-tab" data-bs-toggle="tab"
+	data-bs-target="" type="button" role="tab"
+	aria-controls="provider-location-tab-pane" aria-selected="false" onclick="tabchanged(2)">
+	Provider-location
+	</button>
+	</li>
 
-                    <li class="nav-item my-2" role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100" id="profile-tab" data-bs-toggle="tab"
-                                data-bs-target="" type="button" role="tab" aria-controls="profile-tab-pane"
-                                aria-selected="false" onclick="tabchanged(3)">
-                            Profile
-                        </button>
-                    </li>
+	<li class="nav-item my-2" role="presentation">
+	<button class="nav-link offcanvas-btn text-muted p-3 w-100" id="profile-tab" data-bs-toggle="tab"
+	data-bs-target="" type="button" role="tab" aria-controls="profile-tab-pane"
+	aria-selected="false" onclick="tabchanged(3)">
+	Profile
+	</button>
+	</li>
 
-                    <li class="nav-item my-2" role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100" id="Providers-tab" data-bs-toggle="tab"
-                                data-bs-target="" type="button" role="tab"
-                                aria-controls="Providers-tab-pane" aria-selected="false" onclick="tabchanged(4)">
-                            Providers
-                        </button>
-                    </li>
+	<li class="nav-item my-2" role="presentation">
+	<button class="nav-link offcanvas-btn text-muted p-3 w-100" id="Providers-tab" data-bs-toggle="tab"
+	data-bs-target="" type="button" role="tab"
+	aria-controls="Providers-tab-pane" aria-selected="false" onclick="tabchanged(4)">
+	Providers
+	</button>
+	</li>
 
-                    <li class="nav-item my-2" role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100" id="Partners-tab" data-bs-toggle="tab"
-                                data-bs-target="#Partners-tab-pane" type="button" role="tab"
-                                aria-controls="Partners-tab-pane" aria-selected="false">
-                            Partners
-                        </button>
-                    </li>
+	<li class="nav-item my-2" role="presentation">
+	<button class="nav-link offcanvas-btn text-muted p-3 w-100" id="Partners-tab" data-bs-toggle="tab"
+	data-bs-target="#Partners-tab-pane" type="button" role="tab"
+	aria-controls="Partners-tab-pane" aria-selected="false">
+	Partners
+	</button>
+	</li>
 
-                    <li class="nav-item my-2" role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100" id="Access-tab" data-bs-toggle="tab"
-                                data-bs-target="#Access-tab-pane" type="button" role="tab" aria-controls="Access-tab-pane"
-                                aria-selected="false">
-                            Access
-                        </button>
-                    </li>
+	<li class="nav-item my-2" role="presentation">
+	<button class="nav-link offcanvas-btn text-muted p-3 w-100" id="Access-tab" data-bs-toggle="tab"
+	data-bs-target="#Access-tab-pane" type="button" role="tab" aria-controls="Access-tab-pane"
+	aria-selected="false">
+	Access
+	</button>
+	</li>
 
-                    <li class="nav-item my-2" role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100" id="Records-tab" data-bs-toggle="tab"
-                                data-bs-target="#Records-tab-pane" type="button" role="tab" aria-controls="Records-tab-pane"
-                                aria-selected="false">
-                            Records
-                        </button>
-                    </li>
+	<li class="nav-item my-2" role="presentation">
+	<button class="nav-link offcanvas-btn text-muted p-3 w-100" id="Records-tab" data-bs-toggle="tab"
+	data-bs-target="#Records-tab-pane" type="button" role="tab" aria-controls="Records-tab-pane"
+	aria-selected="false">
+	Records
+	</button>
+	</li>
 
-                </ul>
-            </div>
-        </div>
-    </div>*@
-   <div class="offcanvas offcanvas-start d-lg-none d-block overflow-y-scroll" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h6 class="offcanvas-title" id="offcanvasExampleLabel">
-                Welcome
-                <strong>
-                    Admin,@ViewBag.Username
-                </strong>
-            </h6>
-            <button type="button" class="shadow-none btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body p-0">
-            <div class="px-0 d-flex flex-column">
-                <ul class="list-unstyled" id="myTab" role="tablist">
+	</ul>
+	</div>
+	</div>
+	</div>*@
+	<div class="offcanvas offcanvas-start d-lg-none d-block overflow-y-scroll" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		<div class="offcanvas-header">
+			<h6 class="offcanvas-title" id="offcanvasExampleLabel">
+				Welcome
+				<strong>
+					Admin,@ViewBag.Username
+				</strong>
+			</h6>
+			<button type="button" class="shadow-none btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body p-0">
+			<div class="px-0 d-flex flex-column">
+				<ul class="list-unstyled" id="myTab" role="tablist">
 
-                    <li class="nav-item my-1 " role="presentation">
-                        <button class="nav-link offcanvas-btn active text-muted p-3 w-100 closedOffCanvas" id="home-tab1" data-bs-toggle="tab"
-                                data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
-                                aria-selected="true" onclick="tabchanged(1)">
-                            Dashboard
-                        </button>
-                    </li>
+					<li class="nav-item my-1 " role="presentation">
+						<button class="nav-link offcanvas-btn active text-muted p-3 w-100 closedOffCanvas" id="home-tab1" data-bs-toggle="tab"
+								data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+								aria-selected="true" onclick="tabchanged(1)">
+							Dashboard
+						</button>
+					</li>
 
-                    <li class="nav-item my-1 " role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100 closedOffCanvas" id="provider-location-tab1" data-bs-toggle="tab"
-                                data-bs-target="#provider-location-tab-pane" type="button" role="tab"
-                                aria-controls="provider-location-tab-pane" aria-selected="false" onclick="tabchanged(2)">
-                            Provider-location
-                        </button>
-                    </li>
+					<li class="nav-item my-1 " role="presentation">
+						<button class="nav-link offcanvas-btn text-muted p-3 w-100 closedOffCanvas" id="provider-location-tab1" data-bs-toggle="tab"
+								data-bs-target="#provider-location-tab-pane" type="button" role="tab"
+								aria-controls="provider-location-tab-pane" aria-selected="false" onclick="tabchanged(2)">
+							Provider-location
+						</button>
+					</li>
 
-                    <li class="nav-item my-1" role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100 closedOffCanvas" id="profile-tab1" data-bs-toggle="tab"
-                                data-bs-target="#Admin-profile-tab-pane" type="button" role="tab" aria-controls="Admin-profile-tab-pane"
-                                aria-selected="false" onclick="tabchanged(3)">
-                            Profile
-                        </button>
-                    </li>
+					<li class="nav-item my-1" role="presentation">
+						<button class="nav-link offcanvas-btn text-muted p-3 w-100 closedOffCanvas" id="profile-tab1" data-bs-toggle="tab"
+								data-bs-target="#Admin-profile-tab-pane" type="button" role="tab" aria-controls="Admin-profile-tab-pane"
+								aria-selected="false" onclick="tabchanged(3)">
+							Profile
+						</button>
+					</li>
 
-                    <li class="nav-item my-1 dropdown SubTab-Dropdown">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100 dropdown-toggle"
-                                aria-controls="Providers-tab-pane" aria-haspopup="true">
-                            Providers
-                        </button>
-                        <ul class="dropdown-content ms-3 mt-1">
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" id="Provider-tab1" data-bs-toggle="tab"
-                                        data-bs-target="#Provider-tab-pane" type="button" role="tab" aria-controls="Provider-tab-pane" aria-selected="false" onclick="tabchanged(4)">
-                                    Provider
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
-                                        data-bs-target="#Scheduling-tab-pane" type="button" role="tab" aria-controls="Scheduling-tab-pane" aria-selected="false" onclick="tabchanged(5)">
-                                    Scheduling
-                                </button>
-                            </li>
+					<li class="nav-item my-1 dropdown SubTab-Dropdown">
+						<button class="nav-link offcanvas-btn text-muted p-3 w-100 dropdown-toggle"
+								aria-controls="Providers-tab-pane" aria-haspopup="true">
+							Providers
+						</button>
+						<ul class="dropdown-content ms-3 mt-1">
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" id="Provider-tab1" data-bs-toggle="tab"
+										data-bs-target="#Provider-tab-pane" type="button" role="tab" aria-controls="Provider-tab-pane" aria-selected="false" onclick="tabchanged(4)">
+									Provider
+								</button>
+							</li>
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
+										data-bs-target="#Scheduling-tab-pane" type="button" role="tab" aria-controls="Scheduling-tab-pane" aria-selected="false" onclick="tabchanged(5)">
+									Scheduling
+								</button>
+							</li>
 
-                        </ul>
-                    </li>
+						</ul>
+					</li>
 
-                    <li class="nav-item my-1" role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100 closedOffCanvas" id="Partners-tab1" data-bs-toggle="tab"
-                                data-bs-target="#Partners-tab-pane" type="button" role="tab"
-                                aria-controls="Partners-tab-pane" aria-selected="false" onclick="tabchanged(7)">
-                            Partners
-                        </button>
-                    </li>
+					<li class="nav-item my-1" role="presentation">
+						<button class="nav-link offcanvas-btn text-muted p-3 w-100 closedOffCanvas" id="Partners-tab1" data-bs-toggle="tab"
+								data-bs-target="#Partners-tab-pane" type="button" role="tab"
+								aria-controls="Partners-tab-pane" aria-selected="false" onclick="tabchanged(7)">
+							Partners
+						</button>
+					</li>
 
-                    <li class="nav-item my-1 dropdown SubTab-Dropdown">
-                        <a class="nav-link offcanvas-btn text-muted p-3 w-100 dropdown-toggle" id="Access-tab1" aria-haspopup="true">
-                            Access
-                        </a>
-                        <ul class="dropdown-content ms-3 mt-1">
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" id="Account-tab1" data-bs-toggle="tab"
-                                        data-bs-target="#Account-tab-pane" type="button" role="tab" aria-controls="Account-tab-pane" aria-selected="false" onclick="tabchanged(8)">
-                                    Account Access
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" id="User-tab1" data-bs-toggle="tab"
-                                        data-bs-target="#User-tab-pane" type="button" role="tab" aria-controls="User-tab-pane" aria-selected="false" onclick="tabchanged(9)">
-                                    User Access
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" id="CreateAdmin-tab1" data-bs-toggle="tab"
-                                        data-bs-target="#CreateAdmin-tab-pane" type="button" role="tab" aria-controls="CreateAdmin-tab-pane" aria-selected="false" onclick="tabchanged(10)">
-                                    Create Admin
-                                </button>
-                            </li>
+					<li class="nav-item my-1 dropdown SubTab-Dropdown">
+						<a class="nav-link offcanvas-btn text-muted p-3 w-100 dropdown-toggle" id="Access-tab1" aria-haspopup="true">
+							Access
+						</a>
+						<ul class="dropdown-content ms-3 mt-1">
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" id="Account-tab1" data-bs-toggle="tab"
+										data-bs-target="#Account-tab-pane" type="button" role="tab" aria-controls="Account-tab-pane" aria-selected="false" onclick="tabchanged(8)">
+									Account Access
+								</button>
+							</li>
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" id="User-tab1" data-bs-toggle="tab"
+										data-bs-target="#User-tab-pane" type="button" role="tab" aria-controls="User-tab-pane" aria-selected="false" onclick="tabchanged(9)">
+									User Access
+								</button>
+							</li>
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" id="CreateAdmin-tab1" data-bs-toggle="tab"
+										data-bs-target="#CreateAdmin-tab-pane" type="button" role="tab" aria-controls="CreateAdmin-tab-pane" aria-selected="false" onclick="tabchanged(10)">
+									Create Admin
+								</button>
+							</li>
 
-                        </ul>
-                    </li>
+						</ul>
+					</li>
 
-                    <li class="nav-item my-1 dropdown SubTab-Dropdown">
-                        <a class="nav-link offcanvas-btn text-muted p-3 w-100 dropdown-toggle" id="Records-tab" aria-haspopup="true">
-                            Records
-                        </a>
-                        <ul class="dropdown-content ms-3 mt-1">
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" id="Search-tab1" data-bs-toggle="tab"
-                                        data-bs-target="#Search-tab-pane" type="button" role="tab" aria-controls="Search-tab-pane" aria-selected="false" onclick="tabchanged(14)">
-                                    Search Records
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
-                                        data-bs-target="#Email-tab-pane" type="button" role="tab" aria-controls="Email-tab-pane" aria-selected="false" onclick="tabchanged(12)">
-                                    Email Logs
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
-                                        data-bs-target="#SMS-tab-pane" type="button" role="tab" aria-controls="SMS-tab-pane" aria-selected="false" onclick="tabchanged(13)">
-                                    SMS Logs
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
-                                        data-bs-target="#Patient-tab-pane" type="button" role="tab" aria-controls="Patient-tab-pane" aria-selected="false" onclick="tabchanged(11)">
-                                    Patient History
-                                </button>
-                            </li>
-                            <li>
-                                <button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
-                                        data-bs-target="#Block-tab-pane" type="button" role="tab" aria-controls="Block-tab-pane" aria-selected="false" onclick="tabchanged(15)">
-                                    Block History
-                                </button>
-                            </li>
-                        </ul>
-                    </li>
+					<li class="nav-item my-1 dropdown SubTab-Dropdown">
+						<a class="nav-link offcanvas-btn text-muted p-3 w-100 dropdown-toggle" id="Records-tab" aria-haspopup="true">
+							Records
+						</a>
+						<ul class="dropdown-content ms-3 mt-1">
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" id="Search-tab1" data-bs-toggle="tab"
+										data-bs-target="#Search-tab-pane" type="button" role="tab" aria-controls="Search-tab-pane" aria-selected="false" onclick="tabchanged(14)">
+									Search Records
+								</button>
+							</li>
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
+										data-bs-target="#Email-tab-pane" type="button" role="tab" aria-controls="Email-tab-pane" aria-selected="false" onclick="tabchanged(12)">
+									Email Logs
+								</button>
+							</li>
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
+										data-bs-target="#SMS-tab-pane" type="button" role="tab" aria-controls="SMS-tab-pane" aria-selected="false" onclick="tabchanged(13)">
+									SMS Logs
+								</button>
+							</li>
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
+										data-bs-target="#Patient-tab-pane" type="button" role="tab" aria-controls="Patient-tab-pane" aria-selected="false" onclick="tabchanged(11)">
+									Patient History
+								</button>
+							</li>
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
+										data-bs-target="#Block-tab-pane" type="button" role="tab" aria-controls="Block-tab-pane" aria-selected="false" onclick="tabchanged(15)">
+									Block History
+								</button>
+							</li>
+						</ul>
+					</li>
 
-                </ul>
-            </div>
-        </div>
-    </div>
+				</ul>
+			</div>
+		</div>
+	</div>
 
 </nav>
 
-<script>
 
+<script>
+	document.querySelectorAll('.closedOffCanvas').forEach(tabButton => {
+		tabButton.addEventListener('click', function () {
+			var offcanvas = document.getElementById('offcanvasExample');
+
+			var offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas);
+			if (offcanvasInstance) {
+				offcanvasInstance.hide();
+			}
+		});
+	});
 </script>

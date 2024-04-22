@@ -1,3 +1,37 @@
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.deps.json
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.runtimeconfig.json
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.dll
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.pdb
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallodoc mvc Repository.dll
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallodoc mvc Repository.pdb
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.AssemblyInfo.cs
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.csproj.CopyComplete
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.dll
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\refint\hallocdoc_mvc_Service.dll
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.pdb
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.genruntimeconfig.cache
+C:\Users\Admin\Desktop\harsh\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\ref\hallocdoc_mvc_Service.dll
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.deps.json
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.runtimeconfig.json
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.dll
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.pdb
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallodoc mvc Repository.dll
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallodoc mvc Repository.pdb
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.csproj.AssemblyReference.cache
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.AssemblyInfoInputs.cache
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.AssemblyInfo.cs
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.csproj.CoreCompileInputs.cache
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.csproj.CopyComplete
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.dll
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\refint\hallocdoc_mvc_Service.dll
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.pdb
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\hallocdoc_mvc_Service.genruntimeconfig.cache
+D:\Projects\.net learning\hallo_doc\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\obj\Debug\net7.0\ref\hallocdoc_mvc_Service.dll
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.deps.json
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.runtimeconfig.json
 D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\hallocdoc mvc Service\bin\Debug\net7.0\hallocdoc_mvc_Service.dll

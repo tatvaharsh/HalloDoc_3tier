@@ -98,6 +98,11 @@ namespace hallodoc_mvc_Repository.Implementation
            return _context.AspNetUsers.FirstOrDefault(u => u.Email == email);
         }
 
+        public AspNetUser getAspuser(string? email)
+        {
+            return _context.AspNetUsers.FirstOrDefault(e => e.Email == email);
+        }
+
         public List<Request> getcon(int id)
         {
             return _context.Requests.Where(u => u.RequestId == id).ToList();

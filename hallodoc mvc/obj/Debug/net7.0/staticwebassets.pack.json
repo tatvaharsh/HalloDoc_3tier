@@ -5,6 +5,34 @@
       "PackagePath": "staticwebassets\\hallodoc mvc.bundle.scp.css"
     },
     {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\3\\AgreementDoc.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\3\\AgreementDoc.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\3\\BackgroundDoc.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\3\\BackgroundDoc.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\3\\Photo.avif",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\3\\Photo.avif"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\3\\Photo.png",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\3\\Photo.png"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\3\\Photo.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\3\\Photo.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\3\\Signature.jpg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\3\\Signature.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\3\\Signature.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\3\\Signature.svg"
+    },
+    {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\4\\AgreementDoc.svg",
       "PackagePath": "staticwebassets\\PhysicianDoc\\4\\AgreementDoc.svg"
     },
@@ -51,6 +79,14 @@
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\6\\Photo.svg",
       "PackagePath": "staticwebassets\\PhysicianDoc\\6\\Photo.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\6\\Signature.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\6\\Signature.svg"
+    },
+    {
+      "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\PhysicianDoc\\8\\Photo.svg",
+      "PackagePath": "staticwebassets\\PhysicianDoc\\8\\Photo.svg"
     },
     {
       "Id": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\SRSScreenShorts\\11116016_415.jpg",

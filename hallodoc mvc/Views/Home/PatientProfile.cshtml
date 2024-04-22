@@ -19,7 +19,7 @@
     <img src="/SRSScreenShorts/Fig56._Patient_site_1-removebg-preview.png" alt="" class="logo" />
     <div class="right-side-elements">
         <span class="welcome-text">Welcome <span class="name-text">@Accessor.HttpContext.Session.GetString("Username")</span></span>
-        <a class="logout log" asp-controller="Patient" asp-action="PatientLogin" onclick="logout()">
+        <a class="logout log" asp-controller="Home" asp-action="patient_login" onclick="logout()">
             <span class="logout-text">Logout</span>
         </a>
         <a class="logout-mob log" asp-controller="Patient" asp-action="PatientLogin">

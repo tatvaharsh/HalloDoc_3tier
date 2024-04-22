@@ -1,6 +1,7 @@
 ﻿using hallodoc_mvc_Repository.DataModels;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace hallodoc_mvc_Repository.ViewModel
     {
         public int requestID { get; set; }
 
+        [Required]
         public int? reason { get; set; }
 
         public string? note { get; set; }
@@ -24,6 +26,7 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public string? SelectedRegion { get; set; }
 
+        [Required]
         public int? SelectedPhysicianName { get; set; }
 
         public List<CaseTag> CaseTags { get; set; }

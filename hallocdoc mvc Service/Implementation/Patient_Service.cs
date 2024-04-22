@@ -331,7 +331,7 @@ namespace hallocdoc_mvc_Service.Implementation
             foreach (IFormFile files in model.File)
             {
                 string filename = model.FirstName + model.LastName + files.FileName;
-                string path = Path.Combine("D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\", filename);
+                string path =Directory.GetCurrentDirectory()+ "\\wwwroot\\uplodedfiles\\"+ filename;
                 using (FileStream stream = new FileStream(path, FileMode.Create))
                 {
                     files.CopyToAsync(stream).Wait();
@@ -977,6 +977,11 @@ namespace hallocdoc_mvc_Service.Implementation
 
                 }
             }
+        }
+
+        public AspNetUser getAspUser(string? email)
+        {
+            return _Repository.getAspuser(email);
         }
     }
 }

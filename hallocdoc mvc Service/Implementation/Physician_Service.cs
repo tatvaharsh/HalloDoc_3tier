@@ -335,7 +335,14 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 query = query.Where(r => r.RequestTypeId == 2).ToList();
             }
-            return query;
+			int size = 2;
+			int c = query.Count;
+			query = query.Skip(pageid * size - size).Take(size).ToList();
+			if (query.Count > 0)
+			{
+				query.First().PgCount = c;
+			}
+			return query;
         }
 
         public List<AdminDashboard> getDashDataConclude(int? requestType, string? search, int? requestor, int? region, int pageid, int phy)
@@ -366,7 +373,14 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 query = query.Where(r => r.RequestTypeId == 2).ToList();
             }
-            return query;
+			int size = 2;
+			int c = query.Count;
+			query = query.Skip(pageid * size - size).Take(size).ToList();
+			if (query.Count > 0)
+			{
+				query.First().PgCount = c;
+			}
+			return query;
         }
 
         public List<AdminDashboard> getDashDataPending(int? requestType, string? search, int? requestor, int? region, int pageid, int phy)
@@ -397,7 +411,14 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 query = query.Where(r => r.RequestTypeId == 2).ToList();
             }
-            return query;
+			int size = 2;
+			int c = query.Count;
+			query = query.Skip(pageid * size - size).Take(size).ToList();
+			if (query.Count > 0)
+			{
+				query.First().PgCount = c;
+			}
+			return query;
         }
 
         public Encounter getencounter(int id)
@@ -708,9 +729,9 @@ namespace hallocdoc_mvc_Service.Implementation
                 notedata.RequestId = id;
 
                 notedata.PhysicianNotes = model.PhysicianNotes;
-                notedata.ModifiedBy = phy;
+                notedata.ModifiedBy = _Repository.GetAspId(phy);
                 notedata.ModifiedDate = DateTime.Now;
-                _Repository.save();
+                _Repository.UpdateRequestNotes(notedata);
 
             }
             else
@@ -719,7 +740,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 {
                     RequestId = id,
                     PhysicianNotes = model.PhysicianNotes,
-                    CreatedBy = phy,
+                    CreatedBy = _Repository.GetAspId(phy),
                     CreatedDate = DateTime.Now,
                 };
 

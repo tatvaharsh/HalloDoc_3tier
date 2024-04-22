@@ -68,60 +68,68 @@
         </div>
     </div>
 
-    <div class="offcanvas offcanvas-start d-lg-none d-block" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-                Welcome
-                <strong>
-                    Physician
-                </strong>
-            </h5>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body p-0">
-            <div class="px-0 d-flex flex-column">
-                <ul class="list-unstyled" id="myTab" role="tablist">
+	<div class="offcanvas offcanvas-start d-lg-none d-block overflow-y-scroll" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		<div class="offcanvas-header">
+			<h6 class="offcanvas-title" id="offcanvasExampleLabel">
+				Welcome
+				<strong>
+					Admin,@ViewBag.Username
+				</strong>
+			</h6>
+			<button type="button" class="shadow-none btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body p-0">
+			<div class="px-0 d-flex flex-column">
+				<ul class="list-unstyled" id="myTab" role="tablist">
 
-                    <li class="nav-item my-2 " role="presentation">
-                        <button class="nav-link offcanvas-btn active text-muted p-3 w-100" id="home-tab" data-bs-toggle="tab"
-                                data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
-                                aria-selected="true">
-                            Dashboard
-                        </button>
-                    </li>
+					<li class="nav-item my-1 " role="presentation">
+						<button class="nav-link offcanvas-btn active text-muted p-3 w-100 closedOffCanvas" id="home-tab1" data-bs-toggle="tab"
+								data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane"
+								aria-selected="false" onclick="tabchanged(1)">
+							Dashboard
+						</button>
+					</li>
 
-                    <li class="nav-item my-2 " role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100" id="provider-location-tab" data-bs-toggle="tab"
-                                data-bs-target="#provider-location-tab-pane" type="button" role="tab"
-                                aria-controls="provider-location-tab-pane" aria-selected="false">
-                            Invocing
-                        </button>
-                    </li>
-
-                    <li class="nav-item my-2" role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100" id="profile-tab" data-bs-toggle="tab"
-                                data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane"
-                                aria-selected="false">
-                            My Schedule
-                        </button>
-                    </li>
-
-                    <li class="nav-item my-2" role="presentation">
-                        <button class="nav-link offcanvas-btn text-muted p-3 w-100" id="Providers-tab" data-bs-toggle="tab"
-                                data-bs-target="#Providers-tab-pane" type="button" role="tab"
-                                aria-controls="Providers-tab-pane" aria-selected="false">
-                            Profile
+                    <li class="nav-item my-1 " role="presentation">
+                        <button class="nav-link offcanvas-btn  text-muted p-3 w-100 closedOffCanvas" id="home-tab12" data-bs-toggle="tab"
+                                data-bs-target="#hom-tab-pane" type="button" role="tab" aria-controls="schedilg-tab-pane"
+                                aria-selected="false" onclick="tabchanged(2)">
+                            Scheduling
                         </button>
                     </li>
 
 
-                </ul>
-            </div>
-        </div>
-    </div>
+					<li class="nav-item my-1" role="presentation">
+						<button class="nav-link offcanvas-btn text-muted p-3 w-100 closedOffCanvas" id="profile-tab1" data-bs-toggle="tab"
+								data-bs-target="#Admin-profile-tab-pane" type="button" role="tab" aria-controls="Admin-profile-tab-pane"
+								aria-selected="false" onclick="tabchanged(3)">
+							Profile
+						</button>
+					</li>
+
+					
+
+					
+
+				</ul>
+			</div>
+		</div>
+	</div>
 
 </nav>
 
+
+
+
 <script>
-    
+	document.querySelectorAll('.closedOffCanvas').forEach(tabButton => {
+		tabButton.addEventListener('click', function () {
+			var offcanvas = document.getElementById('offcanvasExample');
+
+			var offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas);
+			if (offcanvasInstance) {
+				offcanvasInstance.hide();
+			}
+		});
+	});
 </script>

@@ -25,6 +25,7 @@ namespace hallodoc_mvc_Repository.Interface
         void AddUser(User user);
         AspNetUser AspByUserId(int user1);
         public AspNetUser AspEmail(string email);
+        AspNetUser getAspuser(string? email);
         public AspNetUser getAspuserTable(int id);
         List<Request> getcon(int id);
         public List<RequestWiseFile> getFiles();

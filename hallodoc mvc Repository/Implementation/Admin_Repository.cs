@@ -5,6 +5,7 @@ using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using Syncfusion.EJ2.Charts;
 using Syncfusion.EJ2.CircularGauge;
+using Syncfusion.EJ2.Notifications;
 using Syncfusion.EJ2.Spreadsheet;
 using System;
 using System.Collections;
@@ -433,7 +434,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public List<Role> getrole()
         {
-            return _context.Roles.ToList();
+            return _context.Roles.Where(x=>x.AccountType==2).ToList();
         }
 
         public void AddPhysician(Physician phy)
@@ -894,6 +895,38 @@ namespace hallodoc_mvc_Repository.Implementation
              PatientNote = x.RequestClients.First().Notes,
 
          }).ToList();
+        }
+
+        public int? GetPhyByAsp(int id)
+        {
+            return _context.Physicians.FirstOrDefault(x => x.AspNetUserId == id).PhysicianId;
+        }
+
+        public int? GetAdminByasp(int id)
+        {
+            return _context.Admins.FirstOrDefault(x => x.AspNetUserId == id).AdminId;
+        }
+
+        public void AddEncounterForm(EncounterForm ef)
+        {
+            _context.EncounterForms.Add(ef);
+            _context.SaveChanges();
+        }
+
+        public List<Physician> GetOffDuty()
+        {
+
+            var currentTime = new TimeOnly(DateTime.Now.Hour, DateTime.Now.Minute);
+            BitArray deletedBit = new BitArray(new[] { false });
+
+            var offDutyQuery = _context.Physicians
+                .Include(p => p.PhysicianRegions)
+            .Where(p => !_context.ShiftDetails.Any(sd => sd.Shift.PhysicianId == p.PhysicianId &&
+                                                               sd.ShiftDate.Date == DateTime.Today &&
+                                                               currentTime >= sd.StartTime &&
+                                                               currentTime <= sd.EndTime &&
+                                                               sd.IsDeleted.Equals(deletedBit)) && p.IsDeleted == null).ToList();
+            return offDutyQuery;
         }
     }
 }

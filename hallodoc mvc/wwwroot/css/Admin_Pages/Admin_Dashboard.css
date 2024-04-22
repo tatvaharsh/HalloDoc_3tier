@@ -68,9 +68,11 @@
     100% {
         transform: rotate(-360deg);
     }
-} 
+}
 
-
+html[data-bs-theme="dark"] .re {
+    color: white !important;
+}
 
 
 .req1 {

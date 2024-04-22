@@ -15,16 +15,17 @@
                 </div>
 
                 <select class="form-select mt-4 text-secondary" aria-label="Narrow search by region" onchange="getphy(this.value)">
-                    <option selected>Narrow search by region</option>
+                    <option value="" selected>Narrow search by region</option>
                     @foreach (var item in Model.region)
                     {
                         <option value="@item.RegionId">@item.Name</option>
                     }
                 </select>
-
+             
                 <select class="form-select mt-4 text-secondary" aria-label="Select Physician" id="physician" asp-for="SelectedPhysicianName">
-                    <option selected disabled>Select Physician</option>
+                    <option value="" selected disabled>Select Physician</option>
                 </select>
+                <span asp-validation-for="@Model.SelectedPhysicianName" class="text-danger"></span>
 
                 <div class="mt-4 form-floating text-secondary">
                     <textarea class="form-control h-100" id="floatingInputDescription" placeholder="Description" asp-for="note" rows="3"></textarea>
@@ -32,13 +33,16 @@
                 </div>
 
                 <div class="mt-4 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-info continue-btn mx-2" data-bs-dismiss="modal">Submit</button>
+                    <button type="submit" class="btn btn-info continue-btn mx-2">Submit</button>
                     <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
 
 <script>

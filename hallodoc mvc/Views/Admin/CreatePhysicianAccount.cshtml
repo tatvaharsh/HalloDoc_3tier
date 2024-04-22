@@ -27,9 +27,9 @@
             <div class="d-flex justify-content-between mt-3">
                 <h4 class="mt-3">Create Provider Account</h4>
                 <a class="text-start text-info text-decoration-none ">
-                    <button class="btn btn-white  text-info border-info rounded ">
+                    <a asp-action="Tabchange" asp-route-nav="1"  class="btn btn-white  text-info border-info rounded ">
                         <i class="fa-solid  fa-less-than"></i> Back
-                    </button>
+                    </a>
                 </a>
             </div>
             <form enctype="multipart/form-data" method="post" id="main-form" asp-action="CreatePhysicianAccount">
@@ -271,6 +271,9 @@
     </div>
 
 </div>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
 <script>
 
     const input = document.querySelector("#phone");
@@ -311,7 +314,7 @@
 
 
     const getLatLong = () => {
-        debugger;
+       
         var geocoder = new google.maps.Geocoder();
         const selectElement = document.getElementById("Select-state")
         for (let option of selectElement.options) {

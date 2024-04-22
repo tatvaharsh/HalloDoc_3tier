@@ -151,5 +151,9 @@ namespace hallodoc_mvc_Repository.Interface
         List<Emaillogs> SmsLogs();
         void SmsLogtbl(Smslog smslog);
         List<AdminRecord> SearchRecords();
+        int? GetPhyByAsp(int id);
+        int? GetAdminByasp(int id);
+        void AddEncounterForm(EncounterForm ef);
+        List<Physician> GetOffDuty();
     }
 }
