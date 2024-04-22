@@ -368,7 +368,7 @@ namespace hallodoc_mvc.Controllers
         {
             return View();
         }
-
+      
         public IActionResult TabChange(int nav, bool isPartial)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
@@ -1027,7 +1027,7 @@ namespace hallodoc_mvc.Controllers
             };
             return View(createPhy);
         }
-
+        [CustomAuthorize(null,"Admin")]
         public IActionResult EditPhysicianAccount(int id)
         {
             var data = _service.getphysiciandata(id);
@@ -1077,7 +1077,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult AssignRole(string RoleName, string[] selectedRoles, int check)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
-            if(RoleName==null || selectedRoles==null || selectedRoles.Length == 0)
+            if(RoleName==null || selectedRoles==null || selectedRoles[0] == null)
             {
                 TempData["error"] = "Enter Valid Details";
                 return RedirectToAction(nameof(CreateRole));
@@ -1103,6 +1103,13 @@ namespace hallodoc_mvc.Controllers
             _service.DeleteRoles(id);
             TempData["success"] = "Role Deleted successfully!!!";
             return RedirectToAction("TabChange", new { nav = 8 });
+        }
+
+        [HttpPost]
+        public IActionResult EditPhyProfile(int id, [FromForm] CreatePhy model)
+        {
+            _service.EditPhyProfile(id, model);
+            return RedirectToAction("Admin_Dashboard");
         }
 
         [HttpPost]

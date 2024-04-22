@@ -3049,6 +3049,22 @@ namespace hallocdoc_mvc_Service.Implementation
 
             }
         }
+
+        public void EditPhyProfile(int id, CreatePhy model)
+        {
+            var phy = _Repository.getphycian(id);
+            var asp = _Repository.GetAspNetUser((int)phy.AspNetUserId);
+            if (model.SelectedRoleId != null)
+            {
+                phy.RoleId = model.SelectedRoleId;
+                _Repository.UpdatePhytbl(phy);
+            }
+            if(model.Password!= null)
+            {
+                asp.PasswordHash = Crypto.HashPassword(model.Password);
+                _Repository.UpdateAsp(asp);
+            }
+        }
     }
 }
 
