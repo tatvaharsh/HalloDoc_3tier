@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
 using hallocdoc_mvc_Service.Implementation;
 using hallocdoc_mvc_Service.Interface;
 using HalloDoc.Auth;
@@ -142,6 +143,7 @@ namespace hallodoc_mvc.Controllers
         [Route("/admin/AdminProfile")]
         public IActionResult AdminProfile(bool isPartial)
         {
+        
             int admin = (int)HttpContext.Session.GetInt32("Id");
             if (isPartial == true)
             {
@@ -666,7 +668,7 @@ namespace hallodoc_mvc.Controllers
         public IActionResult Transfer(int Id, ModalData md)
         {
             int admin = (int)HttpContext.Session.GetInt32("Id");
-            _service.AssignCase(md, Id, admin);
+            _service.TransferReq(md,Id, admin);
             TempData["success"] = "Case Transffered Successfully!!!";
             return RedirectToAction(nameof(AdminController.Admin_Dashboard));
         }
@@ -1016,6 +1018,8 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult CreatePhysicianAccount()
         {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin1);
             var reg = _service.getreg();
             var roles = _service.getrole();
             CreatePhy createPhy = new CreatePhy()
@@ -1030,6 +1034,8 @@ namespace hallodoc_mvc.Controllers
         [CustomAuthorize(null,"Admin")]
         public IActionResult EditPhysicianAccount(int id)
         {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin1);
             var data = _service.getphysiciandata(id);
 
             return View(data);
@@ -1071,8 +1077,10 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult CreateRole(int check)
         {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin1);
             RoleModel model = _service.GetMenutbl(check);
-            return View(model);
+            return View(model); 
         }
         public IActionResult AssignRole(string RoleName, string[] selectedRoles, int check)
         {
@@ -1089,6 +1097,8 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult EditRole(int id)
         {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin1);
             return View(_service.GetRolewiseData(id));
         }
         public IActionResult UpdateRole(RoleModel model)
@@ -1182,6 +1192,8 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult AddBusiness()
         {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin1);
             PartnersCM partnersCM = new()
             {
                 Professions = _service.GetProfession(),
@@ -1200,6 +1212,8 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult EditPartner(int id)
         {
+            int admin1 = (int)HttpContext.Session.GetInt32("Id");
+            ViewBag.Username = _service.Adminname(admin1);
             var a = _service.GetPartnerData(id);
 
             return View(a);
@@ -1470,19 +1484,19 @@ namespace hallodoc_mvc.Controllers
             return RedirectToAction(nameof(TabChange), new { nav = 15, isPartial = false });
         }
 
-        public IActionResult EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate, int page)
+        public IActionResult EmailLogs(string name, string email, DateTime createdate, DateTime sentdate, int page)
         {
             if (page == 0) { page = 1; }
             ViewBag.page = page;
-            return PartialView("_EmailLogsTable", _service.EmailLogs(role, name, email, createdate, sentdate, page));
+            return PartialView("_EmailLogsTable", _service.EmailLogs( name, email, createdate, sentdate, page));
         }
 
 
-        public IActionResult SmsLogs(int role, string name, string mobile, DateTime createdate, DateTime sentdate, int page)
+        public IActionResult SmsLogs(string name, string mobile, DateTime createdate, DateTime sentdate, int page)
         {
             if (page == 0) { page = 1; }
             ViewBag.page = page;
-            return PartialView("_SmsLogsTable", _service.SmsLog(role, name, mobile, createdate, sentdate, page));
+            return PartialView("_SmsLogsTable", _service.SmsLog(name, mobile, createdate, sentdate, page));
         }
 
         public IActionResult ExportRecords(string providername, string patientname, int status, int reqtype, string email, string phone, DateTime fromdate, DateTime todate)

@@ -161,13 +161,13 @@ else
 								</button>
 								<ul class="dropdown-menu">
 
-									@if (Model.FirstOrDefault().Status == 2 && Model.FirstOrDefault().AcceptedDate == null)
+									@if (Model.FirstOrDefault().Status == 1)
 									{
 										<li><a class="dropdown-item" asp-action="Accept" asp-route-id="@obj.Id"><i class="fa-solid fa-book me-1"></i> Accept</a></li>
 
 									}
 
-									@if (Model.FirstOrDefault().Status == 2 && Model.FirstOrDefault().AcceptedDate != null)
+									@if (Model.FirstOrDefault().Status == 2)
 									{
 
 										<li><a class="dropdown-item" onclick="SendAgreement(@obj.Id ,@obj.RequestTypeId)"><i class="fa-solid fa-handshake me-1"></i>Send Agreement</a></li>
@@ -325,7 +325,7 @@ else
 
 							<div class="">
 
-								@if (item.Status == 2 && item.AcceptedDate == null)
+								@if (item.Status == 1 )
 								{
 									<div class="inner-flex">
 										<i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>
@@ -373,7 +373,7 @@ else
 									</div>
 
 								}
-								@if (item.Status == 2 && item.AcceptedDate != null)
+								@if (item.Status == 2 )
 								{
 									<div class="inner-flex">
 										<i class="bi bi-calendar-date rborder p-2" style="font-size: 13px;"></i>

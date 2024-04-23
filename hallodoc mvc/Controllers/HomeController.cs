@@ -13,6 +13,8 @@ using HalloDoc.Auth;
 using hallocdoc_mvc_Service.Implementation;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Diagnostics;
+using Twilio.TwiML.Voice;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -21,13 +23,14 @@ namespace hallodoc_mvc.Controllers
         //private readonly ApplicationDbContext _context;
         private readonly IPatient_Service _service;
         private readonly IJwtService _jwtService;
+        private readonly ILogger<HomeController> _logger;
 
-
-        public HomeController(IPatient_Service service,IJwtService _jwtservice)
+        public HomeController(IPatient_Service service,IJwtService _jwtservice, ILogger<HomeController> logger)
         {
             //_context = context;
             _service = service;
             _jwtService = _jwtservice;
+            _logger = logger;
         }
         public IActionResult patient_screen()
         {
@@ -245,9 +248,17 @@ namespace hallodoc_mvc.Controllers
         public IActionResult create_patient(string token)
         {
             Response.Cookies.Append("create", token);
+            var email = new JwtSecurityTokenHandler().
+                ReadJwtToken(token).
+                Claims.
+                FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
             if (_jwtService.ValidateJwtToken(token, out JwtSecurityToken jwtSecurityToken))
             {
-                return View();
+                Create vm = new()
+                {
+                    UserName = email
+                };
+                return View(vm);
             }
             return NotFound();
         }
@@ -413,7 +424,16 @@ namespace hallodoc_mvc.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                var exceptionDetails = HttpContext.Features.Get<IExceptionHandlerFeature>();
+                _logger.LogError($"The path {exceptionDetails?.Path} threw an exception {exceptionDetails?.Error}");
+
+                return View(new hallodoc_mvc_Repository.ViewModel.Error()
+                {
+                    Path = exceptionDetails?.Path,
+                    Message = exceptionDetails?.Error?.Message,
+                    Stack = exceptionDetails?.Error?.StackTrace,
+                });
+
         }
     }
 }

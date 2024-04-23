@@ -98,7 +98,7 @@
                                 int diff = physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.EndTime.Hour - physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.StartTime.Hour;
                 
                                 int temp = diff;
-                                @*<td>shift</td>*@
+            
                                 while (diff != 0)
                                 {
                                     if (physician.shifts.FirstOrDefault(x => x.StartTime.Hour == i)!.Status == 0)

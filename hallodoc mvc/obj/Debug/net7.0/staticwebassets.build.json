@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Hz6/IpslZe/E4dGL9eJtcjblACfyRMxKj+UJJ/k9PKw=",
+  "Hash": "8UxOXhaohMkk3cuG6/flrZa84usyljAoQXl+1YOwXSA=",
   "Source": "hallodoc mvc",
   "BasePath": "_content/hallodoc mvc",
   "Mode": "Default",
@@ -5081,6 +5081,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uplodedfiles\\chotabheemdata (4).xlsx"
+    },
+    {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\chotabheemsuccess-icon (1) (1) (1).svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "uplodedfiles/chotabheemsuccess-icon (1) (1) (1).svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uplodedfiles\\chotabheemsuccess-icon (1) (1) (1).svg"
     },
     {
       "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\chotabheemsuccess-icon (1) (1).svg",

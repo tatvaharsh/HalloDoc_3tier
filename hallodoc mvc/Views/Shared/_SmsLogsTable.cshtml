@@ -1,8 +1,23 @@
 ﻿@model List<hallodoc_mvc_Repository.ViewModel.Emaillogs>
 @{
-    var c = Model.FirstOrDefault().PgCount;
+    var c = Model.FirstOrDefault()?.PgCount;
     var page = ViewBag.page;
 }
+
+
+
+
+@if (Model.Count() == 0)
+{
+    <div class="text-center w-100">
+
+        <h3>NO DATA FOUND</h3>
+    </div>
+}
+else
+{
+    
+
 <table class="table d-none d-md-table">
     <thead>
         <tr class="text-center align-middle" >
@@ -188,3 +203,4 @@
         Sms(page);
     }
 </script>
+}
