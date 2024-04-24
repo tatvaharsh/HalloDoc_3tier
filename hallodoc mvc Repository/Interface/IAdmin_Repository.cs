@@ -155,5 +155,8 @@ namespace hallodoc_mvc_Repository.Interface
         int? GetAdminByasp(int id);
         void AddEncounterForm(EncounterForm ef);
         List<Physician> GetOffDuty();
+        List<Physician> DayDataPending();
+
+        string GetRoleOfUser(int admin);
     }
 }

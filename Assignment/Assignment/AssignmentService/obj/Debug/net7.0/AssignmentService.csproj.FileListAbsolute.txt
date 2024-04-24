@@ -1,0 +1,17 @@
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\bin\Debug\net7.0\AssignmentService.deps.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\bin\Debug\net7.0\AssignmentService.runtimeconfig.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\bin\Debug\net7.0\AssignmentService.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\bin\Debug\net7.0\AssignmentService.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\bin\Debug\net7.0\AssignmentRepository.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\bin\Debug\net7.0\AssignmentRepository.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\AssignmentService.csproj.AssemblyReference.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\AssignmentService.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\AssignmentService.AssemblyInfoInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\AssignmentService.AssemblyInfo.cs
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\AssignmentService.csproj.CoreCompileInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\AssignmentService.csproj.CopyComplete
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\AssignmentService.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\refint\AssignmentService.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\AssignmentService.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\AssignmentService.genruntimeconfig.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentService\obj\Debug\net7.0\ref\AssignmentService.dll

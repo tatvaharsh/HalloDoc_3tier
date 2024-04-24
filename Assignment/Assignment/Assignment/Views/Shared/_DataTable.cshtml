@@ -1,0 +1,150 @@
+﻿@model IEnumerable<AssignmentRepository.ViewModel.UserModel>
+
+@{
+    var c = Model.FirstOrDefault()?.PgCount;
+    var page = ViewBag.page;
+}
+<div class="table-responsive">
+    <table class="table  ">
+        <thead>
+            <tr class="text-center align-middle">
+                <th>User Id</th>
+
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Email </th>
+                <th>Age</th>
+                <th>Phone Number</th>
+                <th>Gender</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                var no = 1;
+            }
+            @foreach (var item in Model)
+            {
+
+                <tr class="text-center align-middle">
+                    <td>@no</td>
+
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>
+                        --
+                    </td>
+                    <td>@item.PhoneNumber</td>
+               
+                        @if (item.Gendermale == "1")
+                        {
+                        <td>Male</td>
+                        }
+                        else if (item.Gendermale == "2")
+                        {
+                        <td>Female</td>
+                        }
+                        else
+                        {
+                        <td>Other</td>
+                        }
+            
+                    <td>
+                        @item.City
+                    </td>
+                    <td>
+                        --
+                    </td>
+                    <td>
+                        <button type="button" class="btn text-white" style="background-color:rgb(221,160,221);" onclick="openmodal(@item.Id)">Edit</button>
+                        <button type="button" class="btn btn-dark" onclick="DeleteAccount(@item.Id)">Delete</button>
+                        <div class="modal fade" id="a-@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5 text-danger" id="exampleModalLabel">Delete Account</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-lg-start">
+                                        Are you sure want to delete the Data?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                        <a class="btn btn-danger" asp-action="DeleteData" asp-route-id="@item.Id">Yes,Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+
+                </tr>
+
+                no++;
+            }
+        </tbody>
+    </table>
+</div>
+<nav aria-label="..." style="display:flex; justify-content:center; margin-top:10px;">
+
+    <input type="hidden" id="page" />
+    <ul class="pagination" onchange="filter()">
+        <li class="page-item">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="xyz(@(page-1))">Previous</a>
+        </li>
+
+        @if (page - 1 > 0)
+        {
+            <li class="page-item"><a class="page-link " href="#" onclick="xyz(@(page-1))">@(page - 1)</a></li>
+        }
+
+        <li class="page-item"><a class="page-link active" href="#" onclick="xyz(@(page))">@(page)</a></li>
+
+        @if (page * 3 < c)
+        {
+            <li class="page-item" aria-current="page">
+                <a class="page-link" href="#" onclick="xyz(@(page+1))">@(page + 1)</a>
+            </li>
+        }
+
+        @if (page * 3 < c)
+        {
+            <li class="page-item">
+                <a class="page-link" href="#" onclick="xyz(@(page+1))">Next</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        }
+    </ul>
+</nav>
+<script>
+    function xyz(page){
+        filter(page);
+    }
+
+    function openmodal(no) {
+
+        $('#schmodal').load('/Home/OpenUser/' + no, () => {
+            const modal = new bootstrap.Modal(document.getElementById('createshift'));
+            modal.show();
+        });
+
+    }
+
+    function DeleteAccount(id) {
+
+
+        const modal = new bootstrap.Modal(document.getElementById('a-' + id));
+        modal.show();
+    }
+
+
+
+</script>

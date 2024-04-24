@@ -28,11 +28,13 @@ namespace hallocdoc_mvc_Service.Implementation
     {
         private readonly IPhysician_Repository _Repository;
         private readonly IConfiguration _configuration;
+        private readonly IJwtService _jwtService;
 
-        public Physician_Service(IPhysician_Repository physician, IConfiguration configuration)
+        public Physician_Service(IPhysician_Repository physician, IConfiguration configuration, IJwtService jwtService)
         {
             _Repository = physician;
             _configuration = configuration;
+            _jwtService = jwtService;
         }
 
         public void AddProviderNote(int id, string note, int phy)
@@ -1223,7 +1225,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 var receiver = model.Email;
                 var subject = "Create Account";
-                var message = "Tap on link for Send Link : http://localhost:5198/Home/create_patient";
+                var message = "Tap on link for Send Link : http://localhost:5198/Home/create_patient?token=" + _jwtService.GenerateJwtTokenByEmail(receiver);
 
 
                 var mail = "tatva.dotnet.binalmalaviya@outlook.com";

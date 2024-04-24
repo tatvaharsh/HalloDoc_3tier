@@ -27,10 +27,13 @@ namespace hallocdoc_mvc_Service.Implementation
         private readonly IAdmin_Repository _Repository;
 
         private readonly IConfiguration _configuration;
-        public Admin_Service(IAdmin_Repository Repository, IConfiguration configuration)
+
+        private readonly IJwtService _jwtService;
+        public Admin_Service(IAdmin_Repository Repository, IConfiguration configuration, IJwtService jwtService)
         {
             _Repository = Repository;
             _configuration = configuration;
+            _jwtService = jwtService;
         }
 
 
@@ -711,7 +714,7 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             Request req = _Repository.GetRequestById(id);
 
-            req.Status = 2;
+            req.Status = 1;
             req.PhysicianId = md.SelectedPhysicianName;
             req.ModifiedDate = DateTime.Now;
             _Repository.UpdateRequesttbl(req);
@@ -719,7 +722,7 @@ namespace hallocdoc_mvc_Service.Implementation
             RequestStatusLog reqlog = new()
             {
                 RequestId = id,
-                Status = 2,
+                Status = 1,
                 TransToPhysicianId = md.SelectedPhysicianName,
                 AdminId = admin,
                 Notes = md.note,
@@ -1321,7 +1324,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 AdminData = a,
                 region = r,
-                Role = _Repository.GetAspNetRole(admin)[0],
+                Role = _Repository.GetRoleOfUser(admin),
                 user = _Repository.getuserbyaspid(a.AspNetUserId),
                 State = _Repository.GetRegionname(a.RegionId),
                 Reg = rd,
@@ -1336,32 +1339,32 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public void sendlink(ViewCase model, int admin1)
         {
-            //var accountSid = _configuration["Twilio:accountSid"];
-            //var authToken = _configuration["Twilio:authToken"];
-            //var twilionumber = _configuration["Twilio:twilioNumber"];
+            var accountSid = _configuration["Twilio:accountSid"];
+            var authToken = _configuration["Twilio:authToken"];
+            var twilionumber = _configuration["Twilio:twilioNumber"];
 
 
-            //var messageBody = $"Hello {model.FirstName} {model.LastName},\nClick the following link to create new request in our portal,\nhttp://localhost:5198/Home/submit_screen\n\n\nRegards,\nHalloDoc";
+            var messageBody = $"Hello {model.FirstName} {model.LastName},\nClick the following link to create new request in our portal,\nhttp://localhost:5198/Home/submit_screen\n\n\nRegards,\nHalloDoc";
 
-            //TwilioClient.Init(accountSid, authToken);
+            TwilioClient.Init(accountSid, authToken);
 
-            //var message = MessageResource.Create(
-            //    from: new Twilio.Types.PhoneNumber(twilionumber),
-            //    body: messageBody,
-            //    to: new Twilio.Types.PhoneNumber("+91" + model.PhoneNumber)
-            //);
+            var message = MessageResource.Create(
+                from: new Twilio.Types.PhoneNumber(twilionumber),
+                body: messageBody,
+                to: new Twilio.Types.PhoneNumber("+91" + model.PhoneNumber)
+            );
 
 
-            //Smslog smslog = new()
-            //{
-            //    Smstemplate = messageBody,
-            //    MobileNumber = model.PhoneNumber,
-            //    CreateDate = DateTime.Now,
-            //    SentDate = DateTime.Now,
-            //    SentTries = 1,
-            //    IsSmssent=true,
-            //};
-            //_Repository.SmsLogtbl(smslog);
+            Smslog smslog = new()
+            {
+                Smstemplate = messageBody,
+                MobileNumber = model.PhoneNumber,
+                CreateDate = DateTime.Now,
+                SentDate = DateTime.Now,
+                SentTries = 1,
+                IsSmssent = true,
+            };
+            _Repository.SmsLogtbl(smslog);
 
 
 
@@ -1414,7 +1417,7 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 var receiver = model.Email;
                 var subject = "Send Link";
-                var message = "Tap on link for Send Link : http://localhost:5198/Home/create_patient";
+                var message = "Tap on link for Send Link : http://localhost:5198/Home/create_patient?token="+_jwtService.GenerateJwtTokenByEmail(receiver);
 
 
                 var mail = "tatva.dotnet.binalmalaviya@outlook.com";
@@ -2584,6 +2587,7 @@ namespace hallocdoc_mvc_Service.Implementation
                                         Status = shifts.ShiftDetails.First(X => X.ShiftDate == date).Status,
                                     };
                                     s.shifts.Add(detail);
+                                    
                                 }
                             }
 
@@ -2702,7 +2706,7 @@ namespace hallocdoc_mvc_Service.Implementation
         {
 
 
-            List<Physician> physicians = _Repository.DayData();
+            List<Physician> physicians = _Repository.DayDataPending();
             List<ShiftReview> shiftReviews = new();
             if (region != 0)
             {
@@ -2955,7 +2959,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         }
 
-        public List<Emaillogs>? EmailLogs(int role, string name, string email, DateTime createdate, DateTime sentdate, int page)
+        public List<Emaillogs>? EmailLogs(string name, string email, DateTime createdate, DateTime sentdate, int page)
         {
 
             List<Emaillogs> logs = _Repository.EmailLogs();
@@ -2977,7 +2981,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         }
 
-        public List<Emaillogs>? SmsLog(int role, string name, string mobile, DateTime createdate, DateTime sentdate, int page)
+        public List<Emaillogs>? SmsLog( string name, string mobile, DateTime createdate, DateTime sentdate, int page)
         {
             List<Emaillogs> logs = _Repository.SmsLogs();
 
@@ -3064,6 +3068,28 @@ namespace hallocdoc_mvc_Service.Implementation
                 asp.PasswordHash = Crypto.HashPassword(model.Password);
                 _Repository.UpdateAsp(asp);
             }
+        }
+
+        public void TransferReq(ModalData md, int id, int admin)
+        {
+            Request req = _Repository.GetRequestById(id);
+
+            req.Status = 1;
+            req.AcceptedDate = null;
+            req.PhysicianId = md.SelectedPhysicianName;
+            req.ModifiedDate = DateTime.Now;
+            _Repository.UpdateRequesttbl(req);
+
+            RequestStatusLog reqlog = new()
+            {
+                RequestId = id,
+                Status = 2,
+                TransToPhysicianId = md.SelectedPhysicianName,
+                AdminId = admin,
+                Notes = md.note,
+                CreatedDate = DateTime.Now,
+            };
+            _Repository.AddRequestStatuslog(reqlog);
         }
     }
 }

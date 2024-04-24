@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-end mb-5" style="position:absolute; right:70px; top:70px; background-color:rgb(221,160,221);">
+
+
+    <button type="button" class="btn  text-white" style="background-color:rgb(221,160,221); " onclick="openit()">Add User</button>
+</div>
+<input class="form-control form-control-lg mb-4" type="text" placeholder="Search" id="search" aria-label=".form-control-lg example" onkeyup="filter()">
+<div id="schmodal"></div>
+
+<div id="tableContainer"></div>
+
+
+
+
+
+
+
+
+<script>
+    window.onload = () => {
+        $.ajax({
+            url: '/Home/TableData',
+            type: 'POST',
+            dataType: 'html',
+            // Pass your data here (if needed)
+            success: function (response) {
+                $('#tableContainer').html(response);
+            },
+            error: function () {
+                alert('An error occurred.');
+            }
+        });
+    }
+
+    function filter(page) {
+        var search = document.getElementById("search").value
+        $.ajax({
+            url: '/Home/TableData',
+            data: { search: search,page : page },
+            type: "POST",
+            success: function (result) {
+                $("#tableContainer").html(result)
+            },
+            error: function () {
+                alert("An error occured!");
+
+            }
+        });
+    };
+
+
+
+
+        
+
+
+    function openit() {
+        $('#schmodal').load('/Home/AddUser/', () => {
+            const modal = new bootstrap.Modal(document.getElementById('createshift'));
+            modal.show();
+        });
+    }
+</script>

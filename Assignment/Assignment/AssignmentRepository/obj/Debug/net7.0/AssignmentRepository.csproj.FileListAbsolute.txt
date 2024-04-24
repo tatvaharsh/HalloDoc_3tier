@@ -1,0 +1,14 @@
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\bin\Debug\net7.0\AssignmentRepository.deps.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\bin\Debug\net7.0\AssignmentRepository.runtimeconfig.json
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\bin\Debug\net7.0\AssignmentRepository.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\bin\Debug\net7.0\AssignmentRepository.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\AssignmentRepository.csproj.AssemblyReference.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\AssignmentRepository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\AssignmentRepository.AssemblyInfoInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\AssignmentRepository.AssemblyInfo.cs
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\AssignmentRepository.csproj.CoreCompileInputs.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\AssignmentRepository.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\refint\AssignmentRepository.dll
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\AssignmentRepository.pdb
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\AssignmentRepository.genruntimeconfig.cache
+D:\Projects\.net learning\hallo_doc\HalloDoc_MVC\Assignment\Assignment\AssignmentRepository\obj\Debug\net7.0\ref\AssignmentRepository.dll

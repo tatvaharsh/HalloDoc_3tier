@@ -8,15 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IPatient_Service, Patient_Service>();
-builder.Services.AddScoped<IPatient_Repository, Patient_Repository>();
-builder.Services.AddScoped<IAdmin_Service, Admin_Service>();
-builder.Services.AddScoped<IPhysician_Service, Physician_Service>();
-builder.Services.AddScoped<IPDFService, PDFService>();
-builder.Services.AddScoped<IAdmin_Repository, Admin_Repository>();
-builder.Services.AddScoped<IPhysician_Repository, Physician_Repository>();
-builder.Services.AddScoped<IJwtService, JwtService>();
-builder.Services.AddDbContext<ApplicationDbContext>();
+//builder.Services.AddScoped<IPatient_Service, Patient_Service>();
+//builder.Services.AddScoped<IPatient_Repository, Patient_Repository>();
+//builder.Services.AddScoped<IAdmin_Service, Admin_Service>();
+//builder.Services.AddScoped<IPhysician_Service, Physician_Service>();
+//builder.Services.AddScoped<IPDFService, PDFService>();
+//builder.Services.AddScoped<IAdmin_Repository, Admin_Repository>();
+//builder.Services.AddScoped<IPhysician_Repository, Physician_Repository>();
+//builder.Services.AddScoped<IJwtService, JwtService>();
+//builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddSession(options =>

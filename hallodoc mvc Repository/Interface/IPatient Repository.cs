@@ -31,6 +31,7 @@ namespace hallodoc_mvc_Repository.Interface
         public List<RequestWiseFile> getFiles();
         RequestClient getRcbyemail(string userName);
         public List<Request> getRequest(int? id);
+        Request GetRequestByEmail(string userName);
         public List<RequestWiseFile> getRequestWiseFile(int id);
        public RequestWiseFile getRequestWiseFileById(int id);
         public User getUser(string email);
@@ -39,6 +40,7 @@ namespace hallodoc_mvc_Repository.Interface
         ICollection<AspNetRole> RolePatient();
         public void Save();
        public void updateAspnetuserTable(AspNetUser asp);
+        void UpdateRequest(Request req);
         public void UpdateUserTable(User req);
         AspNetUser ValidateUser(LoginViewModel model);
     }
