@@ -4,13 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Assignment</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Assignment.styles.css" asp-append-version="true" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color:rgb(221,160,221);">
+    <header class="m-0 p-0">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm m-0 p-0 navbar-light bg-white border-bottom box-shadow" style="background-color:rgb(221,160,221);">
             <div class="container-fluid" style="background-color:rgb(148,0,211); color:white;" >
                 <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">User Management System</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -21,7 +24,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container-fluid p-0">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

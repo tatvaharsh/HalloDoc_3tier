@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,37 +10,84 @@ namespace hallodoc_mvc_Repository.DataModels;
 [Table("User")]
 public partial class User
 {
-    [Column(TypeName = "character varying")]
-    public string? FirstName { get; set; }
+    [Key]
+    public int UserId { get; set; }
 
-    [Column(TypeName = "character varying")]
+    public int? AspNetUserId { get; set; }
+
+    [StringLength(100)]
+    public string FirstName { get; set; } = null!;
+
+    [StringLength(100)]
     public string? LastName { get; set; }
 
-    public int? CityId { get; set; }
+    [StringLength(50)]
+    public string Email { get; set; } = null!;
 
-    public int? Age { get; set; }
+    [StringLength(20)]
+    public string? Mobile { get; set; }
 
-    [Column(TypeName = "character varying")]
-    public string? Email { get; set; }
+    [Column(TypeName = "bit(1)")]
+    public BitArray? IsMobile { get; set; }
 
-    [Column(TypeName = "character varying")]
-    public string? PhoneNo { get; set; }
+    [StringLength(100)]
+    public string? Street { get; set; }
 
-    [Column(TypeName = "character varying")]
-    public string? Gender { get; set; }
-
-    [Column(TypeName = "character varying")]
+    [StringLength(100)]
     public string? City { get; set; }
 
-    [Column(TypeName = "character varying")]
-    public string? Country { get; set; }
+    [StringLength(100)]
+    public string? State { get; set; }
 
-    [Key]
-    public int Id { get; set; }
+    public int? RegionId { get; set; }
 
-    public bool? IsDeleted { get; set; }
+    [StringLength(10)]
+    public string? ZipCode { get; set; }
 
-    [ForeignKey("CityId")]
-    [InverseProperty("Users")]
-    public virtual City? CityNavigation { get; set; }
+    [Column("strMonth")]
+    [StringLength(20)]
+    public string? StrMonth { get; set; }
+
+    [Column("intYear")]
+    public int? IntYear { get; set; }
+
+    [Column("intDate")]
+    public int? IntDate { get; set; }
+
+    public int CreatedBy { get; set; }
+
+    [Column(TypeName = "timestamp without time zone")]
+    public DateTime CreatedDate { get; set; }
+
+    public int? ModifiedBy { get; set; }
+
+    [Column(TypeName = "timestamp without time zone")]
+    public DateTime? ModifiedDate { get; set; }
+
+    public short? Status { get; set; }
+
+    [Column(TypeName = "bit(1)")]
+    public BitArray? IsDeleted { get; set; }
+
+    [Column("IP")]
+    [StringLength(20)]
+    public string? Ip { get; set; }
+
+    [Column(TypeName = "bit(1)")]
+    public BitArray? IsRequestWithEmail { get; set; }
+
+    [ForeignKey("AspNetUserId")]
+    [InverseProperty("UserAspNetUsers")]
+    public virtual AspNetUser? AspNetUser { get; set; }
+
+    [ForeignKey("CreatedBy")]
+    [InverseProperty("UserCreatedByNavigations")]
+    public virtual AspNetUser CreatedByNavigation { get; set; } = null!;
+
+    [ForeignKey("ModifiedBy")]
+    [InverseProperty("UserModifiedByNavigations")]
+    public virtual AspNetUser? ModifiedByNavigation { get; set; }
+
+    [InverseProperty("User")]
+    public virtual ICollection<Request> Requests { get; set; } = new List<Request>();
 }

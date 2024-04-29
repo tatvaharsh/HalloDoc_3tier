@@ -8,6 +8,7 @@
     <div class="loader" style="z-index:150"></div>
 
 </div>
+<Partial name="_Toast" />
 <div class="container">
     <div class=" mt-2 d-flex justify-content-between align-items-center">
 
@@ -98,7 +99,7 @@
                     <button type="submit" id="savebtn" class="btn btn-info text-white me-1">Save</button>
 
 
-                    <button type="reset" id="cancelBtn" class="btn btn-outline-info CancelBtn">Cancel</button>
+                    <a asp-action="Tabchange" asp-route-nav="7" id="cancelBtn" class="btn btn-outline-info CancelBtn">Cancel</a>
                 </div>
             </form>
         </div>

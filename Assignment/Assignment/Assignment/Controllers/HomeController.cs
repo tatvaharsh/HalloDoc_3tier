@@ -52,6 +52,13 @@ namespace Assignment.Controllers
             _Service.AddUser(model);
             return RedirectToAction(nameof(Index));
         }
+        
+
+        [HttpGet]
+        public IActionResult CityNames()
+        {
+            return Json(_Service.CityNames());
+        }
 
         public IActionResult Privacy()
         {

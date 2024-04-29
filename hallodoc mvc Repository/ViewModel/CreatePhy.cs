@@ -25,11 +25,11 @@ namespace hallodoc_mvc_Repository.ViewModel
         [Required(ErrorMessage = "LastName is required")]
         public string Lastname { get; set; }  
         public string email { get; set; }
-        public string alterphone { get; set; }
+        public string? alterphone { get; set; }
         public string phone { get; set; }
         public string medicallicence { get; set; }
         public string npi { get; set; }
-        public string? address1 { get; set; }
+        public string address1 { get; set; }
         public string? address2 { get; set; }
         public string? Businessname { get; set; }
         public string? Adminnote { get; set; }
@@ -41,7 +41,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         [Required(ErrorMessage = "Select any Role")]
         public int? SelectedRoleId { get; set; }    
         public int? SelectedStateId { get; set; }
-        public List<int>? SelectedRegions { get; set; }
+        public List<int> SelectedRegions { get; set; }
 
         public IFormFile? HIPAA { get; set; }
         public IFormFile? NonDisclosureDoc { get; set; }

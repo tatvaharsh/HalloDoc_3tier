@@ -85,7 +85,17 @@
                 {
                     <tr>
                         <td class="d-flex">
-                            <div class="me-2 text-center" style="width:40px;height:40px"><img class="w-100 h-100 border rounded-5" src="~/PhysicianDoc/@physician.Physicians.PhysicianId/Photo.svg" /></div>
+                            <div class="me-2 text-center" style="width:40px;height:40px">
+                                @if (physician.Physicians.Photo != null)
+                                {
+                                    <img class="w-100 h-100 border rounded-5" src="~/PhysicianDoc/@physician.Physicians.PhysicianId/Photo.svg" />
+                                }else
+                                {
+                                <img class="w-100 h-100 border rounded-5" src="~/SRSScreenShorts/doc.png" />
+                                }
+
+                             
+                             </div>
                             <div>@physician.Physicians.FirstName @physician.Physicians.LastName</div>
                         </td>
                         @{

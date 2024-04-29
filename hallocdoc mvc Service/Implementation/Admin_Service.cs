@@ -91,7 +91,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     {
                         transfer.Add("Admin transferred to Dr : " + phy?.FirstName + " on " + x.CreatedDate.ToString("dd/MM/yyyy") + " at " + x.CreatedDate.ToString("HH: mm:ss: tt") + " " + x.Notes);
                     }
-                    else if (x.PhysicianId != 0)
+                    else if (x.PhysicianId != null)
                     {
                         transfer.Add("Physician changed to status" + " " + x.Status + " " + x.Notes);
                     }
@@ -756,6 +756,7 @@ namespace hallocdoc_mvc_Service.Implementation
             Request req = _Repository.GetRequestById(id);
 
             req.Status = 10;
+            
             req.ModifiedDate = DateTime.Now;
             _Repository.UpdateRequesttbl(req);
 
@@ -1141,10 +1142,11 @@ namespace hallocdoc_mvc_Service.Implementation
         public ModalData cancelmodal(int id)
         {
             RequestClient rc = _Repository.getclient(id);
-            ModalData resp = new ModalData();
+            ModalData resp = new();
             resp.PatientName = rc.FirstName + " " + rc.LastName;
             resp.Token = id;
-
+            
+            
             return resp;
         }
 
@@ -2233,7 +2235,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     accountType = user.Roles.First().Name,
                     Status = user.AdminAspNetUsers.Count != 0 ? user.AdminAspNetUsers.First().Status : user.PhysicianAspNetUsers.Count != 0 ? user.PhysicianAspNetUsers.First().Status : 0,
                     phyid = user.Roles.First().Name == "Admin" ? _Repository.GetAdminByasp(user.Id) : _Repository.GetPhyByAsp(user.Id),
-
+                    openrequest = user.PhysicianAspNetUsers.Count != 0 ? user.PhysicianAspNetUsers.First().Requests.Where(x=>x.Status<8).Count():_Repository.GetRequest().Count(X=>X.Status<=8),
                 });
             }
             return ua;

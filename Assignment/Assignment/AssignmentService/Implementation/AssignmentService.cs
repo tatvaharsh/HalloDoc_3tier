@@ -2,13 +2,6 @@
 using AssignmentRepository.Interface;
 using AssignmentRepository.ViewModel;
 using AssignmentService.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace AssignmentService.Implementation
 {
@@ -49,7 +42,7 @@ namespace AssignmentService.Implementation
                         Country = model.Country,
                         Age = DateTime.Now.Year - model.BirthDate.Year,
 
-                };
+                    };
                     _Repo.AddUser(user);
                 }
                 else
@@ -83,14 +76,14 @@ namespace AssignmentService.Implementation
                     _Repo.AddCityTbl(city);
 
                     user1.Email = model.Email;
-                    user1.FirstName = model.FirstName;  
+                    user1.FirstName = model.FirstName;
                     user1.LastName = model.LastName;
                     user1.Country = model.Country;
                     user1.City = model.City;
                     user1.PhoneNo = model.PhoneNumber;
                     user1.Gender = model.Gendermale;
                     user1.CityId = city.Id;
-                    user1.Age = DateTime.Now.Year-model.BirthDate.Year;
+                    user1.Age = DateTime.Now.Year - model.BirthDate.Year;
                     _Repo.UpdateTbl(user1);
                 }
                 else
@@ -105,7 +98,7 @@ namespace AssignmentService.Implementation
                     user1.CityId = citi.Id;
                     user1.Age = DateTime.Now.Year - model.BirthDate.Year;
                     _Repo.UpdateTbl(user1);
-                  
+
                 }
 
             }
@@ -123,8 +116,11 @@ namespace AssignmentService.Implementation
         {
             var data = _Repo.AllDataUser();
             int size = 3;
-            var a = data.Skip(pageid * size - size).Take(size).ToList();
             int c = data.Count();
+            if (search != null)
+            { data = data.Where(x => x.FirstName!.Contains(search, StringComparison.OrdinalIgnoreCase)).ToList(); pageid = 1; }
+
+            var a = data.Skip(pageid * size - size).Take(size).ToList();
             var user = new List<UserModel>();
             foreach (var item in a)
             {
@@ -138,12 +134,13 @@ namespace AssignmentService.Implementation
                     Gendermale = item.Gender ?? "",
                     Id = item.Id,
                     PgCount = c,
-                  
-            });
+                    Country = item.Country,
+                    Age = item.Age,
+                });
             }
-         
-            if (search != null)
-            { user = user.Where(x => x.FirstName.Contains(search, StringComparison.OrdinalIgnoreCase)).ToList(); pageid = 1; }
+            //if (search != null)
+            //{ user = user.Where(x => x.FirstName.Contains(search, StringComparison.OrdinalIgnoreCase)).ToList(); pageid = 1; }
+
 
             return user;
         }
@@ -163,5 +160,11 @@ namespace AssignmentService.Implementation
             };
             return model;
         }
+
+        public List<string> CityNames()
+        {
+            return _Repo.GetCityNames();
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Office2010.Excel;
 using DocumentFormat.OpenXml.Spreadsheet;
 using hallocdoc_mvc_Service.Implementation;
 using hallocdoc_mvc_Service.Interface;
@@ -735,7 +736,11 @@ namespace hallodoc_mvc.Controllers
             if (_jwtService.ValidateJwtToken(t, out JwtSecurityToken jwtSecurityToken))
             {
                 ModalData md = _service.cancelmodal(token);
-                return View(md);
+                
+               
+                    return View(md);
+           
+                
             }
             return NotFound();
 
@@ -984,7 +989,7 @@ namespace hallodoc_mvc.Controllers
             ViewBag.Username = _service.Adminname(admin);
             _service.editadminprofile(model, admin);
             TempData["success"] = "Profile Changed Successfully!!!";
-            return RedirectToAction("Admin_Dashboard");
+            return RedirectToAction(nameof(TabChange), new { nav = 3, isPartial = false });
         }
 
         [HttpPost]
@@ -998,7 +1003,7 @@ namespace hallodoc_mvc.Controllers
             int admin = (int)HttpContext.Session.GetInt32("Id");
             _service.editadminp(model, admin);
             TempData["success"] = "Profile Changed successfully!!!";
-            return RedirectToAction("Admin_Dashboard");
+            return RedirectToAction(nameof(TabChange), new { nav = 3, isPartial = false });
         }
 
         [HttpPost]
@@ -1007,7 +1012,7 @@ namespace hallodoc_mvc.Controllers
             int admin = (int)HttpContext.Session.GetInt32("Id");
             _service.reset(model, admin);
             TempData["success"] = "Password Changed successfully!!!";
-            return RedirectToAction("Admin_Dashboard");
+            return RedirectToAction(nameof(TabChange), new { nav = 3, isPartial = false });
         }
 
         public IActionResult Provider(int region)
@@ -1075,11 +1080,12 @@ namespace hallodoc_mvc.Controllers
 
 
 
-        public IActionResult CreateRole(int check)
+        public IActionResult CreateRole(int check, string RoleName)
         {
             int admin1 = (int)HttpContext.Session.GetInt32("Id");
             ViewBag.Username = _service.Adminname(admin1);
             RoleModel model = _service.GetMenutbl(check);
+            model.RoleName = RoleName;
             return View(model); 
         }
         public IActionResult AssignRole(string RoleName, string[] selectedRoles, int check)
@@ -1125,27 +1131,32 @@ namespace hallodoc_mvc.Controllers
         [HttpPost]
         public IActionResult EditPhyInfo(int id, CreatePhy model)
         {
+          
             _service.EditPhyInfo(id, model);
-            return RedirectToAction("Admin_Dashboard");
+            TempData["success"] = "Provider Edited successfully!!!";
+            return RedirectToAction(nameof(EditPhysicianAccount),new{Id = id});
         }
 
         [HttpPost]
         public IActionResult EditPhyMailBillInfo(int id, CreatePhy model)
         {
             _service.EditPhyMailBillInfo(id, model);
-            return RedirectToAction("Admin_Dashboard");
+            TempData["success"] = "Provider Edited successfully!!!";
+            return RedirectToAction(nameof(EditPhysicianAccount), new { Id = id });
         }
         [HttpPost]
         public IActionResult EditPhyProvider(int id, CreatePhy model)
         {
             _service.EditPhyProvider(id, model);
-            return RedirectToAction("Admin_Dashboard");
+            TempData["success"] = "Provider Edited successfully!!!";
+            return RedirectToAction(nameof(EditPhysicianAccount), new { Id = id });
         }
         [HttpPost]
         public IActionResult EditPhyDocs(int id, CreatePhy model)
         {
             _service.EditPhyDocs(id, model);
-            return RedirectToAction("Admin_Dashboard");
+            TempData["success"] = "Provider Edited successfully!!!";
+            return RedirectToAction(nameof(EditPhysicianAccount), new { Id = id });
         }
         public IActionResult DeletePhy(int id)
         {
@@ -1169,6 +1180,7 @@ namespace hallodoc_mvc.Controllers
             if (ModelState.IsValid)
             {
                 _service.CreateAdmin(model, admin1);
+                TempData["success"] = "Admin Created Successfully!!!";
                 return RedirectToAction("Admin_Dashboard");
             }
 
@@ -1223,13 +1235,15 @@ namespace hallodoc_mvc.Controllers
         public IActionResult EditPartner(PartnersCM model, int id)
         {
             _service.EditPartner(model, id);
-            return RedirectToAction("Admin_Dashboard");
+            TempData["success"] = "Partner Edited successfully!!!";
+            return RedirectToAction(nameof(EditPartner),new { id= id});
         }
 
 
         public IActionResult DeletePartner(int id)
         {
             _service.DeletePartner(id);
+            TempData["success"] = "Partner Deleted successfully!!!";
             return RedirectToAction("Admin_Dashboard");
         }
         public IActionResult CreateShiftModal(int id)

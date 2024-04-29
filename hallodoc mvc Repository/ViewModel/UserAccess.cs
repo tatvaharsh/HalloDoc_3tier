@@ -22,5 +22,6 @@ namespace hallodoc_mvc_Repository.ViewModel
         public int? AdminStatus { get; set; }
         public int? Status { get; set; }
         public int? phyid { get; set; }
+        public int? openrequest { get; set; }
     }
 }

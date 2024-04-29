@@ -16,5 +16,7 @@ namespace AssignmentRepository.Interface
         User CheckEmail(string email);
         User SelectedUser(int id);
         void UpdateTbl(User user);
+
+        List<string> GetCityNames();
     }
 }

@@ -98,17 +98,17 @@
                                 <input type="tel" class="d1class phone form-control" asp-for="@Model.AdminData.Mobile" title="Enter Valid Number" id="phone" style="height: 58px;">
                                 <span asp-validation-for="AdminData.Mobile" class="text-danger"></span>
                         </div>
-                        <div class=" col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
+                            <div class="d1class col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                             @foreach(var item in Model.region)
                             {
                                     if (Model.Reg.FirstOrDefault(x => x.Regionid == item.RegionId)!=null)
                                     {
-                                        <input type="checkbox" id="@item.RegionId" name="SelectedRegions" value="@item.RegionId" class="boxes" checked>
+                                        <input type="checkbox" id="@item.RegionId" name="SelectedRegions" value="@item.RegionId" class="d1class boxes" style="border:2px dotted #00f;background:#ff0000;" checked>
                                         <label>@item.Name</label>
                                     }
                                     else
                                     {
-                                        <input type="checkbox" class="boxes" name="SelectedRegions" value="@item.RegionId" id="@item.RegionId">
+                                        <input type="checkbox" class="d1class boxes" name="SelectedRegions" value="@item.RegionId" style="border:2px dotted #00f;background:#ff0000;" id="@item.RegionId">
                                         <label>@item.Name</label>
                                     }
                             }
@@ -186,6 +186,8 @@
 </div>
 <partial name="_Footer" />
 <style>
+   
+
     .foot{
         position:fixed;
     }

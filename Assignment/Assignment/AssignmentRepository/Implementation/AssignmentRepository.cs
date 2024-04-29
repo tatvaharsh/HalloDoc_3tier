@@ -59,5 +59,11 @@ namespace AssignmentRepository.Implementation
             _DbContext.SaveChanges();
 
         }
+
+        public List<string> GetCityNames()
+        {
+            return _DbContext.Cities.Select(x => x.Name).ToList() ?? new List<string?>();
+        }
+
     }
 }

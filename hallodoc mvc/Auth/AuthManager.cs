@@ -39,20 +39,7 @@ namespace HalloDoc.Auth
 
             var menus = context.HttpContext.Session.GetString("menus");
 
-            if (_menu != null)
-            {
-
-
-                bool hasAccess = false;
-                if (menus.Contains(_menu))
-                {
-                    hasAccess = true;
-                }
-                if (hasAccess == false)
-                {
-                    context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Access" }));
-                }
-            }
+           
 
             if (token == null || !jwtService.ValidateJwtToken(token, out JwtSecurityToken jwtToken))
             {
@@ -77,6 +64,20 @@ namespace HalloDoc.Auth
             {
                 context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "patient_login", }));
                 return;
+            }
+            if (_menu != null)
+            {
+
+
+                bool hasAccess = false;
+                if (menus.Contains(_menu + ","))
+                {
+                    hasAccess = true;
+                }
+                if (hasAccess == false)
+                {
+                    context.Result = new RedirectToRouteResult(new RouteValueDictionary(new { controller = "Home", action = "Access" }));
+                }
             }
 
         }

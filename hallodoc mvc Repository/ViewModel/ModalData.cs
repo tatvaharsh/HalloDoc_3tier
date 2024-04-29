@@ -46,5 +46,6 @@ namespace hallodoc_mvc_Repository.ViewModel
 
         public int? phyid { get; set; }
         public int? Token { get; set; }
+        public int? Status { get; set; }
     }
 }

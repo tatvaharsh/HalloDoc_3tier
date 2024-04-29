@@ -13,5 +13,7 @@ namespace AssignmentService.Interface
         void Delete(int id);
         List<UserModel> GetData(string search,int page);
         UserModel GetSelectedData(int id);
+
+        List<string> CityNames();
     }
 }

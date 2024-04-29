@@ -8,7 +8,7 @@
     <table class="table  ">
         <thead>
             <tr class="text-center align-middle">
-                <th>User Id</th>
+                <th>Id</th>
 
                 <th>FirstName</th>
                 <th>LastName</th>
@@ -36,7 +36,7 @@
                     <td>@item.LastName</td>
                     <td>@item.Email</td>
                     <td>
-                        --
+                        @item.Age
                     </td>
                     <td>@item.PhoneNumber</td>
                
@@ -56,9 +56,22 @@
                     <td>
                         @item.City
                     </td>
-                    <td>
-                        --
-                    </td>
+           
+
+                        @if (item.Country == "1")
+                        {
+                        <td>India</td>
+                        }
+                        else if (item.Country == "2")
+                        {
+                        <td>U.K</td>
+                        }
+                        else
+                        {
+                        <td>U.S.A</td>
+                        }
+
+    
                     <td>
                         <button type="button" class="btn text-white" style="background-color:rgb(221,160,221);" onclick="openmodal(@item.Id)">Edit</button>
                         <button type="button" class="btn btn-dark" onclick="DeleteAccount(@item.Id)">Delete</button>
@@ -124,6 +137,12 @@
         }
     </ul>
 </nav>
+
+        <style>
+            a.page-link.active{
+                background-color:lightblue;
+            }
+        </style>
 <script>
     function xyz(page){
         filter(page);
