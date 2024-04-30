@@ -159,6 +159,7 @@ namespace hallodoc_mvc_Repository.Implementation
         public RequestClient? GetRequestclient(int id)
         {
             return _context.RequestClients.FirstOrDefault(x => x.RequestId == id);
+   
         }
 
         public void AddBlockRequest(BlockRequest blreq)

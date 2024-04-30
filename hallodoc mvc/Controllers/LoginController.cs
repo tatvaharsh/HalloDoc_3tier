@@ -27,7 +27,7 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult Admin_Login()
         {
-
+            
             return View("~/Views/Admin/Admin_Login.cshtml");
         }
 
@@ -98,7 +98,7 @@ namespace hallodoc_mvc.Controllers
                 }
                 TempData["error"] = "Login Failed!!!";
             }
-
+          
             return View("~/Views/Home/patient_login.cshtml");
         }
 

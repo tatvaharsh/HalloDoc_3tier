@@ -14,7 +14,7 @@ using hallocdoc_mvc_Service.Implementation;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Diagnostics;
-using Twilio.TwiML.Voice;
+using Twilio.TwiML.Voice;   
 
 namespace hallodoc_mvc.Controllers
 {
@@ -39,6 +39,7 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult patient_login()
         {
+          
             return View();
         }
 
@@ -133,6 +134,7 @@ namespace hallodoc_mvc.Controllers
 
         public IActionResult submit_screen()
         {
+       
             return View();
         }
         public IActionResult patient_form()
@@ -293,10 +295,10 @@ namespace hallodoc_mvc.Controllers
         public async Task<IActionResult> PatientDashboard()
         {
 
-            if (HttpContext.Session.GetInt32("Userid") == null)
-            {
-                return RedirectToAction(nameof(patient_login));
-            }
+            //if (HttpContext.Session.GetInt32("Userid") == null)
+            //{
+            //    return RedirectToAction(nameof(patient_login));
+            //}
 
             var req = _service.getRequest(HttpContext.Session.GetInt32("Userid"));
             //var req = _context.Requests.Where(u => u.UserId == HttpContext.Session.GetInt32("Userid")).ToList();

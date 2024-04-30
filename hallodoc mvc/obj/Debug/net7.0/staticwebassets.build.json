@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "D/x9zqdNEqe6kjTWAmGF6viD4/FR5BKHkUgiP9u+whc=",
+  "Hash": "1iGsOCk8/ErzLuimO/ySDuV0JDaILFbeU7GPgc6QrJ0=",
   "Source": "hallodoc mvc",
   "BasePath": "_content/hallodoc mvc",
   "Mode": "Default",
@@ -6033,6 +6033,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uplodedfiles\\HarshMehtaschema_hallodoc.pdf"
+    },
+    {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\harshmehtaSimranPatelchotabheemsuccess-icon (1) (1).svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "uplodedfiles/harshmehtaSimranPatelchotabheemsuccess-icon (1) (1).svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uplodedfiles\\harshmehtaSimranPatelchotabheemsuccess-icon (1) (1).svg"
     },
     {
       "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\uplodedfiles\\HarshMehtasuccess-icon (1).svg",
