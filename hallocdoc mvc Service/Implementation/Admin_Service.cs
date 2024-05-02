@@ -3093,6 +3093,64 @@ namespace hallocdoc_mvc_Service.Implementation
             };
             _Repository.AddRequestStatuslog(reqlog);
         }
+
+        public void EditPayrate(int adminid, int phyid, int nightshiftweekend, int shift, int housecallnight, int phoneconsults, int phoneconsultsnight, int batchtesting, int housecall)
+        {
+            PhysicianPayrate payrate = _Repository.GetPhysicianPayrate(phyid);
+
+            if (payrate.PayrateId > 0)
+            {
+                payrate.NigthshiftWeekend = nightshiftweekend > 0 ? nightshiftweekend : payrate.NigthshiftWeekend;
+                payrate.Shift = shift > 0 ? shift : payrate.Shift;
+                payrate.HousecallsNigthsWeekend = housecallnight > 0 ? housecallnight : payrate.HousecallsNigthsWeekend;
+                payrate.PhoneConsults = phoneconsults > 0 ? phoneconsults : payrate.PhoneConsults;
+                payrate.PhoneConsultsNigthsWeekend = phoneconsultsnight > 0 ? phoneconsultsnight : payrate.PhoneConsultsNigthsWeekend;
+                payrate.BatchTesting = batchtesting > 0 ? batchtesting : payrate.BatchTesting;
+                payrate.Housecall = housecall > 0 ? housecall : payrate.Housecall;
+                payrate.ModifiedBy = _Repository.getAspid(adminid);
+
+                _Repository.UpdateTable(payrate);
+            }
+            else
+            {
+                PhysicianPayrate newPayrate = new()
+                {
+                    PhysicianId = phyid,
+                    NigthshiftWeekend = nightshiftweekend,
+                    Shift = shift,
+                    HousecallsNigthsWeekend = housecallnight,
+                    PhoneConsults = phoneconsults,
+                    PhoneConsultsNigthsWeekend = phoneconsultsnight,
+                    BatchTesting = batchtesting,
+                    Housecall = housecall,
+                    CreatedBy = _Repository.getAspid(adminid),
+                };
+                _Repository.AddPayrateTbl(newPayrate);
+            }
+        }
+
+        public Payrate Payrate(int phyid)
+        {
+            PhysicianPayrate payrate = _Repository.GetPhysicianPayrate(phyid);
+            if (payrate.PayrateId > 0)
+            {
+                return new()
+                {
+                    PhysicianId = phyid,
+                    NigthshiftWeekend = payrate.NigthshiftWeekend,
+                    Shift = payrate.Shift,
+                    HousecallsNigthsWeekend = payrate.HousecallsNigthsWeekend,
+                    PhoneConsults = payrate.PhoneConsults,
+                    PhoneConsultsNigthsWeekend = payrate.PhoneConsultsNigthsWeekend,
+                    BatchTesting = payrate.BatchTesting,
+                    Housecall = payrate.Housecall,
+                };
+            }
+            return new()
+            {
+                PhysicianId = phyid,
+            };
+        }
     }
 }
 

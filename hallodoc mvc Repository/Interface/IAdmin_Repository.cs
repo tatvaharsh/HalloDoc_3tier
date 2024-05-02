@@ -158,5 +158,8 @@ namespace hallodoc_mvc_Repository.Interface
         List<Physician> DayDataPending();
 
         string GetRoleOfUser(int admin);
+        PhysicianPayrate GetPhysicianPayrate(int phyid);
+        void UpdateTable(PhysicianPayrate payrate);
+        void AddPayrateTbl(PhysicianPayrate newPayrate);
     }
 }

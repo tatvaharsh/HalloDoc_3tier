@@ -120,6 +120,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUGF0aWVudFJlY29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/Payrate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUGF5cmF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Admin/Provider.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvdmlkZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -272,6 +276,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXEVuY291bnRlck1vZGFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/Invoicing.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXEludm9pY2luZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/Order.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXE9yZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -310,6 +318,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/ViewUpload.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXFZpZXdVcGxvYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/_FinalizeTimesheet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGh5c2ljaWFuXF9GaW5hbGl6ZVRpbWVzaGVldC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/.net learning/hallo_doc/HalloDoc_MVC/hallodoc mvc/Views/Physician/_ValidationScriptsPartial.cshtml]

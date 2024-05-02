@@ -42,34 +42,7 @@ namespace hallodoc_mvc.Controllers
          
             return View();
         }
-
-
-
-        //[HttpPost]
-        //public IActionResult patient_login(LoginViewModel model)
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        bool isReg = _service.ValidateUser(model);
-
-        //        if (isReg)
-        //        {
-        //            var user = _service.getUser(model.Email);
-        //            HttpContext.Session.SetInt32("Userid", user.UserId);
-        //            HttpContext.Session.SetString("Username", user.FirstName + " " + user.LastName);
-        //            var token = _jwtService.GenerateJwtToken(model);
-        //            Response.Cookies.Append("jwt", token);
-        //            ViewBag.username = user.FirstName + " " + user.LastName;
-        //            return RedirectToAction("PatientDashboard");
-        //        }
-        //    }
-
-        //    return View();
-
-
-        //}
-
+  
         public IActionResult forgot_password()
         {
             return View();
@@ -88,7 +61,6 @@ namespace hallodoc_mvc.Controllers
 
 
             return View(model);
-
 
         }
         public IActionResult ResetPassword(string token)

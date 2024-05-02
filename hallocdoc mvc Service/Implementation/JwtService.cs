@@ -130,7 +130,7 @@ namespace hallocdoc_mvc_Service.Implementation
             if (token == null)
             {
                 return false;
-            }
+            }  
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes("qqweertyuiopsdfg5hdfghjklxcvbnmedfghjertyusxdcfvSADFAKSHDFGBASDHFBVAJKSHFDBAJKSBHDFASDGBFSADKJHvgbhnjmfg");

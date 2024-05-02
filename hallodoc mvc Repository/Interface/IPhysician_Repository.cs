@@ -73,5 +73,10 @@ namespace hallodoc_mvc_Repository.Interface
         void AddRequestTbl(Request request);
         void AddRequestClient(RequestClient requestclient);
         Physician GetShiftData(int admin);
+        List<Timesheet> TimeSheets(DateTime start, DateTime end, int phy);
+        int ShiftHoursOnDate(int phy, DateTime sheetDate);
+        Invoice GetInvoice(DateTime start, int phyid);
+        void SaveTable(Invoice invoice);
+        void UpdateTable(Invoice isInvoice);
     }
 }

@@ -1,0 +1,68 @@
+﻿@{
+    Layout = ViewBag.Layout;
+    DateTime date = DateTime.Now;
+}
+<style>
+    .nav-underline .nav-link.active {
+        color: #5bc0de !important;
+    }
+
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        background-color: aqua !important;
+    }
+</style>
+
+<div class="row d-flex justify-content-center">
+    <div class="col-lg-8 mb-5">
+        <div class="d-flex justify-content-between mt-4 mb-3">
+            <span class="h3">TimeSheets</span>
+            <a type="button" asp-action="ProviderDashboard" class="btn btn-outline-info back-btn">
+                &lt;
+                Back
+            </a>
+        </div>
+
+        <div class="p-3 shadow-lg rounded mt-3" id="form" style="min-width: 360px; background-color: #FBFBFB;">
+            <div class="form-floating d-flex justify-content-between align-items-center">
+                <select class="form-select" id="sortbytimesheet" style="width:fit-content" aria-label="Default select example">
+                    <option selected disabled value="0">Select TimePeriod</option>
+                    @for (var i = 0; i < 3; i++)
+                    {
+                        if (DateTime.Now > @date.AddDays(16 - date.Day))
+                        {
+                            <option value="@date.AddDays(16-date.Day)">
+                                @date.AddDays(16-date.Day).ToShortDateString() - @date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day).ToShortDateString()
+                            </option>
+                        }
+                        <option value="@date.AddDays(1-date.Day)">@date.AddDays(1-date.Day).ToShortDateString() - @date.AddDays(15 - date.Day).ToShortDateString()</option>
+
+                        date = date.AddMonths(-1);
+                    }
+                </select>
+                <label for="sortbytimesheet">Sort by Timesheetperiod</label>
+                <div class="float-end">
+                    <button type="button" id="finalize" class="btn btn-outline-info text-end">Finalize Timesheet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Display"></div>
+</div>
+
+
+<script>
+    $("#finalize").click(function () {
+        var date = document.getElementById("sortbytimesheet").value;
+        $.ajax({
+            url: '/Physician/FinalizeTimesheet',
+            method: 'POST',
+            data: { date: date },
+            success: function (response) {
+                $('#Display').html(response);
+            },
+            error: function (error) {
+                console.error('Error in AJAX', error);
+            }
+        });
+    });
+</script>

@@ -120,5 +120,7 @@ namespace hallocdoc_mvc_Service.Interface
         void SendEmailToOffDutyProvider(ModalData model);
         void EditPhyProfile(int id, CreatePhy model);
         void TransferReq(ModalData md, int id, int admin);
+        void EditPayrate(int adminid, int phyid, int nightshiftweekend, int shift, int housecallnight, int phoneconsults, int phoneconsultsnight, int batchtesting, int housecall);
+        Payrate Payrate(int id);
     }
 }

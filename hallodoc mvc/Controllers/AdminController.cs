@@ -1593,6 +1593,19 @@ namespace hallodoc_mvc.Controllers
             return File(pdfdata, "application/pdf", "MedicalReport.pdf");
         }
 
+        public IActionResult Payrate(int Id)
+        {
+            return View(_service.Payrate(Id));
+        }
+        public IActionResult EditPayrate(int phyid, int nightshiftweekend, int shift, int housecallnight,
+                                int phoneconsults, int phoneconsultsnight, int batchtesting, int housecall)
+        {
+            int adminid = (int)HttpContext.Session.GetInt32("Id");
+            _service.EditPayrate(adminid, phyid, nightshiftweekend, shift, housecallnight, phoneconsults
+                                         , phoneconsultsnight, batchtesting, housecall);
+            return RedirectToAction("Payrate", new {Id = phyid });
+        }
+
 
 
     }

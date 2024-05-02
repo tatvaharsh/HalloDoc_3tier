@@ -940,5 +940,22 @@ namespace hallodoc_mvc_Repository.Implementation
             int roleid = _context.Admins.FirstOrDefault(x => x.AdminId == admin).RoleId ?? 0;
             return _context.Roles.FirstOrDefault(x => x.RoleId == roleid).Name;
         }
+
+        public PhysicianPayrate GetPhysicianPayrate(int phyid)
+        {
+            return _context.PhysicianPayrates.FirstOrDefault(x => x.PhysicianId == phyid) ?? new() ;
+        }
+
+        public void UpdateTable(PhysicianPayrate payrate)
+        {
+            _context.PhysicianPayrates.Update(payrate);
+            _context.SaveChanges();
+        }
+
+        public void AddPayrateTbl(PhysicianPayrate newPayrate)
+        {
+            _context.PhysicianPayrates.Add(newPayrate);
+            _context.SaveChanges();
+        }
     }
 }

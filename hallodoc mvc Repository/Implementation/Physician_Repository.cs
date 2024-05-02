@@ -452,5 +452,37 @@ namespace hallodoc_mvc_Repository.Implementation
         {
             return _context.Physicians.Include(s => s.Shifts).ThenInclude(s => s.ShiftDetails).FirstOrDefault(s => s.PhysicianId == admin) ?? new();
         }
+
+        public List<Timesheet> TimeSheets(DateTime start, DateTime end, int phyid)
+        {
+            return _context.Timesheets.Where(x => x.PhysicianId == phyid && (x.SheetDate.Date >= start.Date && x.SheetDate.Date <= end.Date)).ToList();
+        }
+
+        public int ShiftHoursOnDate(int phyid, DateTime sheetDate)
+        {
+            return _context.ShiftDetails
+                .Where(x => x.Shift.PhysicianId == phyid && x.ShiftDate.Date == sheetDate.Date)
+                .Select(x => new
+                {
+                    duraion = x.EndTime - x.StartTime
+                }).Sum(x => (int)x.duraion.TotalHours);
+        }
+
+        public Invoice GetInvoice(DateTime start, int phyid)
+        {
+            return _context.Invoices.Include(x=>x.Timesheets).FirstOrDefault(x => x.StartDate.Date == start.Date && x.PhysicianId == phyid) ?? new();
+        }
+
+        public void SaveTable(Invoice invoice)
+        {
+           _context.Invoices.Add(invoice);
+            _context.SaveChanges();
+        }
+
+        public void UpdateTable(Invoice isInvoice)
+        {
+            _context.Invoices.Update(isInvoice);
+            _context.SaveChanges();
+        }
     }
 }

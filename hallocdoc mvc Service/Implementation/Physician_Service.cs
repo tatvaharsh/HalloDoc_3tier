@@ -1316,5 +1316,138 @@ namespace hallocdoc_mvc_Service.Implementation
             _Repository.AddRequestNotes(rn);
 
         }
+
+        public List<TimesheetData> TimesheetData(DateTime date, int phy)
+        {
+             DateTime start = date;
+            DateTime end = new();
+            List<TimesheetData> data = new();
+
+            if (date.Day == 1)
+            {
+                end = date.AddDays(14);
+            }
+            else
+            {
+                end = date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day);
+            }
+
+            List<Timesheet> timesheets = _Repository.TimeSheets(start, end, phy).OrderBy(x => x.SheetDate).ToList();
+            if (timesheets.Count > 0)
+            {
+                foreach (var timesheet in timesheets)
+                {
+                    data.Add(new TimesheetData()
+                    {
+                        PhysicianId = phy,
+                        InvoiceId = timesheet.InvoiceId,
+                        Date = timesheet.SheetDate,
+                        OnCallHours = _Repository.ShiftHoursOnDate(phy, timesheet.SheetDate),
+                        TotalHours = timesheet.TotalHours ?? 0,
+                        WeekendHoliday = timesheet.WeekendHoliday ?? false,
+                        NumberOfHouseCalls = timesheet.WeekendHoliday == true ? timesheet.NoHousecallsNight ?? 0 : timesheet.NoHousecalls ?? 0,
+                        NumberOfPhoneConsults = timesheet.WeekendHoliday == true ? timesheet.NoPhoneConsultNight ?? 0 : timesheet.NoPhoneConsult ?? 0,
+                    });
+                }
+            }
+            else
+            {
+                for (int i = start.Day; i <= end.Day; i++)
+                {
+                    data.Add(new TimesheetData()
+                    {
+                        PhysicianId = phy,
+                        Date = new DateTime(date.Year, date.Month, i),
+                        OnCallHours = _Repository.ShiftHoursOnDate(phy, new DateTime(date.Year, date.Month, i)),
+                    });
+                }
+            }
+
+            return data;
+        }
+
+        public void AddTimesheets(DateTime date, int phyid, TimesheetPost data)
+        {
+            DateTime start = date;
+            DateTime end = new();
+            if (date.Day == 1)
+            {
+                end = date.AddDays(14);
+            }
+            else
+            {
+                end = date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day);
+            }
+
+            Invoice isInvoice = _Repository.GetInvoice(start, phyid);
+
+            if (isInvoice.InvoiceId == 0)
+            {
+                Invoice invoice = new()
+                {
+                    PhysicianId = phyid,
+                    StartDate = date,
+                    EndDate = end,
+                    Status = 1,
+                    CreatedBy = _Repository.GetAspId(phyid),
+                };
+
+                int index = 0;
+                for (var i = start.Day; i <= end.Day; i++)
+                {
+                    Timesheet sheet = new()
+                    {
+                        PhysicianId = phyid,
+                        SheetDate = new DateTime(date.Year, date.Month, i),
+                        TotalHours = data.TotalHours[index],
+                        CreatedBy = _Repository.GetAspId(phyid),
+                    };
+                    if (data.WeekendHoliday.Contains(i))
+                    {
+                        sheet.WeekendHoliday = true;
+                        sheet.NoHousecallsNight = data.NumberOfHouseCalls[index];
+                        sheet.NoPhoneConsultNight = data.NumberOfPhoneConsults[index];
+                    }
+                    else
+                    {
+                        sheet.NoHousecalls = data.NumberOfHouseCalls[index];
+                        sheet.NoPhoneConsult = data.NumberOfPhoneConsults[index];
+                    }
+                    invoice.Timesheets.Add(sheet);
+
+                    index++;
+                }
+
+                _Repository.SaveTable(invoice);
+            }
+            else
+            {
+                int index = 0;
+                foreach (var item in isInvoice.Timesheets.OrderBy(X => X.SheetDate).ToList())
+                {
+                    item.TotalHours = data.TotalHours[index];
+
+                    if (data.WeekendHoliday.Contains(item.SheetDate.Day))
+                    {
+                        item.WeekendHoliday = true;
+                        item.NoHousecallsNight = data.NumberOfHouseCalls[index];
+                        item.NoPhoneConsultNight = data.NumberOfPhoneConsults[index];
+                        item.NoHousecalls = 0;
+                        item.NoPhoneConsult = 0;
+                    }
+                    else
+                    {
+                        item.NoHousecalls = data.NumberOfHouseCalls[index];
+                        item.NoPhoneConsult = data.NumberOfPhoneConsults[index];
+                        item.NoHousecallsNight = 0;
+                        item.NoPhoneConsultNight = 0;
+                        item.WeekendHoliday = null;
+                    }
+
+                    index++;
+                }
+                _Repository.UpdateTable(isInvoice);
+            }
+        }
     }
 }

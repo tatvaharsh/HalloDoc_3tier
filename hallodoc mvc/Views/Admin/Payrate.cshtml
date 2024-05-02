@@ -1,0 +1,143 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.Payrate
+@{
+    ViewData["Title"] = "Payrate";
+    Layout = "~/Views/Shared/_LayAdmin.cshtml";
+}
+<div class="backdrop" id="backdrop" style="z-index:140"></div>
+<div id="loader-container" class="vh-100 align-items-center justify-content-center" style="z-index:150">
+
+    <div class="loader" style="z-index:150"></div>
+
+</div>
+
+
+<div class="row d-flex justify-content-center">
+
+    <div class="col-lg-8 mb-5">
+        <div class="d-flex justify-content-between mt-4 mb-3">
+            <span class="h3">Payrate</span>
+            <a type="button" asp-action="Admin_Dashboard" class="btn btn-outline-info back-btn">
+                &lt;
+                Back
+            </a>
+        </div>
+
+
+
+        <div class="p-3 shadow-lg rounded" id="form" style="min-width: 360px;">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr style="background-color:gray">
+                        <th>Category</th>
+                        <th>Payrate</th>
+                        <th>Action</th>
+                    </tr>
+
+                    <tr class="align-middle">
+                        <td>NightShift_Weekend</td>
+                        <td>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="nightshiftweekend" placeholder="Payrate" asp-for="NigthshiftWeekend">
+                                <label for="Payrate">Payrate</label>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-light border-info bg-info text-white" onclick="editpayrate(nightshiftweekend)">Edit</button>
+                        </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                        <td>Shift</td>
+                        <td>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="shift" placeholder="Payrate" asp-for="Shift">
+                                <label for="Payrate">Payrate</label>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-light border-info bg-info text-white" onclick="editpayrate(shift)">Edit</button>
+                        </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                        <td>HouseCall_NightShift_Weekend</td>
+                        <td>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="housecallnight" placeholder="Payrate" asp-for="HousecallsNigthsWeekend">
+                                <label for="Payrate">Payrate</label>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-light border-info bg-info text-white" onclick="editpayrate(housecallnight)">Edit</button>
+                        </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                        <td>PhoneConsults</td>
+                        <td>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="phoneconsults" placeholder="Payrate" asp-for="PhoneConsults">
+                                <label for="Payrate">Payrate</label>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-light border-info bg-info text-white" onclick="editpayrate(phoneconsults)">Edit</button>
+                        </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                        <td>PhoneConsults_Night_Weekend</td>
+                        <td>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="phoneconsultsnight" placeholder="Payrate" asp-for="PhoneConsultsNigthsWeekend">
+                                <label for="Payrate">Payrate</label>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-light border-info bg-info text-white" onclick="editpayrate(phoneconsultsnight)">Edit</button>
+                        </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                        <td>BatchTesting</td>
+                        <td>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="batchtesting" placeholder="Payrate" asp-for="BatchTesting">
+                                <label for="Payrate">Payrate</label>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-light border-info bg-info text-white" onclick="editpayrate(batchtesting)">Edit</button>
+                        </td>
+                    </tr>
+
+                    <tr class="align-middle">
+                        <td>HouseCalls</td>
+                        <td>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="housecall" placeholder="Payrate" asp-for="Housecall">
+                                <label for="Payrate">Payrate</label>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-light border-info bg-info text-white" onclick="editpayrate(housecall)">Edit</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+
+    document.getElementById("nav-provider-tab").classList.add("active");
+    document.getElementById("providerinfo").classList.add("active");
+
+    function editpayrate(field) {
+        window.location.href = '/Admin/EditPayrate?phyid=' + @Model.PhysicianId+"&" + field.id + "=" + field.value;
+    }
+
+</script>

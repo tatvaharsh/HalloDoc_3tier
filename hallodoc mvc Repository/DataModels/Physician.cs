@@ -118,6 +118,9 @@ public partial class Physician
     [InverseProperty("Physician")]
     public virtual ICollection<EmailLog> EmailLogs { get; set; } = new List<EmailLog>();
 
+    [InverseProperty("Physician")]
+    public virtual ICollection<Invoice> Invoices { get; set; } = new List<Invoice>();
+
     [ForeignKey("ModifiedBy")]
     [InverseProperty("PhysicianModifiedByNavigations")]
     public virtual AspNetUser? ModifiedByNavigation { get; set; }
@@ -126,11 +129,17 @@ public partial class Physician
     public virtual ICollection<PhysicianNotification> PhysicianNotifications { get; set; } = new List<PhysicianNotification>();
 
     [InverseProperty("Physician")]
+    public virtual ICollection<PhysicianPayrate> PhysicianPayrates { get; set; } = new List<PhysicianPayrate>();
+
+    [InverseProperty("Physician")]
     public virtual ICollection<PhysicianRegion> PhysicianRegions { get; set; } = new List<PhysicianRegion>();
 
     [ForeignKey("RegionId")]
     [InverseProperty("Physicians")]
     public virtual Region? Region { get; set; }
+
+    [InverseProperty("Physician")]
+    public virtual ICollection<Reimbursement> Reimbursements { get; set; } = new List<Reimbursement>();
 
     [InverseProperty("Physician")]
     public virtual ICollection<RequestStatusLog> RequestStatusLogPhysicians { get; set; } = new List<RequestStatusLog>();
@@ -149,4 +158,7 @@ public partial class Physician
 
     [InverseProperty("Physician")]
     public virtual ICollection<Smslog> Smslogs { get; set; } = new List<Smslog>();
+
+    [InverseProperty("Physician")]
+    public virtual ICollection<Timesheet> Timesheets { get; set; } = new List<Timesheet>();
 }

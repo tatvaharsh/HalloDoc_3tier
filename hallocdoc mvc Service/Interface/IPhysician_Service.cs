@@ -61,5 +61,7 @@ namespace hallocdoc_mvc_Service.Interface
         void DeleteShiftViaModal(int shiftdetailid, int phy);
         void sendlink(ViewCase model, int phy);
         void PatientForm(patient_form model, int phy);
+        List<TimesheetData> TimesheetData(DateTime date, int phy);
+        void AddTimesheets(DateTime date, int phyid, TimesheetPost data);
     }
 }
