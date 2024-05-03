@@ -1435,7 +1435,7 @@ namespace hallocdoc_mvc_Service.Implementation
                         item.NoHousecalls = 0;
                         item.NoPhoneConsult = 0;
                     }
-                    else
+                    else  
                     {
                         item.NoHousecalls = data.NumberOfHouseCalls[index];
                         item.NoPhoneConsult = data.NumberOfPhoneConsults[index];
