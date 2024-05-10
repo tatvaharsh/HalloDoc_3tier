@@ -484,5 +484,32 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.Invoices.Update(isInvoice);
             _context.SaveChanges();
         }
+
+        public bool ShowBtn(DateTime date, int phyid)
+        {
+            return _context.Invoices.Any(x=>x.PhysicianId==phyid && x.IsFinalized==true && x.StartDate.Date==date.Date);
+        }
+
+        public DataModels.Reimbursement IsDataAvailable(int invoiceId, DateTime date)
+        {
+            return _context.Reimbursements.FirstOrDefault(x => x.InvoiceId == invoiceId && x.ReimbursementDate == date) ?? new();
+        }
+
+        public void AddReimbursement(DataModels.Reimbursement re)
+        {
+            _context.Reimbursements.Add(re);
+            _context.SaveChanges();     
+        }
+
+        public void UpdateReimbursement(DataModels.Reimbursement reimbursement)
+        {
+            _context.Reimbursements.Update(reimbursement);
+            _context.SaveChanges();
+        }
+
+        public List<DataModels.Reimbursement> GetReimbursements(int invoiceId)
+        {
+            return _context.Reimbursements.Where(x => x.InvoiceId == invoiceId).ToList();
+        }
     }
 }

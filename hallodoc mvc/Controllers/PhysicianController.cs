@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.IO.Compression;
 using DocumentFormat.OpenXml.Spreadsheet;
 using static Org.BouncyCastle.Crypto.Fips.FipsKdf;
+using Twilio.TwiML.Voice;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -537,12 +538,34 @@ namespace hallodoc_mvc.Controllers
         }
 
 
-
         public IActionResult AddTimeSheet(DateTime date, [FromForm] TimesheetPost data)
         {
             DateTime newdate = new DateTime(date.Year, date.Month, date.Day);
             int phyid = (int)HttpContext.Session.GetInt32("PhyId");
             _Service.AddTimesheets(date, phyid, data);
+            return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
+        }
+
+        public IActionResult IsFinalizedBtn(DateTime date)
+        {
+            int phyid = (int)HttpContext.Session.GetInt32("PhyId");
+            if(_Service.ShowFinalizeBtn(date, phyid))
+            {
+                return Json(new {isFinalized = true});
+            }
+            return Json(new { isFinalized = false});
+        }
+
+        public IActionResult ShowReimburesement(DateTime date)
+        {
+            int phyid = (int)HttpContext.Session.GetInt32("PhyId");
+            return PartialView("_Reimbursement",_Service.ReimbursementData(phyid,date));
+        }
+        [HttpPost]
+        public IActionResult SubmitReciet(DateTime date, [FromForm]hallodoc_mvc_Repository.ViewModel.Reimbursement model)
+        {
+            int phyid = (int)HttpContext.Session.GetInt32("PhyId");
+            _Service.AddReciet(model,date,phyid);
             return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
         }
     }

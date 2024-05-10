@@ -1322,7 +1322,7 @@ namespace hallocdoc_mvc_Service.Implementation
              DateTime start = date;
             DateTime end = new();
             List<TimesheetData> data = new();
-
+            
             if (date.Day == 1)
             {
                 end = date.AddDays(14);
@@ -1447,6 +1447,102 @@ namespace hallocdoc_mvc_Service.Implementation
                     index++;
                 }
                 _Repository.UpdateTable(isInvoice);
+            }
+        }
+
+        public bool ShowFinalizeBtn(DateTime date, int phyid)
+        {
+            return _Repository.ShowBtn(date, phyid);
+        }
+
+        public List<hallodoc_mvc_Repository.ViewModel.Reimbursement>? ReimbursementData(int phyid, DateTime date)
+        {
+            DateTime start = date;
+            DateTime end = new();
+            if (date.Day == 1)
+            {
+                end = date.AddDays(14);
+            }
+            else
+            {
+                end = date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day);
+            }
+
+            Invoice isInvoice = _Repository.GetInvoice(start, phyid);
+            List<hallodoc_mvc_Repository.ViewModel.Reimbursement> reimbursements = new();
+            if (isInvoice.InvoiceId > 0)
+            {
+                List<hallodoc_mvc_Repository.DataModels.Reimbursement> reimbursementss = _Repository.GetReimbursements(isInvoice.InvoiceId);
+                for(DateTime i=start.Date; i<=end.Date; i=i.AddDays(1))
+                {
+                    reimbursements.Add(new hallodoc_mvc_Repository.ViewModel.Reimbursement
+                    {
+                        PhysicianId = phyid,
+                        Date = i,
+                        Item = reimbursementss.FirstOrDefault(x=>x.ReimbursementDate.Date == i.Date)?.Item,
+                        Filename = reimbursementss.FirstOrDefault(x=>x.ReimbursementDate.Date == i.Date)?.Filename,
+                        Amount = reimbursementss.FirstOrDefault(x=>x.ReimbursementDate.Date == i.Date)?.Amount ?? 0,
+
+                    });
+                }
+            }
+            else
+            {
+                for (DateTime i = start.Date; i <= end.Date; i = i.AddDays(1))
+                {
+                    reimbursements.Add(new hallodoc_mvc_Repository.ViewModel.Reimbursement
+                    {
+                        PhysicianId = phyid,
+                        Date = i,
+
+                    });
+                }
+            }
+            return reimbursements;
+        }
+
+        public void AddReciet(hallodoc_mvc_Repository.ViewModel.Reimbursement model, DateTime date, int phyid)
+        {
+         
+            
+                string filename = date.ToShortDateString() + Path.GetExtension(model.FormFile.FileName);
+                string path = Directory.GetCurrentDirectory()+"/wwwroot/Reimbursement/"+phyid+"/"+ filename;
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                using FileStream stream = new(path, FileMode.Create);
+                model.FormFile.CopyTo(stream);
+            
+            Invoice isInvoice = _Repository.GetInvoice(date, phyid);
+            if(isInvoice.InvoiceId>0 ) 
+            {
+                hallodoc_mvc_Repository.DataModels.Reimbursement reimbursement = _Repository.IsDataAvailable(isInvoice.InvoiceId,date);
+                if(reimbursement.ReimbursementId>0) 
+                {
+                    reimbursement.PhysicianId = phyid;
+                    reimbursement.InvoiceId = isInvoice.InvoiceId;
+                    reimbursement.ReimbursementDate = date;
+                    reimbursement.Item = model.Item;
+                    reimbursement.Amount = model.Amount;
+                    reimbursement.Filename = filename;
+                    reimbursement.ModifiedBy = _Repository.GetAspId(phyid);
+                    reimbursement.ModifiedDate = DateTime.Now;
+                    _Repository.UpdateReimbursement(reimbursement);
+                }
+                else
+                {
+                    hallodoc_mvc_Repository.DataModels.Reimbursement re = new()
+                    {
+                        PhysicianId = phyid,
+                        InvoiceId = isInvoice.InvoiceId,
+                        ReimbursementDate=date,
+                        Item = model.Item,
+                        Amount = model.Amount,
+                        Filename = filename,
+                        CreatedBy = _Repository.GetAspId(phyid),
+                        CreatedDate = DateTime.Now,
+                    };
+                    _Repository.AddReimbursement(re);
+                }
+              
             }
         }
     }

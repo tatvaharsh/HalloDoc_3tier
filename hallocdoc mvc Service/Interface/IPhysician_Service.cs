@@ -63,5 +63,8 @@ namespace hallocdoc_mvc_Service.Interface
         void PatientForm(patient_form model, int phy);
         List<TimesheetData> TimesheetData(DateTime date, int phy);
         void AddTimesheets(DateTime date, int phyid, TimesheetPost data);
+        bool ShowFinalizeBtn(DateTime date, int phyid);
+        List<hallodoc_mvc_Repository.ViewModel.Reimbursement>? ReimbursementData(int phyid, DateTime date);
+        void AddReciet(hallodoc_mvc_Repository.ViewModel.Reimbursement model, DateTime date, int phyid);
     }
 }

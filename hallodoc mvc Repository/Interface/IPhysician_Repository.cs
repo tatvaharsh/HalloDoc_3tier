@@ -78,5 +78,10 @@ namespace hallodoc_mvc_Repository.Interface
         Invoice GetInvoice(DateTime start, int phyid);
         void SaveTable(Invoice invoice);
         void UpdateTable(Invoice isInvoice);
+        bool ShowBtn(DateTime date, int phyid);
+        DataModels.Reimbursement IsDataAvailable(int invoiceId, DateTime date);
+        void AddReimbursement(DataModels.Reimbursement re);
+        void UpdateReimbursement(DataModels.Reimbursement reimbursement);
+        List<DataModels.Reimbursement> GetReimbursements(int invoiceId);
     }
 }
