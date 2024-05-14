@@ -1,0 +1,78 @@
+﻿@model IEnumerable<hallodoc_mvc_Repository.ViewModel.TimesheetData>
+@*<div class="backdrop" id="backdrop" style="z-index:140"></div>
+<div id="loader-container" class="vh-100 align-items-center justify-content-center" style="z-index:150">
+
+    <div class="loader" style="z-index:150"></div>
+
+</div>*@
+<div class="row d-flex justify-content-center">
+
+    <div class="col-lg-9 mb-5">
+
+
+        <form asp-action="AddTimeSheet" asp-route-date="@Model.First().Date.ToString("MM/dd/yyyy")" class="p-3 shadow-lg rounded" id="form" style="min-width: 360px; background-color: #FBFBFB;">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr style="background-color:gray">
+                        <th>Date</th>
+                        <th>On-call Hours</th>
+                        <th>Total Hours</th>
+                        <th>Weekend/Holiday</th>
+                        <th>No. of Housecalls</th>
+                        <th>No. of Phone Consults</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="align-middle">
+                            <td class="text-nowrap">@item.Date.ToShortDateString()</td>
+                            <td>@item.OnCallHours</td>
+                            <td>
+                                <input type="number" name="TotalHours" class="form-control" value="@item.TotalHours">
+                            </td>
+                            <td>
+                                <input type="checkbox" value="@item.Date.Day" name="WeekendHoliday" class="form-check-input" checked="@item.WeekendHoliday">
+                            </td>
+                            <td>
+                                <input type="number" name="NumberOfHouseCalls" class="form-control" value="@item.NumberOfHouseCalls">
+                            </td>
+                            <td>
+                                <input type="number" name="NumberOfPhoneConsults" class="form-control" value="@item.NumberOfPhoneConsults">
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+
+            <div class=" text-end">
+                <button type="submit" class="btn btn-light bg-info border-info text-white text-end">Submit</button>
+            </div>
+        </form>
+        <button type="button" class="btn btn-light bg-info border-info text-white text-start mt-2" onclick="ShowHidden()">Add Reciepts</button>
+
+        <div class="d-flex justify-content-end">
+            <a asp-action="Finalizeit" asp-route-date="@Model.First().Date.ToString("MM/dd/yyyy")" class="btn btn-light bg-info border-info text-white text-end mt-2">Finalize</a>
+
+        </div>
+
+        <div id="reimburesement"></div>
+    </div>
+</div>
+
+<script>
+    function ShowHidden() {
+        var date = '@Model.First().Date.ToString("dd/MM/yyyy")';
+        $.ajax({
+            url: '/Admin/ShowReimburesement',
+            method: 'POST',
+            data: { date: date },
+            success: function (response) {
+                $('#reimburesement').html(response);
+            },
+            error: function (error) {
+                console.error('Error in AJAX', error);
+            }
+        });
+    }
+</script>
+

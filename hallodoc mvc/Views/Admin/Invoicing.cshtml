@@ -1,0 +1,101 @@
+﻿@model hallodoc_mvc_Repository.ViewModel.ModalData
+@{
+    Layout = ViewBag.Layout;
+    DateTime date = DateTime.Now;
+}
+<div class="backdrop" id="backdrop" style="z-index:140"></div>
+<div id="loader-container" class="vh-100 align-items-center justify-content-center" style="z-index:150">
+
+    <div class="loader" style="z-index:150"></div>
+
+</div>
+<div class="container">
+    <div class=" mt-2 d-flex justify-content-between align-items-center">
+
+        <h4>TimeSheet</h4>
+
+
+        <a asp-action="Tabchange" asp-route-nav="7" class="btn shadow  btn-outline-info px-3 ">
+            <i class="fa-solid fa-angle-left fs-6"></i> Back
+        </a>
+    </div>
+
+
+
+    <div class="shadow border rounded my-3">
+        <div class="mx-3 my-4 ">
+            <div class="row">
+                <select class="form-select form-select-lg mb-3   mx-2" id="phy" style="width:fit-content" aria-label=".form-select-lg example" onchange="GetTimesheet()">
+                    @foreach (var item in Model.Physicians)
+                    {
+                        <option value="@item.PhysicianId">@item.FirstName</option>
+                    }
+                    
+                </select>
+
+                <select class="form-select form-select-lg mb-3  mx-2" id="date" style="width:fit-content" aria-label=".form-select-lg example" onchange="GetTimesheet()">
+                  
+                    @{
+                        bool flag = false;
+                    }
+                    @for (var i = 0; i < 3; i++)
+                    {
+
+                        if (DateTime.Now > @date.AddDays(16 - date.Day))
+                        {
+                            if (flag)
+                            {
+                                <option value="@date.AddDays(16-date.Day)" selected>
+                                    @date.AddDays(16-date.Day).ToShortDateString() - @date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day).ToShortDateString()
+                                </option>
+                                flag = !flag;
+                            }
+                            else
+                            {
+                                <option value="@date.AddDays(16-date.Day)">
+                                    @date.AddDays(16-date.Day).ToShortDateString() - @date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day).ToShortDateString()
+                                </option>
+                            }
+                        }
+                        if (flag)
+                        {
+                            <option selected value="@date.AddDays(1-date.Day)">@date.AddDays(1-date.Day).ToShortDateString() - @date.AddDays(15 - date.Day).ToShortDateString()</option>
+                            flag = !flag;
+                        }
+                        else
+                        {
+                            <option value="@date.AddDays(1-date.Day)">@date.AddDays(1-date.Day).ToShortDateString() - @date.AddDays(15 - date.Day).ToShortDateString()</option>
+                        }
+
+                        date = date.AddMonths(-1);
+                    }
+                </select>
+            </div>
+            <div id="notapproved"></div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+
+        GetTimesheet();
+    });
+    function GetTimesheet(){
+        var phyid = document.getElementById("phy").value;
+        var date = document.getElementById("date").value;
+        if(phyid!=0 && date != 0){
+            $.ajax({
+                url: '/Admin/NotApproved',
+                method: 'POST',
+                data: { date: date, phyid: phyid },
+                success: function (response) {
+                    $('#notapproved').html(response);
+                },
+                error: function (error) {
+                    console.error('Error in AJAX', error);
+                }
+            });
+        }
+    }
+</script>

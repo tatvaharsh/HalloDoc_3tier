@@ -3151,6 +3151,294 @@ namespace hallocdoc_mvc_Service.Implementation
                 PhysicianId = phyid,
             };
         }
+
+        public ModalData? Addphy()
+        {
+            ModalData model = new()
+            {
+                Physicians = _Repository.getphysician()
+            };
+            return model;
+        }
+
+        public List<TimesheetData>? TimesheetData(DateTime date, int adminid,int phy)
+        {
+            DateTime start = date;
+            DateTime end = new();
+            List<TimesheetData> data = new();
+
+            if (date.Day == 1)
+            {
+                end = date.AddDays(14);
+            }
+            else
+            {
+                end = date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day);
+            }
+
+            List<Timesheet> timesheets = _Repository.TimeSheets(start, end, phy).OrderBy(x => x.SheetDate).ToList();
+            if (timesheets.Count > 0)
+            {
+                foreach (var timesheet in timesheets)
+                {
+                    data.Add(new TimesheetData()
+                    {
+                        PhysicianId = phy,
+                        InvoiceId = timesheet.InvoiceId,
+                        Date = timesheet.SheetDate,
+                        OnCallHours = _Repository.ShiftHoursOnDate(phy, timesheet.SheetDate),
+                        TotalHours = timesheet.TotalHours ?? 0,
+                        WeekendHoliday = timesheet.WeekendHoliday ?? false,
+                        NumberOfHouseCalls = timesheet.WeekendHoliday == true ? timesheet.NoHousecallsNight ?? 0 : timesheet.NoHousecalls ?? 0,
+                        NumberOfPhoneConsults = timesheet.WeekendHoliday == true ? timesheet.NoPhoneConsultNight ?? 0 : timesheet.NoPhoneConsult ?? 0,
+                    });
+                }
+            }
+            else
+            {
+                for (int i = start.Day; i <= end.Day; i++)
+                {
+                    data.Add(new TimesheetData()
+                    {
+                        PhysicianId = phy,
+                        Date = new DateTime(date.Year, date.Month, i),
+                        OnCallHours = _Repository.ShiftHoursOnDate(phy, new DateTime(date.Year, date.Month, i)),
+                    });
+                }
+            }
+
+            return data;
+        }
+
+        public List<hallodoc_mvc_Repository.ViewModel.Reimbursement>? ReimbursementData(int phyid, DateTime date, int adminid)
+        {
+            DateTime start = date;
+            DateTime end = new();
+            if (date.Day == 1)
+            {
+                end = date.AddDays(14);
+            }
+            else
+            {
+                end = date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day);
+            }
+
+            Invoice isInvoice = _Repository.GetInvoice(start, phyid);
+            List<hallodoc_mvc_Repository.ViewModel.Reimbursement> reimbursements = new();
+            if (isInvoice.InvoiceId > 0)
+            {
+                List<hallodoc_mvc_Repository.DataModels.Reimbursement> reimbursementss = _Repository.GetReimbursements(isInvoice.InvoiceId);
+                for (DateTime i = start.Date; i <= end.Date; i = i.AddDays(1))
+                {
+                    reimbursements.Add(new hallodoc_mvc_Repository.ViewModel.Reimbursement
+                    {
+                        PhysicianId = phyid,
+                        Date = i,
+                        Item = reimbursementss.FirstOrDefault(x => x.ReimbursementDate.Date == i.Date)?.Item,
+                        Filename = reimbursementss.FirstOrDefault(x => x.ReimbursementDate.Date == i.Date)?.Filename,
+                        Amount = reimbursementss.FirstOrDefault(x => x.ReimbursementDate.Date == i.Date)?.Amount ?? 0,
+
+                    });
+                }
+            }
+            else
+            {
+                for (DateTime i = start.Date; i <= end.Date; i = i.AddDays(1))
+                {
+                    reimbursements.Add(new hallodoc_mvc_Repository.ViewModel.Reimbursement
+                    {
+                        PhysicianId = phyid,
+                        Date = i,
+
+                    });
+                }
+            }
+            return reimbursements;
+        }
+
+        public AdminInvocing NotApproved(DateTime date, int phyid, int adminid)
+        {
+            Invoice isinvoice = _Repository.CheckInvoice(date, phyid);
+            if(isinvoice != null)
+            {
+                if (isinvoice.Status == 1)
+                {
+                    return new AdminInvocing()
+                    {
+                        InvoiceId = isinvoice.InvoiceId,
+                        StartDate = isinvoice.StartDate,
+                        EndDate = isinvoice.EndDate,
+                        Status = isinvoice.Status,
+
+                    };
+                }
+                else
+                {
+                    DateTime start = date;
+                    DateTime end = new();
+                    List<TimesheetData> data = new();
+
+                    if (date.Day == 1)
+                    {
+                        end = date.AddDays(14);
+                    }
+                    else
+                    {
+                        end = date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day);
+                    }
+
+                    List<Timesheet> timesheets = _Repository.TimeSheets(start, end, phyid).OrderBy(x => x.SheetDate).ToList();
+                    if (timesheets.Count > 0)
+                    {
+                        foreach (var timesheet in timesheets)
+                        {
+                            data.Add(new TimesheetData()
+                            {
+                                PhysicianId = phyid,
+                                InvoiceId = timesheet.InvoiceId,
+                                Date = timesheet.SheetDate,
+                                OnCallHours = _Repository.ShiftHoursOnDate(phyid, timesheet.SheetDate),
+                                TotalHours = timesheet.TotalHours ?? 0,
+                                WeekendHoliday = timesheet.WeekendHoliday ?? false,
+                                NumberOfHouseCalls = timesheet.WeekendHoliday == true ? timesheet.NoHousecallsNight ?? 0 : timesheet.NoHousecalls ?? 0,
+                                NumberOfPhoneConsults = timesheet.WeekendHoliday == true ? timesheet.NoPhoneConsultNight ?? 0 : timesheet.NoPhoneConsult ?? 0,
+
+                            });
+                        }
+                    }
+                    else
+                    {
+                        for (int i = start.Day; i <= end.Day; i++)
+                        {
+                            data.Add(new TimesheetData()
+                            {
+                                PhysicianId = phyid,
+                                Date = new DateTime(date.Year, date.Month, i),
+                                OnCallHours = _Repository.ShiftHoursOnDate(phyid, new DateTime(date.Year, date.Month, i)),
+                            });
+                        }
+                    }
+                    AdminInvocing model = new AdminInvocing();
+                    model.Timesheets = data;
+                    model.Receipts = _Repository.GetReimbursementByInvoiceId(isinvoice.InvoiceId);
+
+                    model.Status = 2;
+                    return model;
+                }
+            }            
+            else 
+            {
+                Physician? physician = _Repository.GetPhysician(phyid);
+                string phyname = physician?.FirstName + " " + physician?.LastName;
+                return new AdminInvocing()
+                {
+                    PhysicanName = phyname,
+                    Status = 0,
+                };
+            }
+            
+       
+
+        }
+        public List<TimesheetData> GetTimesheet(int invoiceid)
+        {
+            List<TimesheetData> data = new();
+            List<Timesheet> timesheets = _Repository.GetTimesheetByInvoiceId(invoiceid);
+            PhysicianPayrate payrate = _Repository.GetPhysicianPayrate(timesheets.First().PhysicianId);
+
+            foreach (var timesheet in timesheets)
+            {
+                data.Add(new TimesheetData()
+                {
+                    PhysicianId = timesheet.PhysicianId,
+                    InvoiceId = timesheet.InvoiceId,
+                    Date = timesheet.SheetDate,
+                    OnCallHours = _Repository.ShiftHoursOnDate(timesheet.PhysicianId, timesheet.SheetDate),
+                    TotalHours = timesheet.TotalHours ?? 0,
+                    WeekendHoliday = timesheet.WeekendHoliday ?? false,
+                    NumberOfHouseCalls = timesheet.WeekendHoliday == true ? timesheet.NoHousecallsNight ?? 0 : timesheet.NoHousecalls ?? 0,
+                    NumberOfPhoneConsults = timesheet.WeekendHoliday == true ? timesheet.NoPhoneConsultNight ?? 0 : timesheet.NoPhoneConsult ?? 0,
+                });
+            }
+
+            data.FirstOrDefault().Payrate.Shift = payrate.Shift;
+            data.FirstOrDefault().Payrate.NigthshiftWeekend = payrate.NigthshiftWeekend;
+            data.FirstOrDefault().Payrate.Housecall = payrate.Housecall;
+            data.FirstOrDefault().Payrate.PhoneConsults = payrate.PhoneConsults;
+            data.FirstOrDefault().Payrate.HousecallsNigthsWeekend = payrate.HousecallsNigthsWeekend;
+            data.FirstOrDefault().Payrate.PhoneConsultsNigthsWeekend = payrate.PhoneConsultsNigthsWeekend;
+
+            return data;
+        }
+
+        public List<Receipts> Reimbursement(int invoiceid)
+        {
+            List<Receipts> allReceipts = new();
+            Invoice invoice = _Repository.GetInvoiceByInvoiceId(invoiceid);
+            foreach (var item in invoice.Timesheets)
+            {
+                Receipts receipt = new();
+                if (invoice.Reimbursements.Select(x => x.ReimbursementDate).Contains(item.SheetDate))
+                {
+                    receipt.ReceiptDate = item.SheetDate;
+                    receipt.PhysicianId = invoice.Reimbursements.FirstOrDefault(x => x.ReimbursementDate == item.SheetDate)?.PhysicianId ?? 0;
+                    receipt.Item = invoice.Reimbursements.FirstOrDefault(x => x.ReimbursementDate == item.SheetDate)?.Item ?? "";
+                    receipt.Amount = invoice.Reimbursements.FirstOrDefault(x => x.ReimbursementDate == item.SheetDate)?.Amount ?? 0;
+                    receipt.FileName = invoice.Reimbursements.FirstOrDefault(x => x.ReimbursementDate == item.SheetDate)?.Filename ?? "";
+                }
+                else
+                {
+                    receipt.ReceiptDate = item.SheetDate;
+                    receipt.Item = "-";
+                    receipt.FileName = "-";
+                }
+                allReceipts.Add(receipt);
+            }
+            return allReceipts.OrderBy(x => x.ReceiptDate).ToList();
+        }
+
+        public void ApproveTimesheet(int invoiceid, string description, int bonus, int adminid)
+        {
+            Invoice invoice = _Repository.GetInvoiceByInvoiceId(invoiceid);
+            invoice.Description = description;
+            invoice.Bonus = bonus;
+            invoice.Status = 2;
+            invoice.ApprovedDate = DateTime.Now;
+            invoice.ApprovedBy = _Repository.getAspid(adminid);
+            _Repository.UpdateInvoice(invoice);
+        }
+
+        public void UpdateTimesheet(int invoiceid, TimesheetPost data, int adminid)
+        {
+            List<Timesheet> timesheets = _Repository.GetTimesheetByInvoiceId(invoiceid);
+
+            int index = 0;
+            foreach (var item in timesheets)
+            {
+                item.TotalHours = data.TotalHours[index];
+                if (data.WeekendHoliday.Contains(item.SheetDate.Day))
+                {
+                    item.WeekendHoliday = true;
+                    item.NoHousecallsNight = data.NumberOfHouseCalls[index];
+                    item.NoPhoneConsultNight = data.NumberOfPhoneConsults[index];
+                    item.NoHousecalls = 0;
+                    item.NoPhoneConsult = 0;
+                }
+                else
+                {
+                    item.NoHousecalls = data.NumberOfHouseCalls[index];
+                    item.NoPhoneConsult = data.NumberOfPhoneConsults[index];
+                    item.NoHousecallsNight = 0;
+                    item.NoPhoneConsultNight = 0;
+                    item.WeekendHoliday = null;
+                }
+                index++;
+
+                item.ModifiedBy = _Repository.getAspid(adminid);
+                item.ModifiedDate = DateTime.Now;
+                _Repository.UpdateTable(item);
+            }
+        }
     }
 }
 

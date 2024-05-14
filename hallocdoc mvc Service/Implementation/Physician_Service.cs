@@ -337,14 +337,14 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 query = query.Where(r => r.RequestTypeId == 2).ToList();
             }
-			int size = 2;
-			int c = query.Count;
-			query = query.Skip(pageid * size - size).Take(size).ToList();
-			if (query.Count > 0)
-			{
-				query.First().PgCount = c;
-			}
-			return query;
+            int size = 2;
+            int c = query.Count;
+            query = query.Skip(pageid * size - size).Take(size).ToList();
+            if (query.Count > 0)
+            {
+                query.First().PgCount = c;
+            }
+            return query;
         }
 
         public List<AdminDashboard> getDashDataConclude(int? requestType, string? search, int? requestor, int? region, int pageid, int phy)
@@ -375,14 +375,14 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 query = query.Where(r => r.RequestTypeId == 2).ToList();
             }
-			int size = 2;
-			int c = query.Count;
-			query = query.Skip(pageid * size - size).Take(size).ToList();
-			if (query.Count > 0)
-			{
-				query.First().PgCount = c;
-			}
-			return query;
+            int size = 2;
+            int c = query.Count;
+            query = query.Skip(pageid * size - size).Take(size).ToList();
+            if (query.Count > 0)
+            {
+                query.First().PgCount = c;
+            }
+            return query;
         }
 
         public List<AdminDashboard> getDashDataPending(int? requestType, string? search, int? requestor, int? region, int pageid, int phy)
@@ -413,14 +413,14 @@ namespace hallocdoc_mvc_Service.Implementation
             {
                 query = query.Where(r => r.RequestTypeId == 2).ToList();
             }
-			int size = 2;
-			int c = query.Count;
-			query = query.Skip(pageid * size - size).Take(size).ToList();
-			if (query.Count > 0)
-			{
-				query.First().PgCount = c;
-			}
-			return query;
+            int size = 2;
+            int c = query.Count;
+            query = query.Skip(pageid * size - size).Take(size).ToList();
+            if (query.Count > 0)
+            {
+                query.First().PgCount = c;
+            }
+            return query;
         }
 
         public Encounter getencounter(int id)
@@ -523,10 +523,10 @@ namespace hallocdoc_mvc_Service.Implementation
             }
             int size = 2;
             int c = query.Count;
-            query= query.Skip(pageid * size - size).Take(size).ToList();
-            if(query.Count > 0)
+            query = query.Skip(pageid * size - size).Take(size).ToList();
+            if (query.Count > 0)
             {
-                query.First().PgCount= c;
+                query.First().PgCount = c;
             }
             return query;
         }
@@ -878,7 +878,7 @@ namespace hallocdoc_mvc_Service.Implementation
             var b = _Repository.GetAspNetUser((int)a.CreatedBy);
             var receiver = b.Email;
             var subject = "Request For Edit The Physician Account";
-            var messages = "Physician Requesting Admin for the Edit the Account"+textareas;
+            var messages = "Physician Requesting Admin for the Edit the Account" + textareas;
 
             var mail = "tatva.dotnet.binalmalaviya@outlook.com";
             var password = "binal@2002";
@@ -919,7 +919,7 @@ namespace hallocdoc_mvc_Service.Implementation
             return pr;
         }
 
-        public Scheduling GetMonthWiseData(int day, int month, int year , int phy)
+        public Scheduling GetMonthWiseData(int day, int month, int year, int phy)
         {
             DateTime date = day == 0 ? new(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day) : new(year, month, day);
             return _Repository.GetMonthData(date, phy);
@@ -927,7 +927,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public List<Region> getreg()
         {
-           return _Repository.GetReg(); 
+            return _Repository.GetReg();
         }
 
         public List<Physician> GetPhy(int id)
@@ -939,7 +939,7 @@ namespace hallocdoc_mvc_Service.Implementation
         {
             Physician data = _Repository.GetShiftData(admin);
             bool flag = true;
-         
+
             foreach (var item in data.Shifts)
             {
                 foreach (var item2 in item.ShiftDetails)
@@ -1258,7 +1258,7 @@ namespace hallocdoc_mvc_Service.Implementation
                 _Repository.AddEmaillogtbl(emailLog);
             }
 
-     
+
 
 
             Region region = new Region
@@ -1276,7 +1276,7 @@ namespace hallocdoc_mvc_Service.Implementation
 
 
 
-         
+
 
 
 
@@ -1319,10 +1319,10 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public List<TimesheetData> TimesheetData(DateTime date, int phy)
         {
-             DateTime start = date;
+            DateTime start = date;
             DateTime end = new();
             List<TimesheetData> data = new();
-            
+
             if (date.Day == 1)
             {
                 end = date.AddDays(14);
@@ -1435,7 +1435,7 @@ namespace hallocdoc_mvc_Service.Implementation
                         item.NoHousecalls = 0;
                         item.NoPhoneConsult = 0;
                     }
-                    else  
+                    else
                     {
                         item.NoHousecalls = data.NumberOfHouseCalls[index];
                         item.NoPhoneConsult = data.NumberOfPhoneConsults[index];
@@ -1473,15 +1473,15 @@ namespace hallocdoc_mvc_Service.Implementation
             if (isInvoice.InvoiceId > 0)
             {
                 List<hallodoc_mvc_Repository.DataModels.Reimbursement> reimbursementss = _Repository.GetReimbursements(isInvoice.InvoiceId);
-                for(DateTime i=start.Date; i<=end.Date; i=i.AddDays(1))
+                for (DateTime i = start.Date; i <= end.Date; i = i.AddDays(1))
                 {
                     reimbursements.Add(new hallodoc_mvc_Repository.ViewModel.Reimbursement
                     {
                         PhysicianId = phyid,
                         Date = i,
-                        Item = reimbursementss.FirstOrDefault(x=>x.ReimbursementDate.Date == i.Date)?.Item,
-                        Filename = reimbursementss.FirstOrDefault(x=>x.ReimbursementDate.Date == i.Date)?.Filename,
-                        Amount = reimbursementss.FirstOrDefault(x=>x.ReimbursementDate.Date == i.Date)?.Amount ?? 0,
+                        Item = reimbursementss.FirstOrDefault(x => x.ReimbursementDate.Date == i.Date)?.Item,
+                        Filename = reimbursementss.FirstOrDefault(x => x.ReimbursementDate.Date == i.Date)?.Filename,
+                        Amount = reimbursementss.FirstOrDefault(x => x.ReimbursementDate.Date == i.Date)?.Amount ?? 0,
 
                     });
                 }
@@ -1503,19 +1503,20 @@ namespace hallocdoc_mvc_Service.Implementation
 
         public void AddReciet(hallodoc_mvc_Repository.ViewModel.Reimbursement model, DateTime date, int phyid)
         {
-         
-            
-                string filename = date.ToShortDateString() + Path.GetExtension(model.FormFile.FileName);
-                string path = Directory.GetCurrentDirectory()+"/wwwroot/Reimbursement/"+phyid+"/"+ filename;
-                Directory.CreateDirectory(Path.GetDirectoryName(path));
-                using FileStream stream = new(path, FileMode.Create);
-                model.FormFile.CopyTo(stream);
-            
-            Invoice isInvoice = _Repository.GetInvoice(date, phyid);
-            if(isInvoice.InvoiceId>0 ) 
+
+
+            string filename = date.ToShortDateString() + Path.GetExtension(model.FormFile.FileName);
+            string path = Directory.GetCurrentDirectory() + "/wwwroot/Reimbursement/" + phyid + "/" + filename;
+            Directory.CreateDirectory(Path.GetDirectoryName(path));
+            using FileStream stream = new(path, FileMode.Create);
+            model.FormFile.CopyTo(stream);
+
+            DateTime startDate = new DateTime(date.Year, date.Month, date.Day <= 15 ? 1 : 16);
+            Invoice isInvoice = _Repository.GetInvoice(startDate, phyid);
+            if (isInvoice.InvoiceId > 0)
             {
-                hallodoc_mvc_Repository.DataModels.Reimbursement reimbursement = _Repository.IsDataAvailable(isInvoice.InvoiceId,date);
-                if(reimbursement.ReimbursementId>0) 
+                hallodoc_mvc_Repository.DataModels.Reimbursement reimbursement = _Repository.IsDataAvailable(isInvoice.InvoiceId, date);
+                if (reimbursement.ReimbursementId > 0)
                 {
                     reimbursement.PhysicianId = phyid;
                     reimbursement.InvoiceId = isInvoice.InvoiceId;
@@ -1533,7 +1534,7 @@ namespace hallocdoc_mvc_Service.Implementation
                     {
                         PhysicianId = phyid,
                         InvoiceId = isInvoice.InvoiceId,
-                        ReimbursementDate=date,
+                        ReimbursementDate = date,
                         Item = model.Item,
                         Amount = model.Amount,
                         Filename = filename,
@@ -1542,8 +1543,128 @@ namespace hallocdoc_mvc_Service.Implementation
                     };
                     _Repository.AddReimbursement(re);
                 }
-              
+
             }
+        }
+
+        public void EditReciet(hallodoc_mvc_Repository.ViewModel.Reimbursement model, DateTime date, int phyid)
+        {
+            if (model.FormFile != null)
+            {
+                string filename = date.ToShortDateString() + Path.GetExtension(model.FormFile.FileName);
+                string path = Directory.GetCurrentDirectory() + "/wwwroot/Reimbursement/" + phyid + "/" + filename;
+                Directory.CreateDirectory(Path.GetDirectoryName(path));
+                using FileStream stream = new(path, FileMode.Create);
+                model.FormFile.CopyTo(stream);
+            }
+            DateTime startDate = new DateTime(date.Year, date.Month, date.Day <= 15 ? 1 : 16);
+            Invoice isInvoice = _Repository.GetInvoice(startDate, phyid);
+            if (isInvoice.InvoiceId > 0)
+            {
+                hallodoc_mvc_Repository.DataModels.Reimbursement reimbursement = _Repository.IsDataAvailable(isInvoice.InvoiceId, date);
+                if (reimbursement.ReimbursementId > 0)
+                {
+                    reimbursement.PhysicianId = phyid;
+                    reimbursement.InvoiceId = isInvoice.InvoiceId;
+                    reimbursement.ReimbursementDate = date;
+                    reimbursement.Item = model.Item;
+                    reimbursement.Amount = model.Amount;
+                    reimbursement.Filename = model.Filename != null ? date.ToShortDateString() + Path.GetExtension(model.FormFile.FileName) : reimbursement.Filename;
+                    reimbursement.ModifiedBy = _Repository.GetAspId(phyid);
+                    reimbursement.ModifiedDate = DateTime.Now;
+                    _Repository.UpdateReimbursement(reimbursement);
+                }
+            }
+        }
+
+        public void DeleteReciet(DateTime date, int phyid)
+        {
+            hallodoc_mvc_Repository.DataModels.Reimbursement reimbursement = _Repository.IsDataAvailablebydate(date);
+            if (reimbursement.ReimbursementId > 0)
+            {
+                _Repository.RemoveData(reimbursement);
+            }
+        }
+
+        public void FinalizeInvoice(DateTime date, int phyid)
+        {
+            Invoice isInvoice = _Repository.GetInvoice(date, phyid);
+            if (isInvoice.InvoiceId > 0)
+            {
+                isInvoice.IsFinalized = true;
+                _Repository.UpdateInvoice(isInvoice);
+            }
+        }
+
+        public AdminInvocing? NotApproved(DateTime date, int phyid)
+        {
+            Invoice isinvoice = _Repository.GetInvoice(date, phyid);
+            if (isinvoice != null)
+            {
+
+                DateTime start = date;
+                DateTime end = new();
+                List<TimesheetData> data = new();
+
+                if (date.Day == 1)
+                {
+                    end = date.AddDays(14);
+                }
+                else
+                {
+                    end = date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day);
+                }
+
+                List<Timesheet> timesheets = _Repository.TimeSheets(start, end, phyid).OrderBy(x => x.SheetDate).ToList();
+                if (timesheets.Count > 0)
+                {
+                    foreach (var timesheet in timesheets)
+                    {
+                        data.Add(new TimesheetData()
+                        {
+                            PhysicianId = phyid,
+                            InvoiceId = timesheet.InvoiceId,
+                            Date = timesheet.SheetDate,
+                            OnCallHours = _Repository.ShiftHoursOnDate(phyid, timesheet.SheetDate),
+                            TotalHours = timesheet.TotalHours ?? 0,
+                            WeekendHoliday = timesheet.WeekendHoliday ?? false,
+                            NumberOfHouseCalls = timesheet.WeekendHoliday == true ? timesheet.NoHousecallsNight ?? 0 : timesheet.NoHousecalls ?? 0,
+                            NumberOfPhoneConsults = timesheet.WeekendHoliday == true ? timesheet.NoPhoneConsultNight ?? 0 : timesheet.NoPhoneConsult ?? 0,
+
+                        });
+                    }
+                }
+                else
+                {
+                    for (int i = start.Day; i <= end.Day; i++)
+                    {
+                        data.Add(new TimesheetData()
+                        {
+                            PhysicianId = phyid,
+                            Date = new DateTime(date.Year, date.Month, i),
+                            OnCallHours = _Repository.ShiftHoursOnDate(phyid, new DateTime(date.Year, date.Month, i)),
+                        });
+                    }
+                }
+                AdminInvocing model = new AdminInvocing();
+                model.Timesheets = data;
+                model.Receipts = _Repository.GetReimbursementByInvoiceId(isinvoice.InvoiceId);
+
+                model.Status = 2;
+                return model;
+
+            }
+            else
+            {
+                Physician? physician = _Repository.GetPhysician(phyid);
+                string phyname = physician?.FirstName + " " + physician?.LastName;
+                return new AdminInvocing()
+                {
+                    PhysicanName = phyname,
+                    Status = 0,
+                };
+            }
+
         }
     }
 }

@@ -83,5 +83,9 @@ namespace hallodoc_mvc_Repository.Interface
         void AddReimbursement(DataModels.Reimbursement re);
         void UpdateReimbursement(DataModels.Reimbursement reimbursement);
         List<DataModels.Reimbursement> GetReimbursements(int invoiceId);
+        DataModels.Reimbursement IsDataAvailablebydate(DateTime date);
+        void RemoveData(DataModels.Reimbursement reimbursement);
+        void UpdateInvoice(Invoice isInvoice);
+        List<DataModels.Reimbursement> GetReimbursementByInvoiceId(int invoiceId);
     }
 }

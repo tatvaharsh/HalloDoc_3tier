@@ -1,0 +1,39 @@
+﻿@model IEnumerable<hallodoc_mvc_Repository.ViewModel.Receipts>
+
+
+<table class="table">
+    <tr style="background-color:gray">
+        <th>Date</th>
+        <th>Item</th>
+        <th>Amount</th>
+        <th>Bill</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="align-middle">
+            <td class="text-nowrap">@item.ReceiptDate.ToString("MMM dd, yyyy")</td>
+            <td>
+                @item.Item
+            </td>
+            <td>
+                @item.Amount
+            </td>
+            <td>
+                <span>@item.FileName</span>
+            </td>
+            <td>
+                @if (item.FileName != "-")
+                {
+                    
+                    var str1 = "/Reimbursement/" + item.PhysicianId + "/" + item.FileName;
+                    
+                    <a href=@str1 target="_blank" class="text-decoration-none"> <button class="btn btn-outline-info mx-2" id=@str1 type="button">View</button></a>
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<script src="~/js/AdminDash.js"></script>

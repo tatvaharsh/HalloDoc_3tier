@@ -25,5 +25,7 @@ namespace hallodoc_mvc_Repository.ViewModel
         public int NumberOfHouseCalls { get; set; }
 
         public int NumberOfPhoneConsults { get; set; }
+
+        public Payrate Payrate { get; set; } = new();
     }
 }

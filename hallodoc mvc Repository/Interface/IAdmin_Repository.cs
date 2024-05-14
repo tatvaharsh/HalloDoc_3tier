@@ -160,6 +160,16 @@ namespace hallodoc_mvc_Repository.Interface
         string GetRoleOfUser(int admin);
         PhysicianPayrate GetPhysicianPayrate(int phyid);
         void UpdateTable(PhysicianPayrate payrate);
+        void UpdateTable(Timesheet sheet);
         void AddPayrateTbl(PhysicianPayrate newPayrate);
+        List<Timesheet> TimeSheets(DateTime start, DateTime end, int phy);
+        int ShiftHoursOnDate(int phy, DateTime sheetDate);
+        Invoice GetInvoice(DateTime start, int phyid);
+        List<DataModels.Reimbursement> GetReimbursements(int invoiceId);
+        Invoice CheckInvoice(DateTime date, int phyid);
+        List<Timesheet> GetTimesheetByInvoiceId(int invoiceid);
+        Invoice GetInvoiceByInvoiceId(int invoiceid);
+        void UpdateInvoice(Invoice invoice);
+        List<hallodoc_mvc_Repository.DataModels.Reimbursement> GetReimbursementByInvoiceId(int invoiceId);
     }
 }

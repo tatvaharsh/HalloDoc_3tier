@@ -470,7 +470,7 @@ namespace hallodoc_mvc_Repository.Implementation
 
         public Invoice GetInvoice(DateTime start, int phyid)
         {
-            return _context.Invoices.Include(x=>x.Timesheets).FirstOrDefault(x => x.StartDate.Date == start.Date && x.PhysicianId == phyid) ?? new();
+            return _context.Invoices.Include(x => x.Timesheets).FirstOrDefault(x => x.StartDate.Date == start.Date && x.PhysicianId == phyid);
         }
 
         public void SaveTable(Invoice invoice)
@@ -510,6 +510,28 @@ namespace hallodoc_mvc_Repository.Implementation
         public List<DataModels.Reimbursement> GetReimbursements(int invoiceId)
         {
             return _context.Reimbursements.Where(x => x.InvoiceId == invoiceId).ToList();
+        }
+
+        public DataModels.Reimbursement IsDataAvailablebydate(DateTime date)
+        {
+            return _context.Reimbursements.FirstOrDefault(x => x.ReimbursementDate == date) ?? new();
+        }
+
+        public void RemoveData(DataModels.Reimbursement reimbursement)
+        {
+           _context.Reimbursements.Remove(reimbursement);
+            _context.SaveChanges(); 
+        }
+
+        public void UpdateInvoice(Invoice isInvoice)
+        {
+            _context.Invoices.Update(isInvoice);
+            _context.SaveChanges(); 
+        }
+
+        public List<DataModels.Reimbursement> GetReimbursementByInvoiceId(int invoiceId)
+        {
+            return _context.Reimbursements.Where(x => x.InvoiceId == invoiceId).OrderBy(e => e.ReimbursementDate).ToList();
         }
     }
 }

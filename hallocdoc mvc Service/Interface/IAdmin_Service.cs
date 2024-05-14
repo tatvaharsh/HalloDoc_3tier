@@ -122,5 +122,13 @@ namespace hallocdoc_mvc_Service.Interface
         void TransferReq(ModalData md, int id, int admin);
         void EditPayrate(int adminid, int phyid, int nightshiftweekend, int shift, int housecallnight, int phoneconsults, int phoneconsultsnight, int batchtesting, int housecall);
         Payrate Payrate(int id);
+        ModalData? Addphy();
+        List<TimesheetData>? TimesheetData(DateTime date, int adminid,int phyid);
+        List<hallodoc_mvc_Repository.ViewModel.Reimbursement>? ReimbursementData(int phyid, DateTime date, int adminid);
+        AdminInvocing NotApproved(DateTime date, int phyid, int adminid);
+        List<TimesheetData>? GetTimesheet(int invoiceid);
+        List<Receipts>? Reimbursement(int invoiceid);
+        void UpdateTimesheet(int invoiceid, TimesheetPost data, int adminid);
+        void ApproveTimesheet(int invoiceid, string description, int bonus, int adminid);
     }
 }

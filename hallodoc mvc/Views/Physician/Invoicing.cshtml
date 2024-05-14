@@ -35,9 +35,9 @@
                         if (DateTime.Now > @date.AddDays(16 - date.Day))
                         {
                             if (flag)
-                            {                                
-                            <option value="@date.AddDays(16-date.Day)" selected>
-                                @date.AddDays(16-date.Day).ToShortDateString() - @date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day).ToShortDateString()
+                            {
+                                <option value="@date.AddDays(16-date.Day)" selected>
+                                    @date.AddDays(16-date.Day).ToShortDateString() - @date.AddDays(DateTime.DaysInMonth(date.Year, date.Month) - date.Day).ToShortDateString()
                                 </option>
                                 flag = !flag;
                             }
@@ -49,12 +49,12 @@
                             }
                         }
                         if (flag)
-                        {                        
+                        {
                             <option selected value="@date.AddDays(1-date.Day)">@date.AddDays(1-date.Day).ToShortDateString() - @date.AddDays(15 - date.Day).ToShortDateString()</option>
                             flag = !flag;
                         }
                         else
-                        {   
+                        {
                             <option value="@date.AddDays(1-date.Day)">@date.AddDays(1-date.Day).ToShortDateString() - @date.AddDays(15 - date.Day).ToShortDateString()</option>
                         }
 
@@ -66,26 +66,21 @@
                     <div id="finalizeBtn" class="text-end"></div>
                 </div>
             </div>
+            <div id="Display"></div>
         </div>
+
     </div>
-    <div id="Display"></div>
 </div>
 
 
 <script>
     $("#sortbytimesheet").change(function () {
+
+        GetFinalizeBtn();
+        GetTimeSheet();
+    });
+    function GetFinalizeBtn() {
         var date = document.getElementById("sortbytimesheet").value;
-        $.ajax({
-            url: '/Physician/FinalizeTimesheet',
-            method: 'POST',
-            data: { date: date },
-            success: function (response) {
-                $('#Display').html(response);
-            },
-            error: function (error) {   
-                console.error('Error in AJAX', error);
-            }
-        });
         $.ajax({
             url: '/Physician/IsFinalizedBtn',
             method: 'POST',
@@ -101,13 +96,13 @@
                 console.error('Error in AJAX', error);
             }
         });
-    });
-
-    $(document).ready(function(){
+    }
+    function GetTimeSheet() {
+        debugger;
         var date = document.getElementById("sortbytimesheet").value;
         $.ajax({
-            url: '/Physician/FinalizeTimesheet',
-            method: 'POST',
+            url: '/Physician/NotApproved',
+            method: 'GET',
             data: { date: date },
             success: function (response) {
                 $('#Display').html(response);
@@ -116,25 +111,15 @@
                 console.error('Error in AJAX', error);
             }
         });
+    }
+    $(document).ready(function () {
 
-        $.ajax({
-            url: '/Physician/IsFinalizedBtn',
-            method: 'POST',
-            data: { date: date },
-            success: function (response) {
-                if (response.isFinalized == false) {
-                    $('#finalizeBtn').html('<button type="button" id="finalize" onclick="FinalizeTimesheet()" class="btn btn-outline-info text-end">Finalize Timesheet</button>');
-                } else {
-                    $('#finalizeBtn').html('');
-                }
-            },
-            error: function (error) {
-                console.error('Error in AJAX', error);
-            }
-        });
+        GetFinalizeBtn();
+        GetTimeSheet();
     });
 
-    function FinalizeTimesheet(){
+    function FinalizeTimesheet() {
+
         var date = document.getElementById("sortbytimesheet").value;
         $.ajax({
             url: '/Physician/FinalizeTimesheet',
@@ -148,7 +133,7 @@
             }
         });
     }
-    
+
 
 
 </script>

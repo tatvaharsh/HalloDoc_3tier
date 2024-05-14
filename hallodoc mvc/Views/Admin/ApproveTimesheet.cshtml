@@ -1,0 +1,202 @@
+﻿@model IEnumerable<hallodoc_mvc_Repository.ViewModel.TimesheetData>
+@{
+    ViewData["Title"] = "ApproveTimesheet";
+    Layout = "~/Views/Shared/_LayAdmin.cshtml";
+}
+
+<div class="backdrop" id="backdrop" style="z-index:140"></div>
+<div id="loader-container" class="vh-100 align-items-center justify-content-center" style="z-index:150">
+
+    <div class="loader" style="z-index:150"></div>
+
+</div>
+
+<div class="row d-flex justify-content-center">
+
+    <div class="col-lg-9 mb-5">
+        <div class="d-flex justify-content-end mt-4 mb-3">
+            <a asp-action="Invoicing" class="btn btn-outline-info back-btn">
+                &lt;
+                Back
+            </a>
+        </div>
+
+        <form asp-action="UpdateTimesheet" asp-route-invoiceid="@Model.First().InvoiceId" class="p-3 shadow-lg rounded" id="form" style="min-width: 360px; background-color: #FBFBFB;">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr style="background-color:gray">
+                        <th>Date</th>
+                        <th>On-call Hours</th>
+                        <th>Total Hours</th>
+                        <th class="text-center">Weekend/Holiday</th>
+                        <th>No. of Housecalls</th>
+                        <th>No. of Phone Consults</th>
+                        <th>Total</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr class="align-middle text-center">
+                            <td class="text-nowrap">@item.Date.ToString("MMM dd, yyyy")</td>
+                            <td>@item.OnCallHours</td>
+                            <td>
+                                <input type="number" name="TotalHours" class="form-control totalhours" value="@item.TotalHours" onchange="calculation()">
+                            </td>
+                            <td>
+                                <input type="checkbox" value="@item.Date.Day" name="WeekendHoliday" class="form-check-input weekend" checked="@item.WeekendHoliday" onchange="calculation()">
+                            </td>
+                            <td>
+                                <input type="number" name="NumberOfHouseCalls" class="form-control housecalls" value="@item.NumberOfHouseCalls" onchange="calculation()">
+                            </td>
+                            <td>
+                                <input type="number" name="NumberOfPhoneConsults" class="form-control phoneconsults" value="@item.NumberOfPhoneConsults" onchange="calculation()">
+                            </td>
+                            <td></td>
+                        </tr>
+                    }
+
+                    <tr>
+                        <td colspan="2">Payrate</td>
+                        <td>
+                            <input type="number" name="ShiftPayrate" class="form-control" value="@Model.First().Payrate.Shift" disabled>
+                        </td>
+                        <td>
+                            <input type="number" name="WeekendPayrate" class="form-control" value="@Model.First().Payrate.NigthshiftWeekend" disabled>
+                        </td>
+                        <td>
+                            <input type="number" name="HousecallPayrate" class="form-control" value="@Model.First().Payrate.Housecall" disabled>
+                        </td>
+                        <td>
+                            <input type="number" name="PhoneConsultPayrate" class="form-control" value="@Model.First().Payrate.PhoneConsults" disabled>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">Invoice Total</td>
+                        <td>
+                            <input type="number" class="form-control" id="totalShift" disabled>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="totalWeekend" disabled>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="totalHousecall" disabled>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="totalConsult" disabled>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="total" disabled>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="text-end">
+                <button type="submit" class="btn btn-light bg-info border-info text-white text-end">Submit</button>
+            </div>
+
+
+            <div>
+                <button type="button" onclick="receiptTable()" class="btn btn-light bg-info border-info text-white text-end">View Receipt</button>
+            </div>
+            <div class="my-2" id="receiptTable"></div>
+        </form>
+    </div>
+
+    <form asp-action="ApproveTimesheet" asp-route-invoiceid="@Model.First().InvoiceId" class="col-lg-9 mb-5 d-flex justify-content-end align-items-center">
+        <section class="gap-2 d-flex align-items-center">
+            <div class="form-floating">
+                <input type="number" class="form-control" name="bonus" id="bonus" placeholder="Bonus Amount">
+                <label for="bonus">Bonus Amount</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" name="description" id="desc" placeholder="Admin Description">
+                <label for="desc">Admin Description</label>
+            </div>
+            <button type="submit" class="btn btn-light bg-info border-info text-white text-end">Submit</button>
+        </section>
+    </form>
+</div>
+
+<script src="~/js/AdminDash.js"></script>
+<script>
+    calculation();
+    function calculation() {
+        var totalhours = document.querySelectorAll(".totalhours");
+        var housecall = document.querySelectorAll(".housecalls");
+        var consults = document.querySelectorAll(".phoneconsults");
+        var weekend = document.querySelectorAll(".weekend");
+
+        var shiftTotal = document.getElementById("totalShift");
+        var weekendTotal = document.getElementById("totalWeekend");
+        var housecallTotal = document.getElementById("totalHousecall");
+        var consultTotal = document.getElementById("totalConsult");
+        var total = document.getElementById("total");
+
+        var sum = 0;
+        var grandTotal = 0;
+
+        totalhours.forEach(x => {
+            sum += parseInt(x.value) * @Model.First().Payrate.Shift;
+        })
+        shiftTotal.value = sum;
+        grandTotal += sum;
+        sum = 0;
+
+        for (var i = 0; i < @Model.Count(); i++) {
+            if (weekend[i].checked) {
+                sum += parseInt(housecall[i].value) * @Model.First().Payrate.HousecallsNigthsWeekend;
+            } else {
+                sum += parseInt(housecall[i].value) * @Model.First().Payrate.Housecall;
+            }
+        }
+        housecallTotal.value = sum;
+        grandTotal += sum;
+        sum = 0;
+
+
+        for (var i = 0; i < @Model.Count(); i++) {
+            if (weekend[i].checked) {
+                sum += parseInt(consults[i].value) * @Model.First().Payrate.PhoneConsultsNigthsWeekend;
+            } else {
+                sum += parseInt(consults[i].value) * @Model.First().Payrate.PhoneConsults;
+            }
+        }
+        consultTotal.value = sum;
+        grandTotal += sum;
+        sum = 0;
+
+
+        weekend.forEach(x => {
+            if (x.checked) {
+                sum++;
+            }
+        })
+        weekendTotal.value = sum * @Model.First().Payrate.NigthshiftWeekend;
+        grandTotal += parseInt(weekendTotal.value);
+        sum = 0;
+
+
+        total.value = grandTotal;
+    }
+
+    function receiptTable() {
+        id = @Model.First().InvoiceId;
+        $.ajax({
+            url: '/Admin/Reimbursement',
+            method: 'POST',
+            data: { invoiceId: id },
+            success: function (response) {
+                $('#receiptTable').html(response);
+            },
+            error: function (error) {
+                console.error('Error in AJAX', error);
+            }
+        });
+    }
+
+    document.getElementById("nav-provider-tab").classList.add("active");
+    document.getElementById("nav-invoicing").classList.add("active");
+</script>
+

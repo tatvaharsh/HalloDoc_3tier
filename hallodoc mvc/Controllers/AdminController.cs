@@ -367,6 +367,24 @@ namespace hallodoc_mvc.Controllers
             }
         }
 
+
+       
+        public IActionResult Invoicing(bool isPartial)
+        {
+            int admin = (int)HttpContext.Session.GetInt32("Id");
+            if (isPartial == true)
+            {
+
+                ViewBag.Layout = null;
+                return PartialView("Invoicing",_service.Addphy());
+            }
+            else
+            {
+                ViewBag.Layout = "_LayAdmin";
+                return View("Invoicing", _service.Addphy());
+            }
+        }
+
         public IActionResult Admin_Forgot()
         {
             return View();
@@ -388,6 +406,8 @@ namespace hallodoc_mvc.Controllers
                     return RedirectToAction(nameof(Provider), new { isPartial = isPartial });
                 case 5:
                     return RedirectToAction(nameof(ProviderScheduling), new { isPartial = isPartial });
+                case 6:
+                    return RedirectToAction(nameof(Invoicing),new { isPartial = isPartial });
 
                 case 7:
                     return RedirectToAction(nameof(Vendor), new { isPartial = isPartial });
@@ -1605,8 +1625,43 @@ namespace hallodoc_mvc.Controllers
                                          , phoneconsultsnight, batchtesting, housecall);
             return RedirectToAction("Payrate", new {Id = phyid });
         }
+        public IActionResult FinalizeTimesheet(DateTime date,int phyid)
+        {
+            int adminid = (int)HttpContext.Session.GetInt32("Id");
+            return PartialView("_FinalizeTimesheet", _service.TimesheetData(date, adminid,phyid));
+        }
+        public IActionResult ShowReimburesement(DateTime date, int phyid)
+        {
+            int adminid = (int)HttpContext.Session.GetInt32("Id");
+            return PartialView("_Reimbursement", _service.ReimbursementData(phyid, date,adminid));
+        }
+        public IActionResult NotApproved(DateTime date, int phyid)
+        {
+            int adminid = (int)HttpContext.Session.GetInt32("Id");
+            return PartialView("_NotApproved",_service.NotApproved(date,phyid,adminid));
+        }
+        public IActionResult ApproveTimesheet(int invoiceid)
+        {
+            return View(_service.GetTimesheet(invoiceid));
+        }
+        public IActionResult Reimbursement(int invoiceid)
+        {
+            return PartialView("_Reimbursement", _service.Reimbursement(invoiceid));
+        }
+        public IActionResult UpdateTimesheet(int invoiceid, [FromForm] TimesheetPost data)
+        {
+            int adminid = (int)HttpContext.Session.GetInt32("Id");
+            _service.UpdateTimesheet(invoiceid, data, adminid);
+            return RedirectToAction("ApproveTimesheet", new { invoiceid });
+        }
 
-
+        [HttpPost]
+        public IActionResult ApproveTimesheet(int invoiceid, string description, int bonus)
+        {
+            int adminid = (int)HttpContext.Session.GetInt32("Id");
+            _service.ApproveTimesheet(invoiceid, description, bonus, adminid);
+            return RedirectToAction("Tabchange",new { nav=6 });
+        }
 
     }
 }

@@ -74,6 +74,7 @@
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 						<a class="dropdown-item" onclick="tabchanged(4)" role="tab" id="action" data-bs-toggle="tab">Provider</a>
 						<a class="dropdown-item" onclick="tabchanged(5)" role="tab" id="scheduling" data-bs-toggle="tab">Scheduling</a>
+						<a class="dropdown-item" onclick="tabchanged(6)" role="tab" id="invoice" data-bs-toggle="tab">Invoice</a>
 
 					</div>
 				</li>
@@ -249,7 +250,12 @@
 									Scheduling
 								</button>
 							</li>
-
+							<li>
+								<button class="dropdown-item p-2 closedOffCanvas" data-bs-toggle="tab"
+										data-bs-target="#Invoice-tab-pane" type="button" role="tab" aria-controls="Invoice-tab-pane" aria-selected="false" onclick="tabchanged(6)">
+									Invoice
+								</button>
+							</li>
 						</ul>
 					</li>
 

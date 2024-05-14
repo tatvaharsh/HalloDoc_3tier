@@ -3,6 +3,7 @@ using hallodoc_mvc_Repository.DataModels;
 using hallodoc_mvc_Repository.Interface;
 using hallodoc_mvc_Repository.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using Syncfusion.EJ2.Base;
 using Syncfusion.EJ2.Charts;
 using Syncfusion.EJ2.CircularGauge;
 using Syncfusion.EJ2.Notifications;
@@ -956,6 +957,67 @@ namespace hallodoc_mvc_Repository.Implementation
         {
             _context.PhysicianPayrates.Add(newPayrate);
             _context.SaveChanges();
+        }
+
+        public List<Timesheet> TimeSheets(DateTime start, DateTime end, int phy)
+        {
+            return _context.Timesheets.Where(x => x.PhysicianId == phy && (x.SheetDate.Date >= start.Date && x.SheetDate.Date <= end.Date)).ToList();
+
+        }
+
+        public int ShiftHoursOnDate(int phy, DateTime sheetDate)
+        {
+            return _context.ShiftDetails
+               .Where(x => x.Shift.PhysicianId == phy && x.ShiftDate.Date == sheetDate.Date)
+               .Select(x => new
+               {
+                   duraion = x.EndTime - x.StartTime
+               }).Sum(x => (int)x.duraion.TotalHours);
+        }
+
+        public Invoice GetInvoice(DateTime start, int phyid)
+        {
+            return _context.Invoices.Include(x => x.Timesheets).FirstOrDefault(x => x.StartDate.Date == start.Date && x.PhysicianId == phyid) ?? new();
+
+        }
+
+        public List<DataModels.Reimbursement> GetReimbursements(int invoiceId)
+        {
+            return _context.Reimbursements.Where(x => x.InvoiceId == invoiceId).ToList();
+        }
+
+        public Invoice CheckInvoice(DateTime date, int phyid)
+        {
+            return _context.Invoices.Include(x => x.Timesheets).FirstOrDefault(x => x.StartDate.Date == date.Date && x.PhysicianId == phyid && x.IsFinalized == true);
+        }
+
+        public List<Timesheet> GetTimesheetByInvoiceId(int invoiceid)
+        {
+            return _context.Timesheets.Where(x => x.InvoiceId == invoiceid).OrderBy(x => x.SheetDate).ToList();
+
+        }
+
+        public Invoice GetInvoiceByInvoiceId(int invoiceid)
+        {
+            return _context.Invoices.Include(x => x.Reimbursements).Include(x => x.Timesheets).FirstOrDefault(x => x.InvoiceId == invoiceid) ?? new();
+        }
+
+        public void UpdateInvoice(Invoice invoice)
+        {
+            _context.Invoices.Update(invoice);
+            _context.SaveChanges();
+        }
+
+        public void UpdateTable(Timesheet sheet)
+        {
+
+            _context.Timesheets.Update(sheet);
+            _context.SaveChanges();
+        }
+
+        public List<DataModels.Reimbursement> GetReimbursementByInvoiceId(int invoiceId)
+        {
+            return _context.Reimbursements.Where(x => x.InvoiceId == invoiceId).OrderBy(e => e.ReimbursementDate).ToList();
         }
     }
 }

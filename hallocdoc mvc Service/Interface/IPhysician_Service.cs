@@ -66,5 +66,9 @@ namespace hallocdoc_mvc_Service.Interface
         bool ShowFinalizeBtn(DateTime date, int phyid);
         List<hallodoc_mvc_Repository.ViewModel.Reimbursement>? ReimbursementData(int phyid, DateTime date);
         void AddReciet(hallodoc_mvc_Repository.ViewModel.Reimbursement model, DateTime date, int phyid);
+        void EditReciet(hallodoc_mvc_Repository.ViewModel.Reimbursement model, DateTime date, int phyid);
+        void DeleteReciet(DateTime date, int phyid);
+        void FinalizeInvoice(DateTime date, int phyid);
+        AdminInvocing? NotApproved(DateTime date, int phyid);
     }
 }

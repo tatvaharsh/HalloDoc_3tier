@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DF5gVwQApzpGtVFSutDwmBy7gIsa638Q0nBCsWL5moU=",
+  "Hash": "B4m4VauEHIBMFuASjU6AoB8uA+r2VKMX1i93HADoQH4=",
   "Source": "hallodoc mvc",
   "BasePath": "_content/hallodoc mvc",
   "Mode": "Default",
@@ -2021,6 +2021,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Reimbursement\\3\\01-05-2024.pdf"
+    },
+    {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\Reimbursement\\3\\02-05-2024.pdf",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "Reimbursement/3/02-05-2024.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Reimbursement\\3\\02-05-2024.pdf"
+    },
+    {
+      "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\Reimbursement\\3\\02-05-2024.svg",
+      "SourceId": "hallodoc mvc",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\",
+      "BasePath": "_content/hallodoc mvc",
+      "RelativePath": "Reimbursement/3/02-05-2024.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Reimbursement\\3\\02-05-2024.svg"
     },
     {
       "Identity": "D:\\Projects\\.net learning\\hallo_doc\\HalloDoc_MVC\\hallodoc mvc\\wwwroot\\Reimbursement\\3\\05-01-2024.pdf",

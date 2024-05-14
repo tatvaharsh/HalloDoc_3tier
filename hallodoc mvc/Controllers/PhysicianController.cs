@@ -10,6 +10,7 @@ using System.IO.Compression;
 using DocumentFormat.OpenXml.Spreadsheet;
 using static Org.BouncyCastle.Crypto.Fips.FipsKdf;
 using Twilio.TwiML.Voice;
+using System.Globalization;
 
 namespace hallodoc_mvc.Controllers
 {
@@ -567,6 +568,35 @@ namespace hallodoc_mvc.Controllers
             int phyid = (int)HttpContext.Session.GetInt32("PhyId");
             _Service.AddReciet(model,date,phyid);
             return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
+        }
+        [HttpPost]
+        public IActionResult EditReciet(DateTime date, [FromForm] hallodoc_mvc_Repository.ViewModel.Reimbursement model)
+        {
+            int phyid = (int)HttpContext.Session.GetInt32("PhyId");
+            _Service.EditReciet(model, date, phyid);
+            return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
+        }
+        [HttpPost]
+        public IActionResult DeleteReciet(DateTime date)
+        {
+            int phyid = (int)HttpContext.Session.GetInt32("PhyId");
+            _Service.DeleteReciet(date, phyid);
+            return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
+        }
+      
+        public IActionResult Finalizeit(DateTime date)
+        {
+            int phyid = (int)HttpContext.Session.GetInt32("PhyId");
+            _Service.FinalizeInvoice(date, phyid);
+            return RedirectToAction(nameof(PhysicianController.PhysicianDashboard));
+        }
+        public IActionResult NotApproved(DateTime date)
+        {
+            int phyid = (int)HttpContext.Session.GetInt32("PhyId");
+            string T = DateOnly.FromDateTime(date).ToString();
+            DateTime dt = DateTime.ParseExact(T, "MM-dd-yyyy", CultureInfo.InvariantCulture);
+            string StartDate = dt.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
+            return PartialView("_NotApproved", _Service.NotApproved(DateTime.Parse(StartDate), phyid));
         }
     }
 }
