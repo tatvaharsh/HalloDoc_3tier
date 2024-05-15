@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Request>
+﻿@model hallodoc_mvc_Repository.ViewModel.PatientDashboard;
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor Accessor
 
@@ -131,12 +131,13 @@
                                     <tr>
                                         <th class="heading">Created date</th>
                                         <th class="heading">Current Status</th>
+                                        <th class="heading">Chat With:</th>
                                         <th class="heading  ">Document</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    @foreach (var item in ViewBag.data)
+                                    @foreach (var item in Model.requests)
                                     {
                                         <tr>
                                             <td>@item.CreatedDate.ToString("MMMM dd,yyyy")</td>
@@ -191,11 +192,46 @@
                                                 }
 
                                             </td>
-
+                                            <td>
+                                                <button class="btn btn-outline-info" id="chat_with_dropdown2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <span><i class="fa-solid fa-user pe-1"></i>Admin</span>
+                                                </button>
+                                                <ul class="dropdown-menu table_dropdowns">
+                                                    <li class="ms-3 text-secondary">Select Admin</li>
+                                                    @foreach (var abc in Model.adminData)
+                                                    {
+                                                        <li>
+                                                            <button type="button" class="dropdown-item"
+                                                                    onclick="ChatWith(@item.RequestId,0,@abc.AdminId)">
+                                                                @abc.FirstName @abc.LastName
+                                                            </button>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                                @if (item.PhysicianId != 0)
+                                                {
+                                                    <button class="btn btn-outline-info" onclick="ChatWith(@item.RequestId,@item.PhysicianId,0)" type="button"><span><i class="fa-solid fa-user-doctor pe-1"></i>Provider</span></button>
+                                                    <button class="btn btn-outline-info" id="chat_with_dropdown2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <span><i class="fa-solid fa-users pe-1"></i>Group Chat</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu table_dropdowns">
+                                                        <li class="ms-3 text-secondary">Select Admin</li>
+                                                        @foreach (var abc in Model.adminData)
+                                                        {
+                                                            <li>
+                                                                <button type="button" class="dropdown-item"
+                                                                        onclick="ChatWith(@item.RequestId,@item.PhysicianId,@abc.AdminId,5)">
+                                                                    @abc.FirstName @abc.LastName
+                                                                </button>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                }
+                                            </td>
                                             @{
                                                 var Count = 0;
 
-                                                @foreach (var obj in ViewBag.rwfiles)
+                                                @foreach (var obj in Model.rwfiles)
                                                 {
                                                     if (item.RequestId == obj.RequestId)
                                                     {
@@ -223,7 +259,7 @@
 
                 <!-- Table Mobile - Accordian -->
                 <div class="accordion accordion-flush " id="accordionFlushExample">
-                    @foreach (var item in ViewBag.data)
+                    @foreach (var item in Model.requests)
                     {
                         string Id = 'a' + item.RequestId.ToString();
 
@@ -309,7 +345,7 @@
                                     @{
                                         var Count = 0;
 
-                                        @foreach (var obj in ViewBag.rwfiles)
+                                        @foreach (var obj in Model.rwfiles)
                                         {
                                             if (item.RequestId == obj.RequestId)
                                             {
@@ -334,6 +370,42 @@
                 </div>
             </div>
         </div>
+    <div id="partialViewForChat"></div>
     </div>
-
 </body>
+
+
+<script>
+    var REQUESTID = 0;
+    var ADMINID = 0;
+    var PROVIDERID = 0;
+    var FLAG = 0;
+    function ChatWith(x, y, z, flag) {
+        REQUESTID = x;
+        ADMINID = z;
+        PROVIDERID = y;
+        FLAG = flag;
+        chatafter();
+    }
+    function chatafter() {
+        $.ajax({
+            method: "GET",
+            url: "/Home/Chat",
+            data: {
+                RequestId: REQUESTID,
+                AdminID: ADMINID,
+                ProviderId: PROVIDERID,
+                FlagId: FLAG,
+            },
+            success: function (data) {
+                $('#partialViewForChat').html(data);
+                $('#offcanvasRight').offcanvas("show");
+            },
+            error: function () {
+                console.log("Function Fail");
+            }
+
+        });
+    }
+
+</script>

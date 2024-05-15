@@ -266,21 +266,14 @@ namespace hallodoc_mvc.Controllers
         [HttpGet]
         public async Task<IActionResult> PatientDashboard()
         {
-
-            //if (HttpContext.Session.GetInt32("Userid") == null)
-            //{
-            //    return RedirectToAction(nameof(patient_login));
-            //}
-
-            var req = _service.getRequest(HttpContext.Session.GetInt32("Userid"));
-            //var req = _context.Requests.Where(u => u.UserId == HttpContext.Session.GetInt32("Userid")).ToList();
-
-            ViewBag.data = req;
-
-
-            ViewBag.rwfiles = _service.getFiles(); /*_context.RequestWiseFiles.ToList();*/
-
-            return View();
+            PatientDashboard patientDashboard = new()
+            {
+                requests = _service.getRequest(HttpContext.Session.GetInt32("Userid")),
+                rwfiles = _service.getFiles(),
+                adminData = _service.admindata(),
+            };
+  
+            return View(patientDashboard);
         }
 
 
@@ -406,6 +399,13 @@ namespace hallodoc_mvc.Controllers
                 Stack = exceptionDetails?.Error?.StackTrace,
             });
 
+        }
+
+        public IActionResult Chat(int RequestId, int AdminID, int ProviderId, int FlagId)
+        {
+            var roleMain = HttpContext.Session.GetInt32("RoleId");
+            ChatViewModel model = _service.GetChats(RequestId, AdminID, ProviderId, (int)roleMain, FlagId);
+            return PartialView("_ChatArea", model);
         }
     }
 }

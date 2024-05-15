@@ -30,6 +30,8 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<CaseTag> CaseTags { get; set; }
 
+    public virtual DbSet<Chat> Chats { get; set; }
+
     public virtual DbSet<Concierge> Concierges { get; set; }
 
     public virtual DbSet<EmailLog> EmailLogs { get; set; }
@@ -180,6 +182,11 @@ public partial class ApplicationDbContext : DbContext
         modelBuilder.Entity<CaseTag>(entity =>
         {
             entity.HasKey(e => e.CaseTagId).HasName("CaseTag_pkey");
+        });
+
+        modelBuilder.Entity<Chat>(entity =>
+        {
+            entity.HasKey(e => e.ChatId).HasName("Chat_pkey");
         });
 
         modelBuilder.Entity<Concierge>(entity =>

@@ -257,9 +257,11 @@ else
                         }
 
                         <td>
-                            @if (obj.ChatWith>0)
+                            <button class="btn btn-outline-light" type="button" onclick="ChatWith(@obj.Id,0,1,0)" id="chat_with_dropdown2"><span><i class="fa-solid fa-hospital-user pe-2"></i>Patient</span></button>
+                            @if (@obj.ChatWith != null)
                             {
-                                <button class="btn btn-outline-light" type="button">Provider</button>
+                                <button class="btn btn-outline-light" onclick="ChatWith(@obj.Id,@obj.ChatWith,1,0)" type="button"><span><i class="fa-solid fa-user-doctor pe-1"></i>Provider</span></button>
+                                <button class="btn btn-outline-light" onclick="ChatWith(@obj.Id,@obj.ChatWith,1,5)" type="button"><span><i class="fa-solid fa-users pe-2"></i>Group Chat</span></button>
                             }
                         </td>
 
@@ -694,14 +696,7 @@ else
                                         <span class="accordion-heading-inner ms-2">
                                             Transfer Notes:
                                             <span class="accordion-value-inner">
-                                                @*       @{
-                                    int count = 1;
-                                    }
-                                    @foreach (var x in item.Notes)
-                                    {
-                                    <span>@count) @x</span>
-                                    count++;
-                                    }*@
+                             
                                             </span>
                                         </span>
                                     </div>
@@ -1091,3 +1086,4 @@ else
         color: white !important;
     }
 </style>
+

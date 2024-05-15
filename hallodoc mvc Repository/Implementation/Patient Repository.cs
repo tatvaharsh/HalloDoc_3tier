@@ -88,6 +88,12 @@ namespace hallodoc_mvc_Repository.Implementation
             _context.SaveChanges();
         }
 
+        public List<Admin> admindata()
+        {
+          return  _context.Admins.Where(r => r.IsDeleted == null).ToList();
+
+        }
+
         public AspNetUser AspByUserId(int user1)
         {
             return _context.Users.Include(x => x.AspNetUser).FirstOrDefault(x => x.UserId == user1).AspNetUser;
@@ -96,6 +102,16 @@ namespace hallodoc_mvc_Repository.Implementation
         public AspNetUser AspEmail(string email)
         {
             return _context.AspNetUsers.FirstOrDefault(u => u.Email == email);
+        }
+
+        public Admin getadmin(int adminID)
+        {
+           return _context.Admins.FirstOrDefault(u => u.AdminId == adminID);
+        }
+
+        public List<Admin> GetAdminData()
+        {
+           return _context.Admins.ToList();
         }
 
         public AspNetUser getAspuser(string? email)
@@ -113,6 +129,11 @@ namespace hallodoc_mvc_Repository.Implementation
             return _context.RequestWiseFiles.ToList();
         }
 
+        public Physician getphysician(int providerId)
+        {
+            return _context.Physicians.FirstOrDefault(u => u.PhysicianId == providerId);
+        }
+
         public RequestClient getRcbyemail(string userName)
         {
             return _context.RequestClients.FirstOrDefault(x => x.Email == userName);
@@ -126,6 +147,11 @@ namespace hallodoc_mvc_Repository.Implementation
         public Request GetRequestByEmail(string userName)
         {
             return _context.Requests.FirstOrDefault(r => r.Email == userName);
+        }
+
+        public RequestClient getrequestclient(int requestId)
+        {
+            return _context.RequestClients.FirstOrDefault(u => u.RequestId == requestId);
         }
 
         public List<RequestWiseFile> getRequestWiseFile(int id)

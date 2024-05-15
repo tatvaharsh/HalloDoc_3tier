@@ -115,7 +115,9 @@ namespace hallodoc_mvc_Repository.Implementation
                   Id = x.RequestId,
                   isfinal = x.EncounterForms.First().IsFinalized,
                   DateOfBirth = new(x.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(x.RequestClients.FirstOrDefault().StrMonth, "MMM").Month, x.RequestClients.FirstOrDefault().IntDate.Value),
-                  calltype = x.CallType
+                  calltype = x.CallType,
+                  adminData = _context.Admins.Where(x => x.IsDeleted == null).ToList(),
+                  PhyId = phy,
               }).ToList();
         }
 
@@ -147,6 +149,8 @@ namespace hallodoc_mvc_Repository.Implementation
                    DateOfBirth = new(x.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(x.RequestClients.FirstOrDefault().StrMonth, "MMM").Month, x.RequestClients.FirstOrDefault().IntDate.Value),
                    calltype = x.CallType,
                    Id = x.RequestId,
+                   adminData = _context.Admins.Where(x => x.IsDeleted == null).ToList(),
+                   PhyId = phy,
                }).ToList();
         }
 
@@ -210,6 +214,8 @@ namespace hallodoc_mvc_Repository.Implementation
                 Email = x.RequestClients.First().Email,
                 Id = x.RequestId,
                 DateOfBirth = new(x.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(x.RequestClients.FirstOrDefault().StrMonth, "MMM").Month, x.RequestClients.FirstOrDefault().IntDate.Value),
+                adminData = _context.Admins.Where(x=>x.IsDeleted == null).ToList(),
+                PhyId = phy,
 
             }).ToList();
         }
@@ -231,7 +237,9 @@ namespace hallodoc_mvc_Repository.Implementation
                   Id = x.RequestId,
                   DateOfBirth = new(x.RequestClients.FirstOrDefault().IntYear.Value, DateOnly.ParseExact(x.RequestClients.FirstOrDefault().StrMonth, "MMM").Month, x.RequestClients.FirstOrDefault().IntDate.Value),
                   isfinal = x.EncounterForms.First().IsFinalized,
-                  calltype = x.CallType
+                  calltype = x.CallType,
+                  adminData = _context.Admins.Where(x => x.IsDeleted == null).ToList(),
+                  PhyId = phy,
               }).ToList();
         }
 

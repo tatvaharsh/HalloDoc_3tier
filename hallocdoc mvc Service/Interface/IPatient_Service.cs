@@ -33,5 +33,11 @@ namespace hallocdoc_mvc_Service.Interface
         void SubmitForMe(patient_form pf,int userid);
         void Update(Create model);
         bool ValidateUser(LoginViewModel model);
+
+
+
+        public ChatViewModel GetChats(int RequestId, int AdminID, int ProviderId, int RoleId, int FlagId);
+        public void NewChat(ChatViewModel model, int RoleID);
+        List<Admin> admindata();
     }
 }

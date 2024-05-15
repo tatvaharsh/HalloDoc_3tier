@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hallodoc_mvc_Repository.DataModels;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace hallodoc_mvc_Repository.ViewModel
     {
         public DateTime? AcceptedDate { get; set; }
         public int Id { get; set; }
+        public int PhyId { get; set; }
         public int? calltype { get; set; }
         public BitArray? isfinal { get; set; }
 
@@ -52,5 +54,9 @@ namespace hallodoc_mvc_Repository.ViewModel
         public int Status { get; set; } //req
 
         public int PgCount { get; set; }
+
+        public List<Admin> adminData { get; set; }
     }
+
+    public class ChatViewModel    {        public int ChatId { get; set; }        public int AdminId { get; set; }        public int ProviderId { get; set; }        public int RequestId { get; set; }        public int RoleId { get; set; }        public string? Message { get; set; }        public string? ChatDate { get; set; }        public int SentBy { get; set; }        public string? ChatBoxClass { get; set; }        public string? RecieverName { get; set; }        public string? flag { get; set; }        public int GroupFlag { get; set; }        public int Reciever1 { get; set; }        public int Receiver2 { get; set; }        public List<ChatViewModel> Chats { get; set; }    }
 }

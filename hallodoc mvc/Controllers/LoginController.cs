@@ -37,7 +37,7 @@ namespace hallodoc_mvc.Controllers
             if (ModelState.IsValid)
             {
                 AspNetUser isReg = _service.ValidateUser(model);
-
+                HttpContext.Session.SetInt32("RoleId", isReg.Roles.First().Id);
                 if (isReg.Id > 0)
                 {
                     try

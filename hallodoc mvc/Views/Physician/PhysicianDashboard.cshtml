@@ -242,6 +242,7 @@
                     </div>
 
                     <div id="tableContainer"></div>
+                    <div id="showpopup"></div>
 
 
                 </div>
@@ -491,6 +492,38 @@
             modal.show();
         });
     }
+    var REQUESTID = 0;
+    var ADMINID = 0;
+    var PROVIDERID = 0;
+    var FLAG = 0;
+    function ChatWith(x, y, z, flag) {
+        REQUESTID = x;
+        ADMINID = z;
+        PROVIDERID = y;
+        FLAG = flag;
+        chatafter();
+    }
+    function chatafter() {
+        $.ajax({
+            method: "GET",
+            url: "/Home/Chat",
+            data: {
+                RequestId: REQUESTID,
+                AdminID: ADMINID,
+                ProviderId: PROVIDERID,
+                FlagId: FLAG,
+            },
+            success: function (data) {
+                $('#showpopup').html(data);
+                $('#offcanvasRight').offcanvas("show");
+            },
+            error: function () {
+                console.log("Function Fail");
+            }
+
+        });
+    }
+
 </script>
 <style>
     .foot {

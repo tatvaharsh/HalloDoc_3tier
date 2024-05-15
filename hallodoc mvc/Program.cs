@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSignalR();
 builder.Services.AddScoped<IPatient_Service, Patient_Service>();
 builder.Services.AddScoped<IPatient_Repository, Patient_Repository>();
 builder.Services.AddScoped<IAdmin_Service, Admin_Service>();
@@ -18,7 +20,7 @@ builder.Services.AddScoped<IPhysician_Repository, Physician_Repository>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddDbContext<ApplicationDbContext>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddSession(options =>
 {
     options.Cookie.Name = ".AdventureWorks.Session";
@@ -44,6 +46,10 @@ app.UseRouting();
 
 app.UseSession();
 app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapHub<ChatHub>("/chat");
+});
 
 app.MapControllerRoute(
     name: "default",
